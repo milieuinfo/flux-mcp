@@ -1,0 +1,9 @@
+{
+    "version": "2.21.0-develop-v2.1",
+    "sourceRepository": "https://github.com/milieuinfo/flux-web-components.git",
+    "sourceRef": "v2.21.0-develop-v2.1",
+    "sourceCommit": "03baa84f31ef829879efc9dcf841f2fb91d95e98",
+    "syncedAt": "2026-09-24T12:14:56Z",
+    "templateCount": 86,
+    "codeConnectCli": "@figma/code-connect@2.0.0"
+}
