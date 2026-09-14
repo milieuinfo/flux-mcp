@@ -1,0 +1,25 @@
+{
+    "name": "flux-mcp",
+    "private": true,
+    "packageManager": "pnpm@11.15.1+sha512.81350b07e53c9538a02f1f2303b4290fa2d7be04e56e2a970c4cc4b417dc761de196edabd49d55c7dc9580db81007c44143e4e3d7e462b3000d23c255122d065",
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "11.15.1+sha512.81350b07e53c9538a02f1f2303b4290fa2d7be04e56e2a970c4cc4b417dc761de196edabd49d55c7dc9580db81007c44143e4e3d7e462b3000d23c255122d065",
+            "onFail": "error"
+        }
+    },
+    "scripts": {
+        "figma:code-connect:publish": "./resources/figma/code-connect/publish.sh",
+        "figma:code-connect:unpublish": "./resources/figma/code-connect/unpublish.sh",
+        "figma:web-components:copy-figma": "./resources/figma/web-components/copy-figma.sh",
+        "figma:descriptions:write": "node ./resources/figma/descriptions/write.mjs"
+    },
+    "devDependencies": {
+        "@figma/code-connect": "2.0.0"
+    },
+    "volta": {
+        "node": "22.20.0",
+        "pnpm": "11.15.1"
+    }
+}
