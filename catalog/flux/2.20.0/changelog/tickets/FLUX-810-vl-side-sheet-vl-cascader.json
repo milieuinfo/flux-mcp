@@ -1,0 +1,60 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-810",
+  "entries": [
+    {
+      "id": "d68ff04",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-810"
+      ],
+      "scope": "vl-side-sheet, vl-cascader",
+      "components": [
+        "vl-side-sheet",
+        "vl-cascader"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "focus management bij open side-sheet hersteld",
+      "text": "FLUX-810 - vl-side-sheet, vl-cascader - focus management bij open side-sheet hersteld",
+      "commits": [
+        {
+          "sha": "d68ff04f1d89c359158134c55711db577f3c7b7e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d68ff04f1d89c359158134c55711db577f3c7b7e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Tabben tussen elementen binnen een open side-sheet houdt de focus nu bij de inhoud in plaats van ze naar de toggle button te trekken.\n\nOp een mobiel scherm is een open side-sheet modaal: tabben loopt rond tussen de toggle button en de inhoud, en focus die buiten de sheet belandt keert terug naar de sheet zelf. Een toggle button die verborgen is (hide-toggle-button) of volledig naast het scherm valt (bv. bij 100% breedte) wordt overgeslagen in de tabvolgorde. Sluit een side-sheet met verborgen toggle button, dan keert de focus terug naar het element dat focus had vóór het openen. Op desktop kan de focus de side-sheet verlaten.\n\nStaan er meerdere side-sheets open, dan laat een side-sheet de focus bij die andere open side-sheet in plaats van ze weg te trekken. Dat geldt ook voor vl-map-side-sheet, dat van vl-side-sheet erft. Meerdere side-sheets tegelijk blijft een anti-pattern; de documentatie vraagt er één per pagina te renderen.\n\nDoorklikken naar een ander niveau in een cascader zet de focus op dat nieuwe niveau in plaats van ze te laten vallen. De focus outline van dat niveau is enkel zichtbaar bij toetsenbordnavigatie.\n\nDe documentatie van vl-side-sheet vermeldt dat een side-sheet met 100% breedte op mobile een eigen sluitknop nodig heeft.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 2,
+          "docs": 1,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/cascader/vl-cascader.component.ts",
+          "libs/components/src/block/cascader/vl-cascader.flux-css.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": "## Eén side-sheet per pagina\n\nRender nooit meer dan één `side-sheet` tegelijk, ook geen bijkomende verborgen exemplaren. Een open `side-sheet` houdt\nop een mobiel scherm de focus bij zijn eigen inhoud. Staan er twee open, dan proberen ze allebei de focus naar zich toe\nte trekken en wordt het onvoorspelbaar waar de gebruiker terechtkomt. De component vangt de ergste gevolgen op, zodat\neen bestaande toepassing niet vastloopt, maar de focusvolgorde klopt dan niet meer.\n\nHeb je meerdere panelen nodig, wissel dan de inhoud van dezelfde `side-sheet`, of sluit het ene paneel voor je het\nandere opent.\n\n[…]\n\n**Let op:** de toggle knop staat bij een open `side-sheet` naast de `side-sheet`. De standaardbreedte op mobile\n(`calc(100vw - 56px)`) laat daar net plaats voor. Stel je `--vl-side-sheet-width-mobile` in op `100%`, dan valt de\ntoggle knop buiten het scherm en kan de gebruiker de `side-sheet` er niet meer mee sluiten. Voorzie in dat geval zelf\neen sluitknop in de `side-sheet` die `close()` aanroept, zoals in het\n[voorbeeld van buitenaf openen & sluiten](#voorbeeld-van-buitenaf-openen--sluiten). Geef die knop een toegankelijke\nnaam, bijvoorbeeld `label=\"Sluit de side-sheet\"` bij een knop met enkel een icoon."
+          }
+        ]
+      }
+    }
+  ]
+}

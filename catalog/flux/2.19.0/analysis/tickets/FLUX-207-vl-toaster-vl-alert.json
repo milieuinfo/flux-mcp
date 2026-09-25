@@ -1,0 +1,15 @@
+{
+  "entries": {
+    "ca607d5": {
+      "impact": "action",
+      "explanation": "toaster.showAlert() zet elke key van het meegegeven object als attribuut op de vl-alert. Een camelCase key zoals alertRole werd daardoor nooit toegepast, want het attribuut heet alert-role. Het object gebruikt nu de attribuutnamen, met VlAlertAttributes als TypeScript-type (te importeren naast VlAlert).",
+      "action": "Geef je alertRole mee aan showAlert(), gebruik dan 'alert-role'. Met TypeScript geeft alertRole nu een typefout; in JavaScript werkte het nooit.",
+      "example": "```js\ntoaster.showAlert({\n    type: 'success',\n    title: 'Gelukt!',\n    message: 'Je aanvraag is verstuurd.',\n    'alert-role': 'alert',\n});\n```"
+    },
+    "8ec5138": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe alert-role attribuut kies je de ARIA-rol van vl-alert: alert (default, ongewijzigd gedrag) voor een beknopte melding die na een actie verschijnt, alertdialog voor een melding die een actie vraagt, en no-role voor een melding die al bij het laden op de pagina staat. Bij alertdialog krijgt de melding de titel als naam en de boodschap als beschrijving, en is ze focusbaar: verplaats zelf de focus met alert.focus(). Voorzie dan altijd een titel. De documentatie raadt no-role aan voor meldingen die al bij het laden zichtbaar zijn.",
+      "example": "```html\n<!-- melding die al bij het laden van de pagina zichtbaar is -->\n<vl-alert alert-role=\"no-role\" type=\"info\" icon=\"info-circle\" title=\"Onderhoud\">\n    <span>Op zaterdag is dit loket beperkt beschikbaar.</span>\n</vl-alert>\n```"
+    }
+  }
+}

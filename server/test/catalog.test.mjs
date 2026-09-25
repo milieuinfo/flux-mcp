@@ -4,10 +4,10 @@ import os from 'node:os';
 import path from 'node:path';
 import { after, before, describe, test } from 'node:test';
 import { CATALOG_DIR, CatalogError, compareVersions, createCatalog } from '../src/catalog.mjs';
-import { buildReleaseFromCatalog } from '../src/changelog.mjs';
+import { buildReleaseFiles, compareReleaseFiles, writeReleaseFiles } from '../src/changelog.mjs';
 
-// Een kopie van de echte catalogus met vers gebouwde changelog.json, zodat de tests niet afhangen van een
-// changelog.json die niet meer klopt. De bronnen (changelog.md, commits.json, analyse, web-types) zijn de echte.
+// Een kopie van de echte catalogus met vers gebouwde bestanden, zodat de tests niet afhangen van gebouwde
+// bestanden die niet meer kloppen. De bronnen (changelog.md, commits.json, analyse, web-types) zijn de echte.
 let dir;
 let catalog;
 
@@ -19,7 +19,7 @@ before(() => {
         }
     }
     for (const version of ['2.19.0', '2.20.0']) {
-        fs.writeFileSync(path.join(dir, version, 'changelog', 'changelog.json'), JSON.stringify(buildReleaseFromCatalog(dir, version)));
+        writeReleaseFiles(dir, version, buildReleaseFiles(dir, version).files);
     }
     catalog = createCatalog(dir);
 });
@@ -67,6 +67,8 @@ describe('getChangelog', () => {
 
     test('een entry draagt de analyse, de uitleg uit de commit en de Storybook-pagina', () => {
         const banner = catalog.getChangelog('2.20.0').entries.find((e) => e.id === 'f2a3414');
+        assert.equal(banner.ticket, 'FLUX-809');
+        assert.equal(banner.file, 'tickets/FLUX-809-vl-alert.json');
         assert.equal(banner.impact, 'opt-in');
         assert.equal(banner.impactSource, 'analysis');
         assert.match(banner.explanation, /banner attribuut/);
@@ -247,5 +249,26 @@ describe('findChanges', () => {
         const hidden = catalog.findChanges('cypress-axe', { includeNoImpact: false });
         assert.equal(hidden.results.length, 0);
         assert.equal(hidden.hiddenNoImpact, 1);
+    });
+});
+
+describe('gebouwde bestanden', () => {
+    test('--check ziet verouderde, ontbrekende en overbodige bestanden; bouwen ruimt ze op', () => {
+        const { files } = buildReleaseFiles(dir, '2.20.0');
+        assert.deepEqual(compareReleaseFiles(dir, '2.20.0', files), []);
+
+        const tickets = path.join(dir, '2.20.0', 'changelog', 'tickets');
+        fs.writeFileSync(path.join(tickets, 'FLUX-999-vl-oud.json'), '{}\n');
+        fs.appendFileSync(path.join(tickets, 'FLUX-809-vl-alert.json'), ' ');
+        fs.rmSync(path.join(dir, '2.20.0', 'changelog', 'api.json'));
+        assert.deepEqual(compareReleaseFiles(dir, '2.20.0', files), [
+            { path: 'api.json', status: 'ontbreekt' },
+            { path: 'tickets/FLUX-809-vl-alert.json', status: 'is verouderd' },
+            { path: 'tickets/FLUX-999-vl-oud.json', status: 'is overbodig' },
+        ]);
+
+        writeReleaseFiles(dir, '2.20.0', files);
+        assert.deepEqual(compareReleaseFiles(dir, '2.20.0', files), []);
+        assert.equal(fs.existsSync(path.join(tickets, 'FLUX-999-vl-oud.json')), false);
     });
 });

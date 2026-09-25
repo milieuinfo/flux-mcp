@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "6854ffc": {
+      "impact": "opt-in",
+      "explanation": "Geef een vl-link in het label-slot van vl-cascader-item de class vl-cascader-link: dan neemt de link de volle breedte van het item in en staat het pijltje rechts, zoals bij het label-attribuut. Dat werkt ook voor links uit een eigen template of via property binding. Links in het content-slot houden hun natuurlijke breedte.",
+      "example": "```html\n<vl-cascader-item label=\"West-Vlaanderen\">\n    <vl-link slot=\"label\" bold button-as-link icon=\"arrow-right-fat\" icon-placement=\"after\" class=\"vl-cascader-link\">\n        Provincie: West-Vlaanderen\n    </vl-link>\n</vl-cascader-item>\n```"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-236",
+  "entries": [
+    {
+      "id": "53040a9",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-236"
+      ],
+      "scope": "vl-http-error-message",
+      "components": [
+        "vl-http-error-message"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "debug-info als definitielijst en verwijzing naar adresbalk",
+      "text": "FLUX-236 - vl-http-error-message - debug-info als definitielijst en verwijzing naar adresbalk",
+      "commits": [
+        {
+          "sha": "53040a9aae01156bfb9a62a4bbbcf4e58a9b9b54",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/53040a9aae01156bfb9a62a4bbbcf4e58a9b9b54"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De debug-info (URL, tijd, user-agent) wordt nu als definitielijst getoond in plaats van als tabel, zodat screenreaders die correct aankondigen als beschrijvende paren. De dt/dd-kolommen behouden de padding-right van de vorige td's, zodat het blok even breed blijft als voorheen.\n\nDe contentkolom is niet langer justify-self-center. Die maakte de kolom fit-content, waardoor haar breedte - en dus de witruimte links - afhing van de lengte van de debug-info en van de foutcode-tekst. De kolom stretcht nu over haar volledige breedte, wat voor elke foutcode en elke schermbreedte dezelfde uitlijning links geeft. De afbeeldingskolom blijft wel gecentreerd.\n\nDe foutcode-teksten verwijzen voortaan naar \"de URL in de adresbalk\" in plaats van \"de URL hierboven\".",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/http-error-message/error-codes.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

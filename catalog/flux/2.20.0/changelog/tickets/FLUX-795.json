@@ -1,0 +1,46 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-795",
+  "entries": [
+    {
+      "id": "b62fbe3",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-795"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "Critical dependency waarschuwingen van cypress-axe onderdrukt",
+      "text": "FLUX-795 - Critical dependency waarschuwingen van cypress-axe onderdrukt",
+      "commits": [
+        {
+          "sha": "b62fbe3726b83ba97a855adc85468966766d9e03",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b62fbe3726b83ba97a855adc85468966766d9e03"
+        }
+      ],
+      "closes": [
+        {
+          "ref": "component-driven/cypress-axe#99",
+          "url": "https://github.com/component-driven/cypress-axe/issues/99"
+        }
+      ],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "cypress-axe bepaalt het pad naar axe.min.js via require?.resolve; webpack kan require als expressie niet statisch analyseren en waarschuwt daarom bij elke run. Upstream open sinds 2021 (component-driven/cypress-axe#99), de laatste release 1.7.0 bevat het patroon nog. De ignoreWarnings filter matcht op module en message samen, dus alle andere waarschuwingen blijven zichtbaar.",
+        "published": false,
+        "areas": {
+          "tests": 1,
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

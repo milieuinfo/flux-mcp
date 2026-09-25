@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "6899016": {
+      "impact": "none",
+      "explanation": "Flux bouwt en test zichzelf voortaan met pnpm in plaats van npm, omwille van supply-chain security. De gepubliceerde packages installeer je met elke package manager. De afnemersdocumentatie (Afnemen/Aan De Slag) raadt pnpm aan, en vraagt @domg-wc/common zelf als dependency op te nemen zodra je rechtstreeks uit dat package importeert, bv. registerWebComponents: onder pnpm is een package dat enkel transitief binnenkomt niet importeerbaar."
+    },
+    "4d555a6": {
+      "impact": "none",
+      "explanation": "Een nieuw recept, Recepten/Van npm naar pnpm, voor wie zijn eigen project naar pnpm wil overzetten: waarom, een stappenplan en een cheatsheet. Neem de uitzondering voor @domg-wc/* op minimumReleaseAge over, anders is een verse Flux-release 24 uur niet installeerbaar."
+    }
+  }
+}

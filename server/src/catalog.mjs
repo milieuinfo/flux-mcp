@@ -1,8 +1,8 @@
 // De vragen die de MCP-server over de changelog van Flux beantwoordt, als gewone functies.
 //
-// Leest per versie catalog/flux/<versie>/changelog/changelog.json (zie changelog-build) en, voor een API-diff
-// over een bereik, de web-types. De MCP-koppeling hangt deze functies later aan tools en resources; zie
-// docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md.
+// Leest per versie wat changelog-build in catalog/flux/<versie>/changelog/ zette, samengevoegd met de analyse uit
+// analysis/ (zie readRelease), en voor een API-diff over een bereik de web-types. De MCP-koppeling hangt deze
+// functies later aan tools en resources; zie docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md.
 //
 // Elke entry zegt met 'impact' wat ze voor het project van een afnemer betekent: action, opt-in, automatic of
 // none. Entries met impact 'none' (testen, tooling, de documentatie van Flux zelf) mag een afnemer weten, maar ze
@@ -16,7 +16,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { IMPACTS, LABELS, SCHEMA, TYPES } from './changelog.mjs';
+import { IMPACTS, LABELS, readRelease, TYPES } from './changelog.mjs';
 import { diffWebTypes, loadWebTypes } from './web-types.mjs';
 
 export const CATALOG_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../catalog/flux');
@@ -74,16 +74,9 @@ function filterApi(api, name) {
 export function createCatalog(dir = CATALOG_DIR) {
     const releases = new Map();
     for (const version of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
-        const file = path.join(dir, version, 'changelog', 'changelog.json');
-        if (!VERSION.test(version) || !fs.existsSync(file)) continue;
-        const release = JSON.parse(fs.readFileSync(file, 'utf-8'));
-        if (release.schema !== SCHEMA) {
-            throw new Error(
-                `catalog/flux/${version}/changelog/changelog.json heeft schema ${release.schema}, verwacht ${SCHEMA}. ` +
-                    'Bouw opnieuw: pnpm run flux:web-components:changelog-build --all',
-            );
-        }
-        releases.set(version, release);
+        if (!VERSION.test(version)) continue;
+        const release = readRelease(dir, version);
+        if (release) releases.set(version, release);
     }
     // Oplopend; overzichten tonen de nieuwste eerst.
     const versions = [...releases.keys()].sort(compareVersions);

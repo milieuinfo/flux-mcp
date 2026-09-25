@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "f2a3414": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe banner attribuut toont vl-alert een melding over de volle breedte van de pagina: zonder afgeronde hoeken, met titel en boodschap na elkaar op één regel. De component zet zelf het streepje tussen titel en boodschap. Een banner gebruikt altijd de small-opmaak en is niet bedoeld in combinatie met naked. Staat de banner al bij het laden op de pagina, zet dan alert-role=\"no-role\".",
+      "example": "```html\n<vl-alert banner closable alert-role=\"no-role\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>\n```"
+    }
+  }
+}

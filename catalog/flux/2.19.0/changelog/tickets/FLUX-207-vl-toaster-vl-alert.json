@@ -1,0 +1,107 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-207",
+  "entries": [
+    {
+      "id": "ca607d5",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-207"
+      ],
+      "scope": "vl-toaster",
+      "components": [
+        "vl-toaster"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "showAlert verwacht de attribuutnamen",
+      "text": "FLUX-207 - vl-toaster - showAlert verwacht de attribuutnamen",
+      "commits": [
+        {
+          "sha": "ca607d565952487b67e70bb26f0fe67bd076b7f3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ca607d565952487b67e70bb26f0fe67bd076b7f3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "showAlert() zet elke key van het meegegeven object als attribuut op de vl-alert. Een key in camelCase zoals alertRole belandde daardoor als alertrole op het element en werd genegeerd, want het attribuut heet alert-role.\n\nHet meegegeven object gebruikt nu de attribuutnamen zoals de documentatie van de vl-alert ze noemt, met VlAlertAttributes als type. De Storybook-documentatie vermeldt dat.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/index.ts",
+          "libs/components/src/block/alert/vl-alert.model.ts",
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/toaster/vl-toaster.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "component, met de attribuutnaam als key, zoals `multiline` om regeleinden (`\\n`) in de `message` te bewaren of\n`alert-role` om de rol van de melding te kiezen."
+          }
+        ]
+      }
+    },
+    {
+      "id": "8ec5138",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-207"
+      ],
+      "scope": "vl-alert",
+      "components": [
+        "vl-alert"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "instelbare ARIA-rol per context",
+      "text": "FLUX-207 - vl-alert - instelbare ARIA-rol per context",
+      "commits": [
+        {
+          "sha": "8ec5138d54a8680bbf5d4c93f7f72c328c357b27",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8ec5138d54a8680bbf5d4c93f7f72c328c357b27"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De ARIA-rol van een melding is nu instelbaar met het nieuwe alert-role attribuut: alert (default, ongewijzigd gedrag), alertdialog voor meldingen die een actie vereisen en no-role voor meldingen die al bij het laden van de pagina zichtbaar zijn.\n\nBij alertdialog krijgt de melding de titel als toegankelijke naam en de boodschap als beschrijving, maar enkel wanneer die inhoud hebben. De melding is bij die rol ook focusbaar, zodat de afnemer met alert.focus() de focus ernaartoe kan verplaatsen. Inhoud die pas na de eerste render in een slot terechtkomt, telt daarbij mee.\n\nDe Storybook-documentatie legt in een sectie Toegankelijkheid uit welke rol bij welke context past en hoe de afnemer bij alertdialog zelf de focus verplaatst.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/index.ts",
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/alert/vl-alert.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "## Toegankelijkheid\n\n### Draag de betekenis niet enkel via kleur en icoon over\n\nHet `type` van de melding wordt visueel vertaald naar een kleur en - via het `icon` attribuut - naar een icoon. Die\nsignalen bereiken gebruikers van een schermlezer niet en vallen weg in hoog contrast. Zet de aard van de melding\ndaarom ook in de tekst, bijvoorbeeld met een titel als \"Opgelet!\" of \"Gelukt!\", zodat de boodschap zonder kleur en\nicoon volledig blijft.\n\n### Kies de rol die bij de context past\n\nEen melding krijgt niet in elke context dezelfde ARIA rol. Stem die af met het `alert-role` attribuut, volgens de\nrichtlijnen voor [`alert`](https://www.w3.org/TR/wai-aria-1.2/#alert) en\n[`alertdialog`](https://www.w3.org/TR/wai-aria-1.2/#alertdialog).\n\n<table>\n    <tr>\n        <td>Waarde</td>\n        <td>Wanneer</td>\n        <td>Gedrag bij een schermlezer</td>\n    </tr>\n    <tr>\n        <td>`alert` (default)</td>\n        <td>De melding verschijnt dynamisch na een actie van de gebruiker, is beknopt en vraagt zelf geen actie.</td>\n        <td>De melding wordt voorgelezen zodra ze verschijnt, zonder dat de focus verspringt.</td>\n    </tr>\n    <tr>\n        <td>`alertdialog`</td>\n        <td>De melding verschijnt dynamisch en vereist een actie van de gebruiker, typisch via een knop in het `actions` slot.</td>\n        <td>De melding wordt aangekondigd als een dialoog met een naam en een beschrijving. De afnemer verplaatst zelf de focus naar de melding, zie hieronder.</td>\n    </tr>\n    <tr>\n        <td>`no-role`</td>\n        <td>De melding staat al op de pagina bij het laden, bijvoorbeeld een permanente info- of storingsmelding.</td>\n        <td>Geen live region: de melding wordt gewoon voorgelezen op haar plaats in de leesvolgorde.</td>\n    </tr>\n</table>\n\nHou meldingen met `alert-role=\"alert\"` beknopt: een schermlezer leest de volledige inhoud in één keer voor en\nonderbreekt daarmee waar de gebruiker mee bezig was.\n\n```html\n<!-- melding die al bij het laden van de pagina zichtbaar is -->\n<vl-alert alert-role=\"no-role\" type=\"info\" icon=\"info-circle\" title=\"Onderhoud\">\n    <span>Op zaterdag is dit loket beperkt beschikbaar.</span>\n</vl-alert>\n```\n\n### Focus bij `alertdialog`\n\nEen `alertdialog` hoort de focus te krijgen zodra hij verschijnt, anders mist een toetsenbord- of schermlezergebruiker\nde melding en de bijhorende actie. De component doet dat bewust niet automatisch: enkel de afnemer weet op welk moment\nde melding verschijnt en welk element de focus moet krijgen.\n\n{`\nBij alert-role=\"alertdialog\" moet de afnemer zelf de focus naar de melding of naar de actieknop erin verplaatsen.\n`}\n\n```js\nconst alert = document.querySelector('vl-alert');\nalert.focus(); // verplaatst de focus naar de melding zelf\n```\n\n`focus()` op de melding legt de focus op de dialoog, waardoor een schermlezer de rol, de naam en de beschrijving\naankondigt. Wil je de gebruiker meteen bij de actie zetten, focus dan de knop in het `actions` slot; de melding wordt\ndan aangekondigd als context van die knop.\n\n```js\nconst alert = document.querySelector('vl-alert');\nalert.querySelector('vl-button')?.focus();\n```\n\nBij deze rol koppelt de component de titel als naam (`aria-labelledby`) en de boodschap als beschrijving\n(`aria-describedby`) aan de melding, maar enkel wanneer die effectief inhoud hebben: een verwijzing naar een leeg\nelement levert immers geen naam of beschrijving op. Voorzie daarom altijd een titel via het `title` attribuut of het\n`title` slot, want zonder titel heeft de `alertdialog` geen toegankelijke naam. Een controle met axe meldt dat als\n`aria-dialog-name`."
+          }
+        ]
+      }
+    }
+  ]
+}

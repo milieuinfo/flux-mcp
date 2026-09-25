@@ -1,0 +1,203 @@
+{
+  "base": "2.19.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "banner",
+            "description": "Banner variant van de waarschuwing: zonder afgeronde hoeken, met de titel en de boodschap na elkaar op dezelfde regel.<br>Bedoeld voor meldingen over de volledige breedte van de pagina. Gebruikt altijd de `small` opmaak, ook zonder `size=\"small\"`. Combineer niet met de `naked` variant.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-cascader-item",
+      "category": "block",
+      "inChangelog": false,
+      "slots": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "label",
+            "description": "Een klik op deze inhoud zal de kind elementen weergeven. Geef een eigen vl-link in dit slot de class vl-cascader-link om het pijltje rechts uit te lijnen."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-checkbox",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-input-field",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-radio-group",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-select",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-textarea",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-textarea-rich",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-upload",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "blur-validation",
+            "description": "Valideert het veld zodra de gebruiker het verlaat. Een foutmelding verdwijnt weer zodra de waarde geldig is.<br>Raadpleeg de [blur-validatie documentatie](/?path=/docs/patronen-formulier-blur-validatie--documentatie) voor meer info."
+          }
+        ]
+      }
+    }
+  ]
+}

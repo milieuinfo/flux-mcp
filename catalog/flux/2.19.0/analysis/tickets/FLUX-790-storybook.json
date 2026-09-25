@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "7bbb00d": {
+      "impact": "none",
+      "explanation": "Een correctie in de release-configuratie van Flux: in de changelog kregen features de opmaak van fixes. Dit raakt enkel hoe de changelog gegenereerd wordt."
+    }
+  }
+}

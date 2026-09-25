@@ -1,21 +1,23 @@
-// Bouwt changelog.json uit de changelog die changelog-copy en changelog-cleanup in de catalogus zetten.
+// Bouwt de gegevens die de scripts over een versie weten, uit de changelog en de commits in de catalogus.
 //
-//   pnpm run flux:web-components:changelog-build 2.20.0          # catalog/flux/2.20.0/changelog/changelog.json
+//   pnpm run flux:web-components:changelog-build 2.20.0          # catalog/flux/2.20.0/changelog/
 //   pnpm run flux:web-components:changelog-build --all           # alle versies in de catalogus
-//   pnpm run flux:web-components:changelog-build --check         # faalt als een changelog.json niet meer klopt
+//   pnpm run flux:web-components:changelog-build --check         # faalt als een gebouwd bestand niet meer klopt
 //   pnpm run flux:web-components:changelog-build --check 2.20.0  # enkel die versie controleren
 //
-// changelog.json is wat de MCP-server over een versie aanbiedt: elke entry met type, issues, componenten, impact en
-// labels, de feiten uit de commits (commits.json, van changelog-commits), de analyse uit
-// catalog/flux/<versie>/analysis/changelog.json, en de API-diff tegen de web-types van de vorige versie. Het
-// bestand is gegenereerd en staat in git, zodat een PR toont wat de server zal tonen. Draai --all opnieuw wanneer
-// de analyse wijzigt of de web-types van een vorige versie later binnenkomen. Het script is deterministisch:
-// opnieuw bouwen geeft hetzelfde bestand.
+// Naast changelog.md en commits.json komen in catalog/flux/<versie>/changelog/:
+//   - changelog.json: het overzicht, met de entries en de tickets met hun bestand;
+//   - tickets/<ticket>-<componenten>.json: per ticket de volledige entries, met de feiten uit de commits;
+//   - api.json: de API-diff tegen de web-types van de vorige versie.
+// Die bestanden zijn gegenereerd en staan in git. Wat een LLM schreef, staat apart in analysis/, met dezelfde
+// bestandsnamen; het script controleert of die analyse bij de tickets past. Het script is deterministisch:
+// opnieuw bouwen geeft dezelfde bestanden. Draai --all opnieuw wanneer de web-types van een vorige versie later
+// binnenkomen.
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildReleaseFromCatalog } from '../../../server/src/changelog.mjs';
+import { buildReleaseFiles, compareReleaseFiles, writeReleaseFiles } from '../../../server/src/changelog.mjs';
 import { compareVersions } from '../../../server/src/catalog.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -103,32 +105,31 @@ function report(release) {
 let failed = false;
 let stale = false;
 for (const version of versions) {
-    const target = path.join(CATALOG_DIR, version, 'changelog', 'changelog.json');
-    const relative = path.relative(REPO_ROOT, target);
-    let release;
+    const relative = path.relative(REPO_ROOT, path.join(CATALOG_DIR, version, 'changelog'));
+    let built;
     try {
-        release = buildReleaseFromCatalog(CATALOG_DIR, version);
+        built = buildReleaseFiles(CATALOG_DIR, version);
     } catch (error) {
         console.error(`${version}: ${error.message}`);
         failed = true;
         continue;
     }
-    const content = `${JSON.stringify(release, null, 2)}\n`;
 
     if (check) {
-        const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf-8') : null;
-        if (current === content) {
+        const differences = compareReleaseFiles(CATALOG_DIR, version, built.files);
+        if (differences.length === 0) {
             console.log(`${version}: ok`);
         } else {
-            console.log(`${version}: ${relative} ${current === null ? 'ontbreekt' : 'is verouderd'}`);
+            for (const { path: file, status } of differences) console.log(`${version}: ${relative}/${file} ${status}`);
             stale = true;
         }
         continue;
     }
 
-    fs.writeFileSync(target, content);
-    console.log(`Gebouwd: ${relative}`);
-    report(release);
+    writeReleaseFiles(CATALOG_DIR, version, built.files);
+    const tickets = built.files.filter((file) => file.path.startsWith('tickets/')).length;
+    console.log(`Gebouwd: ${relative}/ (changelog.json, ${tickets} tickets${built.files.some((f) => f.path === 'api.json') ? ', api.json' : ''})`);
+    report(built.release);
 }
 
 if (stale) console.log(`Bouw opnieuw: pnpm run flux:web-components:changelog-build ${requested ?? '--all'}`);

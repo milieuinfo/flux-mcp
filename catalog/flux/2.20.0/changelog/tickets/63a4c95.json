@@ -1,0 +1,45 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "63a4c95",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "planning 2026 toegevoegd aan historiek & toekomst",
+      "text": "planning 2026 toegevoegd aan historiek & toekomst",
+      "commits": [
+        {
+          "sha": "63a4c954ef0ed87a856cdb3fabc54d432fe5c1be",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/63a4c954ef0ed87a856cdb3fabc54d432fe5c1be"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "planning-historiek-toekomst--documentatie",
+            "title": "Planning/Historiek & Toekomst",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+            "added": "- [Planning 2026](#planning-2026)\n- [Planning 2025](#planning-2025)\n\n[…]\n\n## Planning 2026\n\n<br/><img src={planning2026} alt=\"planning-2026\"/>"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-760",
+  "entries": [
+    {
+      "id": "9d28af3",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-760"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "whitespace tussen properties binnen een column",
+      "text": "FLUX-760 - vl-properties - whitespace tussen properties binnen een column",
+      "commits": [
+        {
+          "sha": "9d28af3f95800ee364c83110f6b5ec1cf2ac9fd1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9d28af3f95800ee364c83110f6b5ec1cf2ac9fd1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Properties binnen eenzelfde column plakten tegen elkaar: de spacing hing aan de dl en telde daardoor enkel tussen de columns onderling. Een nieuw label krijgt nu dezelfde 2rem, zodat het resultaat gelijk is aan de layout zonder columns. Meerdere data-waardes onder eenzelfde label blijven wel tegen elkaar staan, zoals voordien.\n\nDe waarde staat in de nieuwe custom property --vl-properties--row-gap (default 2rem), zodat afnemers de spacing van buitenaf kunnen aanpassen.",
+        "published": true,
+        "areas": {
+          "styles": 2,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.css.ts",
+          "libs/components/src/block/properties/vl-properties.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "## Spacing aanpassen\n\nDe verticale ruimte tussen properties staat in de custom property `--vl-properties--row-gap` (standaard `2rem`).\nMeerdere data-waardes onder eenzelfde label horen bij elkaar en krijgen die ruimte niet, ze blijven in de\ncolumn-layout tegen elkaar staan. Wie een compactere of ruimere weergave nodig heeft, zet de property van buitenaf\nop de component:\n\n```css\nvl-properties {\n    --vl-properties--row-gap: 1rem;\n}\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

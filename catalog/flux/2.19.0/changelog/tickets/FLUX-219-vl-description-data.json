@@ -1,0 +1,58 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-219",
+  "entries": [
+    {
+      "id": "0ee6e57",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-219"
+      ],
+      "scope": "vl-description-data",
+      "components": [
+        "vl-description-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "label/waarde als description list",
+      "text": "FLUX-219 - vl-description-data - label/waarde als description list",
+      "commits": [
+        {
+          "sha": "0ee6e57fdf2069646fd8ef87c7c5c25fbe123afb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0ee6e57fdf2069646fd8ef87c7c5c25fbe123afb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De label/waarde-paren worden nu als een echte description list gerenderd, zodat screenreaders elk paar als term en definitie aankondigen. Visueel en qua API verandert er niets: alle attributen, de label/value-slots en de kolom-layout blijven werken zoals voorheen. Daarnaast is de render fout in vl-description-data-item opgelost waardoor het value-slot verkeerd werd afgesloten.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/description-data/vl-description-data-item.component.ts",
+          "libs/components/src/block/description-data/vl-description-data.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-description-data-description-data--documentatie",
+            "title": "Components - Block/description-data/description-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie",
+            "added": "# Description Data\n\n\n\n## Doel\n\nGebruik de `description-data` component om label / waarde-paren als een samenhangende lijst weer te geven, bijvoorbeeld\nde metadata van een publicatie. De paren worden als een `<dl>` met `<dt>` en `<dd>` gerenderd, zodat een schermlezer\nelk paar als term en definitie aankondigt.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n</vl-description-data>\n```\n\n\n\n## Configuratie\n\n\n\n## Enkel description-data-item als kind\n\nDe `vl-description-data` mag als directe kinderen **uitsluitend** `vl-description-data-item` componenten bevatten.\n\n{`\n    Elk ander element tussen de items wordt genegeerd: het wordt niet in de beschrijvingslijst opgenomen en is ook\n    niet zichtbaar op de pagina. Tijdens ontwikkeling verschijnt hiervoor een waarschuwing in de console.\n`}\n\n<br/>\n\n### Correct gebruik\n\n```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n</vl-description-data>\n```\n\n### Foutief gebruik\n\n```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <!-- wordt genegeerd: niet gerenderd en niet zichtbaar -->\n    <div>Extra informatie</div>\n    <!-- wordt genegeerd: enkel directe kinderen tellen mee -->\n    <div>\n        <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n    </div>\n</vl-description-data>\n```\n\n## Waarom deze beperking\n\nEen `<dl>` is enkel een geldige beschrijvingslijst als de `<dt>` en `<dd>` er rechtstreeks (of via een wrapper-`div`)\nonder hangen. Als elk item zijn eigen `<dt>`/`<dd>` rendert, dan staat de item-host er in de flattened-tree tussen en\nvalt de term / definitie-relatie voor schermlezers weg. Daarom leest de `vl-description-data` het `label` en `value` van\nelk item en rendert ze zelf in 1 `<dl>`. Alles wat geen `vl-description-data-item` is, past niet in dat model en\nwordt overgeslagen.\n\nGevolgen om rekening mee te houden:\n\n- De inhoud van de `label`- en `value`-slots wordt **gekloond** naar de shadow DOM van de `vl-description-data`.\n  Statische opmaak (bv. een `<a href=\"...\">`) werkt daardoor gewoon, maar event-listeners op die inhoud niet: ze\n  overleven het klonen niet.\n- Een `vl-description-data-item` dat je los gebruikt (buiten een `vl-description-data`) rendert wel zijn eigen\n  label en waarde, maar dan zonder de `<dl>`-structuur.\n- Wijzigingen in de light DOM (items toevoegen, verwijderen, of een `label`/`value` aanpassen) worden\n  automatisch doorgevoerd.\n\n\n## Varianten\n\n### Item over de volledige breedte\n\nMet het `items-size` attribuut op een individueel item overschrijf je de kolombreedte die de `vl-description-data`\noplegt. Zo laat je bijvoorbeeld 1 item de volledige breedte innemen."
+          }
+        ]
+      }
+    }
+  ]
+}

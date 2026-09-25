@@ -1,0 +1,46 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-784",
+  "entries": [
+    {
+      "id": "cfe65f3",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-784"
+      ],
+      "scope": "vl-progress-indicator",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "verbindingslijnen tussen de stappen hersteld",
+      "text": "FLUX-784 - vl-progress-indicator - verbindingslijnen tussen de stappen hersteld",
+      "commits": [
+        {
+          "sha": "cfe65f3db500990b19f7cbe91b876519f0c57c10",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cfe65f3db500990b19f7cbe91b876519f0c57c10"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De lijn tussen twee stappen is een ::before met z-index: -1. Vormde een ancestor een stacking context, dan tekende de browser die lijn daarin in plaats van in het segment, waardoor ze achter een ondoorzichtige achtergrond verdween. De bolletjes bleven wel staan, want die hebben z-index: 10.",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

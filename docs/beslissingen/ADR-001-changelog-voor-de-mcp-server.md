@@ -58,28 +58,46 @@ tag v2.20.0, 955 entries) en de 35 commits achter de entries van 2.19.0 en 2.20.
 
 ## Beslissing
 
-### 1. Per versie een gegenereerde `changelog.json`, gecommit in de catalogus
+### 1. Per versie gegenereerde bestanden per ticket, en de analyse ernaast
 
-`changelog-build` voegt per versie alles samen in `catalog/flux/<versie>/changelog/changelog.json`:
+Per versie staan de gegevens in twee mappen, met dezelfde bestandsnaam per ticket:
 
-- de changelog;
-- de feiten uit de commits (3);
-- de analyse (5);
-- de API-diff (6).
+```
+catalog/flux/<versie>/
+├── changelog/                  deterministisch (scripts)
+│   ├── changelog.md            bron: de sectie van de release
+│   ├── commits.json            bron: de feiten uit de commits (3)
+│   ├── changelog.json          overzicht: versie, tellingen, componenten, alle entries, de tickets met hun bestand
+│   ├── api.json                de API-diff (6)
+│   └── tickets/<ticket>-<componenten>.json
+└── analysis/                   LLM (5)
+    ├── changelog.json          de samenvatting van de versie
+    └── tickets/<ticket>-<componenten>.json
+```
 
-Het script is deterministisch: vaste sortering en geen tijdstempel, dus opnieuw bouwen geeft hetzelfde bestand.
-Het bestand komt in git, zoals de rest van de catalogus. Wie een PR reviewt, ziet zo exact wat de server zal
-tonen.
+- **Een bestand per ticket.** Het heet naar de issue-key, gevolgd door de componenten en thema's uit de scope van
+  zijn entries, bv. `FLUX-810-vl-side-sheet-vl-cascader.json`. Meer dan vier namen worden afgekapt met `-enz`.
+  Een entry zonder ticket krijgt haar id als naam. Een ticket met meerdere entries, zoals FLUX-800, heeft één
+  bestand.
+- **Deterministisch en LLM gescheiden.** Elk bestand heeft één herkomst, en elke tekst staat maar één keer in git.
+  Een reviewer legt de twee bestanden van een ticket naast elkaar.
+- **Samenvoegen gebeurt in de server.** `readRelease` doet dat bij het laden: de analyse bepaalt de impact, de
+  uitleg, de actie en het voorbeeld.
+
+`changelog-build` schrijft de bestanden in `changelog/` en ruimt ticketbestanden op die niet meer gebouwd worden.
+Het script is deterministisch: vaste sortering en geen tijdstempel, dus opnieuw bouwen geeft dezelfde bestanden.
+De bestanden komen in git, zoals de rest van de catalogus. Het script controleert ook of de analyse bij de
+tickets past.
 
 ```bash
 pnpm run flux:web-components:changelog-build 2.20.0          # één versie
 pnpm run flux:web-components:changelog-build --all           # alle versies in de catalogus
-pnpm run flux:web-components:changelog-build --check         # exit 1 als een changelog.json niet meer klopt
+pnpm run flux:web-components:changelog-build --check         # exit 1 als een gebouwd bestand niet meer klopt
 pnpm run flux:web-components:changelog-build --check 2.20.0  # enkel die versie controleren
 ```
 
-`--all` is nodig als de analyse wijzigt of als de web-types van een vorige versie later binnenkomen. `--check`
-is bedoeld voor CI.
+`--all` is nodig als de web-types van een vorige versie later binnenkomen. `--check` is bedoeld voor CI: het
+meldt ook ontbrekende en overbodige bestanden.
 
 Na een release is de volgorde:
 
@@ -92,6 +110,9 @@ Na een release is de volgorde:
 
 ### 2. Wat een entry bevat
 
+In een ticketbestand in `changelog/tickets/` staan per entry de velden hieronder, zonder die uit de analyse.
+Wat de server toont, heeft alle velden.
+
 | Veld                              | Herkomst                                                                            |
 |-----------------------------------|-------------------------------------------------------------------------------------|
 | `id`                              | korte sha van de commit; zonder commit `<type>-<n>`, stabiel omdat een gereleasede changelog niet meer wijzigt |
@@ -102,19 +123,26 @@ Na een release is de volgorde:
 | `mentions`                        | `vl-*`-namen in de samenvatting die niet in de scope staan                          |
 | `summary`, `text`                 | de samenvatting, en de volledige tekst zonder links                                  |
 | `commits`, `closes`               | de links aan het einde van de regel                                                 |
-| `impact`, `impactSource`          | uit de analyse, anders afgeleid; zie 4                                               |
-| `explanation`, `action`, `example`| uit de analyse; zie 5                                                               |
+| `derivedImpact`                   | afgeleid; zie 4                                                                     |
 | `labels`, `wcag`                  | `a11y` en de WCAG-criteria; zie 4                                                   |
 | `source`                          | de feiten uit de commits; zie 3                                                     |
+| `impact`, `impactSource`          | enkel in wat de server toont: uit de analyse, anders de afgeleide; zie 4            |
+| `explanation`, `action`, `example`| enkel in wat de server toont: uit de analyse; zie 5                                 |
+| `ticket`, `file`                  | enkel in wat de server toont: het ticket en zijn bestand                            |
 
-Per versie komen er bovenop:
+Het overzicht `changelog/changelog.json` bevat per versie:
 
-- `version`, `date`, `previous` (uit de compare-url), `compareUrl` en de `summary` uit de analyse;
-- tellingen per type en per impact, en het aantal `a11y`-entries;
-- de betrokken componenten, zonder de entries met impact `none`. Een component die in de web-types staat,
-  krijgt zijn soort en Storybook-link van die versie. Een naam die er niet in staat, zoals `vl-header-next`,
-  blijft vermeld, maar zonder link.
-- de API-diff, zie 6.
+- `version`, `date`, `previous` (uit de compare-url) en `compareUrl`;
+- tellingen per type en per afgeleide impact, en het aantal `a11y`-entries;
+- de componenten die de changelog noemt. Een component die in de web-types staat, krijgt zijn soort en
+  Storybook-link van die versie. Een naam die er niet in staat, zoals `vl-header-next`, blijft vermeld, maar
+  zonder link.
+- alle entries in de volgorde van de changelog: id, ticket, type, afgeleide impact, tekst en bestand;
+- de tickets met hun bestand, componenten en entries;
+- `api` (`api.json`) of `apiUnavailable`, zie 6.
+
+Wat de server toont, telt per impact na de analyse, bevat de `summary` uit de analyse, en toont enkel de
+componenten van entries met impact.
 
 ### 3. De feiten uit de commits
 
@@ -171,9 +199,10 @@ Zo zijn we hier gekomen:
 
 ### 5. De analyse, per release geschreven door een AI-agent
 
-Per versie beschrijft `catalog/flux/<versie>/analysis/changelog.json` wat elke entry voor een afnemer betekent:
-`impact`, `explanation`, `action` (bij `action`) en eventueel een `example`. Per versie staat er ook een `summary`.
-Een AI-agent schrijft de analyse één keer per release, met de prompt `prompts/changelog-analyse.md`:
+Per ticket beschrijft `catalog/flux/<versie>/analysis/tickets/<naam>.json` wat elke entry van dat ticket voor
+een afnemer betekent: `impact`, `explanation`, `action` (bij `action`) en eventueel een `example`. De naam is die
+van het ticketbestand in `changelog/tickets/`. `analysis/changelog.json` bevat de `summary` van de versie. Een
+AI-agent schrijft de analyse één keer per release, met de prompt `prompts/changelog-analyse.md`:
 
 - Hij vertrekt van de feiten uit de commits en de Storybook-documentatie.
 - Hij leest de diff zelf waar die uitleg tekortschiet: zonder body, bij een vermoedelijke gedragswijziging, of
@@ -184,7 +213,8 @@ Een AI-agent schrijft de analyse één keer per release, met de prompt `prompts/
 
 `changelog-build` controleert de analyse en weigert:
 
-- een onbekende entry;
+- een bestand dat bij geen ticket hoort;
+- een entry die niet bij haar ticket hoort;
 - een onbekende sleutel;
 - een ongeldige impact;
 - een `action` die ontbreekt of niet bij de impact past.
@@ -299,6 +329,12 @@ web-types van beide kanten er zijn.
   traag en duur. De analyse gebeurt nu één keer per release, op basis van de feiten, en komt via een PR in git.
 - **Handmatige annotaties in deze repo.** Dat hebben we eerst zo gebouwd, maar kennis die niet uit de commits
   af te leiden is, hoort bij de bron: de `.llm.md` bestanden in flux-web-components.
+- **Eén `changelog.json` per versie met alles samengevoegd.** Zo was het eerst gebouwd, maar het bestand werd
+  groot en moeilijk te evalueren, en de LLM-tekst stond er naast de analyse een tweede keer in. Nu is er een
+  bestand per ticket, en scheiden twee mappen wat deterministisch is van wat een LLM schreef.
+- **Eén bestand per ticket met een blok voor de scripts en een blok voor de analyse.** Dat toont alles in één
+  oogopslag, maar de LLM-tekst staat dan twee keer in git: als bron in `analysis/` en als resultaat in het
+  ticketbestand.
 - **Oudere versies aanvullen uit de volledige `CHANGELOG.md`.** Dat maakt upgrade-vragen over een groter bereik
   mogelijk, maar zonder de web-types van die versies, dus zonder Storybook-links en API-diff. We houden het uit
   de scope tot er vraag naar is. De scripts en de module werken al voor elke versie die later in de catalogus
@@ -320,8 +356,10 @@ web-types van beide kanten er zijn.
   moet dan aangevuld worden.
 - Wijzigt het formaat van de changelog of de web-types upstream, dan faalt de build of vallen entries onder
   `other`. De tests met randgevallen uit de historiek maken dat zichtbaar.
-- `schema: 1` in elk bestand laat toe het formaat later te wijzigen zonder dat de server oude bestanden verkeerd
-  leest.
+- `schema` in de gebouwde bestanden laat toe het formaat later te wijzigen zonder dat de server oude bestanden
+  verkeerd leest. Het staat nu op 2, sinds de opsplitsing per ticket.
+- Wat de server toont, staat niet meer als één bestand in git. De server voegt de twee mappen samen, en de tests
+  controleren dat samenvoegen.
 
 ## Gerelateerde ADR's
 

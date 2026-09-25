@@ -1,0 +1,42 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-790",
+  "entries": [
+    {
+      "id": "7bbb00d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-790"
+      ],
+      "scope": "storybook",
+      "components": [],
+      "topics": [
+        "storybook"
+      ],
+      "mentions": [],
+      "summary": "de changelog feats hadden de fixes style",
+      "text": "FLUX-790 - storybook - de changelog feats hadden de fixes style",
+      "commits": [
+        {
+          "sha": "7bbb00dc29624b0c433acd4aa98b3ed0fc8ade4f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7bbb00dc29624b0c433acd4aa98b3ed0fc8ade4f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

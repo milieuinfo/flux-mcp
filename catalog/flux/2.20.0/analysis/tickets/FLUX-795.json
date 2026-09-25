@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b62fbe3": {
+      "impact": "none",
+      "explanation": "Onderdrukt een waarschuwing in de testopstelling van Flux zelf (cypress-axe). Dit raakt de packages niet."
+    }
+  }
+}

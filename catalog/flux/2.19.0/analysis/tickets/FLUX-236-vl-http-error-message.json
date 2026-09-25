@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "53040a9": {
+      "impact": "automatic",
+      "explanation": "vl-http-error-message toont de debug-info (URL, tijd, user-agent) als definitielijst in plaats van als tabel, zodat een schermlezer ze als beschrijvende paren aankondigt. De tekstkolom is voortaan bij elke foutcode en schermbreedte even ver links uitgelijnd, waar dat vroeger afhing van de lengte van de tekst. De foutteksten verwijzen naar \"de URL in de adresbalk\" in plaats van \"de URL hierboven\"."
+    }
+  }
+}

@@ -2,7 +2,7 @@
 // wijziging zit, welke Storybook-pagina's ze raakt en welke documentatie erbij kwam.
 //
 // changelog-commits haalt de commits op en schrijft het resultaat naar
-// catalog/flux/<versie>/changelog/commits.json; changelog-build neemt het op in changelog.json. Een afnemer gaat
+// catalog/flux/<versie>/changelog/commits.json; changelog-build neemt het op in de ticketbestanden. Een afnemer gaat
 // niet zelf uitzoeken wat een commit wijzigde: dat vertelt de server hem.
 
 // De packages die afnemers installeren: @domg-wc/common, components, map en styles. libs/integrations is

@@ -1,0 +1,44 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-796",
+  "entries": [
+    {
+      "id": "5710cb7",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-796"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "auto-sectie rescan bij slotchange verbeterd",
+      "text": "FLUX-796 - vl-side-navigation-next - auto-sectie rescan bij slotchange verbeterd",
+      "commits": [
+        {
+          "sha": "5710cb7574f785f307c1fe2d4395c29ad543dd30",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5710cb7574f785f307c1fe2d4395c29ad543dd30"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De uitgestelde rescan in firstUpdated draaide refreshSections met een stale closure-snapshot en kon een losgekoppelde auto-sectie opnieuw vol renderen nadat de slotchange-cleanup ze had leeggemaakt. De rescan leest nu de actuele slotted elements en stopt buiten sections-mode; de slotchange-handler annuleert een openstaande rescan-frame.",
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-809",
+  "entries": [
+    {
+      "id": "f2a3414",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-809"
+      ],
+      "scope": "vl-alert",
+      "components": [
+        "vl-alert"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "banner variant",
+      "text": "FLUX-809 - vl-alert - banner variant",
+      "commits": [
+        {
+          "sha": "f2a3414d4c662728800182c3e87d61030ebb53ed",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f2a3414d4c662728800182c3e87d61030ebb53ed"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/alert/vl-alert.flux-css.ts",
+          "libs/components/src/block/alert/vl-alert.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "### Banner\n\nToont de melding als een banner over de volledige breedte van de pagina: de afgeronde hoeken verdwijnen zodat de\nmelding naadloos aansluit op de rand van haar container, en de titel en de boodschap lopen na elkaar door op dezelfde\nregel. Het streepje tussen de titel en de boodschap wordt door de component zelf gezet, en enkel wanneer er zowel\neen titel als een boodschap is: zet het niet mee in de content. De banner variant is niet bedoeld in combinatie met\nde naked variant.\n\nEen banner gebruikt altijd de `small` opmaak: `size=\"small\"` wordt automatisch toegepast en hoeft niet expliciet\nmeegegeven te worden.\n\nEen banner staat meestal al op de pagina bij het laden. Zet in dat geval `alert-role=\"no-role\"`, zodat een schermlezer\nde gebruiker niet onderbreekt met een melding die geen reactie op een actie is.\n\n```html\n<vl-alert banner closable alert-role=\"no-role\" size=\"small\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

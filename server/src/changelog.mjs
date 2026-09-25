@@ -1,21 +1,22 @@
 // Zet de changelog van één Flux Web Components release om naar wat de MCP-server aanbiedt.
 //
-// De bron is catalog/flux/<versie>/changelog/changelog.md: de sectie van die release uit de changelog van
-// conventional-changelog, zoals changelog-cleanup ze overhoudt. Het resultaat is changelog.json ernaast: elke
-// entry met type, issues, componenten, impact en labels, aangevuld met:
-//   - de feiten uit de commits (commits.json, van changelog-commits): de uitleg in de commit message, of de
-//     wijziging de packages van een afnemer raakt, en de Storybook-pagina's met de documentatie die erbij kwam;
-//   - de analyse per entry (catalog/flux/<versie>/analysis/changelog.json, zie prompts/changelog-analyse.md): de
-//     impact voor een afnemer, een uitleg voor hem, wat hij moet doen en een voorbeeld;
-//   - de API-diff tegen de web-types van de vorige versie.
+// De bronnen staan in catalog/flux/<versie>/changelog/: changelog.md, de sectie van die release zoals
+// changelog-cleanup ze overhoudt, en commits.json, de feiten uit de commits van changelog-commits. Daaruit bouwt
+// dit bestand wat de scripts over een versie weten, deterministisch en naast de bronnen:
+//   - changelog.json: het overzicht, met de entries en de tickets met hun bestand;
+//   - tickets/<ticket>-<componenten>.json: per ticket de volledige entries, met de afgeleide impact en labels en
+//     de feiten uit de commits;
+//   - api.json: de API-diff tegen de web-types van de vorige versie.
+// Wat een LLM schreef, staat apart in catalog/flux/<versie>/analysis/, met dezelfde bestandsnamen (zie
+// prompts/changelog-analyse.md). De server voegt beide samen bij het laden (readRelease).
 // De keuzes staan in docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md.
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { diffWebTypes, loadWebTypes } from './web-types.mjs';
 
-// Verhoog dit wanneer het formaat van changelog.json wijzigt, zodat de server geen oude bestanden verkeerd leest.
-export const SCHEMA = 1;
+// Verhoog dit wanneer het formaat van de gebouwde bestanden wijzigt, zodat de server geen oude verkeerd leest.
+export const SCHEMA = 2;
 
 // In deze volgorde verschijnen de types in tellingen en overzichten: wat een afnemer eerst moet weten, eerst.
 export const TYPES = ['breaking', 'feature', 'fix', 'docs', 'perf', 'revert', 'other'];
@@ -80,7 +81,7 @@ const A11Y_TEXT = [
 // Een WCAG-succescriterium, bv. 2.4.1; enkel gezocht in een tekst die WCAG noemt.
 const WCAG_CRITERION = /\b[1-4]\.\d{1,2}\.\d{1,2}\b/g;
 
-const ANALYSIS_KEYS = ['summary', 'entries'];
+const ANALYSIS_KEYS = ['summary'];
 const ENTRY_ANALYSIS_KEYS = ['impact', 'explanation', 'action', 'example', 'a11y'];
 
 const unique = (values) => [...new Set(values)];
@@ -269,61 +270,33 @@ export function deriveLabels(entry, source = null) {
 
 const isText = (value) => typeof value === 'string' && value.trim() !== '';
 const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+const toJson = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
-// Controleert de analyse van een versie. Een onbekende entry of sleutel is een fout: zo past de analyse altijd bij
-// de changelog waarvoor ze geschreven is.
-export function validateAnalysis(analysis, ids, source = 'de analyse') {
-    const errors = [];
-    if (!isObject(analysis)) throw new Error(`Fout in ${source}: verwacht een object.`);
-    for (const key of Object.keys(analysis)) {
-        if (!ANALYSIS_KEYS.includes(key)) errors.push(`onbekende sleutel '${key}'`);
-    }
-    if ('summary' in analysis && !isText(analysis.summary)) errors.push(`'summary' moet een niet-lege tekst zijn`);
-    const entries = analysis.entries ?? {};
-    if (!isObject(entries)) errors.push(`'entries' moet een object zijn, per entry-id`);
-
-    for (const [id, item] of Object.entries(isObject(entries) ? entries : {})) {
-        if (!ids.includes(id)) {
-            errors.push(`onbekende entry '${id}'`);
-            continue;
-        }
-        if (!isObject(item)) {
-            errors.push(`entry '${id}' moet een object zijn`);
-            continue;
-        }
-        for (const key of Object.keys(item)) {
-            if (!ENTRY_ANALYSIS_KEYS.includes(key)) errors.push(`entry '${id}': onbekende sleutel '${key}'`);
-        }
-        if (!IMPACTS.includes(item.impact)) errors.push(`entry '${id}': 'impact' moet een van ${IMPACTS.join(', ')} zijn`);
-        if (!isText(item.explanation)) errors.push(`entry '${id}': 'explanation' moet een niet-lege tekst zijn`);
-        if (item.impact === 'action' && !isText(item.action)) errors.push(`entry '${id}': impact 'action' vraagt een 'action'`);
-        if (item.impact !== 'action' && 'action' in item) errors.push(`entry '${id}': 'action' hoort enkel bij impact 'action'`);
-        if ('example' in item && !isText(item.example)) errors.push(`entry '${id}': 'example' moet een niet-lege tekst zijn`);
-        if ('a11y' in item && typeof item.a11y !== 'boolean') errors.push(`entry '${id}': 'a11y' moet true of false zijn`);
-    }
-    if (errors.length > 0) throw new Error(`Fout in ${source}:\n  - ${errors.join('\n  - ')}`);
+// De naam van het bestand van een ticket: de issue-key (of de id van een entry zonder ticket), gevolgd door de
+// componenten en thema's uit de scope van zijn entries, bv. FLUX-810-vl-side-sheet-vl-cascader.json. Stabiel,
+// want de changelog van een gereleasede versie wijzigt niet meer.
+const MAX_NAMES = 4;
+export function ticketFileName(key, entries) {
+    const slug = (text) => text.replace(/[^A-Za-z0-9-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    const names = unique(
+        entries.flatMap((entry) => (entry.scope ? entry.scope.split(/\s*[,/]\s*/) : []).map((part) => slug(part.toLowerCase().startsWith('vl-') ? part.toLowerCase() : part))),
+    ).filter(Boolean);
+    const shown = names.slice(0, MAX_NAMES);
+    return `tickets/${[key, ...shown, ...(names.length > MAX_NAMES ? ['enz'] : [])].join('-')}.json`;
 }
 
-// Een entry met de feiten uit haar commits, de afgeleide impact en labels, en de analyse als die er is.
-function enrich(entry, commits, analysis) {
-    const source = sourceOf(entry, commits);
-    const { labels, wcag } = deriveLabels(entry, source);
-    const item = analysis?.entries?.[entry.id];
-    const a11y = item && 'a11y' in item ? item.a11y : labels.includes('a11y');
-    return {
-        ...entry,
-        impact: item?.impact ?? deriveImpact(entry, source),
-        impactSource: item ? 'analysis' : 'derived',
-        explanation: item?.explanation ?? null,
-        action: item?.action ?? null,
-        example: item?.example ?? null,
-        labels: a11y ? ['a11y'] : [],
-        wcag,
-        source,
-    };
+// De entries per ticket, in de volgorde waarin het ticket voor het eerst in de changelog staat.
+function ticketsOf(entries) {
+    const tickets = new Map();
+    for (const entry of entries) {
+        const key = entry.issues[0] ?? entry.id;
+        if (!tickets.has(key)) tickets.set(key, { ticket: entry.issues[0] ?? null, key, entries: [] });
+        tickets.get(key).entries.push(entry);
+    }
+    return [...tickets.values()].map((ticket) => ({ ...ticket, file: ticketFileName(ticket.key, ticket.entries) }));
 }
 
-function countsOf(entries) {
+function countsOf(entries, impactOf) {
     const counts = {
         type: Object.fromEntries(TYPES.map((type) => [type, 0])),
         impact: Object.fromEntries(IMPACTS.map((impact) => [impact, 0])),
@@ -331,20 +304,21 @@ function countsOf(entries) {
     };
     for (const entry of entries) {
         counts.type[entry.type]++;
-        counts.impact[entry.impact]++;
+        counts.impact[impactOf(entry)]++;
         if (entry.labels.includes('a11y')) counts.a11y++;
     }
     return counts;
 }
 
-// De componenten die de changelog van deze versie als scope noemt, zonder de entries zonder impact. Een naam die
-// niet in de web-types staat, zoals vl-header-next, blijft erin, maar zonder soort en Storybook-link.
+// De componenten die de changelog van deze versie als scope noemt, met hun soort en Storybook-link uit de
+// web-types. Een naam die er niet in staat, zoals vl-header-next, blijft erin, maar zonder soort en link.
 function componentsOf(entries, webTypes) {
-    const names = unique(entries.filter((entry) => entry.impact !== 'none').flatMap((entry) => entry.components));
-    return names.sort().map((name) => {
-        const known = webTypes?.get(name);
-        return { name, category: known?.category ?? null, docUrl: known?.element['doc-url'] ?? null };
-    });
+    return unique(entries.flatMap((entry) => entry.components))
+        .sort()
+        .map((name) => {
+            const known = webTypes?.get(name);
+            return { name, category: known?.category ?? null, docUrl: known?.element['doc-url'] ?? null };
+        });
 }
 
 function apiOf(release, entries, webTypes, previousWebTypes) {
@@ -355,28 +329,143 @@ function apiOf(release, entries, webTypes, previousWebTypes) {
     return { api: { base: release.previous, ...diffWebTypes(previousWebTypes, webTypes, { mentioned }) }, apiUnavailable: null };
 }
 
-// Het volledige document voor changelog.json. Puur: alles wat het nodig heeft, krijgt het mee.
-export function buildRelease({ markdown, commits = null, analysis = null, analysisSource, webTypes = null, previousWebTypes = null }) {
+// Wat de scripts over een versie weten, zonder analyse. Puur: alles wat het nodig heeft, krijgt het mee.
+//   overview: changelog.json, het overzicht met de entries en de tickets met hun bestand;
+//   tickets:  per ticket het bestand in tickets/, met de volledige entries;
+//   api:      api.json, de API-diff, of null.
+export function buildRelease({ markdown, commits = null, webTypes = null, previousWebTypes = null }) {
     const parsed = parseChangelog(markdown);
     if (commits && commits.version !== parsed.version) {
         throw new Error(`commits.json hoort bij ${commits.version}, de changelog bij ${parsed.version}.`);
     }
-    if (analysis) validateAnalysis(analysis, parsed.entries.map((entry) => entry.id), analysisSource);
-    const entries = parsed.entries.map((entry) => enrich(entry, commits, analysis));
+    const entries = parsed.entries.map((entry) => {
+        const source = sourceOf(entry, commits);
+        return { ...entry, derivedImpact: deriveImpact(entry, source), ...deriveLabels(entry, source), source };
+    });
+    const tickets = ticketsOf(entries);
+    const fileOf = new Map(tickets.flatMap((ticket) => ticket.entries.map((entry) => [entry.id, ticket.file])));
     const { api, apiUnavailable } = apiOf(parsed, entries, webTypes, previousWebTypes);
 
-    return {
+    const overview = {
         schema: SCHEMA,
         version: parsed.version,
         date: parsed.date,
         previous: parsed.previous,
         compareUrl: parsed.compareUrl,
-        summary: analysis?.summary ?? null,
-        counts: countsOf(entries),
+        counts: countsOf(entries, (entry) => entry.derivedImpact),
         components: componentsOf(entries, webTypes),
+        entries: entries.map(({ id, issues, type, derivedImpact, text }) => ({
+            id,
+            ticket: issues[0] ?? null,
+            type,
+            derivedImpact,
+            text,
+            file: fileOf.get(id),
+        })),
+        tickets: tickets.map(({ ticket, file, entries: list }) => ({
+            ticket,
+            file,
+            components: unique(list.flatMap((entry) => entry.components)),
+            entries: list.map((entry) => entry.id),
+        })),
+        api: api ? 'api.json' : null,
+        apiUnavailable,
+    };
+    return {
+        overview,
+        tickets: tickets.map(({ ticket, file, entries: list }) => ({
+            file,
+            content: { schema: SCHEMA, version: parsed.version, ticket, entries: list },
+        })),
+        api,
+    };
+}
+
+// Controleert de analyse van een versie tegen de tickets die de scripts maakten. Een onbekend bestand, een
+// onbekende entry of sleutel, of een ongeldige impact is een fout: zo past de analyse altijd bij de changelog.
+export function validateAnalysis(analysis, overview) {
+    const errors = [];
+    for (const key of Object.keys(analysis.release ?? {})) {
+        if (!ANALYSIS_KEYS.includes(key)) errors.push(`analysis/changelog.json: onbekende sleutel '${key}'`);
+    }
+    if (analysis.release && 'summary' in analysis.release && !isText(analysis.release.summary)) {
+        errors.push(`analysis/changelog.json: 'summary' moet een niet-lege tekst zijn`);
+    }
+    const tickets = new Map(overview.tickets.map((ticket) => [ticket.file, ticket]));
+    for (const [file, content] of Object.entries(analysis.tickets ?? {})) {
+        const where = `analysis/${file}`;
+        const ticket = tickets.get(file);
+        if (!ticket) {
+            errors.push(`${where}: hoort bij geen ticket; de tickets staan in changelog/tickets/`);
+            continue;
+        }
+        if (!isObject(content) || Object.keys(content).some((key) => key !== 'entries') || !isObject(content.entries)) {
+            errors.push(`${where}: verwacht { "entries": { "<id>": { … } } }`);
+            continue;
+        }
+        for (const [id, item] of Object.entries(content.entries)) {
+            if (!ticket.entries.includes(id)) {
+                errors.push(`${where}: entry '${id}' hoort niet bij dit ticket (${ticket.entries.join(', ')})`);
+                continue;
+            }
+            if (!isObject(item)) {
+                errors.push(`${where}: entry '${id}' moet een object zijn`);
+                continue;
+            }
+            for (const key of Object.keys(item)) {
+                if (!ENTRY_ANALYSIS_KEYS.includes(key)) errors.push(`${where}: entry '${id}': onbekende sleutel '${key}'`);
+            }
+            if (!IMPACTS.includes(item.impact)) errors.push(`${where}: entry '${id}': 'impact' moet een van ${IMPACTS.join(', ')} zijn`);
+            if (!isText(item.explanation)) errors.push(`${where}: entry '${id}': 'explanation' moet een niet-lege tekst zijn`);
+            if (item.impact === 'action' && !isText(item.action)) errors.push(`${where}: entry '${id}': impact 'action' vraagt een 'action'`);
+            if (item.impact !== 'action' && 'action' in item) errors.push(`${where}: entry '${id}': 'action' hoort enkel bij impact 'action'`);
+            if ('example' in item && !isText(item.example)) errors.push(`${where}: entry '${id}': 'example' moet een niet-lege tekst zijn`);
+            if ('a11y' in item && typeof item.a11y !== 'boolean') errors.push(`${where}: entry '${id}': 'a11y' moet true of false zijn`);
+        }
+    }
+    if (errors.length > 0) throw new Error(`Fout in de analyse van ${overview.version}:\n  - ${errors.join('\n  - ')}`);
+}
+
+// Wat de server over een versie toont: de gegevens van de scripts, aangevuld met de analyse. De analyse
+// bepaalt de impact, de uitleg, de actie, het voorbeeld en eventueel het label a11y.
+export function mergeRelease({ overview, tickets, api, analysis = null }) {
+    const byFile = new Map(tickets.map((ticket) => [ticket.file, ticket.content]));
+    const entries = overview.entries.map(({ id, file }) => {
+        const entry = byFile.get(file)?.entries.find((candidate) => candidate.id === id);
+        if (!entry) throw new Error(`changelog/${file} mist entry ${id}. Bouw opnieuw: pnpm run flux:web-components:changelog-build ${overview.version}`);
+        const item = analysis?.tickets?.[file]?.entries?.[id];
+        const a11y = item && 'a11y' in item ? item.a11y : entry.labels.includes('a11y');
+        const { derivedImpact, labels, wcag, source, ...rest } = entry;
+        return {
+            ...rest,
+            ticket: entry.issues[0] ?? null,
+            file,
+            impact: item?.impact ?? derivedImpact,
+            impactSource: item ? 'analysis' : 'derived',
+            derivedImpact,
+            explanation: item?.explanation ?? null,
+            action: item?.action ?? null,
+            example: item?.example ?? null,
+            labels: a11y ? ['a11y'] : [],
+            wcag,
+            source,
+        };
+    });
+    return {
+        schema: overview.schema,
+        version: overview.version,
+        date: overview.date,
+        previous: overview.previous,
+        compareUrl: overview.compareUrl,
+        summary: analysis?.release?.summary ?? null,
+        counts: countsOf(entries, (entry) => entry.impact),
+        // Enkel de componenten van entries die het project van een afnemer raken.
+        components: overview.components.filter(({ name }) =>
+            entries.some((entry) => entry.impact !== 'none' && entry.components.includes(name)),
+        ),
         entries,
         api,
-        apiUnavailable,
+        apiUnavailable: overview.apiUnavailable,
     };
 }
 
@@ -389,8 +478,24 @@ function readJson(file, source) {
     }
 }
 
-// Leest alles voor één versie uit de catalogus en bouwt het document voor changelog.json.
-export function buildReleaseFromCatalog(catalogDir, version) {
+// De analyse van een versie: analysis/changelog.json en analysis/tickets/*.json, of null als ze er niet is.
+export function readAnalysis(catalogDir, version) {
+    const dir = path.join(catalogDir, version, 'analysis');
+    if (!fs.existsSync(dir)) return null;
+    const ticketsDir = path.join(dir, 'tickets');
+    const files = fs.existsSync(ticketsDir) ? fs.readdirSync(ticketsDir).filter((name) => name.endsWith('.json')).sort() : [];
+    return {
+        release: readJson(path.join(dir, 'changelog.json'), `catalog/flux/${version}/analysis/changelog.json`),
+        tickets: Object.fromEntries(
+            files.map((name) => [`tickets/${name}`, readJson(path.join(ticketsDir, name), `catalog/flux/${version}/analysis/tickets/${name}`)]),
+        ),
+    };
+}
+
+// Bouwt uit de bronnen in de catalogus de bestanden van changelog/: changelog.json, api.json en tickets/*.json,
+// telkens als { path, content } met path relatief tegenover changelog/. Controleert ook de analyse, en geeft de
+// samengevoegde versie mee zoals de server ze zal tonen.
+export function buildReleaseFiles(catalogDir, version) {
     const changelogDir = path.join(catalogDir, version, 'changelog');
     // readdirSync geeft de echte namen, ook op een hoofdletterongevoelig bestandssysteem (macOS).
     const files = fs.existsSync(changelogDir) ? fs.readdirSync(changelogDir) : [];
@@ -408,13 +513,75 @@ export function buildReleaseFromCatalog(catalogDir, version) {
         throw new Error(`catalog/flux/${version}/changelog/changelog.md bevat de changelog van ${found}, niet van ${version}.`);
     }
 
-    const analysisSource = `catalog/flux/${version}/analysis/changelog.json`;
-    return buildRelease({
+    const built = buildRelease({
         markdown,
         commits: readJson(path.join(changelogDir, 'commits.json'), `catalog/flux/${version}/changelog/commits.json`),
-        analysis: readJson(path.join(catalogDir, version, 'analysis', 'changelog.json'), analysisSource),
-        analysisSource,
         webTypes: loadWebTypes(catalogDir, version),
         previousWebTypes: previous ? loadWebTypes(catalogDir, previous) : null,
     });
+    const analysis = readAnalysis(catalogDir, version);
+    if (analysis) validateAnalysis(analysis, built.overview);
+    return {
+        release: mergeRelease({ ...built, analysis }),
+        files: [
+            { path: 'changelog.json', content: toJson(built.overview) },
+            ...(built.api ? [{ path: 'api.json', content: toJson(built.api) }] : []),
+            ...built.tickets.map((ticket) => ({ path: ticket.file, content: toJson(ticket.content) })),
+        ],
+    };
+}
+
+// De gegenereerde bestanden die er nu in changelog/ staan: changelog.json, api.json en tickets/*.json.
+function generatedFiles(changelogDir) {
+    const ticketsDir = path.join(changelogDir, 'tickets');
+    return [
+        ...['changelog.json', 'api.json'].filter((name) => fs.existsSync(path.join(changelogDir, name))),
+        ...(fs.existsSync(ticketsDir) ? fs.readdirSync(ticketsDir).filter((name) => name.endsWith('.json')).map((name) => `tickets/${name}`) : []),
+    ];
+}
+
+// Wat er verschilt tussen de gebouwde bestanden en wat er in de catalogus staat.
+export function compareReleaseFiles(catalogDir, version, files) {
+    const changelogDir = path.join(catalogDir, version, 'changelog');
+    const expected = new Map(files.map((file) => [file.path, file.content]));
+    const differences = [];
+    for (const [file, content] of expected) {
+        const target = path.join(changelogDir, file);
+        if (!fs.existsSync(target)) differences.push({ path: file, status: 'ontbreekt' });
+        else if (fs.readFileSync(target, 'utf-8') !== content) differences.push({ path: file, status: 'is verouderd' });
+    }
+    for (const file of generatedFiles(changelogDir)) {
+        if (!expected.has(file)) differences.push({ path: file, status: 'is overbodig' });
+    }
+    return differences;
+}
+
+// Schrijft de gebouwde bestanden en ruimt gegenereerde bestanden op die niet meer gebouwd worden.
+export function writeReleaseFiles(catalogDir, version, files) {
+    const changelogDir = path.join(catalogDir, version, 'changelog');
+    const expected = new Set(files.map((file) => file.path));
+    for (const file of generatedFiles(changelogDir)) {
+        if (!expected.has(file)) fs.rmSync(path.join(changelogDir, file));
+    }
+    fs.mkdirSync(path.join(changelogDir, 'tickets'), { recursive: true });
+    for (const file of files) fs.writeFileSync(path.join(changelogDir, file.path), file.content);
+}
+
+// Leest een versie zoals de server ze toont: de gegenereerde bestanden, samengevoegd met de analyse.
+export function readRelease(catalogDir, version) {
+    const changelogDir = path.join(catalogDir, version, 'changelog');
+    const overview = readJson(path.join(changelogDir, 'changelog.json'), `catalog/flux/${version}/changelog/changelog.json`);
+    if (!overview) return null;
+    if (overview.schema !== SCHEMA) {
+        throw new Error(
+            `catalog/flux/${version}/changelog/changelog.json heeft schema ${overview.schema}, verwacht ${SCHEMA}. ` +
+                'Bouw opnieuw: pnpm run flux:web-components:changelog-build --all',
+        );
+    }
+    const tickets = overview.tickets.map(({ file }) => ({
+        file,
+        content: readJson(path.join(changelogDir, file), `catalog/flux/${version}/changelog/${file}`),
+    }));
+    const api = overview.api ? readJson(path.join(changelogDir, overview.api), `catalog/flux/${version}/changelog/${overview.api}`) : null;
+    return mergeRelease({ overview, tickets, api, analysis: readAnalysis(catalogDir, version) });
 }

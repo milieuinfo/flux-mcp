@@ -1,0 +1,57 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-782",
+  "entries": [
+    {
+      "id": "cfd208b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-782"
+      ],
+      "scope": "vl-autocomplete",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "itemTemplate property toegevoegd",
+      "text": "FLUX-782 - vl-autocomplete - itemTemplate property toegevoegd",
+      "commits": [
+        {
+          "sha": "cfd208b9fd6d6e9f048365f5b391219b4eb16656",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cfd208b9fd6d6e9f048365f5b391219b4eb16656"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De inhoud van een suggestie lag vast in formatCaption, dat enkel title, subtitle en value combineert.\n\nitemTemplate krijgt het item en levert de inhoud van de li. Zonder de property blijft caption-format gelden. Bij nul resultaten roept de component de functie niet aan en toont ze de tekst uit no-matches-text.\n\nVoor opmaak binnen de shadow DOM registreert de component VlTextComponent en neemt ze vlStackedStyles op, zoals vl-select-rich bij FLUX-773.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/autocomplete/index.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.component.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.model.ts",
+          "libs/components/src/block/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-autocomplete--documentatie",
+            "title": "Components - Block/autocomplete",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+            "added": "### Suggesties met een eigen item-template\n\nMoet een suggestie meer tonen dan `title`, `subtitle` en `value`, dan volstaat `caption-format` niet. Stel dan\n`itemTemplate` in: die functie krijgt het item en levert de inhoud van de `<li>`. De `<li>` zelf (id, klik,\n`role=\"option\"`) blijft van de component.\n\nVindt de zoekopdracht niets, dan roept de component je `itemTemplate` niet aan. Ze toont dan één suggestie met de\ntekst uit het `no-matches-text`-attribuut, standaard \"Geen resultaat\".\n\n```ts\nconst itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}, eigenaar: ${item.owner}</vl-text>\n    </div>\n`;\n```\n\n```html\n<vl-autocomplete .items=\"${items}\" .itemTemplate=\"${itemTemplate}\"></vl-autocomplete>\n```\n\n> Zet geen links of knoppen in de template, handel zulke acties af via het `selected-autocomplete`-event. Een\n> [`option`](https://www.w3.org/TR/wai-aria-1.2/#childrenArePresentational) verbergt zijn kinderen voor\n> hulptechnologie ([4.1.2](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)) en het toetsenbord\n> ([2.1.1](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))."
+          }
+        ]
+      }
+    }
+  ]
+}

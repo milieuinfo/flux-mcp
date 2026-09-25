@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a6116b6": {
+      "impact": "none",
+      "explanation": "De pagina Afnemen/Artifacts legt nu ook uit hoe je de packages afneemt zonder account voor de registry van Departement Omgeving: de scopes @domg en @domg-wc wijzen naar de publiek beschikbare artifacts, de rest blijft bij de publieke npm-registry."
+    }
+  }
+}

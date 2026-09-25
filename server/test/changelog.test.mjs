@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { buildRelease, deriveImpact, deriveLabels, parseChangelog, sourceOf, validateAnalysis } from '../src/changelog.mjs';
+import { buildRelease, deriveImpact, deriveLabels, mergeRelease, parseChangelog, sourceOf, ticketFileName, validateAnalysis } from '../src/changelog.mjs';
 
 const REPO = 'https://github.com/milieuinfo/flux-web-components';
 const commit = (sha) => `([${sha.slice(0, 7)}](${REPO}/commit/${sha}))`;
@@ -287,51 +287,31 @@ describe('sourceOf', () => {
     });
 });
 
-describe('validateAnalysis', () => {
-    const ids = ['aaaaaaa', 'bbbbbbb'];
+describe('ticketFileName', () => {
+    const entries = (...lines) => lines.map((line) => entry(`${line} ${commit(SHA_A)}`));
 
-    test('een geldige analyse', () => {
-        assert.doesNotThrow(() =>
-            validateAnalysis(
-                {
-                    summary: 'Samenvatting',
-                    entries: {
-                        aaaaaaa: { impact: 'action', explanation: 'Uitleg', action: 'Doe dit', example: '```html\n…\n```' },
-                        bbbbbbb: { impact: 'none', explanation: 'Uitleg', a11y: false },
-                    },
-                },
-                ids,
-            ),
-        );
+    test('ticket en component', () => {
+        assert.equal(ticketFileName('FLUX-809', entries('FLUX-809 - vl-alert - banner variant')), 'tickets/FLUX-809-vl-alert.json');
     });
 
-    test('fouten worden allemaal gemeld, met de bron erbij', () => {
-        const analysis = {
-            titel: 'x',
-            entries: {
-                zzzzzzz: { impact: 'none', explanation: 'x' },
-                aaaaaaa: { impact: 'dringend', explanation: '', notitie: 'x' },
-                bbbbbbb: { impact: 'opt-in', explanation: 'x', action: 'Doe dit', a11y: 'ja' },
-            },
-        };
-        assert.throws(
-            () => validateAnalysis(analysis, ids, 'test.json'),
-            (error) =>
-                [
-                    /test\.json/,
-                    /onbekende sleutel 'titel'/,
-                    /onbekende entry 'zzzzzzz'/,
-                    /'impact' moet een van/,
-                    /'explanation' moet/,
-                    /onbekende sleutel 'notitie'/,
-                    /'action' hoort enkel bij impact 'action'/,
-                    /'a11y' moet true of false/,
-                ].every((pattern) => pattern.test(error.message)),
+    test('de componenten en thema\'s van alle entries van het ticket, in volgorde en zonder dubbels', () => {
+        const list = entries(
+            'FLUX-800 - vl-breadcrumb-item - focus outline',
+            'FLUX-800 - vl-breadcrumb - ellipsis attribuut',
+            'FLUX-800 - vl-cascader, vl-breadcrumb - breadcrumb',
         );
+        assert.equal(ticketFileName('FLUX-800', list), 'tickets/FLUX-800-vl-breadcrumb-item-vl-breadcrumb-vl-cascader.json');
+        assert.equal(ticketFileName('FLUX-802', entries('FLUX-802 - componenten overzicht - WCAG status')), 'tickets/FLUX-802-componenten-overzicht.json');
     });
 
-    test("impact 'action' vraagt een action", () => {
-        assert.throws(() => validateAnalysis({ entries: { aaaaaaa: { impact: 'action', explanation: 'x' } } }, ids), /vraagt een 'action'/);
+    test('zonder scope enkel het ticket; zonder ticket de id', () => {
+        assert.equal(ticketFileName('FLUX-708', entries('FLUX-708 - migratie van npm naar pnpm')), 'tickets/FLUX-708.json');
+        assert.equal(ticketFileName('aaaaaaa', entries('planning 2026 toegevoegd')), 'tickets/aaaaaaa.json');
+    });
+
+    test('meer dan vier namen worden afgekapt', () => {
+        const list = entries('FLUX-1 - vl-a, vl-b, vl-c, vl-d, vl-e - iets');
+        assert.equal(ticketFileName('FLUX-1', list), 'tickets/FLUX-1-vl-a-vl-b-vl-c-vl-d-enz.json');
     });
 });
 
@@ -339,14 +319,14 @@ describe('buildRelease', () => {
     const markdown = [
         `# [2.20.0](${REPO}/compare/v2.19.0...v2.20.0) (2026-09-18)`,
         '',
-        '### Features',
-        '',
-        `* FLUX-809 - vl-alert - banner variant ${commit(SHA_A)}`,
-        `* FLUX-1 - vl-header-next - iets ${commit(SHA_B)}`,
-        '',
         '### Bug Fixes',
         '',
         `* FLUX-2 - vl-button - flaky testen ${commit(SHA_C)}`,
+        '',
+        '### Features',
+        '',
+        `* FLUX-809 - vl-alert - banner variant ${commit(SHA_A)}`,
+        `* FLUX-2 - vl-header-next - iets ${commit(SHA_B)}`,
     ].join('\n');
     const element = (name, extra = {}) => ({ name, 'doc-url': `https://storybook/${name}`, ...extra });
     const webTypes = new Map([
@@ -366,66 +346,170 @@ describe('buildRelease', () => {
         },
     };
 
-    test('tellingen, componenten en API-diff', () => {
-        const release = buildRelease({ markdown, webTypes, previousWebTypes });
-        assert.equal(release.schema, 1);
-        assert.deepEqual(release.counts.type, { breaking: 0, feature: 2, fix: 1, docs: 0, perf: 0, revert: 0, other: 0 });
-        // Zonder commits.json: 'flaky testen' geeft geen impact.
-        assert.deepEqual(release.counts.impact, { action: 0, 'opt-in': 2, automatic: 0, none: 1 });
-        // De entry over vl-button zonder impact telt niet mee; vl-header-next staat niet in de web-types.
-        assert.deepEqual(release.components, [
+    test('een overzicht, een bestand per ticket en de API-diff', () => {
+        const { overview, tickets, api } = buildRelease({ markdown, commits, webTypes, previousWebTypes });
+        assert.equal(overview.schema, 2);
+        assert.deepEqual(
+            overview.entries.map((e) => [e.id, e.ticket, e.derivedImpact, e.file]),
+            [
+                ['ccccccc', 'FLUX-2', 'none', 'tickets/FLUX-2-vl-button-vl-header-next.json'],
+                ['aaaaaaa', 'FLUX-809', 'opt-in', 'tickets/FLUX-809-vl-alert.json'],
+                ['bbbbbbb', 'FLUX-2', 'opt-in', 'tickets/FLUX-2-vl-button-vl-header-next.json'],
+            ],
+        );
+        assert.deepEqual(overview.tickets, [
+            {
+                ticket: 'FLUX-2',
+                file: 'tickets/FLUX-2-vl-button-vl-header-next.json',
+                components: ['vl-button', 'vl-header-next'],
+                entries: ['ccccccc', 'bbbbbbb'],
+            },
+            { ticket: 'FLUX-809', file: 'tickets/FLUX-809-vl-alert.json', components: ['vl-alert'], entries: ['aaaaaaa'] },
+        ]);
+        assert.deepEqual(overview.counts.impact, { action: 0, 'opt-in': 2, automatic: 0, none: 1 });
+        // Alle genoemde componenten; vl-header-next staat niet in de web-types.
+        assert.deepEqual(overview.components, [
             { name: 'vl-alert', category: 'block', docUrl: 'https://storybook/vl-alert' },
+            { name: 'vl-button', category: 'atom', docUrl: 'https://storybook/vl-button' },
             { name: 'vl-header-next', category: null, docUrl: null },
         ]);
-        assert.equal(release.api.base, '2.19.0');
-        assert.equal(release.api.changed[0].element, 'vl-alert');
-        assert.equal(release.api.changed[0].inChangelog, true);
-        assert.equal(release.apiUnavailable, null);
-        assert.ok(release.entries.every((e) => e.source === null && e.impactSource === 'derived'));
+        assert.equal(overview.api, 'api.json');
+        assert.equal(api.changed[0].element, 'vl-alert');
+        assert.equal(api.changed[0].inChangelog, true);
+
+        const [flux2, flux809] = tickets;
+        assert.equal(flux2.file, 'tickets/FLUX-2-vl-button-vl-header-next.json');
+        assert.deepEqual(
+            flux2.content.entries.map((e) => e.id),
+            ['ccccccc', 'bbbbbbb'],
+        );
+        assert.equal(flux809.content.entries[0].source.body, 'Een banner over de volle breedte.');
+        // Een ticketbestand bevat enkel wat de scripts weten, geen analyse.
+        assert.equal('explanation' in flux809.content.entries[0], false);
     });
 
     test('zonder web-types van de vorige versie geen API-diff, met de reden', () => {
-        const release = buildRelease({ markdown, webTypes });
-        assert.equal(release.api, null);
-        assert.equal(release.apiUnavailable, 'Geen web-types voor 2.19.0 in de catalogus.');
-    });
-
-    test('de feiten uit de commits komen bij de entry', () => {
-        const release = buildRelease({ markdown, commits });
-        assert.equal(release.entries[0].source.body, 'Een banner over de volle breedte.');
-        assert.equal(release.entries[2].impact, 'none');
+        const { overview, api } = buildRelease({ markdown, webTypes });
+        assert.equal(api, null);
+        assert.equal(overview.api, null);
+        assert.equal(overview.apiUnavailable, 'Geen web-types voor 2.19.0 in de catalogus.');
     });
 
     test('commits.json van een andere versie is een fout', () => {
         assert.throws(() => buildRelease({ markdown, commits: { ...commits, version: '2.19.0' } }), /hoort bij 2\.19\.0/);
     });
 
-    test('de analyse bepaalt impact, uitleg, actie en voorbeeld', () => {
-        const analysis = {
-            summary: 'Een banner en een fix.',
-            entries: {
-                aaaaaaa: { impact: 'opt-in', explanation: 'Met banner …', example: '```html\n<vl-alert banner></vl-alert>\n```' },
-                bbbbbbb: { impact: 'action', explanation: 'Het event komt nu op het element.', action: 'Luister op het element.', a11y: true },
-            },
-        };
-        const release = buildRelease({ markdown, commits, analysis });
-        assert.equal(release.summary, 'Een banner en een fix.');
-        const [banner, header, button] = release.entries;
-        assert.equal(banner.impactSource, 'analysis');
-        assert.equal(banner.example, '```html\n<vl-alert banner></vl-alert>\n```');
-        assert.equal(header.impact, 'action');
-        assert.equal(header.action, 'Luister op het element.');
-        assert.deepEqual(header.labels, ['a11y']);
-        assert.equal(button.impactSource, 'derived');
-        assert.equal(release.counts.impact.action, 1);
-    });
-
-    test('een analyse die niet klopt, laat de build falen', () => {
-        assert.throws(() => buildRelease({ markdown, analysis: { entries: { zzzzzzz: {} } }, analysisSource: 'x.json' }), /x\.json/);
-    });
-
     test('deterministisch', () => {
         const build = () => JSON.stringify(buildRelease({ markdown, commits, webTypes, previousWebTypes }));
         assert.equal(build(), build());
+    });
+
+    describe('validateAnalysis', () => {
+        const { overview } = buildRelease({ markdown, commits });
+        const flux2 = 'tickets/FLUX-2-vl-button-vl-header-next.json';
+
+        test('een geldige analyse', () => {
+            assert.doesNotThrow(() =>
+                validateAnalysis(
+                    {
+                        release: { summary: 'Samenvatting' },
+                        tickets: {
+                            [flux2]: {
+                                entries: {
+                                    bbbbbbb: { impact: 'action', explanation: 'Uitleg', action: 'Doe dit', example: '```html\n…\n```' },
+                                    ccccccc: { impact: 'none', explanation: 'Uitleg', a11y: false },
+                                },
+                            },
+                        },
+                    },
+                    overview,
+                ),
+            );
+        });
+
+        test('fouten worden allemaal gemeld, met het bestand erbij', () => {
+            const analysis = {
+                release: { titel: 'x' },
+                tickets: {
+                    'tickets/FLUX-3.json': { entries: {} },
+                    'tickets/FLUX-809-vl-alert.json': { entries: { bbbbbbb: { impact: 'none', explanation: 'x' } } },
+                    [flux2]: {
+                        entries: {
+                            ccccccc: { impact: 'dringend', explanation: '', notitie: 'x' },
+                            bbbbbbb: { impact: 'opt-in', explanation: 'x', action: 'Doe dit', a11y: 'ja' },
+                        },
+                    },
+                },
+            };
+            assert.throws(
+                () => validateAnalysis(analysis, overview),
+                (error) =>
+                    [
+                        /analysis\/changelog\.json: onbekende sleutel 'titel'/,
+                        /analysis\/tickets\/FLUX-3\.json: hoort bij geen ticket/,
+                        /analysis\/tickets\/FLUX-809-vl-alert\.json: entry 'bbbbbbb' hoort niet bij dit ticket/,
+                        /'impact' moet een van/,
+                        /'explanation' moet/,
+                        /onbekende sleutel 'notitie'/,
+                        /'action' hoort enkel bij impact 'action'/,
+                        /'a11y' moet true of false/,
+                    ].every((pattern) => pattern.test(error.message)),
+            );
+        });
+
+        test("impact 'action' vraagt een action", () => {
+            const analysis = { tickets: { [flux2]: { entries: { bbbbbbb: { impact: 'action', explanation: 'x' } } } } };
+            assert.throws(() => validateAnalysis(analysis, overview), /vraagt een 'action'/);
+        });
+    });
+
+    describe('mergeRelease', () => {
+        const built = buildRelease({ markdown, commits, webTypes, previousWebTypes });
+
+        test('zonder analyse: de afgeleide impact', () => {
+            const release = mergeRelease(built);
+            assert.equal(release.summary, null);
+            assert.deepEqual(
+                release.entries.map((e) => [e.id, e.impact, e.impactSource]),
+                [
+                    ['ccccccc', 'none', 'derived'],
+                    ['aaaaaaa', 'opt-in', 'derived'],
+                    ['bbbbbbb', 'opt-in', 'derived'],
+                ],
+            );
+            // Enkel de componenten van entries met impact.
+            assert.deepEqual(
+                release.components.map((c) => c.name),
+                ['vl-alert', 'vl-header-next'],
+            );
+            assert.equal(release.api.changed[0].element, 'vl-alert');
+        });
+
+        test('de analyse bepaalt impact, uitleg, actie, voorbeeld en a11y', () => {
+            const analysis = {
+                release: { summary: 'Een banner en een actie.' },
+                tickets: {
+                    'tickets/FLUX-809-vl-alert.json': {
+                        entries: { aaaaaaa: { impact: 'opt-in', explanation: 'Met banner …', example: '```html\n<vl-alert banner></vl-alert>\n```' } },
+                    },
+                    'tickets/FLUX-2-vl-button-vl-header-next.json': {
+                        entries: { bbbbbbb: { impact: 'action', explanation: 'Het event komt op het element.', action: 'Luister op het element.', a11y: true } },
+                    },
+                },
+            };
+            const release = mergeRelease({ ...built, analysis });
+            assert.equal(release.summary, 'Een banner en een actie.');
+            const [button, banner, header] = release.entries;
+            assert.equal(button.impactSource, 'derived');
+            assert.equal(banner.impactSource, 'analysis');
+            assert.equal(banner.example, '```html\n<vl-alert banner></vl-alert>\n```');
+            assert.equal(banner.ticket, 'FLUX-809');
+            assert.equal(banner.file, 'tickets/FLUX-809-vl-alert.json');
+            assert.equal(header.impact, 'action');
+            assert.equal(header.derivedImpact, 'opt-in');
+            assert.equal(header.action, 'Luister op het element.');
+            assert.deepEqual(header.labels, ['a11y']);
+            assert.deepEqual(release.counts.impact, { action: 1, 'opt-in': 1, automatic: 0, none: 1 });
+        });
     });
 });

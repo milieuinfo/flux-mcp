@@ -1,0 +1,61 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-773",
+  "entries": [
+    {
+      "id": "995a202",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-773"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "itemTemplate voor eigen optie-inhoud",
+      "text": "FLUX-773 - vl-select-rich - itemTemplate voor eigen optie-inhoud",
+      "commits": [
+        {
+          "sha": "995a202e125b78421bdd1f5e7bbe075c6a297f05",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/995a202e125b78421bdd1f5e7bbe075c6a297f05"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Met de itemTemplate-property bepaal je zelf de inhoud van een optie in de dropdown. De functie krijgt de optie mee en geeft een lit TemplateResult terug. Het gesloten veld toont na een keuze gewoon het label, zodat het compact blijft.\n\nHet label blijft platte tekst, zodat zoeken, de aria-label van de verwijderknop en de onderliggende option correct blijven. Het label van een geselecteerde optie wordt nu geescaped; voordien ging het ongefilterd de template-string in.\n\nVoor de opmaak brengt de component vl-text mee, zelf geregistreerd zoals vl-form-label doet, plus de layout-klassen vl-stacked en vl-group. De afnemer hoeft niets te importeren en de spacing loopt op de bestaande tokens.\n\nlabelDescription en labelClass werkten al via choices.js maar zijn nu ook gedocumenteerd en gestyled.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/index.ts",
+          "libs/components/src/form/select-rich/index.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.css.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": " - [Eigen inhoud per optie](#eigen-inhoud-per-optie)\n\n[…]\n\n## Eigen inhoud per optie\n\nEen optie toont standaard haar `label` als platte tekst op een regel. Voor rijkere opties zijn er twee\nmogelijkheden.\n\n### Beschrijving bij een optie\n\nVoor een titel met een regel eronder volstaat `labelDescription`. De component zet die in een\n`vl-select__option-subtitle` en legt de `aria-describedby` koppeling met het label.\n\n\n<details>\n    <summary>options</summary>\n    <Source code={`\n    [\n        {\n            label: '0123.456.789',\n            labelDescription: 'Industrieweg 123, 9876 Plaatsnaam',\n            value: '0123456789',\n        },\n        {\n            label: 'Niet van toepassing',\n            labelDescription: 'Er is geen bijhorende vestiging',\n            value: 'geen-vestiging',\n        }\n]`} language=\"ts\" dark={true} />\n</details>\n\n### itemTemplate\n\nVolstaat `labelDescription` niet, dan stel je de `itemTemplate`-property in. Die functie krijgt de optie\nmee en geeft een lit `TemplateResult` terug, die de inhoud van de optie in de dropdown wordt. De optie\nzelf (rol, klik-afhandeling, data-attributen) blijft in beheer van de component. Eens gekozen toont het\ngesloten veld het `label`, zodat het compact blijft.\n\n```ts\nconst itemTemplate = (option) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${option.label}</vl-text>\n        <vl-text annotation>${option.vestiging}</vl-text>\n        <vl-text annotation>${option.labelDescription}</vl-text>\n    </div>\n`;\n\nhtml`<vl-select-rich .options=${options} .itemTemplate=${itemTemplate}></vl-select-rich>`;\n```\n\n> Zet geen links of knoppen in de template, handel zulke acties af via het `vl-change`-event. Een\n> [`option`](https://www.w3.org/TR/wai-aria-1.2/#childrenArePresentational) verbergt zijn kinderen voor\n> hulptechnologie ([4.1.2](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)) en het toetsenbord\n> ([2.1.1](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))."
+          }
+        ]
+      }
+    }
+  ]
+}

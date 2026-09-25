@@ -1,0 +1,14 @@
+{
+  "entries": {
+    "19f3b89": {
+      "impact": "automatic",
+      "explanation": "Springen naar een anker houdt nu rekening met sticky headers: het doel verdwijnt niet meer onder de header. Dat geldt voor de skip-link van vl-header, vl-header-next en vl-functional-header, en voor anchor-links en hash-deeplinks die via dezelfde weg lopen. @domg-wc/common exporteert daarvoor ook getStickyOffsetTop en scrollIntoViewBelowSticky."
+    },
+    "03eff7a": {
+      "impact": "action",
+      "explanation": "vl-header en vl-header-next hebben een skip-to-content-id attribuut (WCAG 2.4.1). Met een waarde verschijnt bij focus een skip-link \"Ga meteen naar de inhoud\" die focus en scroll naar dat element brengt; de nodige styling komt mee. Zonder waarde is er geen skip-link en schrijft de header een waarschuwing naar de console.",
+      "action": "Zet skip-to-content-id op vl-header of vl-header-next, met de id van de eerste heading van de pagina-inhoud.",
+      "example": "```html\n<vl-header skip-to-content-id=\"inhoud\" …></vl-header>\n…\n<h1 id=\"inhoud\">Mijn aanvragen</h1>\n```"
+    }
+  }
+}

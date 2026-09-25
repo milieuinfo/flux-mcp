@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0ee6e57": {
+      "impact": "automatic",
+      "explanation": "vl-description-data rendert de label/waarde-paren nu als een echte description list (dl, dt, dd), zodat een schermlezer elk paar als term en definitie aankondigt. Visueel en qua API verandert er niets. Daarnaast is een renderfout in vl-description-data-item opgelost waardoor het value-slot verkeerd werd afgesloten."
+    }
+  }
+}

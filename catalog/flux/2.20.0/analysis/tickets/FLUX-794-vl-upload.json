@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2373023": {
+      "impact": "automatic",
+      "explanation": "vl-upload zet bij een validatiefout nu aria-invalid, zoals de andere formuliervelden. Een schermlezer merkt dat echter nog niet op: de enige focusbare knop ondersteunt aria-invalid niet en de onderliggende file-input is verborgen. De fout bereikt een schermlezer wel via de foutmelding van vl-form-message, die voorgelezen wordt zodra ze verschijnt. Die beperking staat beschreven onder Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]."
+    }
+  }
+}

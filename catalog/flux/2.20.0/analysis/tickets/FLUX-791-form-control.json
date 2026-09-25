@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "bbf991f": {
+      "impact": "automatic",
+      "explanation": "Formuliervelden verzenden hun formulier bij Enter nu ook wanneer de gebruiker de Enter-toets van het numerieke klavier gebruikt."
+    }
+  }
+}

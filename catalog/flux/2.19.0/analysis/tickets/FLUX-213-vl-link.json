@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "6139351": {
+      "impact": "action",
+      "explanation": "Een externe vl-link (attribuut external) laat schermlezers nu automatisch \"(opent in een nieuw venster)\" voorlezen na de linktekst. Het external-icoon zelf wordt niet voorgelezen. Met het label attribuut wordt de melding niet toegevoegd: het label vervangt de volledige voorgelezen tekst.",
+      "action": "Staat \"(opent in een nieuw venster)\" of iets gelijkaardigs zelf in de linktekst van een externe vl-link, haal het weg: anders hoort een schermlezer het twee keer. Gebruik je het label attribuut op een externe link, neem de vermelding dan zelf op in dat label.",
+      "example": "```html\n<vl-link href=\"https://www.vlaanderen.be\" external label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\">Vlaanderen.be</vl-link>\n```"
+    }
+  }
+}

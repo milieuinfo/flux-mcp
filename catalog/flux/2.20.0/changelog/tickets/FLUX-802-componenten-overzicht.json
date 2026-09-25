@@ -1,0 +1,44 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-802",
+  "entries": [
+    {
+      "id": "782a93c",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [
+        "FLUX-802"
+      ],
+      "scope": "componenten overzicht",
+      "components": [],
+      "topics": [
+        "componenten overzicht"
+      ],
+      "mentions": [],
+      "summary": "WCAG status",
+      "text": "FLUX-802 - componenten overzicht - WCAG status",
+      "commits": [
+        {
+          "sha": "782a93c38379dfd7a3d46627c7660c619fab0dcd",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/782a93c38379dfd7a3d46627c7660c619fab0dcd"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 12
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "9d28af3": {
+      "impact": "automatic",
+      "explanation": "Properties binnen eenzelfde column van vl-properties krijgen nu dezelfde verticale ruimte (2rem) als properties zonder columns; voordien plakten ze tegen elkaar. Meerdere waarden onder één label blijven tegen elkaar staan. De ruimte is aan te passen met de nieuwe custom property --vl-properties--row-gap.",
+      "example": "```css\nvl-properties {\n    --vl-properties--row-gap: 1rem;\n}\n```"
+    }
+  }
+}

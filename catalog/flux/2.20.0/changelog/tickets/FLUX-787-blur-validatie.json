@@ -1,0 +1,52 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-787",
+  "entries": [
+    {
+      "id": "293c741",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [
+        "FLUX-787"
+      ],
+      "scope": "blur-validatie",
+      "components": [],
+      "topics": [
+        "blur-validatie"
+      ],
+      "mentions": [],
+      "summary": "beschrijving ingekort en documentatiepagina rechtgezet",
+      "text": "FLUX-787 - blur-validatie - beschrijving ingekort en documentatiepagina rechtgezet",
+      "commits": [
+        {
+          "sha": "293c741d39821ea2091db2bf1e274dcc15e1c71a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/293c741d39821ea2091db2bf1e274dcc15e1c71a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De argType-beschrijving herhaalde de volledige blur-validatie documentatiepagina. Ingekort tot twee zinnen plus een link erheen, in het register van de buurbeschrijvingen in hetzelfde bestand.\n\nDe link staat als `/?path=/docs/...`, want de kale `/docs/...` vorm werkt enkel in MDX en niet in argType-beschrijvingen.\n\nDe documentatiepagina zelf getoetst aan form-control.ts en vl-form-message. Daaruit kwamen twee aanvullingen in de toegankelijkheidssectie: role=\"status\" naast aria-live, en het feit dat blur-validatie de focus niet verplaatst, want runValidation vuurt geen invalid-event.",
+        "published": false,
+        "areas": {
+          "docs": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "patronen-formulier-blur-validatie--documentatie",
+            "title": "Patronen/Formulier/blur validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/patronen-formulier-blur-validatie--documentatie",
+            "added": "- Na de eerste foutmelding verdwijnt die weer zodra de waarde geldig wordt, terwijl de gebruiker nog aan het\n  typen is. Er hoeft niet opnieuw weggeklikt te worden.\n\n[…]\n\n([`vl-form-message`](/docs/components-form-form-message--documentatie) + `ValidityState`).\n\n[…]\n\nEen veld met een eigen `blur-validation` attribuut blijft daarnaast los werken. Staat het attribuut op de form,\ndan kan een veld daar niet individueel van afwijken.\n\n[…]\n\nDe foutmelding staat in een `aria-live=\"polite\"` regio met `role=\"status\"` (via `vl-form-message`), zodat\nscreenreaders ze voorlezen zodra ze verschijnt of wijzigt. `aria-atomic=\"true\"` zorgt dat telkens de\nvolledige boodschap wordt voorgelezen. De control krijgt `aria-invalid=\"true\"` zodat de ongeldige toestand\n\n[…]\n\nBlur-validatie verplaatst de focus niet: het veld toont enkel zijn melding. Alleen bij submit springt de\nfocus naar het eerste ongeldige veld.\n\n[…]\n\n## Ondersteunde componenten\n\nHet attribuut werkt op alle form controls:"
+          }
+        ]
+      }
+    }
+  ]
+}

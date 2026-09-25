@@ -1,6 +1,6 @@
 ---
 name: changelog-analyse
-description: Schrijft voor een Flux-release per changelog-entry wat ze voor een afnemer betekent, in catalog/flux/<versie>/analysis/changelog.json.
+description: Schrijft voor een Flux-release per changelog-entry wat ze voor een afnemer betekent, per ticket in catalog/flux/<versie>/analysis/.
 arguments:
   - name: version
     description: De Flux-release, bijvoorbeeld 2.20.0.
@@ -37,23 +37,29 @@ web-types van {{version}}, nooit uit een vermoeden.
 
 ### 1. Lezen
 
-Bouw eerst `changelog.json`:
+Bouw eerst wat de scripts over de versie weten:
 
 ```bash
 pnpm run flux:web-components:changelog-build {{version}}
 ```
 
-Lees daarna `catalog/flux/{{version}}/changelog/changelog.json`. Per entry staan daar:
+Dat schrijft in `catalog/flux/{{version}}/changelog/`:
+
+- `changelog.json`: het overzicht, met alle entries en per ticket het bestand;
+- `tickets/<ticket>-<componenten>.json`: per ticket de volledige entries;
+- `api.json`: wat er in de web-types veranderde.
+
+Werk ticket per ticket. Per entry in een ticketbestand staan:
 
 - `text`, `type` en `components`: wat de changelog zegt;
 - `source.body`: de uitleg die het Flux-team in de commit schreef;
 - `source.published`: of de wijziging de packages van een afnemer raakt;
 - `source.areas` en `source.publishedFiles`: welk soort bestanden wijzigde;
 - `source.storybook`: de Storybook-pagina's die wijzigden, met in `added` de documentatie die erbij kwam;
-- `impact`: de afgeleide impact, een startpunt.
+- `derivedImpact`: de afgeleide impact, een startpunt.
 
-`api` toont wat er in de web-types veranderde. Een element met `inChangelog: false` wijzigde zonder dat een
-entry het noemt; vermeld het bij de entry waar het bij hoort, als je die vindt.
+Een element in `api.json` met `inChangelog: false` wijzigde zonder dat een entry het noemt. Vermeld het bij de
+entry waar het bij hoort, als je die vindt.
 
 ### 2. De diff lezen waar nodig
 
@@ -99,22 +105,32 @@ Per entry:
 Per versie schrijf je `summary`: twee tot vier zinnen over het belangrijkste van de release, met uitdrukkelijk
 wat actie vraagt.
 
-Het bestand is `catalog/flux/{{version}}/analysis/changelog.json`, met als sleutel de `id` van de entry:
+De analyse staat in `catalog/flux/{{version}}/analysis/` en volgt de bestanden van `changelog/`.
 
-```json
-{
-  "summary": "…",
-  "entries": {
-    "778158e": {
-      "impact": "action",
-      "explanation": "…",
-      "action": "…",
-      "example": "```js\n…\n```"
-    },
-    "7bbb00d": { "impact": "none", "explanation": "…" }
+- **Per ticket:** `analysis/tickets/<naam>.json`, met exact dezelfde naam als het ticketbestand in
+  `changelog/tickets/`. Als sleutel gebruik je de `id` van elke entry van dat ticket.
+
+  ```json
+  {
+    "entries": {
+      "778158e": {
+        "impact": "action",
+        "explanation": "…",
+        "action": "…",
+        "example": "```js\n…\n```"
+      }
+    }
   }
-}
-```
+  ```
+
+- **Per versie:** `analysis/changelog.json`, met enkel de samenvatting.
+
+  ```json
+  { "summary": "…" }
+  ```
+
+Schrijf enkel in `analysis/`. De bestanden in `changelog/` zijn gegenereerd; een wijziging daar verdwijnt bij de
+volgende build.
 
 ### 5. Controleren
 
@@ -122,8 +138,15 @@ Het bestand is `catalog/flux/{{version}}/analysis/changelog.json`, met als sleut
 pnpm run flux:web-components:changelog-build {{version}}
 ```
 
-Het script weigert een analyse met een onbekende entry, een onbekende sleutel, een ongeldige impact of een
-`action` die ontbreekt of niet past. De lijst "nog niet geanalyseerd" in de uitvoer moet leeg zijn.
+Het script weigert een analyse met:
+
+- een bestand dat bij geen ticket hoort;
+- een entry die niet bij dat ticket hoort;
+- een onbekende sleutel;
+- een ongeldige impact;
+- een `action` die ontbreekt of niet past.
+
+De lijst "nog niet geanalyseerd" in de uitvoer moet leeg zijn.
 
 Toon de gebruiker daarna:
 

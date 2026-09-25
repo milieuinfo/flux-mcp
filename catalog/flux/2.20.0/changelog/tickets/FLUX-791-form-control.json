@@ -1,0 +1,45 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-791",
+  "entries": [
+    {
+      "id": "bbf991f",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-791"
+      ],
+      "scope": "form-control",
+      "components": [],
+      "topics": [
+        "form-control"
+      ],
+      "mentions": [],
+      "summary": "submit op Enter werkt ook met het numerieke klavier",
+      "text": "FLUX-791 - form-control - submit op Enter werkt ook met het numerieke klavier",
+      "commits": [
+        {
+          "sha": "bbf991fccc108b2d1f651cacec7f06fd6b40122e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bbf991fccc108b2d1f651cacec7f06fd6b40122e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-control/form-control.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

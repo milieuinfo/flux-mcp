@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5710cb7": {
+      "impact": "automatic",
+      "explanation": "vl-side-navigation-next kon een automatisch opgebouwde sectie opnieuw tonen nadat ze door een wijziging in de inhoud leeggemaakt was. De navigatie volgt de inhoud nu correct."
+    }
+  }
+}

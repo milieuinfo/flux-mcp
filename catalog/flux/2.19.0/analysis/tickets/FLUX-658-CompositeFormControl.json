@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "8a0bb40": {
+      "impact": "opt-in",
+      "explanation": "CompositeFormControl is een nieuwe basisklasse voor een samengesteld veld: meerdere velden die samen gevalideerd worden, zoals coördinaten, een getal met eenheid, een datumbereik of een contactmethode. Elk kindveld dient zichzelf in onder zijn eigen name; het samengestelde veld draagt de melding. required geldt over alle velden, een customValidator kan erbij. Het gedeelde gedrag zit in de CompositeInputMixin uit @domg-wc/components/form. Een kant-en-klare component wordt niet aangeboden: je registreert ze in je eigen project, zoals de voorbeelden op de Storybook-pagina Patronen/Formulier/Samengesteld veld tonen."
+    }
+  }
+}

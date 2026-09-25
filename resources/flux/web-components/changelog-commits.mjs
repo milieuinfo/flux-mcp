@@ -6,7 +6,7 @@
 // De versie is verplicht; 2.20.0 en v2.20.0 mogen allebei. Het script leest de commits uit changelog.md (draai dus
 // eerst changelog-copy en changelog-cleanup) en haalt ze op uit de bronrepo, zoals de andere scripts: met
 // FLUX_REPO kies je een lokale clone. De Storybook-pagina's komen uit index.json van de Storybook van die release.
-// changelog-build neemt het resultaat op in changelog.json.
+// changelog-build neemt het resultaat op in de ticketbestanden in changelog/tickets/.
 //
 // Het script is deterministisch voor een gereleasede versie: geen tijdstempel, vaste volgorde. Een nieuwe run
 // vervangt commits.json.

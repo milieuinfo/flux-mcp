@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "995a202": {
+      "impact": "opt-in",
+      "explanation": "Met de itemTemplate-property bepaal je zelf de inhoud van een optie in de dropdown van vl-select-rich: een functie die de optie krijgt en een lit TemplateResult teruggeeft. Na een keuze toont het gesloten veld gewoon het label. Voor een titel met één regel eronder volstaat labelDescription, dat nu ook gedocumenteerd en gestyled is. Het label van een gekozen optie wordt voortaan geëscaped: HTML in een label verschijnt in het gesloten veld als tekst. Zet geen links of knoppen in de template.",
+      "example": "```ts\nconst itemTemplate = (option) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${option.label}</vl-text>\n        <vl-text annotation>${option.labelDescription}</vl-text>\n    </div>\n`;\n\nhtml`<vl-select-rich .options=${options} .itemTemplate=${itemTemplate}></vl-select-rich>`;\n```",
+      "a11y": false
+    }
+  }
+}

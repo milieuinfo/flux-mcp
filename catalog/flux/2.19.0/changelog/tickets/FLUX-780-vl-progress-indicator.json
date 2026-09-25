@@ -1,0 +1,46 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-780",
+  "entries": [
+    {
+      "id": "e1b195c",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-780"
+      ],
+      "scope": "vl-progress-indicator",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "laatste stap valt niet meer buiten de rand",
+      "text": "FLUX-780 - vl-progress-indicator - laatste stap valt niet meer buiten de rand",
+      "commits": [
+        {
+          "sha": "e1b195c0d8db6ad6e60700f85059fae7e66321e2",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e1b195c0d8db6ad6e60700f85059fae7e66321e2"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De rechterpadding wordt berekend uit de breedte van het laatste label. In een nog verborgen container, zoals een modal die nog niet openstond, was die breedte 0 en viel het laatste label buiten de rand. Er werd pas herrekend bij het wisselen van stap; een ResizeObserver reageert nu ook wanneer de container zichtbaar wordt.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

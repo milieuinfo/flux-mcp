@@ -1,0 +1,56 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-757",
+  "entries": [
+    {
+      "id": "d45b5e1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-757"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "value-bold attribuut toegevoegd",
+      "text": "FLUX-757 - vl-properties - value-bold attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "d45b5e131b31ab792993c136083b6a7ca26fc4f4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d45b5e131b31ab792993c136083b6a7ca26fc4f4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Het value-bold attribuut toont de waarde (dd) in font-weight 500, gelijk aan vl-description-data, met het label links en de waarde rechts.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.css.ts",
+          "libs/components/src/block/properties/vl-properties.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "### Value bold\n\nVia het `value-bold` attribuut wordt de waarde, de inhoud van `vl-property-data`, in bold getoond zodat ze visueel\nmeer opvalt. Vergelijkbaar met de weergave van `vl-description-data`, maar met het label links en de waarde rechts."
+          }
+        ]
+      }
+    }
+  ]
+}

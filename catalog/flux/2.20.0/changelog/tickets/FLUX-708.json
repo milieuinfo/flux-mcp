@@ -1,0 +1,144 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-708",
+  "entries": [
+    {
+      "id": "6899016",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-708"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "migratie van npm naar pnpm",
+      "text": "FLUX-708 - migratie van npm naar pnpm",
+      "commits": [
+        {
+          "sha": "68990169ee82a23f101fb4bcc8d653462979329a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/68990169ee82a23f101fb4bcc8d653462979329a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Migratie van npm naar pnpm omwille van supply-chain security.\n\n- pnpm-workspace.yaml met allowBuilds, strictDepBuilds en minimumReleaseAge; overrides uit package.json verhuisd.\n- corepack pint pnpm via packageManager (Volta-pin als alternatief).\n- devEngines in package.json: npm 10.9+ weigert elk commando in de repo vóór het iets schrijft. Daarom leest de lib-build zijn dependency-versies met pnpm list in plaats van npm list (de eigen packagenaam, die door self-imports bij depcheck opduikt, wordt daarbij met een waarschuwing overgeslagen), en is @semantic-release/npm (dat 'npm version' draait) vervangen door @semantic-release/exec met 'pnpm pkg set version'. pnpm schrijft door dit veld zijn eigen integriteitsgegevens als tweede document in pnpm-lock.yaml.\n- preinstall-guard (only-allow-pnpm) in de root en de consumer-apps, als vangnet voor oudere npm en andere package managers; package-lock.json in .gitignore.\n- consumer-apps als aparte pnpm-workspaces met eigen lockfile en pnpm-workspace.yaml (@domg-wc/* uitgezonderd van minimumReleaseAge); verify-release bumpt ook @domg-wc/common, dat de consumer sinds FLUX-769 expliciet declareert.\n- CI (Jenkins) en release naar pnpm: pnpm komt in de pod via npm install -g met de versie uit packageManager, want corepack leest geen .npmrc-auth en krijgt bij Artifactory 403 op de tarball; Trivy op de drie pnpm-lock.yaml's.\n- Documentatie afnemen (o.a. @domg-wc/common declareren bij registerWebComponents), bijdragen en beheren, interne docs en AI-profielen bijgewerkt.",
+        "published": false,
+        "areas": {
+          "docs": 10,
+          "examples": 4,
+          "tests": 4,
+          "tooling": 39
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "- [Node en pnpm](#node-en-pnpm)\n\n[…]\n\n## Node en pnpm\n\n[…]\n\nis [Node.js](https://nodejs.org/en). Als package manager gebruik je best [pnpm](https://pnpm.io/).\n\nDe reden is supply-chain security: pnpm draait sinds versie 10 de lifecycle-scripts\n(`preinstall`/`install`/`postinstall`) van dependencies standaard niet automatisch. Enkel packages die je expliciet\ntoelaat, mogen build-scripts draaien. Npm (en Yarn) draaien die scripts wel bij het installeren en vergroten zo het\nrisico op supply-chain-aanvallen. Onze packages afnemen werkt met elke package manager; als afnemer gebruik je best\nook wel pnpm.\n\n[…]\n\n        \"@domg-wc/common\": \"2.0.0\",\n\n[…]\n\n  functionaliteit en is optioneel. Gebruik je `registerWebComponents` (zie hieronder), neem dan ook\n  __'@domg-wc/common'__ op: je importeert er rechtstreeks uit, en onder pnpm of een andere strikte package manager is\n  een package dat enkel transitief binnenkomt niet importeerbaar."
+          },
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "__common__ is een technische bibliotheek met basis code en utilities, waaronder `registerWebComponents`. Neem ze op als\ndependency zodra je er rechtstreeks uit importeert; enkel transitief via __components__ volstaat niet onder een strikte\npackage manager zoals pnpm."
+          },
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "De v2 versie kan je installeren via pnpm:\n\n[…]\n\npnpm remove @domg-wc/common-utilities @domg-wc/form @domg-wc/sections @domg-wc/elements && pnpm add @domg-wc/common@^2.1.0 @domg-wc/components@^2.1.0 @domg-wc/map@^2.1.0 @domg-wc/styles@^2.1.0"
+          },
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "Declareer dan ook `@domg-wc/common` als dependency in je `package.json`: je importeert er rechtstreeks uit, en onder\npnpm of een andere strikte package manager volstaat de transitieve aanwezigheid via `@domg-wc/components` niet."
+          },
+          {
+            "id": "afnemen-starter-app--documentatie",
+            "title": "Afnemen/Starter App",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+            "added": "In de package.json onder `scripts` staan verschillende shortcuts die je kan uitvoeren met `pnpm run {script}`."
+          },
+          {
+            "id": "beheren-ci-cd--documentatie",
+            "title": "Beheren/CI - CD",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+            "added": "1. __Trivy scan__ - security scan van de drie `pnpm-lock.yaml`-bestanden (root, `apps/consumer` en\n   `apps/consumer-e2e`), zodat geen dependency-lijst buiten de scan valt"
+          },
+          {
+            "id": "beheren-icon-font--documentatie",
+            "title": "Beheren/Icon Font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/beheren-icon-font--documentatie",
+            "added": "- voer het `generate-icon-files.ts` script uit in de flux-web-components repository (`pnpm run libs:icons:generate`)"
+          },
+          {
+            "id": "bijdragen-cypress--documentatie",
+            "title": "Bijdragen/Cypress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/bijdragen-cypress--documentatie",
+            "added": "pnpm run apps:integrator:dev\n\n[…]\n\npnpm run apps:integrator-e2e:watch\n\n[…]\n\npnpm run apps:integrator-e2e:run\n\n[…]\n\npnpm run apps:storybook:dev\n\n[…]\n\npnpm run apps:storybook-e2e:watch\n\n[…]\n\npnpm run apps:storybook-e2e:run\n\n[…]\n\npnpm run libs:component-tests:watch\n\n[…]\n\npnpm run libs:component-tests:run"
+          },
+          {
+            "id": "bijdragen-opzet-structuur--documentatie",
+            "title": "Bijdragen/Opzet & Structuur",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+            "added": "We gebruiken Node en [pnpm](#package-manager-pnpm) om dependencies te beheren en scripts uit te voeren. De Node versie is vastgelegd in de\n\n[…]\n\nvolta install node@22.20.0\n\n[…]\n\nv22.20.0\n\n[…]\n\n### Package manager: pnpm\n\nDe repo gebruikt **pnpm** in plaats van npm. De reden is **supply-chain security**, niet snelheid.\n\nBij het installeren voert npm de lifecycle-scripts (`preinstall`/`install`/`postinstall`) van elke dependency\nautomatisch uit, ook de transitieve. Dat is het [aanvalsoppervlak](https://en.wikipedia.org/wiki/Attack_surface)\nvoor supply-chain-aanvallen: een gecompromitteerde package voert kwaadaardige code uit tijdens het installeren. Pnpm draait die scripts standaard niet. Enkel packages die in\n`allowBuilds` op `true` staan (in de root `pnpm-workspace.yaml`) mogen build-scripts uitvoeren; de andere staan op\n`false` en zijn geblokkeerd. In deze repo staan `cypress` (downloadt de Cypress binary) en `playwright-webkit`\n(downloadt de WebKit-browser voor de component-tests op WebKit) op `true`. In CI is die WebKit-download een no-op\ndoor `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` in de Jenkins-pod. `strictDepBuilds` laat de install bovendien falen\nzodra een build-script niet expliciet toegelaten of geweigerd is, zodat een nieuw of onverwacht script niet ongemerkt\nkan draaien.\n\nDaarnaast is pnpm strenger over afhankelijkheden: een package dat je gebruikt maar niet expliciet in `package.json`\nhebt opgenomen (een phantom dependency), werkt onder pnpm niet meer. Bij npm werkt dat vaak toevallig wel doordat npm\nhet naar de root van `node_modules` hoist, waardoor zulke phantom dependencies onopgemerkt blijven.\n\nJe hoeft pnpm niet apart te installeren: Node bevat een hulpmiddel (corepack) dat automatisch de juiste versie van\npnpm gebruikt. Welke versie dat is, staat vast in de `package.json` van het project, zodat iedereen met dezelfde\nversie werkt. Corepack zet je eenmalig aan met:\n\n```\ncorepack enable\n```\n\nBeheer je Node met Volta (zie hierboven), dan werkt `corepack enable` niet: Volta plaatst een eigen `pnpm`-shim\ndie corepack overschaduwt. Laat Volta dan zelf pnpm beheren (`VOLTA_FEATURE_PNPM=1`); het\n[migratierecept](/docs/recepten-van-npm-naar-pnpm--documentatie) beschrijft de stappen bij stap 1.\n\n**npm wordt geweigerd.** Het veld `devEngines` in `package.json` verklaart pnpm als package manager van dit project,\nmet `onFail: \"error\"`. npm 10.9 en hoger (de npm van Node 22) leest dat veld bij de start van elk commando en stopt\nmeteen met `EBADDEVENGINES`, nog vóór het iets resolvet of schrijft. Dat geldt voor `npm install`, maar ook voor\n`npm run`, `npm ci` en de rest: gebruik `pnpm run`, `pnpm exec`, enzovoort. Zet ook je IDE op pnpm als package\nmanager, anders krijg je diezelfde foutmelding bij IDE-acties. Een oudere npm kent het veld niet en wordt pas\nachteraf door de `preinstall`-guard tegengehouden, zie de aandachtspunten onder de cheatsheet.\n\nBij een pnpm-upgrade zet je in `devEngines.packageManager.version` exact dezelfde waarde als in `packageManager`\n(versie mét hash). Wijkt die af, dan waarschuwt pnpm bij elke install dat `packageManager` genegeerd wordt, of weigert\nhet. Door dat veld schrijft pnpm ook zijn eigen integriteitsgegevens (pnpm en `@pnpm/exe`) als tweede document in\n`pnpm-lock.yaml`; dat blok hoort gewoon mee in de commit.\n\nWil je een eigen project van npm naar pnpm migreren? Dat is een ander onderwerp dan deze repo; volg daarvoor het\nrecept [Van npm naar pnpm](/docs/recepten-van-npm-naar-pnpm--documentatie).\n\n### Pnpm Cheatsheet\n\nHieronder de cheatsheet voor wie van npm komt (enkel de commando's die anders werken):\n\n<table>\n    <thead>\n        <tr>\n            <th scope=\"col\">Taak</th>\n            <th scope=\"col\">npm</th>\n            <th scope=\"col\">pnpm</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Clean install (CI, reproduceerbaar)</td>\n            <td><code>npm ci</code></td>\n            <td><code>pnpm install --frozen-lockfile</code></td>\n        </tr>\n        <tr>\n            <td>Install (dev)</td>\n            <td><code>npm install</code></td>\n            <td><code>pnpm install</code></td>\n        </tr>\n        <tr>\n            <td>Script draaien</td>\n            <td><code>npm run &lt;script&gt;</code></td>\n            <td><code>pnpm run &lt;script&gt;</code></td>\n        </tr>\n        <tr>\n            <td>Script met argument</td>\n            <td><code>npm run &lt;script&gt; -- &lt;arg&gt;</code></td>\n            <td><code>pnpm run &lt;script&gt; &lt;arg&gt;</code></td>\n        </tr>\n        <tr>\n            <td>Binary uitvoeren</td>\n            <td><code>npx &lt;bin&gt;</code></td>\n            <td><code>pnpm exec &lt;bin&gt;</code></td>\n        </tr>\n    </tbody>\n</table>\n\nDrie aandachtspunten:\n - Bij \"Script met argument\" geeft pnpm de `--` letterlijk door als argument, npm stript die. Gebruik in pnpm dus\n   geen `--` voor het argument, anders komt `--` als eerste argument in het script terecht.\n - `pnpm install` gebruikt in CI automatisch `--frozen-lockfile` (pnpm detecteert de CI-omgeving); lokaal mag de\n   lockfile wel wijzigen.\n - Een `npm install` uit gewoonte stopt met npm 10.9 of hoger meteen op `devEngines` (zie hierboven), zonder iets te\n   schrijven. Een oudere npm, of een `--force`, wordt pas achteraf geweigerd door de `preinstall`-guard\n   (`resources/utils-build/only-allow-pnpm.mjs`); npm heeft dan al een `node_modules` en een `package-lock.json`\n   weggeschreven. Ruim die op met `rm -rf node_modules package-lock.json` en installeer opnieuw met `pnpm install`.\n   `package-lock.json` staat in `.gitignore`, zodat zo'n lockfile nooit per ongeluk mee gecommit raakt."
+          },
+          {
+            "id": "bijdragen-storybook--documentatie",
+            "title": "Bijdragen/Storybook",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/bijdragen-storybook--documentatie",
+            "added": "pnpm run apps:storybook:dev"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4d555a6",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [
+        "FLUX-708"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "recept 'Van npm naar pnpm' voor afnemers",
+      "text": "FLUX-708 - recept 'Van npm naar pnpm' voor afnemers",
+      "commits": [
+        {
+          "sha": "4d555a630d56bb0f838aca5c6429cd1a08dfc3f3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4d555a630d56bb0f838aca5c6429cd1a08dfc3f3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Nieuwe pagina onder Recepten voor afnemers die hun eigen npm-project naar pnpm migreren, los van hoe pnpm binnen deze repo gebruikt wordt (dat blijft bij Bijdragen - Opzet & Structuur). Bevat waarom pnpm, wat er verandert, een stappenplan in acht stappen (corepack en packageManager, .npmrc voor Artifactory, pnpm-workspace.yaml met strictDepBuilds/allowBuilds/minimumReleaseAge en overrides, pnpm import, scripts en de letterlijke '--', phantom dependencies, CI/Docker/release, vangnet tegen npm install), een cheatsheet met de courante commando's en referenties. De @domg-wc/* uitzondering op minimumReleaseAge staat als waarschuwing uitgelicht, anders is een verse release 24 uur niet installeerbaar.",
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "recepten-van-npm-naar-pnpm--documentatie",
+            "title": "Recepten/Van npm naar pnpm",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/recepten-van-npm-naar-pnpm--documentatie",
+            "added": "# Van npm naar pnpm\n## Inhoudstafel\n## Waarom pnpm\n## Wat verandert er\n## Stappenplan\n### 1. pnpm beschikbaar maken\n### 2. Registry en authenticatie: .npmrc blijft\n### 3. pnpm-workspace.yaml aanmaken\n### 4. Lockfile omzetten en installeren\n### 5. Scripts in package.json aanpassen\n### 6. Phantom dependencies oplossen\n### 7. CI, Docker en release\n### 8. Vangnet tegen een npm install uit gewoonte\n## Cheatsheet\n## Referenties\n(477 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          }
+        ]
+      }
+    }
+  ]
+}

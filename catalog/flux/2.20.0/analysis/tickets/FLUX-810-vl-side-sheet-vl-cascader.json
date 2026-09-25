@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "d68ff04": {
+      "impact": "action",
+      "explanation": "Tabben binnen een open vl-side-sheet houdt de focus bij de inhoud. Op een mobiel scherm is een open side-sheet nu modaal: tabben loopt rond tussen de toggle button en de inhoud, en een verborgen of buiten het scherm vallende toggle button wordt overgeslagen. Sluit een side-sheet met verborgen toggle button, dan keert de focus terug naar waar ze voor het openen stond. Op desktop kan de focus de side-sheet verlaten. In vl-cascader komt de focus bij het doorklikken op het nieuwe niveau terecht. Dit geldt ook voor vl-map-side-sheet.",
+      "action": "Zet je --vl-side-sheet-width-mobile op 100%, voorzie dan een eigen sluitknop in de side-sheet die close() aanroept: de toggle button valt dan buiten het scherm, en een toetsenbordgebruiker kan de side-sheet anders niet meer verlaten. Geef een knop met enkel een icoon een toegankelijke naam. Render ook maar één side-sheet per pagina.",
+      "example": "```html\n<vl-side-sheet id=\"paneel\">\n    <vl-button icon=\"close\" label=\"Sluit de side-sheet\" onclick=\"document.getElementById('paneel').close()\"></vl-button>\n    …\n</vl-side-sheet>\n```"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-471",
+  "entries": [
+    {
+      "id": "19f3b89",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-471"
+      ],
+      "scope": "skip-link",
+      "components": [],
+      "topics": [
+        "skip-link"
+      ],
+      "mentions": [],
+      "summary": "ver genoeg scrollen bij sticky header",
+      "text": "FLUX-471 - skip-link - ver genoeg scrollen bij sticky header",
+      "commits": [
+        {
+          "sha": "19f3b89de2700e5959a148ba8178cab4897975d3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/19f3b89de2700e5959a148ba8178cab4897975d3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Er wordt nu rekening gehouden met sticky headers zodat bij een 'scrollIntoView' het target niet meer achter de sticky header(s) verdwijnt.\n\nDe correctie zit in navigateToAnchor en geldt daardoor meteen voor de skip-link van vl-header, vl-header-next en vl-functional-header, en voor de anchor-links en hash-deeplinks die via hetzelfde pad lopen.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/anchor-navigation.ts",
+          "libs/common/src/util/sticky-scroll.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "03eff7a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-471"
+      ],
+      "scope": "vl-header, vl-header-next",
+      "components": [
+        "vl-header",
+        "vl-header-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "skip-to-content link (WCAG 2.4.1)",
+      "text": "FLUX-471 - vl-header, vl-header-next - skip-to-content link (WCAG 2.4.1)",
+      "commits": [
+        {
+          "sha": "03eff7a02dd37ccb214e1966c7824e1133f39df9",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/03eff7a02dd37ccb214e1966c7824e1133f39df9"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [
+        "2.4.1"
+      ],
+      "source": {
+        "body": "Toetsenbordgebruikers kunnen het headerblok voortaan overslaan via een optioneel skip-to-content-id attribuut op vl-header en vl-header-next: bij een gezette waarde verschijnt bij focus een skip-link die focus en scroll naar de opgegeven pagina-inhoud brengt. De accessibility-styling wordt mee geïnjecteerd zodat consumers niets extra hoeven te laden. De gedeelde skip-link-logica wordt nu ook door vl-functional-header gebruikt.",
+        "published": true,
+        "areas": {
+          "code": 7,
+          "storybook": 4,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/skip-link.ts",
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/compliance/header/vl-header.component.ts",
+          "libs/components/src/compliance/header/vl-header.defaults.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

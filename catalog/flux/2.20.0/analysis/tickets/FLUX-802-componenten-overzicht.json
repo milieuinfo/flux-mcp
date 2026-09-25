@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "782a93c": {
+      "impact": "none",
+      "explanation": "Het componentenoverzicht in Storybook toont nu per component de WCAG-status. Dit raakt de packages niet."
+    }
+  }
+}

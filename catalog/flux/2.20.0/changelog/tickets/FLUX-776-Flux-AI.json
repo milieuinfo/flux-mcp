@@ -1,0 +1,91 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-776",
+  "entries": [
+    {
+      "id": "b479b90",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [
+        "FLUX-776"
+      ],
+      "scope": "Flux-AI",
+      "components": [],
+      "topics": [
+        "Flux-AI"
+      ],
+      "mentions": [],
+      "summary": "analyse herwerkt naar de nieuwe AI-strategie",
+      "text": "FLUX-776 - Flux-AI - analyse herwerkt naar de nieuwe AI-strategie",
+      "commits": [
+        {
+          "sha": "b479b90d3d180877962883d319d64c2ff6b7b708",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b479b90d3d180877962883d319d64c2ff6b7b708"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De analyse \"Flux-AI - Frontend Uniformisering via AI\" volgt nu het nieuwe technische schema: een kennislaag met Figma, web-types, .llm.md en release notes, ontsloten via Figma-MCP en Flux-MCP, met de Flux-Agent die de workflows orkestreert en via Jira-MCP, Git en de Claude SDK in de ontwikkelketen ingrijpt. De terugkoppellus (validatie en beïnvloeden) vervangt het begrip modeltoepassing; de eisen A (technisch fundament) en B (uniforme UI/UX) blijven bestaan als eisen aan een toepassing. Een nieuwe FAQ-vraag legt uit waarom modeltoepassingen verdwenen zijn.\n\nDe 8 AI-workflows zijn ingedeeld in 6 inhoudelijke workflows (bouwen, onderhouden, terugkoppellus) en 2 procesworkflows (Jira-ticket en PR) die alle inhoudelijke workflows omkaderen. De kolommen in het schema zijn dus geen 1-op-1-koppeling. De werknota ai-strategie-beschrijving.md volgt dezelfde indeling.\n\nDe schema's met het label \"modeltoepassing\" zijn hernoemd en herlabeld (technisch fundament, uniforme toepassing, uniformisering) en de PNG's zijn opnieuw gerenderd.",
+        "published": false,
+        "areas": {
+          "docs": 15
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "planning-flux-ai-frontend-uniformisering--documentatie",
+            "title": "Planning/Flux-AI - Frontend Uniformisering",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/planning-flux-ai-frontend-uniformisering--documentatie",
+            "added": "## 4. Ontsluiting: 2 MCP-servers en een Agent\n## 5. AI-Workflows\n### 5.1 Bouwen: design naar code, nieuwe toepassing, toepassing uitbreiden\n### 5.2 Onderhouden: versiemigratie\n### 5.3 Terugkoppellus: toepassing valideren en verbeteren\n### 5.4 Proces: Jira-ticket en PR\n## 6. De Terugkoppellus\n## 7. Eisen aan een Toepassing\n## 8. Fasering\n## 9. Randvoorwaarden en Risico's\n## 10. Conclusie\n## 11. FAQ\n### 11.1 Is de afnemer het stuur?\n### 11.2 Evolueren ook de UI/UX-patronen niet?\n### 11.3 Met welke toepassingen starten we?\n### 11.4 Updaten we onze documentatie bij elke migratie?\n### 11.5 Wat zijn few-shot voorbeelden?\n### 11.6 Migreren we naar Custom Elements Manifest?\n### 11.7 Is er vendor lock-in?\n### 11.8 WCAG 2.1 of WCAG 2.2?\n### 11.9 Waarom spreken we niet meer over modeltoepassingen?\n(376 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "f18485b",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [
+        "FLUX-776"
+      ],
+      "scope": "Flux-AI",
+      "components": [],
+      "topics": [
+        "Flux-AI"
+      ],
+      "mentions": [],
+      "summary": "Frontend Uniformisering via AI",
+      "text": "FLUX-776 - Flux-AI - Frontend Uniformisering via AI",
+      "commits": [
+        {
+          "sha": "f18485be3b7b7b7f95767d0c10f95b069d996bc0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f18485be3b7b7b7f95767d0c10f95b069d996bc0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 11
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "planning-flux-ai-frontend-uniformisering--documentatie",
+            "title": "Planning/Flux-AI - Frontend Uniformisering",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/planning-flux-ai-frontend-uniformisering--documentatie",
+            "added": "# Flux-AI - Frontend Uniformisering via AI\n## 0. Inhoudstafel\n## 1. Doel\n## 2. Concept\n## 3. Kennislaag\n## 4. AI-Workflows\n### 4.1 Design naar basisimplementatie (Figma → code)\n### 4.2 Versiemigratie (vN → vN+1)\n### 4.3 Nieuwe toepassingen bouwen op basis van modeltoepassingen\n## 5. Modeltoepassingen als Voorbeeld\n### A. Technisch Fundament\n### B. Uniforme UI/UX\n### C. Uniformisering - van A. naar B.\n## 6. Ontsluiting: MCP als toegangspoort\n## 7. Fasering\n## 8. Randvoorwaarden en Risico's\n## 9. Conclusie\n## 10. FAQ\n### 10.1 Is de afnemer het stuur?\n### 10.2 Evolueren ook de UI/UX-patronen niet?\n### 10.3 Zijn het in het begin niet eerder kandidaat-modeltoepassingen?\n### 10.4 Updaten we onze documentatie bij elke migratie?\n### 10.5 Wat zijn few-shot voorbeelden?\n### 10.6 Migreren we naar Custom Elements Manifest?\n### 10.7 Is er vendor lock-in?\n### 10.8 WCAG 2.1 of WCAG 2.2?\n(420 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -69,7 +69,7 @@ pnpm run flux:web-components:web-types-copy 2.20.0    # tag v2.20.0 naar catalog
 pnpm run flux:web-components:changelog-copy 2.20.0    # tag v2.20.0 naar catalog/flux/2.20.0/changelog/
 pnpm run flux:web-components:changelog-cleanup 2.20.0 # enkel de wijzigingen van 2.20.0 in changelog.md
 pnpm run flux:web-components:changelog-commits 2.20.0 # de feiten uit de commits in commits.json
-pnpm run flux:web-components:changelog-build 2.20.0   # changelog.json: wat de MCP-server over 2.20.0 aanbiedt
+pnpm run flux:web-components:changelog-build 2.20.0   # overzicht, tickets en API-diff van 2.20.0
 ```
 
 Tussen `changelog-commits` en `changelog-build` schrijft een AI-agent de analyse, met de prompt
@@ -107,9 +107,69 @@ Het resultaat staat in `changelog/commits.json`. Het script leest de commits uit
 de andere scripts (`FLUX_REPO` werkt ook hier) en neemt de Storybook-pagina's uit `index.json` van de Storybook van
 die release. Opnieuw draaien geeft hetzelfde bestand.
 
-### De analyse
+### Wat er per versie staat
 
-Per entry beschrijft `catalog/flux/<versie>/analysis/changelog.json` wat de wijziging voor een afnemer betekent:
+Per versie staan de gegevens in twee mappen naast elkaar, met dezelfde bestandsnaam per ticket:
+
+- **`changelog/`** bevat wat scripts maken, deterministisch;
+- **`analysis/`** bevat wat een LLM schreef.
+
+Zo zie je bij een review meteen wat waarvandaan komt: leg de twee bestanden van een ticket naast elkaar.
+
+```
+catalog/flux/2.20.0/
+├── changelog/                  deterministisch (scripts)
+│   ├── changelog.md            bron: de sectie van de release
+│   ├── commits.json            bron: de feiten uit de commits
+│   ├── changelog.json          overzicht: versie, tellingen, componenten, alle entries, de tickets met hun bestand
+│   ├── api.json                de API-diff uit de web-types
+│   └── tickets/
+│       ├── FLUX-809-vl-alert.json
+│       ├── FLUX-810-vl-side-sheet-vl-cascader.json
+│       └── a6116b6.json        een entry zonder ticket
+└── analysis/                   LLM (prompts/changelog-analyse.md)
+    ├── changelog.json          de samenvatting van de versie
+    └── tickets/
+        ├── FLUX-809-vl-alert.json
+        └── …
+```
+
+Een ticketbestand heet naar de issue-key, gevolgd door de componenten en thema's uit de scope van zijn entries.
+Een entry zonder ticket krijgt haar id als naam.
+
+#### changelog/
+
+`changelog-build` maakt `changelog.json`, `api.json` en `tickets/` uit `changelog.md`, `commits.json` en de
+web-types. De bestanden komen mee in git.
+
+```bash
+pnpm run flux:web-components:changelog-build 2.20.0          # één versie
+pnpm run flux:web-components:changelog-build --all           # alle versies in de catalogus
+pnpm run flux:web-components:changelog-build --check         # faalt als een gebouwd bestand niet meer klopt
+```
+
+Per entry in een ticketbestand staan:
+
+- wat de changelog zegt: het type (`breaking`, `feature`, `fix`, `docs`, …), de issues (`FLUX-809`), de
+  componenten uit de scope, de thema's (`form-control`) en de componenten die de tekst noemt;
+- de feiten uit de commits in `source`;
+- de afgeleide impact in `derivedImpact`. Met `commits.json` beslist `published`: raakt de wijziging de packages
+  niet, dan `none`, anders `opt-in` voor een feature en `automatic` voor een fix. Zonder `commits.json` vallen we
+  terug op het type en op signaalwoorden in de tekst. Een breaking change is altijd `action`.
+- het label `a11y` voor een wijziging aan toegankelijkheid, met de WCAG-criteria in `wcag`.
+
+`api.json` is de diff tegen de web-types van de vorige versie. Hij toont de attributen, slots, properties en
+events die erbij kwamen, verdwenen of wijzigden. Elk element krijgt `inChangelog`, zodat een wijziging zonder
+changelog-entry opvalt. Staan de web-types van de vorige versie niet in de catalogus, dan is er geen `api.json` en
+zegt `apiUnavailable` in `changelog.json` waarom.
+
+Gebruik `--all` ook wanneer de web-types van een vorige versie later binnenkomen: de API-diff van de volgende
+versie hangt ervan af.
+
+#### analysis/
+
+Per ticket beschrijft `analysis/tickets/<naam>.json` voor elke entry van dat ticket wat de wijziging voor een
+afnemer betekent:
 
 - **`impact`:** wat hij ermee moet.
   - `action`: iets aanpassen of nakijken;
@@ -120,54 +180,30 @@ Per entry beschrijft `catalog/flux/<versie>/analysis/changelog.json` wat de wijz
 - **`action`:** wat hij moet doen, bij `action`.
 - **`example`:** een voorbeeld, als dat helpt.
 
-Per versie staat er een `summary`.
+`analysis/changelog.json` bevat de samenvatting van de versie.
 
 Een AI-agent schrijft de analyse met de prompt `prompts/changelog-analyse.md`. Hij vertrekt van de feiten uit de
 commits, leest de diff waar die uitleg tekortschiet, en controleert elke naam in de web-types of de code. De
 analyse komt via een PR in git. Ze staat bewust buiten `changelog/`, want `changelog-copy` vervangt die map.
 
+`changelog-build` controleert de analyse en weigert:
+
+- een bestand dat bij geen ticket hoort;
+- een entry die niet bij haar ticket hoort;
+- een onbekende sleutel;
+- een ongeldige impact.
+
+Na het bouwen toont het script de tellingen, de acties, de entries over toegankelijkheid en de entries die nog
+niet geanalyseerd zijn.
+
 Handmatige kennis, zoals migratie-notities die nergens in de commits staan, hoort niet hier: daarvoor komen er
 `.llm.md` bestanden in flux-web-components.
 
-### changelog.json
+#### Wat de server toont
 
-`changelog-build` voegt alles samen in `changelog.json`, naast `changelog.md`. Dat bestand is wat de MCP-server over
-een versie aanbiedt. Het is gegenereerd en komt mee in git, zodat een PR toont wat de server zal tonen.
-
-```bash
-pnpm run flux:web-components:changelog-build 2.20.0          # één versie
-pnpm run flux:web-components:changelog-build --all           # alle versies in de catalogus
-pnpm run flux:web-components:changelog-build --check         # faalt als een changelog.json niet meer klopt
-```
-
-Wat erin staat:
-
-- **Per entry:**
-  - wat de changelog zegt: het type (`breaking`, `feature`, `fix`, `docs`, …), de issues (`FLUX-809`), de
-    componenten uit de scope, de thema's (`form-control`) en de componenten die de tekst noemt;
-  - de impact, de uitleg, de actie en het voorbeeld uit de analyse;
-  - de feiten uit de commits in `source`;
-  - het label `a11y` voor een wijziging aan toegankelijkheid, met de WCAG-criteria in `wcag`.
-
-  Zonder analyse is de impact afgeleid (`impactSource: "derived"`). Met `commits.json` beslist `published`:
-  raakt de wijziging de packages niet, dan is ze `none`, anders geldt `opt-in` voor een feature en `automatic`
-  voor een fix. Zonder `commits.json` vallen we terug op het type en op signaalwoorden in de tekst. Een breaking
-  change is altijd `action`.
-- **Per versie:**
-  - de datum, de vorige versie en de samenvatting;
-  - tellingen per type en per impact;
-  - de betrokken componenten, met de Storybook-link van die versie;
-  - een API-diff tegen de web-types van de vorige versie. De diff toont attributen, slots, properties en
-    events die erbij kwamen, verdwenen of wijzigden. Elk element krijgt `inChangelog`, zodat een wijziging
-    zonder changelog-entry opvalt. Staan de web-types van de vorige versie niet in de catalogus, dan zegt
-    `apiUnavailable` waarom er geen diff is.
-
-Na het bouwen toont het script de tellingen, de acties, de entries over toegankelijkheid en de entries die nog
-niet geanalyseerd zijn. Een analyse met een onbekende entry, een onbekende sleutel of een ongeldige impact laat de
-build falen.
-
-Bouw opnieuw na een wijziging aan de analyse of aan `commits.json`. Gebruik `--all` ook wanneer de web-types van
-een vorige versie later binnenkomen: de API-diff van de volgende versie hangt ervan af.
+De server voegt beide samen bij het laden. De analyse bepaalt de impact (`impactSource: "analysis"`), de uitleg,
+de actie, het voorbeeld en eventueel het label `a11y`. Zonder analyse geldt de afgeleide impact
+(`impactSource: "derived"`).
 
 ### Queries voor de server
 

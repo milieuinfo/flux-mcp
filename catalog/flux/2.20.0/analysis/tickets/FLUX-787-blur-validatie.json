@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "293c741": {
+      "impact": "none",
+      "explanation": "De pagina Patronen/Formulier/blur validatie is nagekeken tegen de code. De toegankelijkheidssectie vermeldt nu dat de foutmelding in een role=\"status\" regio met aria-live staat, en dat blur-validatie de focus niet verplaatst. De beschrijving van het blur-validation attribuut is ingekort tot twee zinnen met een link naar die pagina."
+    }
+  }
+}

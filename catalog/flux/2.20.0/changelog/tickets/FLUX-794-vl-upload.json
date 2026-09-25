@@ -1,0 +1,67 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-794",
+  "entries": [
+    {
+      "id": "2373023",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-794"
+      ],
+      "scope": "vl-upload",
+      "components": [
+        "vl-upload"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "aria-invalid en gekende toegankelijkheidsbeperking",
+      "text": "FLUX-794 - vl-upload - aria-invalid en gekende toegankelijkheidsbeperking",
+      "commits": [
+        {
+          "sha": "237302380b4fe8179bbfab6825fffd3fc78a6071",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/237302380b4fe8179bbfab6825fffd3fc78a6071"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "vl-upload zette als enige form control geen aria-invalid bij een validatiefout. Het attribuut staat nu op de validationTarget, zoals bij de andere controls.\n\nDat lost de toegankelijkheid niet op, en dat is een bewuste keuze. De validationTarget is de input type=file die Dropzone met visibility hidden verbergt, dus die staat niet in de accessibility tree. Het enige focusbare element is de upload-knop, en aria-invalid wordt niet ondersteund op role=button, dus de browser laat het daar vallen. Rechtzetten vraagt dat de file-input echt zichtbaar wordt voor screenreaders, wat raakt aan de manier waarop Dropzone haar input verbergt. Dat valt buiten dit ticket.\n\nDe ongeldige toestand bereikt een screenreader vandaag enkel via de foutmelding, die vl-form-message in een role=status regio met aria-live polite rendert. Die beperking staat nu beschreven bij Gekende Beperkingen, met een verwijzing vanaf de componentpagina van vl-upload en vanaf de patroonpagina blur-validatie, waar de zin over aria-invalid tot nu onvoorwaardelijk was.\n\nTwee Cypress-testen erbij: aria-invalid op de validationTarget van pristine naar fout en terug naar geldig, en een die nagaat dat de foutmelding effectief in de role=status regio van vl-form-message belandt.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "De ongeldige toestand van dit veld bereikt een screenreader enkel via de foutmelding, niet via `aria-invalid` op de\ncontrol zelf. Zie [Gekende Beperkingen](/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie)."
+          },
+          {
+            "id": "patronen-formulier-blur-validatie--documentatie",
+            "title": "Patronen/Formulier/blur validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/patronen-formulier-blur-validatie--documentatie",
+            "added": "ook los van de melding kenbaar is. Eén uitzondering: bij `vl-upload` haalt dat attribuut de accessibility\ntree niet, zie [Gekende Beperkingen](/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie)."
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+            "added": "## `aria-invalid` bij `vl-upload`\n\nBij een validatiefout krijgt `vl-upload` als enige form control geen `aria-invalid` in de accessibility tree. Het\nenige focusbare element is de upload-knop, en `aria-invalid` wordt niet ondersteund op `role=\"button\"`, dus de\nbrowser laat het attribuut daar vallen. De onderliggende `input type=\"file\"` draagt het wel, maar Dropzone verbergt\ndie met `visibility: hidden`, waardoor ze sowieso buiten de accessibility tree valt.\n\nDe ongeldige toestand komt daarom niet van de control zelf, maar van de foutmelding: `vl-form-message` rendert ze in\neen `role=\"status\"` regio met `aria-live=\"polite\"`, zodat een screenreader ze voorleest zodra ze verschijnt. De\ngebruiker hoort dus wel wat er fout is, alleen niet dat het veld zelf ongeldig staat. Dit rechtzetten vraagt dat de\nfile-input echt zichtbaar wordt voor screenreaders, wat raakt aan de manier waarop Dropzone haar input verbergt."
+          }
+        ]
+      }
+    }
+  ]
+}

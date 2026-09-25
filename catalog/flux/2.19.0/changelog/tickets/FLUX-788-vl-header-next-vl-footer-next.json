@@ -1,0 +1,63 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-788",
+  "entries": [
+    {
+      "id": "778158e",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-788"
+      ],
+      "scope": "vl-header-next / vl-footer-next",
+      "components": [
+        "vl-header-next",
+        "vl-footer-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "flaky testen en ready-event",
+      "text": "FLUX-788 - vl-header-next / vl-footer-next - flaky testen en ready-event",
+      "commits": [
+        {
+          "sha": "778158e2b32c35111560744b7529ff6681ee0101",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/778158e2b32c35111560744b7529ff6681ee0101"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De component-tests van vl-header-next faalden geregeld in Jenkins. Oorzaak: tests eindigden terwijl hun widget-script nog onderweg was. Dat script voert dan uit tijdens een volgende test, vuurt daar een extra widget.global_header.mounted af en overschrijft window.globalHeaderClient plus de opgevangen setProfile-calls.\n\nvl-header-next stopt nu met werken zodra hij uit de DOM is: isConnected-guards na awaitScript, na mount() en na setApplicationMenuLinks(), en configureSession() checkt dat naast de bestaande generation-guard. Een verdwenen header plaatst de widget dus niet meer in een verwijderde container en schrijft geen profiel meer weg. In de specs wacht elke mount voortaan tot het widget-script van die test effectief uitgevoerd is, en ruimt afterEach globalHeaderClient en __setProfileCalls op.\n\nDaarnaast vuurden vl-header-next en vl-footer-next hun ready-event af op window in plaats van op het element: window.addEventListener kreeg een ongebonden prototype-methode mee, waardoor this bij het afvuren het window was. Daardoor deed @ready in een template niets en luisterden vl-side-navigation en vl-functional-header vergeefs op het element. onReady is nu een class field met arrow-functie; de oude vl-header en vl-footer waren niet getroffen. Afnemers die vandaag op window luisteren moeten overschakelen naar het element - dat staat gedocumenteerd op de Storybook docs-pagina's van beide componenten.\n\nTot slot zocht de skeleton-getter #header__container__skeleton terwijl het geinjecteerde element #header__skeleton heet, waardoor de skeleton na disconnect bleef staan. Zowel in de oude vl-header als in de cleanup-decorator van Storybook rechtgezet.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 2,
+          "storybook": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-next-footer--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+            "added": "## Ready event\n\nDe component vuurt het `ready` event af zodra de global footer widget in de DOM gemount is.\n\nHet event wordt afgevuurd **op het `<vl-footer-next>` element zelf**. Het bubbelt niet en gaat niet door shadow\nboundaries, dus registreer de listener op het element:\n\n```js\ndocument.querySelector('vl-footer-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```\n\nIn een lit-template:\n\n```js\nhtml`<vl-footer-next identifier=\"...\" @ready=${onReady}></vl-footer-next>`;\n```"
+          },
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": "## Ready event\n\nDe component vuurt het `ready` event af zodra de global header widget in de DOM gemount is. Vanaf dat moment is de\nwidget-inhoud beschikbaar en levert `height` de effectieve hoogte van de header op.\n\nHet event wordt afgevuurd **op het `<vl-header-next>` element zelf**. Het bubbelt niet en gaat niet door shadow\nboundaries, dus registreer de listener op het element:\n\n```js\ndocument.querySelector('vl-header-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```\n\nIn een lit-template:\n\n```js\nhtml`<vl-header-next identifier=\"...\" @ready=${onReady}></vl-header-next>`;\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

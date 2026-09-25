@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "e1b195c": {
+      "impact": "automatic",
+      "explanation": "In een container die bij de eerste weergave verborgen is, zoals een modal die nog niet openstond, viel het laatste label van vl-progress-indicator buiten de rand. De component herrekent de ruimte nu ook wanneer de container zichtbaar wordt."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "cfd208b": {
+      "impact": "opt-in",
+      "explanation": "Met de itemTemplate-property bepaal je zelf de inhoud van een suggestie in vl-autocomplete, als caption-format (title, subtitle, value) niet volstaat. De functie krijgt het item en levert de inhoud van de li. Zonder resultaten roept de component de functie niet aan en toont ze de tekst uit no-matches-text. Zet geen links of knoppen in de template.",
+      "example": "```ts\nconst itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}</vl-text>\n    </div>\n`;\n```\n\n```html\n<vl-autocomplete .items=\"${items}\" .itemTemplate=\"${itemTemplate}\"></vl-autocomplete>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "cfe65f3": {
+      "impact": "automatic",
+      "explanation": "De verbindingslijnen tussen de stappen van vl-progress-indicator verdwenen achter een ondoorzichtige achtergrond wanneer een bovenliggend element een eigen stacking context had. Ze zijn weer zichtbaar."
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "a6116b6",
+      "type": "docs",
+      "section": "Documentation",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie van de lokale npm registry configuratie",
+      "text": "documentatie van de lokale npm registry configuratie",
+      "commits": [
+        {
+          "sha": "a6116b63600a29dcff322480c4f605969078214c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a6116b63600a29dcff322480c4f605969078214c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "- [Afname](#afname)\n\n[…]\n\n## Afname\n\nOm de artifacts af te nemen kan je __als medewerker__ van Departement Omgeving je `~/.npmrc` bestand lokaal als volgt\n configureren:\n\n```\nregistry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/\n//repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/:_authToken=***\n```\n\nAls je __geen medewerker__ bent, en dus geen account hebt voor die registry, kan je de artifacts toch als volgt afnemen:\n\n```\n; Standaard: de publieke registry.\nregistry=https://registry.npmjs.org/\n\n; Alleen deze scopes gaan naar de publiek beschikbare artifacts in de Artifactory van Departement Omgeving.\n@domg:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/\n@domg-wc:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

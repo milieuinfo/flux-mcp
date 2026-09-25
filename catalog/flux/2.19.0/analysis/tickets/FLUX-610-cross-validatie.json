@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2f7dc51": {
+      "impact": "opt-in",
+      "explanation": "Cross-validatie: de geldigheid van een veld kan nu afhangen van een ander veld in hetzelfde formulier. Een validator krijgt dependencySelectors, en de CrossValidationMixin uit @domg-wc/components/form hervalideert het veld zodra een van die velden wijzigt. De Storybook-pagina Patronen/Formulier/cross-validatie toont drie voorbeelden om over te nemen: een afhankelijke waarde, twee velden die moeten overeenkomen en een conditioneel verplicht veld. Daarnaast twee fixes voor alle formuliervelden: de foutstatus verdwijnt zodra een veld na een eerste validatie geldig wordt, en een lopende blur-validatie wordt opgeruimd bij reset en opnieuw focussen."
+    }
+  }
+}

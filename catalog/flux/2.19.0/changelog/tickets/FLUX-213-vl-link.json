@@ -1,0 +1,64 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-213",
+  "entries": [
+    {
+      "id": "6139351",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-213"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "screenreader melding bij externe links",
+      "text": "FLUX-213 - vl-link - screenreader melding bij externe links",
+      "commits": [
+        {
+          "sha": "613935152f703f3768248a7149572813a288f229",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/613935152f703f3768248a7149572813a288f229"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Externe links krijgen nu - voor screenreaders - de melding \"(opent in een nieuw venster)\". Dit werkt automatisch voor elke externe vl-link; een gezet label krijgt voorrang en een button-as-link krijgt de melding niet.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link-style/vl-link-style.css.ts",
+          "libs/components/src/atom/link/vl-link.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "Een externe link opent in een nieuw tabblad en toont automatisch het external icoon na de linktekst.\n\nVoor schermlezers voegt de component automatisch de visueel verborgen tekst \"(opent in een nieuw venster)\" toe na de\nlinktekst. Je hoeft dit dus niet zelf te voorzien. Het external icoon zelf is decoratief (`aria-hidden`) en wordt niet\nvoorgelezen.\n\nGebruik je het `label` attribuut, dan vervangt dat de volledige voorgelezen linktekst en wordt de automatische melding\nniet toegevoegd. Neem in dat geval zelf de vermelding op, bv.\n`label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\"`.\n\n[…]\n\nBij externe links (het `external` attribuut) meldt de component zelf aan schermlezers dat de link in een nieuw venster\nopent: na de linktekst wordt de visueel verborgen tekst \"(opent in een nieuw venster)\" voorgelezen. Je hoeft dit dus\nniet zelf te voorzien in de linktekst of via het `label` attribuut.\n\nIndien `label` gebruikt wordt, is dit de enige linktekst die door schermlezers wordt voorgelezen; de automatische\nmelding wordt dan niet toegevoegd. Neem in dat geval zowel de zichtbare linktekst als de vermelding \"(opent in een\nnieuw venster)\" op in het label."
+          },
+          {
+            "id": "components-block-contact-card--documentatie",
+            "title": "Components - Block/contact-card",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-contact-card--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

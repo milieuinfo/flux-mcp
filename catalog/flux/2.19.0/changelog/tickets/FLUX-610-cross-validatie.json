@@ -1,0 +1,75 @@
+{
+  "schema": 2,
+  "version": "2.19.0",
+  "ticket": "FLUX-610",
+  "entries": [
+    {
+      "id": "2f7dc51",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-610"
+      ],
+      "scope": "cross-validatie",
+      "components": [],
+      "topics": [
+        "cross-validatie"
+      ],
+      "mentions": [],
+      "summary": "dependencySelectors via CrossValidationMixin met voorbeelden en docs",
+      "text": "FLUX-610 - cross-validatie - dependencySelectors via CrossValidationMixin met voorbeelden en docs",
+      "commits": [
+        {
+          "sha": "2f7dc5151d001bf9d9f51f820dc28533332bd95f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2f7dc5151d001bf9d9f51f820dc28533332bd95f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Cross-validatie: de geldigheid van een veld hangt af van de waarde van een ander veld in hetzelfde formulier. Een validator krijgt dependencySelectors, en de CrossValidationMixin hervalideert het veld zodra een van die velden wijzigt via een gedelegeerde vl-change listener op de form.\n\nDe mixin staat in libs/components/src/form/utils en wordt aangeboden via @domg-wc/components/form, zodat afnemers hem kunnen importeren. De gedeelde FormControl base krijgt enkel twee generieke hooks waarop de mixin voortbouwt: retainsValidationState en revalidate.\n\nBevat ook twee bugfixes op form-control: de error-state wordt gewist zodra het veld geldig wordt na een eerste validatie, en de blur-validation timeout wordt opgeruimd bij reset en herfocus.\n\nDrie voorbeelden onder libs/integrations, elk met cypress component-tests: een afhankelijke waarde, twee velden die moeten overeenkomen, en een conditioneel verplicht veld. Die voorbeelden zijn referentiecode om over te nemen, geen publiceerbare componenten.\n\nDocumentatie onder Patronen/Formulier/cross-validatie, met kruisverwijzingen naar validatie, aangepaste validatie, blur-validatie en form data.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 5,
+          "examples": 7,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-control/form-control.ts",
+          "libs/components/src/form/index.ts",
+          "libs/components/src/form/utils/cross-validation.mixin.ts",
+          "libs/components/src/form/utils/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "patronen-formulier-aangepaste-validatie--documentatie",
+            "title": "Patronen/Formulier/aangepaste validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-aangepaste-validatie--documentatie",
+            "added": "  [Formulier - Validatie](/docs/patronen-formulier-validatie--documentatie).\n\n> Moet je validatie afhankelijk maken van de waarde van een ander veld? Bekijk dan\n  [Formulier - Cross-Validatie](/docs/patronen-formulier-cross-validatie--documentatie).\n\n[…]\n\n<details>"
+          },
+          {
+            "id": "patronen-formulier-cross-validatie--documentatie",
+            "title": "Patronen/Formulier/cross-validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-cross-validatie--documentatie",
+            "added": "# Formulier - Cross-Validatie\n## Gebruik\n### 1. De validator\n### 2. Het component\n### 3. De foutmelding\n## Aandachtspunten\n## Voorbeelden\n### Twee velden die moeten overeenkomen\n### Conditioneel verplicht veld\n(121 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "patronen-formulier-demo--documentatie",
+            "title": "Patronen/Formulier/demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-demo--documentatie",
+            "added": "> Moet de validatie van een veld afhangen van de waarde van een ander veld? Bekijk dan\n  [Formulier - Cross-Validatie](/docs/patronen-formulier-cross-validatie--documentatie).\n\n[…]\n\n<details>"
+          },
+          {
+            "id": "patronen-formulier-validatie--documentatie",
+            "title": "Patronen/Formulier/validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-validatie--documentatie",
+            "added": "> Een voorbeeld van cross-validatie (validatie afhankelijk van de waarde van een ander veld) vind je op\n  [Formulier - Cross-Validatie](/docs/patronen-formulier-cross-validatie--documentatie).\n\n[…]\n\n- `customError`: als je custom validatie instelt, [zie hier](/docs/patronen-formulier-aangepaste-validatie--documentatie) hoe je zelf een custom validator schrijft. Voor validatie afhankelijk van een ander veld, [zie cross-validatie](/docs/patronen-formulier-cross-validatie--documentatie)."
+          }
+        ]
+      }
+    }
+  ]
+}

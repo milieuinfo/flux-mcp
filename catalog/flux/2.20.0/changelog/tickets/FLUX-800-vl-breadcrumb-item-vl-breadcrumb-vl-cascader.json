@@ -1,0 +1,149 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-800",
+  "entries": [
+    {
+      "id": "89c0f66",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-800"
+      ],
+      "scope": "vl-breadcrumb-item",
+      "components": [
+        "vl-breadcrumb-item"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "focus outline enkel bij toetsenbordnavigatie",
+      "text": "FLUX-800 - vl-breadcrumb-item - focus outline enkel bij toetsenbordnavigatie",
+      "commits": [
+        {
+          "sha": "89c0f660957a268146d912bd0c60a4ede389d6a0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/89c0f660957a268146d912bd0c60a4ede389d6a0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De focus outline verscheen ook na een muisklik. Met :focus-visible toont de browser hem enkel wanneer die de focus als toetsenbordfocus beschouwt.",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/breadcrumb/vl-breadcrumb.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "9311ae6",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-800"
+      ],
+      "scope": "vl-breadcrumb",
+      "components": [
+        "vl-breadcrumb"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ellipsis attribuut voor lange breadcrumb items",
+      "text": "FLUX-800 - vl-breadcrumb - ellipsis attribuut voor lange breadcrumb items",
+      "commits": [
+        {
+          "sha": "9311ae68d254eedde4b391423e46232b07a0a105",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9311ae68d254eedde4b391423e46232b07a0a105"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Zonder het ellipsis attribuut verandert er niets: een lang breadcrumb item loopt door over meerdere regels.\n\nMet ellipsis blijft elk breadcrumb item op één regel. Een item dat niet naast het vorige past, begint op een nieuwe regel en wordt pas afgekapt met een ellipsis als het ook daar te breed is. De ellipsis uit de basisstijl werkte niet omdat de cta in de shadow root van vl-breadcrumb-item zit en omdat ol/li als flex-items op min-width:auto nooit konden krimpen. Interne custom properties erven wel door tot in die shadow root, ook wanneer een breadcrumb item in een ander element gewikkeld is.\n\nIn de buttons story is het laatste breadcrumb item nu tekst in plaats van een button, zoals het hoort voor de huidige locatie.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/breadcrumb/vl-breadcrumb.component.ts",
+          "libs/components/src/block/breadcrumb/vl-breadcrumb.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-breadcrumb--documentatie",
+            "title": "Components - Block/breadcrumb/breadcrumb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+            "added": "## Configuratie\n\n[…]\n\nHet laatste breadcrumb item is de huidige locatie. Geef dat item geen `href` en geen `type=\"button\"`, dan wordt het\nals tekst weergegeven en is het niet aanklikbaar.\n\n[…]\n\n### Lange tekst afkappen\n\nHoud de tekst van een breadcrumb item kort. Komt de tekst uit data, en heb je de lengte dus niet in de hand, dan kan\nhet `ellipsis` attribuut helpen.\n\nStandaard loopt een lang breadcrumb item door over meerdere regels. Is de ruimte beperkt, bijvoorbeeld in een\n`side-sheet`, dan houdt `ellipsis` elk breadcrumb item op één regel: een breadcrumb item dat niet past, begint op een\nnieuwe regel en wordt pas afgekapt met een ellipsis (…) als het ook daar te breed is.\n\nDe afgekapte tekst blijft volledig beschikbaar voor schermlezers, maar is visueel niet meer leesbaar. Gebruik\n`ellipsis` dus enkel waar de ruimte echt beperkt is.\n\n```html\n<vl-breadcrumb ellipsis>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Een breadcrumb item met een heel lange titel</vl-breadcrumb-item>\n</vl-breadcrumb>\n```"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c04a72c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-800"
+      ],
+      "scope": "vl-cascader",
+      "components": [
+        "vl-cascader"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-breadcrumb"
+      ],
+      "summary": "breadcrumb opgebouwd met vl-breadcrumb en WCAG verbeteringen",
+      "text": "FLUX-800 - vl-cascader - breadcrumb opgebouwd met vl-breadcrumb en WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "c04a72c73281b6b0729196ef9ebbb279c70ea03f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/c04a72c73281b6b0729196ef9ebbb279c70ea03f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De breadcrumb van de cascader gebruikt nu vl-breadcrumb in plaats van eigen markup. Het home breadcrumb item en de items van de vorige niveaus zijn buttons en dus bereikbaar en bedienbaar met het toetsenbord. Het home-icoon heeft een toegankelijke naam en het huidige niveau is tekst in plaats van een klikbaar element.\n\nDe cascader zet het ellipsis attribuut aan, zodat een lange titel niet meer buiten de breadcrumb (en dus buiten de vl-side-sheet) loopt.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/cascader/vl-cascader-item.component.ts",
+          "libs/components/src/block/cascader/vl-cascader.component.ts",
+          "libs/components/src/block/cascader/vl-cascader.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-breadcrumb--documentatie",
+            "title": "Components - Block/breadcrumb/breadcrumb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

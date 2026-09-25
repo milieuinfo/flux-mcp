@@ -1,0 +1,63 @@
+{
+  "schema": 2,
+  "version": "2.20.0",
+  "ticket": "FLUX-811",
+  "entries": [
+    {
+      "id": "6854ffc",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-811"
+      ],
+      "scope": "vl-cascader",
+      "components": [
+        "vl-cascader"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "pijltje rechts bij link in label-slot",
+      "text": "FLUX-811 - vl-cascader - pijltje rechts bij link in label-slot",
+      "commits": [
+        {
+          "sha": "6854ffc2a5f6ef66bc5c04826fa3fc391b93ca0e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6854ffc2a5f6ef66bc5c04826fa3fc391b93ca0e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Een vl-link met class vl-cascader-link in de label-slot van vl-cascader-item toont het pijltje nu rechts uitgelijnd over de volle breedte van het item, net zoals bij het label-attribuut. Dat geldt ook voor links die via een eigen template of via property binding gerenderd worden; links in het content-slot behouden hun natuurlijke breedte.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/cascader/vl-cascader-item.component.ts",
+          "libs/components/src/block/cascader/vl-cascader-item.flux-css.ts",
+          "libs/components/src/block/cascader/vl-cascader.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-cascader-cascader--documentatie",
+            "title": "Components - Block/cascader/cascader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+            "added": "Plaats je een `vl-link` in het `label`-slot, geef die dan de class `vl-cascader-link`. Die class zorgt ervoor dat de\nlink de volle breedte van het item inneemt en dat het pijltje rechts uitgelijnd staat, net zoals bij de\n`label`-attribuut-variant. Links in het `content`-slot krijgen die class niet en behouden hun natuurlijke breedte.\n\n```html\n<vl-cascader-item label=\"West-Vlaanderen\">\n    <vl-link slot=\"label\" bold button-as-link icon=\"arrow-right-fat\" icon-placement=\"after\" class=\"vl-cascader-link\">\n        Provincie: West-Vlaanderen\n    </vl-link>\n</vl-cascader-item>\n```\n\nDezelfde conventie geldt voor de links die je in een eigen [dynamische template](#dynamische-templates) of via\n[property-binding](#cascader-met-property-binding) rendert."
+          },
+          {
+            "id": "components-block-cascader-cascader-item--documentatie",
+            "title": "Components - Block/cascader/cascader-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-cascader-cascader-item--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

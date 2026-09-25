@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "d45b5e1": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe value-bold attribuut toont vl-properties de waarden in bold (font-weight 500), zoals vl-description-data, maar met het label links en de waarde rechts.",
+      "example": "```html\n<vl-properties value-bold>…</vl-properties>\n```"
+    }
+  }
+}

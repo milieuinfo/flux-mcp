@@ -1,0 +1,17 @@
+{
+  "entries": {
+    "89c0f66": {
+      "impact": "automatic",
+      "explanation": "De focus outline van vl-breadcrumb-item verschijnt enkel nog bij toetsenbordnavigatie (:focus-visible), niet meer na een muisklik."
+    },
+    "9311ae6": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe ellipsis attribuut blijft elk item van vl-breadcrumb op één regel: een item dat niet past, begint op een nieuwe regel en wordt pas afgekapt als het ook daar te breed is. Schermlezers lezen de volledige tekst. Gebruik het enkel waar de ruimte echt beperkt is, zoals in een side-sheet. Zonder het attribuut verandert er niets. Het attribuut staat nog niet in de web-types, dus een IDE stelt het niet voor.",
+      "example": "```html\n<vl-breadcrumb ellipsis>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Een breadcrumb item met een heel lange titel</vl-breadcrumb-item>\n</vl-breadcrumb>\n```"
+    },
+    "c04a72c": {
+      "impact": "automatic",
+      "explanation": "De breadcrumb in vl-cascader is nu een vl-breadcrumb. Het home-item en de vorige niveaus zijn knoppen, dus bereikbaar en bedienbaar met het toetsenbord; het home-icoon heeft een toegankelijke naam en het huidige niveau is tekst. Een lange titel loopt niet meer buiten de breadcrumb of de side-sheet."
+    }
+  }
+}
