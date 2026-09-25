@@ -16,7 +16,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-source "${SCRIPT_DIR}/../common.sh"
+source "${SCRIPT_DIR}/../code-connect/common.sh"
 
 VERSION=""
 REF=""
