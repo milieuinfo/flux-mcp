@@ -14,7 +14,9 @@
         "figma:code-connect:unpublish": "./resources/figma/code-connect/unpublish.sh",
         "figma:web-components:copy-figma": "./resources/figma/web-components/copy-figma.sh",
         "figma:descriptions:write": "node ./resources/figma/descriptions/write.mjs",
-        "flux:web-components:web-types-copy": "./resources/flux/web-components/web-types-copy.sh"
+        "flux:web-components:web-types-copy": "./resources/flux/web-components/web-types-copy.sh",
+        "flux:web-components:changelog-copy": "./resources/flux/web-components/changelog-copy.sh",
+        "flux:web-components:changelog-cleanup": "./resources/flux/web-components/changelog-cleanup.sh"
     },
     "devDependencies": {
         "@figma/code-connect": "2.0.0"

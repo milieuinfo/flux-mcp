@@ -13,7 +13,7 @@ per component, die hier in git leeft.
 | Folder                | Inhoud                                                              |
 |-----------------------|---------------------------------------------------------------------|
 | `server/`             | de MCP-server zelf                                                  |
-| `catalog/flux/`       | wat de MCP-server aanbiedt: `<versie>/web-types/` met de web-types van die Flux-release |
+| `catalog/flux/`       | wat de MCP-server aanbiedt: `<versie>/web-types/` en `<versie>/changelog/` van die Flux-release |
 | `catalog/figma/`      | wat we naar Figma schrijven: `code-connect/v2/` (de templates) en `descriptions/v2/` (de kennis per component) |
 | `prompts/`            | MCP-prompts die de server aanbiedt (concept)                        |
 | `resources/`          | scripts enzo                                                        |
@@ -57,22 +57,29 @@ wordt niets bewaard. Zorg wel dat je clone de gevraagde tag kent, anders eerst `
 Je eigen clone wordt nooit gewijzigd: `figma:web-components:copy-figma` kloont ook een lokale bron eerst naar
 een tijdelijke map.
 
-## Web-types per versie
+## Web-types en changelog per versie
 
-De MCP-server biedt de web-types van Flux Web Components per versie aan. Je haalt ze op uit de tag van een
-release:
+De MCP-server biedt de web-types en de changelog van Flux Web Components per versie aan. Je haalt ze op uit de
+tag van een release:
 
 ```bash
 pnpm run flux:web-components:web-types-copy 2.20.0    # tag v2.20.0 naar catalog/flux/2.20.0/web-types/
+pnpm run flux:web-components:changelog-copy 2.20.0    # tag v2.20.0 naar catalog/flux/2.20.0/changelog/
+pnpm run flux:web-components:changelog-cleanup 2.20.0 # enkel de wijzigingen van 2.20.0 in changelog.md
 ```
 
 De versie is verplicht; `2.20.0` en `v2.20.0` mogen allebei. Anders dan bij de Code Connect templates staan de
-versies naast elkaar, elk in een eigen map. Daaronder is `web-types/` plat: de `*.web-types.json` bestanden van
-de tag, zonder de mappen van de bronrepo. Een nieuwe kopie van dezelfde versie vervangt de vorige web-types; de
-rest van de versiemap blijft staan.
+versies naast elkaar, elk in een eigen map. Elk script vult daaronder zijn eigen map: een nieuwe kopie van
+dezelfde versie vervangt enkel die map, de rest van de versiemap blijft staan.
 
-In de bronrepo staat `DOMG-WC-VERSION` waar de versie hoort, onder meer in de doc-urls naar Storybook; het
-script vult de versie in.
+`web-types/` is plat: de `*.web-types.json` bestanden van de tag, zonder de mappen van de bronrepo. In de
+bronrepo staat `DOMG-WC-VERSION` waar de versie hoort, onder meer in de doc-urls naar Storybook; het script vult
+de versie in.
+
+`changelog-copy` zet `CHANGELOG.md` uit `resources/changelog/` van de tag in `changelog/`, met de historiek tot
+en met die release. `changelog-cleanup` houdt daarvan enkel de sectie van de versie zelf over, met de kop erbij,
+en schrijft ze naar `changelog.md`. Dat gebeurt deterministisch op de tekst: een sectie loopt van de versiekop
+tot de volgende. Opnieuw opkuisen geeft hetzelfde resultaat.
 
 ## Code Connect
 
