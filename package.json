@@ -16,7 +16,9 @@
         "figma:descriptions:write": "node ./resources/figma/descriptions/write.mjs",
         "flux:web-components:web-types-copy": "./resources/flux/web-components/web-types-copy.sh",
         "flux:web-components:changelog-copy": "./resources/flux/web-components/changelog-copy.sh",
-        "flux:web-components:changelog-cleanup": "./resources/flux/web-components/changelog-cleanup.sh"
+        "flux:web-components:changelog-cleanup": "./resources/flux/web-components/changelog-cleanup.sh",
+        "flux:web-components:changelog-build": "node ./resources/flux/web-components/changelog-build.mjs",
+        "test": "node --test \"server/test/**/*.test.mjs\""
     },
     "devDependencies": {
         "@figma/code-connect": "2.0.0"

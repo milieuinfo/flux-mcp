@@ -1,0 +1,556 @@
+{
+  "schema": 1,
+  "version": "2.19.0",
+  "date": "2026-08-25",
+  "previous": "2.18.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.18.0...v2.19.0",
+  "summary": null,
+  "migration": null,
+  "counts": {
+    "breaking": 0,
+    "feature": 7,
+    "fix": 10,
+    "docs": 0,
+    "perf": 0,
+    "revert": 0,
+    "other": 0,
+    "a11y": 4,
+    "no-impact": 2
+  },
+  "components": [
+    {
+      "name": "vl-alert",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-alert--documentatie"
+    },
+    {
+      "name": "vl-autocomplete",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-autocomplete--documentatie"
+    },
+    {
+      "name": "vl-description-data",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie"
+    },
+    {
+      "name": "vl-header",
+      "category": "compliance",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-header--documentatie"
+    },
+    {
+      "name": "vl-header-next",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-http-error-message",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-http-error-message--documentatie"
+    },
+    {
+      "name": "vl-link",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-atom-link--documentatie"
+    },
+    {
+      "name": "vl-progress-indicator",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-progress-indicator--documentatie"
+    },
+    {
+      "name": "vl-properties",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-properties--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-toaster",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-toaster--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "ca607d5",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-207"
+      ],
+      "scope": "vl-toaster",
+      "components": [
+        "vl-toaster"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "showAlert verwacht de attribuutnamen",
+      "text": "FLUX-207 - vl-toaster - showAlert verwacht de attribuutnamen",
+      "commits": [
+        {
+          "sha": "ca607d565952487b67e70bb26f0fe67bd076b7f3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ca607d565952487b67e70bb26f0fe67bd076b7f3"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "6139351",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-213"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "screenreader melding bij externe links",
+      "text": "FLUX-213 - vl-link - screenreader melding bij externe links",
+      "commits": [
+        {
+          "sha": "613935152f703f3768248a7149572813a288f229",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/613935152f703f3768248a7149572813a288f229"
+        }
+      ],
+      "closes": [],
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "0ee6e57",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-219"
+      ],
+      "scope": "vl-description-data",
+      "components": [
+        "vl-description-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "label/waarde als description list",
+      "text": "FLUX-219 - vl-description-data - label/waarde als description list",
+      "commits": [
+        {
+          "sha": "0ee6e57fdf2069646fd8ef87c7c5c25fbe123afb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0ee6e57fdf2069646fd8ef87c7c5c25fbe123afb"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "53040a9",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-236"
+      ],
+      "scope": "vl-http-error-message",
+      "components": [
+        "vl-http-error-message"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "debug-info als definitielijst en verwijzing naar adresbalk",
+      "text": "FLUX-236 - vl-http-error-message - debug-info als definitielijst en verwijzing naar adresbalk",
+      "commits": [
+        {
+          "sha": "53040a9aae01156bfb9a62a4bbbcf4e58a9b9b54",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/53040a9aae01156bfb9a62a4bbbcf4e58a9b9b54"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "19f3b89",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-471"
+      ],
+      "scope": "skip-link",
+      "components": [],
+      "topics": [
+        "skip-link"
+      ],
+      "mentions": [],
+      "summary": "ver genoeg scrollen bij sticky header",
+      "text": "FLUX-471 - skip-link - ver genoeg scrollen bij sticky header",
+      "commits": [
+        {
+          "sha": "19f3b89de2700e5959a148ba8178cab4897975d3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/19f3b89de2700e5959a148ba8178cab4897975d3"
+        }
+      ],
+      "closes": [],
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "9d28af3",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-760"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "whitespace tussen properties binnen een column",
+      "text": "FLUX-760 - vl-properties - whitespace tussen properties binnen een column",
+      "commits": [
+        {
+          "sha": "9d28af3f95800ee364c83110f6b5ec1cf2ac9fd1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9d28af3f95800ee364c83110f6b5ec1cf2ac9fd1"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "e1b195c",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-780"
+      ],
+      "scope": "vl-progress-indicator",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "laatste stap valt niet meer buiten de rand",
+      "text": "FLUX-780 - vl-progress-indicator - laatste stap valt niet meer buiten de rand",
+      "commits": [
+        {
+          "sha": "e1b195c0d8db6ad6e60700f85059fae7e66321e2",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e1b195c0d8db6ad6e60700f85059fae7e66321e2"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "cfe65f3",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-784"
+      ],
+      "scope": "vl-progress-indicator",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "verbindingslijnen tussen de stappen hersteld",
+      "text": "FLUX-784 - vl-progress-indicator - verbindingslijnen tussen de stappen hersteld",
+      "commits": [
+        {
+          "sha": "cfe65f3db500990b19f7cbe91b876519f0c57c10",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cfe65f3db500990b19f7cbe91b876519f0c57c10"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "778158e",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-788"
+      ],
+      "scope": "vl-header-next / vl-footer-next",
+      "components": [
+        "vl-header-next",
+        "vl-footer-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "flaky testen en ready-event",
+      "text": "FLUX-788 - vl-header-next / vl-footer-next - flaky testen en ready-event",
+      "commits": [
+        {
+          "sha": "778158e2b32c35111560744b7529ff6681ee0101",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/778158e2b32c35111560744b7529ff6681ee0101"
+        }
+      ],
+      "closes": [],
+      "labels": [
+        "no-impact"
+      ],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "7bbb00d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-790"
+      ],
+      "scope": "storybook",
+      "components": [],
+      "topics": [
+        "storybook"
+      ],
+      "mentions": [],
+      "summary": "de changelog feats hadden de fixes style",
+      "text": "FLUX-790 - storybook - de changelog feats hadden de fixes style",
+      "commits": [
+        {
+          "sha": "7bbb00dc29624b0c433acd4aa98b3ed0fc8ade4f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7bbb00dc29624b0c433acd4aa98b3ed0fc8ade4f"
+        }
+      ],
+      "closes": [],
+      "labels": [
+        "no-impact"
+      ],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "8ec5138",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-207"
+      ],
+      "scope": "vl-alert",
+      "components": [
+        "vl-alert"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "instelbare ARIA-rol per context",
+      "text": "FLUX-207 - vl-alert - instelbare ARIA-rol per context",
+      "commits": [
+        {
+          "sha": "8ec5138d54a8680bbf5d4c93f7f72c328c357b27",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8ec5138d54a8680bbf5d4c93f7f72c328c357b27"
+        }
+      ],
+      "closes": [],
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "03eff7a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-471"
+      ],
+      "scope": "vl-header, vl-header-next",
+      "components": [
+        "vl-header",
+        "vl-header-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "skip-to-content link (WCAG 2.4.1)",
+      "text": "FLUX-471 - vl-header, vl-header-next - skip-to-content link (WCAG 2.4.1)",
+      "commits": [
+        {
+          "sha": "03eff7a02dd37ccb214e1966c7824e1133f39df9",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/03eff7a02dd37ccb214e1966c7824e1133f39df9"
+        }
+      ],
+      "closes": [],
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [
+        "2.4.1"
+      ],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "2f7dc51",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-610"
+      ],
+      "scope": "cross-validatie",
+      "components": [],
+      "topics": [
+        "cross-validatie"
+      ],
+      "mentions": [],
+      "summary": "dependencySelectors via CrossValidationMixin met voorbeelden en docs",
+      "text": "FLUX-610 - cross-validatie - dependencySelectors via CrossValidationMixin met voorbeelden en docs",
+      "commits": [
+        {
+          "sha": "2f7dc5151d001bf9d9f51f820dc28533332bd95f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2f7dc5151d001bf9d9f51f820dc28533332bd95f"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "8a0bb40",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-658"
+      ],
+      "scope": "CompositeFormControl",
+      "components": [],
+      "topics": [
+        "CompositeFormControl"
+      ],
+      "mentions": [],
+      "summary": "basisklasse voor samengestelde velden",
+      "text": "FLUX-658 - CompositeFormControl - basisklasse voor samengestelde velden",
+      "commits": [
+        {
+          "sha": "8a0bb4053fc6488faed6b2bc7857db6ad43e2a44",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8a0bb4053fc6488faed6b2bc7857db6ad43e2a44"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "d45b5e1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-757"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "value-bold attribuut toegevoegd",
+      "text": "FLUX-757 - vl-properties - value-bold attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "d45b5e131b31ab792993c136083b6a7ca26fc4f4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d45b5e131b31ab792993c136083b6a7ca26fc4f4"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "995a202",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-773"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "itemTemplate voor eigen optie-inhoud",
+      "text": "FLUX-773 - vl-select-rich - itemTemplate voor eigen optie-inhoud",
+      "commits": [
+        {
+          "sha": "995a202e125b78421bdd1f5e7bbe075c6a297f05",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/995a202e125b78421bdd1f5e7bbe075c6a297f05"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    },
+    {
+      "id": "cfd208b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-782"
+      ],
+      "scope": "vl-autocomplete",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "itemTemplate property toegevoegd",
+      "text": "FLUX-782 - vl-autocomplete - itemTemplate property toegevoegd",
+      "commits": [
+        {
+          "sha": "cfd208b9fd6d6e9f048365f5b391219b4eb16656",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cfd208b9fd6d6e9f048365f5b391219b4eb16656"
+        }
+      ],
+      "closes": [],
+      "labels": [],
+      "wcag": [],
+      "note": null,
+      "migration": null
+    }
+  ],
+  "api": null,
+  "apiUnavailable": "Geen web-types voor 2.18.0 in de catalogus."
+}

@@ -12,13 +12,15 @@ per component, die hier in git leeft.
 
 | Folder                | Inhoud                                                              |
 |-----------------------|---------------------------------------------------------------------|
-| `server/`             | de MCP-server zelf                                                  |
-| `catalog/flux/`       | wat de MCP-server aanbiedt: `<versie>/web-types/` en `<versie>/changelog/` van die Flux-release |
+| `server/`             | de MCP-server zelf; voorlopig de queries op de catalogus (`src/`) en hun tests (`test/`) |
+| `catalog/flux/`       | wat de MCP-server aanbiedt: `<versie>/web-types/`, `<versie>/changelog/` en `<versie>/annotations/` van die Flux-release |
 | `catalog/figma/`      | wat we naar Figma schrijven: `code-connect/v2/` (de templates) en `descriptions/v2/` (de kennis per component) |
+| `docs/beslissingen/`  | ADR's: de beslissingen en waarom (`ADR-000-template.md` is het sjabloon) |
 | `prompts/`            | MCP-prompts die de server aanbiedt (concept)                        |
 | `resources/`          | scripts enzo                                                        |
 
-Alle scripts lopen via `pnpm run` (zie `package.json`); installeer eerst met `pnpm install`.
+Alle scripts lopen via `pnpm run` (zie `package.json`); installeer eerst met `pnpm install`. De tests draaien
+met `pnpm test`.
 
 ## TL;DR: Figma na een release
 
@@ -66,6 +68,7 @@ tag van een release:
 pnpm run flux:web-components:web-types-copy 2.20.0    # tag v2.20.0 naar catalog/flux/2.20.0/web-types/
 pnpm run flux:web-components:changelog-copy 2.20.0    # tag v2.20.0 naar catalog/flux/2.20.0/changelog/
 pnpm run flux:web-components:changelog-cleanup 2.20.0 # enkel de wijzigingen van 2.20.0 in changelog.md
+pnpm run flux:web-components:changelog-build 2.20.0   # changelog.json: wat de MCP-server over 2.20.0 aanbiedt
 ```
 
 De versie is verplicht; `2.20.0` en `v2.20.0` mogen allebei. Anders dan bij de Code Connect templates staan de
@@ -80,6 +83,92 @@ de versie in.
 en met die release. `changelog-cleanup` houdt daarvan enkel de sectie van de versie zelf over, met de kop erbij,
 en schrijft ze naar `changelog.md`. Dat gebeurt deterministisch op de tekst: een sectie loopt van de versiekop
 tot de volgende. Opnieuw opkuisen geeft hetzelfde resultaat.
+
+### changelog.json
+
+`changelog-build` zet `changelog.md` om naar `changelog.json` ernaast. Dat bestand is wat de MCP-server over een
+versie aanbiedt. Het is gegenereerd en komt mee in git, zodat een PR toont wat de server zal tonen. De keuzes
+en het waarom staan in [ADR-001](docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md).
+
+```bash
+pnpm run flux:web-components:changelog-build 2.20.0          # één versie
+pnpm run flux:web-components:changelog-build --all           # alle versies in de catalogus
+pnpm run flux:web-components:changelog-build --check         # faalt als een changelog.json niet meer klopt
+```
+
+Wat erin staat:
+
+- **Per entry:** het type (`breaking`, `feature`, `fix`, `docs`, …), de issues (`FLUX-809`), de componenten uit
+  de scope, de thema's (`form-control`), de componenten die de tekst noemt, de commits en de labels.
+- **Per versie:**
+  - de datum en de vorige versie;
+  - tellingen per type en label;
+  - de betrokken componenten, met de Storybook-link van die versie;
+  - een API-diff tegen de web-types van de vorige versie. De diff toont attributen, slots, properties en
+    events die erbij kwamen, verdwenen of wijzigden. Elk element krijgt `inChangelog`, zodat een wijziging
+    zonder changelog-entry opvalt. Staan de web-types van de vorige versie niet in de catalogus, dan zegt
+    `apiUnavailable` waarom er geen diff is.
+
+Welke labels er zijn:
+
+- **`no-impact`:** een afnemer mag het weten, maar het raakt zijn project niet. Denk aan testen, CI, tooling, de
+  build van Flux zelf, en alle documentatie: documentatie wijzigt geen project, ook niet als ze nuttig is om te
+  lezen.
+- **`a11y`:** wijzigingen aan toegankelijkheid. Staat er een WCAG-criterium in de tekst, dan komt dat in
+  `wcag`.
+
+De labels komen uit vaste regels bovenaan `server/src/changelog.mjs`. Na het bouwen toont het script drie
+lijsten:
+
+- de entries zonder impact;
+- de entries over toegankelijkheid;
+- de entries die **te beoordelen** zijn: volgens de regels hebben ze impact, maar ze noemen geen component.
+
+In die laatste lijst zitten de missers, zoals "migratie van npm naar pnpm": een wijziging aan de eigen build
+zonder signaalwoord. Leg je oordeel vast met een annotatie, dan verdwijnt de entry uit de lijst.
+
+Klopt een label niet, of wil je een afnemer meer vertellen dan de changelog doet, gebruik dan
+`catalog/flux/<versie>/annotations/changelog.json`. Dat bestand is optioneel. De sleutel van een entry is haar
+`id` in `changelog.json`, de korte sha van de commit.
+
+```json
+{
+  "summary": "Korte samenvatting voor afnemers.",
+  "migration": "Wat een afnemer bij deze upgrade moet doen.",
+  "entries": {
+    "6899016": { "labels": { "no-impact": true } },
+    "f2a3414": { "note": "…", "migration": "…" }
+  }
+}
+```
+
+De annotaties staan bewust buiten `changelog/`, want `changelog-copy` vervangt die map. Een onbekende entry of
+sleutel laat de build falen. Bouw na een wijziging opnieuw. Gebruik `--all` ook wanneer de web-types van een
+vorige versie later binnenkomen: de API-diff van de volgende versie hangt ervan af.
+
+### Queries voor de server
+
+`server/src/catalog.mjs` beantwoordt de vragen over de changelog als gewone functies. De MCP-server hangt ze
+later aan tools en resources.
+
+| Functie                                   | Vraag                                                                      |
+|-------------------------------------------|----------------------------------------------------------------------------|
+| `listVersions()`                          | welke versies zijn er?                                                     |
+| `getChangelog(versie, filters)`           | wat veranderde er in één versie? Filters: type, component, label           |
+| `getChangesBetween(van, tot, filters)`    | wat verandert er bij een upgrade? Eerst breaking, dan features, fixes en docs, per component, met migratie-notities en de netto API-diff |
+| `getComponentHistory(component, bereik)`  | wat veranderde er per versie aan één component?                           |
+| `findChanges(zoekterm)`                   | in welke versie zit `FLUX-800`, of een wijziging over "focus side-sheet"? |
+
+Wat een entry met `no-impact` doet, hangt af van de vraag:
+
+- `getChangelog` en `findChanges` tonen ze, met het label erbij, want een afnemer mag weten wat er nieuw is.
+- `getChangesBetween` en `getComponentHistory` laten ze standaard weg, want bij een upgrade telt enkel wat het
+  project raakt.
+
+`hiddenNoImpact` zegt hoeveel entries er wegvielen, en met `includeNoImpact` toon je ze toch.
+
+Ontbreekt er een versie in de keten, dan zegt `getChangesBetween` dat met `complete: false`, `missing` en een
+`warning`. Oudere versies halen we niet op: de catalogus begint bij 2.19.0.
 
 ## Code Connect
 
