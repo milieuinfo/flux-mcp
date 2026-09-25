@@ -17,6 +17,7 @@
         "flux:web-components:web-types-copy": "./resources/flux/web-components/web-types-copy.sh",
         "flux:web-components:changelog-copy": "./resources/flux/web-components/changelog-copy.sh",
         "flux:web-components:changelog-cleanup": "./resources/flux/web-components/changelog-cleanup.sh",
+        "flux:web-components:changelog-commits": "node ./resources/flux/web-components/changelog-commits.mjs",
         "flux:web-components:changelog-build": "node ./resources/flux/web-components/changelog-build.mjs",
         "test": "node --test \"server/test/**/*.test.mjs\""
     },

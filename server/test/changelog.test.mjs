@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, test } from 'node:test';
-import { applyAnnotations, buildRelease, deriveLabels, parseChangelog } from '../src/changelog.mjs';
+import { buildRelease, deriveImpact, deriveLabels, parseChangelog, sourceOf, validateAnalysis } from '../src/changelog.mjs';
 
 const REPO = 'https://github.com/milieuinfo/flux-web-components';
 const commit = (sha) => `([${sha.slice(0, 7)}](${REPO}/commit/${sha}))`;
@@ -185,19 +185,52 @@ describe('parseChangelog: entries', () => {
     });
 });
 
+// Feiten zoals changelog-commits ze schrijft, voor één commit.
+const facts = (sha, overrides = {}) => ({
+    sha,
+    body: null,
+    published: true,
+    areas: { code: 1 },
+    publishedFiles: ['libs/components/src/block/alert/vl-alert.component.ts'],
+    storybook: [],
+    ...overrides,
+});
+
+describe('deriveImpact', () => {
+    const impact = (line, section = 'Bug Fixes', source = null) => deriveImpact(entry(`${line} ${commit(SHA_A)}`, section), source);
+
+    test('breaking vraagt altijd actie', () => {
+        assert.equal(deriveImpact(entry('start van v2', 'BREAKING CHANGES'), null), 'action');
+    });
+
+    test('met de feiten uit de commit: raakt ze de packages niet, dan geen impact', () => {
+        const tooling = facts(SHA_A, { published: false, areas: { tooling: 39 }, publishedFiles: [] });
+        assert.equal(impact('FLUX-708 - migratie van npm naar pnpm', 'Features', tooling), 'none');
+    });
+
+    test('met de feiten uit de commit wegen die zwaarder dan signaalwoorden', () => {
+        // "flaky testen" in de tekst, maar de commit wijzigt de code van de component.
+        assert.equal(impact('FLUX-788 - vl-header-next - flaky testen en ready-event', 'Bug Fixes', facts(SHA_A)), 'automatic');
+    });
+
+    test('een feature is een nieuwe mogelijkheid, een fix komt automatisch', () => {
+        assert.equal(impact('FLUX-809 - vl-alert - banner variant', 'Features', facts(SHA_A)), 'opt-in');
+        assert.equal(impact('FLUX-800 - vl-breadcrumb-item - focus outline', 'Bug Fixes', facts(SHA_A)), 'automatic');
+    });
+
+    test('zonder de feiten: documentatie en signaalwoorden geven geen impact', () => {
+        assert.equal(impact("FLUX-708 - recept 'Van npm naar pnpm' voor afnemers", 'Documentation'), 'none');
+        assert.equal(impact('FLUX-795 - Critical dependency waarschuwingen van cypress-axe onderdrukt'), 'none');
+        assert.equal(impact('FLUX-790 - storybook - de changelog feats hadden de fixes style'), 'none');
+        assert.equal(impact('FLUX-809 - vl-alert - banner variant', 'Features'), 'opt-in');
+    });
+});
+
 describe('deriveLabels', () => {
-    const labels = (line) => deriveLabels(entry(`${line} ${commit(SHA_A)}`));
+    const labels = (line, source = null) => deriveLabels(entry(`${line} ${commit(SHA_A)}`), source);
 
-    test('cypress-axe heeft geen impact en is geen toegankelijkheid', () => {
-        assert.deepEqual(labels('FLUX-795 - Critical dependency waarschuwingen van cypress-axe onderdrukt').labels, ['no-impact']);
-    });
-
-    test('flaky testen hebben geen impact', () => {
-        assert.deepEqual(labels('FLUX-788 - vl-header-next / vl-footer-next - flaky testen en ready-event').labels, ['no-impact']);
-    });
-
-    test('storybook als scope heeft geen impact', () => {
-        assert.deepEqual(labels('FLUX-790 - storybook - de changelog feats hadden de fixes style').labels, ['no-impact']);
+    test('cypress-axe is geen toegankelijkheid', () => {
+        assert.deepEqual(labels('FLUX-795 - Critical dependency waarschuwingen van cypress-axe onderdrukt').labels, []);
     });
 
     test('aria is toegankelijkheid', () => {
@@ -210,57 +243,95 @@ describe('deriveLabels', () => {
         assert.deepEqual(result.wcag, ['2.4.1']);
     });
 
+    test('ook de uitleg in de commit telt mee', () => {
+        const body = 'De paren worden nu als description list gerenderd, zodat screenreaders ze aankondigen.';
+        assert.deepEqual(labels('FLUX-219 - vl-description-data - label/waarde als description list', facts(SHA_A, { body })).labels, [
+            'a11y',
+        ]);
+    });
+
     test('een gewone wijziging krijgt geen labels', () => {
         assert.deepEqual(labels('FLUX-809 - vl-alert - banner variant'), { labels: [], wcag: [] });
     });
+});
 
-    test('documentatie heeft geen impact, ook met toegankelijkheid erin', () => {
-        const docs = (line) => deriveLabels(entry(`${line} ${commit(SHA_A)}`, 'Documentation')).labels;
-        assert.deepEqual(docs("FLUX-708 - recept 'Van npm naar pnpm' voor afnemers"), ['no-impact']);
-        assert.deepEqual(docs('FLUX-802 - componenten overzicht - WCAG status'), ['a11y', 'no-impact']);
+describe('sourceOf', () => {
+    const commits = (list) => ({ version: '2.20.0', commits: Object.fromEntries(list.map((f) => [f.sha, f])) });
+
+    test('zonder commits.json geen feiten', () => {
+        assert.equal(sourceOf(entry(`iets ${commit(SHA_A)}`), null), null);
     });
 
-    test('een wijziging aan de eigen build zonder signaalwoord valt erdoor: daarvoor dient een annotatie', () => {
-        assert.deepEqual(deriveLabels(entry(`FLUX-708 - migratie van npm naar pnpm ${commit(SHA_A)}`, 'Features')).labels, []);
+    test('een entry zonder commit heeft geen feiten', () => {
+        assert.equal(sourceOf(entry('start van v2', 'BREAKING CHANGES'), commits([])), null);
+    });
+
+    test('meerdere commits worden samengevoegd', () => {
+        const line = `FLUX-1 - vl-alert - iets ([aaaaaaa](${REPO}/commit/${SHA_A}), [bbbbbbb](${REPO}/commit/${SHA_B}))`;
+        const page = (added) => ({ id: 'components-block-alert--documentatie', title: 'alert', url: 'u', added });
+        const source = sourceOf(
+            entry(line),
+            commits([
+                facts(SHA_A, { body: 'Eerste.', published: false, areas: { docs: 1 }, publishedFiles: [], storybook: [page('A')] }),
+                facts(SHA_B, { body: 'Tweede.', storybook: [page('B')] }),
+            ]),
+        );
+        assert.equal(source.body, 'Eerste.\n\nTweede.');
+        assert.equal(source.published, true);
+        assert.deepEqual(source.areas, { docs: 1, code: 1 });
+        assert.deepEqual(source.storybook, [page('A\n\n[…]\n\nB')]);
+    });
+
+    test('een commit die ontbreekt in commits.json is een fout', () => {
+        assert.throws(() => sourceOf(entry(`iets ${commit(SHA_A)}`), commits([])), /changelog-commits 2\.20\.0/);
     });
 });
 
-describe('applyAnnotations', () => {
-    const release = () => ({
-        summary: null,
-        migration: null,
-        entries: [
-            { id: 'aaaaaaa', labels: ['no-impact'], note: null, migration: null },
-            { id: 'bbbbbbb', labels: [], note: null, migration: null },
-        ],
+describe('validateAnalysis', () => {
+    const ids = ['aaaaaaa', 'bbbbbbb'];
+
+    test('een geldige analyse', () => {
+        assert.doesNotThrow(() =>
+            validateAnalysis(
+                {
+                    summary: 'Samenvatting',
+                    entries: {
+                        aaaaaaa: { impact: 'action', explanation: 'Uitleg', action: 'Doe dit', example: '```html\n…\n```' },
+                        bbbbbbb: { impact: 'none', explanation: 'Uitleg', a11y: false },
+                    },
+                },
+                ids,
+            ),
+        );
     });
 
-    test('zonder annotaties blijft alles hetzelfde', () => {
-        assert.deepEqual(applyAnnotations(release(), null), release());
-    });
-
-    test('samenvatting, migratie, notitie en labels', () => {
-        const result = applyAnnotations(release(), {
-            summary: 'Samenvatting',
-            migration: 'Doe dit',
+    test('fouten worden allemaal gemeld, met de bron erbij', () => {
+        const analysis = {
+            titel: 'x',
             entries: {
-                aaaaaaa: { labels: { 'no-impact': false, a11y: true }, note: 'Toch belangrijk' },
-                bbbbbbb: { migration: 'Vervang X door Y' },
+                zzzzzzz: { impact: 'none', explanation: 'x' },
+                aaaaaaa: { impact: 'dringend', explanation: '', notitie: 'x' },
+                bbbbbbb: { impact: 'opt-in', explanation: 'x', action: 'Doe dit', a11y: 'ja' },
             },
-        });
-        assert.equal(result.summary, 'Samenvatting');
-        assert.equal(result.migration, 'Doe dit');
-        assert.deepEqual(result.entries[0], { id: 'aaaaaaa', labels: ['a11y'], note: 'Toch belangrijk', migration: null });
-        assert.equal(result.entries[1].migration, 'Vervang X door Y');
+        };
+        assert.throws(
+            () => validateAnalysis(analysis, ids, 'test.json'),
+            (error) =>
+                [
+                    /test\.json/,
+                    /onbekende sleutel 'titel'/,
+                    /onbekende entry 'zzzzzzz'/,
+                    /'impact' moet een van/,
+                    /'explanation' moet/,
+                    /onbekende sleutel 'notitie'/,
+                    /'action' hoort enkel bij impact 'action'/,
+                    /'a11y' moet true of false/,
+                ].every((pattern) => pattern.test(error.message)),
+        );
     });
 
-    test('een onbekende entry, sleutel of label is een fout', () => {
-        assert.throws(() => applyAnnotations(release(), { entries: { zzzzzzz: { note: 'x' } } }, 'test.json'), /test\.json[\s\S]*zzzzzzz/);
-        assert.throws(() => applyAnnotations(release(), { titel: 'x' }), /onbekende sleutel 'titel'/);
-        assert.throws(() => applyAnnotations(release(), { entries: { aaaaaaa: { notitie: 'x' } } }), /onbekende sleutel 'notitie'/);
-        assert.throws(() => applyAnnotations(release(), { entries: { aaaaaaa: { labels: { breaking: true } } } }), /onbekend label/);
-        assert.throws(() => applyAnnotations(release(), { entries: { aaaaaaa: { labels: { a11y: 'ja' } } } }), /true of false/);
-        assert.throws(() => applyAnnotations(release(), { summary: '' }), /niet-lege tekst/);
+    test("impact 'action' vraagt een action", () => {
+        assert.throws(() => validateAnalysis({ entries: { aaaaaaa: { impact: 'action', explanation: 'x' } } }, ids), /vraagt een 'action'/);
     });
 });
 
@@ -286,13 +357,21 @@ describe('buildRelease', () => {
         ['vl-alert', { category: 'block', element: element('vl-alert', { attributes: [] }) }],
         ['vl-button', { category: 'atom', element: element('vl-button') }],
     ]);
+    const commits = {
+        version: '2.20.0',
+        commits: {
+            [SHA_A]: facts(SHA_A, { body: 'Een banner over de volle breedte.' }),
+            [SHA_B]: facts(SHA_B),
+            [SHA_C]: facts(SHA_C, { published: false, areas: { tests: 2 }, publishedFiles: [] }),
+        },
+    };
 
     test('tellingen, componenten en API-diff', () => {
         const release = buildRelease({ markdown, webTypes, previousWebTypes });
         assert.equal(release.schema, 1);
-        assert.equal(release.counts.feature, 2);
-        assert.equal(release.counts.fix, 1);
-        assert.equal(release.counts['no-impact'], 1);
+        assert.deepEqual(release.counts.type, { breaking: 0, feature: 2, fix: 1, docs: 0, perf: 0, revert: 0, other: 0 });
+        // Zonder commits.json: 'flaky testen' geeft geen impact.
+        assert.deepEqual(release.counts.impact, { action: 0, 'opt-in': 2, automatic: 0, none: 1 });
         // De entry over vl-button zonder impact telt niet mee; vl-header-next staat niet in de web-types.
         assert.deepEqual(release.components, [
             { name: 'vl-alert', category: 'block', docUrl: 'https://storybook/vl-alert' },
@@ -302,6 +381,7 @@ describe('buildRelease', () => {
         assert.equal(release.api.changed[0].element, 'vl-alert');
         assert.equal(release.api.changed[0].inChangelog, true);
         assert.equal(release.apiUnavailable, null);
+        assert.ok(release.entries.every((e) => e.source === null && e.impactSource === 'derived'));
     });
 
     test('zonder web-types van de vorige versie geen API-diff, met de reden', () => {
@@ -310,14 +390,42 @@ describe('buildRelease', () => {
         assert.equal(release.apiUnavailable, 'Geen web-types voor 2.19.0 in de catalogus.');
     });
 
-    test('annotaties komen in het resultaat', () => {
-        const release = buildRelease({ markdown, annotations: { entries: { ccccccc: { labels: { 'no-impact': false } } } } });
-        assert.deepEqual(release.entries[2].labels, []);
-        assert.equal(release.counts['no-impact'], 0);
+    test('de feiten uit de commits komen bij de entry', () => {
+        const release = buildRelease({ markdown, commits });
+        assert.equal(release.entries[0].source.body, 'Een banner over de volle breedte.');
+        assert.equal(release.entries[2].impact, 'none');
+    });
+
+    test('commits.json van een andere versie is een fout', () => {
+        assert.throws(() => buildRelease({ markdown, commits: { ...commits, version: '2.19.0' } }), /hoort bij 2\.19\.0/);
+    });
+
+    test('de analyse bepaalt impact, uitleg, actie en voorbeeld', () => {
+        const analysis = {
+            summary: 'Een banner en een fix.',
+            entries: {
+                aaaaaaa: { impact: 'opt-in', explanation: 'Met banner …', example: '```html\n<vl-alert banner></vl-alert>\n```' },
+                bbbbbbb: { impact: 'action', explanation: 'Het event komt nu op het element.', action: 'Luister op het element.', a11y: true },
+            },
+        };
+        const release = buildRelease({ markdown, commits, analysis });
+        assert.equal(release.summary, 'Een banner en een fix.');
+        const [banner, header, button] = release.entries;
+        assert.equal(banner.impactSource, 'analysis');
+        assert.equal(banner.example, '```html\n<vl-alert banner></vl-alert>\n```');
+        assert.equal(header.impact, 'action');
+        assert.equal(header.action, 'Luister op het element.');
+        assert.deepEqual(header.labels, ['a11y']);
+        assert.equal(button.impactSource, 'derived');
+        assert.equal(release.counts.impact.action, 1);
+    });
+
+    test('een analyse die niet klopt, laat de build falen', () => {
+        assert.throws(() => buildRelease({ markdown, analysis: { entries: { zzzzzzz: {} } }, analysisSource: 'x.json' }), /x\.json/);
     });
 
     test('deterministisch', () => {
-        const build = () => JSON.stringify(buildRelease({ markdown, webTypes, previousWebTypes }));
+        const build = () => JSON.stringify(buildRelease({ markdown, commits, webTypes, previousWebTypes }));
         assert.equal(build(), build());
     });
 });

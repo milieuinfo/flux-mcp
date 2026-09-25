@@ -2,8 +2,12 @@
 //
 // De bron is catalog/flux/<versie>/changelog/changelog.md: de sectie van die release uit de changelog van
 // conventional-changelog, zoals changelog-cleanup ze overhoudt. Het resultaat is changelog.json ernaast: elke
-// entry met type, issues, componenten en labels, aangevuld met de handmatige annotaties uit
-// catalog/flux/<versie>/annotations/changelog.json en met de API-diff tegen de web-types van de vorige versie.
+// entry met type, issues, componenten, impact en labels, aangevuld met:
+//   - de feiten uit de commits (commits.json, van changelog-commits): de uitleg in de commit message, of de
+//     wijziging de packages van een afnemer raakt, en de Storybook-pagina's met de documentatie die erbij kwam;
+//   - de analyse per entry (catalog/flux/<versie>/analysis/changelog.json, zie prompts/changelog-analyse.md): de
+//     impact voor een afnemer, een uitleg voor hem, wat hij moet doen en een voorbeeld;
+//   - de API-diff tegen de web-types van de vorige versie.
 // De keuzes staan in docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md.
 
 import fs from 'node:fs';
@@ -15,9 +19,14 @@ export const SCHEMA = 1;
 
 // In deze volgorde verschijnen de types in tellingen en overzichten: wat een afnemer eerst moet weten, eerst.
 export const TYPES = ['breaking', 'feature', 'fix', 'docs', 'perf', 'revert', 'other'];
-// 'no-impact': een afnemer mag het weten, maar het raakt zijn project niet (testen, CI, tooling en de
-// documentatie van Flux zelf). 'a11y': een wijziging aan toegankelijkheid.
-export const LABELS = ['a11y', 'no-impact'];
+// Wat een wijziging voor het project van een afnemer betekent, van meest naar minst dringend:
+//   action:    hij moet iets aanpassen of nakijken;
+//   opt-in:    een nieuwe mogelijkheid die hij zelf moet gebruiken;
+//   automatic: hij krijgt ze mee door te upgraden, zonder iets te doen;
+//   none:      hij mag het weten, maar het raakt zijn project niet (testen, tooling, documentatie).
+export const IMPACTS = ['action', 'opt-in', 'automatic', 'none'];
+// 'a11y': een wijziging aan toegankelijkheid.
+export const LABELS = ['a11y'];
 
 // Sectietitel → type. Een onbekende sectie wordt 'other'; de titel zelf blijft bewaard in 'section'.
 const SECTION_TYPES = [
@@ -47,8 +56,8 @@ const BOLD_SCOPE = /^\*\*([^*]+):\*\*\s*(.*)$/;
 const COMPONENT = /^vl-[a-z0-9]+(?:-[a-z0-9]+)*$/i;
 const COMPONENT_IN_TEXT = /\bvl-[a-z0-9]+(?:-[a-z0-9]+)*/g;
 
-// Types die het project van een afnemer nooit raken: documentatie wijzigt geen project, ook niet als ze nuttig
-// is om te lezen.
+// Zonder de feiten uit de commits leiden deze regels 'none' af. Documentatie wijzigt geen project, ook niet als ze
+// nuttig is om te lezen.
 const NO_IMPACT_TYPES = ['docs'];
 // Scope-onderdelen die over het project Flux zelf gaan, niet over wat een afnemer gebruikt.
 const NO_IMPACT_TOPICS = [/storybook/i, /cypress/i, /\bbuild\b/i, /\bagents?\b/i, /onderhoud/i, /-release\b/i, /monorepo/i, /\bbranches?\b/i];
@@ -71,8 +80,8 @@ const A11Y_TEXT = [
 // Een WCAG-succescriterium, bv. 2.4.1; enkel gezocht in een tekst die WCAG noemt.
 const WCAG_CRITERION = /\b[1-4]\.\d{1,2}\.\d{1,2}\b/g;
 
-const ANNOTATION_KEYS = ['summary', 'migration', 'entries'];
-const ENTRY_ANNOTATION_KEYS = ['note', 'migration', 'labels'];
+const ANALYSIS_KEYS = ['summary', 'entries'];
+const ENTRY_ANALYSIS_KEYS = ['impact', 'explanation', 'action', 'example', 'a11y'];
 
 const unique = (values) => [...new Set(values)];
 
@@ -197,18 +206,63 @@ export function parseChangelog(markdown) {
     return { ...release, entries };
 }
 
-// De labels die uit het type en de tekst af te leiden zijn. Een annotatie kan ze overschrijven.
-export function deriveLabels(entry) {
-    const text = entry.text;
-    const labels = [];
-    if (A11Y_TEXT.some((pattern) => pattern.test(text))) labels.push('a11y');
-    if (
+
+const sum = (objects) => {
+    const total = {};
+    for (const object of objects) for (const [key, count] of Object.entries(object)) total[key] = (total[key] ?? 0) + count;
+    return total;
+};
+
+// De feiten van de commits achter een entry, samengevoegd; null als er geen zijn (bv. een breaking change zonder
+// commit) of als commits.json ontbreekt.
+export function sourceOf(entry, commits) {
+    if (!commits) return null;
+    const facts = entry.commits.map(({ sha }) => {
+        const found = commits.commits?.[sha];
+        if (!found) {
+            throw new Error(
+                `commits.json mist commit ${sha.slice(0, 7)} van '${entry.text}'. ` +
+                    `Haal ze opnieuw op: pnpm run flux:web-components:changelog-commits ${commits.version}`,
+            );
+        }
+        return found;
+    });
+    if (facts.length === 0) return null;
+    const pages = new Map();
+    for (const page of facts.flatMap((fact) => fact.storybook)) {
+        const known = pages.get(page.id);
+        const added = [known?.added, page.added].filter(Boolean).join('\n\n[…]\n\n') || null;
+        pages.set(page.id, { ...page, added });
+    }
+    return {
+        body: facts.map((fact) => fact.body).filter(Boolean).join('\n\n') || null,
+        published: facts.some((fact) => fact.published),
+        areas: sum(facts.map((fact) => fact.areas)),
+        publishedFiles: unique(facts.flatMap((fact) => fact.publishedFiles)).sort(),
+        storybook: [...pages.values()].sort((a, b) => a.id.localeCompare(b.id)),
+    };
+}
+
+// De impact zonder analyse. Met de feiten uit de commits beslist of de packages van een afnemer geraakt worden;
+// zonder die feiten vallen we terug op het type en op signaalwoorden in de tekst.
+export function deriveImpact(entry, source) {
+    if (entry.type === 'breaking') return 'action';
+    if (source) {
+        if (!source.published) return 'none';
+    } else if (
         NO_IMPACT_TYPES.includes(entry.type) ||
         entry.topics.some((topic) => NO_IMPACT_TOPICS.some((pattern) => pattern.test(topic))) ||
-        NO_IMPACT_TEXT.some((pattern) => pattern.test(text))
+        NO_IMPACT_TEXT.some((pattern) => pattern.test(entry.text))
     ) {
-        labels.push('no-impact');
+        return 'none';
     }
+    return entry.type === 'feature' ? 'opt-in' : 'automatic';
+}
+
+// De labels en WCAG-criteria uit de changelog-tekst en de uitleg in de commit. De analyse kan 'a11y' overschrijven.
+export function deriveLabels(entry, source = null) {
+    const text = [entry.text, source?.body].filter(Boolean).join('\n');
+    const labels = A11Y_TEXT.some((pattern) => pattern.test(text)) ? ['a11y'] : [];
     const wcag = /\bwcag\b/i.test(text) ? unique(text.match(WCAG_CRITERION) ?? []).sort() : [];
     return { labels, wcag };
 }
@@ -216,86 +270,77 @@ export function deriveLabels(entry) {
 const isText = (value) => typeof value === 'string' && value.trim() !== '';
 const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 
-// Voegt de handmatige annotaties samen met de geparste release. Een onbekende entry of sleutel is een fout: zo
-// verrotten annotaties niet stil wanneer een changelog opnieuw opgehaald wordt.
-export function applyAnnotations(release, annotations, source = 'de annotaties') {
-    if (annotations == null) return release;
+// Controleert de analyse van een versie. Een onbekende entry of sleutel is een fout: zo past de analyse altijd bij
+// de changelog waarvoor ze geschreven is.
+export function validateAnalysis(analysis, ids, source = 'de analyse') {
     const errors = [];
-    if (!isObject(annotations)) throw new Error(`Fout in ${source}: verwacht een object.`);
-
-    for (const key of Object.keys(annotations)) {
-        if (!ANNOTATION_KEYS.includes(key)) errors.push(`onbekende sleutel '${key}'`);
+    if (!isObject(analysis)) throw new Error(`Fout in ${source}: verwacht een object.`);
+    for (const key of Object.keys(analysis)) {
+        if (!ANALYSIS_KEYS.includes(key)) errors.push(`onbekende sleutel '${key}'`);
     }
-    for (const key of ['summary', 'migration']) {
-        if (key in annotations && !isText(annotations[key])) errors.push(`'${key}' moet een niet-lege tekst zijn`);
-    }
-    const byId = annotations.entries ?? {};
-    if (!isObject(byId)) errors.push(`'entries' moet een object zijn, per entry-id`);
+    if ('summary' in analysis && !isText(analysis.summary)) errors.push(`'summary' moet een niet-lege tekst zijn`);
+    const entries = analysis.entries ?? {};
+    if (!isObject(entries)) errors.push(`'entries' moet een object zijn, per entry-id`);
 
-    const ids = new Set(release.entries.map((entry) => entry.id));
-    for (const [id, annotation] of Object.entries(isObject(byId) ? byId : {})) {
-        if (!ids.has(id)) {
+    for (const [id, item] of Object.entries(isObject(entries) ? entries : {})) {
+        if (!ids.includes(id)) {
             errors.push(`onbekende entry '${id}'`);
             continue;
         }
-        if (!isObject(annotation)) {
+        if (!isObject(item)) {
             errors.push(`entry '${id}' moet een object zijn`);
             continue;
         }
-        for (const key of Object.keys(annotation)) {
-            if (!ENTRY_ANNOTATION_KEYS.includes(key)) errors.push(`entry '${id}': onbekende sleutel '${key}'`);
+        for (const key of Object.keys(item)) {
+            if (!ENTRY_ANALYSIS_KEYS.includes(key)) errors.push(`entry '${id}': onbekende sleutel '${key}'`);
         }
-        for (const key of ['note', 'migration']) {
-            if (key in annotation && !isText(annotation[key])) errors.push(`entry '${id}': '${key}' moet een niet-lege tekst zijn`);
-        }
-        if ('labels' in annotation) {
-            if (!isObject(annotation.labels)) {
-                errors.push(`entry '${id}': 'labels' moet een object zijn, bv. { "no-impact": false }`);
-            } else {
-                for (const [label, on] of Object.entries(annotation.labels)) {
-                    if (!LABELS.includes(label)) errors.push(`entry '${id}': onbekend label '${label}' (${LABELS.join(', ')})`);
-                    else if (typeof on !== 'boolean') errors.push(`entry '${id}': label '${label}' moet true of false zijn`);
-                }
-            }
-        }
+        if (!IMPACTS.includes(item.impact)) errors.push(`entry '${id}': 'impact' moet een van ${IMPACTS.join(', ')} zijn`);
+        if (!isText(item.explanation)) errors.push(`entry '${id}': 'explanation' moet een niet-lege tekst zijn`);
+        if (item.impact === 'action' && !isText(item.action)) errors.push(`entry '${id}': impact 'action' vraagt een 'action'`);
+        if (item.impact !== 'action' && 'action' in item) errors.push(`entry '${id}': 'action' hoort enkel bij impact 'action'`);
+        if ('example' in item && !isText(item.example)) errors.push(`entry '${id}': 'example' moet een niet-lege tekst zijn`);
+        if ('a11y' in item && typeof item.a11y !== 'boolean') errors.push(`entry '${id}': 'a11y' moet true of false zijn`);
     }
     if (errors.length > 0) throw new Error(`Fout in ${source}:\n  - ${errors.join('\n  - ')}`);
+}
 
+// Een entry met de feiten uit haar commits, de afgeleide impact en labels, en de analyse als die er is.
+function enrich(entry, commits, analysis) {
+    const source = sourceOf(entry, commits);
+    const { labels, wcag } = deriveLabels(entry, source);
+    const item = analysis?.entries?.[entry.id];
+    const a11y = item && 'a11y' in item ? item.a11y : labels.includes('a11y');
     return {
-        ...release,
-        summary: annotations.summary ?? release.summary ?? null,
-        migration: annotations.migration ?? release.migration ?? null,
-        entries: release.entries.map((entry) => {
-            const annotation = byId[entry.id];
-            if (!annotation) return entry;
-            const labels = new Set(entry.labels);
-            for (const [label, on] of Object.entries(annotation.labels ?? {})) {
-                if (on) labels.add(label);
-                else labels.delete(label);
-            }
-            return {
-                ...entry,
-                labels: LABELS.filter((label) => labels.has(label)),
-                note: annotation.note ?? entry.note,
-                migration: annotation.migration ?? entry.migration,
-            };
-        }),
+        ...entry,
+        impact: item?.impact ?? deriveImpact(entry, source),
+        impactSource: item ? 'analysis' : 'derived',
+        explanation: item?.explanation ?? null,
+        action: item?.action ?? null,
+        example: item?.example ?? null,
+        labels: a11y ? ['a11y'] : [],
+        wcag,
+        source,
     };
 }
 
 function countsOf(entries) {
-    const counts = Object.fromEntries([...TYPES, ...LABELS].map((key) => [key, 0]));
+    const counts = {
+        type: Object.fromEntries(TYPES.map((type) => [type, 0])),
+        impact: Object.fromEntries(IMPACTS.map((impact) => [impact, 0])),
+        a11y: 0,
+    };
     for (const entry of entries) {
-        counts[entry.type]++;
-        for (const label of entry.labels) counts[label]++;
+        counts.type[entry.type]++;
+        counts.impact[entry.impact]++;
+        if (entry.labels.includes('a11y')) counts.a11y++;
     }
     return counts;
 }
 
-// De componenten die de changelog van deze versie als scope noemt, zonder de entries met 'no-impact'. Een naam
-// die niet in de web-types staat, zoals vl-header-next, blijft erin, maar zonder soort en Storybook-link.
+// De componenten die de changelog van deze versie als scope noemt, zonder de entries zonder impact. Een naam die
+// niet in de web-types staat, zoals vl-header-next, blijft erin, maar zonder soort en Storybook-link.
 function componentsOf(entries, webTypes) {
-    const names = unique(entries.filter((entry) => !entry.labels.includes('no-impact')).flatMap((entry) => entry.components));
+    const names = unique(entries.filter((entry) => entry.impact !== 'none').flatMap((entry) => entry.components));
     return names.sort().map((name) => {
         const known = webTypes?.get(name);
         return { name, category: known?.category ?? null, docUrl: known?.element['doc-url'] ?? null };
@@ -311,11 +356,14 @@ function apiOf(release, entries, webTypes, previousWebTypes) {
 }
 
 // Het volledige document voor changelog.json. Puur: alles wat het nodig heeft, krijgt het mee.
-export function buildRelease({ markdown, annotations = null, annotationsSource, webTypes = null, previousWebTypes = null }) {
+export function buildRelease({ markdown, commits = null, analysis = null, analysisSource, webTypes = null, previousWebTypes = null }) {
     const parsed = parseChangelog(markdown);
-    const entries = parsed.entries.map((entry) => ({ ...entry, ...deriveLabels(entry), note: null, migration: null }));
-    const annotated = applyAnnotations({ summary: null, migration: null, entries }, annotations, annotationsSource);
-    const { api, apiUnavailable } = apiOf(parsed, annotated.entries, webTypes, previousWebTypes);
+    if (commits && commits.version !== parsed.version) {
+        throw new Error(`commits.json hoort bij ${commits.version}, de changelog bij ${parsed.version}.`);
+    }
+    if (analysis) validateAnalysis(analysis, parsed.entries.map((entry) => entry.id), analysisSource);
+    const entries = parsed.entries.map((entry) => enrich(entry, commits, analysis));
+    const { api, apiUnavailable } = apiOf(parsed, entries, webTypes, previousWebTypes);
 
     return {
         schema: SCHEMA,
@@ -323,23 +371,19 @@ export function buildRelease({ markdown, annotations = null, annotationsSource, 
         date: parsed.date,
         previous: parsed.previous,
         compareUrl: parsed.compareUrl,
-        summary: annotated.summary,
-        migration: annotated.migration,
-        counts: countsOf(annotated.entries),
-        components: componentsOf(annotated.entries, webTypes),
-        entries: annotated.entries,
+        summary: analysis?.summary ?? null,
+        counts: countsOf(entries),
+        components: componentsOf(entries, webTypes),
+        entries,
         api,
         apiUnavailable,
     };
 }
 
-// De handmatige annotaties van een versie, of null als ze er niet zijn.
-export function readAnnotations(catalogDir, version) {
-    const source = `catalog/flux/${version}/annotations/changelog.json`;
-    const file = path.join(catalogDir, version, 'annotations', 'changelog.json');
-    if (!fs.existsSync(file)) return { annotations: null, source };
+function readJson(file, source) {
+    if (!fs.existsSync(file)) return null;
     try {
-        return { annotations: JSON.parse(fs.readFileSync(file, 'utf-8')), source };
+        return JSON.parse(fs.readFileSync(file, 'utf-8'));
     } catch (error) {
         throw new Error(`Geen geldige JSON in ${source}: ${error.message}`);
     }
@@ -359,17 +403,17 @@ export function buildReleaseFromCatalog(catalogDir, version) {
         );
     }
     const markdown = fs.readFileSync(path.join(changelogDir, 'changelog.md'), 'utf-8');
-    const { annotations, source: annotationsSource } = readAnnotations(catalogDir, version);
-
     const { version: found, previous } = parseChangelog(markdown);
     if (found !== version) {
         throw new Error(`catalog/flux/${version}/changelog/changelog.md bevat de changelog van ${found}, niet van ${version}.`);
     }
 
+    const analysisSource = `catalog/flux/${version}/analysis/changelog.json`;
     return buildRelease({
         markdown,
-        annotations,
-        annotationsSource,
+        commits: readJson(path.join(changelogDir, 'commits.json'), `catalog/flux/${version}/changelog/commits.json`),
+        analysis: readJson(path.join(catalogDir, version, 'analysis', 'changelog.json'), analysisSource),
+        analysisSource,
         webTypes: loadWebTypes(catalogDir, version),
         previousWebTypes: previous ? loadWebTypes(catalogDir, previous) : null,
     });

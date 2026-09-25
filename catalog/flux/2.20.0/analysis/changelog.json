@@ -1,0 +1,82 @@
+{
+  "summary": "2.20.0 brengt een banner-variant voor vl-alert en een ellipsis-optie voor lange breadcrumb items, en verbetert vooral de toetsenbordbediening: het focusbeheer van vl-side-sheet en vl-cascader, een focus outline enkel bij toetsenbordnavigatie in de breadcrumb, en submit op Enter ook via het numerieke klavier. Eén wijziging vraagt actie: een open vl-side-sheet houdt op mobiel de focus vast, dus een side-sheet op volle breedte heeft een eigen sluitknop nodig. Flux zelf stapte over van npm naar pnpm; voor afnemers verandert daardoor niets, maar er is een recept voor wie hetzelfde wil doen.",
+  "entries": {
+    "bbf991f": {
+      "impact": "automatic",
+      "explanation": "Formuliervelden verzenden hun formulier bij Enter nu ook wanneer de gebruiker de Enter-toets van het numerieke klavier gebruikt."
+    },
+    "2373023": {
+      "impact": "automatic",
+      "explanation": "vl-upload zet bij een validatiefout nu aria-invalid, zoals de andere formuliervelden. Een schermlezer merkt dat echter nog niet op: de enige focusbare knop ondersteunt aria-invalid niet en de onderliggende file-input is verborgen. De fout bereikt een schermlezer wel via de foutmelding van vl-form-message, die voorgelezen wordt zodra ze verschijnt. Die beperking staat beschreven onder Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]."
+    },
+    "b62fbe3": {
+      "impact": "none",
+      "explanation": "Onderdrukt een waarschuwing in de testopstelling van Flux zelf (cypress-axe). Dit raakt de packages niet."
+    },
+    "5710cb7": {
+      "impact": "automatic",
+      "explanation": "vl-side-navigation-next kon een automatisch opgebouwde sectie opnieuw tonen nadat ze door een wijziging in de inhoud leeggemaakt was. De navigatie volgt de inhoud nu correct."
+    },
+    "89c0f66": {
+      "impact": "automatic",
+      "explanation": "De focus outline van vl-breadcrumb-item verschijnt enkel nog bij toetsenbordnavigatie (:focus-visible), niet meer na een muisklik."
+    },
+    "d68ff04": {
+      "impact": "action",
+      "explanation": "Tabben binnen een open vl-side-sheet houdt de focus bij de inhoud. Op een mobiel scherm is een open side-sheet nu modaal: tabben loopt rond tussen de toggle button en de inhoud, en een verborgen of buiten het scherm vallende toggle button wordt overgeslagen. Sluit een side-sheet met verborgen toggle button, dan keert de focus terug naar waar ze voor het openen stond. Op desktop kan de focus de side-sheet verlaten. In vl-cascader komt de focus bij het doorklikken op het nieuwe niveau terecht. Dit geldt ook voor vl-map-side-sheet.",
+      "action": "Zet je --vl-side-sheet-width-mobile op 100%, voorzie dan een eigen sluitknop in de side-sheet die close() aanroept: de toggle button valt dan buiten het scherm, en een toetsenbordgebruiker kan de side-sheet anders niet meer verlaten. Geef een knop met enkel een icoon een toegankelijke naam. Render ook maar één side-sheet per pagina.",
+      "example": "```html\n<vl-side-sheet id=\"paneel\">\n    <vl-button icon=\"close\" label=\"Sluit de side-sheet\" onclick=\"document.getElementById('paneel').close()\"></vl-button>\n    …\n</vl-side-sheet>\n```"
+    },
+    "6854ffc": {
+      "impact": "opt-in",
+      "explanation": "Geef een vl-link in het label-slot van vl-cascader-item de class vl-cascader-link: dan neemt de link de volle breedte van het item in en staat het pijltje rechts, zoals bij het label-attribuut. Dat werkt ook voor links uit een eigen template of via property binding. Links in het content-slot houden hun natuurlijke breedte.",
+      "example": "```html\n<vl-cascader-item label=\"West-Vlaanderen\">\n    <vl-link slot=\"label\" bold button-as-link icon=\"arrow-right-fat\" icon-placement=\"after\" class=\"vl-cascader-link\">\n        Provincie: West-Vlaanderen\n    </vl-link>\n</vl-cascader-item>\n```"
+    },
+    "6899016": {
+      "impact": "none",
+      "explanation": "Flux bouwt en test zichzelf voortaan met pnpm in plaats van npm, omwille van supply-chain security. De gepubliceerde packages installeer je met elke package manager. De afnemersdocumentatie (Afnemen/Aan De Slag) raadt pnpm aan, en vraagt @domg-wc/common zelf als dependency op te nemen zodra je rechtstreeks uit dat package importeert, bv. registerWebComponents: onder pnpm is een package dat enkel transitief binnenkomt niet importeerbaar."
+    },
+    "9311ae6": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe ellipsis attribuut blijft elk item van vl-breadcrumb op één regel: een item dat niet past, begint op een nieuwe regel en wordt pas afgekapt als het ook daar te breed is. Schermlezers lezen de volledige tekst. Gebruik het enkel waar de ruimte echt beperkt is, zoals in een side-sheet. Zonder het attribuut verandert er niets. Het attribuut staat nog niet in de web-types, dus een IDE stelt het niet voor.",
+      "example": "```html\n<vl-breadcrumb ellipsis>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Een breadcrumb item met een heel lange titel</vl-breadcrumb-item>\n</vl-breadcrumb>\n```"
+    },
+    "c04a72c": {
+      "impact": "automatic",
+      "explanation": "De breadcrumb in vl-cascader is nu een vl-breadcrumb. Het home-item en de vorige niveaus zijn knoppen, dus bereikbaar en bedienbaar met het toetsenbord; het home-icoon heeft een toegankelijke naam en het huidige niveau is tekst. Een lange titel loopt niet meer buiten de breadcrumb of de side-sheet."
+    },
+    "f2a3414": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe banner attribuut toont vl-alert een melding over de volle breedte van de pagina: zonder afgeronde hoeken, met titel en boodschap na elkaar op één regel. De component zet zelf het streepje tussen titel en boodschap. Een banner gebruikt altijd de small-opmaak en is niet bedoeld in combinatie met naked. Staat de banner al bij het laden op de pagina, zet dan alert-role=\"no-role\".",
+      "example": "```html\n<vl-alert banner closable alert-role=\"no-role\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>\n```"
+    },
+    "a6116b6": {
+      "impact": "none",
+      "explanation": "De pagina Afnemen/Artifacts legt nu ook uit hoe je de packages afneemt zonder account voor de registry van Departement Omgeving: de scopes @domg en @domg-wc wijzen naar de publiek beschikbare artifacts, de rest blijft bij de publieke npm-registry."
+    },
+    "4d555a6": {
+      "impact": "none",
+      "explanation": "Een nieuw recept, Recepten/Van npm naar pnpm, voor wie zijn eigen project naar pnpm wil overzetten: waarom, een stappenplan en een cheatsheet. Neem de uitzondering voor @domg-wc/* op minimumReleaseAge over, anders is een verse Flux-release 24 uur niet installeerbaar."
+    },
+    "b479b90": {
+      "impact": "none",
+      "explanation": "De analyse over Flux-AI (Planning) volgt nu de nieuwe AI-strategie. Dit raakt de packages niet."
+    },
+    "f18485b": {
+      "impact": "none",
+      "explanation": "Een nieuwe pagina onder Planning over frontend-uniformisering via AI. Dit raakt de packages niet."
+    },
+    "293c741": {
+      "impact": "none",
+      "explanation": "De pagina Patronen/Formulier/blur validatie is nagekeken tegen de code. De toegankelijkheidssectie vermeldt nu dat de foutmelding in een role=\"status\" regio met aria-live staat, en dat blur-validatie de focus niet verplaatst. De beschrijving van het blur-validation attribuut is ingekort tot twee zinnen met een link naar die pagina."
+    },
+    "782a93c": {
+      "impact": "none",
+      "explanation": "Het componentenoverzicht in Storybook toont nu per component de WCAG-status. Dit raakt de packages niet."
+    },
+    "63a4c95": {
+      "impact": "none",
+      "explanation": "De planning voor 2026 staat nu op de pagina Planning/Historiek & Toekomst."
+    }
+  }
+}

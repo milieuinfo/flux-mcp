@@ -6,28 +6,18 @@ import { after, before, describe, test } from 'node:test';
 import { CATALOG_DIR, CatalogError, compareVersions, createCatalog } from '../src/catalog.mjs';
 import { buildReleaseFromCatalog } from '../src/changelog.mjs';
 
-// Een kopie van de echte catalogus met vers gebouwde changelog.json, zodat de tests niet afhangen van wat er
-// gecommit is. De annotaties staan enkel in de kopie.
+// Een kopie van de echte catalogus met vers gebouwde changelog.json, zodat de tests niet afhangen van een
+// changelog.json die niet meer klopt. De bronnen (changelog.md, commits.json, analyse, web-types) zijn de echte.
 let dir;
 let catalog;
 
 before(() => {
     dir = fs.mkdtempSync(path.join(os.tmpdir(), 'flux-catalog-'));
     for (const version of ['2.19.0', '2.20.0']) {
-        fs.cpSync(path.join(CATALOG_DIR, version, 'web-types'), path.join(dir, version, 'web-types'), { recursive: true });
-        fs.cpSync(path.join(CATALOG_DIR, version, 'changelog', 'changelog.md'), path.join(dir, version, 'changelog', 'changelog.md'));
+        for (const part of ['web-types', 'analysis', 'changelog/changelog.md', 'changelog/commits.json']) {
+            fs.cpSync(path.join(CATALOG_DIR, version, part), path.join(dir, version, part), { recursive: true });
+        }
     }
-    fs.mkdirSync(path.join(dir, '2.20.0', 'annotations'));
-    fs.writeFileSync(
-        path.join(dir, '2.20.0', 'annotations', 'changelog.json'),
-        JSON.stringify({
-            migration: 'Controleer je eigen vl-link in het label-slot van vl-cascader-item.',
-            entries: {
-                f2a3414: { migration: 'Gebruik banner in plaats van een eigen volle-breedte alert.' },
-                6899016: { labels: { 'no-impact': true } },
-            },
-        }),
-    );
     for (const version of ['2.19.0', '2.20.0']) {
         fs.writeFileSync(path.join(dir, version, 'changelog', 'changelog.json'), JSON.stringify(buildReleaseFromCatalog(dir, version)));
     }
@@ -58,7 +48,9 @@ describe('listVersions', () => {
                 ['2.19.0', '2.18.0', false, true],
             ],
         );
-        assert.equal(versions[0].counts.feature, 4);
+        assert.equal(versions[0].counts.type.feature, 4);
+        assert.deepEqual(versions[0].counts.impact, { action: 1, 'opt-in': 3, automatic: 5, none: 9 });
+        assert.match(versions[0].summary, /banner/);
     });
 });
 
@@ -67,10 +59,24 @@ describe('getChangelog', () => {
         const release = catalog.getChangelog('v2.20.0');
         assert.equal(release.entries.length, 18);
         assert.equal(release.hiddenNoImpact, 0);
-        assert.deepEqual(release.entries.find((e) => e.id === '6899016').labels, ['no-impact']);
+        assert.equal(release.entries.find((e) => e.id === '6899016').impact, 'none');
         const impact = catalog.getChangelog('2.20.0', { includeNoImpact: false });
         assert.equal(impact.entries.length, 9);
         assert.equal(impact.hiddenNoImpact, 9);
+    });
+
+    test('een entry draagt de analyse, de uitleg uit de commit en de Storybook-pagina', () => {
+        const banner = catalog.getChangelog('2.20.0').entries.find((e) => e.id === 'f2a3414');
+        assert.equal(banner.impact, 'opt-in');
+        assert.equal(banner.impactSource, 'analysis');
+        assert.match(banner.explanation, /banner attribuut/);
+        assert.match(banner.example, /<vl-alert banner/);
+        assert.equal(banner.source.published, true);
+        assert.deepEqual(
+            banner.source.storybook.map((page) => page.id),
+            ['components-block-alert--documentatie'],
+        );
+        assert.match(banner.source.storybook[0].added, /### Banner/);
     });
 
     test('filter op component, zonder vl-, met de API-diff van dat element', () => {
@@ -85,11 +91,15 @@ describe('getChangelog', () => {
         );
     });
 
-    test('filter op type en label', () => {
+    test('filter op type, impact en label', () => {
         assert.equal(catalog.getChangelog('2.20.0', { type: 'docs' }).entries.length, 7);
-        assert.equal(catalog.getChangelog('2.20.0', { label: 'a11y' }).entries.length, 5);
-        assert.equal(catalog.getChangelog('2.20.0', { label: 'no-impact' }).entries.length, 9);
-        assert.equal(catalog.getChangelog('2.20.0', { label: 'no-impact', includeNoImpact: false }).entries.length, 9);
+        assert.equal(catalog.getChangelog('2.20.0', { label: 'a11y' }).entries.length, 6);
+        assert.deepEqual(
+            catalog.getChangelog('2.20.0', { impact: 'action' }).entries.map((e) => e.id),
+            ['d68ff04'],
+        );
+        assert.equal(catalog.getChangelog('2.20.0', { impact: 'none', includeNoImpact: false }).entries.length, 9);
+        assert.throws(() => catalog.getChangelog('2.20.0', { impact: 'dringend' }), /Kies uit/);
     });
 
     test('een onbekende versie noemt wat er wel is', () => {
@@ -100,7 +110,7 @@ describe('getChangelog', () => {
 });
 
 describe('getChangesBetween', () => {
-    test('volledig bereik: beide versies, breaking eerst, migraties en API-diff', () => {
+    test('volledig bereik: beide versies, eerst wat actie vraagt, en de API-diff', () => {
         const result = catalog.getChangesBetween('2.18.0', '2.20.0');
         assert.equal(result.complete, true);
         assert.equal(result.missing, null);
@@ -108,26 +118,29 @@ describe('getChangesBetween', () => {
             result.versions.map((v) => v.version),
             ['2.19.0', '2.20.0'],
         );
-        assert.deepEqual(Object.keys(result.changes), ['breaking', 'feature', 'fix', 'docs', 'perf', 'revert', 'other']);
-        // Zonder de pnpm-migratie, de documentatie en de testen: die raken het project van de afnemer niet.
-        assert.equal(result.changes.feature.length, 10);
-        assert.equal(result.changes.fix.length, 14);
-        assert.deepEqual(result.changes.docs, []);
-        assert.equal(result.hiddenNoImpact, 11);
-        assert.equal(catalog.getChangesBetween('2.18.0', '2.20.0', { includeNoImpact: true }).changes.docs.length, 7);
+        assert.deepEqual(Object.keys(result.changes), ['action', 'opt-in', 'automatic', 'none']);
         assert.deepEqual(
-            result.migrations.map((m) => [m.version, m.entry]),
+            result.changes.action.map((e) => [e.version, e.issues[0], Boolean(e.action)]),
             [
-                ['2.20.0', null],
-                ['2.20.0', 'f2a3414'],
+                ['2.19.0', 'FLUX-207', true],
+                ['2.19.0', 'FLUX-213', true],
+                ['2.19.0', 'FLUX-788', true],
+                ['2.19.0', 'FLUX-471', true],
+                ['2.20.0', 'FLUX-810', true],
             ],
         );
+        assert.equal(result.changes['opt-in'].length, 9);
+        assert.equal(result.changes.automatic.length, 11);
+        // Zonder de pnpm-migratie, de documentatie en de testen: die raken het project van de afnemer niet.
+        assert.deepEqual(result.changes.none, []);
+        assert.equal(result.hiddenNoImpact, 10);
+        assert.equal(catalog.getChangesBetween('2.18.0', '2.20.0', { includeNoImpact: true }).changes.none.length, 10);
         const alert = result.components.find((c) => c.name === 'vl-alert');
         assert.deepEqual(
-            alert.changes.map((c) => [c.version, c.issues[0]]),
+            alert.changes.map((c) => [c.version, c.issues[0], c.impact]),
             [
-                ['2.19.0', 'FLUX-207'],
-                ['2.20.0', 'FLUX-809'],
+                ['2.19.0', 'FLUX-207', 'opt-in'],
+                ['2.20.0', 'FLUX-809', 'opt-in'],
             ],
         );
         assert.match(alert.docUrl, /2\.20\.0/);
@@ -143,7 +156,7 @@ describe('getChangesBetween', () => {
             ['vl-alert'],
         );
         assert.deepEqual(
-            result.changes.feature.map((e) => e.issues[0]),
+            result.changes['opt-in'].map((e) => e.issues[0]),
             ['FLUX-809'],
         );
     });
@@ -219,14 +232,18 @@ describe('findChanges', () => {
         assert.ok(result.results.every((r) => r.version === '2.20.0'));
     });
 
-    test('op woorden, ook wat geen impact heeft, gemarkeerd', () => {
+    test('op woorden, ook in de uitleg uit de commit en de analyse', () => {
+        // "window" staat enkel in de uitleg, niet in de changelog-tekst.
         assert.deepEqual(
-            catalog.findChanges('focus side-sheet').results.map((r) => r.issues[0]),
-            ['FLUX-810'],
+            catalog.findChanges('window ready').results.map((r) => r.issues[0]),
+            ['FLUX-788'],
         );
+    });
+
+    test('ook wat geen impact heeft, gemarkeerd', () => {
         const found = catalog.findChanges('cypress-axe');
         assert.equal(found.results.length, 1);
-        assert.deepEqual(found.results[0].labels, ['no-impact']);
+        assert.equal(found.results[0].impact, 'none');
         const hidden = catalog.findChanges('cypress-axe', { includeNoImpact: false });
         assert.equal(hidden.results.length, 0);
         assert.equal(hidden.hiddenNoImpact, 1);

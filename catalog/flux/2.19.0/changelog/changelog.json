@@ -4,18 +4,24 @@
   "date": "2026-08-25",
   "previous": "2.18.0",
   "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.18.0...v2.19.0",
-  "summary": null,
-  "migration": null,
+  "summary": "2.19.0 zet sterk in op toegankelijkheid: een skip-link in vl-header en vl-header-next, een instelbare ARIA-rol voor vl-alert, een screenreadermelding bij externe links en semantische lijsten in vl-description-data en vl-http-error-message. Nieuw zijn ook eigen inhoud per optie in vl-select-rich en vl-autocomplete (itemTemplate), value-bold op vl-properties, en voor formulieren cross-validatie en samengestelde velden. Drie wijzigingen vragen actie: het ready-event van vl-header-next en vl-footer-next komt nu op het element, externe vl-links melden zelf dat ze in een nieuw venster openen, en toaster.showAlert() verwacht de attribuutnamen.",
   "counts": {
-    "breaking": 0,
-    "feature": 7,
-    "fix": 10,
-    "docs": 0,
-    "perf": 0,
-    "revert": 0,
-    "other": 0,
-    "a11y": 4,
-    "no-impact": 2
+    "type": {
+      "breaking": 0,
+      "feature": 7,
+      "fix": 10,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 4,
+      "opt-in": 6,
+      "automatic": 6,
+      "none": 1
+    },
+    "a11y": 6
   },
   "components": [
     {
@@ -32,6 +38,11 @@
       "name": "vl-description-data",
       "category": "block",
       "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie"
+    },
+    {
+      "name": "vl-footer-next",
+      "category": null,
+      "docUrl": null
     },
     {
       "name": "vl-header",
@@ -97,10 +108,36 @@
         }
       ],
       "closes": [],
+      "impact": "action",
+      "impactSource": "analysis",
+      "explanation": "toaster.showAlert() zet elke key van het meegegeven object als attribuut op de vl-alert. Een camelCase key zoals alertRole werd daardoor nooit toegepast, want het attribuut heet alert-role. Het object gebruikt nu de attribuutnamen, met VlAlertAttributes als TypeScript-type (te importeren naast VlAlert).",
+      "action": "Geef je alertRole mee aan showAlert(), gebruik dan 'alert-role'. Met TypeScript geeft alertRole nu een typefout; in JavaScript werkte het nooit.",
+      "example": "```js\ntoaster.showAlert({\n    type: 'success',\n    title: 'Gelukt!',\n    message: 'Je aanvraag is verstuurd.',\n    'alert-role': 'alert',\n});\n```",
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "showAlert() zet elke key van het meegegeven object als attribuut op de vl-alert. Een key in camelCase zoals alertRole belandde daardoor als alertrole op het element en werd genegeerd, want het attribuut heet alert-role.\n\nHet meegegeven object gebruikt nu de attribuutnamen zoals de documentatie van de vl-alert ze noemt, met VlAlertAttributes als type. De Storybook-documentatie vermeldt dat.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/index.ts",
+          "libs/components/src/block/alert/vl-alert.model.ts",
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/toaster/vl-toaster.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "component, met de attribuutnaam als key, zoals `multiline` om regeleinden (`\\n`) in de `message` te bewaren of\n`alert-role` om de rol van de melding te kiezen."
+          }
+        ]
+      }
     },
     {
       "id": "6139351",
@@ -124,12 +161,44 @@
         }
       ],
       "closes": [],
+      "impact": "action",
+      "impactSource": "analysis",
+      "explanation": "Een externe vl-link (attribuut external) laat schermlezers nu automatisch \"(opent in een nieuw venster)\" voorlezen na de linktekst. Het external-icoon zelf wordt niet voorgelezen. Met het label attribuut wordt de melding niet toegevoegd: het label vervangt de volledige voorgelezen tekst.",
+      "action": "Staat \"(opent in een nieuw venster)\" of iets gelijkaardigs zelf in de linktekst van een externe vl-link, haal het weg: anders hoort een schermlezer het twee keer. Gebruik je het label attribuut op een externe link, neem de vermelding dan zelf op in dat label.",
+      "example": "```html\n<vl-link href=\"https://www.vlaanderen.be\" external label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\">Vlaanderen.be</vl-link>\n```",
       "labels": [
         "a11y"
       ],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Externe links krijgen nu - voor screenreaders - de melding \"(opent in een nieuw venster)\". Dit werkt automatisch voor elke externe vl-link; een gezet label krijgt voorrang en een button-as-link krijgt de melding niet.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link-style/vl-link-style.css.ts",
+          "libs/components/src/atom/link/vl-link.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "Een externe link opent in een nieuw tabblad en toont automatisch het external icoon na de linktekst.\n\nVoor schermlezers voegt de component automatisch de visueel verborgen tekst \"(opent in een nieuw venster)\" toe na de\nlinktekst. Je hoeft dit dus niet zelf te voorzien. Het external icoon zelf is decoratief (`aria-hidden`) en wordt niet\nvoorgelezen.\n\nGebruik je het `label` attribuut, dan vervangt dat de volledige voorgelezen linktekst en wordt de automatische melding\nniet toegevoegd. Neem in dat geval zelf de vermelding op, bv.\n`label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\"`.\n\n[…]\n\nBij externe links (het `external` attribuut) meldt de component zelf aan schermlezers dat de link in een nieuw venster\nopent: na de linktekst wordt de visueel verborgen tekst \"(opent in een nieuw venster)\" voorgelezen. Je hoeft dit dus\nniet zelf te voorzien in de linktekst of via het `label` attribuut.\n\nIndien `label` gebruikt wordt, is dit de enige linktekst die door schermlezers wordt voorgelezen; de automatische\nmelding wordt dan niet toegevoegd. Neem in dat geval zowel de zichtbare linktekst als de vermelding \"(opent in een\nnieuw venster)\" op in het label."
+          },
+          {
+            "id": "components-block-contact-card--documentatie",
+            "title": "Components - Block/contact-card",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-contact-card--documentatie",
+            "added": null
+          }
+        ]
+      }
     },
     {
       "id": "0ee6e57",
@@ -153,10 +222,38 @@
         }
       ],
       "closes": [],
-      "labels": [],
+      "impact": "automatic",
+      "impactSource": "analysis",
+      "explanation": "vl-description-data rendert de label/waarde-paren nu als een echte description list (dl, dt, dd), zodat een schermlezer elk paar als term en definitie aankondigt. Visueel en qua API verandert er niets. Daarnaast is een renderfout in vl-description-data-item opgelost waardoor het value-slot verkeerd werd afgesloten.",
+      "action": null,
+      "example": null,
+      "labels": [
+        "a11y"
+      ],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De label/waarde-paren worden nu als een echte description list gerenderd, zodat screenreaders elk paar als term en definitie aankondigen. Visueel en qua API verandert er niets: alle attributen, de label/value-slots en de kolom-layout blijven werken zoals voorheen. Daarnaast is de render fout in vl-description-data-item opgelost waardoor het value-slot verkeerd werd afgesloten.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/description-data/vl-description-data-item.component.ts",
+          "libs/components/src/block/description-data/vl-description-data.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-description-data-description-data--documentatie",
+            "title": "Components - Block/description-data/description-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie",
+            "added": "# Description Data\n\n\n\n## Doel\n\nGebruik de `description-data` component om label / waarde-paren als een samenhangende lijst weer te geven, bijvoorbeeld\nde metadata van een publicatie. De paren worden als een `<dl>` met `<dt>` en `<dd>` gerenderd, zodat een schermlezer\nelk paar als term en definitie aankondigt.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n</vl-description-data>\n```\n\n\n\n## Configuratie\n\n\n\n## Enkel description-data-item als kind\n\nDe `vl-description-data` mag als directe kinderen **uitsluitend** `vl-description-data-item` componenten bevatten.\n\n{`\n    Elk ander element tussen de items wordt genegeerd: het wordt niet in de beschrijvingslijst opgenomen en is ook\n    niet zichtbaar op de pagina. Tijdens ontwikkeling verschijnt hiervoor een waarschuwing in de console.\n`}\n\n<br/>\n\n### Correct gebruik\n\n```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n</vl-description-data>\n```\n\n### Foutief gebruik\n\n```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <!-- wordt genegeerd: niet gerenderd en niet zichtbaar -->\n    <div>Extra informatie</div>\n    <!-- wordt genegeerd: enkel directe kinderen tellen mee -->\n    <div>\n        <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n    </div>\n</vl-description-data>\n```\n\n## Waarom deze beperking\n\nEen `<dl>` is enkel een geldige beschrijvingslijst als de `<dt>` en `<dd>` er rechtstreeks (of via een wrapper-`div`)\nonder hangen. Als elk item zijn eigen `<dt>`/`<dd>` rendert, dan staat de item-host er in de flattened-tree tussen en\nvalt de term / definitie-relatie voor schermlezers weg. Daarom leest de `vl-description-data` het `label` en `value` van\nelk item en rendert ze zelf in 1 `<dl>`. Alles wat geen `vl-description-data-item` is, past niet in dat model en\nwordt overgeslagen.\n\nGevolgen om rekening mee te houden:\n\n- De inhoud van de `label`- en `value`-slots wordt **gekloond** naar de shadow DOM van de `vl-description-data`.\n  Statische opmaak (bv. een `<a href=\"...\">`) werkt daardoor gewoon, maar event-listeners op die inhoud niet: ze\n  overleven het klonen niet.\n- Een `vl-description-data-item` dat je los gebruikt (buiten een `vl-description-data`) rendert wel zijn eigen\n  label en waarde, maar dan zonder de `<dl>`-structuur.\n- Wijzigingen in de light DOM (items toevoegen, verwijderen, of een `label`/`value` aanpassen) worden\n  automatisch doorgevoerd.\n\n\n## Varianten\n\n### Item over de volledige breedte\n\nMet het `items-size` attribuut op een individueel item overschrijf je de kolombreedte die de `vl-description-data`\noplegt. Zo laat je bijvoorbeeld 1 item de volledige breedte innemen."
+          }
+        ]
+      }
     },
     {
       "id": "53040a9",
@@ -180,10 +277,30 @@
         }
       ],
       "closes": [],
-      "labels": [],
+      "impact": "automatic",
+      "impactSource": "analysis",
+      "explanation": "vl-http-error-message toont de debug-info (URL, tijd, user-agent) als definitielijst in plaats van als tabel, zodat een schermlezer ze als beschrijvende paren aankondigt. De tekstkolom is voortaan bij elke foutcode en schermbreedte even ver links uitgelijnd, waar dat vroeger afhing van de lengte van de tekst. De foutteksten verwijzen naar \"de URL in de adresbalk\" in plaats van \"de URL hierboven\".",
+      "action": null,
+      "example": null,
+      "labels": [
+        "a11y"
+      ],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De debug-info (URL, tijd, user-agent) wordt nu als definitielijst getoond in plaats van als tabel, zodat screenreaders die correct aankondigen als beschrijvende paren. De dt/dd-kolommen behouden de padding-right van de vorige td's, zodat het blok even breed blijft als voorheen.\n\nDe contentkolom is niet langer justify-self-center. Die maakte de kolom fit-content, waardoor haar breedte - en dus de witruimte links - afhing van de lengte van de debug-info en van de foutcode-tekst. De kolom stretcht nu over haar volledige breedte, wat voor elke foutcode en elke schermbreedte dezelfde uitlijning links geeft. De afbeeldingskolom blijft wel gecentreerd.\n\nDe foutcode-teksten verwijzen voortaan naar \"de URL in de adresbalk\" in plaats van \"de URL hierboven\".",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/http-error-message/error-codes.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.flux-css.ts"
+        ],
+        "storybook": []
+      }
     },
     {
       "id": "19f3b89",
@@ -207,12 +324,29 @@
         }
       ],
       "closes": [],
+      "impact": "automatic",
+      "impactSource": "analysis",
+      "explanation": "Springen naar een anker houdt nu rekening met sticky headers: het doel verdwijnt niet meer onder de header. Dat geldt voor de skip-link van vl-header, vl-header-next en vl-functional-header, en voor anchor-links en hash-deeplinks die via dezelfde weg lopen. @domg-wc/common exporteert daarvoor ook getStickyOffsetTop en scrollIntoViewBelowSticky.",
+      "action": null,
+      "example": null,
       "labels": [
         "a11y"
       ],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Er wordt nu rekening gehouden met sticky headers zodat bij een 'scrollIntoView' het target niet meer achter de sticky header(s) verdwijnt.\n\nDe correctie zit in navigateToAnchor en geldt daardoor meteen voor de skip-link van vl-header, vl-header-next en vl-functional-header, en voor de anchor-links en hash-deeplinks die via hetzelfde pad lopen.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/anchor-navigation.ts",
+          "libs/common/src/util/sticky-scroll.ts"
+        ],
+        "storybook": []
+      }
     },
     {
       "id": "9d28af3",
@@ -236,10 +370,35 @@
         }
       ],
       "closes": [],
+      "impact": "automatic",
+      "impactSource": "analysis",
+      "explanation": "Properties binnen eenzelfde column van vl-properties krijgen nu dezelfde verticale ruimte (2rem) als properties zonder columns; voordien plakten ze tegen elkaar. Meerdere waarden onder één label blijven tegen elkaar staan. De ruimte is aan te passen met de nieuwe custom property --vl-properties--row-gap.",
+      "action": null,
+      "example": "```css\nvl-properties {\n    --vl-properties--row-gap: 1rem;\n}\n```",
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Properties binnen eenzelfde column plakten tegen elkaar: de spacing hing aan de dl en telde daardoor enkel tussen de columns onderling. Een nieuw label krijgt nu dezelfde 2rem, zodat het resultaat gelijk is aan de layout zonder columns. Meerdere data-waardes onder eenzelfde label blijven wel tegen elkaar staan, zoals voordien.\n\nDe waarde staat in de nieuwe custom property --vl-properties--row-gap (default 2rem), zodat afnemers de spacing van buitenaf kunnen aanpassen.",
+        "published": true,
+        "areas": {
+          "styles": 2,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.css.ts",
+          "libs/components/src/block/properties/vl-properties.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "## Spacing aanpassen\n\nDe verticale ruimte tussen properties staat in de custom property `--vl-properties--row-gap` (standaard `2rem`).\nMeerdere data-waardes onder eenzelfde label horen bij elkaar en krijgen die ruimte niet, ze blijven in de\ncolumn-layout tegen elkaar staan. Wie een compactere of ruimere weergave nodig heeft, zet de property van buitenaf\nop de component:\n\n```css\nvl-properties {\n    --vl-properties--row-gap: 1rem;\n}\n```"
+          }
+        ]
+      }
     },
     {
       "id": "e1b195c",
@@ -263,10 +422,26 @@
         }
       ],
       "closes": [],
+      "impact": "automatic",
+      "impactSource": "analysis",
+      "explanation": "In een container die bij de eerste weergave verborgen is, zoals een modal die nog niet openstond, viel het laatste label van vl-progress-indicator buiten de rand. De component herrekent de ruimte nu ook wanneer de container zichtbaar wordt.",
+      "action": null,
+      "example": null,
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De rechterpadding wordt berekend uit de breedte van het laatste label. In een nog verborgen container, zoals een modal die nog niet openstond, was die breedte 0 en viel het laatste label buiten de rand. Er werd pas herrekend bij het wisselen van stap; een ResizeObserver reageert nu ook wanneer de container zichtbaar wordt.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts"
+        ],
+        "storybook": []
+      }
     },
     {
       "id": "cfe65f3",
@@ -290,10 +465,26 @@
         }
       ],
       "closes": [],
+      "impact": "automatic",
+      "impactSource": "analysis",
+      "explanation": "De verbindingslijnen tussen de stappen van vl-progress-indicator verdwenen achter een ondoorzichtige achtergrond wanneer een bovenliggend element een eigen stacking context had. Ze zijn weer zichtbaar.",
+      "action": null,
+      "example": null,
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De lijn tussen twee stappen is een ::before met z-index: -1. Vormde een ancestor een stacking context, dan tekende de browser die lijn daarin in plaats van in het segment, waardoor ze achter een ondoorzichtige achtergrond verdween. De bolletjes bleven wel staan, want die hebben z-index: 10.",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.flux-css.ts"
+        ],
+        "storybook": []
+      }
     },
     {
       "id": "778158e",
@@ -318,12 +509,42 @@
         }
       ],
       "closes": [],
-      "labels": [
-        "no-impact"
-      ],
+      "impact": "action",
+      "impactSource": "analysis",
+      "explanation": "vl-header-next en vl-footer-next vuurden hun ready-event af op window in plaats van op het element. Daardoor werkte @ready in een template niet. Het event komt nu op het element zelf; het bubbelt niet en gaat niet door shadow boundaries. vl-header-next stopt ook met werken zodra hij uit de DOM verdwijnt, en de skeleton van de header blijft niet meer staan na een disconnect. De oude vl-header en vl-footer waren niet getroffen.",
+      "action": "Luister je op window naar het ready-event van vl-header-next of vl-footer-next, registreer de listener dan op het element zelf.",
+      "example": "```js\ndocument.querySelector('vl-header-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```",
+      "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De component-tests van vl-header-next faalden geregeld in Jenkins. Oorzaak: tests eindigden terwijl hun widget-script nog onderweg was. Dat script voert dan uit tijdens een volgende test, vuurt daar een extra widget.global_header.mounted af en overschrijft window.globalHeaderClient plus de opgevangen setProfile-calls.\n\nvl-header-next stopt nu met werken zodra hij uit de DOM is: isConnected-guards na awaitScript, na mount() en na setApplicationMenuLinks(), en configureSession() checkt dat naast de bestaande generation-guard. Een verdwenen header plaatst de widget dus niet meer in een verwijderde container en schrijft geen profiel meer weg. In de specs wacht elke mount voortaan tot het widget-script van die test effectief uitgevoerd is, en ruimt afterEach globalHeaderClient en __setProfileCalls op.\n\nDaarnaast vuurden vl-header-next en vl-footer-next hun ready-event af op window in plaats van op het element: window.addEventListener kreeg een ongebonden prototype-methode mee, waardoor this bij het afvuren het window was. Daardoor deed @ready in een template niets en luisterden vl-side-navigation en vl-functional-header vergeefs op het element. onReady is nu een class field met arrow-functie; de oude vl-header en vl-footer waren niet getroffen. Afnemers die vandaag op window luisteren moeten overschakelen naar het element - dat staat gedocumenteerd op de Storybook docs-pagina's van beide componenten.\n\nTot slot zocht de skeleton-getter #header__container__skeleton terwijl het geinjecteerde element #header__skeleton heet, waardoor de skeleton na disconnect bleef staan. Zowel in de oude vl-header als in de cleanup-decorator van Storybook rechtgezet.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 2,
+          "storybook": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-next-footer--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+            "added": "## Ready event\n\nDe component vuurt het `ready` event af zodra de global footer widget in de DOM gemount is.\n\nHet event wordt afgevuurd **op het `<vl-footer-next>` element zelf**. Het bubbelt niet en gaat niet door shadow\nboundaries, dus registreer de listener op het element:\n\n```js\ndocument.querySelector('vl-footer-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```\n\nIn een lit-template:\n\n```js\nhtml`<vl-footer-next identifier=\"...\" @ready=${onReady}></vl-footer-next>`;\n```"
+          },
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": "## Ready event\n\nDe component vuurt het `ready` event af zodra de global header widget in de DOM gemount is. Vanaf dat moment is de\nwidget-inhoud beschikbaar en levert `height` de effectieve hoogte van de header op.\n\nHet event wordt afgevuurd **op het `<vl-header-next>` element zelf**. Het bubbelt niet en gaat niet door shadow\nboundaries, dus registreer de listener op het element:\n\n```js\ndocument.querySelector('vl-header-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```\n\nIn een lit-template:\n\n```js\nhtml`<vl-header-next identifier=\"...\" @ready=${onReady}></vl-header-next>`;\n```"
+          }
+        ]
+      }
     },
     {
       "id": "7bbb00d",
@@ -347,12 +568,22 @@
         }
       ],
       "closes": [],
-      "labels": [
-        "no-impact"
-      ],
+      "impact": "none",
+      "impactSource": "analysis",
+      "explanation": "Een correctie in de release-configuratie van Flux: in de changelog kregen features de opmaak van fixes. Dit raakt enkel hoe de changelog gegenereerd wordt.",
+      "action": null,
+      "example": null,
+      "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
     },
     {
       "id": "8ec5138",
@@ -376,12 +607,38 @@
         }
       ],
       "closes": [],
+      "impact": "opt-in",
+      "impactSource": "analysis",
+      "explanation": "Met het nieuwe alert-role attribuut kies je de ARIA-rol van vl-alert: alert (default, ongewijzigd gedrag) voor een beknopte melding die na een actie verschijnt, alertdialog voor een melding die een actie vraagt, en no-role voor een melding die al bij het laden op de pagina staat. Bij alertdialog krijgt de melding de titel als naam en de boodschap als beschrijving, en is ze focusbaar: verplaats zelf de focus met alert.focus(). Voorzie dan altijd een titel. De documentatie raadt no-role aan voor meldingen die al bij het laden zichtbaar zijn.",
+      "action": null,
+      "example": "```html\n<!-- melding die al bij het laden van de pagina zichtbaar is -->\n<vl-alert alert-role=\"no-role\" type=\"info\" icon=\"info-circle\" title=\"Onderhoud\">\n    <span>Op zaterdag is dit loket beperkt beschikbaar.</span>\n</vl-alert>\n```",
       "labels": [
         "a11y"
       ],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De ARIA-rol van een melding is nu instelbaar met het nieuwe alert-role attribuut: alert (default, ongewijzigd gedrag), alertdialog voor meldingen die een actie vereisen en no-role voor meldingen die al bij het laden van de pagina zichtbaar zijn.\n\nBij alertdialog krijgt de melding de titel als toegankelijke naam en de boodschap als beschrijving, maar enkel wanneer die inhoud hebben. De melding is bij die rol ook focusbaar, zodat de afnemer met alert.focus() de focus ernaartoe kan verplaatsen. Inhoud die pas na de eerste render in een slot terechtkomt, telt daarbij mee.\n\nDe Storybook-documentatie legt in een sectie Toegankelijkheid uit welke rol bij welke context past en hoe de afnemer bij alertdialog zelf de focus verplaatst.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/index.ts",
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/alert/vl-alert.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "## Toegankelijkheid\n\n### Draag de betekenis niet enkel via kleur en icoon over\n\nHet `type` van de melding wordt visueel vertaald naar een kleur en - via het `icon` attribuut - naar een icoon. Die\nsignalen bereiken gebruikers van een schermlezer niet en vallen weg in hoog contrast. Zet de aard van de melding\ndaarom ook in de tekst, bijvoorbeeld met een titel als \"Opgelet!\" of \"Gelukt!\", zodat de boodschap zonder kleur en\nicoon volledig blijft.\n\n### Kies de rol die bij de context past\n\nEen melding krijgt niet in elke context dezelfde ARIA rol. Stem die af met het `alert-role` attribuut, volgens de\nrichtlijnen voor [`alert`](https://www.w3.org/TR/wai-aria-1.2/#alert) en\n[`alertdialog`](https://www.w3.org/TR/wai-aria-1.2/#alertdialog).\n\n<table>\n    <tr>\n        <td>Waarde</td>\n        <td>Wanneer</td>\n        <td>Gedrag bij een schermlezer</td>\n    </tr>\n    <tr>\n        <td>`alert` (default)</td>\n        <td>De melding verschijnt dynamisch na een actie van de gebruiker, is beknopt en vraagt zelf geen actie.</td>\n        <td>De melding wordt voorgelezen zodra ze verschijnt, zonder dat de focus verspringt.</td>\n    </tr>\n    <tr>\n        <td>`alertdialog`</td>\n        <td>De melding verschijnt dynamisch en vereist een actie van de gebruiker, typisch via een knop in het `actions` slot.</td>\n        <td>De melding wordt aangekondigd als een dialoog met een naam en een beschrijving. De afnemer verplaatst zelf de focus naar de melding, zie hieronder.</td>\n    </tr>\n    <tr>\n        <td>`no-role`</td>\n        <td>De melding staat al op de pagina bij het laden, bijvoorbeeld een permanente info- of storingsmelding.</td>\n        <td>Geen live region: de melding wordt gewoon voorgelezen op haar plaats in de leesvolgorde.</td>\n    </tr>\n</table>\n\nHou meldingen met `alert-role=\"alert\"` beknopt: een schermlezer leest de volledige inhoud in één keer voor en\nonderbreekt daarmee waar de gebruiker mee bezig was.\n\n```html\n<!-- melding die al bij het laden van de pagina zichtbaar is -->\n<vl-alert alert-role=\"no-role\" type=\"info\" icon=\"info-circle\" title=\"Onderhoud\">\n    <span>Op zaterdag is dit loket beperkt beschikbaar.</span>\n</vl-alert>\n```\n\n### Focus bij `alertdialog`\n\nEen `alertdialog` hoort de focus te krijgen zodra hij verschijnt, anders mist een toetsenbord- of schermlezergebruiker\nde melding en de bijhorende actie. De component doet dat bewust niet automatisch: enkel de afnemer weet op welk moment\nde melding verschijnt en welk element de focus moet krijgen.\n\n{`\nBij alert-role=\"alertdialog\" moet de afnemer zelf de focus naar de melding of naar de actieknop erin verplaatsen.\n`}\n\n```js\nconst alert = document.querySelector('vl-alert');\nalert.focus(); // verplaatst de focus naar de melding zelf\n```\n\n`focus()` op de melding legt de focus op de dialoog, waardoor een schermlezer de rol, de naam en de beschrijving\naankondigt. Wil je de gebruiker meteen bij de actie zetten, focus dan de knop in het `actions` slot; de melding wordt\ndan aangekondigd als context van die knop.\n\n```js\nconst alert = document.querySelector('vl-alert');\nalert.querySelector('vl-button')?.focus();\n```\n\nBij deze rol koppelt de component de titel als naam (`aria-labelledby`) en de boodschap als beschrijving\n(`aria-describedby`) aan de melding, maar enkel wanneer die effectief inhoud hebben: een verwijzing naar een leeg\nelement levert immers geen naam of beschrijving op. Voorzie daarom altijd een titel via het `title` attribuut of het\n`title` slot, want zonder titel heeft de `alertdialog` geen toegankelijke naam. Een controle met axe meldt dat als\n`aria-dialog-name`."
+          }
+        ]
+      }
     },
     {
       "id": "03eff7a",
@@ -406,14 +663,50 @@
         }
       ],
       "closes": [],
+      "impact": "action",
+      "impactSource": "analysis",
+      "explanation": "vl-header en vl-header-next hebben een skip-to-content-id attribuut (WCAG 2.4.1). Met een waarde verschijnt bij focus een skip-link \"Ga meteen naar de inhoud\" die focus en scroll naar dat element brengt; de nodige styling komt mee. Zonder waarde is er geen skip-link en schrijft de header een waarschuwing naar de console.",
+      "action": "Zet skip-to-content-id op vl-header of vl-header-next, met de id van de eerste heading van de pagina-inhoud.",
+      "example": "```html\n<vl-header skip-to-content-id=\"inhoud\" …></vl-header>\n…\n<h1 id=\"inhoud\">Mijn aanvragen</h1>\n```",
       "labels": [
         "a11y"
       ],
       "wcag": [
         "2.4.1"
       ],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Toetsenbordgebruikers kunnen het headerblok voortaan overslaan via een optioneel skip-to-content-id attribuut op vl-header en vl-header-next: bij een gezette waarde verschijnt bij focus een skip-link die focus en scroll naar de opgegeven pagina-inhoud brengt. De accessibility-styling wordt mee geïnjecteerd zodat consumers niets extra hoeven te laden. De gedeelde skip-link-logica wordt nu ook door vl-functional-header gebruikt.",
+        "published": true,
+        "areas": {
+          "code": 7,
+          "storybook": 4,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/skip-link.ts",
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/compliance/header/vl-header.component.ts",
+          "libs/components/src/compliance/header/vl-header.defaults.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": null
+          }
+        ]
+      }
     },
     {
       "id": "2f7dc51",
@@ -437,10 +730,55 @@
         }
       ],
       "closes": [],
+      "impact": "opt-in",
+      "impactSource": "analysis",
+      "explanation": "Cross-validatie: de geldigheid van een veld kan nu afhangen van een ander veld in hetzelfde formulier. Een validator krijgt dependencySelectors, en de CrossValidationMixin uit @domg-wc/components/form hervalideert het veld zodra een van die velden wijzigt. De Storybook-pagina Patronen/Formulier/cross-validatie toont drie voorbeelden om over te nemen: een afhankelijke waarde, twee velden die moeten overeenkomen en een conditioneel verplicht veld. Daarnaast twee fixes voor alle formuliervelden: de foutstatus verdwijnt zodra een veld na een eerste validatie geldig wordt, en een lopende blur-validatie wordt opgeruimd bij reset en opnieuw focussen.",
+      "action": null,
+      "example": null,
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Cross-validatie: de geldigheid van een veld hangt af van de waarde van een ander veld in hetzelfde formulier. Een validator krijgt dependencySelectors, en de CrossValidationMixin hervalideert het veld zodra een van die velden wijzigt via een gedelegeerde vl-change listener op de form.\n\nDe mixin staat in libs/components/src/form/utils en wordt aangeboden via @domg-wc/components/form, zodat afnemers hem kunnen importeren. De gedeelde FormControl base krijgt enkel twee generieke hooks waarop de mixin voortbouwt: retainsValidationState en revalidate.\n\nBevat ook twee bugfixes op form-control: de error-state wordt gewist zodra het veld geldig wordt na een eerste validatie, en de blur-validation timeout wordt opgeruimd bij reset en herfocus.\n\nDrie voorbeelden onder libs/integrations, elk met cypress component-tests: een afhankelijke waarde, twee velden die moeten overeenkomen, en een conditioneel verplicht veld. Die voorbeelden zijn referentiecode om over te nemen, geen publiceerbare componenten.\n\nDocumentatie onder Patronen/Formulier/cross-validatie, met kruisverwijzingen naar validatie, aangepaste validatie, blur-validatie en form data.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 5,
+          "examples": 7,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-control/form-control.ts",
+          "libs/components/src/form/index.ts",
+          "libs/components/src/form/utils/cross-validation.mixin.ts",
+          "libs/components/src/form/utils/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "patronen-formulier-aangepaste-validatie--documentatie",
+            "title": "Patronen/Formulier/aangepaste validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-aangepaste-validatie--documentatie",
+            "added": "  [Formulier - Validatie](/docs/patronen-formulier-validatie--documentatie).\n\n> Moet je validatie afhankelijk maken van de waarde van een ander veld? Bekijk dan\n  [Formulier - Cross-Validatie](/docs/patronen-formulier-cross-validatie--documentatie).\n\n[…]\n\n<details>"
+          },
+          {
+            "id": "patronen-formulier-cross-validatie--documentatie",
+            "title": "Patronen/Formulier/cross-validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-cross-validatie--documentatie",
+            "added": "# Formulier - Cross-Validatie\n## Gebruik\n### 1. De validator\n### 2. Het component\n### 3. De foutmelding\n## Aandachtspunten\n## Voorbeelden\n### Twee velden die moeten overeenkomen\n### Conditioneel verplicht veld\n(121 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "patronen-formulier-demo--documentatie",
+            "title": "Patronen/Formulier/demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-demo--documentatie",
+            "added": "> Moet de validatie van een veld afhangen van de waarde van een ander veld? Bekijk dan\n  [Formulier - Cross-Validatie](/docs/patronen-formulier-cross-validatie--documentatie).\n\n[…]\n\n<details>"
+          },
+          {
+            "id": "patronen-formulier-validatie--documentatie",
+            "title": "Patronen/Formulier/validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-validatie--documentatie",
+            "added": "> Een voorbeeld van cross-validatie (validatie afhankelijk van de waarde van een ander veld) vind je op\n  [Formulier - Cross-Validatie](/docs/patronen-formulier-cross-validatie--documentatie).\n\n[…]\n\n- `customError`: als je custom validatie instelt, [zie hier](/docs/patronen-formulier-aangepaste-validatie--documentatie) hoe je zelf een custom validator schrijft. Voor validatie afhankelijk van een ander veld, [zie cross-validatie](/docs/patronen-formulier-cross-validatie--documentatie)."
+          }
+        ]
+      }
     },
     {
       "id": "8a0bb40",
@@ -464,10 +802,49 @@
         }
       ],
       "closes": [],
+      "impact": "opt-in",
+      "impactSource": "analysis",
+      "explanation": "CompositeFormControl is een nieuwe basisklasse voor een samengesteld veld: meerdere velden die samen gevalideerd worden, zoals coördinaten, een getal met eenheid, een datumbereik of een contactmethode. Elk kindveld dient zichzelf in onder zijn eigen name; het samengestelde veld draagt de melding. required geldt over alle velden, een customValidator kan erbij. Het gedeelde gedrag zit in de CompositeInputMixin uit @domg-wc/components/form. Een kant-en-klare component wordt niet aangeboden: je registreert ze in je eigen project, zoals de voorbeelden op de Storybook-pagina Patronen/Formulier/Samengesteld veld tonen.",
+      "action": null,
+      "example": null,
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Een form-associated control in libs/components die meerdere kind-form-controls samen valideert. De kinderen dienen zichzelf in onder hun eigen name; de composite heeft geen eigen waarde en draagt de melding voor het samengestelde veld.\n\n- required geldt over alle velden (valueMissing), plus een customValidator (customError)\n- een lege melding vult de composite zelf in: valueMissing benoemt de nog lege velden\n- voorbeelden in integrations: coordinaten, getal + eenheid, datumbereik, contactmethode\n- variant: het gedeelde gedrag zit in een CompositeInputMixin uit @domg-wc/components/form; de component zelf wordt niet aangeboden, die registreer je in je eigen project\n- Storybook: patroonpagina en cypress component-tests",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 4,
+          "examples": 9,
+          "tests": 5
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-control/composite-form-control.ts",
+          "libs/components/src/form/form-control/composite-form-control.validators.ts",
+          "libs/components/src/form/form-control/index.ts",
+          "libs/components/src/form/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "patronen-formulier-cross-validatie--documentatie",
+            "title": "Patronen/Formulier/cross-validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-cross-validatie--documentatie",
+            "added": "Vormen de velden samen één waarde, zoals een coördinaat of een getal met eenheid? Dan is\n[Formulier - Samengesteld veld](/docs/patronen-formulier-samengesteld-veld--documentatie) het patroon dat je\nzoekt: daar heeft de groep één geldigheid en één melding."
+          },
+          {
+            "id": "patronen-formulier-demo--documentatie",
+            "title": "Patronen/Formulier/demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-demo--documentatie",
+            "added": "> Vormen twee of meer velden samen één waarde, zoals een coördinaat of een getal met eenheid? Bekijk dan\n  [Formulier - Samengesteld veld](/docs/patronen-formulier-samengesteld-veld--documentatie)."
+          },
+          {
+            "id": "patronen-formulier-samengesteld-veld--documentatie",
+            "title": "Patronen/Formulier/samengesteld veld",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/patronen-formulier-samengesteld-veld--documentatie",
+            "added": "# Formulier - Samengesteld veld\n## Gebruik\n## Patroon\n## Andere voorbeelden\n### Getal + eenheid (`vl-input-field` + `vl-select`)\n### Datumbereik (twee `vl-datepicker`)\n### Contactmethode (`vl-select` + `vl-input-field`)\n## Toegankelijkheid\n(152 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          }
+        ]
+      }
     },
     {
       "id": "d45b5e1",
@@ -491,10 +868,36 @@
         }
       ],
       "closes": [],
+      "impact": "opt-in",
+      "impactSource": "analysis",
+      "explanation": "Met het nieuwe value-bold attribuut toont vl-properties de waarden in bold (font-weight 500), zoals vl-description-data, maar met het label links en de waarde rechts.",
+      "action": null,
+      "example": "```html\n<vl-properties value-bold>…</vl-properties>\n```",
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Het value-bold attribuut toont de waarde (dd) in font-weight 500, gelijk aan vl-description-data, met het label links en de waarde rechts.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.css.ts",
+          "libs/components/src/block/properties/vl-properties.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "### Value bold\n\nVia het `value-bold` attribuut wordt de waarde, de inhoud van `vl-property-data`, in bold getoond zodat ze visueel\nmeer opvalt. Vergelijkbaar met de weergave van `vl-description-data`, maar met het label links en de waarde rechts."
+          }
+        ]
+      }
     },
     {
       "id": "995a202",
@@ -518,10 +921,39 @@
         }
       ],
       "closes": [],
+      "impact": "opt-in",
+      "impactSource": "analysis",
+      "explanation": "Met de itemTemplate-property bepaal je zelf de inhoud van een optie in de dropdown van vl-select-rich: een functie die de optie krijgt en een lit TemplateResult teruggeeft. Na een keuze toont het gesloten veld gewoon het label. Voor een titel met één regel eronder volstaat labelDescription, dat nu ook gedocumenteerd en gestyled is. Het label van een gekozen optie wordt voortaan geëscaped: HTML in een label verschijnt in het gesloten veld als tekst. Zet geen links of knoppen in de template.",
+      "action": null,
+      "example": "```ts\nconst itemTemplate = (option) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${option.label}</vl-text>\n        <vl-text annotation>${option.labelDescription}</vl-text>\n    </div>\n`;\n\nhtml`<vl-select-rich .options=${options} .itemTemplate=${itemTemplate}></vl-select-rich>`;\n```",
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "Met de itemTemplate-property bepaal je zelf de inhoud van een optie in de dropdown. De functie krijgt de optie mee en geeft een lit TemplateResult terug. Het gesloten veld toont na een keuze gewoon het label, zodat het compact blijft.\n\nHet label blijft platte tekst, zodat zoeken, de aria-label van de verwijderknop en de onderliggende option correct blijven. Het label van een geselecteerde optie wordt nu geescaped; voordien ging het ongefilterd de template-string in.\n\nVoor de opmaak brengt de component vl-text mee, zelf geregistreerd zoals vl-form-label doet, plus de layout-klassen vl-stacked en vl-group. De afnemer hoeft niets te importeren en de spacing loopt op de bestaande tokens.\n\nlabelDescription en labelClass werkten al via choices.js maar zijn nu ook gedocumenteerd en gestyled.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/index.ts",
+          "libs/components/src/form/select-rich/index.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.css.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": " - [Eigen inhoud per optie](#eigen-inhoud-per-optie)\n\n[…]\n\n## Eigen inhoud per optie\n\nEen optie toont standaard haar `label` als platte tekst op een regel. Voor rijkere opties zijn er twee\nmogelijkheden.\n\n### Beschrijving bij een optie\n\nVoor een titel met een regel eronder volstaat `labelDescription`. De component zet die in een\n`vl-select__option-subtitle` en legt de `aria-describedby` koppeling met het label.\n\n\n<details>\n    <summary>options</summary>\n    <Source code={`\n    [\n        {\n            label: '0123.456.789',\n            labelDescription: 'Industrieweg 123, 9876 Plaatsnaam',\n            value: '0123456789',\n        },\n        {\n            label: 'Niet van toepassing',\n            labelDescription: 'Er is geen bijhorende vestiging',\n            value: 'geen-vestiging',\n        }\n]`} language=\"ts\" dark={true} />\n</details>\n\n### itemTemplate\n\nVolstaat `labelDescription` niet, dan stel je de `itemTemplate`-property in. Die functie krijgt de optie\nmee en geeft een lit `TemplateResult` terug, die de inhoud van de optie in de dropdown wordt. De optie\nzelf (rol, klik-afhandeling, data-attributen) blijft in beheer van de component. Eens gekozen toont het\ngesloten veld het `label`, zodat het compact blijft.\n\n```ts\nconst itemTemplate = (option) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${option.label}</vl-text>\n        <vl-text annotation>${option.vestiging}</vl-text>\n        <vl-text annotation>${option.labelDescription}</vl-text>\n    </div>\n`;\n\nhtml`<vl-select-rich .options=${options} .itemTemplate=${itemTemplate}></vl-select-rich>`;\n```\n\n> Zet geen links of knoppen in de template, handel zulke acties af via het `vl-change`-event. Een\n> [`option`](https://www.w3.org/TR/wai-aria-1.2/#childrenArePresentational) verbergt zijn kinderen voor\n> hulptechnologie ([4.1.2](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)) en het toetsenbord\n> ([2.1.1](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))."
+          }
+        ]
+      }
     },
     {
       "id": "cfd208b",
@@ -545,10 +977,37 @@
         }
       ],
       "closes": [],
+      "impact": "opt-in",
+      "impactSource": "analysis",
+      "explanation": "Met de itemTemplate-property bepaal je zelf de inhoud van een suggestie in vl-autocomplete, als caption-format (title, subtitle, value) niet volstaat. De functie krijgt het item en levert de inhoud van de li. Zonder resultaten roept de component de functie niet aan en toont ze de tekst uit no-matches-text. Zet geen links of knoppen in de template.",
+      "action": null,
+      "example": "```ts\nconst itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}</vl-text>\n    </div>\n`;\n```\n\n```html\n<vl-autocomplete .items=\"${items}\" .itemTemplate=\"${itemTemplate}\"></vl-autocomplete>\n```",
       "labels": [],
       "wcag": [],
-      "note": null,
-      "migration": null
+      "source": {
+        "body": "De inhoud van een suggestie lag vast in formatCaption, dat enkel title, subtitle en value combineert.\n\nitemTemplate krijgt het item en levert de inhoud van de li. Zonder de property blijft caption-format gelden. Bij nul resultaten roept de component de functie niet aan en toont ze de tekst uit no-matches-text.\n\nVoor opmaak binnen de shadow DOM registreert de component VlTextComponent en neemt ze vlStackedStyles op, zoals vl-select-rich bij FLUX-773.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/autocomplete/index.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.component.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.model.ts",
+          "libs/components/src/block/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-autocomplete--documentatie",
+            "title": "Components - Block/autocomplete",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+            "added": "### Suggesties met een eigen item-template\n\nMoet een suggestie meer tonen dan `title`, `subtitle` en `value`, dan volstaat `caption-format` niet. Stel dan\n`itemTemplate` in: die functie krijgt het item en levert de inhoud van de `<li>`. De `<li>` zelf (id, klik,\n`role=\"option\"`) blijft van de component.\n\nVindt de zoekopdracht niets, dan roept de component je `itemTemplate` niet aan. Ze toont dan één suggestie met de\ntekst uit het `no-matches-text`-attribuut, standaard \"Geen resultaat\".\n\n```ts\nconst itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}, eigenaar: ${item.owner}</vl-text>\n    </div>\n`;\n```\n\n```html\n<vl-autocomplete .items=\"${items}\" .itemTemplate=\"${itemTemplate}\"></vl-autocomplete>\n```\n\n> Zet geen links of knoppen in de template, handel zulke acties af via het `selected-autocomplete`-event. Een\n> [`option`](https://www.w3.org/TR/wai-aria-1.2/#childrenArePresentational) verbergt zijn kinderen voor\n> hulptechnologie ([4.1.2](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)) en het toetsenbord\n> ([2.1.1](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))."
+          }
+        ]
+      }
     }
   ],
   "api": null,

@@ -5,16 +5,17 @@
 //   pnpm run flux:web-components:changelog-build --check         # faalt als een changelog.json niet meer klopt
 //   pnpm run flux:web-components:changelog-build --check 2.20.0  # enkel die versie controleren
 //
-// changelog.json is wat de MCP-server over een versie aanbiedt: elke entry met type, issues, componenten en
-// labels, de handmatige annotaties uit catalog/flux/<versie>/annotations/changelog.json, en de API-diff tegen de
-// web-types van de vorige versie. Het bestand is gegenereerd en staat in git, zodat een PR toont wat de server
-// zal tonen. Draai --all opnieuw wanneer een annotatie wijzigt of de web-types van een vorige versie later
-// binnenkomen. Het script is deterministisch: opnieuw bouwen geeft hetzelfde bestand.
+// changelog.json is wat de MCP-server over een versie aanbiedt: elke entry met type, issues, componenten, impact en
+// labels, de feiten uit de commits (commits.json, van changelog-commits), de analyse uit
+// catalog/flux/<versie>/analysis/changelog.json, en de API-diff tegen de web-types van de vorige versie. Het
+// bestand is gegenereerd en staat in git, zodat een PR toont wat de server zal tonen. Draai --all opnieuw wanneer
+// de analyse wijzigt of de web-types van een vorige versie later binnenkomen. Het script is deterministisch:
+// opnieuw bouwen geeft hetzelfde bestand.
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildReleaseFromCatalog, readAnnotations } from '../../../server/src/changelog.mjs';
+import { buildReleaseFromCatalog } from '../../../server/src/changelog.mjs';
 import { compareVersions } from '../../../server/src/catalog.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -22,6 +23,12 @@ const CATALOG_DIR = path.join(REPO_ROOT, 'catalog', 'flux');
 const USAGE = 'Gebruik: pnpm run flux:web-components:changelog-build <versie> | --all | --check [<versie>]';
 const VERSION = /^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$/;
 const TYPE_NAMES = { breaking: 'breaking', feature: 'features', fix: 'fixes', docs: 'docs', perf: 'perf', revert: 'reverts', other: 'overige' };
+const IMPACT_NAMES = {
+    action: 'actie nodig',
+    'opt-in': 'nieuwe mogelijkheid',
+    automatic: 'automatisch bij de upgrade',
+    none: 'geen impact op het project',
+};
 
 const args = process.argv.slice(2);
 const flags = args.filter((arg) => arg.startsWith('--'));
@@ -61,26 +68,28 @@ function list(title, entries) {
     for (const entry of entries) console.log(`    - ${firstLine(entry)} [${entry.id}]`);
 }
 
-// Wat de regels als 'met impact' zien, maar zonder component: daar zitten de missers, zoals een migratie van de
-// eigen build. Een entry waarvoor een annotatie 'no-impact' al vastlegt, is beoordeeld.
-function toReview(release, annotations) {
-    return release.entries.filter(
-        (entry) =>
-            entry.components.length === 0 &&
-            !entry.labels.includes('no-impact') &&
-            !('no-impact' in (annotations?.entries?.[entry.id]?.labels ?? {})),
-    );
-}
+const summarize = (counts, names) =>
+    Object.entries(names)
+        .filter(([key]) => counts[key] > 0)
+        .map(([key, name]) => `${counts[key]} ${name}`)
+        .join(', ') || 'geen';
 
-function report(release, annotations) {
-    const total = release.entries.length;
-    const counts = Object.entries(TYPE_NAMES)
-        .filter(([type]) => release.counts[type] > 0)
-        .map(([type, name]) => `${release.counts[type]} ${name}`);
-    console.log(`  ${total} entries: ${counts.join(', ') || 'geen'}`);
-    list('geen impact op het project', release.entries.filter((entry) => entry.labels.includes('no-impact')));
+function report(release) {
+    console.log(`  ${release.entries.length} entries: ${summarize(release.counts.type, TYPE_NAMES)}`);
+    console.log(`  impact: ${summarize(release.counts.impact, IMPACT_NAMES)}`);
+    for (const entry of release.entries.filter((e) => e.impact === 'action')) {
+        console.log(`    actie bij ${entry.id}: ${entry.action ?? 'nog niet geanalyseerd'}`);
+    }
     list('toegankelijkheid', release.entries.filter((entry) => entry.labels.includes('a11y')));
-    list('te beoordelen, impact zonder component (leg vast met een annotatie)', toReview(release, annotations));
+    // Zonder analyse is de impact afgeleid: uit de commits of, zonder commits.json, uit het type en de tekst.
+    const missingCommits = release.entries.some((entry) => entry.commits.length > 0 && !entry.source);
+    if (missingCommits) {
+        console.log(`  geen commits.json: pnpm run flux:web-components:changelog-commits ${release.version}`);
+    }
+    list(
+        'nog niet geanalyseerd (zie prompts/changelog-analyse.md)',
+        release.entries.filter((entry) => entry.impactSource !== 'analysis'),
+    );
     if (release.api) {
         const silent = [...release.api.added, ...release.api.removed, ...release.api.changed].filter((item) => !item.inChangelog);
         if (silent.length > 0) {
@@ -119,7 +128,7 @@ for (const version of versions) {
 
     fs.writeFileSync(target, content);
     console.log(`Gebouwd: ${relative}`);
-    report(release, readAnnotations(CATALOG_DIR, version).annotations);
+    report(release);
 }
 
 if (stale) console.log(`Bouw opnieuw: pnpm run flux:web-components:changelog-build ${requested ?? '--all'}`);

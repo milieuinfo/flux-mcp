@@ -1,0 +1,87 @@
+{
+  "summary": "2.19.0 zet sterk in op toegankelijkheid: een skip-link in vl-header en vl-header-next, een instelbare ARIA-rol voor vl-alert, een screenreadermelding bij externe links en semantische lijsten in vl-description-data en vl-http-error-message. Nieuw zijn ook eigen inhoud per optie in vl-select-rich en vl-autocomplete (itemTemplate), value-bold op vl-properties, en voor formulieren cross-validatie en samengestelde velden. Drie wijzigingen vragen actie: het ready-event van vl-header-next en vl-footer-next komt nu op het element, externe vl-links melden zelf dat ze in een nieuw venster openen, en toaster.showAlert() verwacht de attribuutnamen.",
+  "entries": {
+    "ca607d5": {
+      "impact": "action",
+      "explanation": "toaster.showAlert() zet elke key van het meegegeven object als attribuut op de vl-alert. Een camelCase key zoals alertRole werd daardoor nooit toegepast, want het attribuut heet alert-role. Het object gebruikt nu de attribuutnamen, met VlAlertAttributes als TypeScript-type (te importeren naast VlAlert).",
+      "action": "Geef je alertRole mee aan showAlert(), gebruik dan 'alert-role'. Met TypeScript geeft alertRole nu een typefout; in JavaScript werkte het nooit.",
+      "example": "```js\ntoaster.showAlert({\n    type: 'success',\n    title: 'Gelukt!',\n    message: 'Je aanvraag is verstuurd.',\n    'alert-role': 'alert',\n});\n```"
+    },
+    "6139351": {
+      "impact": "action",
+      "explanation": "Een externe vl-link (attribuut external) laat schermlezers nu automatisch \"(opent in een nieuw venster)\" voorlezen na de linktekst. Het external-icoon zelf wordt niet voorgelezen. Met het label attribuut wordt de melding niet toegevoegd: het label vervangt de volledige voorgelezen tekst.",
+      "action": "Staat \"(opent in een nieuw venster)\" of iets gelijkaardigs zelf in de linktekst van een externe vl-link, haal het weg: anders hoort een schermlezer het twee keer. Gebruik je het label attribuut op een externe link, neem de vermelding dan zelf op in dat label.",
+      "example": "```html\n<vl-link href=\"https://www.vlaanderen.be\" external label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\">Vlaanderen.be</vl-link>\n```"
+    },
+    "0ee6e57": {
+      "impact": "automatic",
+      "explanation": "vl-description-data rendert de label/waarde-paren nu als een echte description list (dl, dt, dd), zodat een schermlezer elk paar als term en definitie aankondigt. Visueel en qua API verandert er niets. Daarnaast is een renderfout in vl-description-data-item opgelost waardoor het value-slot verkeerd werd afgesloten."
+    },
+    "53040a9": {
+      "impact": "automatic",
+      "explanation": "vl-http-error-message toont de debug-info (URL, tijd, user-agent) als definitielijst in plaats van als tabel, zodat een schermlezer ze als beschrijvende paren aankondigt. De tekstkolom is voortaan bij elke foutcode en schermbreedte even ver links uitgelijnd, waar dat vroeger afhing van de lengte van de tekst. De foutteksten verwijzen naar \"de URL in de adresbalk\" in plaats van \"de URL hierboven\"."
+    },
+    "19f3b89": {
+      "impact": "automatic",
+      "explanation": "Springen naar een anker houdt nu rekening met sticky headers: het doel verdwijnt niet meer onder de header. Dat geldt voor de skip-link van vl-header, vl-header-next en vl-functional-header, en voor anchor-links en hash-deeplinks die via dezelfde weg lopen. @domg-wc/common exporteert daarvoor ook getStickyOffsetTop en scrollIntoViewBelowSticky."
+    },
+    "9d28af3": {
+      "impact": "automatic",
+      "explanation": "Properties binnen eenzelfde column van vl-properties krijgen nu dezelfde verticale ruimte (2rem) als properties zonder columns; voordien plakten ze tegen elkaar. Meerdere waarden onder één label blijven tegen elkaar staan. De ruimte is aan te passen met de nieuwe custom property --vl-properties--row-gap.",
+      "example": "```css\nvl-properties {\n    --vl-properties--row-gap: 1rem;\n}\n```"
+    },
+    "e1b195c": {
+      "impact": "automatic",
+      "explanation": "In een container die bij de eerste weergave verborgen is, zoals een modal die nog niet openstond, viel het laatste label van vl-progress-indicator buiten de rand. De component herrekent de ruimte nu ook wanneer de container zichtbaar wordt."
+    },
+    "cfe65f3": {
+      "impact": "automatic",
+      "explanation": "De verbindingslijnen tussen de stappen van vl-progress-indicator verdwenen achter een ondoorzichtige achtergrond wanneer een bovenliggend element een eigen stacking context had. Ze zijn weer zichtbaar."
+    },
+    "778158e": {
+      "impact": "action",
+      "explanation": "vl-header-next en vl-footer-next vuurden hun ready-event af op window in plaats van op het element. Daardoor werkte @ready in een template niet. Het event komt nu op het element zelf; het bubbelt niet en gaat niet door shadow boundaries. vl-header-next stopt ook met werken zodra hij uit de DOM verdwijnt, en de skeleton van de header blijft niet meer staan na een disconnect. De oude vl-header en vl-footer waren niet getroffen.",
+      "action": "Luister je op window naar het ready-event van vl-header-next of vl-footer-next, registreer de listener dan op het element zelf.",
+      "example": "```js\ndocument.querySelector('vl-header-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```"
+    },
+    "7bbb00d": {
+      "impact": "none",
+      "explanation": "Een correctie in de release-configuratie van Flux: in de changelog kregen features de opmaak van fixes. Dit raakt enkel hoe de changelog gegenereerd wordt."
+    },
+    "8ec5138": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe alert-role attribuut kies je de ARIA-rol van vl-alert: alert (default, ongewijzigd gedrag) voor een beknopte melding die na een actie verschijnt, alertdialog voor een melding die een actie vraagt, en no-role voor een melding die al bij het laden op de pagina staat. Bij alertdialog krijgt de melding de titel als naam en de boodschap als beschrijving, en is ze focusbaar: verplaats zelf de focus met alert.focus(). Voorzie dan altijd een titel. De documentatie raadt no-role aan voor meldingen die al bij het laden zichtbaar zijn.",
+      "example": "```html\n<!-- melding die al bij het laden van de pagina zichtbaar is -->\n<vl-alert alert-role=\"no-role\" type=\"info\" icon=\"info-circle\" title=\"Onderhoud\">\n    <span>Op zaterdag is dit loket beperkt beschikbaar.</span>\n</vl-alert>\n```"
+    },
+    "03eff7a": {
+      "impact": "action",
+      "explanation": "vl-header en vl-header-next hebben een skip-to-content-id attribuut (WCAG 2.4.1). Met een waarde verschijnt bij focus een skip-link \"Ga meteen naar de inhoud\" die focus en scroll naar dat element brengt; de nodige styling komt mee. Zonder waarde is er geen skip-link en schrijft de header een waarschuwing naar de console.",
+      "action": "Zet skip-to-content-id op vl-header of vl-header-next, met de id van de eerste heading van de pagina-inhoud.",
+      "example": "```html\n<vl-header skip-to-content-id=\"inhoud\" …></vl-header>\n…\n<h1 id=\"inhoud\">Mijn aanvragen</h1>\n```"
+    },
+    "2f7dc51": {
+      "impact": "opt-in",
+      "explanation": "Cross-validatie: de geldigheid van een veld kan nu afhangen van een ander veld in hetzelfde formulier. Een validator krijgt dependencySelectors, en de CrossValidationMixin uit @domg-wc/components/form hervalideert het veld zodra een van die velden wijzigt. De Storybook-pagina Patronen/Formulier/cross-validatie toont drie voorbeelden om over te nemen: een afhankelijke waarde, twee velden die moeten overeenkomen en een conditioneel verplicht veld. Daarnaast twee fixes voor alle formuliervelden: de foutstatus verdwijnt zodra een veld na een eerste validatie geldig wordt, en een lopende blur-validatie wordt opgeruimd bij reset en opnieuw focussen."
+    },
+    "8a0bb40": {
+      "impact": "opt-in",
+      "explanation": "CompositeFormControl is een nieuwe basisklasse voor een samengesteld veld: meerdere velden die samen gevalideerd worden, zoals coördinaten, een getal met eenheid, een datumbereik of een contactmethode. Elk kindveld dient zichzelf in onder zijn eigen name; het samengestelde veld draagt de melding. required geldt over alle velden, een customValidator kan erbij. Het gedeelde gedrag zit in de CompositeInputMixin uit @domg-wc/components/form. Een kant-en-klare component wordt niet aangeboden: je registreert ze in je eigen project, zoals de voorbeelden op de Storybook-pagina Patronen/Formulier/Samengesteld veld tonen."
+    },
+    "d45b5e1": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe value-bold attribuut toont vl-properties de waarden in bold (font-weight 500), zoals vl-description-data, maar met het label links en de waarde rechts.",
+      "example": "```html\n<vl-properties value-bold>…</vl-properties>\n```"
+    },
+    "995a202": {
+      "impact": "opt-in",
+      "explanation": "Met de itemTemplate-property bepaal je zelf de inhoud van een optie in de dropdown van vl-select-rich: een functie die de optie krijgt en een lit TemplateResult teruggeeft. Na een keuze toont het gesloten veld gewoon het label. Voor een titel met één regel eronder volstaat labelDescription, dat nu ook gedocumenteerd en gestyled is. Het label van een gekozen optie wordt voortaan geëscaped: HTML in een label verschijnt in het gesloten veld als tekst. Zet geen links of knoppen in de template.",
+      "example": "```ts\nconst itemTemplate = (option) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${option.label}</vl-text>\n        <vl-text annotation>${option.labelDescription}</vl-text>\n    </div>\n`;\n\nhtml`<vl-select-rich .options=${options} .itemTemplate=${itemTemplate}></vl-select-rich>`;\n```",
+      "a11y": false
+    },
+    "cfd208b": {
+      "impact": "opt-in",
+      "explanation": "Met de itemTemplate-property bepaal je zelf de inhoud van een suggestie in vl-autocomplete, als caption-format (title, subtitle, value) niet volstaat. De functie krijgt het item en levert de inhoud van de li. Zonder resultaten roept de component de functie niet aan en toont ze de tekst uit no-matches-text. Zet geen links of knoppen in de template.",
+      "example": "```ts\nconst itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}</vl-text>\n    </div>\n`;\n```\n\n```html\n<vl-autocomplete .items=\"${items}\" .itemTemplate=\"${itemTemplate}\"></vl-autocomplete>\n```"
+    }
+  }
+}

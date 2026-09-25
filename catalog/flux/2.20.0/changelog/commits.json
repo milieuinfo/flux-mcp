@@ -1,0 +1,405 @@
+{
+  "schema": 1,
+  "version": "2.20.0",
+  "previous": "2.19.0",
+  "commits": {
+    "bbf991fccc108b2d1f651cacec7f06fd6b40122e": {
+      "sha": "bbf991fccc108b2d1f651cacec7f06fd6b40122e",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/form-control/form-control.ts"
+      ],
+      "storybook": []
+    },
+    "237302380b4fe8179bbfab6825fffd3fc78a6071": {
+      "sha": "237302380b4fe8179bbfab6825fffd3fc78a6071",
+      "body": "vl-upload zette als enige form control geen aria-invalid bij een validatiefout. Het attribuut staat nu op de validationTarget, zoals bij de andere controls.\n\nDat lost de toegankelijkheid niet op, en dat is een bewuste keuze. De validationTarget is de input type=file die Dropzone met visibility hidden verbergt, dus die staat niet in de accessibility tree. Het enige focusbare element is de upload-knop, en aria-invalid wordt niet ondersteund op role=button, dus de browser laat het daar vallen. Rechtzetten vraagt dat de file-input echt zichtbaar wordt voor screenreaders, wat raakt aan de manier waarop Dropzone haar input verbergt. Dat valt buiten dit ticket.\n\nDe ongeldige toestand bereikt een screenreader vandaag enkel via de foutmelding, die vl-form-message in een role=status regio met aria-live polite rendert. Die beperking staat nu beschreven bij Gekende Beperkingen, met een verwijzing vanaf de componentpagina van vl-upload en vanaf de patroonpagina blur-validatie, waar de zin over aria-invalid tot nu onvoorwaardelijk was.\n\nTwee Cypress-testen erbij: aria-invalid op de validationTarget van pristine naar fout en terug naar geldig, en een die nagaat dat de foutmelding effectief in de role=status regio van vl-form-message belandt.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 3,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/upload/vl-upload.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-upload--documentatie",
+          "title": "Components - Form/upload",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-form-upload--documentatie",
+          "added": "De ongeldige toestand van dit veld bereikt een screenreader enkel via de foutmelding, niet via `aria-invalid` op de\ncontrol zelf. Zie [Gekende Beperkingen](/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie)."
+        },
+        {
+          "id": "patronen-formulier-blur-validatie--documentatie",
+          "title": "Patronen/Formulier/blur validatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/patronen-formulier-blur-validatie--documentatie",
+          "added": "ook los van de melding kenbaar is. Eén uitzondering: bij `vl-upload` haalt dat attribuut de accessibility\ntree niet, zie [Gekende Beperkingen](/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie)."
+        },
+        {
+          "id": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+          "title": "Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+          "added": "## `aria-invalid` bij `vl-upload`\n\nBij een validatiefout krijgt `vl-upload` als enige form control geen `aria-invalid` in de accessibility tree. Het\nenige focusbare element is de upload-knop, en `aria-invalid` wordt niet ondersteund op `role=\"button\"`, dus de\nbrowser laat het attribuut daar vallen. De onderliggende `input type=\"file\"` draagt het wel, maar Dropzone verbergt\ndie met `visibility: hidden`, waardoor ze sowieso buiten de accessibility tree valt.\n\nDe ongeldige toestand komt daarom niet van de control zelf, maar van de foutmelding: `vl-form-message` rendert ze in\neen `role=\"status\"` regio met `aria-live=\"polite\"`, zodat een screenreader ze voorleest zodra ze verschijnt. De\ngebruiker hoort dus wel wat er fout is, alleen niet dat het veld zelf ongeldig staat. Dit rechtzetten vraagt dat de\nfile-input echt zichtbaar wordt voor screenreaders, wat raakt aan de manier waarop Dropzone haar input verbergt."
+        }
+      ]
+    },
+    "b62fbe3726b83ba97a855adc85468966766d9e03": {
+      "sha": "b62fbe3726b83ba97a855adc85468966766d9e03",
+      "body": "cypress-axe bepaalt het pad naar axe.min.js via require?.resolve; webpack kan require als expressie niet statisch analyseren en waarschuwt daarom bij elke run. Upstream open sinds 2021 (component-driven/cypress-axe#99), de laatste release 1.7.0 bevat het patroon nog. De ignoreWarnings filter matcht op module en message samen, dus alle andere waarschuwingen blijven zichtbaar.",
+      "published": false,
+      "areas": {
+        "tests": 1,
+        "tooling": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "5710cb7574f785f307c1fe2d4395c29ad543dd30": {
+      "sha": "5710cb7574f785f307c1fe2d4395c29ad543dd30",
+      "body": "De uitgestelde rescan in firstUpdated draaide refreshSections met een stale closure-snapshot en kon een losgekoppelde auto-sectie opnieuw vol renderen nadat de slotchange-cleanup ze had leeggemaakt. De rescan leest nu de actuele slotted elements en stopt buiten sections-mode; de slotchange-handler annuleert een openstaande rescan-frame.",
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+      ],
+      "storybook": []
+    },
+    "89c0f660957a268146d912bd0c60a4ede389d6a0": {
+      "sha": "89c0f660957a268146d912bd0c60a4ede389d6a0",
+      "body": "De focus outline verscheen ook na een muisklik. Met :focus-visible toont de browser hem enkel wanneer die de focus als toetsenbordfocus beschouwt.",
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/breadcrumb/vl-breadcrumb.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "d68ff04f1d89c359158134c55711db577f3c7b7e": {
+      "sha": "d68ff04f1d89c359158134c55711db577f3c7b7e",
+      "body": "Tabben tussen elementen binnen een open side-sheet houdt de focus nu bij de inhoud in plaats van ze naar de toggle button te trekken.\n\nOp een mobiel scherm is een open side-sheet modaal: tabben loopt rond tussen de toggle button en de inhoud, en focus die buiten de sheet belandt keert terug naar de sheet zelf. Een toggle button die verborgen is (hide-toggle-button) of volledig naast het scherm valt (bv. bij 100% breedte) wordt overgeslagen in de tabvolgorde. Sluit een side-sheet met verborgen toggle button, dan keert de focus terug naar het element dat focus had vóór het openen. Op desktop kan de focus de side-sheet verlaten.\n\nStaan er meerdere side-sheets open, dan laat een side-sheet de focus bij die andere open side-sheet in plaats van ze weg te trekken. Dat geldt ook voor vl-map-side-sheet, dat van vl-side-sheet erft. Meerdere side-sheets tegelijk blijft een anti-pattern; de documentatie vraagt er één per pagina te renderen.\n\nDoorklikken naar een ander niveau in een cascader zet de focus op dat nieuwe niveau in plaats van ze te laten vallen. De focus outline van dat niveau is enkel zichtbaar bij toetsenbordnavigatie.\n\nDe documentatie van vl-side-sheet vermeldt dat een side-sheet met 100% breedte op mobile een eigen sluitknop nodig heeft.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 2,
+        "docs": 1,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/cascader/vl-cascader.component.ts",
+        "libs/components/src/block/cascader/vl-cascader.flux-css.ts",
+        "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+        "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-side-sheet--documentatie",
+          "title": "Components - Block/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+          "added": "## Eén side-sheet per pagina\n\nRender nooit meer dan één `side-sheet` tegelijk, ook geen bijkomende verborgen exemplaren. Een open `side-sheet` houdt\nop een mobiel scherm de focus bij zijn eigen inhoud. Staan er twee open, dan proberen ze allebei de focus naar zich toe\nte trekken en wordt het onvoorspelbaar waar de gebruiker terechtkomt. De component vangt de ergste gevolgen op, zodat\neen bestaande toepassing niet vastloopt, maar de focusvolgorde klopt dan niet meer.\n\nHeb je meerdere panelen nodig, wissel dan de inhoud van dezelfde `side-sheet`, of sluit het ene paneel voor je het\nandere opent.\n\n[…]\n\n**Let op:** de toggle knop staat bij een open `side-sheet` naast de `side-sheet`. De standaardbreedte op mobile\n(`calc(100vw - 56px)`) laat daar net plaats voor. Stel je `--vl-side-sheet-width-mobile` in op `100%`, dan valt de\ntoggle knop buiten het scherm en kan de gebruiker de `side-sheet` er niet meer mee sluiten. Voorzie in dat geval zelf\neen sluitknop in de `side-sheet` die `close()` aanroept, zoals in het\n[voorbeeld van buitenaf openen & sluiten](#voorbeeld-van-buitenaf-openen--sluiten). Geef die knop een toegankelijke\nnaam, bijvoorbeeld `label=\"Sluit de side-sheet\"` bij een knop met enkel een icoon."
+        }
+      ]
+    },
+    "6854ffc2a5f6ef66bc5c04826fa3fc391b93ca0e": {
+      "sha": "6854ffc2a5f6ef66bc5c04826fa3fc391b93ca0e",
+      "body": "Een vl-link met class vl-cascader-link in de label-slot van vl-cascader-item toont het pijltje nu rechts uitgelijnd over de volle breedte van het item, net zoals bij het label-attribuut. Dat geldt ook voor links die via een eigen template of via property binding gerenderd worden; links in het content-slot behouden hun natuurlijke breedte.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/cascader/vl-cascader-item.component.ts",
+        "libs/components/src/block/cascader/vl-cascader-item.flux-css.ts",
+        "libs/components/src/block/cascader/vl-cascader.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-cascader-cascader--documentatie",
+          "title": "Components - Block/cascader/cascader",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+          "added": "Plaats je een `vl-link` in het `label`-slot, geef die dan de class `vl-cascader-link`. Die class zorgt ervoor dat de\nlink de volle breedte van het item inneemt en dat het pijltje rechts uitgelijnd staat, net zoals bij de\n`label`-attribuut-variant. Links in het `content`-slot krijgen die class niet en behouden hun natuurlijke breedte.\n\n```html\n<vl-cascader-item label=\"West-Vlaanderen\">\n    <vl-link slot=\"label\" bold button-as-link icon=\"arrow-right-fat\" icon-placement=\"after\" class=\"vl-cascader-link\">\n        Provincie: West-Vlaanderen\n    </vl-link>\n</vl-cascader-item>\n```\n\nDezelfde conventie geldt voor de links die je in een eigen [dynamische template](#dynamische-templates) of via\n[property-binding](#cascader-met-property-binding) rendert."
+        },
+        {
+          "id": "components-block-cascader-cascader-item--documentatie",
+          "title": "Components - Block/cascader/cascader-item",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-cascader-cascader-item--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "68990169ee82a23f101fb4bcc8d653462979329a": {
+      "sha": "68990169ee82a23f101fb4bcc8d653462979329a",
+      "body": "Migratie van npm naar pnpm omwille van supply-chain security.\n\n- pnpm-workspace.yaml met allowBuilds, strictDepBuilds en minimumReleaseAge; overrides uit package.json verhuisd.\n- corepack pint pnpm via packageManager (Volta-pin als alternatief).\n- devEngines in package.json: npm 10.9+ weigert elk commando in de repo vóór het iets schrijft. Daarom leest de lib-build zijn dependency-versies met pnpm list in plaats van npm list (de eigen packagenaam, die door self-imports bij depcheck opduikt, wordt daarbij met een waarschuwing overgeslagen), en is @semantic-release/npm (dat 'npm version' draait) vervangen door @semantic-release/exec met 'pnpm pkg set version'. pnpm schrijft door dit veld zijn eigen integriteitsgegevens als tweede document in pnpm-lock.yaml.\n- preinstall-guard (only-allow-pnpm) in de root en de consumer-apps, als vangnet voor oudere npm en andere package managers; package-lock.json in .gitignore.\n- consumer-apps als aparte pnpm-workspaces met eigen lockfile en pnpm-workspace.yaml (@domg-wc/* uitgezonderd van minimumReleaseAge); verify-release bumpt ook @domg-wc/common, dat de consumer sinds FLUX-769 expliciet declareert.\n- CI (Jenkins) en release naar pnpm: pnpm komt in de pod via npm install -g met de versie uit packageManager, want corepack leest geen .npmrc-auth en krijgt bij Artifactory 403 op de tarball; Trivy op de drie pnpm-lock.yaml's.\n- Documentatie afnemen (o.a. @domg-wc/common declareren bij registerWebComponents), bijdragen en beheren, interne docs en AI-profielen bijgewerkt.",
+      "published": false,
+      "areas": {
+        "docs": 10,
+        "examples": 4,
+        "tests": 4,
+        "tooling": 39
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "afnemen-aan-de-slag--documentatie",
+          "title": "Afnemen/Aan De Slag",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+          "added": "- [Node en pnpm](#node-en-pnpm)\n\n[…]\n\n## Node en pnpm\n\n[…]\n\nis [Node.js](https://nodejs.org/en). Als package manager gebruik je best [pnpm](https://pnpm.io/).\n\nDe reden is supply-chain security: pnpm draait sinds versie 10 de lifecycle-scripts\n(`preinstall`/`install`/`postinstall`) van dependencies standaard niet automatisch. Enkel packages die je expliciet\ntoelaat, mogen build-scripts draaien. Npm (en Yarn) draaien die scripts wel bij het installeren en vergroten zo het\nrisico op supply-chain-aanvallen. Onze packages afnemen werkt met elke package manager; als afnemer gebruik je best\nook wel pnpm.\n\n[…]\n\n        \"@domg-wc/common\": \"2.0.0\",\n\n[…]\n\n  functionaliteit en is optioneel. Gebruik je `registerWebComponents` (zie hieronder), neem dan ook\n  __'@domg-wc/common'__ op: je importeert er rechtstreeks uit, en onder pnpm of een andere strikte package manager is\n  een package dat enkel transitief binnenkomt niet importeerbaar."
+        },
+        {
+          "id": "afnemen-artifacts--documentatie",
+          "title": "Afnemen/Artifacts",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+          "added": "__common__ is een technische bibliotheek met basis code en utilities, waaronder `registerWebComponents`. Neem ze op als\ndependency zodra je er rechtstreeks uit importeert; enkel transitief via __components__ volstaat niet onder een strikte\npackage manager zoals pnpm."
+        },
+        {
+          "id": "afnemen-migratie-v2-aanpak--documentatie",
+          "title": "Afnemen/Migratie v2 - Aanpak",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+          "added": "De v2 versie kan je installeren via pnpm:\n\n[…]\n\npnpm remove @domg-wc/common-utilities @domg-wc/form @domg-wc/sections @domg-wc/elements && pnpm add @domg-wc/common@^2.1.0 @domg-wc/components@^2.1.0 @domg-wc/map@^2.1.0 @domg-wc/styles@^2.1.0"
+        },
+        {
+          "id": "afnemen-migratie-v2-faq--documentatie",
+          "title": "Afnemen/Migratie v2 - FAQ",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+          "added": "Declareer dan ook `@domg-wc/common` als dependency in je `package.json`: je importeert er rechtstreeks uit, en onder\npnpm of een andere strikte package manager volstaat de transitieve aanwezigheid via `@domg-wc/components` niet."
+        },
+        {
+          "id": "afnemen-starter-app--documentatie",
+          "title": "Afnemen/Starter App",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+          "added": "In de package.json onder `scripts` staan verschillende shortcuts die je kan uitvoeren met `pnpm run {script}`."
+        },
+        {
+          "id": "beheren-ci-cd--documentatie",
+          "title": "Beheren/CI - CD",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+          "added": "1. __Trivy scan__ - security scan van de drie `pnpm-lock.yaml`-bestanden (root, `apps/consumer` en\n   `apps/consumer-e2e`), zodat geen dependency-lijst buiten de scan valt"
+        },
+        {
+          "id": "beheren-icon-font--documentatie",
+          "title": "Beheren/Icon Font",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/beheren-icon-font--documentatie",
+          "added": "- voer het `generate-icon-files.ts` script uit in de flux-web-components repository (`pnpm run libs:icons:generate`)"
+        },
+        {
+          "id": "bijdragen-cypress--documentatie",
+          "title": "Bijdragen/Cypress",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/bijdragen-cypress--documentatie",
+          "added": "pnpm run apps:integrator:dev\n\n[…]\n\npnpm run apps:integrator-e2e:watch\n\n[…]\n\npnpm run apps:integrator-e2e:run\n\n[…]\n\npnpm run apps:storybook:dev\n\n[…]\n\npnpm run apps:storybook-e2e:watch\n\n[…]\n\npnpm run apps:storybook-e2e:run\n\n[…]\n\npnpm run libs:component-tests:watch\n\n[…]\n\npnpm run libs:component-tests:run"
+        },
+        {
+          "id": "bijdragen-opzet-structuur--documentatie",
+          "title": "Bijdragen/Opzet & Structuur",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+          "added": "We gebruiken Node en [pnpm](#package-manager-pnpm) om dependencies te beheren en scripts uit te voeren. De Node versie is vastgelegd in de\n\n[…]\n\nvolta install node@22.20.0\n\n[…]\n\nv22.20.0\n\n[…]\n\n### Package manager: pnpm\n\nDe repo gebruikt **pnpm** in plaats van npm. De reden is **supply-chain security**, niet snelheid.\n\nBij het installeren voert npm de lifecycle-scripts (`preinstall`/`install`/`postinstall`) van elke dependency\nautomatisch uit, ook de transitieve. Dat is het [aanvalsoppervlak](https://en.wikipedia.org/wiki/Attack_surface)\nvoor supply-chain-aanvallen: een gecompromitteerde package voert kwaadaardige code uit tijdens het installeren. Pnpm draait die scripts standaard niet. Enkel packages die in\n`allowBuilds` op `true` staan (in de root `pnpm-workspace.yaml`) mogen build-scripts uitvoeren; de andere staan op\n`false` en zijn geblokkeerd. In deze repo staan `cypress` (downloadt de Cypress binary) en `playwright-webkit`\n(downloadt de WebKit-browser voor de component-tests op WebKit) op `true`. In CI is die WebKit-download een no-op\ndoor `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` in de Jenkins-pod. `strictDepBuilds` laat de install bovendien falen\nzodra een build-script niet expliciet toegelaten of geweigerd is, zodat een nieuw of onverwacht script niet ongemerkt\nkan draaien.\n\nDaarnaast is pnpm strenger over afhankelijkheden: een package dat je gebruikt maar niet expliciet in `package.json`\nhebt opgenomen (een phantom dependency), werkt onder pnpm niet meer. Bij npm werkt dat vaak toevallig wel doordat npm\nhet naar de root van `node_modules` hoist, waardoor zulke phantom dependencies onopgemerkt blijven.\n\nJe hoeft pnpm niet apart te installeren: Node bevat een hulpmiddel (corepack) dat automatisch de juiste versie van\npnpm gebruikt. Welke versie dat is, staat vast in de `package.json` van het project, zodat iedereen met dezelfde\nversie werkt. Corepack zet je eenmalig aan met:\n\n```\ncorepack enable\n```\n\nBeheer je Node met Volta (zie hierboven), dan werkt `corepack enable` niet: Volta plaatst een eigen `pnpm`-shim\ndie corepack overschaduwt. Laat Volta dan zelf pnpm beheren (`VOLTA_FEATURE_PNPM=1`); het\n[migratierecept](/docs/recepten-van-npm-naar-pnpm--documentatie) beschrijft de stappen bij stap 1.\n\n**npm wordt geweigerd.** Het veld `devEngines` in `package.json` verklaart pnpm als package manager van dit project,\nmet `onFail: \"error\"`. npm 10.9 en hoger (de npm van Node 22) leest dat veld bij de start van elk commando en stopt\nmeteen met `EBADDEVENGINES`, nog vóór het iets resolvet of schrijft. Dat geldt voor `npm install`, maar ook voor\n`npm run`, `npm ci` en de rest: gebruik `pnpm run`, `pnpm exec`, enzovoort. Zet ook je IDE op pnpm als package\nmanager, anders krijg je diezelfde foutmelding bij IDE-acties. Een oudere npm kent het veld niet en wordt pas\nachteraf door de `preinstall`-guard tegengehouden, zie de aandachtspunten onder de cheatsheet.\n\nBij een pnpm-upgrade zet je in `devEngines.packageManager.version` exact dezelfde waarde als in `packageManager`\n(versie mét hash). Wijkt die af, dan waarschuwt pnpm bij elke install dat `packageManager` genegeerd wordt, of weigert\nhet. Door dat veld schrijft pnpm ook zijn eigen integriteitsgegevens (pnpm en `@pnpm/exe`) als tweede document in\n`pnpm-lock.yaml`; dat blok hoort gewoon mee in de commit.\n\nWil je een eigen project van npm naar pnpm migreren? Dat is een ander onderwerp dan deze repo; volg daarvoor het\nrecept [Van npm naar pnpm](/docs/recepten-van-npm-naar-pnpm--documentatie).\n\n### Pnpm Cheatsheet\n\nHieronder de cheatsheet voor wie van npm komt (enkel de commando's die anders werken):\n\n<table>\n    <thead>\n        <tr>\n            <th scope=\"col\">Taak</th>\n            <th scope=\"col\">npm</th>\n            <th scope=\"col\">pnpm</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Clean install (CI, reproduceerbaar)</td>\n            <td><code>npm ci</code></td>\n            <td><code>pnpm install --frozen-lockfile</code></td>\n        </tr>\n        <tr>\n            <td>Install (dev)</td>\n            <td><code>npm install</code></td>\n            <td><code>pnpm install</code></td>\n        </tr>\n        <tr>\n            <td>Script draaien</td>\n            <td><code>npm run &lt;script&gt;</code></td>\n            <td><code>pnpm run &lt;script&gt;</code></td>\n        </tr>\n        <tr>\n            <td>Script met argument</td>\n            <td><code>npm run &lt;script&gt; -- &lt;arg&gt;</code></td>\n            <td><code>pnpm run &lt;script&gt; &lt;arg&gt;</code></td>\n        </tr>\n        <tr>\n            <td>Binary uitvoeren</td>\n            <td><code>npx &lt;bin&gt;</code></td>\n            <td><code>pnpm exec &lt;bin&gt;</code></td>\n        </tr>\n    </tbody>\n</table>\n\nDrie aandachtspunten:\n - Bij \"Script met argument\" geeft pnpm de `--` letterlijk door als argument, npm stript die. Gebruik in pnpm dus\n   geen `--` voor het argument, anders komt `--` als eerste argument in het script terecht.\n - `pnpm install` gebruikt in CI automatisch `--frozen-lockfile` (pnpm detecteert de CI-omgeving); lokaal mag de\n   lockfile wel wijzigen.\n - Een `npm install` uit gewoonte stopt met npm 10.9 of hoger meteen op `devEngines` (zie hierboven), zonder iets te\n   schrijven. Een oudere npm, of een `--force`, wordt pas achteraf geweigerd door de `preinstall`-guard\n   (`resources/utils-build/only-allow-pnpm.mjs`); npm heeft dan al een `node_modules` en een `package-lock.json`\n   weggeschreven. Ruim die op met `rm -rf node_modules package-lock.json` en installeer opnieuw met `pnpm install`.\n   `package-lock.json` staat in `.gitignore`, zodat zo'n lockfile nooit per ongeluk mee gecommit raakt."
+        },
+        {
+          "id": "bijdragen-storybook--documentatie",
+          "title": "Bijdragen/Storybook",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/bijdragen-storybook--documentatie",
+          "added": "pnpm run apps:storybook:dev"
+        }
+      ]
+    },
+    "9311ae68d254eedde4b391423e46232b07a0a105": {
+      "sha": "9311ae68d254eedde4b391423e46232b07a0a105",
+      "body": "Zonder het ellipsis attribuut verandert er niets: een lang breadcrumb item loopt door over meerdere regels.\n\nMet ellipsis blijft elk breadcrumb item op één regel. Een item dat niet naast het vorige past, begint op een nieuwe regel en wordt pas afgekapt met een ellipsis als het ook daar te breed is. De ellipsis uit de basisstijl werkte niet omdat de cta in de shadow root van vl-breadcrumb-item zit en omdat ol/li als flex-items op min-width:auto nooit konden krimpen. Interne custom properties erven wel door tot in die shadow root, ook wanneer een breadcrumb item in een ander element gewikkeld is.\n\nIn de buttons story is het laatste breadcrumb item nu tekst in plaats van een button, zoals het hoort voor de huidige locatie.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/breadcrumb/vl-breadcrumb.component.ts",
+        "libs/components/src/block/breadcrumb/vl-breadcrumb.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-breadcrumb--documentatie",
+          "title": "Components - Block/breadcrumb/breadcrumb",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+          "added": "## Configuratie\n\n[…]\n\nHet laatste breadcrumb item is de huidige locatie. Geef dat item geen `href` en geen `type=\"button\"`, dan wordt het\nals tekst weergegeven en is het niet aanklikbaar.\n\n[…]\n\n### Lange tekst afkappen\n\nHoud de tekst van een breadcrumb item kort. Komt de tekst uit data, en heb je de lengte dus niet in de hand, dan kan\nhet `ellipsis` attribuut helpen.\n\nStandaard loopt een lang breadcrumb item door over meerdere regels. Is de ruimte beperkt, bijvoorbeeld in een\n`side-sheet`, dan houdt `ellipsis` elk breadcrumb item op één regel: een breadcrumb item dat niet past, begint op een\nnieuwe regel en wordt pas afgekapt met een ellipsis (…) als het ook daar te breed is.\n\nDe afgekapte tekst blijft volledig beschikbaar voor schermlezers, maar is visueel niet meer leesbaar. Gebruik\n`ellipsis` dus enkel waar de ruimte echt beperkt is.\n\n```html\n<vl-breadcrumb ellipsis>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Een breadcrumb item met een heel lange titel</vl-breadcrumb-item>\n</vl-breadcrumb>\n```"
+        }
+      ]
+    },
+    "c04a72c73281b6b0729196ef9ebbb279c70ea03f": {
+      "sha": "c04a72c73281b6b0729196ef9ebbb279c70ea03f",
+      "body": "De breadcrumb van de cascader gebruikt nu vl-breadcrumb in plaats van eigen markup. Het home breadcrumb item en de items van de vorige niveaus zijn buttons en dus bereikbaar en bedienbaar met het toetsenbord. Het home-icoon heeft een toegankelijke naam en het huidige niveau is tekst in plaats van een klikbaar element.\n\nDe cascader zet het ellipsis attribuut aan, zodat een lange titel niet meer buiten de breadcrumb (en dus buiten de vl-side-sheet) loopt.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/cascader/vl-cascader-item.component.ts",
+        "libs/components/src/block/cascader/vl-cascader.component.ts",
+        "libs/components/src/block/cascader/vl-cascader.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-breadcrumb--documentatie",
+          "title": "Components - Block/breadcrumb/breadcrumb",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "f2a3414d4c662728800182c3e87d61030ebb53ed": {
+      "sha": "f2a3414d4c662728800182c3e87d61030ebb53ed",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/alert/vl-alert.component.ts",
+        "libs/components/src/block/alert/vl-alert.flux-css.ts",
+        "libs/components/src/block/alert/vl-alert.model.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-alert--documentatie",
+          "title": "Components - Block/alert",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-alert--documentatie",
+          "added": "### Banner\n\nToont de melding als een banner over de volledige breedte van de pagina: de afgeronde hoeken verdwijnen zodat de\nmelding naadloos aansluit op de rand van haar container, en de titel en de boodschap lopen na elkaar door op dezelfde\nregel. Het streepje tussen de titel en de boodschap wordt door de component zelf gezet, en enkel wanneer er zowel\neen titel als een boodschap is: zet het niet mee in de content. De banner variant is niet bedoeld in combinatie met\nde naked variant.\n\nEen banner gebruikt altijd de `small` opmaak: `size=\"small\"` wordt automatisch toegepast en hoeft niet expliciet\nmeegegeven te worden.\n\nEen banner staat meestal al op de pagina bij het laden. Zet in dat geval `alert-role=\"no-role\"`, zodat een schermlezer\nde gebruiker niet onderbreekt met een melding die geen reactie op een actie is.\n\n```html\n<vl-alert banner closable alert-role=\"no-role\" size=\"small\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>\n```"
+        }
+      ]
+    },
+    "a6116b63600a29dcff322480c4f605969078214c": {
+      "sha": "a6116b63600a29dcff322480c4f605969078214c",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "afnemen-artifacts--documentatie",
+          "title": "Afnemen/Artifacts",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+          "added": "- [Afname](#afname)\n\n[…]\n\n## Afname\n\nOm de artifacts af te nemen kan je __als medewerker__ van Departement Omgeving je `~/.npmrc` bestand lokaal als volgt\n configureren:\n\n```\nregistry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/\n//repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/:_authToken=***\n```\n\nAls je __geen medewerker__ bent, en dus geen account hebt voor die registry, kan je de artifacts toch als volgt afnemen:\n\n```\n; Standaard: de publieke registry.\nregistry=https://registry.npmjs.org/\n\n; Alleen deze scopes gaan naar de publiek beschikbare artifacts in de Artifactory van Departement Omgeving.\n@domg:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/\n@domg-wc:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/\n```"
+        }
+      ]
+    },
+    "4d555a630d56bb0f838aca5c6429cd1a08dfc3f3": {
+      "sha": "4d555a630d56bb0f838aca5c6429cd1a08dfc3f3",
+      "body": "Nieuwe pagina onder Recepten voor afnemers die hun eigen npm-project naar pnpm migreren, los van hoe pnpm binnen deze repo gebruikt wordt (dat blijft bij Bijdragen - Opzet & Structuur). Bevat waarom pnpm, wat er verandert, een stappenplan in acht stappen (corepack en packageManager, .npmrc voor Artifactory, pnpm-workspace.yaml met strictDepBuilds/allowBuilds/minimumReleaseAge en overrides, pnpm import, scripts en de letterlijke '--', phantom dependencies, CI/Docker/release, vangnet tegen npm install), een cheatsheet met de courante commando's en referenties. De @domg-wc/* uitzondering op minimumReleaseAge staat als waarschuwing uitgelicht, anders is een verse release 24 uur niet installeerbaar.",
+      "published": false,
+      "areas": {
+        "docs": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "recepten-van-npm-naar-pnpm--documentatie",
+          "title": "Recepten/Van npm naar pnpm",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/recepten-van-npm-naar-pnpm--documentatie",
+          "added": "# Van npm naar pnpm\n## Inhoudstafel\n## Waarom pnpm\n## Wat verandert er\n## Stappenplan\n### 1. pnpm beschikbaar maken\n### 2. Registry en authenticatie: .npmrc blijft\n### 3. pnpm-workspace.yaml aanmaken\n### 4. Lockfile omzetten en installeren\n### 5. Scripts in package.json aanpassen\n### 6. Phantom dependencies oplossen\n### 7. CI, Docker en release\n### 8. Vangnet tegen een npm install uit gewoonte\n## Cheatsheet\n## Referenties\n(477 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+        }
+      ]
+    },
+    "b479b90d3d180877962883d319d64c2ff6b7b708": {
+      "sha": "b479b90d3d180877962883d319d64c2ff6b7b708",
+      "body": "De analyse \"Flux-AI - Frontend Uniformisering via AI\" volgt nu het nieuwe technische schema: een kennislaag met Figma, web-types, .llm.md en release notes, ontsloten via Figma-MCP en Flux-MCP, met de Flux-Agent die de workflows orkestreert en via Jira-MCP, Git en de Claude SDK in de ontwikkelketen ingrijpt. De terugkoppellus (validatie en beïnvloeden) vervangt het begrip modeltoepassing; de eisen A (technisch fundament) en B (uniforme UI/UX) blijven bestaan als eisen aan een toepassing. Een nieuwe FAQ-vraag legt uit waarom modeltoepassingen verdwenen zijn.\n\nDe 8 AI-workflows zijn ingedeeld in 6 inhoudelijke workflows (bouwen, onderhouden, terugkoppellus) en 2 procesworkflows (Jira-ticket en PR) die alle inhoudelijke workflows omkaderen. De kolommen in het schema zijn dus geen 1-op-1-koppeling. De werknota ai-strategie-beschrijving.md volgt dezelfde indeling.\n\nDe schema's met het label \"modeltoepassing\" zijn hernoemd en herlabeld (technisch fundament, uniforme toepassing, uniformisering) en de PNG's zijn opnieuw gerenderd.",
+      "published": false,
+      "areas": {
+        "docs": 15
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "planning-flux-ai-frontend-uniformisering--documentatie",
+          "title": "Planning/Flux-AI - Frontend Uniformisering",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/planning-flux-ai-frontend-uniformisering--documentatie",
+          "added": "## 4. Ontsluiting: 2 MCP-servers en een Agent\n## 5. AI-Workflows\n### 5.1 Bouwen: design naar code, nieuwe toepassing, toepassing uitbreiden\n### 5.2 Onderhouden: versiemigratie\n### 5.3 Terugkoppellus: toepassing valideren en verbeteren\n### 5.4 Proces: Jira-ticket en PR\n## 6. De Terugkoppellus\n## 7. Eisen aan een Toepassing\n## 8. Fasering\n## 9. Randvoorwaarden en Risico's\n## 10. Conclusie\n## 11. FAQ\n### 11.1 Is de afnemer het stuur?\n### 11.2 Evolueren ook de UI/UX-patronen niet?\n### 11.3 Met welke toepassingen starten we?\n### 11.4 Updaten we onze documentatie bij elke migratie?\n### 11.5 Wat zijn few-shot voorbeelden?\n### 11.6 Migreren we naar Custom Elements Manifest?\n### 11.7 Is er vendor lock-in?\n### 11.8 WCAG 2.1 of WCAG 2.2?\n### 11.9 Waarom spreken we niet meer over modeltoepassingen?\n(376 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+        }
+      ]
+    },
+    "f18485be3b7b7b7f95767d0c10f95b069d996bc0": {
+      "sha": "f18485be3b7b7b7f95767d0c10f95b069d996bc0",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 11
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "planning-flux-ai-frontend-uniformisering--documentatie",
+          "title": "Planning/Flux-AI - Frontend Uniformisering",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/planning-flux-ai-frontend-uniformisering--documentatie",
+          "added": "# Flux-AI - Frontend Uniformisering via AI\n## 0. Inhoudstafel\n## 1. Doel\n## 2. Concept\n## 3. Kennislaag\n## 4. AI-Workflows\n### 4.1 Design naar basisimplementatie (Figma → code)\n### 4.2 Versiemigratie (vN → vN+1)\n### 4.3 Nieuwe toepassingen bouwen op basis van modeltoepassingen\n## 5. Modeltoepassingen als Voorbeeld\n### A. Technisch Fundament\n### B. Uniforme UI/UX\n### C. Uniformisering - van A. naar B.\n## 6. Ontsluiting: MCP als toegangspoort\n## 7. Fasering\n## 8. Randvoorwaarden en Risico's\n## 9. Conclusie\n## 10. FAQ\n### 10.1 Is de afnemer het stuur?\n### 10.2 Evolueren ook de UI/UX-patronen niet?\n### 10.3 Zijn het in het begin niet eerder kandidaat-modeltoepassingen?\n### 10.4 Updaten we onze documentatie bij elke migratie?\n### 10.5 Wat zijn few-shot voorbeelden?\n### 10.6 Migreren we naar Custom Elements Manifest?\n### 10.7 Is er vendor lock-in?\n### 10.8 WCAG 2.1 of WCAG 2.2?\n(420 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+        }
+      ]
+    },
+    "293c741d39821ea2091db2bf1e274dcc15e1c71a": {
+      "sha": "293c741d39821ea2091db2bf1e274dcc15e1c71a",
+      "body": "De argType-beschrijving herhaalde de volledige blur-validatie documentatiepagina. Ingekort tot twee zinnen plus een link erheen, in het register van de buurbeschrijvingen in hetzelfde bestand.\n\nDe link staat als `/?path=/docs/...`, want de kale `/docs/...` vorm werkt enkel in MDX en niet in argType-beschrijvingen.\n\nDe documentatiepagina zelf getoetst aan form-control.ts en vl-form-message. Daaruit kwamen twee aanvullingen in de toegankelijkheidssectie: role=\"status\" naast aria-live, en het feit dat blur-validatie de focus niet verplaatst, want runValidation vuurt geen invalid-event.",
+      "published": false,
+      "areas": {
+        "docs": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "patronen-formulier-blur-validatie--documentatie",
+          "title": "Patronen/Formulier/blur validatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/patronen-formulier-blur-validatie--documentatie",
+          "added": "- Na de eerste foutmelding verdwijnt die weer zodra de waarde geldig wordt, terwijl de gebruiker nog aan het\n  typen is. Er hoeft niet opnieuw weggeklikt te worden.\n\n[…]\n\n([`vl-form-message`](/docs/components-form-form-message--documentatie) + `ValidityState`).\n\n[…]\n\nEen veld met een eigen `blur-validation` attribuut blijft daarnaast los werken. Staat het attribuut op de form,\ndan kan een veld daar niet individueel van afwijken.\n\n[…]\n\nDe foutmelding staat in een `aria-live=\"polite\"` regio met `role=\"status\"` (via `vl-form-message`), zodat\nscreenreaders ze voorlezen zodra ze verschijnt of wijzigt. `aria-atomic=\"true\"` zorgt dat telkens de\nvolledige boodschap wordt voorgelezen. De control krijgt `aria-invalid=\"true\"` zodat de ongeldige toestand\n\n[…]\n\nBlur-validatie verplaatst de focus niet: het veld toont enkel zijn melding. Alleen bij submit springt de\nfocus naar het eerste ongeldige veld.\n\n[…]\n\n## Ondersteunde componenten\n\nHet attribuut werkt op alle form controls:"
+        }
+      ]
+    },
+    "782a93c38379dfd7a3d46627c7660c619fab0dcd": {
+      "sha": "782a93c38379dfd7a3d46627c7660c619fab0dcd",
+      "body": null,
+      "published": false,
+      "areas": {
+        "storybook": 12
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "63a4c954ef0ed87a856cdb3fabc54d432fe5c1be": {
+      "sha": "63a4c954ef0ed87a856cdb3fabc54d432fe5c1be",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 2
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "planning-historiek-toekomst--documentatie",
+          "title": "Planning/Historiek & Toekomst",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+          "added": "- [Planning 2026](#planning-2026)\n- [Planning 2025](#planning-2025)\n\n[…]\n\n## Planning 2026\n\n<br/><img src={planning2026} alt=\"planning-2026\"/>"
+        }
+      ]
+    }
+  }
+}
