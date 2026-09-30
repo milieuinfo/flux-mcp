@@ -505,3 +505,4 @@ een onderbroken keten, zolang de web-types en de packages van beide kanten er zi
 ## Gerelateerde ADR's
 
 - ADR-002: De historische catalogus van v2 opbouwen.
+- ADR-003: De documentatie uit Storybook per versie aanbieden.

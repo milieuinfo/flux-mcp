@@ -30,3 +30,21 @@ de dependencies, en de commits buiten de changelog.
 **Een onderbroken keten.** Ontbreekt er een versie tussen `van` en `tot`, dan zegt `getChangesBetween` dat met
 `complete: false`, `missing` en een `warning`. De catalogus bevat de releases op de hoofdlijn van `develop-v2`, vanaf
 2.0.0 (ADR-002): een upgrade vanaf v1 of vanaf een patch op een zijtak is niet volledig te beantwoorden.
+
+## De documentatie: `server/src/docs.mjs`
+
+Zonder versie geldt de nieuwste in de catalogus; elk antwoord zegt welke versie het is.
+
+| Functie                         | Vraag                                                                            |
+|---------------------------------|----------------------------------------------------------------------------------|
+| `listDocVersions()`             | welke versies hebben documentatie, met hoeveel pagina's en analyses?             |
+| `listPages(versie, filters)`    | welke pagina's zijn er? Filters: soort (`component`, `pattern`, `recipe`, …) en element |
+| `getPage(versie, pagina)`       | één pagina met haar voorbeelden, de API uit de web-types en absolute links       |
+| `getComponent(versie, element)` | alles over één component: de API, de voorbeelden per story, de status, de opmerkingen en de historiek uit de changelog |
+| `searchDocs(zoekterm, filters)` | welke pagina's gaan over een onderwerp? Zoekt in de titels, de tekst, en de samenvatting en zoektermen van de analyse |
+| `getDocsChanges(van, tot)`      | welke pagina's kwamen erbij, wijzigden of verdwenen tussen twee versies?         |
+
+`pagina` in `getPage` is een id, een element (`vl-button`, `button`) of een Storybook-link.
+
+De pagina's van het Flux-team zelf (Bijdragen, Beheren) laten `listPages`, `searchDocs` en `getDocsChanges` standaard
+weg; `hiddenFluxTeam` zegt hoeveel, en met `includeFluxTeam` toon je ze toch.

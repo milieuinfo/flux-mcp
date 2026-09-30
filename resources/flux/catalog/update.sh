@@ -1,20 +1,23 @@
 #!/bin/bash
 
 # Brengt de catalogus voor een Flux Web Components release in één keer up-to-date: haalt alle bronnen van die
-# release op, laat Claude Code de analyse schrijven en controleren, en bouwt de gegevens van alle versies opnieuw.
+# release op, ook de documentatie uit Storybook, laat Claude Code de analyses schrijven en controleren, en bouwt de
+# gegevens van alle versies opnieuw.
 #
 #   pnpm run flux:catalog:update 2.20.0
 #   FLUX_REPO=~/pad/naar/flux-web-components pnpm run flux:catalog:update 2.20.0   # sneller
 #   pnpm run flux:catalog:update --skip-analysis 2.20.0                            # zonder LLM
 #
 # De versie is verplicht; zie common.sh. Het script draait na elkaar:
-#   1. web-types:copy, packages:copy, changelog:copy, changelog:cleanup en changelog:commits voor deze versie;
+#   1. web-types:copy, packages:copy, changelog:copy, changelog:cleanup, changelog:commits en storybook:copy voor
+#      deze versie;
 #   2. changelog:build --all: ook de volgende versie in de catalogus krijgt haar diffs tegen deze versie;
 #   3. changelog:analyse voor deze versie, en voor de volgende versie als die er is: die kreeg misschien nieuwe
 #      diffs, en haar bestaande analyse wordt aangevuld;
-#   4. changelog:build --all en --check.
-# Stap 3 heeft Claude Code nodig; zie changelog/analyse.mjs. Faalt een stap, dan stopt het script en zegt het met
-# welk script je verder gaat; wat de stappen ervoor deden, blijft staan.
+#   4. storybook:analyse voor deze versie: enkel de pagina's waarvan de inhoud nog geen analyse heeft (ADR-003);
+#   5. changelog:build --all en --check, en storybook:check.
+# Stap 3 en 4 hebben Claude Code nodig; zie changelog/analyse.mjs en storybook/analyse.mjs. Faalt een stap, dan
+# stopt het script en zegt het met welk script je verder gaat; wat de stappen ervoor deden, blijft staan.
 
 set -euo pipefail
 
@@ -40,7 +43,7 @@ run() {
     fi
 }
 
-for step in web-types:copy packages:copy changelog:copy changelog:cleanup changelog:commits; do
+for step in web-types:copy packages:copy changelog:copy changelog:cleanup changelog:commits storybook:copy; do
     run "${step}" "${VERSION}"
 done
 run changelog:build --all
@@ -48,6 +51,7 @@ run changelog:build --all
 if [ "${ANALYSIS}" = false ]; then
     echo
     echo "Zonder analyse. Later: pnpm run flux:changelog:analyse ${VERSION}"
+    echo "                  en: pnpm run flux:storybook:analyse ${VERSION}"
     exit 0
 fi
 
@@ -66,8 +70,10 @@ run changelog:analyse "${VERSION}"
 for next in ${NEXT}; do
     run changelog:analyse "${next}"
 done
+run storybook:analyse "${VERSION}"
 run changelog:build --all
 run changelog:build --check
+run storybook:check "${VERSION}"
 
 echo
 echo "Klaar: ${VERSION}${NEXT:+ en ${NEXT}} staan in de catalogus, geanalyseerd en gecontroleerd."

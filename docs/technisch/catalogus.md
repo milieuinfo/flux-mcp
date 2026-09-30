@@ -1,16 +1,19 @@
 # De catalogus
 
 `catalog/flux/` bevat per Flux-release wat de MCP-server aanbiedt: wat er voor een afnemer verandert tegenover de vorige
-versie ([changelog](changelog.md)). De catalogus bevat de releases op de hoofdlijn van `develop-v2`, vanaf 2.0.0
+versie ([changelog](changelog.md)), en de documentatie uit Storybook van die versie ([Storybook](storybook.md)). De
+catalogus bevat de releases op de hoofdlijn van `develop-v2`, vanaf 2.0.0
 ([ADR-002](../beslissingen/ADR-002-historische-catalogus-v2.md)).
 
 ```
 catalog/flux/
-└── 2.20.0/
-    ├── web-types/            bron: de API van de componenten
-    ├── packages/             bron: de dependencies van de gepubliceerde packages
-    ├── changelog/            deterministisch: de changelog, de commits en wat changelog:build maakt
-    └── changelog-analysis/   LLM: per entry de impact, een uitleg, de actie en een voorbeeld
+├── 2.20.0/
+│   ├── web-types/            bron: de API van de componenten
+│   ├── packages/             bron: de dependencies van de gepubliceerde packages
+│   ├── changelog/            deterministisch: de changelog, de commits en wat changelog:build maakt
+│   ├── changelog-analysis/   LLM: per entry de impact, een uitleg, de actie en een voorbeeld
+│   └── storybook/            deterministisch: de pagina's uit Storybook
+└── storybook-analysis/       LLM: één analyse per inhoud van een pagina, over de versies heen
 ```
 
 De versies staan naast elkaar, elk in een eigen map; de versie is dus verplicht. Elk script vult zijn eigen map: een
@@ -25,12 +28,13 @@ pnpm run flux:catalog:update --skip-analysis 2.20.0   # zonder Claude Code
 
 Het doet alles in één keer, zonder tussenkomst:
 
-1. de bronnen van die versie: `web-types:copy`, `packages:copy`, `changelog:copy`, `changelog:cleanup` en
-   `changelog:commits`;
+1. de bronnen van die versie (`web-types:copy`, `packages:copy`, `changelog:copy`, `changelog:cleanup`,
+   `changelog:commits`) en `storybook:copy`;
 2. `changelog:build --all`, want ook de volgende versie in de catalogus krijgt haar diffs tegen deze versie;
 3. `changelog:analyse` voor die versie, en voor de volgende versie als die er is: haar analyse wordt aangevuld met wat
    de nieuwe diffs tonen;
-4. `changelog:build --all` en `--check`.
+4. `storybook:analyse` voor die versie: enkel de pagina's waarvan de inhoud nog geen analyse heeft;
+5. `changelog:build --all` en `--check`, en `storybook:check`.
 
 Faalt een stap, dan stopt het en zegt het met welk script je verder gaat. Stap voor stap:
 
@@ -42,6 +46,8 @@ pnpm run flux:changelog:cleanup 2.20.0   # enkel de wijzigingen van 2.20.0 in ch
 pnpm run flux:changelog:commits 2.20.0   # de feiten uit de commits in commits.json
 pnpm run flux:changelog:build --all      # overzicht, tickets en de diffs tegen de vorige versie
 pnpm run flux:changelog:analyse 2.20.0   # de analyse en de review, door Claude Code
+pnpm run flux:storybook:copy 2.20.0      # de pagina's uit Storybook
+pnpm run flux:storybook:analyse 2.20.0   # de analyse van pagina's met nieuwe inhoud, door Claude Code
 ```
 
 ## Een reeks versies: `catalog:backfill`
@@ -64,6 +70,12 @@ in twee fasen:
 Wat klaar is, slaat het over. Stopt een run, bv. op een limiet van het abonnement, dan herneem je ze met hetzelfde
 commando.
 
+De documentatie uit Storybook zit nog niet in `catalog:backfill`. Voor een reeks versies draai je `storybook:copy --all`
+en daarna `storybook:analyse` per versie, van oud naar nieuw.
+
 ## Controleren
 
 - **`changelog:build --check`**, offline: de gebouwde bestanden van de changelog, en de analyse.
+- **`storybook:check`**, offline: de pagina's en de analyses van Storybook, in alle versies.
+- **`storybook:copy --check [versie]`** bouwt de pagina's opnieuw uit de bronrepo en `index.json` van Storybook, en
+  vergelijkt; het schrijft niets.

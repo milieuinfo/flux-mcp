@@ -1,8 +1,8 @@
 # flux-mcp
 
 Een MCP-server (Model Context Protocol) die LLM-agents informatie geeft over **Flux Web Components**: per Flux-release
-wat er bij een upgrade verandert. De server zelf komt nog; wat er is, zijn de catalogus, de scripts die hem vullen en
-de queries waarop de server zal steunen.
+wat er bij een upgrade verandert, en de documentatie uit Storybook van die versie. De server zelf komt nog; wat er is,
+zijn de catalogus, de scripts die hem vullen en de queries waarop de server zal steunen.
 
 Daarnaast verrijkt de repo de FLUX Figma-library met Code Connect snippets, component descriptions en documentation
 links. De twee sporen staan los van elkaar, en de server kent Figma niet; wat ze delen, is de kennis per component,
@@ -28,7 +28,7 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 
 | Map                  | Inhoud                                                                                       |
 |----------------------|----------------------------------------------------------------------------------------------|
-| `catalog/flux/`      | de catalogus per Flux-release: web-types, packages en changelog, met de analyse              |
+| `catalog/flux/`      | de catalogus per Flux-release: web-types, packages, changelog en Storybook, met de analyse   |
 | `catalog/figma/`     | wat naar Figma gaat: `code-connect/v2/` (de templates) en `descriptions/v2/` (de kennis)     |
 | `server/`            | de queries op de catalogus en hun tests; later de MCP-server                                 |
 | `resources/`         | de scripts, per spoor: `flux` en `figma`                                                     |
@@ -45,11 +45,13 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 | [Scripts en bronnen](docs/technisch/scripts.md)       | hoe je de scripts draait, en waar ze hun gegevens halen             |
 | [De catalogus](docs/technisch/catalogus.md)           | wat erin staat, bijwerken na een release of voor een reeks versies  |
 | [De changelog](docs/technisch/changelog.md)           | wat er per versie verandert: bronnen, build en analyse              |
-| [Claude Code](docs/technisch/claude-code.md)          | hoe de analyse draait: abonnement, rechten en model                 |
+| [Storybook](docs/technisch/storybook.md)              | de documentatie per versie: pagina's en analyse                     |
+| [Claude Code](docs/technisch/claude-code.md)          | hoe de analyses draaien: abonnement, rechten en model               |
 | [De server](docs/technisch/server.md)                 | de queries op de catalogus                                          |
 | [Figma](docs/technisch/figma.md)                      | Code Connect en de component descriptions                           |
 
 De beslissingen en het waarom staan in de ADR's onder [`docs/beslissingen/`](docs/beslissingen/):
 
 - [ADR-001](docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md): de changelog per versie;
-- [ADR-002](docs/beslissingen/ADR-002-historische-catalogus-v2.md): de historische catalogus van v2.
+- [ADR-002](docs/beslissingen/ADR-002-historische-catalogus-v2.md): de historische catalogus van v2;
+- [ADR-003](docs/beslissingen/ADR-003-storybook-per-versie.md): de documentatie uit Storybook per versie.

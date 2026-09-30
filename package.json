@@ -23,6 +23,9 @@
         "flux:changelog:commits": "node ./resources/flux/changelog/commits.mjs",
         "flux:changelog:analyse": "node ./resources/flux/changelog/analyse.mjs",
         "flux:changelog:build": "node ./resources/flux/changelog/build.mjs",
+        "flux:storybook:copy": "node ./resources/flux/storybook/copy.mjs",
+        "flux:storybook:analyse": "node ./resources/flux/storybook/analyse.mjs",
+        "flux:storybook:check": "node ./resources/flux/storybook/check.mjs",
         "test": "node --test \"server/test/**/*.test.mjs\" \"test/**/*.test.mjs\""
     },
     "devDependencies": {
