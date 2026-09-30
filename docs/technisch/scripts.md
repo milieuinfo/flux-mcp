@@ -2,11 +2,18 @@
 
 ## De scripts
 
-Alle scripts lopen via `pnpm run` (zie `package.json`); installeer eerst met `pnpm install`. De twee sporen zijn
-`flux`, de catalogus voor de MCP-server, en `figma`, wat we naar de Figma-library schrijven.
+Alle scripts lopen via `pnpm run` (zie `package.json`); installeer eerst met `pnpm install`.
 
-De flux-scripts nemen een versie met of zonder `v`: `2.20.0` en `v2.20.0` mogen allebei, net als een prerelease
-zoals `2.21.0-develop-v2.1`. Een ongeldige versie stopt het script.
+Een script heet `<spoor>:<onderwerp>:<actie>`, bv. `flux:changelog:build` of `figma:code-connect:publish`, en staat
+in `resources/<spoor>/<onderwerp>/<actie>.sh` of `.mjs`. De twee sporen zijn `flux`, de catalogus voor de
+MCP-server, en `figma`, wat we naar de Figma-library schrijven.
+
+- Wat de scripts van een spoor delen, zoals `common.sh`, staat in `resources/<spoor>/`.
+- Wat beide sporen delen, de bronrepo (`FLUX_REPO`) en de controle van de versie, staat één keer: in
+  `resources/common.sh` voor bash en in `resources/common.mjs` voor Node.
+
+Een versie mag met of zonder `v`: `2.20.0` en `v2.20.0` mogen allebei, net als een prerelease zoals
+`2.21.0-develop-v2.1`. Een ongeldige versie stopt het script.
 
 ## De bronrepo
 
@@ -18,13 +25,12 @@ Lokaal gebruik je een bestaande clone met `FLUX_REPO` vóór het commando. Dat s
 zonder netwerk:
 
 ```bash
-FLUX_REPO=~/repos/flux-web-components pnpm run figma:web-components:copy-figma 2.20.0
+FLUX_REPO=~/repos/flux-web-components pnpm run figma:code-connect:copy 2.20.0
 ```
 
 - De variabele geldt enkel voor dat ene commando; er wordt niets bewaard.
 - Je clone moet de gevraagde tag kennen, anders eerst `git fetch --tags`.
-- Je clone wordt nooit gewijzigd: `figma:web-components:copy-figma` kloont ook een lokale bron eerst naar een
-  tijdelijke map.
+- Je clone wordt nooit gewijzigd: `figma:code-connect:copy` kloont ook een lokale bron eerst naar een tijdelijke map.
 
 ## Andere bronnen
 

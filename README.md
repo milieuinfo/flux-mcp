@@ -42,7 +42,7 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 
 | Onderwerp                                             | Waarover                                                            |
 |-------------------------------------------------------|---------------------------------------------------------------------|
-| [Scripts en bronnen](docs/technisch/scripts.md)       | hoe je de scripts draait, en waar ze hun gegevens halen             |
+| [Scripts en bronnen](docs/technisch/scripts.md)       | hoe de scripts heten, en waar ze hun gegevens halen                 |
 | [De catalogus](docs/technisch/catalogus.md)           | wat erin staat, bijwerken na een release of voor een reeks versies  |
 | [De changelog](docs/technisch/changelog.md)           | wat er per versie verandert: bronnen, build en analyse              |
 | [Storybook](docs/technisch/storybook.md)              | de documentatie per versie: pagina's en analyse                     |

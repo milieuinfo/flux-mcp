@@ -7,7 +7,7 @@ descriptions en de documentation links. Een agent vindt die via de Figma MCP-ser
 
 Voor versie `X.Y.Z`, met `FIGMA_TOKEN` in je omgeving:
 
-1. `pnpm run figma:web-components:copy-figma X.Y.Z`: de templates van tag `vX.Y.Z` naar de catalogus.
+1. `pnpm run figma:code-connect:copy X.Y.Z`: de templates van tag `vX.Y.Z` naar de catalogus.
 2. `pnpm run figma:code-connect:publish --dry-run`: valideert tegen Figma, publiceert niets.
 3. `pnpm run figma:code-connect:publish`: publiceert de snippets (of via Jenkins, `CODE_CONNECT_ACTION` publish).
 4. `pnpm run figma:descriptions:write X.Y.Z`: de payload met de descriptions en de documentation links.
@@ -26,22 +26,24 @@ De templates horen bij Flux Web Components, maar worden van hieruit gepubliceerd
 `catalog/figma/code-connect/v2/`, zodat we altijd weten wat er in Figma staat.
 
 ```bash
-pnpm run figma:web-components:copy-figma 2.20.0    # kopieert tag v2.20.0 naar de catalogus
-pnpm run figma:code-connect:publish --dry-run      # valideert de templates, publiceert niets
-pnpm run figma:code-connect:publish                # publiceert naar Figma
-pnpm run figma:code-connect:unpublish              # haalt die snippets weer weg
+pnpm run figma:code-connect:copy 2.20.0          # kopieert tag v2.20.0 naar de catalogus
+pnpm run figma:code-connect:publish --dry-run    # valideert de templates, publiceert niets
+pnpm run figma:code-connect:publish              # publiceert naar Figma
+pnpm run figma:code-connect:unpublish            # haalt die snippets weer weg
 pnpm run figma:code-connect:publish --library v3 --dry-run   # een andere library, als er meerdere zijn
 ```
 
 **Eén versie tegelijk.** De catalogus houdt geen Flux-versies naast elkaar: een nieuwe kopie vervangt de vorige, git
-bewaart de historiek en `manifest.json` zegt welke release erin zit.
+bewaart de historiek en `manifest.json` zegt welke release erin zit. `manifest.json` bevat ook `syncedAt`, het tijdstip
+van de kopie: een bewuste uitzondering op de regel dat een gebouwd bestand geen tijdstempel heeft. Opnieuw kopiëren
+geeft zo een ander `manifest.json`, ook als de templates gelijk bleven.
 
 **De map is de Figma-library.** Een nieuwe Flux-major komt altijd met een nieuwe library-file met hetzelfde nummer:
 2.21.0 hoort bij `v2`, 3.0.0 bij `v3`. Wie een versie meekrijgt, leidt de library daaruit af, en een nieuwe library
 komt er vanzelf naast te staan. `publish` en `unpublish` krijgen geen versie: ze nemen de library in de catalogus, en
 pas als er meerdere zijn, kies je met `--library` (`3` en `v3` mogen allebei).
 
-**`figma:web-components:copy-figma`**
+**`figma:code-connect:copy`**
 
 - haalt de tag `v<versie>`, of met `--ref` een andere git ref, uit de [bronrepo](scripts.md#de-bronrepo);
 - vraagt altijd een versie: het vervangt de hele catalogus, dus dat mag niet per ongeluk gebeuren;
@@ -95,7 +97,7 @@ Knop voor een actie op de pagina.
   design naar code gaat: wat het component is, waar het vaak misloopt en wat er voor toegankelijkheid in de code moet
   gebeuren. Details horen in Storybook.
 
-Na een `figma:web-components:copy-figma` bouw je de payload voor die versie:
+Na een `figma:code-connect:copy` bouw je de payload voor die versie:
 
 ```bash
 pnpm run figma:descriptions:write 2.20.0    # dist/descriptions/2.20.0.json

@@ -3,15 +3,14 @@
 # De versie van de Code Connect CLI staat gepind in package.json (devDependencies): een template dat met die
 # versie gevalideerd is, publiceren we ook met die versie. Via 'pnpm run' staat de binary 'figma' op het PATH.
 
-# Bron van de templates. Zonder deze variabele wordt de repo per run gekloond; ze is open source, dus dat
-# vraagt geen credentials en in CI hoeft er niets ingesteld te worden. Wijs ze naar een lokale clone om
-# zonder netwerk te werken:
-#   FLUX_REPO=~/repos/flux-web-components pnpm run figma:web-components:copy-figma 2.20.0
+# FLUX_REPO, REPO_ROOT en parse_version: wat de scripts van beide sporen delen. FLUX_REPO is de bron van de
+# templates. Zonder die variabele wordt de repo per run gekloond; ze is open source, dus dat vraagt geen
+# credentials en in CI hoeft er niets ingesteld te worden. Wijs ze naar een lokale clone om zonder netwerk te
+# werken:
+#   FLUX_REPO=~/repos/flux-web-components pnpm run figma:code-connect:copy 2.20.0
 # In de catalogus staat altijd FLUX_REPO_URL als bron, ook als er van een lokale clone gekloond werd.
-FLUX_REPO_URL="https://github.com/milieuinfo/flux-web-components.git"
-FLUX_REPO="${FLUX_REPO:-${FLUX_REPO_URL}}"
+source "$(dirname "${BASH_SOURCE[0]}")/../common.sh"
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 CATALOG_DIR="${REPO_ROOT}/catalog/figma/code-connect"
 
 # De catalogus houdt geen Flux-versies bij: git versioneert de templates. De map is de Figma-library waarvoor
@@ -20,14 +19,10 @@ CATALOG_DIR="${REPO_ROOT}/catalog/figma/code-connect"
 # unpublish krijgen er geen, en nemen de library uit de catalogus; staan er meerdere, dan kiest --library.
 LIBRARY_OVERRIDE=""
 
-# Laat zowel "2.20.0" als "v2.20.0" toe.
-normalize_version() {
-    printf '%s' "${1#v}"
-}
-
-# De library waar een Flux-versie bij hoort.
+# De library waar een Flux-versie bij hoort: de major, bv. v2 voor 2.21.0.
 library_for_version() {
-    printf 'v%s' "$(normalize_version "$1" | cut -d. -f1)"
+    local version="${1#v}"
+    printf 'v%s' "${version%%.*}"
 }
 
 # De library van wat er in de catalogus staat, voor publish en unpublish. Staat er meer dan één, dan kies je
@@ -42,7 +37,7 @@ detect_library() {
     case "$(printf '%s' "${found}" | grep -c .)" in
         0)
             echo "Er staan geen templates in de catalogus." >&2
-            echo "Haal ze eerst op: pnpm run figma:web-components:copy-figma <versie>" >&2
+            echo "Haal ze eerst op: pnpm run figma:code-connect:copy <versie>" >&2
             exit 1
             ;;
         1)
@@ -63,7 +58,7 @@ require_library_dir() {
     dir="${CATALOG_DIR}/${library}"
     if [ ! -d "${dir}" ]; then
         echo "Library $(basename "${dir}") staat niet in de catalogus." >&2
-        echo "Haal ze eerst op: pnpm run figma:web-components:copy-figma <versie>" >&2
+        echo "Haal ze eerst op: pnpm run figma:code-connect:copy <versie>" >&2
         exit 1
     fi
     printf '%s' "${dir}"
@@ -71,7 +66,7 @@ require_library_dir() {
 
 require_token() {
     if [ -z "${FIGMA_TOKEN:-}" ]; then
-        echo "FIGMA_TOKEN ontbreekt. Zet een Figma token met 'File content: read' en 'Code Connect: write'."
+        echo "FIGMA_TOKEN ontbreekt. Zet een Figma token met 'File content: read' en 'Code Connect: write'." >&2
         exit 1
     fi
 }

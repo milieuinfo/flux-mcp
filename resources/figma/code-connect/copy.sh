@@ -2,8 +2,8 @@
 
 # Kopieert de Code Connect templates van een Flux Web Components release naar de catalogus.
 #
-#   pnpm run figma:web-components:copy-figma 2.20.0                     # haalt tag v2.20.0
-#   pnpm run figma:web-components:copy-figma 2.20.0 --ref develop-v2    # haalt een andere git ref
+#   pnpm run figma:code-connect:copy 2.20.0                     # haalt tag v2.20.0
+#   pnpm run figma:code-connect:copy 2.20.0 --ref develop-v2    # haalt een andere git ref
 #
 # De catalogus houdt per Figma-library één set templates bij: een nieuwe kopie vervangt de vorige. Wat er
 # veranderde, zie je in de git-diff; welke release erin zit, in manifest.json. De library volgt de major van
@@ -35,14 +35,14 @@ done
 
 # De versie is verplicht: dit script vervangt de hele catalogus, dus dat mag niet per ongeluk gebeuren.
 if [ -z "${VERSION}" ]; then
-    echo "Geef de Flux-release op waarvan je de Code Connect templates wil kopiëren."
-    echo "Gebruik: pnpm run figma:web-components:copy-figma <versie> [--ref <git-ref>]"
-    echo "Bijvoorbeeld: pnpm run figma:web-components:copy-figma 2.20.0"
-    echo "De templates in catalog/figma/code-connect worden daarbij vervangen."
+    echo "Geef de Flux-release op waarvan je de Code Connect templates wil kopiëren." >&2
+    echo "Gebruik: pnpm run figma:code-connect:copy <versie> [--ref <git-ref>]" >&2
+    echo "Bijvoorbeeld: pnpm run figma:code-connect:copy 2.20.0" >&2
+    echo "De templates in catalog/figma/code-connect worden daarbij vervangen." >&2
     exit 1
 fi
 
-VERSION="$(normalize_version "${VERSION}")"
+parse_version "${VERSION}"
 REF="${REF:-v${VERSION}}"
 LIBRARY="$(library_for_version "${VERSION}")"
 TARGET="${CATALOG_DIR}/${LIBRARY}"
@@ -78,16 +78,17 @@ while IFS= read -r file; do
     kind="$(kind_of "${file}")"
     target="${TARGET}/${kind}/$(basename "${file}")"
     if [ -e "${target}" ]; then
-        echo "Dubbele bestandsnaam in ${kind}: $(basename "${file}")"
+        echo "Dubbele bestandsnaam in ${kind}: $(basename "${file}")" >&2
         exit 1
     fi
     mkdir -p "${TARGET}/${kind}"
     cp "${SOURCE}/${file}" "${target}"
     TEMPLATES+=("${file}")
-done < <(cd "${SOURCE}" && find libs -type f \( -name '*.figma.ts' -o -name '*.figma.batch.ts' -o -name '*.figma.batch.json' \) | sort)
+done < <(cd "${SOURCE}" && find libs -type f \
+    \( -name '*.figma.ts' -o -name '*.figma.batch.ts' -o -name '*.figma.batch.json' \) | sort)
 
 if [ ${#TEMPLATES[@]} -eq 0 ]; then
-    echo "Geen templates gevonden in ${REF}."
+    echo "Geen templates gevonden in ${REF}." >&2
     exit 1
 fi
 
@@ -115,6 +116,9 @@ done
 # De config van de bronrepo, met de include-patronen aangepast aan de platte structuur.
 sed 's|"libs/\*\*/|"**/|g' "${SOURCE}/figma.config.json" > "${TARGET}/figma.config.json"
 
+# syncedAt is het tijdstip van de kopie: een bewuste uitzondering op de regel dat een gebouwd bestand geen tijdstempel
+# heeft (zie CLAUDE.md). Opnieuw kopiëren geeft zo een ander manifest.json, ook als de templates gelijk bleven.
+CODE_CONNECT_CLI="$(node -p "require('${REPO_ROOT}/package.json').devDependencies['@figma/code-connect']")"
 cat > "${TARGET}/manifest.json" <<EOF
 {
     "library": "${LIBRARY}",
@@ -124,7 +128,7 @@ cat > "${TARGET}/manifest.json" <<EOF
     "sourceCommit": "${SOURCE_COMMIT}",
     "syncedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
     "templateCount": ${#TEMPLATES[@]},
-    "codeConnectCli": "@figma/code-connect@$(node -p "require('${REPO_ROOT}/package.json').devDependencies['@figma/code-connect']")"
+    "codeConnectCli": "@figma/code-connect@${CODE_CONNECT_CLI}"
 }
 EOF
 

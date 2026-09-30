@@ -7,7 +7,7 @@
 // volgt de major van de versie: 2.21.0 → v2, 3.0.0 → v3. Elk
 // .figma.md bestand staat in dezelfde soort en heet zoals het Code Connect template waar het bij hoort
 // (descriptions/v2/atom/vl-button.figma.md hoort bij code-connect/v2/atom/vl-button.figma.ts). De Figma node
-// komt uit de url-header van dat template; kopieer de templates dus eerst met figma:web-components:copy-figma.
+// komt uit de url-header van dat template; kopieer de templates dus eerst met figma:code-connect:copy.
 // De Storybook-pagina staat in de frontmatter van het .figma.md bestand, de tekst voor Figma onder "## Figma".
 //
 // Het resultaat, dist/descriptions/<versie>.json, schrijf je in een Figma-branch weg. Dat kan niet vanuit dit
@@ -17,9 +17,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { storybookBase } from '../../../server/src/storybook-url.mjs';
+import { VERSION } from '../../common.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-const STORYBOOK = (version) => `https://flux.omgeving.vlaanderen.be/release-v2/${version}/storybook`;
 // Figma toont langere teksten wel, maar een description is een samenvatting: de details staan in Storybook.
 const MAX_LENGTH = 1200;
 // Onder elke description, zodat niemand ze in Figma aanpast: de volgende update zou dat overschrijven.
@@ -32,12 +33,17 @@ if (!version) {
     console.error('Gebruik: pnpm run figma:descriptions:write <versie>');
     process.exit(1);
 }
+if (!VERSION.test(version)) {
+    console.error(`Ongeldige versie: ${process.argv[2]}`);
+    process.exit(1);
+}
 
 const LIBRARY = `v${version.split('.')[0]}`;
 const DESCRIPTIONS_DIR = path.join(REPO_ROOT, 'catalog', 'figma', 'descriptions', LIBRARY);
 const catalogDir = path.join(REPO_ROOT, 'catalog', 'figma', 'code-connect', LIBRARY);
 if (!fs.existsSync(catalogDir)) {
-    console.error(`Geen templates in de catalogus voor ${LIBRARY}. Haal ze eerst op: pnpm run figma:web-components:copy-figma ${version}`);
+    console.error(`Geen templates in de catalogus voor ${LIBRARY}. Haal ze eerst op:`);
+    console.error(`pnpm run figma:code-connect:copy ${version}`);
     process.exit(1);
 }
 
@@ -69,7 +75,11 @@ if (!fs.existsSync(DESCRIPTIONS_DIR)) {
     process.exit(1);
 }
 
-for (const file of fs.readdirSync(DESCRIPTIONS_DIR, { recursive: true }).filter((f) => f.endsWith('.figma.md')).sort()) {
+const descriptions = fs
+    .readdirSync(DESCRIPTIONS_DIR, { recursive: true })
+    .filter((f) => f.endsWith('.figma.md'))
+    .sort();
+for (const file of descriptions) {
     const key = file.replace('.figma.md', '');
     const name = path.basename(key);
     const { storybook, figma } = parseDescription(path.join(DESCRIPTIONS_DIR, file));
@@ -85,14 +95,14 @@ for (const file of fs.readdirSync(DESCRIPTIONS_DIR, { recursive: true }).filter(
         name,
         nodeId,
         description: figma && `${figma}\n\n${FOOTER(file)}`,
-        documentationLink: `${STORYBOOK(version)}/?path=/docs/${storybook}--documentatie`,
+        documentationLink: `${storybookBase(version)}?path=/docs/${storybook}--documentatie`,
         storybook,
     });
 }
 
 // Een link naar een pagina die in die release niet bestaat, stuurt de lezer naar een lege Storybook.
 try {
-    const index = await fetch(`${STORYBOOK(version)}/index.json`).then((response) => {
+    const index = await fetch(`${storybookBase(version)}index.json`).then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();
     });

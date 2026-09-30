@@ -10,9 +10,9 @@
         }
     },
     "scripts": {
+        "figma:code-connect:copy": "./resources/figma/code-connect/copy.sh",
         "figma:code-connect:publish": "./resources/figma/code-connect/publish.sh",
         "figma:code-connect:unpublish": "./resources/figma/code-connect/unpublish.sh",
-        "figma:web-components:copy-figma": "./resources/figma/web-components/copy-figma.sh",
         "figma:descriptions:write": "node ./resources/figma/descriptions/write.mjs",
         "flux:catalog:update": "./resources/flux/catalog/update.sh",
         "flux:catalog:backfill": "node ./resources/flux/catalog/backfill.mjs",
