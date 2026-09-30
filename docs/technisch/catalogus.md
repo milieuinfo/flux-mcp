@@ -1,7 +1,8 @@
 # De catalogus
 
 `catalog/flux/` bevat per Flux-release wat de MCP-server aanbiedt: wat er voor een afnemer verandert tegenover de vorige
-versie ([changelog](changelog.md)).
+versie ([changelog](changelog.md)). De catalogus bevat de releases op de hoofdlijn van `develop-v2`, vanaf 2.0.0
+([ADR-002](../beslissingen/ADR-002-historische-catalogus-v2.md)).
 
 ```
 catalog/flux/
@@ -42,6 +43,26 @@ pnpm run flux:changelog:commits 2.20.0   # de feiten uit de commits in commits.j
 pnpm run flux:changelog:build --all      # overzicht, tickets en de diffs tegen de vorige versie
 pnpm run flux:changelog:analyse 2.20.0   # de analyse en de review, door Claude Code
 ```
+
+## Een reeks versies: `catalog:backfill`
+
+```bash
+pnpm run flux:catalog:backfill --skip-analysis 2.0.0 2.18.0   # enkel fase 1
+pnpm run flux:catalog:backfill 2.0.0 2.18.0                   # fase 1 en 2, hervatbaar
+pnpm run flux:catalog:backfill --max 7 2.0.0 2.18.0           # fase 2 voor hoogstens 7 versies
+```
+
+De releases zijn de commits `chore(release): X.Y.Z` op de hoofdlijn van `develop-v<major>` in de bronrepo; patches op
+een zijtak, zoals 2.17.1, horen er niet bij. Het werkt van oud naar nieuw, zodat de vorige versie er telkens al staat,
+in twee fasen:
+
+1. **De bronnen** van elke release die ze nog niet heeft, en daarna `changelog:build --all`. Zonder LLM, snel en
+   deterministisch.
+2. **De analyse** van elke release zonder volledige analyse, door Claude Code. Daarna vult het de versie aan die in de
+   catalogus op `<tot>` volgt, want die kreeg nieuwe diffs. Tot slot `changelog:build --all` en `--check`.
+
+Wat klaar is, slaat het over. Stopt een run, bv. op een limiet van het abonnement, dan herneem je ze met hetzelfde
+commando.
 
 ## Controleren
 

@@ -28,4 +28,5 @@ de dependencies, en de commits buiten de changelog.
 `getChangelog` en `findChanges` tonen alles, want een afnemer mag weten wat er nieuw is.
 
 **Een onderbroken keten.** Ontbreekt er een versie tussen `van` en `tot`, dan zegt `getChangesBetween` dat met
-`complete: false`, `missing` en een `warning`.
+`complete: false`, `missing` en een `warning`. De catalogus bevat de releases op de hoofdlijn van `develop-v2`, vanaf
+2.0.0 (ADR-002): een upgrade vanaf v1 of vanaf een patch op een zijtak is niet volledig te beantwoorden.

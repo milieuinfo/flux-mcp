@@ -22,7 +22,7 @@
 //
 // Instellingen via de omgeving:
 //   FLUX_CLAUDE_MODEL   het model, standaard opus;
-//   FLUX_CLAUDE_EFFORT  de effort, standaard xhigh: grondiger dan high;
+//   FLUX_CLAUDE_EFFORT  de effort, standaard xhigh: grondiger dan high, zie ADR-002;
 //   FLUX_CLAUDE_BUDGET  optioneel een maximum per stap, in dollar aan API-tarief; standaard geen.
 // Voorwaarde: Claude Code is geïnstalleerd en aangemeld; 'claude auth status' toont "authMethod": "claude.ai".
 //

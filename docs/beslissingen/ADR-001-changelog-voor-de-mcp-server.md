@@ -279,7 +279,8 @@ voor Edit en Write: een relatief pad leest Claude Code tegenover de huidige map 
 verandert). Al de rest wordt geweigerd, behalve de vaste leescommando's van Claude Code, zoals `ls`.
 `--permission-mode manual` staat er expliciet: zonder neemt `claude -p` de `defaultMode` uit de instellingen over,
 en in `auto` keurt een classifier ook commando's goed die niet in `--allowedTools` staan, zoals `node -e`. Het
-model en de effort zijn instelbaar; standaard `opus` en `xhigh`.
+model en de effort zijn instelbaar; standaard `opus` en `xhigh`. Waarom `xhigh` en niet `high`, staat in ADR-002
+(sectie 5).
 
 De runs lopen op het abonnement waarmee Claude Code aangemeld is (bv. Max), niet op een API-sleutel: het script
 haalt `ANTHROPIC_API_KEY` en `ANTHROPIC_AUTH_TOKEN` uit de omgeving van `claude`, en stopt als een run toch een
@@ -375,7 +376,8 @@ Voorlopige mapping naar MCP, uit te werken bij de bouw van de server:
 
 ### 9. Ontbrekende versies melden
 
-De catalogus bevat de versies waarvan de bronnen opgehaald zijn.
+Welke versies de catalogus bevat, beslist ADR-002: alle releases op de hoofdlijn van `develop-v2`, vanaf 2.0.0.
+Wat er niet in staat, v1 en de patches op een zijtak, vullen we niet aan.
 `getChangesBetween` volgt de `previous`-keten van `tot` terug tot `van`.
 
 Breekt die keten, dan zegt het resultaat `complete: false`, welke versie ontbreekt
@@ -400,7 +402,8 @@ een onderbroken keten, zolang de web-types en de packages van beide kanten er zi
   - `resources/flux/`: de scripts, per onderwerp een map. `web-types/copy.sh`, `changelog/copy.sh` en
     `changelog/cleanup.sh` halen bronnen op en kuisen ze op, met `common.sh`; `packages/copy.mjs`,
     `changelog/commits.mjs`, `changelog/build.mjs` en `changelog/analyse.mjs` zijn de CLI's per stap;
-    `catalog/update.sh` draait ze na elkaar; `source-repo.mjs` kloont de bronrepo;
+    `catalog/update.sh` en `catalog/backfill.mjs` (ADR-002) draaien ze na elkaar; `source-repo.mjs` kloont de
+    bronrepo en bepaalt de releases;
   - `resources/common.sh` en `resources/common.mjs`: wat de scripts delen, de bronrepo (`FLUX_REPO`) en de controle
     van de versie;
   - `prompts/changelog-analyse.md` en `prompts/changelog-review.md`: de prompts voor de analyse en de review;
@@ -443,6 +446,7 @@ een onderbroken keten, zolang de web-types en de packages van beide kanten er zi
   `--check`, de prompt en de regel "niets met de hand wijzigen" krijgen elk een uitzondering op de bestandsnaam.
 - **Oudere versies aanvullen uit de volledige `CHANGELOG.md`.** Dat maakt upgrade-vragen over een groter bereik
   mogelijk, maar zonder de web-types van die versies, dus zonder Storybook-links en zonder diff van de web-types.
+  ADR-002 vult de oudere versies van v2 wel aan, maar met de bronnen per tag.
 - **Enkel de changelog, zonder web-types.** Dat is eenvoudiger, maar dan vervallen de Storybook-links en de diff
   van de web-types. Juist die diff toont wat de changelog niet vermeldt (zie Context).
 - **De beschrijvingen uit de diff van de web-types weglaten.** Dan blijft enkel het contract over. Maar een nieuwe
@@ -481,3 +485,7 @@ een onderbroken keten, zolang de web-types en de packages van beide kanten er zi
   controleren dat samenvoegen.
 - Zolang het formaat evolueert, is een rebuild van alle versies één commando, en de analyse blijft onaangeroerd.
   Wordt het formaat stabiel, dan kan één bestand per ticket met feiten en analyse samen opnieuw overwogen worden.
+
+## Gerelateerde ADR's
+
+- ADR-002: De historische catalogus van v2 opbouwen.

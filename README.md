@@ -43,7 +43,7 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 | Onderwerp                                             | Waarover                                                            |
 |-------------------------------------------------------|---------------------------------------------------------------------|
 | [Scripts en bronnen](docs/technisch/scripts.md)       | hoe je de scripts draait, en waar ze hun gegevens halen             |
-| [De catalogus](docs/technisch/catalogus.md)           | wat erin staat, en bijwerken na een release                         |
+| [De catalogus](docs/technisch/catalogus.md)           | wat erin staat, bijwerken na een release of voor een reeks versies  |
 | [De changelog](docs/technisch/changelog.md)           | wat er per versie verandert: bronnen, build en analyse              |
 | [Claude Code](docs/technisch/claude-code.md)          | hoe de analyse draait: abonnement, rechten en model                 |
 | [De server](docs/technisch/server.md)                 | de queries op de catalogus                                          |
@@ -51,4 +51,5 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 
 De beslissingen en het waarom staan in de ADR's onder [`docs/beslissingen/`](docs/beslissingen/):
 
-- [ADR-001](docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md): de changelog per versie.
+- [ADR-001](docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md): de changelog per versie;
+- [ADR-002](docs/beslissingen/ADR-002-historische-catalogus-v2.md): de historische catalogus van v2.
