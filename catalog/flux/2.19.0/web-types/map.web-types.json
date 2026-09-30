@@ -1,0 +1,1801 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
+    "name": "flux-web-components",
+    "version": "2.19.0",
+    "js-types-syntax": "typescript",
+    "description-markup": "markdown",
+    "contributions": {
+        "html": {
+            "elements": [
+                {
+                    "name": "vl-map-click-action",
+                    "description": "Gebruik het `map-click-action` component om een klikactie op de [map](/docs/map-map--map-default) op te vangen.<br/>\nBij het klikken op de [map](/docs/map-map--map-default) wordt er een `vl-map-click-action-pindrop` op de kaart geplaatst.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-click-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        }
+                    ],
+                    "js": {
+                        "events": [
+                            {
+                                "name": "vl-map-clicked",
+                                "description": "Afgevuurd wanneer er op de map geklikt wordt.<br>Het event bevat de locatie informatie, zie de console logs van Storybook voor het volledige event.",
+                                "type": "{ coordinate: Coordinate, resolution: number, projection: ProjectionLike }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-click-action-pindrop",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=null"
+                },
+                {
+                    "name": "vl-map-draw-action-style",
+                    "description": "Gebruik de `map-draw-action-style` component om een style mee te geven aan de `map-draw-action`.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-draw-action-draw-action-style--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "color",
+                            "description": "Bepaalt de fill kleur bij het tekenen van een polygoon.",
+                            "default": ""
+                        },
+                        {
+                            "name": "border-color",
+                            "description": "Bepaalt de kleur van de rand bij de teken actie.",
+                            "default": ""
+                        },
+                        {
+                            "name": "border-size",
+                            "description": "Bepaalt de breedte van de rand bij de teken actie.",
+                            "default": ""
+                        },
+                        {
+                            "name": "circle-color",
+                            "description": "Bepaalt de fill kleur van de punten tijdens het tekenen.",
+                            "default": ""
+                        },
+                        {
+                            "name": "circle-border-color",
+                            "description": "Bepaalt de kleur van de rand van de cirkels tijdens het tekenen.",
+                            "default": ""
+                        },
+                        {
+                            "name": "circle-border-size",
+                            "description": "Bepaalt de breedte van de rand van de cirkels tijdens het tekenen.",
+                            "default": ""
+                        },
+                        {
+                            "name": "circle-size",
+                            "description": "Bepaalt de grootte van de cirkels tijdens het tekenen.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-draw-line-action",
+                    "description": "Gebruik de `map-draw-line-action` component om een lijn te tekenen op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDeze component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-draw-action-draw-action-style--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "snapping",
+                            "description": "Geeft aan dat er bij het tekenen snapping mag gebeuren, hetzij op de laag waarop getekend wordt (indien geen vl-map-wfs-layer(s) als child elementen), hetzij op de meegegeven vl-map-wfs-layers.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "snapping-pixel-tolerance",
+                            "description": "Binnen de hoeveel pixel van een feature er gesnapt mag worden.<br>Dit attribuut is niet reactief.",
+                            "default": "10"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-draw-point-action",
+                    "description": "Gebruik het `map-draw-point-action` component om een punt te tekenen op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDit component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-draw-action-draw-point-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "snapping",
+                            "description": "Geeft aan dat er bij het tekenen snapping mag gebeuren, hetzij op de laag waarop getekend wordt (indien geen vl-map-wfs-layer(s) als child elementen), hetzij op de meegegeven vl-map-wfs-layers.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "snapping-pixel-tolerance",
+                            "description": "Binnen de hoeveel pixel van een feature er gesnapt mag worden.<br>Dit attribuut is niet reactief.",
+                            "default": "10"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-draw-polygon-action",
+                    "description": "Gebruik het `map-draw-polygon-action` component om een polygon te tekenen op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDit component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "snapping",
+                            "description": "Geeft aan dat er bij het tekenen snapping mag gebeuren, hetzij op de laag waarop getekend wordt (indien geen vl-map-wfs-layer(s) als child elementen), hetzij op de meegegeven vl-map-wfs-layers.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "snapping-pixel-tolerance",
+                            "description": "Binnen de hoeveel pixel van een feature er gesnapt mag worden.<br>Dit attribuut is niet reactief.",
+                            "default": "10"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-measure-action",
+                    "description": "Gebruik het `map-measure-action` component om de afstand tussen 2 punten te meten op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDit component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-draw-action-measure-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "snapping",
+                            "description": "Geeft aan dat er bij het tekenen snapping mag gebeuren, hetzij op de laag waarop getekend wordt (indien geen vl-map-wfs-layer(s) als child elementen), hetzij op de meegegeven vl-map-wfs-layers.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "snapping-pixel-tolerance",
+                            "description": "Binnen de hoeveel pixel van een feature er gesnapt mag worden.<br>Dit attribuut is niet reactief.",
+                            "default": "10"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-layer-action",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=null"
+                },
+                {
+                    "name": "vl-map-delete-action",
+                    "description": "Gebruik het `map-delete-action` component om een feature op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te verwijderen.<br/>\nDit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-layer-action-delete-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-modify-action",
+                    "description": "Gebruik het `map-modify-action` component om een feature op een [map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) aan te passen.<br/>\nDit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-layer-action-modify-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "snapping",
+                            "description": "Geeft aan dat er bij het tekenen snapping mag gebeuren, hetzij op de laag waarop getekend wordt (indien geen vl-map-wfs-layer(s) als child elementen), hetzij op de meegegeven vl-map-wfs-layers.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "snapping-pixel-tolerance",
+                            "description": "Binnen de hoeveel pixel van een feature er gesnapt mag worden.<br>Dit attribuut is niet reactief.",
+                            "default": "10"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-select-action",
+                    "description": "Gebruik het `map-select-action` component om een feature op een [map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te selecteren.<br/>\nDit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-layer-action-select-action--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "cluster",
+                            "description": "Geeft aan de de features geclustered worden.",
+                            "default": "false"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-multiselect-actions",
+                    "description": "Gebruik de `map-multiselect-actions` component om meerdere overlappende features samen te selecteren.<br/>\nDeze component erft over van de\n[map-select-actions](/docs/map-action-layer-action-select-action--map-select-actions-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-layer-action-select-action-multiselect-actions--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "cluster",
+                            "description": "Geeft aan de de features geclustered worden.",
+                            "default": "false"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            },
+                            {
+                                "name": "layers",
+                                "description": "Linkt de actie aan meerdere kaartlagen.<br>Geef hier de name attributen van de kaartlagen mee.<br>Kan niet in combinatie gebruikt worden met:<br>• layer attribuut",
+                                "type": "string[]",
+                                "default": "null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-select-actions",
+                    "description": "Gebruik het `map-select-actions` component om features op meerdere\n[map-features-layers](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te selecteren.<br/>\nDeze component erft over van de\n[map-select-action](/docs/map-action-layer-action-select-action--map-select-action-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-action-layer-action-select-action-select-actions--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Zet de actie default op actief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Linkt de actie aan een kaartlaag.<br>Geef hier het name attribuut van de kaartlaag mee.<br>Wordt gebruikt als de actie niet binnen een kaartlaag element staat."
+                        },
+                        {
+                            "name": "cluster",
+                            "description": "Geeft aan de de features geclustered worden.",
+                            "default": "false"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "active",
+                                "description": "Controleert de actieve status van de actie.",
+                                "type": "boolean",
+                                "default": "false"
+                            },
+                            {
+                                "name": "layers",
+                                "description": "Linkt de actie aan meerdere kaartlagen.<br>Geef hier de name attributen van de kaartlagen mee.<br>Kan niet in combinatie gebruikt worden met:<br>• layer attribuut",
+                                "type": "string[]",
+                                "default": "null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-baselayer",
+                    "description": "Gebruik het `map-baselayer` component om een basis kaartlaag af te beelden.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-baselayer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "background-layer",
+                            "description": "Geeft de gekozen base-layer een achtergrond-laag.<br>Dit zal kaartlagen tonen van het Nationaal Geografisch Instituut.<br>Voor meer info [zie hier](https://www.ngi.be/website/aanbod/digitale-geodata/cartoweb-be/).<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "background-type",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'xyz' | 'wms' | 'wmts' | 'vector'"
+                            }
+                        },
+                        {
+                            "name": "background-options",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen. Geef de background-options mee als JSON string.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layer",
+                            "description": "De identifier van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "title",
+                            "description": "De titel van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "type",
+                            "description": "Het type van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'wmts' | 'wfs'"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "description": "De URL die gebruikt wordt om de kaartlaag op te halen.<br>Dit attribuut is niet reactief."
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-baselayer-grb",
+                    "description": "Gebruik het `map-baselayer-grb` component om een basis GRB kaartlaag af te beelden.<br/>\nDit component erft over van het [map-baselayer](/docs/map-baselayer--map-baselayer-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-baselayer-baselayer-grb--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "background-layer",
+                            "description": "Geeft de gekozen base-layer een achtergrond-laag.<br>Dit zal kaartlagen tonen van het Nationaal Geografisch Instituut.<br>Voor meer info [zie hier](https://www.ngi.be/website/aanbod/digitale-geodata/cartoweb-be/).<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "background-type",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'xyz' | 'wms' | 'wmts' | 'vector'"
+                            }
+                        },
+                        {
+                            "name": "background-options",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen. Geef de background-options mee als JSON string.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layer",
+                            "description": "De identifier van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "title",
+                            "description": "De titel van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "type",
+                            "description": "Het type van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'wmts' | 'wfs'"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "description": "De URL die gebruikt wordt om de kaartlaag op te halen.<br>Dit attribuut is niet reactief."
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-baselayer-grb-gray",
+                    "description": "Gebruik de `map-baselayer-grb-gray` component om een basis GRB kaartlaag met grijstinten af te beelden.<br/>\nDeze component erft over van de [map-baselayer](/docs/map-baselayer--map-baselayer-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-baselayer-baselayer-grb-gray--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "background-layer",
+                            "description": "Geeft de gekozen base-layer een achtergrond-laag.<br>Dit zal kaartlagen tonen van het Nationaal Geografisch Instituut.<br>Voor meer info [zie hier](https://www.ngi.be/website/aanbod/digitale-geodata/cartoweb-be/).<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "background-type",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'xyz' | 'wms' | 'wmts' | 'vector'"
+                            }
+                        },
+                        {
+                            "name": "background-options",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen. Geef de background-options mee als JSON string.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layer",
+                            "description": "De identifier van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "title",
+                            "description": "De titel van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "type",
+                            "description": "Het type van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'wmts' | 'wfs'"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "description": "De URL die gebruikt wordt om de kaartlaag op te halen.<br>Dit attribuut is niet reactief."
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-baselayer-grb-ortho",
+                    "description": "Gebruik de `map-baselayer-grb-ortho` component om een basis GRB ortho kaartlaag af te beelden.<br/>\nDeze component erft over van de [map-baselayer](/docs/map-baselayer--map-baselayer-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-baselayer-baselayer-grb-ortho--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "background-layer",
+                            "description": "Geeft de gekozen base-layer een achtergrond-laag.<br>Dit zal kaartlagen tonen van het Nationaal Geografisch Instituut.<br>Voor meer info [zie hier](https://www.ngi.be/website/aanbod/digitale-geodata/cartoweb-be/).<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "background-type",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'xyz' | 'wms' | 'wmts' | 'vector'"
+                            }
+                        },
+                        {
+                            "name": "background-options",
+                            "description": "Met background-type en background-options kan je zelf een achtergrond-laag instellen. Geef de background-options mee als JSON string.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layer",
+                            "description": "De identifier van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "title",
+                            "description": "De titel van de kaartlaag.<br>Dit attribuut is niet reactief."
+                        },
+                        {
+                            "name": "type",
+                            "description": "Het type van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'wmts' | 'wfs'"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "description": "De URL die gebruikt wordt om de kaartlaag op te halen.<br>Dit attribuut is niet reactief."
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-action-controls",
+                    "description": "Gebruik de `map-action-controls` component als wrapper rond\n[map-action-control](/docs/map-controls-action-control--map-action-control-default) componenten.<br/>\nDe `map-action-controls` zorgt ervoor dat de map-acties in de rechterbovenhoek van de `map` afgebeeld worden.<br/>\nVerder zorgt deze ervoor dat er altijd maar 1 actieve `map-action-control` is.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-controls-action-controls--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-action-control",
+                    "description": "Gebruik de `map-action-control` component om een map-actie aan of uit te zetten met behulp van een\n[button met toggle](/docs/components-atom-button--documentatie#toggle).<br/>\nEen `map-action-control` linken aan een map-actie gebeurt op de volgende manier:\n    - plaats op de `map-action-control` het attribuut `action-id` met als waarde bv. 'draw-polygon-action'\n    - plaats op de map-actie het attribuut `id` en geef hier dezelfde waarde mee als in de vorige stap",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-controls-action-control--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "action-id",
+                            "description": "Het id van de actie die gelinkt is aan deze map-action-control.<br>Houd dit in sync met het id attribuut dat je op de actie plaatst.",
+                            "default": ""
+                        },
+                        {
+                            "name": "icon",
+                            "description": "Het icoon van de toggle-button.",
+                            "default": ""
+                        },
+                        {
+                            "name": "label",
+                            "description": "Het label van de toggle-button.",
+                            "default": ""
+                        },
+                        {
+                            "name": "default-active",
+                            "description": "Voeg `default-active` toe om de control default te activeren bij het renderen.",
+                            "default": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-measure-control",
+                    "description": "Gebruik de `map-measure-control` component om de meet-actie aan of uit te zetten met behulp van een\n[button met toggle](/docs/components-atom-button--documentatie#toggle).",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-current-location",
+                    "description": "Gebruik het `map-current-location` component om een huidige locatie knop af te beelden op de map.<br/>\nNa het drukken op de knop wordt de huidige locatie van de gebruiker centraal afgebeeld.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-current-location--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "tooltip",
+                            "description": "Bepaalt de tekst van de tooltip van de huidige locatie knop.",
+                            "default": "Huidige locatie"
+                        },
+                        {
+                            "name": "zoom",
+                            "description": "Bepaalt hoever er ingezoomd wordt bij het klikken op de huidige locatie knop.",
+                            "default": "10"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-features-layer",
+                    "description": "Gebruik de `map-features-layer` component om een kaartlaag af te beelden waarbij je een set van te tonen features kan\nstellen.<br/>\nDeze component erft over van de `VlMapVectorLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "hidden",
+                            "description": "Bepaalt of de kaartlaag zichtbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "De opacity van de kaartlaag. Getal tussen 0 en 1.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "max-resolution",
+                            "description": "De maximum resolutie (exclusief) waaronder de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "min-resolution",
+                            "description": "De minimum resolutie (inclusief) waarboven de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "z-index",
+                            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "auto-extent",
+                            "description": "Automatisch zoomen op de kaartlaag zodat al de features zichtbaar zijn.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "auto-extent-max-zoom",
+                            "description": "Het maximum niveau tot waar er automatisch gezoomd wordt bij een extent.",
+                            "default": ""
+                        },
+                        {
+                            "name": "cluster",
+                            "description": "Geeft aan of de features geclusterd moeten worden of niet.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "cluster-distance",
+                            "description": "De afstand vanaf er tussen features geclusterd mag worden.<br>Dit attribuut is niet reactief.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "features",
+                            "description": "Attribuut dat de kaartlaag bevat.",
+                            "default": ""
+                        },
+                        {
+                            "name": "projection-code",
+                            "description": "Indien je Lambert 72 coördinaten gebruikt op een Lambert 2008 kaart, moet je de projectie code EPSG:31370 meegeven als projection-code. Geef je dit niet mee, dan zal de kaartlaag de projectie code van de kaart overnemen.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "features",
+                                "description": "Property die de kaartlaag bevat.",
+                                "type": "string",
+                                "default": "null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-wfs-layer",
+                    "description": "Gebruik de `map-wfs-layer` component om een WFS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapVectorLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "hidden",
+                            "description": "Bepaalt of de kaartlaag zichtbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "De opacity van de kaartlaag. Getal tussen 0 en 1.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "max-resolution",
+                            "description": "De maximum resolutie (exclusief) waaronder de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "min-resolution",
+                            "description": "De minimum resolutie (inclusief) waarboven de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "z-index",
+                            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "cql-filter",
+                            "description": "Een CQL-expressie waarmee de features van de WFS-laag server-side gefilterd worden. De waarde wordt als <code>cql_filter</code> query parameter naar de server gestuurd, gecombineerd met een <code>BBOX</code>-clausule op de geometry-property: <code>cql_filter=BBOX(geometry,extent) AND (filter)</code> in plaats van een <code>bbox</code> parameter. <br><strong>Let op:</strong> <code>cql_filter</code> is een GeoServer-specifieke extensie en wordt niet door elke WFS-implementatie ondersteund.<br>Dit attribuut is reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "geometry-name",
+                            "description": "De naam van de geometry-property die in de CQL <code>BBOX(...)</code>-clausule gebruikt wordt. Enkel relevant samen met <code>cql-filter</code>. Indien niet meegegeven wordt de geometry-property best-effort gedetecteerd via een <code>DescribeFeatureType</code> call; geef dit attribuut expliciet mee wanneer die auto-detectie faalt.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layers",
+                            "description": "De layers van de WFS.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "projection-code",
+                            "description": "Indien je Lambert 72 coördinaten gebruikt op een Lambert 2008 kaart, moet je de projectie code EPSG:31370 meegeven als projection-code. Geef je dit niet mee, dan zal de kaartlaag de projectie code van de kaart overnemen.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "url",
+                            "description": "De WFS url.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-image-wms-layer",
+                    "description": "Gebruik de `map-image-wms-layer` component om een WMS kaartlaag af te beelden waarbij de bevraging telkens met één\nafbeelding gebeurt.<br/>\nDeze component erft over van de `VlMapWmsLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-wms-layer-image-wms-layer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "hidden",
+                            "description": "Bepaalt of de kaartlaag zichtbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "De opacity van de kaartlaag. Getal tussen 0 en 1.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "max-resolution",
+                            "description": "De maximum resolutie (exclusief) waaronder de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "min-resolution",
+                            "description": "De minimum resolutie (inclusief) waarboven de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "z-index",
+                            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "layers",
+                            "description": "De WMS layers.",
+                            "default": ""
+                        },
+                        {
+                            "name": "styles",
+                            "description": "De WMS stijlen.",
+                            "default": ""
+                        },
+                        {
+                            "name": "url",
+                            "description": "De WMS url.",
+                            "default": ""
+                        },
+                        {
+                            "name": "version",
+                            "description": "De WMS versie.",
+                            "default": "1.3.0"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-tiled-wms-layer",
+                    "description": "Gebruik de `map-tiled-wms-layer` component om een WMS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapWmsLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-wms-layer-tiled-wms-layer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "hidden",
+                            "description": "Bepaalt of de kaartlaag zichtbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "De opacity van de kaartlaag. Getal tussen 0 en 1.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "max-resolution",
+                            "description": "De maximum resolutie (exclusief) waaronder de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "min-resolution",
+                            "description": "De minimum resolutie (inclusief) waarboven de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "z-index",
+                            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "layers",
+                            "description": "De WMS layers.",
+                            "default": ""
+                        },
+                        {
+                            "name": "styles",
+                            "description": "De WMS stijlen.",
+                            "default": ""
+                        },
+                        {
+                            "name": "url",
+                            "description": "De WMS url.",
+                            "default": ""
+                        },
+                        {
+                            "name": "version",
+                            "description": "De WMS versie.",
+                            "default": "1.3.0"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-xyz-wms-layer",
+                    "description": "Gebruik de `map-xyz-wms-layer` component om een WMS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapWmsLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-wms-layer-xyz-wms-layer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "hidden",
+                            "description": "Bepaalt of de kaartlaag zichtbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "De opacity van de kaartlaag. Getal tussen 0 en 1.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "max-resolution",
+                            "description": "De maximum resolutie (exclusief) waaronder de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "min-resolution",
+                            "description": "De minimum resolutie (inclusief) waarboven de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "z-index",
+                            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "layers",
+                            "description": "De WMS layers.",
+                            "default": ""
+                        },
+                        {
+                            "name": "styles",
+                            "description": "De WMS stijlen.",
+                            "default": ""
+                        },
+                        {
+                            "name": "url",
+                            "description": "De WMS url.",
+                            "default": ""
+                        },
+                        {
+                            "name": "version",
+                            "description": "De WMS versie.",
+                            "default": "1.3.0"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-wms-style",
+                    "description": "Gebruik de `map-wms-style` component om een WMS kaartlaag server side te stijlen.<br/>",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-wms-layer-wms-style--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "sld",
+                            "description": "Bepaalt de Styled Layer Descriptor body van een WMS kaartlaag.<br>Deze XML kan gebruikt worden om de WMS kaartlaag server side te stijlen.<br>Zie http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-wmts-layer",
+                    "description": "Gebruik de `map-wmts-layer` component om een WMTS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapLayer` klasse.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "hidden",
+                            "description": "Bepaalt of de kaartlaag zichtbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "De opacity van de kaartlaag. Getal tussen 0 en 1.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "max-resolution",
+                            "description": "De maximum resolutie (exclusief) waaronder de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "min-resolution",
+                            "description": "De minimum resolutie (inclusief) waarboven de kaartlaag zichtbaar is.<br>Dit attribuut is niet reactief.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de kaartlaag.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "z-index",
+                            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+                            "default": "null"
+                        },
+                        {
+                            "name": "layer",
+                            "description": "De layer van de WMTS.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "url",
+                            "description": "De WMTS url.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "matrix-set",
+                            "description": "De matrix set van de WMTS.<br>Dit attribuut is niet reactief.",
+                            "default": "BPL2008VL"
+                        },
+                        {
+                            "name": "matrix-prefix",
+                            "description": "Definieert of de matrix moet geprefixt worden met de matrix set.<br/>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "from-capabilities",
+                            "description": "Haalt de TileMatrix configuratie op uit de WMTS GetCapabilities response.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-layer-style",
+                    "description": "Gebruik de `map-layer-style` component om een\n[features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) of een\n[wfs-layer](/docs/map-layer-vector-layer-wfs-layer--map-wfs-layer-default) te stylen.<br/>\n**Let op**: Bij gebruik van de [map-legend](/docs/map-legend--map-legend-features-layer-multiple-styles) worden de\nattributen niet reactief toegepast op de legende.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-style--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "border-color",
+                            "description": "De kleur van de rand van de kaartlaagstijl.",
+                            "default": "rgba(2, 85, 204, 1)"
+                        },
+                        {
+                            "name": "border-size",
+                            "description": "De grootte van de rand van de kaartlaagstijl.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "color",
+                            "description": "De kleur van de kaartlaagstijl.",
+                            "default": "rgba(2, 85, 204, 0.8)"
+                        },
+                        {
+                            "name": "invalid",
+                            "description": "Geeft aan of de \"invalid\" stijl toegepast moet worden. Je kan dit gebruiken om de kaartlaag manueel als \"invalid\" te renderen.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de stijl, deze naam wordt getoond als tekst in de legende als de map-legend op de kaart is toegevoegd. Een stijl zonder name attribuut zal nooit in de legende getoond worden. Tenzij het om een enkele stijl in een features-layer of wfs-layer gaat, in dat geval wordt de name van de layer in de legende getoond."
+                        },
+                        {
+                            "name": "pattern",
+                            "description": "Een data:image/...-URL die een patroon (bv. diagonale arcering) voorstelt. Wanneer ingesteld, wordt dit patroon als background-image getoond in de laag en in de legende, in combinatie (bovenop) de achtergrondkleur."
+                        },
+                        {
+                            "name": "text-background-color",
+                            "description": "De kleur van de achtergrond van de tekst.",
+                            "default": "rgba(0, 0, 0, 0)"
+                        },
+                        {
+                            "name": "text-border-color",
+                            "description": "De kleur van de rand van de tekst.",
+                            "default": "rgba(255, 255, 255, 0)"
+                        },
+                        {
+                            "name": "text-border-size",
+                            "description": "De grootte van de rand van de tekst.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "text-color",
+                            "description": "De kleur van de tekst.",
+                            "default": "#FFF"
+                        },
+                        {
+                            "name": "text-feature-attribute-name",
+                            "description": "De key van de property van de feature die de tekst bepaalt."
+                        },
+                        {
+                            "name": "text-offset-x",
+                            "description": "De offset op de x-as van de tekst.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "text-offset-y",
+                            "description": "De offset op de y-as van de tekst.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "text-size",
+                            "description": "De grootte van de tekst in CSS font-size eenheden (medium|xx-small|x-small|small|large|x-large|xx-large|smaller|larger|length|initial|inherit).",
+                            "default": "10px"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-layer-circle-style",
+                    "description": "Gebruik de `map-layer-circle-style` component om een\n[features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te stylen.<br/>\nDeze component erft over van de [map-layer-style](/docs/map-layer-style--map-layer-style-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "border-color",
+                            "description": "De kleur van de rand van de kaartlaagstijl.",
+                            "default": "rgba(0, 0, 0, 0)"
+                        },
+                        {
+                            "name": "border-size",
+                            "description": "De grootte van de rand van de kaartlaagstijl.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "color",
+                            "description": "De kleur van de kaartlaagstijl.",
+                            "default": "rgba(2, 85, 204, 0.8)"
+                        },
+                        {
+                            "name": "invalid",
+                            "description": "Geeft aan of de \"invalid\" stijl toegepast moet worden. Je kan dit gebruiken om de kaartlaag manueel als \"invalid\" te renderen.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van de stijl, deze naam wordt getoond als tekst in de legende als de map-legend op de kaart is toegevoegd. Een stijl zonder name attribuut zal nooit in de legende getoond worden. Tenzij het om een enkele stijl in een features-layer of wfs-layer gaat, in dat geval wordt de name van de layer in de legende getoond."
+                        },
+                        {
+                            "name": "pattern",
+                            "description": "Een data:image/...-URL die een patroon (bv. diagonale arcering) voorstelt. Wanneer ingesteld, wordt dit patroon als background-image getoond in de laag en in de legende, in combinatie (bovenop) de achtergrondkleur."
+                        },
+                        {
+                            "name": "text-background-color",
+                            "description": "De kleur van de achtergrond van de tekst.",
+                            "default": "rgba(0, 0, 0, 0)"
+                        },
+                        {
+                            "name": "text-border-color",
+                            "description": "De kleur van de rand van de tekst.",
+                            "default": "rgba(255, 255, 255, 0)"
+                        },
+                        {
+                            "name": "text-border-size",
+                            "description": "De grootte van de rand van de tekst.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "text-color",
+                            "description": "De kleur van de tekst.",
+                            "default": "#FFF"
+                        },
+                        {
+                            "name": "text-feature-attribute-name",
+                            "description": "De key van de property van de feature die de tekst bepaalt."
+                        },
+                        {
+                            "name": "text-offset-x",
+                            "description": "De offset op de x-as van de tekst.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "text-offset-y",
+                            "description": "De offset op de y-as van de tekst.",
+                            "default": "0"
+                        },
+                        {
+                            "name": "text-size",
+                            "description": "De grootte van de tekst in CSS font-size eenheden (medium|xx-small|x-small|small|large|x-large|xx-large|smaller|larger|length|initial|inherit).",
+                            "default": "10px"
+                        },
+                        {
+                            "name": "cluster-color",
+                            "description": "De kleur bij het clusteren van features.",
+                            "default": "rgba(2, 85, 204, 1)"
+                        },
+                        {
+                            "name": "cluster-multiplier",
+                            "description": "Bepaalt de verhouding van de vergroting voor clusters tegenover ingestelde `size`.",
+                            "default": "1"
+                        },
+                        {
+                            "name": "cluster-text-color",
+                            "description": "De kleur van de tekst bij het clusteren van features.",
+                            "default": "#FFF"
+                        },
+                        {
+                            "name": "size",
+                            "description": "De grootte van de cirkels.",
+                            "default": "5"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-layer-switcher",
+                    "description": "Gebruik de `map-layer-switcher` component om kaartlagen zichtbaar of onzichtbaar te maken.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "title",
+                            "description": "De titel bovenaan de layer-switcher.",
+                            "default": "Kaartlagen"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "layers",
+                                "description": "Kan gebruikt worden om een subselectie van kaartlagen te tonen.<br>Geef hier de name attributen van de kaartlagen mee.<br>Kaartlagen worden niet langer automatisch toegevoegd of verwijderd in de layer-switcher.",
+                                "type": "string[]",
+                                "default": "null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-legend",
+                    "description": "Gebruik de `map-legend` component om een legende af te beelden op de kaart.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-legend--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "bottom",
+                            "description": "Bepaalt de \"bottom\" positie van de legende op de kaart.<br>Kan gebruikt worden in combinatie met placement.",
+                            "default": ""
+                        },
+                        {
+                            "name": "left",
+                            "description": "Bepaalt de \"left\" positie van de legende op de kaart.<br>Kan gebruikt worden in combinatie met placement.",
+                            "default": ""
+                        },
+                        {
+                            "name": "placement",
+                            "description": "Bepaalt de plaats van de legende op de kaart.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'top_left' | 'top_right' | 'bottom_left' | 'bottom_right'"
+                            },
+                            "default": "bottom_right"
+                        },
+                        {
+                            "name": "right",
+                            "description": "Bepaalt de \"right\" positie van de legende op de kaart.<br>Kan gebruikt worden in combinatie met placement.",
+                            "default": ""
+                        },
+                        {
+                            "name": "top",
+                            "description": "Bepaalt de \"top\" positie van de legende op de kaart.<br>Kan gebruikt worden in combinatie met placement.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layout-vertical",
+                            "description": "Zet de layout van de legende in verticale positie.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "hide-title",
+                            "description": "Laat de \"Legende\" titel weg.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "version",
+                            "description": "Voeg een \"version\" parameter toe aan de legende url.",
+                            "default": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-legend-item",
+                    "description": "Gebruik de `map-legend-item` component om een custom legende af te beelden op de kaart.\n\nIndien geen icon- en labelslots meegegeven zijn zal het `map-legend-item` de default style items van de bijhorende laag tonen.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-legend-item--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "layer",
+                            "description": "Laagnaam van de laag waarvoor het custom lengende item van toepassing is.<br>Indien geen icon en label slot toegevoegd is zal het default icon en label van deze laag gebruikt worden.",
+                            "default": ""
+                        },
+                        {
+                            "name": "icon-text",
+                            "description": "Text die in het icon wordt toegevoegd. Niet van toepassing bij het custom toevoegen van icon en label via de slots.",
+                            "default": ""
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "name": "icon",
+                            "description": "Element dat als icon van het legend item getoond wordt.",
+                            "default": ""
+                        },
+                        {
+                            "name": "label",
+                            "description": "Element dat als label van het legend item getoond wordt.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-loading-indicator",
+                    "description": "Gebruik de `map-loading-indicator` component om op te vangen wanneer de [vl-map](/docs/map-map--map-default) aan het\nladen is.<br/>\nToont een 'loading' bar bovenaan de map.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-loading-indicator--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-overview-map",
+                    "description": "Gebruik de `map-overview-map` component zodat gebruikers kunnen wisselen tussen de verschillende basis kaartlagen.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-overview-map--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-search",
+                    "description": "Gebruik de `map-search` component om een zoekbalk toe te voegen aan de map waarmee gebruikers kunnen zoeken op adres.<br/>\nDeze component maakt gebruik van de [select-location](/docs/map-select-location--select-location-default) component en\nvan de [search](/docs/components-block-search--search-default) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-search--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "De placeholder van het select element.<br>Dit attribuut is niet reactief.",
+                            "default": "Zoeken op kaart"
+                        },
+                        {
+                            "name": "search-empty-text",
+                            "description": "De tekst wanneer er geen zoekresultaten zijn.<br>Dit attribuut is niet reactief.",
+                            "default": "Geen adres gevonden"
+                        },
+                        {
+                            "name": "search-no-results-text",
+                            "description": "De tekst wanneer er geen zoekresultaten zijn.<br>Dit attribuut is niet reactief.",
+                            "default": "Geen adres gevonden"
+                        },
+                        {
+                            "name": "search-placeholder",
+                            "description": "De placeholder van het input element.<br>Dit attribuut is niet reactief.",
+                            "default": "Zoeken op adres of coördinaat"
+                        },
+                        {
+                            "name": "with-offset",
+                            "description": "Beeldt de search-bar af met een linkse offset.<br>Wordt gebruikt als er een map-side-sheet is aan de linkerkant zodat de toggle van de map-side-sheet niet afgebeeld wordt over de search-bar.",
+                            "default": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-select-location",
+                    "description": "Gebruik de `vl-select-location` component om een zoekbalk af te beelden waarmee er een adres geselecteerd kan worden.\n\nDeze component erft over van de [vl-select-rich](/docs/components-form-select-rich--documentatie) component.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-select-location--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "id",
+                            "description": "Het id van het veld.",
+                            "default": ""
+                        },
+                        {
+                            "name": "name",
+                            "description": "De naam van het veld.",
+                            "default": ""
+                        },
+                        {
+                            "name": "label",
+                            "description": "Vult het aria-label attribuut van het veld in.<br/>Kan gebruikt worden als er geen bijhorend label element of vl-form-label component is.",
+                            "default": ""
+                        },
+                        {
+                            "name": "required",
+                            "description": "Duidt aan dat het veld verplicht is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "Beeldt de component in een disabled state af.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "error",
+                            "description": "Beeldt de component in een error state af.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "success",
+                            "description": "Beeldt de component in een success state af.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "blur-validation",
+                            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+                            "default": "false"
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "De placeholder tekst.<br>Dit attribuut is niet reactief.",
+                            "default": ""
+                        },
+                        {
+                            "name": "not-deletable",
+                            "description": "Duidt aan dat de selectie niet-verwijderbaar is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "position",
+                            "description": "De positie van de dropdown.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'auto' | 'top' | 'bottom'"
+                            },
+                            "default": "auto"
+                        },
+                        {
+                            "name": "result-limit",
+                            "description": "Het maximum aantal resultaten dat getoond wordt.",
+                            "default": "4"
+                        },
+                        {
+                            "name": "no-results-text",
+                            "description": "De tekst die getoond wordt als er geen resultaten zijn.<br>Dit attribuut is niet reactief.",
+                            "default": "Geen resultaten gevonden"
+                        },
+                        {
+                            "name": "no-choices-text",
+                            "description": "De tekst die getoond wordt als er geen resterende opties zijn.<br>Dit attribuut is niet reactief.",
+                            "default": "Geen resterende opties gevonden"
+                        },
+                        {
+                            "name": "search-placeholder",
+                            "description": "De placeholder tekst van het zoekveld.<br>Dit attribuut is niet reactief.",
+                            "default": "Zoek item"
+                        }
+                    ],
+                    "js": {
+                        "properties": [
+                            {
+                                "name": "itemTemplate",
+                                "description": "Bepaalt zelf de inhoud van een optie in de dropdown.<br>Niet reactief en niet aanpasbaar in Storybook.<br>Zie de [documentatie](/docs/components-form-select-rich--documentatie#itemtemplate) voor meer info.",
+                                "type": "function",
+                                "default": "undefined"
+                            },
+                            {
+                                "name": "initial-options",
+                                "description": "De standaard opties die geselecteerd kunnen worden. Bij een reset van de form worden deze opties getoond.<br>Niet dynamisch.<br>Zie de documentatie pagina voor meer info.",
+                                "type": "SelectRichOption",
+                                "default": ""
+                            },
+                            {
+                                "name": "options",
+                                "description": "De opties die geselecteerd kunnen worden.<br>Zal de opties van de select-rich dynamisch bijwerken.<br>Zie de documentatie pagina voor meer info.",
+                                "type": "SelectRichOption",
+                                "default": ""
+                            }
+                        ],
+                        "events": [
+                            {
+                                "name": "vl-reset",
+                                "description": "Event dat afgevuurd wordt wanneer het veld gereset wordt."
+                            },
+                            {
+                                "name": "vl-change",
+                                "description": "Event dat afgevuurd wordt als er een optie selecteerd of verwijderd wordt.<br>Het detail object van het event bevat de waarde van de geselecteerde optie.<br>Bij de multiselect bevat het detail object een array van waarden van de geselecteerde opties.",
+                                "type": "{ value: string | string[] }"
+                            },
+                            {
+                                "name": "vl-input",
+                                "description": "Event dat enkel afgevuurd wordt als de gebruiker een optie selecteert of verwijdert.<br>Het detail object van het event bevat de waarde van de geselecteerde optie.<br>Bij de multiselect bevat het detail object een array van waarden van de geselecteerde opties.",
+                                "type": "{ value: string | string[] }"
+                            },
+                            {
+                                "name": "vl-select-search",
+                                "description": "Event dat afgevuurd wordt als er een waarde ingegeven wordt in het zoekveld.",
+                                "type": "{ value: string }"
+                            },
+                            {
+                                "name": "vl-valid",
+                                "description": "Event dat afgevuurd wordt als de select valid is.<br>Het detail object van het event bevat de waarde van de geselecteerde optie.<br>Bij de multiselect bevat het detail object een array van waarden van de geselecteerde opties.",
+                                "type": "{ value: string | string[] }"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "vl-map-side-sheet",
+                    "description": "Gebruik de `map-side-sheet` component om een uitklapbaar zijpaneel af te beelden over de map.<br/>\nDeze component erft over van de [side-sheet](/docs/components-block-side-sheet--side-sheet-default) component en heeft ook al diens functionaliteit.<br/>\n**Let op**: de default positie van de `map-side-sheet` is links, terwijl de default positie van de\n[side-sheet](/docs/components-block-side-sheet--side-sheet-default) rechts is.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-side-sheet-side-sheet--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "custom-icon",
+                            "description": "Het icoon van de toggle button.",
+                            "default": ""
+                        },
+                        {
+                            "name": "enable-swipe",
+                            "description": "Het zijpaneel kan gesloten worden door te swipen.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "hide-toggle-button",
+                            "description": "Verbergt de toggle button.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "icon-placement",
+                            "description": "De positie van het icoon van de toggle button.<br>Dit attribuut is niet reactief.",
+                            "value": {
+                                "kind": "plain",
+                                "type": "'before' | 'after'"
+                            },
+                            "default": "before"
+                        },
+                        {
+                            "name": "open",
+                            "description": "Duidt aan dat het zijpaneel open is.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "right",
+                            "description": "Positioneert het zijpaneel aan de rechterrand.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "toggle-text",
+                            "description": "De tekst van de toggle button.",
+                            "default": ""
+                        },
+                        {
+                            "name": "tooltip-text",
+                            "description": "De tooltip van de toggle button.",
+                            "default": ""
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "name": "[default]",
+                            "description": "Element dat afgebeeld wordt in het zijpaneel."
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map-side-sheet-menu",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-side-sheet-side-sheet-menu-item--documentatie"
+                },
+                {
+                    "name": "vl-map-side-sheet-menu-item",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-side-sheet-side-sheet-menu-item--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "href",
+                            "description": "De link van het menu item.",
+                            "default": "#"
+                        },
+                        {
+                            "name": "title",
+                            "description": "De titel van het menu item.",
+                            "default": "Terug"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "name": "[default]",
+                            "description": "De inhoud van het menu item."
+                        }
+                    ]
+                },
+                {
+                    "name": "vl-map",
+                    "description": "Gebruik de `map` component om een kaart af te beelden met verschillende lagen en acties.",
+                    "doc-url": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/map-map--documentatie",
+                    "attributes": [
+                        {
+                            "name": "custom-css",
+                            "description": "Custom CSS string.<br>Wordt toegevoegd aan de adoptedStyleSheets in de shadow DOM van de component.",
+                            "default": ""
+                        },
+                        {
+                            "name": "allow-fullscreen",
+                            "description": "Laat de map toe afgebeeld te worden in fullscreen.<br>Dit kan niet gebruikt worden op mobile.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "allow-invalid-geometry",
+                            "description": "Standaard worden ongeldige geometrieën gemarkeerd met een rode \"invalid\" stijl. Je kan dit attribuut gebruiken om dit gedrag uit te zetten.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "disable-escape-key",
+                            "description": "Schakelt de escape-key uit.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "disable-rotation",
+                            "description": "Schakelt het roteren van de map uit.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "disable-mouse-wheel-zoom",
+                            "description": "Schakelt het zoomen van de map via het muiswiel uit.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "disable-keyboard",
+                            "description": "Schakelt de keyboard input uit voor de map.<br>Dit attribuut is niet reactief.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "full-height",
+                            "description": "De map neemt de volledige beschikbare hoogte in van zijn parent.<br>Zie de docs pagina voor meer informatie over het gebruik van dit attribuut.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "lambert2008",
+                            "description": "Indien aanwezig wordt de kaart in het coördinatenstelsel Lambert 2008 weergegeven (EPSG:3812).<br>Indien niet aanwezig wordt de kaart in het coördinatenstelsel Lambert 72 weergegeven (EPSG:31370).<br>Dit attribuut is niet reactief. In de toekomst wordt Lambert 2008 de default.",
+                            "default": "false"
+                        },
+                        {
+                            "name": "no-border",
+                            "description": "De border rond de map wordt niet afgebeeld.",
+                            "default": "false"
+                        }
+                    ],
+                    "js": {
+                        "events": [
+                            {
+                                "name": "vl-active-action-changed",
+                                "description": "Afgevuurd als de actieve map-actie verandert.",
+                                "type": "{ previous?: VlMapAction, current?: VlMapAction }"
+                            },
+                            {
+                                "name": "vl-layer-visible-changed",
+                                "description": "Afgevuurd als de visible state van een map-layer verandert.",
+                                "type": "{ layer: VlMapLayer, visible: boolean }"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
