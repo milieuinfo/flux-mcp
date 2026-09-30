@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "637a88f": {
+      "impact": "automatic",
+      "explanation": "vl-http-error-message (in de changelog vl-error-message) haalt zijn illustraties nu van `https://cdn.omgeving.vlaanderen.be` in plaats van `https://cdn.milieuinfo.be`, en in vl-privacy wijst de link naar het DOCX-document 'Lijst van aangiften en machtigingen' ook naar dat domein. Het oude CDN verdwijnt op termijn; door te upgraden blijven de afbeeldingen en de link werken. Beperkt je Content Security Policy `img-src` tot bepaalde domeinen, laat dan `https://cdn.omgeving.vlaanderen.be` toe, anders blokkeert de browser de illustraties."
+    }
+  }
+}

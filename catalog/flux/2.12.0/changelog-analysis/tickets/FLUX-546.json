@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "21a542f": {
+      "impact": "opt-in",
+      "explanation": "Nieuw in `@domg-wc/components/block` is de Lit-directive `vlProza(code, options?)`: ze haalt een Proza-bericht op en gebruikt het als tekst voor een attribuut, bv. de `title` van vl-alert. Tijdens het laden toont ze de `fallback` (standaard de code), en ze geeft platte tekst zonder HTML-tags terug; met de opties kies je `domain`, `parameters` en `baseUrl`. Zonder `domain` en zonder `prozaDomain` in `FluxConfig` gooit de directive een fout. Zie Components - Block/proza-message/proza-directive en Recepten/Proza inline gebruik.",
+      "example": "```ts\nimport { html } from 'lit';\nimport { vlProza } from '@domg-wc/components/block';\n\nconst template = html`\n    <vl-alert\n        icon=\"warning\"\n        title=${vlProza('disclaimer.titel')}\n        type=\"warning\"\n        closable\n    ></vl-alert>\n`;\n```"
+    }
+  }
+}

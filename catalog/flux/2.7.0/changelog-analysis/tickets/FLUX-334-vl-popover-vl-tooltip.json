@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "e99584c": {
+      "impact": "automatic",
+      "explanation": "Een vl-popover met een `trigger` zonder `click` (bv. `hover focus`) gedraagt zich voor een schermlezer nu als tooltip: de trigger krijgt `aria-describedby` naar de popover, tenzij hij er al een heeft, en niet langer `aria-controls`, `aria-haspopup` en `aria-expanded`; een popover met `click` blijft zoals hij was. Volgens Components - Block/popover is het gebruik van vl-popover als tooltip wel deprecated: gebruik daarvoor voortaan vl-tooltip. Elke popover krijgt ook een andere schaduw en een rand in de kleur `--vl-color--border-default`."
+    },
+    "9c73a9a": {
+      "impact": "opt-in",
+      "explanation": "Nieuw in @domg-wc/components/block: vl-tooltip (`VlTooltipComponent`), een klein venster met korte extra informatie dat verschijnt wanneer de gebruiker over het element met het id uit `for` hovert of het focust (Components - Block/tooltip). Het vervangt vl-popover als tooltip en kent `placement`, `distance` (standaard 10), `hide-arrow`, `strategy` (`absolute` of `fixed`), `open` en `type`, dat bepaalt of de trigger `aria-describedby` (`description`, standaard) of `aria-labelledby` (`label`) krijgt. vl-tooltip staat niet in de web-types, dus een IDE stelt het niet voor. Geef de eerste parent van de tooltip bij voorkeur `position: relative`, zodat hij tegenover het juiste element gepositioneerd wordt.",
+      "example": "```html\n<script type=\"module\">\n    import { VlTooltipComponent } from '@domg-wc/components/block';\n</script>\n\n<div style=\"position: relative\">\n    <vl-button ghost icon=\"info-circle\" id=\"btn-context\" label=\"Meer info\"></vl-button>\n    <vl-tooltip for=\"btn-context\">Een boodschap die context geeft.</vl-tooltip>\n</div>\n```"
+    }
+  }
+}

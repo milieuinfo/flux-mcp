@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "cbc5bb9": {
+      "impact": "automatic",
+      "explanation": "vl-spotlight, vl-accessibility, vl-cookie-statement, vl-privacy en vl-radio-group krijgen de reset-styling van Flux (vlResetStyles) nu ook in hun shadow DOM. In v2 zit de reset van Digitaal Vlaanderen niet meer in de gedeelde styling; zonder deze fix zouden die componenten anders renderen. Je hoeft niets te doen."
+    },
+    "17f09bf": {
+      "impact": "automatic",
+      "explanation": "vl-functional-header krijgt de reset-styling van Flux (vlResetStyles) in zijn shadow DOM, zodat de header in v2 correct rendert. Je hoeft niets te doen."
+    }
+  }
+}

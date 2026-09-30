@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "61eefcd": {
+      "impact": "opt-in",
+      "explanation": "Het TypeScript-type `MaskOptions` kent nu ook de Cleave-opties `numeralDecimalScale`, `numeralIntegerScale`, `numeralThousandsGroupStyle` (`'thousand' | 'lakh' | 'wan' | 'none'`), `signBeforePrefix`, `tailPrefix` en `noImmediatePrefix`. Registreer je een eigen mask met `VlInputFieldMaskedComponent.setMasks()` die deze opties gebruikt, dan heb je geen `as MaskOptions`-cast meer nodig. Aan het gedrag verandert niets.",
+      "example": "```ts\nVlInputFieldMaskedComponent.setMasks({\n    bedrag: {\n        numeral: true,\n        numeralDecimalMark: ',',\n        numeralDecimalScale: 2,\n        numeralThousandsGroupStyle: 'thousand',\n    },\n});\n```\n\n```html\n<vl-input-field-masked mask=\"bedrag\"></vl-input-field-masked>\n```"
+    }
+  }
+}

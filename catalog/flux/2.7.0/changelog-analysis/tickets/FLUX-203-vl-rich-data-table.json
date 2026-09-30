@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "85fcb5c": {
+      "impact": "action",
+      "explanation": "De changelog noemt vl-rich-data-table, maar de wijziging raakt elke vl-table: die krijgt `display: block`, `max-width: 100%` en `overflow-x: auto`, zodat een brede tabel binnen de component horizontaal scrolt in plaats van uit de pagina te steken. Om dat scrollen met het toetsenbord mogelijk te maken, zet elke vl-table `tabindex=\"0\"` op zichzelf wanneer hij aan de pagina gekoppeld wordt: elke tabel wordt zo een extra tabstop, ook een tabel die niet scrolt, en een `tabindex` die je zelf op vl-table zet, wordt daarbij overschreven. Op schermen tot 767 pixels breed neemt de inhoud van vl-rich-data en vl-rich-data-table de volle breedte, en de filter (vl-search-filter), die daar het hele scherm vult, krijgt een witte achtergrond en ligt boven andere lagen zoals een popover, via de nieuwe CSS-variabele `--vl-z-layer--search-filter` (10011) in @domg-wc/styles.",
+      "action": "Gebruik je vl-table, kijk dan na of de extra tabstop per tabel je toetsenbordnavigatie en je tests (bv. een vaste tabvolgorde) niet verstoort. Zet je zelf een `tabindex` op vl-table, bv. `-1`, stel die dan met JavaScript in nadat de tabel aan de pagina is toegevoegd: de component zet hem bij het koppelen op `0`.",
+      "a11y": true
+    }
+  }
+}

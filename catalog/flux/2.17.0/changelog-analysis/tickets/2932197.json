@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2932197": {
+      "impact": "none",
+      "explanation": "Enkel de tests van vl-side-navigation-next in Flux zelf werden stabieler gemaakt. De gepubliceerde packages veranderen niet."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "d1ff564": {
+      "impact": "automatic",
+      "explanation": "vl-select gebruikt niet langer de oude stylesheets van govflanders-style maar één eigen stylesheet op basis van de Flux-variabelen, met de toestanden focus, hover, error, success en disabled; het uitzicht kan licht verschuiven. Nieuw zijn de CSS-variabelen `--vl-select--height`, `--vl-select--padding`, `--vl-select--button-*` (de wisknop) en `--vl-select--nav-icon-color` op de component. Je hoeft niets te doen.",
+      "a11y": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "20ffd3c": {
+      "impact": "action",
+      "explanation": "vl-header-next kan de global header nu de gegevens van de aangemelde gebruiker laten tonen (naam, hoedanigheden) met een PAPI profile token. Standaard haalt de component dat token, wanneer de gebruiker aangemeld is, als platte tekst op bij `/sso/papi_token`, de endpoint van de Cumuli security lib; met het attribuut `profile-token-url` kies je een andere url, en de JavaScript-property `idpProfileToken` geeft het token rechtstreeks mee en gaat voor. Zonder token kan je IdpData meegeven met `idp-data-url` (een JSON-response) of de property `idpData`, bv. voor mock users. vl-header-next staat niet in de web-types, dus een IDE stelt de nieuwe attributen niet voor.",
+      "action": "Gebruik je vl-header-next met aanmelding, dan vraagt de header nu voor een aangemelde gebruiker standaard `/sso/papi_token` op. Kijk na wat die url bij jou teruggeeft: een token als platte tekst of een foutstatus is in orde, maar een 200 met iets anders, bv. de HTML van een SPA-fallback, geeft de header door als token. Heb je geen PAPI-endpoint, zet dan `profile-token-url=\"\"`; dan doet de header die request niet.",
+      "example": "```html\n<!-- token van een eigen endpoint -->\n<vl-header-next identifier=\"...\" profile-token-url=\"/api/papi-token\"></vl-header-next>\n\n<!-- geen PAPI-endpoint: geen request -->\n<vl-header-next identifier=\"...\" profile-token-url=\"\"></vl-header-next>\n```\n\n```js\n// of het token zelf meegeven vanuit je SPA\ndocument.querySelector('vl-header-next').idpProfileToken = papiToken;\n```"
+    }
+  }
+}

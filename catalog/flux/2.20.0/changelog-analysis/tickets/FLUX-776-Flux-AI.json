@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "b479b90": {
+      "impact": "none",
+      "explanation": "De pagina Planning/Flux-AI - Frontend Uniformisering volgt nu de nieuwe AI-strategie van het Flux-team: een kennislaag (Figma, web-types, `.llm.md` en release notes) die via een Figma-MCP en een Flux-MCP ontsloten wordt, een Flux-Agent die de workflows orkestreert, en een terugkoppellus die het begrip modeltoepassing vervangt. Enkel documentatie over de plannen van het Flux-team; je project verandert niet."
+    },
+    "f18485b": {
+      "impact": "none",
+      "explanation": "Nieuwe pagina Planning/Flux-AI - Frontend Uniformisering over hoe het Flux-team AI wil inzetten om frontends te uniformiseren, bv. van een Figma-ontwerp naar code en bij een versiemigratie. De pagina is in dezelfde release al herwerkt naar de nieuwe AI-strategie. Enkel documentatie; je project verandert niet."
+    }
+  }
+}

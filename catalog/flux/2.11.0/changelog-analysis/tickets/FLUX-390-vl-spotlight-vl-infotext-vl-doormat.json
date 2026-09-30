@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "4709e78": {
+      "impact": "opt-in",
+      "a11y": true,
+      "explanation": "vl-spotlight, vl-infotext en vl-doormat hebben een nieuw attribuut `link-label` dat hun link een `aria-label` geeft. Dat label vervangt voor een schermlezer de volledige linktekst, dus zet er de hele tekst in, bij een externe link bv. 'Bouwen, wonen en energie - opent in nieuw venster'. Het attribuut `external` bestond al; zonder iets te doen krijgt een link met `external` nu een icoon voor een externe link en `rel=\"noopener noreferrer nofollow\"`, en vl-spotlight toont geen lege titel meer wanneer het slot `title` leeg is.",
+      "example": "```html\n<vl-doormat\n    href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n    external\n    link-label=\"Bouwen, wonen en energie - opent in nieuw venster\"\n>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken.</span>\n</vl-doormat>\n```"
+    }
+  }
+}

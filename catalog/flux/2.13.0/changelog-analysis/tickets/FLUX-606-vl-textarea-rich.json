@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "33f4fad": {
+      "impact": "action",
+      "explanation": "vl-textarea-rich heeft een nieuw attribuut `height`: de hoogte van de editor in pixels, inclusief werkbalk en statusbalk, standaard 250 en minstens 70; het is niet reactief. Flux geeft die hoogte nu altijd door aan TinyMCE, zodat een editor zonder `height` 250px hoog is; tot 2.12.1 was hij minstens 400px, omdat TinyMCE zonder opgegeven hoogte die ondergrens zelf oplegde. Daardoor heeft `rows` geen effect meer op vl-textarea-rich; de web-types noemen het deprecated. Een `height` die je in de property `customConfig` meegeeft, gaat nog altijd voor.",
+      "action": "Kijk elke vl-textarea-rich na: zonder `height` is de editor nu 250px hoog in plaats van minstens 400px. Gebruikte je `rows` om de editor hoger te maken, of wil je de vroegere hoogte behouden, zet dan `height`, bv. `height=\"400\"`.",
+      "example": "```html\n<vl-textarea-rich\n    height=\"500\"\n    toolbar=\"undo redo | h1 h2 h3 h4 h5 h6 | bold italic underline strikethrough | blockquote | hr\"\n></vl-textarea-rich>\n```"
+    }
+  }
+}

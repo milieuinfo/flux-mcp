@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9841432": {
+      "impact": "none",
+      "explanation": "Enkel de inspringing in de Storybook-documentatie van een reeks componenten werd aangepast voor Storybook 9. De packages veranderen niet."
+    }
+  }
+}

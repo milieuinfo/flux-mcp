@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4162cad": {
+      "impact": "automatic",
+      "explanation": "Een vl-button met `ghost` en `disabled` blijft nu transparant: de tekst krijgt de grijze kleur van een uitgeschakelde knop, zonder achtergrond en rand. Tot nu toe kreeg hij, zoals elke uitgeschakelde knop, een grijze achtergrond en rand. Het is een visuele wijziging; je hoeft niets te doen."
+    }
+  }
+}

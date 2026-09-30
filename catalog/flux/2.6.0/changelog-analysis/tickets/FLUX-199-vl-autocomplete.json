@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "5e8a200": {
+      "impact": "opt-in",
+      "explanation": "Het event `selected-autocomplete` van vl-autocomplete geeft in `detail` nu het volledige gekozen item door, dus ook `subtitle` en eigen velden, in plaats van enkel `title` en `value`. Code die `detail.title` en `detail.value` leest, werkt ongewijzigd; `detail` is wel het item-object zelf uit `items`, dus wie het wijzigt, wijzigt ook het item in de lijst. De methode `autocomplete()`, die niet in de web-types staat, verwacht nu een item (`autocomplete(item, id)`) in plaats van `autocomplete(title, value, id)`; riep je die zelf aan, geef dan een object met `title` en `value` mee.",
+      "example": "```js\nconst autocomplete = document.querySelector('vl-autocomplete');\nautocomplete.items = [\n    { title: 'Gentbos, Merelbeke', subtitle: 'Adres', value: '2', custom: 'custom' },\n];\nautocomplete.addEventListener('selected-autocomplete', (event) => {\n    // { title: 'Gentbos, Merelbeke', subtitle: 'Adres', value: '2', custom: 'custom' }\n    console.log(event.detail);\n});\n```"
+    }
+  }
+}

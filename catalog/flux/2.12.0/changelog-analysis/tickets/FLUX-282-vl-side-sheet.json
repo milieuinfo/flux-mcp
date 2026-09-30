@@ -1,0 +1,19 @@
+{
+  "entries": {
+    "224d89d": {
+      "impact": "opt-in",
+      "explanation": "vl-side-sheet heeft een nieuw attribuut `top` dat de ruimte boven de inhoud (padding-top) en de positie van de toggleknop bepaalt. De standaardwaarde blijft 43px, de hoogte van de sticky vl-header; staan er nog andere sticky elementen bovenaan de pagina, dan geef je een grotere waarde mee. `top` staat in de web-types.",
+      "example": "```html\n<vl-side-sheet top=\"93px\">\n    <p>De padding-top van deze side-sheet kan aangepast worden via het top-attribuut.</p>\n</vl-side-sheet>\n```"
+    },
+    "02d6127": {
+      "impact": "opt-in",
+      "explanation": "Deze commit gaf vl-side-sheet dezelfde grote schaduw als vl-modal (Shadow/Large uit de Figma-foundations), voor meer contrast met de pagina eronder. Een latere commit in dezelfde release (11f7bca) maakte die schaduw optioneel: in 2.12.0 blijft de standaardschaduw dus dezelfde, en krijg je de grote schaduw met `shadow=\"large\"`.",
+      "example": "```html\n<vl-side-sheet shadow=\"large\">\n    <p>Inhoud van de side-sheet</p>\n</vl-side-sheet>\n```"
+    },
+    "11f7bca": {
+      "impact": "action",
+      "explanation": "vl-side-sheet (en dus ook vl-map-side-sheet) regelt nu zelf de focus. Bij het openen, ook via het attribuut `open` of `open()`, krijgt het paneel de focus; bij het sluiten gaat de focus naar de toggleknop, en Escape sluit een open side-sheet, ook wanneer de focus op een element in de side-sheet staat. Op een klein scherm (tot 767px) blijft de focus in de side-sheet: verlaat hij die, dan gaat hij terug naar de toggleknop. Verder toont `tooltip-text` nu een vl-tooltip in plaats van een native `title`, en is er een nieuw attribuut `shadow` (`default` of `large`); de beschrijving van `tooltip-text` in de web-types spreekt nog van een native tooltip.",
+      "action": "Gebruik je `hide-toggle-button` met eigen knoppen om de side-sheet te openen en te sluiten, of zet je zelf de focus bij het openen of sluiten, test dan de focus opnieuw: bij het sluiten gaat hij naar de toggleknop, die met `hide-toggle-button` enkel visueel verborgen is. Wil je de focus op je eigen knop, zet hem dan in de callback van `onClose()`, die na die focuswissel loopt. Staat de side-sheet al open bij het laden van de pagina, kijk dan na of de focus niet ongewenst naar het paneel springt. Gebruik je Escape zelf binnen de side-sheet (bv. om een eigen dropdown te sluiten), houd het keydown-event dan tegen, anders sluit de side-sheet mee."
+    }
+  }
+}

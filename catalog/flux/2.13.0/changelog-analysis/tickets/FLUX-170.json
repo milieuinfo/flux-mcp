@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "51b392c": {
+      "impact": "none",
+      "explanation": "Enkel de release-pijplijn van Flux: bij een release installeert Bamboo nu de gepubliceerde packages en de CDN-bundel in voorbeeldapplicaties en test die. De packages veranderen niet."
+    }
+  }
+}

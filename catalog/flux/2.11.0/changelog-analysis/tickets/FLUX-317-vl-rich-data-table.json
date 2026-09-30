@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "43b20de": {
+      "impact": "automatic",
+      "explanation": "Is de filter van vl-rich-data-table verborgen, bv. met `filter-closed` of omdat er geen filter is, dan valt nu ook de ruimte tussen de kolommen weg, zodat de tabel niet meer met een lege strook links begint. De wijziging zit in de stijl van vl-rich-data, dus ze geldt ook daar. Het is een visuele wijziging zonder nieuw attribuut; je hoeft niets te doen."
+    }
+  }
+}

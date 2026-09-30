@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "b86e28f": {
+      "impact": "automatic",
+      "explanation": "De class `vl-content-block` kreeg `box-sizing: border-box`: de horizontale padding telt nu mee in de breedte. Een content-block wordt daardoor niet meer breder dan `--vl-page--max-width-wide`, en de inhoud is op een breed scherm iets smaller dan in 2.1.0. Dat geldt overal waar de class staat, ook in je eigen HTML."
+    },
+    "a29f5a2": {
+      "impact": "automatic",
+      "explanation": "vl-side-navigation voegt nu ook `vlLegacyStyles` uit @domg-wc/styles (de basisstijlen van Digitaal Vlaanderen en die van onder meer links, knoppen en iconen) toe aan de shadow root waarin hij staat, of aan het document. Staat de side navigation in de shadow DOM van je eigen component, dan ziet hij er nu uit zoals bedoeld; die styles gelden dan wel voor heel die shadow root. Heb je `autoRegisterStyles` in FluxConfig uitgeschakeld, kijk dan je pagina na: vl-side-navigation zet die styles nu ook op het document."
+    }
+  }
+}

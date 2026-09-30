@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "bf4eb67": {
+      "impact": "action",
+      "explanation": "De kalender van vl-datepicker rendert nu standaard in de top layer van de browser (Popover API) en staat tegen de knop gepositioneerd met CSS Anchor Positioning, of met @floating-ui/dom in browsers die dat niet kennen (FLUX-743). Daardoor kapt een `overflow`, `transform` of `sticky` op een voorouder, bv. in een vl-modal, hem niet meer af. Het attribuut `anchor-positioning`, dat dit in 2.16.0 aanzette, is verdwenen; het nieuwe `inline-positioning` zet de oude positionering terug, waarbij de kalender inline rendert. `position` en `static` blijven werken, en met `static` komt er geen popover; volgens Planning/Van v2 naar v3 - beschikbaar verdwijnen de oude positionering en `inline-positioning` in v3.",
+      "action": "Gebruik je vl-datepicker, kijk dan na of de kalender overal goed staat, zeker waar je rekende op zijn positie of stapelvolgorde, of hem met eigen CSS positioneerde. Geeft het nieuwe gedrag problemen, zet dan `inline-positioning`, al verdwijnt dat in v3. Zette je `anchor-positioning`, haal het dan weg: het doet niets meer.",
+      "example": "```html\n<!-- 2.16.0: top layer enkel met het attribuut -->\n<vl-datepicker anchor-positioning></vl-datepicker>\n\n<!-- 2.17.0: top layer is standaard -->\n<vl-datepicker></vl-datepicker>\n\n<!-- terug naar de oude positionering -->\n<vl-datepicker inline-positioning></vl-datepicker>\n```"
+    }
+  }
+}

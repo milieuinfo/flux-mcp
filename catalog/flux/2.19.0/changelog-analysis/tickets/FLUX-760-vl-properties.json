@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9d28af3": {
+      "impact": "automatic",
+      "explanation": "In de column-layout van `vl-properties` plakten de properties binnen eenzelfde column tegen elkaar. Een nieuw label krijgt nu dezelfde 2rem ruimte als in de layout zonder columns; meerdere data-waardes onder eenzelfde label blijven tegen elkaar staan. Die ruimte staat in de nieuwe custom property `--vl-properties--row-gap` (standaard `2rem`), die je van buitenaf op `vl-properties` kan aanpassen."
+    }
+  }
+}

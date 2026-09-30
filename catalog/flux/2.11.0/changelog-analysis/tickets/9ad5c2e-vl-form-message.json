@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9ad5c2e": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie op Components - Form/form-message verandert: een nieuwe paragraaf 'Foutmeldingen' raadt aan om in een foutmelding niet alleen te zeggen wat er fout is, maar ook hoe de gebruiker het kan rechtzetten. vl-form-message zelf blijft gelijk."
+    }
+  }
+}

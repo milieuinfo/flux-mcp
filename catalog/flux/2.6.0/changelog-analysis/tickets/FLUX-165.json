@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "5776139": {
+      "impact": "action",
+      "explanation": "`@domg-wc/styles` bevat nu het kleurenpalet van het Vlaanderen Design System als CSS-variabelen, bv. `--vl-color--text-default`, `--vl-color--border-default` en `--vl-color--background-subtle`, de reeksen `--vl-color--grey-100` tot `--vl-color--grey-1000` en `--vl-color--action-100` tot `--vl-color--action-1000`, en de themakleuren van het Departement Omgeving (`--vl-color--domg-hoofdkleur` en `--vl-color--domg-steunkleur`, elk met een variant `-light` en `-extra-light`); de nieuwe pagina Styles/Kleurenpalet beschrijft ze. De bestaande variabelen houden hun waarde, maar `--vl-color--white-lilac` en `--vl-color--mischka-grey` zijn verwijderd. Verder is de lijn tussen twee secties met `vl-section--bordered` nu grijs (`--vl-color--border-default`, #cfd5dd) in plaats van bijna wit (#f7f9fc).",
+      "action": "Gebruik je `var(--vl-color--white-lilac)` of `var(--vl-color--mischka-grey)` in je eigen CSS, vervang ze dan door `var(--vl-color--background-subtle)` en `var(--vl-color--border-default)`, die dezelfde kleuren hebben (#f7f9fc en #cfd5dd); anders valt die kleur weg.",
+      "example": "```css\n/* vóór 2.6.0 */\n.mijn-kader {\n    background-color: var(--vl-color--white-lilac);\n    border: 1px solid var(--vl-color--mischka-grey);\n}\n\n/* vanaf 2.6.0 */\n.mijn-kader {\n    background-color: var(--vl-color--background-subtle);\n    border: 1px solid var(--vl-color--border-default);\n}\n```"
+    }
+  }
+}

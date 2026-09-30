@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "7740b19": {
+      "impact": "action",
+      "explanation": "De -next-componenten zijn gepromoveerd en verliezen hun suffix: vl-button-next wordt vl-button, en zo ook o.a. vl-link, vl-icon, vl-text, vl-title, vl-paragraph, vl-doormat, vl-infotext, vl-properties, vl-table, vl-tabs, vl-steps, vl-toaster, vl-search-filter, vl-search-result, vl-side-navigation, vl-video-player, de formuliercomponenten (vl-input-field, vl-checkbox, vl-datepicker, vl-select, vl-select-rich, vl-radio-group, vl-textarea, vl-upload, …) en vl-select-location in @domg-wc/map. Ook de layout-classes verliezen -next, met hun modifiers: vl-grid-next en vl-column-next--6 worden vl-grid en vl-column--6, en idem voor vl-group, vl-section, vl-content-block, vl-margin, vl-padding, vl-separator, vl-spacer en vl-stacked. vl-error-message-next heet in 2.0.0 vl-form-message (zie UIG-3283). Een vergeten -next geeft geen fout: de tag wordt gewoon niet meer herkend en de class krijgt geen styling.",
+      "action": "Verwijder de suffix -next van alle Flux-tags en layout-classes, ook in querySelector-aanroepen, CSS-selectors en types; let op de modifiers (vl-group-next--column wordt vl-group--column, vl-spacer-next-small wordt vl-spacer-small). Pas ook de imports aan: de paden @domg-wc/components/next/… en @domg-wc/form/next/… bestaan niet meer (zie UIG-3281).",
+      "example": "```html\n<!-- v1 -->\n<div class=\"vl-grid-next\">\n    <div class=\"vl-column-next vl-column-next--6\">\n        <vl-button-next>Opslaan</vl-button-next>\n    </div>\n</div>\n\n<!-- v2 -->\n<div class=\"vl-grid\">\n    <div class=\"vl-column vl-column--6\">\n        <vl-button>Opslaan</vl-button>\n    </div>\n</div>\n```"
+    }
+  }
+}

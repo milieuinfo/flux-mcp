@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ba3113c": {
+      "impact": "none",
+      "explanation": "Enkel de mock van vl-proza-message in de Storybook van Flux zelf werkt nu ongeacht het domein waarop die Storybook draait. De packages veranderen niet."
+    }
+  }
+}

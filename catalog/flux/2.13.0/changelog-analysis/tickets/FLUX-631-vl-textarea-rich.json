@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "78d7071": {
+      "impact": "automatic",
+      "explanation": "vl-textarea-rich vuurt nu `vl-input` af wanneer de gebruiker in de editor typt, zoals de web-types en de documentatie al beschreven; tot 2.12.1 kwam enkel `vl-change`. Het event volgt telkens op `vl-change` en bevat in `detail.value` de HTML-inhoud van de editor; een waarde die je via code zet, geeft enkel `vl-change`. Luistert een ouder-element naar `vl-input` van alle velden, dan komt dat event nu ook van vl-textarea-rich. Welke wijzigingen precies `vl-input` geven, beperkt FLUX-616 in dezelfde release tot typen."
+    }
+  }
+}

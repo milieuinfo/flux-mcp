@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "008074d": {
+      "impact": "automatic",
+      "explanation": "vl-input-field-masked gooide een TypeError (`startsWith` op `null` of `undefined`) wanneer `value` `null` of `undefined` was op het moment dat de component aan de pagina gekoppeld werd, of wanneer de beginwaarde dat was bij het resetten van het formulier, bv. omdat je code of een framework `value` zo zet; een lege tekst gaf geen fout. De component behandelt zo'n waarde nu als een lege tekst en zet er, zoals bij elke andere waarde, de prefix van het mask voor, bv. `BE` bij `iban`."
+    }
+  }
+}

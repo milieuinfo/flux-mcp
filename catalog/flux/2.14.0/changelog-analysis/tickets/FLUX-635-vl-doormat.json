@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5ba2037": {
+      "impact": "automatic",
+      "explanation": "Een vl-doormat zonder `text`-slot, enkel met een titel, had onder de titel overbodige witruimte, omdat de marges van de titel en van de lege tekst stapelden. Zo'n doormat rendert nu compact: de titel heeft geen marge onderaan en de tekst wordt niet getoond. Een doormat mét tekst behoudt zijn spacing, en je hoeft niets toe te voegen."
+    }
+  }
+}

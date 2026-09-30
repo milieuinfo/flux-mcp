@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "65572f9": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-documentatie van de grid en de section (Styles/Layout (afnemers)/grid en Styles/Layout (afnemers)/section) werd verbeterd. De packages veranderen niet."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a86e5c2": {
+      "impact": "none",
+      "explanation": "Het CI-script van Flux logt tijdens de componenttesten elke minuut dat ze nog lopen. Dat is tooling van Flux zelf; de packages veranderen niet."
+    }
+  }
+}

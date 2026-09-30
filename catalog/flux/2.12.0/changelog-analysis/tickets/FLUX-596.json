@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4b40d70": {
+      "impact": "automatic",
+      "explanation": "vl-link zet zelf geen lettergrootte meer (`--vl-font-size`) en neemt nu die van zijn omgeving over; met `small` en `large` blijft de grootte vast. Hetzelfde geldt voor de gedeelde stijl `vlLinkStyles` uit `@domg-wc/components/atom`, die ook andere componenten (zoals vl-pager en vl-functional-header) en wie ze in een eigen component gebruikt raakt. vl-upload behoudt voor zijn tekstknoppen de vorige lettergrootte. Staat een link in tekst met een andere lettergrootte, dan kan hij er dus groter of kleiner uitzien."
+    }
+  }
+}

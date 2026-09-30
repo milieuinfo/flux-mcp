@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "704a220": {
+      "impact": "automatic",
+      "explanation": "Met een pager geeft de property `data` van vl-rich-data nu een kopie van het object terug, met in `paging` de actuele pagina, ook na een paginawissel; voordien bleef daar staan wat je zelf had meegegeven. vl-pager vuurt zijn `change`-event, en dus ook vl-rich-data het zijne, enkel nog wanneer de getoonde pagina echt verandert, met in `detail.currentPage` die pagina, begrensd tussen 1 en het aantal pagina's. Het event volgt nu vlak na de wijziging van `current-page`, in een microtask, in plaats van synchroon; wie een event verwachtte bij een waarde die de getoonde pagina niet verandert, krijgt het niet meer."
+    }
+  }
+}

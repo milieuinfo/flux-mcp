@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b17fb74": {
+      "impact": "automatic",
+      "explanation": "De packages importeren Lit nu overal via `lit`, bv. `lit/directives/if-defined.js` en `lit/directives/class-map.js`, in plaats van rechtstreeks uit `lit-html` en `lit-element`. Daardoor verdwijnt `lit-html` 3.1.1 uit de dependencies van `@domg-wc/common` en `@domg-wc/components`; `lit` 3.1.0 blijft en brengt zelf zijn `lit-html` mee, zodat er geen aparte, vastgepinde `lit-html` meer naast staat. Het gedrag van de componenten verandert niet."
+    }
+  }
+}

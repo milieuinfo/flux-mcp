@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "231680b": {
+      "impact": "automatic",
+      "explanation": "De constanten `MARGINS` en `PADDINGS` uit `@domg-wc/common` zijn nu strikt getypeerd: hun keys zijn `none`, `small`, `medium` en `large`, en de gelijknamige types zijn de waarden `'0' | '0.5rem' | '1rem' | '2rem'` in plaats van `string`. Aan wat de componenten doen, verandert niets. Enkel wie die constanten in TypeScript gebruikt, kan nieuwe typefouten krijgen: `MARGINS[key]` met een `key` van type `string` mag onder `noImplicitAny` niet meer (typeer de key als `keyof typeof MARGINS`), en een willekeurige string past niet meer in het type `MARGINS` of `PADDINGS`."
+    }
+  }
+}

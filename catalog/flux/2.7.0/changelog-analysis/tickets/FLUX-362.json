@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "cd63fef": {
+      "impact": "none",
+      "explanation": "De voorbeeldapp in de bronrepo laadt de fat-lib met de compliance-componenten nu van de CDN, versie 2.6.0: `https://cdn.omgeving.vlaanderen.be/domg/domg-wc-compliance/2.6.0/domg-wc-compliance-2.6.0.min.js`. Het recept Recepten/CDN Bundel - fat-lib noemt nog het pad `https://cdn.omgeving.vlaanderen.be/domg/domg-wc/x.y.z/`. De packages veranderen niet."
+    }
+  }
+}

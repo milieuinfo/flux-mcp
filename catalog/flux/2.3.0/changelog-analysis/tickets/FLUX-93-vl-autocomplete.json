@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "80a854e": {
+      "impact": "automatic",
+      "explanation": "vl-autocomplete werkt beter met een schermlezer: het invoerveld krijgt een `aria-label` (het `label`, anders de `placeholder`, anders 'Start met typen om suggesties te krijgen') en `aria-expanded`, de suggestie die je met de pijltjestoetsen aanduidt, wordt via `aria-activedescendant` aan het invoerveld gekoppeld, de suggestielijst meldt wijzigingen via `aria-live=\"polite\"`, en een groepstitel is nu een uitgeschakelde optie met het label 'Groep: <naam>'. Op Components - Block/autocomplete zijn de events `selected-autocomplete` (met `title` en `value` in `detail`) en `clear` nu gedocumenteerd; ze bestonden al, maar de web-types kennen enkel het event `search`.",
+      "a11y": true
+    }
+  }
+}

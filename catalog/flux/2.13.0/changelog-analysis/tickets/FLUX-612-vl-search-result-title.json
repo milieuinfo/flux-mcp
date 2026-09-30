@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "23b005f": {
+      "impact": "automatic",
+      "explanation": "De titel van een vl-search-result had een vaste hoogte, waardoor een lange titel over meerdere regels uit zijn blok liep en de elementen eronder, zoals vl-search-result-text of een vl-button, overlapte. Die hoogte is nu een minimale hoogte: een titel op één regel ziet er hetzelfde uit, een langere titel duwt de rest naar beneden."
+    }
+  }
+}

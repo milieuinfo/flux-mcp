@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "f42127f": {
+      "impact": "automatic",
+      "explanation": "De standaard terug-link van vl-functional-header is nu een vl-link in plaats van een `<a class=\"vl-link\">`. Met `disable-back-link` wordt ze een knop die eruitziet als een link (`button-as-link`, zonder `href`), zodat een schermlezer ze als knop aankondigt; `back-link` telt dan niet en je handelt de klik af met het event `vl-click-back`. De setter `backLinkEventListener`, die niet in de web-types staat, is deprecated: luister in de plaats naar `vl-click-back` op de vl-functional-header. Een test of CSS die in de shadow DOM `a#back-link` zoekt, vindt nu een `vl-link#back-link`."
+    }
+  }
+}

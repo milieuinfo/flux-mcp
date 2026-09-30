@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "40c2fe3": {
+      "impact": "automatic",
+      "explanation": "Buiten de documentatie krijg je twee wijzigingen mee: een `vl-link` met `external` krijgt nu `rel=\"noopener noreferrer nofollow\"`, zodat de doelsite geen referrer meer ontvangt, en in vl-accessibility, vl-cookie-statement en vl-privacy is de inhoudstafel 'Op deze pagina' nu 3 kolommen breed en rechts uitgelijnd, met de tekst op middelgrote schermen 9 kolommen breed. Dezelfde kolomindeling staat nu in de voorbeelden op Components - Block/side-navigation en Components - Block/steps/steps: de inhoud in `vl-column vl-column--8 vl-column--m-9 vl-column--s-12 vl-column--xs-12`, de side-navigation in `vl-column vl-column--3 vl-column--m-3 vl-column--s-12 vl-column--xs-12 vl-column--start-10 vl-column--s-start-1`; neem die over als je dezelfde layout wil. Op Components - Compliance/header en Components - Compliance/footer staat nu dat je de `identifier` aanvraagt bij Team Infra van Departement Omgeving of via het stappenplan van Digitaal Vlaanderen."
+    }
+  }
+}

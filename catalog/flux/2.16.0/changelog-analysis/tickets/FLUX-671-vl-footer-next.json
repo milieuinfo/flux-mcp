@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "016ea00": {
+      "impact": "action",
+      "explanation": "vl-footer-next geeft zijn container (`#footer__container`) een `min-height` van 48px, zodat de vaste balk die de footer-widget in collapsible modus onderaan toont, je laatste inhoud niet meer bedekt. Met de CSS-variabele `--vl-footer--bar-reserved-height` op `:root`, `body` of een ander element boven de container kies je een andere hoogte, of `0px` om niets te reserveren. Flux zet die hoogte met een inline `style`-attribuut; een Content Security Policy zonder `style-src-attr 'unsafe-inline'` blokkeert dat en meldt een fout in de console.",
+      "action": "Gebruik je vl-footer-next en reserveerde je zelf al ruimte voor de balk, bv. met een padding onderaan de pagina, zet dan `--vl-footer--bar-reserved-height: 0px` of haal je eigen ruimte weg. Heb je een strikte Content Security Policy, dan blokkeert de browser de gereserveerde ruimte en krijg je een CSP-fout in de console; laat dan `style-src-attr 'unsafe-inline'` toe of reserveer de ruimte zelf.",
+      "example": "```css\n/* Eigen hoogte reserveren */\n:root {\n    --vl-footer--bar-reserved-height: 60px;\n}\n\n/* Reservering uitzetten (bv. wanneer de pagina de ruimte zelf al voorziet) */\n:root {\n    --vl-footer--bar-reserved-height: 0px;\n}\n```"
+    }
+  }
+}

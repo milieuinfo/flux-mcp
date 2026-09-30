@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "c187f73": {
+      "impact": "opt-in",
+      "explanation": "De layout-class `vl-group` uit `@domg-wc/styles` heeft drie nieuwe modifiers: `vl-group--wrap` laat items overlopen naar een volgende regel, `vl-group--no-row-gap` schrapt de verticale en `vl-group--no-column-gap` de horizontale ruimte tussen items. Samen met het bestaande `vl-group--baseline` zet je er een annotatie naast een vl-title mee, die onder de titel springt wanneer de plaats te klein wordt. Zie Patronen/Typografie/Titel/met annotatie en Styles/Layout (afnemers)/group.",
+      "example": "```html\n<div class=\"vl-group vl-group--baseline vl-group--wrap vl-group--no-row-gap\">\n    <vl-title type=\"h2\" no-space-bottom>Een titel die wat langer is dan normaal</vl-title>\n    <vl-text annotation>Optioneel voeg je een annotatie toe.</vl-text>\n</div>\n```"
+    }
+  }
+}

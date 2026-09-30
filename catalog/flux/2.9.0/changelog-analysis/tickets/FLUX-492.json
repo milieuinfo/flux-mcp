@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b9b784f": {
+      "impact": "automatic",
+      "explanation": "De web-types van @domg-wc/components en @domg-wc/map hebben weer een beschrijving per element (94 elementen), die sinds 2.8.0 ontbrak: je IDE toont ze opnieuw bij bv. `vl-button` of `vl-map`. De tekst komt uit het eerste hoofdstuk van de Storybook-pagina van het element, meestal 'Doel'; bij vl-select-rich is dat de inhoudstafel van de pagina."
+    }
+  }
+}

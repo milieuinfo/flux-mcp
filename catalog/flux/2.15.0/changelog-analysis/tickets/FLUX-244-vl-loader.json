@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "10df2d4": {
+      "impact": "automatic",
+      "explanation": "vl-loader toont zijn `text` of de standaardtekst \"Pagina is aan het laden\" nu ook wanneer er enkel witruimte tussen de open- en sluittag staat, bv. omdat die op verschillende regels staan. Voorheen verscheen de tekst dan niet. Eigen inhoud in het slot krijgt nog altijd voorrang."
+    }
+  }
+}

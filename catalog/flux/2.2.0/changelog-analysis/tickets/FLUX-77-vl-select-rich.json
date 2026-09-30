@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "b230ad3": {
+      "impact": "opt-in",
+      "explanation": "vl-select-rich draait nu op choices.js 11.1 in plaats van 10.2 (een dependency van @domg-wc/components en @domg-wc/map die vanzelf meekomt) en kreeg de methodes `selectByValue()`, `removeSelectionByValue()` en `removeAllSelections()` om de selectie vanuit code te wijzigen, plus de property `initialOptions` (`initial-options`): de selectie die een reset van het formulier terugzet, die vl-select-rich bij de eerste render altijd op een kopie van `options` zet; een eigen waarde stel je daarna in. Zoals gedocumenteerd komt `vl-input` enkel bij een keuze door de gebruiker en `vl-change` bij elke wijziging, ook via die methodes; de verwijderknop van een gekozen optie heeft nu het label 'verwijder <optie>'. `initial-options` staat niet in de web-types van vl-select-rich, wel in die van vl-select-location, dat van vl-select-rich erft; het zoek-event heet `vl-select-search`, niet `vl-search` zoals de nieuwe tekst op Components - Form/select-rich zegt. Randgevallen: een reset behoudt nu de huidige `options` en zet enkel de selectie terug (in 2.1.0 kwam ook de lijst van de eerste render terug), en een vl-select-rich die je uit de DOM haalt en opnieuw toevoegt, bouwt choices.js niet opnieuw op.",
+      "example": "```js\nconst select = document.querySelector('vl-select-rich');\nselect.selectByValue(['padel', 'dans']); // vinkt padel en dans aan\nselect.removeSelectionByValue('padel'); // vinkt padel uit\nselect.removeAllSelections(); // vinkt alles uit\n```"
+    }
+  }
+}

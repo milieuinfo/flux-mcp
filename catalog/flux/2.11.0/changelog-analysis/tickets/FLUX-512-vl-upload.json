@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4c7e229": {
+      "impact": "automatic",
+      "explanation": "Start je de upload van een vl-upload zonder `auto-process` zelf met `upload()`, dan laadt hij nu alle bestanden in de wachtrij op. Vroeger stopte hij na de eerste reeks van `parallel-uploads` bestanden (standaard 2) en bleven de andere in de wachtrij staan. `vl-queuecomplete` komt één keer, nadat het laatste bestand opgeladen is."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "d114239": {
+      "impact": "opt-in",
+      "explanation": "vl-map toont de kaart in Lambert 2008 (EPSG:3812) met het nieuwe attribuut `lambert2008`, dat niet reactief is; zonder dat attribuut blijft de kaart Lambert 72 (EPSG:31370), en volgens map/map wordt Lambert 2008 in een volgende versie de standaard. Op een Lambert 2008-kaart nemen vl-map-features-layer en vl-map-wfs-layer de projectie van de kaart over, tenzij je met hun nieuwe attribuut `projection-code` (bv. `EPSG:31370`) zegt in welk stelsel hun data staat; die omzetting is tot op ~1 m nauwkeurig, dus om in te tekenen gebruik je een Lambert 2008-laag. vl-map-wmts-layer en de baselayers kiezen hun matrix-set nu volgens de kaart (`BPL72VL` of `BPL2008VL`) en vl-map-search geeft `lambert2008` door aan zijn vl-select-location; de web-types noemen `BPL2008VL` de standaard van `matrix-set`, maar op een Lambert 72-kaart blijft dat `BPL72VL`, en `lambert2008` op vl-select-location staat niet in de web-types. Voor elke kaart, ook zonder `lambert2008`, past de beginweergave zich bij het laden nu aan de omtrek van Vlaanderen (de extent van de GRB-laag) aan, in plaats van een vast middelpunt op zoomniveau 2.",
+      "example": "```html\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\" ...></vl-map-features-layer>\n    <vl-map-wfs-layer projection-code=\"EPSG:31370\" ...></vl-map-wfs-layer>\n</vl-map>\n```"
+    }
+  }
+}

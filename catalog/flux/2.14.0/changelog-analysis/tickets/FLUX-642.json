@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5d94a3a": {
+      "impact": "none",
+      "explanation": "Een aanpassing aan de release-pipeline van Flux zelf; de packages veranderen niet."
+    }
+  }
+}

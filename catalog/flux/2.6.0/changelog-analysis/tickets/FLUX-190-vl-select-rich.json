@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4e2317b": {
+      "impact": "automatic",
+      "explanation": "vl-select-rich werkt weer nadat je hem uit de DOM haalt en terugplaatst, bv. wanneer een framework hem verplaatst: de component bouwt zijn keuzelijst dan opnieuw op en neemt de `options` van dat moment als beginstand voor een reset van het formulier. Een nieuwe `options`-array met dezelfde inhoud als de vorige bouwt de lijst niet meer opnieuw op, zodat een framework dat bij elke render een nieuwe array doorgeeft de keuze van de gebruiker niet langer terugzet naar de `selected`-vlaggen uit `options`. Vervang je `options` wel door een andere inhoud, dan volgen de waarde in het formulier en het event `vl-change` de nieuwe selectie."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "6139351": {
+      "impact": "action",
+      "explanation": "Een `vl-link` met `external` voegt voor schermlezers nu zelf de visueel verborgen tekst \"(opent in een nieuw venster)\" toe na de linktekst. Heeft de link een `label`, dan vervangt dat de volledige voorgelezen tekst en komt de melding er niet bij; bij `button-as-link` ook niet. De documentatie van 2.18.0 raadde aan die vermelding zelf in de linktekst of in het `label` te zetten: staat ze in de linktekst, dan wordt ze nu twee keer voorgelezen.",
+      "action": "Zet je bij een `vl-link` met `external` zelf \"(opent in een nieuw venster)\" of een gelijkaardige tekst in de linktekst, ook als die visueel verborgen is, haal ze dan weg. Een vermelding in het `label` mag blijven: daar voegt de component niets aan toe.",
+      "example": "```html\n<!-- vóór: <vl-link href=\"https://www.vlaanderen.be\" external>Vlaanderen (opent in een nieuw venster)</vl-link> -->\n<vl-link href=\"https://www.vlaanderen.be\" external>Vlaanderen</vl-link>\n```"
+    }
+  }
+}

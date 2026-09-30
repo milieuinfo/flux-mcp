@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "a420643": {
+      "impact": "opt-in",
+      "explanation": "Voor applicaties die de volledige schermbreedte nodig hebben, bv. voor uitgebreide datatabellen, is er een layout over de volledige breedte: zet de nieuwe class `vl-content-block--full-width` naast `vl-content-block` op elk content block, en het attribuut `full-width` op vl-functional-header (zie Ontwerp/Pagina Layout/Voorbeeld en Styles/Layout (afnemers)/content-block). `full-width` bestond al, maar zet nu ook de inhoud van de header over de volledige breedte; wie het al gebruikte, ziet dat na de upgrade. Die breedte wordt enkel ingesteld wanneer de header aan de pagina wordt toegevoegd: `full-width` achteraf zetten of weghalen verandert ze niet. Daarnaast heeft de rij met de terug-link en de subtitel in elke vl-functional-header geen padding links meer.",
+      "example": "```html\n<vl-functional-header title=\"Page Layout\" full-width>...</vl-functional-header>\n<section class=\"vl-section\">\n    <div class=\"vl-content-block vl-content-block--full-width\">...</div>\n</section>\n```"
+    }
+  }
+}

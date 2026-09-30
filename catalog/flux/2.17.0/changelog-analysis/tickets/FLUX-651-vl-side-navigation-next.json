@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "fff92c4": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe element vl-side-navigation-section-next combineer je in één vl-side-navigation-next, en in één drawer op mobiel, meerdere secties: een automatisch opgebouwde inhoudstafel (`type=\"auto\"`, af te bakenen met `heading-root-selector`) naast secties met je eigen `<ul>` met `vl-link`s. De titel van een sectie komt uit `section-title` en wordt via `aria-labelledby` aan haar lijst gekoppeld; `min-level`, `max-level`, `max-depth` en `exclude-selectors` op een auto-sectie overschrijven die van vl-side-navigation-next, en met `multi-active` tekent de actief-lijn één stuk per sectie. Zonder vl-side-navigation-section-next werken de automatische en de eigen inhoudstafel zoals voorheen. vl-side-navigation-section-next staat in de web-types, maar zonder attributen: een IDE stelt `type`, `section-title` en de andere niet voor.",
+      "a11y": false,
+      "example": "```html\n<vl-side-navigation-next>\n  <vl-side-navigation-section-next type=\"auto\" heading-root-selector=\"#hoofdstukken\" section-title=\"Op deze pagina\">\n  </vl-side-navigation-section-next>\n\n  <vl-side-navigation-section-next section-title=\"Bijlagen\">\n    <ul>\n      <li><vl-link href=\"#bijlage-a\">Bijlage A</vl-link></li>\n      <li><vl-link href=\"#bijlage-b\">Bijlage B</vl-link></li>\n    </ul>\n  </vl-side-navigation-section-next>\n</vl-side-navigation-next>\n```"
+    }
+  }
+}

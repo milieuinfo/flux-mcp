@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "004d59c": {
+      "impact": "action",
+      "explanation": "Alle attributen verliezen de prefix data-vl-: data-vl-type=\"error\" wordt type=\"error\", data-vl-custom-css wordt custom-css. Componenten op de oude basisklasse (o.a. vl-modal en vl-map) aanvaardden in v1 meestal beide vormen, componenten zoals vl-alert, vl-pill en vl-map-action-control enkel de vorm met prefix; nu werkt overal enkel de vorm zonder prefix. Dat geldt ook voor attributen die je op je eigen elementen zet, zoals data-vl-modal-close op een knop in vl-modal, dat nu modal-close heet.",
+      "action": "Verwijder de prefix data-vl- van alle attributen op Flux-componenten, ook in templates, CSS-selectors en JavaScript (setAttribute, querySelector, dataset.vl…).",
+      "example": "```html\n<!-- v1 -->\n<vl-alert data-vl-type=\"error\" data-vl-title=\"Fout\" data-vl-closable></vl-alert>\n\n<!-- v2 -->\n<vl-alert type=\"error\" title=\"Fout\" closable></vl-alert>\n```"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "9a479bf": {
+      "impact": "action",
+      "explanation": "GlobalStyles zet nu één set globale styling op het document: de reset van Flux, een basisset van de styling van Digitaal Vlaanderen (o.a. button, link, icon, pill, popover en input-field) en de Flux-styling (CSS-variabelen, font, body en de layout-classes). De DV-styling voor o.a. grid, layout en typography hoort daar niet meer bij, en ook die van de geschrapte elementen niet. De voorkeur autoRegisterStyles: false houdt nu ook deze globale Flux-styling tegen; in v1 gold ze enkel voor de styling van de elementen. Bij de fat-lib werkt voortaan ook het attribuut log-treeshake-registration op de script-tag.",
+      "action": "Zet je autoRegisterStyles op false, zorg dan zelf voor de globale styling (bv. met vlGlobalStyles uit @domg-wc/styles) of laat de instelling weg. Gebruik je in je eigen HTML nog DV-classes voor grid, layout of typography, of die van de geschrapte elementen, kijk dan na of die er nog goed uitzien en stap over op de layout-classes van Flux (Styles/Layout (afnemers))."
+    }
+  }
+}

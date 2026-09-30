@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "9a14ce4": {
+      "impact": "action",
+      "explanation": "vl-alert bewaarde tot nu toe altijd de regeleinden in zijn boodschap (`white-space: pre-line`). Vanaf 2.12.0 doet hij dat enkel nog met het nieuwe attribuut `multiline`; zonder dat attribuut komt een `\\n` in `message` op één regel, en tonen regeleinden in slot-inhoud geen nieuwe regel meer. Zet je het attribuut `message`, dan verbergt vl-alert voortaan de inhoud van het default slot. Via vl-toaster werkt het net zo: `showAlert()` zet elke optie als attribuut, dus ook `multiline`.",
+      "action": "Gebruik je regeleinden (`\\n`) in `message` van vl-alert of in `showAlert()` van vl-toaster, voeg dan `multiline` toe. Geef je zowel `message` als slot-inhoud mee, kies dan één van beide, want de slot-inhoud verschijnt niet meer. Met `multiline` en slot-inhoud begin je de tekst direct na de openingstag, zonder newline (zie Components - Block/alert).",
+      "example": "```js\nconst toaster = document.querySelector('vl-toaster');\ntoaster.showAlert({\n  type: 'warning',\n  title: 'Technische storing',\n  message: 'Uw aanvraag is niet verwerkt.\\nFout code: 36981',\n  closable: true,\n  multiline: true,\n});\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ade7011": {
+      "impact": "automatic",
+      "explanation": "Verwijder je in vl-upload een geldig bestand, dan valideert de component de eerder geweigerde bestanden opnieuw. Een bestand dat geweigerd werd omdat er al te veel bestanden waren, kan daardoor alsnog aanvaard worden. Luister je op `vl-addedfile` of `vl-error`, dan krijg je voor die bestanden opnieuw zo'n event."
+    }
+  }
+}

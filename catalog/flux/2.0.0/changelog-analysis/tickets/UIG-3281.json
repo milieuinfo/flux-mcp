@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "b4da90d": {
+      "impact": "action",
+      "explanation": "De packages @domg-wc/form en @domg-wc/sections bestaan niet meer: alle componenten zitten in @domg-wc/components, verdeeld over vier ingangen. @domg-wc/components/atom bevat o.a. vl-button, vl-icon, vl-link, vl-paragraph, vl-text en vl-title; @domg-wc/components/block de bouwblokken zoals vl-accordion, vl-modal en vl-tabs; @domg-wc/components/form de formuliercomponenten; @domg-wc/components/compliance vl-header, vl-footer, vl-accessibility, vl-cookie-consent, vl-cookie-statement en vl-privacy. Een import uit @domg-wc/components zelf werkt niet meer, en vlHeading1 tot vlHeading6, vlIconStyles, vlLinkStyles, vlLinkIconStyles en vlParagraphStyles komen nu uit @domg-wc/components/atom in plaats van uit de styles; Afnemen/Migratie v2 - FAQ toont nog imports uit @domg-wc/components.",
+      "action": "Vervang @domg-wc/form en @domg-wc/sections in je package.json door @domg-wc/components en pas de imports aan: @domg-wc/components/next/button wordt @domg-wc/components/atom, @domg-wc/form/next/input-field wordt @domg-wc/components/form, @domg-wc/sections wordt @domg-wc/components/compliance. Voor een import met neveneffect gebruik je het pad van de component, bv. import '@domg-wc/components/block/accordion'.",
+      "example": "```ts\n// v1\nimport { VlButtonComponent } from '@domg-wc/components/next/button';\nimport { VlInputFieldComponent } from '@domg-wc/form/next/input-field';\nimport { VlHeader } from '@domg-wc/sections';\n\n// v2\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlInputFieldComponent } from '@domg-wc/components/form';\nimport { VlHeader } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlButtonComponent, VlInputFieldComponent, VlHeader]);\n```"
+    }
+  }
+}

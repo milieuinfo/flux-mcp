@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "e25ca64": {
+      "impact": "opt-in",
+      "explanation": "De breedte van vl-toaster volgt nu de nieuwe CSS-variabele `--vl-toaster-width`, die de globale styles van Flux op 30rem zetten; tot nu toe had de toaster `width: 100%` met een `max-width` van 30rem. Wil je een bredere of smallere toaster, pas dan die variabele aan in een class in plaats van met inline styles, zoals Components - Block/toaster uitlegt; die pagina waarschuwt ook dat `fade-out` de toegankelijkheid schaadt, omdat een melding na 5 seconden verdwijnt. Components - Block/side-sheet documenteert de bestaande variabelen `--vl-side-sheet-width` (standaard 33%) en `--vl-side-sheet-width-mobile` (standaard `calc(100vw - 56px)`), die nu ook globaal gezet worden, met dezelfde waarden. In de web-types is `top-right` nu de standaard van `placement`, wat de toaster al deed.",
+      "example": "```css\n.pagina {\n    --vl-toaster-width: 50rem;\n}\n```"
+    }
+  }
+}

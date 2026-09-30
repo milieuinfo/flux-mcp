@@ -278,9 +278,10 @@ Claude leest de code van die versie met Read, Grep en Glob in een clone die op d
 voor Edit en Write: een relatief pad leest Claude Code tegenover de huidige map van de shell, die een `cd` in Bash
 verandert). Al de rest wordt geweigerd, behalve de vaste leescommando's van Claude Code, zoals `ls`.
 `--permission-mode manual` staat er expliciet: zonder neemt `claude -p` de `defaultMode` uit de instellingen over,
-en in `auto` keurt een classifier ook commando's goed die niet in `--allowedTools` staan, zoals `node -e`. Het
-model en de effort zijn instelbaar; standaard `opus` en `xhigh`. Waarom `xhigh` en niet `high`, staat in ADR-002
-(sectie 5).
+en in `auto` keurt een classifier ook commando's goed die niet in `--allowedTools` staan, zoals `node -e`. De
+analyses van 2.0.0 tot en met 2.20.0 in de catalogus liepen nog zonder die vlag: ze lazen zo ook met `node -e`,
+`python3`, `grep` en `sed`, maar schreven niets buiten hun map. Het model en de effort zijn instelbaar; standaard
+`opus` en `xhigh`. Waarom `xhigh` en niet `high`, staat in ADR-002 (sectie 5).
 
 De runs lopen op het abonnement waarmee Claude Code aangemeld is (bv. Max), niet op een API-sleutel: het script
 haalt `ANTHROPIC_API_KEY` en `ANTHROPIC_AUTH_TOKEN` uit de omgeving van `claude`, en stopt als een run toch een
@@ -302,6 +303,21 @@ versie een `summary`. De analyse staat buiten `changelog/`, want `changelog:copy
 Handmatige kennis die nergens in de commits staat, zoals migratie-notities of kanttekeningen van het team, hoort
 niet in deze repo. Daarvoor komen er `.llm.md` bestanden in flux-web-components; dat is apart werk dat nog
 volgt.
+
+De analyse van 2.19.0 en 2.20.0 vond zes wijzigingen die actie vragen:
+
+| Entry | Actie |
+|---|---|
+| externe `vl-link` (FLUX-213) | meldt zelf dat ze in een nieuw venster opent, dus een eigen melding wordt dubbel voorgelezen |
+| `vl-description-data` (FLUX-219) | rendert enkel nog `vl-description-data-item`s en kloont de inhoud van hun slots: andere kinderen en listeners op die inhoud vallen weg |
+| `vl-http-error-message` (FLUX-236) | de debug-info staat in een `<dl>` in plaats van een tabel, en de fouttekst verandert: testen op de oude opbouw falen |
+| `vl-header-next`, `vl-footer-next` (FLUX-788) | het ready-event komt op het element in plaats van op window |
+| `vl-header`, `vl-header-next` (FLUX-471) | zonder `skip-to-content-id` volgt een waarschuwing in de console |
+| `vl-side-sheet` (FLUX-810) | houdt op mobiel de focus vast, dus een side-sheet op volle breedte heeft een eigen sluitknop nodig |
+
+Geen van die zes staat als actie in de changelog. Een eerdere proef, zonder review en op een lagere effort, gaf
+ook `toaster.showAlert()` (FLUX-207) als actie: `alertRole` zou nu een typefout geven. Dat klopt niet, want
+`alertRole` kwam pas in 2.19.0 in het model, samen met `alert-role`. Ze miste wel FLUX-219 en FLUX-236.
 
 ### 6. Diff van de web-types
 

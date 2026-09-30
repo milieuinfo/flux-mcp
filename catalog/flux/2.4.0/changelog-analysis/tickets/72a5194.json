@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "72a5194": {
+      "impact": "automatic",
+      "explanation": "De Storybook-documentatie van Flux staat nu op https://flux.omgeving.vlaanderen.be, bv. https://flux.omgeving.vlaanderen.be/release-v2/latest/storybook, in plaats van op https://milieuinfo.github.io/flux-builds. De `doc-url` van de componenten in de web-types wijst mee naar het nieuwe adres, zodat de documentatielink in je IDE na de upgrade vanzelf daar uitkomt. Bladwijzers en links in je eigen documentatie kan je naar het nieuwe adres omzetten."
+    }
+  }
+}

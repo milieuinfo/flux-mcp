@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "cd4adcf": {
+      "impact": "automatic",
+      "explanation": "vl-select-rich laat de onderliggende bibliotheek Choices.js haar event listeners nu registreren op de shadow root van de component in plaats van op het document. Volgens het Flux-team lost dat problemen op met de retargeting van events en met het correct openen en sluiten van de keuzelijst. De events die vl-select-rich zelf uitstuurt, veranderen niet."
+    }
+  }
+}

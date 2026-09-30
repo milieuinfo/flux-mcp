@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "008e28e": {
+      "impact": "action",
+      "explanation": "vl-side-navigation vindt de secties waar zijn links naar wijzen nu ook in een shadow DOM, zoals in vl-accessibility, vl-cookie-statement en vl-privacy: een klik op een link in vl-side-navigation-item of vl-side-navigation-toggle scrollt vloeiend naar de sectie (met 43px ruimte als er een vl-header staat) en zet de hash met `history.pushState` in de URL, en bij het laden scrollt de component naar de sectie uit de hash. Het nieuwe attribuut `has-hash-routing` op vl-side-navigation schakelt die history-entry en dat scrollen bij het laden uit; het staat niet in de web-types. Verder duidt de scrollspy de sectie in beeld beter aan, krijgen vl-side-navigation-group en vl-side-navigation-item de rollen list en listitem, geven de compliance-componenten de inhoud en de navigatie op kleine schermen de volle breedte, en raadt Components - Block/side-navigation voor een item zonder subnavigatie een gewone `<a href=\"#…\">` aan in plaats van vl-side-navigation-toggle. Een vl-side-navigation-item zonder `<a>` geeft nu een waarschuwing in de console.",
+      "action": "Staan er in een vl-side-navigation-item links naar een andere pagina of een externe site, test ze dan: de component houdt elke klik tegen en zoekt de href als sectie op de pagina, dus zo'n link navigeert niet meer; vang de klik zelf op en navigeer met bv. `location.assign(link.href)`. Gebruikt je applicatie hash routing (URL's met #/…), zet dan `has-hash-routing` op vl-side-navigation: anders vervangt een klik de route in de URL door #sectie en geeft de component bij het laden een fout in de console.",
+      "example": "```html\n<vl-side-navigation has-hash-routing aria-label=\"inhoudsopgave\">\n    <vl-side-navigation-h5>Op deze pagina</vl-side-navigation-h5>\n    <vl-side-navigation-content>\n        <vl-side-navigation-group>\n            <vl-side-navigation-item>\n                <a href=\"#content-3\">content 3</a>\n            </vl-side-navigation-item>\n        </vl-side-navigation-group>\n    </vl-side-navigation-content>\n</vl-side-navigation>\n```"
+    }
+  }
+}

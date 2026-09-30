@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a14a6a0": {
+      "impact": "none",
+      "explanation": "Correcties in de Storybook-documentatie van Flux, o.a. Afnemen/Aan De Slag en de migratiepagina's Afnemen/Migratie v2 - Aanpak, - Impact en - FAQ, de gids voor wie naar v2 migreert. De packages veranderen niet."
+    }
+  }
+}

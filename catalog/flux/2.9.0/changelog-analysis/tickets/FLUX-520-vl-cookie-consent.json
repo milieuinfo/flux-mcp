@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "e8af42d": {
+      "impact": "action",
+      "explanation": "vl-cookie-consent zocht het Matomo site-id en de url tot nu toe zelf op in een ingebouwde lijst van websites van het departement, op basis van `window.location.host`, en startte Matomo daarmee zodra hij op de pagina kwam, ook zonder het attribuut `analytics` (tenzij `auto-opt-in-functional-disabled` gezet is). Die lijst is weg: zonder `matomo-id` en `matomo-url` houdt de component geen gebruikersstatistieken meer bij, en schrijft hij ook geen waarschuwing meer in de console dat de website niet gekend is. De beschrijving van beide attributen in de web-types verwijst nog naar het oude gedrag.",
+      "action": "Gebruik je vl-cookie-consent zonder `matomo-id` en `matomo-url` en wil je gebruikersstatistieken blijven bijhouden, stel die twee dan in met het site-id en de url van je Matomo-server; ze werken enkel samen.",
+      "example": "```html\n<vl-cookie-consent analytics matomo-id=\"123\" matomo-url=\"//stats.example.com/\"></vl-cookie-consent>\n```"
+    }
+  }
+}

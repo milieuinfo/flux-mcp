@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "360ce29": {
+      "impact": "action",
+      "explanation": "vl-alert zet nu echt `white-space: pre-line` op de boodschap, zodat een regeleinde (`\\n`) in het attribuut `message` een nieuwe regel wordt; die ondersteuning kwam er in 2.9.0 maar werkte niet, omdat de CSS-regel de klasse `vl-alert-message` zocht in plaats van `vl-alert__message`. De regel geldt ook voor de standaard slot: regeleinden in de inhoud die je tussen de tags van vl-alert zet, ook die waarmee je HTML-broncode over meerdere regels loopt, worden nu als nieuwe regel of witruimte getoond.",
+      "action": "Geef je vl-alert inhoud via de standaard slot in plaats van via `message`, kijk dan na of er geen extra witruimte of onverwachte regeleinden verschijnen, bv. door een regeleinde na de opening-tag of tekst die in je broncode over meerdere regels loopt. Laat de inhoud dan direct na `<vl-alert …>` beginnen en zet tekst die op één regel hoort ook in je broncode op één regel.",
+      "example": "```html\n<!-- regeleinde na de opening-tag: extra witruimte boven de tekst -->\n<vl-alert type=\"info\" title=\"Opgelet\">\n    <p>Je aanvraag is verstuurd.</p>\n</vl-alert>\n\n<!-- inhoud direct na de opening-tag -->\n<vl-alert type=\"info\" title=\"Opgelet\"><p>Je aanvraag is verstuurd.</p></vl-alert>\n\n<!-- een nieuwe regel in message -->\n<vl-alert type=\"warning\" message=\"Folder D is in gebruik&#10;Folder F is in gebruik\"></vl-alert>\n```"
+    }
+  }
+}

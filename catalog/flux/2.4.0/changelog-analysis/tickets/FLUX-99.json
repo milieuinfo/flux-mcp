@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "26e82fa": {
+      "impact": "opt-in",
+      "explanation": "De oudere componenten die hun CSS in een `<style>`-element in hun shadow DOM zetten, laden die nu via `adoptedStyleSheets`, zodat ze werken met een strikte Content Security Policy zonder `'unsafe-inline'` in `style-src`: o.a. vl-accordion, vl-modal, vl-tabs, vl-search, vl-side-sheet, vl-rich-data-table, vl-cookie-consent, vl-map en vl-map-search; de volledige lijst staat op Richtlijnen/Content Security Policy/Historiek CSP Aanpak. vl-header en vl-header-next (dat niet in de web-types staat) zetten de CSS van hun container en skeleton op `document.adoptedStyleSheets` in plaats van in een `<style>`-element. Enkel vl-textarea-rich vraagt nog `style-src-attr 'unsafe-inline'`; Richtlijnen/Content Security Policy/Hoe CSP Activeren beschrijft hoe je CSP instelt. Bouw je eigen componenten op `BaseHTMLElement` uit `@domg-wc/common`, dan kan je nu een lijst `CSSStyleSheet`s meegeven als tweede argument van de constructor of van `shadow()`.",
+      "example": "De ideale configuratie uit Richtlijnen/Content Security Policy/Hoe CSP Activeren, als vertrekpunt dat je verfijnt aan de hand van de foutboodschappen in de console:\n\n```js\n\"Content-Security-Policy\":\n    \"default-src 'self'; \" +\n    \"font-src 'self'; \" +\n    \"script-src 'self'; \" +\n    \"style-src 'self'; \" +\n    \"img-src 'self'; \" +\n    \"connect-src 'self'; \" +\n    \"object-src 'none'; \" +\n    \"base-uri 'self'; \" +\n    \"frame-ancestors 'none'\"\n```"
+    },
+    "0213e61": {
+      "impact": "none",
+      "explanation": "Storybook heeft nieuwe pagina's onder Richtlijnen/Content Security Policy: Wat Is CSP, CSP Problematieken, Hoe CSP Activeren en Historiek CSP Aanpak. Ze leggen uit welke uitzonderingen een toepassing met Flux nodig heeft: `https://cdn.omgeving.vlaanderen.be` voor fonts, scripts en styles, de domeinen van de global header (per omgeving in de documentatie van de v5-header van Digitaal Vlaanderen), `https://geo.api.vlaanderen.be` voor de afbeeldingen van vl-map en `style-src-attr 'unsafe-inline'` voor vl-textarea-rich. CSP instellen raden ze pas aan vanaf 2.4.0 en met vl-header-next, dat niet in de web-types staat, want vl-header (v4 van de global header) vraagt `script-src 'unsafe-eval'`. De packages veranderen niet."
+    }
+  }
+}

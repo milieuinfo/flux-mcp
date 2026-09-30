@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "be2b78d": {
+      "impact": "automatic",
+      "explanation": "De web-types in de packages, waarmee je IDE attributen voorstelt, misten een aantal bestaande attributen omdat hun Storybook-beschrijving geen categorie had. Vanaf 2.12.0 staan ze erin: bij vl-side-sheet `enable-swipe`, `left`, `right`, `absolute`, `open`, `toggle-text`, `tooltip-text`, `custom-icon`, `icon-placement` en `hide-toggle-button`, bij vl-infoblock `type`, `title` en `icon`, bij vl-share-button `medium` en `href`, bij vl-template `v-center` en `v-stretch`, en bij vl-typography `parameters`. De componenten zelf veranderen niet; vl-infoblock krijgt in de web-types wel ook een 'attribuut' `content (for demo purposes)`, dat geen echt attribuut is."
+    },
+    "150566d": {
+      "impact": "none",
+      "explanation": "De generator van de web-types van Flux faalt voortaan wanneer een attribuut in de Storybook-beschrijving geen categorie heeft, zodat attributen niet meer ongemerkt uit de web-types wegvallen. Dat is tooling van Flux zelf; je project verandert er niet door."
+    }
+  }
+}

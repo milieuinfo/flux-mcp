@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "f489cf0": {
+      "impact": "opt-in",
+      "explanation": "vl-checkbox heeft een nieuw attribuut `indeterminate`, dat de checkbox in een tussenstand toont, bv. voor 'Selecteer alles' wanneer maar een deel van de rijen geselecteerd is (Components - Form/checkbox); de switch-variant (`switch`) ondersteunt het niet. De tussenstand geldt enkel zolang de checkbox niet aangevinkt is, en de component zet `indeterminate` niet zelf uit: vinkt de gebruiker de checkbox aan en weer uit, dan keert de tussenstand terug, dus haal het attribuut zelf weg, bv. bij `vl-input`. Daarnaast vult het attribuut `label` nu echt het `aria-label` van een gewone vl-checkbox in, zoals de web-types al beschreven: heb je `label` gezet, dan leest een schermlezer die tekst in plaats van de inhoud van de checkbox.",
+      "example": "```html\n<vl-checkbox id=\"selecteer-alles\" indeterminate>Selecteer alles</vl-checkbox>\n\n<script type=\"module\">\n    const selecteerAlles = document.querySelector('#selecteer-alles');\n    selecteerAlles.addEventListener('vl-input', () => selecteerAlles.removeAttribute('indeterminate'));\n</script>\n```"
+    },
+    "4a8e5f5": {
+      "impact": "opt-in",
+      "explanation": "Components - Block/rich-data-table heeft een nieuw voorbeeld 'Selecteerbare rijen': een eerste vl-rich-data-field waarvan de `renderer` in elke rij een vl-checkbox zet en een eigen `headerTemplate` (beide in de code, niet in de web-types) een vl-checkbox 'Selecteer alles' in de hoofding, die in de tussenstand komt zolang maar een deel van de rijen geselecteerd is, met aparte acties voor de selectie. Het voorbeeld zet die tussenstand rechtstreeks op de `<input>` in de shadow DOM van de checkbox, niet met het attribuut `indeterminate` (FLUX-377). In de packages kreeg enkel het TypeScript-type `RichData` een typeparameter (`RichData<T>`), dat `@domg-wc/components/block` niet exporteert."
+    }
+  }
+}

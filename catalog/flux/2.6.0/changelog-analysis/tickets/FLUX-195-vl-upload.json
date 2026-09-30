@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "efbb982": {
+      "impact": "automatic",
+      "explanation": "Een bestand dat de gebruiker op vl-upload sleept en loslaat, geeft nu ook een `vl-input`-event, met `type: 'addedfile'` en het bestand in `detail`, net zoals een bestand dat via de bestandskiezer gekozen wordt. Voorheen kwam er bij drag & drop wel een `vl-change`, maar geen `vl-input`. Een bestand dat je zelf via code toevoegt, geeft nog altijd geen `vl-input`."
+    }
+  }
+}

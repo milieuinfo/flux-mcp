@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "6995b96": {
+      "impact": "automatic",
+      "explanation": "vl-rich-data-table toont nu het slot `no-content` (standaard \"Er werden geen resultaten gevonden\") in plaats van een lege tabel wanneer de `data` die je meegeeft geen rijen bevat. Voorheen verscheen die tekst enkel zolang er helemaal geen `data` gezet was. Wil je een eigen tekst, geef dan een element mee met `slot=\"no-content\"`; dat slot staat niet in de web-types."
+    }
+  }
+}

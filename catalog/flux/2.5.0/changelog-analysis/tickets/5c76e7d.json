@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5c76e7d": {
+      "impact": "none",
+      "explanation": "Het Flux-team is bereikbaar op het nieuwe e-mailadres domg_flux@groepen.vlaanderen.be; het staat nu ook als `author` in de package.json van `@domg-wc/common`, `components`, `map` en `styles`. Voor je project verandert er niets."
+    }
+  }
+}

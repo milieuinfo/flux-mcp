@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "1b65064": {
+      "impact": "action",
+      "explanation": "De classes `vl-stacked-small`, `vl-stacked-medium` en `vl-stacked-large` zetten niet langer een `margin-top` op elk kind behalve het eerste, maar een `row-gap` op de container zelf (1,5rem, 3rem of 6rem; large wordt 3rem op middelgrote en kleinere schermen). Dat werkt enkel in een flex- of grid-container: op een gewone blokcontainer, zoals een `<div>` zonder `display: flex` of `display: grid`, is de witruimte tussen de kinderen weg. In een `.vl-grid` vervangt die `row-gap` de rij-afstand van het grid zelf (1vmax), zodat rijen iets dichter bij elkaar komen, en kolommen naast elkaar op dezelfde rij krijgen geen marge bovenaan meer. De Flux-componenten die de classes gebruiken, zoals vl-modal, vl-rich-data en vl-privacy, zetten ze op een `.vl-grid`.",
+      "action": "Staat een `vl-stacked-*` class bij jou op een container die geen flex of grid is, maak die container dan een grid (`display: grid`) of een flexbox met `flex-direction: column`, of voorzie zelf de witruimte. Kijk ook de afstand tussen de rijen na waar je de classes op een `.vl-grid` zet.",
+      "example": "```html\n<!-- geen witruimte meer: een gewone blokcontainer -->\n<div class=\"vl-stacked-medium\">\n    <div>Eerste</div>\n    <div>Tweede</div>\n</div>\n\n<!-- wel witruimte: een grid- of flex-container -->\n<div class=\"vl-stacked-medium\" style=\"display: grid;\">\n    <div>Eerste</div>\n    <div>Tweede</div>\n</div>\n```"
+    }
+  }
+}

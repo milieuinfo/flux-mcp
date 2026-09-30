@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "d8384d8": {
+      "impact": "none",
+      "explanation": "Nieuwe documentatie in Storybook, Richtlijnen/Analytics/Matomo Analytics: wat Matomo is, welke Matomo-omgevingen Departement Omgeving heeft en hoe de Storybook van Flux zelf zijn bezoeken logt. De packages veranderen niet."
+    }
+  }
+}

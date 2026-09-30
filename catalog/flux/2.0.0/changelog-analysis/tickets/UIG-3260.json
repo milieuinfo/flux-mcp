@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4e00a17": {
+      "impact": "none",
+      "explanation": "Een tussenstap in de opkuis van het package @domg-wc/elements, dat in 2.0.0 volledig verdwijnt (zie UIG-3232): de styling van Digitaal Vlaanderen voor de geschrapte elementen, o.a. voor tabellen, selects, titels en tooltips, hoort niet meer bij de styling die Flux op het document zet. Wat dat voor je project betekent, staat bij UIG-3275."
+    }
+  }
+}

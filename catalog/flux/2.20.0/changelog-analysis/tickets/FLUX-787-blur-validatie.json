@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "293c741": {
+      "impact": "none",
+      "explanation": "De beschrijving van het attribuut `blur-validation` in de web-types, en dus in je IDE, is ingekort tot twee zinnen met een link naar Patronen/Formulier/blur validatie; dat geldt voor alle formuliervelden met dat attribuut, van `vl-checkbox` en `vl-input-field` tot `vl-upload` en `vl-select-location`. Die pagina is rechtgezet: de foutmelding staat in een `role=\"status\"` regio met `aria-live=\"polite\"`, en blur-validatie verplaatst de focus niet, enkel een submit springt naar het eerste ongeldige veld. Het gedrag van de componenten verandert niet."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "6fc66a6": {
+      "impact": "action",
+      "explanation": "vl-functional-header heeft een nieuw attribuut `skip-to-content-id` met de ID van de eerste heading van de inhoud (met of zonder `#`). De header zet dan bovenaan een skip-link 'Ga meteen naar de inhoud', die pas verschijnt wanneer hij de focus krijgt en de focus naar dat element brengt, ook als het in een shadow DOM staat (Components - Block/functional-header, Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.4 Navigeerbaar). Zonder het attribuut schrijft elke vl-functional-header een waarschuwing in de console ('Denk eraan om een skip-to-content-id mee te geven …'); het attribuut wordt enkel gelezen wanneer de header op de pagina komt. vl-accessibility, vl-cookie-statement en vl-privacy hebben nu zelf een skip-link naar hun titel (`id=\"main-content\"`), en met de nieuwe klasse `vl-skip-link` uit @domg-wc/styles maak je van een eigen `<a>` een skip-link (Styles/Layout (afnemers)/accessibility).",
+      "action": "Geef elke vl-functional-header een `skip-to-content-id` met de ID van de eerste heading van je inhoud, of van de inhoud zelf als er geen heading is; voeg die ID toe als hij nog niet bestaat. Dat geldt ook voor een eigen vl-functional-header in de header-slot van vl-accessibility, vl-cookie-statement of vl-privacy.",
+      "example": "```html\n<vl-functional-header title=\"Page Layout\" skip-to-content-id=\"#main-content\"></vl-functional-header>\n\n<div class=\"vl-content-block\">\n    <vl-title type=\"h1\" id=\"main-content\">Content</vl-title>\n</div>\n```"
+    }
+  }
+}

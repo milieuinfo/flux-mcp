@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0d7fd70": {
+      "impact": "automatic",
+      "explanation": "vl-cookie-consent zet voor Matomo geen inline `<script>` meer in de `<head>` (`vl-cookie-consent-matomo-script`): de component vult zelf `window._paq` en laadt `piwik.js` van je `matomo-url` als extern script. Een Content Security Policy zonder `'unsafe-inline'` in `script-src` blokkeert de statistieken dus niet meer; de Matomo-server moet er nog altijd in toegelaten zijn. Twee verschillen: bestond `window._paq` al, bv. door een eigen Matomo-snippet, dan deed de component vroeger niets, terwijl hij nu zijn site-id, tracker-url en een paginaweergave aan die bestaande `window._paq` toevoegt; en zet je `analytics` pas nadat de component op de pagina staat, dan voegt hij die opnieuw toe, met een tweede paginaweergave, waar hij vroeger niets deed."
+    }
+  }
+}

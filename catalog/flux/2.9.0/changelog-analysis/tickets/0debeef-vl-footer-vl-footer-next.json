@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0debeef": {
+      "impact": "automatic",
+      "explanation": "vl-footer en vl-footer-next zetten de footer-container (`#footer__container`) nu in `<body>` wanneer het element op de pagina komt, en halen hem weer weg wanneer het element van de pagina verdwijnt, bv. bij een routewissel in een single-page app; vroeger bleef de footer dan staan. De widget laadt nu enkel wanneer het element aan de pagina wordt toegevoegd, met de waarden van `identifier` en `development` op dat moment: wijzig je die attributen later, dan laadt de footer niet meer opnieuw, zoals vroeger bij elke update."
+    }
+  }
+}

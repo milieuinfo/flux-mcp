@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "508f573": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-documentatie van Flux verandert: het componentenoverzicht staat niet meer onder Planning, enkel nog onder Bijdragen (Bijdragen/Componenten Overzicht), en de links naar de componenten in dat overzicht werken weer."
+    }
+  }
+}

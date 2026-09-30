@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "e953c9a": {
+      "impact": "automatic",
+      "explanation": "vl-rich-data zonder filter (niets in het slot `filter`) toont op een klein scherm niet langer de knop \"Filter\". Die knop verscheen bv. bij het verkleinen van het venster, ook als er niets te filteren viel, en een klik deed niets. Met een filter verandert er niets."
+    },
+    "613d096": {
+      "impact": "none",
+      "explanation": "Enkel de testen van Flux: die van vl-rich-data-table verhuisden van de end-to-end testen op Storybook naar Cypress-componenttesten. Het package verandert niet."
+    }
+  }
+}

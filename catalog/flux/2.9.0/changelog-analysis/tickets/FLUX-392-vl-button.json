@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "d281e64": {
+      "impact": "action",
+      "a11y": true,
+      "explanation": "Een vl-button met `cta-link` rendert nog altijd een `<a>`, maar zonder `role=\"button\"`: een schermlezer kondigt hem nu aan als link, en hij staat in de lijst met links van VoiceOver. Dat geldt voor elke vl-button met `cta-link`, zonder dat je iets instelt; enkel tests die zo'n knop op zijn rol zoeken, werken niet meer zoals voorheen.",
+      "action": "Zoeken je tests, bv. end-to-end-tests, een vl-button met `cta-link` op de rol `button`, zoek dan op de rol `link`."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "3954c65": {
+      "impact": "automatic",
+      "explanation": "Een vl-link met `button-as-link` toont bij hover nu de handcursor (`cursor: pointer`), zoals een gewone link: tot nu overschreef een latere regel `cursor: default` de pointer, zodat de muis een pijl bleef. Dat zie je ook bij de standaarditems van vl-cascader, die zo'n vl-link gebruiken."
+    }
+  }
+}

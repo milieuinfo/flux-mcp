@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4ecec39": {
+      "impact": "none",
+      "explanation": "Enkel een test van vl-checkbox in Flux zelf wijzigt. De component en de gepubliceerde packages veranderen niet."
+    }
+  }
+}

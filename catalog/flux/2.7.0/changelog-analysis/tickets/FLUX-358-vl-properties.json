@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b5b78c1": {
+      "impact": "automatic",
+      "explanation": "Een vl-properties met kolommen (kindelementen `<div class=\"column\">` of `column--full-width`) brak uit zijn container: de kolommen zweven (`float`) en de lijst eromheen nam hun hoogte niet aan. Die lijst krijgt nu `display: flow-root` en geen marge boven en onder meer, zodat de component de volledige hoogte van zijn kolommen inneemt."
+    }
+  }
+}

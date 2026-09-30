@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "e498315": {
+      "impact": "opt-in",
+      "explanation": "vl-modal heeft twee nieuwe attributen: `size` (`medium`, `large` of `full-screen`; zonder attribuut of met `default` blijft de gewone grootte) en `position` (`left` of `right`; zonder attribuut of met `center` staat de modal in het midden). Components - Block/modal toont ze in de stories 'vl-modal - medium', 'large', 'full screen', 'left' en 'right'. Beide staan niet in de web-types, dus je IDE stelt ze niet voor. Wijzig je `size` achteraf van `full-screen` naar een andere waarde, dan blijft de modal schermvullend: bij een wijziging haalt de component enkel de grootte `medium` of `large` weg.",
+      "example": "```html\n<vl-button modal-open=\"modal-large\">Open</vl-button>\n<vl-modal id=\"modal-large\" title=\"Aanvraag\" size=\"large\" closable>\n    <span slot=\"content\">Lorem ipsum dolor sit amet.</span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>\n```"
+    }
+  }
+}

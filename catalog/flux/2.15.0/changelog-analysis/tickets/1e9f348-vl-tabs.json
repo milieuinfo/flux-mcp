@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "1e9f348": {
+      "impact": "automatic",
+      "explanation": "De types `TabClickEventDetail` en `TabLinkClickEventDetail` van vl-tabs-next worden nu als type geëxporteerd (`export type`) in plaats van als waarde, zodat Vite de module met de next-tabs kan laden. Je importeert ze in TypeScript zoals voorheen; voor je project verandert er niets."
+    }
+  }
+}

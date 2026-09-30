@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "f0171be": {
+      "impact": "none",
+      "explanation": "Recepten/Events legt uitgebreider uit waarom je beter naar de `vl-`-events luistert dan naar native events, bv. naar `vl-change` of `vl-input` in plaats van `click` op vl-checkbox, en hoe retargeting werkt: bij een klik op vl-button geeft `event.target` de vl-button, en de interne `<button>` vind je via `event.composedPath()`. Er kwam uitleg bij over `@event-naam` in Lit en over React: tot en met React 18 helpt `@lit/react`, vanaf React 19 zijn custom elements volledig ondersteund. De nieuwe pagina Recepten/Lit binnen andere frameworks zet de ondersteuning in Angular, Vue en React op een rij. De packages veranderen niet."
+    }
+  }
+}

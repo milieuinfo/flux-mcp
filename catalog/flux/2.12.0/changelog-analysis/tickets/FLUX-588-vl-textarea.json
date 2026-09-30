@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "bf4b915": {
+      "impact": "automatic",
+      "explanation": "De werking van Enter in vl-textarea is herschreven: binnen een formulier voegt Enter een nieuwe regel toe en verstuurt het formulier niet. De component probeert daarvoor niet langer het keydown-event tegen te houden. Je hoeft niets te doen."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "a88b733": {
+      "impact": "automatic",
+      "explanation": "vl-textarea gebruikt niet langer de oude stylesheets van govflanders-style maar een eigen stylesheet op basis van de Flux-variabelen, met alle toestanden (hover, focus, disabled, error, success, placeholder); de rand en padding verschuiven niet meer bij hover op een uitgeschakeld veld. Nieuw zijn de CSS-variabelen `--vl-textarea--padding` en `--vl-textarea--margin` op de component. Je hoeft niets te doen.",
+      "a11y": false
+    }
+  }
+}

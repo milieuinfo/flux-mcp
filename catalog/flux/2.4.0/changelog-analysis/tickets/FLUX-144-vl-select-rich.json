@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "811e494": {
+      "impact": "automatic",
+      "explanation": "vl-select-rich hield een klik op de select of op het bijhorende label tegen met `stopPropagation()`; dat doet hij niet meer. De klik bereikt nu dus ook click-listeners op de vl-select-rich zelf, op een ouder of op `document`. Staat de vl-select-rich in een element dat zelf op een klik reageert, bv. een klikbare rij of kaart, dan reageert dat element nu ook op een klik in de select."
+    }
+  }
+}

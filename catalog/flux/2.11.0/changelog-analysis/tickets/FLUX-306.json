@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "f9ecc3c": {
+      "impact": "opt-in",
+      "explanation": "De kaartlagen vl-map-features-layer, vl-map-wfs-layer, vl-map-image-wms-layer, vl-map-tiled-wms-layer, vl-map-xyz-wms-layer en vl-map-wmts-layer hebben een nieuw attribuut `z-index` dat de volgorde van de lagen op de kaart bepaalt: een laag met een hogere waarde ligt bovenop. Het attribuut zet de z-index van de OpenLayers-laag en is reactief; zonder attribuut blijft de volgorde zoals voorheen.",
+      "example": "```html\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer name=\"rode laag\" projection-code=\"EPSG:31370\" z-index=\"1\">\n        <vl-map-layer-style\n            color=\"rgba(204, 40, 40, 0.6)\"\n            border-color=\"rgba(204, 40, 40, 1)\"\n            border-size=\"2\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>\n```"
+    }
+  }
+}

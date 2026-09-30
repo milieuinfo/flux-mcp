@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "21ce087": {
+      "impact": "automatic",
+      "explanation": "Bij een vl-link met `external` staat het icoon voor een externe link nu direct na het laatste woord wanneer de tekst over meerdere regels loopt; voorheen hing het los rechts. Het is een visuele wijziging; je hoeft niets te doen."
+    }
+  }
+}

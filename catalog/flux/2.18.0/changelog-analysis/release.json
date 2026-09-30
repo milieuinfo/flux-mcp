@@ -1,0 +1,3 @@
+{
+  "summary": "Flux 2.18.0 verandert niets aan de gepubliceerde packages: er is geen actie nodig. De release verhuist de build van Flux zelf van Bamboo naar Jenkins, maakt de tests van vl-header en vl-footer onafhankelijk van de widget van het burgerprofiel, en trekt in de eigen repo validator en @babel/runtime op tegen kwetsbaarheden. Nieuw is wel dat een commit die enkel documentatie wijzigt nu een patch release geeft, dus een patch release kan voortaan enkel nieuwe documentatie bevatten. De web-types en de dependencies van de packages zijn ongewijzigd sinds 2.17.0, en er zijn geen commits buiten de changelog."
+}

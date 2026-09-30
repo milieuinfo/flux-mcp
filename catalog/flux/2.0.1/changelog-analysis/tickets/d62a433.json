@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "d62a433": {
+      "impact": "automatic",
+      "explanation": "In 2.0.0 kon vl.util.each bij het uitvoeren ontbreken. Die functie komt uit de legacy-code van Flux (legacyCore in @domg-wc/common) en wordt gebruikt door vl-modal, vl-accordion, vl-tabs en vl-side-navigation. Vanaf 2.0.1 laadt BaseHTMLElement, de basisklasse van o.a. vl-modal en vl-accordion, die legacy-code zelf, zodat vl.util.each bestaat zodra zo'n component geladen is."
+    }
+  }
+}

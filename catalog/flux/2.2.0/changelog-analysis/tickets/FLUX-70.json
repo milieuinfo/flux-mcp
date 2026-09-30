@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "7435b4d": {
+      "impact": "none",
+      "explanation": "Enkel documentatie en metadata: Storybook spreekt nu van Flux in plaats van UIG, onder meer op Recepten/Configuratie (met `FluxConfig` in plaats van `UigConfig`), Recepten/CSS Styling, Recepten/Events en Afnemen/Starter App. Het veld author in de package.json van de packages is nu `Flux <flux@omgeving.vlaanderen.be>`. Aan componenten, attributen, styles en code verandert niets; `FluxConfig` bestond al in 2.1.0."
+    }
+  }
+}

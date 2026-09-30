@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "991d46a": {
+      "impact": "opt-in",
+      "explanation": "vl-description-data-item heeft vier nieuwe attributen, `items-size`, `items-medium-size`, `items-small-size` en `items-extra-small-size`, die voor dat ene item de kolombreedte van de omliggende vl-description-data overschrijven, bv. om één item over de volle breedte te tonen. Zonder die attributen blijft alles zoals voorheen. vl-description-data leest ze wanneer hij rendert: een waarde die je later op een item wijzigt, past de layout niet meteen aan.",
+      "example": "```html\n<vl-description-data items-size=\"3\" items-small-size=\"6\" items-extra-small-size=\"12\">\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatietype\" value=\"Brochure\"></vl-description-data-item>\n    <vl-description-data-item label=\"Categorie\" value=\"Kinderen en jongeren\"></vl-description-data-item>\n    <vl-description-data-item\n        items-size=\"12\"\n        label=\"Omschrijving\"\n        value=\"Een uitgebreide beschrijving van de publicatie die de volledige breedte inneemt.\"\n    ></vl-description-data-item>\n</vl-description-data>\n```"
+    }
+  }
+}

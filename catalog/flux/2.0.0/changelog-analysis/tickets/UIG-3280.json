@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "748e83e": {
+      "impact": "action",
+      "explanation": "De naam uig maakt plaats voor flux. De configuratieklasse UigConfig heet nu FluxConfig (in @domg-wc/common), met dezelfde methodes setPreferences en getPreferences en dezelfde voorkeuren. De interne CSS-classes met prefix uig- in de shadow DOM heten nu flux-, bv. uig-autocomplete__clear in vl-autocomplete en uig-functional-header__row in vl-functional-header. De pagina Recepten/Configuratie in Storybook 2.0.0 vermeldt nog UigConfig.",
+      "action": "Vervang UigConfig door FluxConfig. Richt je met custom-css op interne classes met prefix uig-, vervang die prefix door flux-.",
+      "example": "```ts\n// v1\nimport { UigConfig } from '@domg-wc/common-utilities';\nUigConfig.setPreferences({ logWebComponentRegistration: true });\n\n// v2\nimport { FluxConfig } from '@domg-wc/common';\nFluxConfig.setPreferences({ logWebComponentRegistration: true });\n```"
+    }
+  }
+}

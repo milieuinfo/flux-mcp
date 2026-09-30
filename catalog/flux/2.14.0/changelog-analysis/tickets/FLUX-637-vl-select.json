@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5b735a7": {
+      "impact": "automatic",
+      "explanation": "Vervang je de `<option>`-elementen in een vl-select, bv. wanneer je de opties ververst nadat een modal opent, dan bleef de waarde van vl-select op de oude waarde staan, terwijl een andere option `selected` had. vl-select neemt na zo'n wijziging aan de opties nu de waarde over van de option met `selected` en toont die ook; wijzigt de waarde daardoor, dan vuurt vl-select een `vl-change`. Zet `selected` dus op de option die je wil tonen, want die bepaalt voortaan de waarde na elke wijziging van de opties."
+    }
+  }
+}

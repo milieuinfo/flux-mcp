@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "b211c93": {
+      "impact": "opt-in",
+      "explanation": "vl-rich-data en vl-rich-data-table krijgen het attribuut `filter-max-width`: een CSS-waarde (bv. `300px`) die de breedte van de filterkolom begrenst, bedoeld voor een layout over de volledige breedte (`vl-content-block--full-width`). De filterkolom is nooit breder dan een derde van de component; zonder het attribuut is de grens een derde van `--vl-page--max-width-wide` (standaard 1280px). Het attribuut staat niet in de web-types, dus een IDE stelt het niet voor. Daarnaast verandert de layout vanzelf: de kolommen zijn nu een CSS-grid in plaats van `vl-column--4` en `vl-column--8`, de knoppen om de filter te tonen en te verbergen zijn vl-button-componenten, en op een klein scherm ligt de filter als modal boven de rest van de pagina (z-index `--vl-z-layer--search`).",
+      "example": "```html\n<div class=\"vl-content-block vl-content-block--full-width\">\n    <vl-rich-data-table filter-closable filter-max-width=\"400px\">\n        <vl-rich-data-field label=\"ID\" selector=\"id\"></vl-rich-data-field>\n        <vl-rich-data-field label=\"Naam Project\" selector=\"name\"></vl-rich-data-field>\n        <vl-search-filter slot=\"filter\">...</vl-search-filter>\n    </vl-rich-data-table>\n</div>\n```"
+    }
+  }
+}

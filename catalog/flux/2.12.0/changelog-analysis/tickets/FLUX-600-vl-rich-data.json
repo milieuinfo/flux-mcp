@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "97431ab": {
+      "impact": "automatic",
+      "explanation": "Een zoekopdracht in de filter van vl-rich-data (en dus ook vl-rich-data-table) sluit de filter niet meer: voorheen schakelde elke submit van het filterformulier `filter-closed` om. Op een klein scherm (tot 767px) gaat de focus na de zoekopdracht naar de knop Filter, en die knop staat daar nu altijd, ook zonder `filter-closable`. Maak je het venster weer breder dan 767px, dan zet de component de filter terug in de zijkolom en opent hij hem opnieuw als `filter-closable` niet gezet is."
+    }
+  }
+}

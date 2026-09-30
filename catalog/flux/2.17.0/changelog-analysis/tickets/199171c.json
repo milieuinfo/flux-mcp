@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "199171c": {
+      "impact": "none",
+      "explanation": "Enkel de tests van Flux zelf werden stabieler gemaakt. De gepubliceerde packages veranderen niet."
+    }
+  }
+}

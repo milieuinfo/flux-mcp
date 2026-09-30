@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a6116b6": {
+      "impact": "none",
+      "explanation": "Afnemen/Artifacts heeft een nieuwe sectie Afname met de `.npmrc` om de packages af te nemen: medewerkers van Departement Omgeving gebruiken de registry `acd-npm` met een token, anderen de publieke npm registry, met enkel de scopes `@domg` en `@domg-wc` naar `local-npm` in de Artifactory van Departement Omgeving. Enkel documentatie; je project verandert niet."
+    }
+  }
+}

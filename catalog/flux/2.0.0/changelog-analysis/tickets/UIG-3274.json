@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "84769f1": {
+      "impact": "none",
+      "explanation": "Ongebruikte npm-dependencies zijn uit de ontwikkelomgeving van Flux verwijderd, en de typedeclaratie van swipe-detect (gebruikt door vl-side-sheet) staat nu bij de component. Het gedrag van de componenten verandert niet."
+    }
+  }
+}

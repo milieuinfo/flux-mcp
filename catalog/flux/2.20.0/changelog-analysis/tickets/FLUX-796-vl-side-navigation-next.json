@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5710cb7": {
+      "impact": "automatic",
+      "explanation": "Bij een `vl-side-navigation-next` met secties kon een auto-sectie (`vl-side-navigation-section-next` met `type=\"auto\"`; dat attribuut staat in de code en in Storybook, maar niet in de web-types) die vlak na het laden uit de navigatie verdween of vervangen werd, toch opnieuw volledig gerenderd worden. De navigatie scant nu de secties die er op dat moment effectief in staan, en slaat die scan over als ze niet meer uit secties bestaat. Dat merk je vooral wanneer je de secties dynamisch rendert, bv. met een framework."
+    }
+  }
+}

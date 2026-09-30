@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "ab40cf5": {
+      "impact": "opt-in",
+      "explanation": "vl-textarea krijgt het attribuut `character-count`: samen met `max-length` toont het onder het veld een teller `{huidig}/{max}` die meetelt terwijl je typt, en vanaf de laatste 10 tekens kondigt een schermlezer het aantal resterende tekens aan. Zonder `max-length` verschijnt er geen teller. De web-types tonen `character-count` ook op vl-textarea-rich, maar daar werkt de teller niet correct: TinyMCE houdt `max-length` niet af en de waarde bevat HTML-opmaak.",
+      "example": "```html\n<vl-textarea label=\"Opmerking\" max-length=\"500\" character-count></vl-textarea>\n```"
+    }
+  }
+}

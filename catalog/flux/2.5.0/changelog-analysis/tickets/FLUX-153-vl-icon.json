@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "1b10a28": {
+      "impact": "action",
+      "explanation": "vl-icon beschouwt een icoon nu standaard als decoratief: zonder het nieuwe attribuut `label` krijgt het `aria-hidden=\"true\"` en slaat een schermlezer het over, met `label` krijgt het een `aria-label` (Components - Atom/icon, 'Label (toegankelijkheid)'). Het attribuut `clickable` is deprecated omdat een klikbaar icoon niet aan WCAG voldoet, en een vl-icon met `clickable` schrijft nu een waarschuwing in de console. `label` staat niet in de web-types, en daar staat `clickable` nog zonder vermelding dat het deprecated is.",
+      "action": "Draagt een icoon betekenis zonder tekst ernaast, bv. een statusicoon, geef het dan een `label`: anders slaat een schermlezer het over. Gebruik je `clickable`, vervang het icoon dan door een vl-button of vl-link met een `icon`: zo verdwijnt de waarschuwing, en een klikbaar icoon zonder `label` is nu tegelijk focusbaar (`tabindex=\"0\"`) en verborgen voor een schermlezer.",
+      "example": "```html\n<!-- decoratief: een schermlezer slaat het over -->\n<vl-icon icon=\"calendar\"></vl-icon>\n\n<!-- betekenisvol: een schermlezer leest het label voor -->\n<vl-icon icon=\"calendar\" label=\"Deadline\"></vl-icon>\n\n<!-- in plaats van <vl-icon icon=\"close\" clickable> -->\n<vl-button ghost icon=\"close\" label=\"Sluiten\"></vl-button>\n```"
+    }
+  }
+}

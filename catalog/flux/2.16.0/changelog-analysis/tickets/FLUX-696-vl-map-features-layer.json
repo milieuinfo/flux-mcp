@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8180923": {
+      "impact": "opt-in",
+      "explanation": "vl-map-features-layer krijgt de methodes `addFeatures(features)` en `setFeatures(features)`, die OpenLayers `Feature`-objecten rechtstreeks toevoegen of alle features vervangen, zonder omweg via GeoJSON. Id's en properties via `feature.setId(...)` en `feature.set(...)` blijven zo behouden, en de omweg via de private `__featuresSource` is niet meer nodig. Anders dan de GeoJSON-flows transformeren ze de geometrie niet: de features moeten al in de projectie van de kaart staan, en vóór `connectedCallback` doen ze stil niets.",
+      "example": "```js\nimport Feature from 'ol/Feature';\nimport Point from 'ol/geom/Point';\n\nconst feature = new Feature({ geometry: new Point([x, y]) });\nfeature.setId(1);\nfeature.set('emissiebron', emissiebron);\n\nlayer.setFeatures([feature]);\n```"
+    }
+  }
+}

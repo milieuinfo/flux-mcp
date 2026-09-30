@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "1d487e6": {
+      "impact": "automatic",
+      "explanation": "Het menu (slot `menu`) van een vl-info-tile met `clickable` krijgt nu z-index 10009 via de nieuwe CSS-variabele `--vl-z-layer--info-tile-menu` van @domg-wc/styles, net onder die van vl-popover (10010), in plaats van 1; bij een vl-info-tile zonder `clickable` krijgt het menu geen z-index meer. De z-index 1 begrensde ook een vl-popover die in dat menu openklapt, zoals in Patronen/Navigatie/Popover/info tile met menu, zodat andere inhoud met een hogere z-index erover kon liggen."
+    }
+  }
+}

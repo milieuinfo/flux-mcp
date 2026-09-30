@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9d60dd8": {
+      "impact": "automatic",
+      "explanation": "De kop van een vl-info-tile mag nu krimpen (`flex: 1 1 auto` in plaats van `1 0 auto`), zodat een lange titel in een smalle tile afbreekt in plaats van buiten de tile te lopen."
+    }
+  }
+}

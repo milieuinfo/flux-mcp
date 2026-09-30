@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "25e8c24": {
+      "impact": "automatic",
+      "explanation": "In Edge werd het focuskader rond een `vl-breadcrumb-item` zwart in plaats van blauw getekend, omdat Edge de 8-cijferige hex-kleur `#0055cca6` van de CSS-variabele `--vl-color--focus` niet goed verwerkt in een outline. Flux definieert die variabele nu als `rgba(0, 85, 204, 0.65)`, dezelfde kleur. Dat herstelt het focuskader in Edge voor alle componenten die `--vl-color--focus` gebruiken, en ook voor je eigen CSS als je `var(--vl-color--focus)` gebruikt."
+    }
+  }
+}

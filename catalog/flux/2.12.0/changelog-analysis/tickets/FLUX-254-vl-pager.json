@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8ef7f42": {
+      "impact": "action",
+      "explanation": "vl-pager is toegankelijker gemaakt: na een klik op een paginanummer gaat de focus (na 100 ms) naar de actieve pagina, die `aria-current=\"page\"` krijgt, na een klik op Vorige of Volgende blijft hij op die link, en een schermlezer hoort telkens \"Pagina x\". Op een klein scherm (tot 767px) tonen Vorige en Volgende enkel hun pijl en zie je enkel de huidige en de naburige pagina's. Omdat de pager nu zelf de focus zet en zijn shadow DOM anders is opgebouwd, kan bestaande code of een bestaande end-to-end test anders werken. `@domg-wc/styles` exporteert daarbij een nieuwe mixin `vlVisuallyHiddenMixin`.",
+      "action": "Zet je zelf de focus in een listener op het `change`-event van vl-pager, bv. naar het begin van de resultaten, dan neemt de pager de focus 100 ms later weer over: kijk na of dat nog werkt zoals je wil. Selecteer je in end-to-end testen elementen in de shadow DOM van vl-pager, pas die selectors dan aan: `#bounds` is nu een `div` in plaats van een `li`, `#page-back-list-item` en `#page-forward-list-item` bestaan niet meer (`#page-back-link` en `#page-forward-link` wel), de class `vl-pager__element__cta` heet nu `vl-pager__element-cta`, en de actieve pagina toont haar nummer in een `span` in plaats van een `label`."
+    }
+  }
+}

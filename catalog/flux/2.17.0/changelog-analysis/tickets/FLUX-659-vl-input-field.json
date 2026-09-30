@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "750dbf1": {
+      "impact": "opt-in",
+      "explanation": "vl-input-field krijgt het attribuut `describedby` met het `id` van een element binnen hetzelfde ouder-element: de tekst ervan wordt via `aria-describedby` als beschrijving aan het invoerveld gekoppeld, bv. een eenheid die ook hoorbaar moet zijn, en volgt latere wijzigingen. Het bron-element krijgt `aria-hidden=\"true\"` als je dat zelf niet zette, zodat een schermlezer de tekst niet dubbel voorleest. De web-types geven `describedby` ook aan vl-input-field-masked, maar daar heeft het in 2.17.0 geen effect: die component voert de koppeling nooit uit. Los daarvan krijgt het label in de legend van vl-fieldset de class `vl-form__label` niet meer op zichzelf, waardoor die stijl (o.a. inline-block en marges rechts en onder) daar wegvalt en de ruimte rond de legend kan veranderen.",
+      "a11y": true,
+      "example": "```html\n<vl-input-field label=\"Lengte\" describedby=\"eenheid\"></vl-input-field>\n<span aria-hidden=\"true\">m</span>\n<span class=\"vl-visually-hidden\" id=\"eenheid\">meter</span>\n```"
+    }
+  }
+}

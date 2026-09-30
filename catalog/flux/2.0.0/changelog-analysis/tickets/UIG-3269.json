@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "c97731f": {
+      "impact": "none",
+      "explanation": "Interne opkuis van de modulepaden in de Flux-repo: de hulpcode voor Storybook en de referentiecode onder libs/integration. De gepubliceerde packages veranderen niet."
+    }
+  }
+}

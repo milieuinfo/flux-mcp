@@ -1,0 +1,20 @@
+{
+  "entries": {
+    "bda3598": {
+      "impact": "none",
+      "explanation": "Een aanpassing aan de componenttesten van Flux (@ts-ignore om fouten bij het opstarten te vermijden). De packages veranderen niet."
+    },
+    "ad96917": {
+      "impact": "action",
+      "explanation": "BaseElementOfType, de mixin waarmee de oudere componenten gebouwd waren, is uit @domg-wc/common verdwenen. De componenten die erop gebouwd waren, erven nu van BaseHTMLElement, dat al in v1 bestond en dezelfde hulpmethodes biedt, o.a. shadow(), _template(), _observedAttributes en de …ChangedCallback-methodes. Wie de componenten enkel in HTML gebruikt, merkt er niets van.",
+      "action": "Heb je eigen componenten die erven van BaseElementOfType(HTMLElement), laat ze dan erven van BaseHTMLElement uit @domg-wc/common. Voor een variant op een ander element, zoals BaseElementOfType(HTMLDivElement), is er geen vervanger.",
+      "example": "```ts\n// v1\nimport { BaseElementOfType, webComponent } from '@domg-wc/common-utilities';\n\n@webComponent('mijn-component')\nexport class MijnComponent extends BaseElementOfType(HTMLElement) {}\n\n// v2\nimport { BaseHTMLElement, webComponent } from '@domg-wc/common';\n\n@webComponent('mijn-component')\nexport class MijnComponent extends BaseHTMLElement {}\n```"
+    },
+    "3e38a30": {
+      "impact": "action",
+      "explanation": "De deprecated functie define(name, constructor, options) en het type Class zijn uit @domg-wc/common verwijderd. Om een custom element te registreren blijft defineWebComponent(constructor, tagName, options) bestaan, met de eerste twee argumenten in omgekeerde volgorde.",
+      "action": "Gebruik je define, vervang het door defineWebComponent en wissel de eerste twee argumenten om. Gebruik je het type Class, definieer het dan zelf, bv. type Class<T = any> = new (...args: any[]) => T.",
+      "example": "```ts\n// v1\nimport { define } from '@domg-wc/common-utilities';\ndefine('mijn-element', MijnElement);\n\n// v2\nimport { defineWebComponent } from '@domg-wc/common';\ndefineWebComponent(MijnElement, 'mijn-element');\n```"
+    }
+  }
+}

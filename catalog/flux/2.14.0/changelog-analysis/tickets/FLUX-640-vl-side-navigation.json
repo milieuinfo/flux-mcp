@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4e910c0": {
+      "impact": "automatic",
+      "explanation": "Een link in een `vl-side-navigation-item` naar een externe URL of een relatief pad deed niets: de component hield elke klik tegen en zocht het doel als anker op de pagina. Nu houdt hij enkel links met een `href` die met `#` begint tegen, om naar dat element te scrollen; andere links laat hij aan de browser over. Handel je zulke links zelf af met een click-handler, bv. van een router, roep daarin dan zelf `preventDefault()` aan, anders navigeert de browser ook. vl-side-navigation-next liet externe links al door."
+    }
+  }
+}

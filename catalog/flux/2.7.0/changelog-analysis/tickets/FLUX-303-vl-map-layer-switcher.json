@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "bd6b246": {
+      "impact": "action",
+      "explanation": "Het vinkje van een kaartlaag in vl-map-layer-switcher toont nu altijd de werkelijke zichtbaarheid van die laag, ook wanneer je code ze wijzigt, bv. met het attribuut `hidden` of de property `visible` (niet in de web-types) op de kaartlaag, of met `setVisible()` op de OpenLayers-laag. Het vinkje van een laag die op de huidige resolutie niet zichtbaar is, wordt nu ook echt uitgeschakeld: in 2.6.0 zocht de component het vinkje met een verkeerde selector en gebeurde dat niet. Daarnaast bevat het `detail` van de events `vl-change`, `vl-input` en `vl-valid` van elke vl-checkbox nu ook `currentTarget`, de vl-checkbox zelf (niet in de web-types); map/layer-switcher gebruikt dat om bij een `vl-change` op vl-map te weten welke laag wijzigde, en wie het `detail` met een vast object vergelijkt of serialiseert, krijgt die extra sleutel mee.",
+      "action": "Vergelijk je in code of tests het `detail` van `vl-change`, `vl-input` of `vl-valid` van vl-checkbox met een vast object (bv. met `deep.equal` of `toEqual`), vergelijk dan enkel `checked` en `value`. Zet je het `detail` om naar JSON of bewaar je het in een store, neem dan enkel die twee sleutels over, en niet het element in `currentTarget`."
+    }
+  }
+}

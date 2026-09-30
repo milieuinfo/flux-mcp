@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "916d81d": {
+      "impact": "automatic",
+      "explanation": "Tot 2.0.1 laadde elk component op basis van `BaseHTMLElement` (bv. vl-pager, vl-search en vl-map) de oude scripts `legacy-core` en `legacy-breakpoint` mee: die maken de globale `window.vl` aan, zetten een resize-listener op `window` en plaatsen de class `js` op `<html>`. Vanaf 2.0.2 laden enkel de componenten die ze nodig hebben die scripts zelf: vl-accordion, vl-modal, vl-side-navigation, vl-tabs, vl-header en vl-footer (die laatste vier deden dat voordien niet), en via die componenten ook vl-step en vl-info-tile (vl-accordion), vl-cookie-consent (vl-modal) en vl-accessibility, vl-privacy en vl-cookie-statement (vl-side-navigation). Een pagina zonder die componenten laadt zo minder JavaScript. Steunt je eigen code op `window.vl` of op de class `js` op `<html>` terwijl je geen van die componenten gebruikt, dan zijn die er niet meer."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "797b4ee": {
+      "impact": "automatic",
+      "explanation": "In het formulier van vl-search-filter krijgt een sectiekop met `vl-title type=\"h2\"` nu dezelfde witruimte eronder als een native `h2` in een `section`, tenzij de vl-title `no-space-bottom` heeft. Een `section` binnen een andere `section` krijgt geen eigen scheidingslijn en witruimte meer, zodat er maar één lijn staat. Het is een visuele wijziging; je hoeft niets te doen."
+    }
+  }
+}

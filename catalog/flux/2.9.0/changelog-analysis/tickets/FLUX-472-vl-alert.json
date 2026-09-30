@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a0158a3": {
+      "impact": "automatic",
+      "explanation": "vl-alert breekt lange woorden nu af met een koppelteken (`hyphens: auto`), in de titel, de boodschap en de inhoud van de slots; de browser doet dat volgens de taal van de pagina (`lang`). Dezelfde regels zijn als `vlHyphenateMixin()` beschikbaar in @domg-wc/styles, voor wie ze in een eigen Lit-component wil gebruiken."
+    }
+  }
+}

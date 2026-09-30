@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "cbadf65": {
+      "impact": "automatic",
+      "explanation": "De positionering van de kalender van vl-datepicker in de top layer werkt nu in alle browsers. In 2.16.0 viel `anchor-positioning` zonder CSS Anchor Positioning (Firefox, oudere Safari) stil terug op de klassieke positionering; nu positioneert de datepicker de kalender daar met @floating-ui/dom volgens het `position`-attribuut, en volgt hij scrollen en resizen. Kent de browser de Popover API niet, dan past de datepicker de polyfill uit `@oddbird/popover-polyfill` toe, een nieuwe dependency van @domg-wc/components. Omdat FLUX-742 deze positionering standaard maakt, vraagt de upgrade een controle van je datepickers; zie daar."
+    }
+  }
+}

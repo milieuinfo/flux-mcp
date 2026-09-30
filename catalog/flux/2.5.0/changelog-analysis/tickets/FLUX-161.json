@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "52480af": {
+      "impact": "none",
+      "explanation": "Styles/Concept is herschreven: de pagina legt uit dat de layout sinds v2 uit CSS-classes op native elementen bestaat (`.vl-grid`, `.vl-group`, `.vl-section`, …), dat Flux die globaal registreert zodra je een Flux-component gebruikt, en dat je in een eigen component met shadow DOM `vlLayoutStyles` zelf toevoegt. Ze raadt een volgorde aan: eerst de Flux-classes, dan `custom-css` voor kleine aanpassingen, en pas dan eigen classes met een prefix zoals `app-`, waarin je ook Flux CSS-variabelen zoals `--vl-side-sheet-width` kan overschrijven. De packages veranderen niet."
+    }
+  }
+}

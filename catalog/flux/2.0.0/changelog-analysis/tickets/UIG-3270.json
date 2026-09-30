@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "c9af8f4": {
+      "impact": "action",
+      "explanation": "Een interne opkuis van circulaire imports, met twee gevolgen voor de API van @domg-wc/common: GlobalStyles importeer je nu uit @domg-wc/common (in v1 uit @domg-wc/common-utilities/css), en de hulpfuncties buildSpan, buildDiv, buildLabel en buildData zijn verwijderd. Wie enkel de componenten gebruikt, merkt er niets van.",
+      "action": "Importeer je GlobalStyles, bv. voor GlobalStyles.getInstance().addCustomCss(), haal het dan uit @domg-wc/common. Gebruik je buildSpan, buildDiv, buildLabel of buildData, vervang ze door document.createElement."
+    }
+  }
+}

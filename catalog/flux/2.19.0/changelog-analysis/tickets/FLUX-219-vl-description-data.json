@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "0ee6e57": {
+      "impact": "action",
+      "explanation": "`vl-description-data` rendert de label/waarde-paren nu als één `<dl>` met `<dt>` en `<dd>`, zodat een schermlezer elk paar als term en definitie aankondigt; de attributen, de `label`- en `value`-slots en de kolom-layout blijven werken. Daarvoor leest de component het `label` en de `value` van elk `vl-description-data-item` en rendert ze zelf: andere directe kinderen worden genegeerd, zijn niet meer zichtbaar en geven een waarschuwing in de console. De inhoud van de `label`- en `value`-slots wordt gekloond naar de shadow DOM van `vl-description-data`: statische opmaak zoals een `<a href>` werkt, maar event-listeners op die inhoud niet. Daarnaast is een renderfout in `vl-description-data-item` opgelost waardoor het `value`-slot verkeerd werd afgesloten.",
+      "action": "Kijk je gebruik van `vl-description-data` na. Staan er andere elementen dan `vl-description-data-item` rechtstreeks in, ook een wrapper rond de items, zet dan enkel de items als directe kinderen. Hangen er event-listeners aan inhoud in de `label`- of `value`-slots, of style je die inhoud met je eigen CSS, dan werkt dat niet op de kopie in de shadow DOM: beperk je daar tot statische inhoud zoals tekst of een link.",
+      "example": "```html\n<vl-description-data>\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n</vl-description-data>\n```"
+    }
+  }
+}

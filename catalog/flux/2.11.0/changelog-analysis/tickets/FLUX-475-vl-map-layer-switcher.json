@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "84ad38c": {
+      "impact": "automatic",
+      "explanation": "vl-map-layer-switcher toont nu ook de WMS- en WMTS-lagen die je pas met JavaScript aan een vl-map toevoegt, bv. met `appendChild` nadat de kaart klaar is. vl-map-tiled-wms-layer, vl-map-image-wms-layer, vl-map-xyz-wms-layer en vl-map-wmts-layer zetten hun markering `is-layer` (een attribuut dat Flux zelf zet en dat niet in de web-types staat) nu meteen bij het toevoegen, in plaats van pas nadat hun bron aangemaakt is; de layer switcher, die op dat attribuut let, sloeg ze daardoor over."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "d7586ea": {
+      "impact": "action",
+      "explanation": "vl-functional-header krijgt het attribuut `title-label` voor de paginatitel. Het `title`-attribuut werkt nog, maar is deprecated: de browser toonde het als tooltip. Flux neemt de waarde van `title` nu over als titel en haalt het attribuut daarna van het element weg, zodat de tooltip verdwijnt.",
+      "action": "Gebruik je `title` op vl-functional-header, vervang het door `title-label`. Zoeken je CSS, scripts of end-to-end tests de header via het `title`-attribuut, bv. `vl-functional-header[title=\"…\"]`, pas ze dan aan: dat attribuut staat niet meer op het element.",
+      "example": "```html\n<!-- vóór -->\n<vl-functional-header title=\"Departement Omgeving\" sub-title=\"Mijn toepassing\"></vl-functional-header>\n\n<!-- na -->\n<vl-functional-header title-label=\"Departement Omgeving\" sub-title=\"Mijn toepassing\"></vl-functional-header>\n```"
+    }
+  }
+}

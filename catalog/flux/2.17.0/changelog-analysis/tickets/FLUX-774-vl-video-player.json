@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "3985e2b": {
+      "impact": "opt-in",
+      "explanation": "vl-video-player krijgt het attribuut `type` voor het mediatype van de bron, bv. `video/mp4`. Zonder `type` leidt de speler het type af uit de bestandsextensie in `source`, waardoor een url zonder extensie, zoals een download- of API-link, niet afspeelde. Met `type` geeft de speler de bron door als `<source>`-element met dat type; zonder `type` blijft alles zoals het was.",
+      "example": "```html\n<vl-video-player source=\"https://.../stukken/123/download\" type=\"video/mp4\"></vl-video-player>\n```"
+    }
+  }
+}

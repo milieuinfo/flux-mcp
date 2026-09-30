@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "4880d3d": {
+      "impact": "action",
+      "explanation": "vl-side-navigation houdt de hash in de URL niet langer standaard bij. Tot 2.3.0 zette een klik op een vl-side-navigation-item of vl-side-navigation-toggle de hash van de sectie in de URL (met een history-entry) en scrolde de component bij het laden naar de sectie uit de hash, tenzij je `has-hash-routing` zette; nu doet hij dat enkel met het nieuwe attribuut `hash-sync`, en `has-hash-routing` bestaat niet meer. Een klik scrolt nog altijd naar de sectie, en ook in vl-accessibility, vl-privacy en vl-cookie-statement, die intern een vl-side-navigation zonder `hash-sync` gebruiken, verandert de URL niet meer. `hash-sync` staat niet in de web-types.",
+      "action": "Rekenen je gebruikers op de hash in de URL, bv. om naar een sectie te linken of met de terugknop tussen secties te springen, zet dan `hash-sync` op vl-side-navigation; Components - Block/side-navigation raadt dat enkel aan als je applicatie geen hash routing gebruikt en de hash niet op een andere manier aanpast. Zette je `has-hash-routing`, dan mag je het weghalen: het doet niets meer, en zonder `hash-sync` gedraagt de component zich zoals met dat attribuut.",
+      "example": "```html\n<vl-side-navigation hash-sync aria-label=\"inhoudsopgave\">\n    <vl-side-navigation-h5>Op deze pagina</vl-side-navigation-h5>\n    <vl-side-navigation-content>\n        <vl-side-navigation-group>\n            <vl-side-navigation-item>\n                <a href=\"#content-1-1\">content 1 - 1</a>\n            </vl-side-navigation-item>\n        </vl-side-navigation-group>\n    </vl-side-navigation-content>\n</vl-side-navigation>\n```"
+    }
+  }
+}

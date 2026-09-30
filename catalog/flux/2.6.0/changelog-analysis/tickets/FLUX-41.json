@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "6ac44eb": {
+      "impact": "none",
+      "explanation": "De documentatiepagina's Components - Block/description-data/description-data en Components - Block/document in de Storybook van Flux werken weer. De packages veranderen niet."
+    }
+  }
+}

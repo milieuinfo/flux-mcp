@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "f86b00b": {
+      "impact": "automatic",
+      "explanation": "vl-properties schrijft niet langer de waarschuwing `vl-properties - geen props opgegeven` in de console wanneer de component geen kindelementen heeft, bv. wanneer je de gegevens enkel via de property `props` doorgeeft. Verder verandert de werking niet; de Storybook-pagina Components - Block/properties kreeg een beter voorbeeld."
+    }
+  }
+}

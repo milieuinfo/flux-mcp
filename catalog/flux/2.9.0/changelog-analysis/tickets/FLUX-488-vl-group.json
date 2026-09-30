@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "1c396b0": {
+      "impact": "action",
+      "explanation": "Een `vl-group` centreert zijn items niet meer op de dwarsas: de standaardregel `align-items: center` is geschrapt, zodat de waarde `normal` wordt, wat in flexbox als `stretch` werkt. Items zonder eigen hoogte of breedte worden dus uitgerekt: in een rij worden ze even hoog als het hoogste item, met hun inhoud bovenaan, en in een `vl-group--column` worden ze even breed als de group, waar ze vroeger met hun eigen breedte in het midden stonden. Nieuw zijn de klassen `vl-group--justify-start` voor de hoofdas en `vl-group--align-start`, `vl-group--align-center` en `vl-group--align-end` voor de dwarsas, naast de bestaande `vl-group--justify-center` en `vl-group--justify-end` (Styles/Layout (afnemers)/group). De regel verdwijnt ook in de shadow DOM van Flux-componenten die `.vl-group` gebruiken, zoals vl-modal en vl-upload-progress.",
+      "action": "Kijk de plaatsen na waar je `vl-group` gebruikt: een rij met items van verschillende hoogte, bv. een icoon, knop of link naast tekst of een invoerveld, en een `vl-group--column` zonder `vl-group--stretch-children`. Moeten de items zoals vroeger gecentreerd staan, voeg dan `vl-group--align-center` toe; met `vl-group--align-start` staan ze aan het begin zonder uitgerekt te worden.",
+      "example": "```html\n<div class=\"vl-group vl-group--align-center\">\n    <vl-title type=\"h2\">Mijn aanvragen</vl-title>\n    <vl-button>Nieuwe aanvraag</vl-button>\n</div>\n```"
+    }
+  }
+}

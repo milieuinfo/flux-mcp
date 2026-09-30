@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4ba452d": {
+      "impact": "automatic",
+      "explanation": "De secties in het formulier van vl-search-filter verloren hun scheidingslijn (met de ruimte eronder) en de opmaak van hun `h2` zodra de vl-search-filter zelf in een `<section>` van de pagina stond: de regel die geneste secties uitsluit, keek naar elke `<section>` in het document. Nu geldt die uitzondering enkel voor een sectie binnen een andere sectie van het formulier zelf, zodat de lijn terugkomt."
+    }
+  }
+}

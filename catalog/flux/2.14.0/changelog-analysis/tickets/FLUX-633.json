@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "acc01b9": {
+      "impact": "none",
+      "explanation": "De Storybook-pagina's van de componenten verwijzen niet meer naar de legacy documentatie op webcomponenten.omgeving.vlaanderen.be (de oude Storybook, documentatie en demo's). De packages veranderen niet."
+    }
+  }
+}

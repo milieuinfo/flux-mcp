@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "dc94a7e": {
+      "impact": "action",
+      "explanation": "vl-button negeert nu een klik zolang hij `disabled` of `loading` is: er komt geen `vl-click`, een `toggle` wisselt niet, een knop met `type=\"submit\"` of `\"reset\"` verstuurt of wist het formulier niet, een `cta-link` navigeert niet, en een `click`-listener op de vl-button zelf of hoger wordt niet aangeroepen. De knop zet nu `aria-disabled` en `aria-busy`, een `toggle`-knop meldt zijn toestand met `aria-pressed=\"true\"` of `\"false\"`, en tijdens `loading` komt ' (Wordt geladen...)' achter het `label` in het `aria-label`; heeft de knop geen `label`, dan hoort een schermlezer tijdens het laden enkel '(Wordt geladen...)' in plaats van de tekst van de knop. Visueel is de tekst van een knop met `loading` nu grijs, de kleur van een uitgeschakelde actie, in plaats van wit. Code of een test die tijdens `loading` op de knop klikt of hem op zijn naam zoekt, werkt daardoor anders.",
+      "action": "Gebruik je `loading` op een knop zonder `label`, geef hem dan een `label` met de tekst van de knop, bv. `label=\"Opslaan\"`: dan hoort een schermlezer tijdens het laden 'Opslaan (Wordt geladen...)' in plaats van enkel '(Wordt geladen...)'. Rekent je code of een test erop dat een klik op een knop met `loading` een `vl-click` of `click` geeft of het formulier verstuurt, haal dan eerst `loading` weg; zoekt een test de knop tijdens het laden op zijn naam, pas die naam dan aan."
+    }
+  }
+}

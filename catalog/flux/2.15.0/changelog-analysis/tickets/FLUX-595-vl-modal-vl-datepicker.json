@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "d5d7c1e": {
+      "impact": "automatic",
+      "explanation": "Een gecentreerde vl-modal (niet `size=\"full-screen\"`, `position=\"left\"` of `position=\"right\"`) wordt nu gecentreerd met `inset: 0` en `margin: auto` in plaats van met een CSS-`transform`, met een maximale hoogte van 85vh. Zo verstoort de modal geen elementen met `position: fixed` of CSS Anchor Positioning meer, zoals een vl-datepicker met `anchor-positioning`. De modal blijft gecentreerd. Verplaats je de modal zelf via `custom-css`, bv. met `top` of `transform` op `.vl-modal-dialog`, kijk dan na of dat nog werkt."
+    },
+    "69fc071": {
+      "impact": "opt-in",
+      "explanation": "vl-datepicker krijgt het attribuut `anchor-positioning`: de kalender opent dan in de top-layer van de browser (Popover API en CSS Anchor Positioning), zodat een ouder met `transform`, `overflow` of `sticky`, zoals een vl-modal, hem niet meer verkeerd plaatst of afknipt; `position` speelt dan niet mee en `static` gaat voor. Het vraagt Chrome/Edge 125+ of Safari 26+; andere browsers, zoals Firefox, vallen stil terug op de gewone positionering. Zonder het attribuut opent de kalender nu ook op de juiste plaats wanneer de pagina gescrold is. Volgens Planning/Van v2 naar v3 - beschikbaar wordt dit in v3 het standaardgedrag; test het attribuut grondig als je app steunt op de DOM-positie of de stapelvolgorde van de kalender.",
+      "example": "```html\n<vl-modal title=\"Afspraak\">\n    <span slot=\"content\">\n        <vl-datepicker label=\"Kies een datum\" anchor-positioning></vl-datepicker>\n    </span>\n</vl-modal>\n```"
+    }
+  }
+}

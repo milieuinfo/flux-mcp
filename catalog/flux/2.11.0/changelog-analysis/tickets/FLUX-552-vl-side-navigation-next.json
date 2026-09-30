@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "64e0056": {
+      "impact": "automatic",
+      "explanation": "vl-side-navigation-next toont zijn inhoudstafel nu ook op grote schermen in `--vl-font-size--small` (1.6rem), zoals al op kleine schermen en met `compact` (dat attribuut staat in de code, maar niet in de web-types van vl-side-navigation-next, zodat een IDE het daar niet voorstelt). In een eigen inhoudstafel, je eigen lijst met `a`- of `vl-link`-elementen in vl-side-navigation-next, krijgen de links dezelfde stijl als de automatisch opgebouwde: niet onderlijnd en met `font-weight: 500`, onderlijnd bij hover, en onderlijnd met de focusrand van Flux bij focus."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "eb06ece": {
+      "impact": "opt-in",
+      "explanation": "vl-info-tile heeft een nieuw attribuut `heading-level` (1 tot 6) voor het niveau van de titel; zonder attribuut of bij een ongeldige waarde blijft het een h3, bij een ongeldige waarde met een waarschuwing in de console. Zonder iets te doen verdwijnen lege onderdelen uit de shadow DOM: de heading zonder slot `title`, een lege subtitel, en de hele header als de slots `badge`, `title`, `title-label` (dat slot staat in de code, maar niet in de web-types), `subtitle` en `menu` leeg zijn, ook wanneer je een icoon zet met `icon`: dat icoon staat in de header en verdwijnt dan mee; de header is ook een `div` in plaats van `<header role=\"presentation\">`. Flux kijkt die slots na wanneer de tegel aan de pagina wordt toegevoegd, dus een titel of subtitel die je pas later in de tegel zet, verschijnt niet meer, net zomin als een badge of menu wanneer de header al weg is, en Components - Block/info-tile raadt af om het slot `subtitle` te gebruiken bij een `toggleable` info-tile. In dezelfde commit kreeg `heading-level` van vl-accordion in de web-types de beschrijving dat standaard h3 gebruikt wordt, maar vl-accordion rendert zonder of met een ongeldige waarde nog altijd geen heading.",
+      "example": "```html\n<vl-info-tile heading-level=\"2\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>\n```"
+    }
+  }
+}

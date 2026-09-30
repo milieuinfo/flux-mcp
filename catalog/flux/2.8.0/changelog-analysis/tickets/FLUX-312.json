@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "af2b45a": {
+      "impact": "automatic",
+      "explanation": "Vooral Storybook veranderde: de pagina's van de componenten kregen badges en een sectie 'Doel', er kwamen overzichtspagina's Bijdragen/Componenten Overzicht en Planning/Componenten Overzicht, en Afnemen/Migratie v2 - Impact en Afnemen/Migratie v2 - FAQ verwijzen nu naar de pagina's onder Styles/Layout (afnemers). Als neveneffect vindt de generator van de web-types de beschrijving van een element niet meer in de nieuwe opmaak van die pagina's: in de web-types van 2.8.0 ontbreekt de beschrijving van alle 91 elementen die er in 2.7.0 een hadden, bv. vl-accordion, zodat een IDE bij een element enkel nog de link naar Storybook toont. De beschrijvingen van attributen, events en slots blijven, en aan de werking van de componenten verandert niets."
+    }
+  }
+}

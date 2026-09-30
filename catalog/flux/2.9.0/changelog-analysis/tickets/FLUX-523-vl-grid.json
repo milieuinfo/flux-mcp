@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2ad5fe1": {
+      "impact": "automatic",
+      "explanation": "De ruimte tussen de rijen en kolommen van een `vl-grid` is nu vast: `--vl-grid-row-gap` en `--vl-grid-col-gap` zijn `var(--vl-spacing--small)` (1.5rem, 15px bij de standaard lettergrootte van Flux) in plaats van `1vmax`, dat meegroeide met de grootste zijde van het venster. Is die zijde groter dan 1500px, dan wordt de ruimte kleiner, anders groter. Overschrijf je die variabelen zelf, dan verandert er voor jou niets."
+    }
+  }
+}

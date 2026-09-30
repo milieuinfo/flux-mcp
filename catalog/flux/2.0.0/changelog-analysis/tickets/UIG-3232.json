@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "39643f4": {
+      "impact": "action",
+      "explanation": "Het package @domg-wc/elements is geschrapt: geen enkel native element met is=\"vl-…\" bestaat nog, o.a. <button is=\"vl-button\">, <a is=\"vl-link\">, <input is=\"vl-input-field\">, <select is=\"vl-select\"> en is=\"vl-multiselect\", <table is=\"vl-data-table\">, is=\"vl-grid\", is=\"vl-column\", is=\"vl-layout\" en is=\"vl-region\", <h1 is=\"vl-h1\"> tot vl-h6, is=\"vl-icon\", is=\"vl-text\", is=\"vl-side-navigation\" en is=\"vl-form-validation-message\". Zo'n element blijft dan een gewoon HTML-element zonder de styling en het gedrag van Flux. vl-search aanvaardt in zijn input-slot geen <select is=\"vl-select\"> meer, en vl-rich-data werkt in de filter-slot enkel nog met de component vl-search-filter. Afnemen/Migratie v2 - Impact geeft per element de vervanger.",
+      "action": "Vervang elk is=\"vl-…\"-element door zijn v2-component of layout-class volgens Afnemen/Migratie v2 - Impact, bv. <button is=\"vl-button\"> door <vl-button>, <a is=\"vl-link\"> door <vl-link>, <input is=\"vl-input-field\"> door <vl-input-field>, <select is=\"vl-select\"> door <vl-select> of <vl-select-rich>, <table is=\"vl-data-table\"> door <vl-table>, <h2 is=\"vl-h2\"> door <vl-title type=\"h2\"> en is=\"vl-grid\" en is=\"vl-column\" door de classes vl-grid en vl-column. Verwijder @domg-wc/elements uit je package.json.",
+      "example": "```html\n<!-- v1 -->\n<h2 is=\"vl-h2\">Aanvraag</h2>\n<button is=\"vl-button\">Opslaan</button>\n\n<!-- v2 -->\n<vl-title type=\"h2\">Aanvraag</vl-title>\n<vl-button>Opslaan</vl-button>\n```"
+    }
+  }
+}

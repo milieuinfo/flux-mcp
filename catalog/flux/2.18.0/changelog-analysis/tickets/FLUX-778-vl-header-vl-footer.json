@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "1476372": {
+      "impact": "none",
+      "explanation": "De tests van vl-header en vl-footer in Flux zelf gebruiken nu een mock van de widget van het burgerprofiel, in plaats van die bij Digitaal Vlaanderen op te halen. Het nieuwe bestand `burgerprofiel-widget.mock.ts` staat wel in de broncode van @domg-wc/components, maar de build sluit `*.mock.ts` uit en enkel tests importeren het: het zit niet in het gepubliceerde package. vl-header en vl-footer zelf veranderen niet."
+    }
+  }
+}

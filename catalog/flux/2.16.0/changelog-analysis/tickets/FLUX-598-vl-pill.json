@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0c86d6f": {
+      "impact": "none",
+      "explanation": "Enkel de link naar het kleurenpalet in de Storybook-documentatie van vl-pill is verbeterd. De packages veranderen niet."
+    }
+  }
+}

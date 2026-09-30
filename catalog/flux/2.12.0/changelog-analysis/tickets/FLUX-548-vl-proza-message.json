@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "9947ea1": {
+      "impact": "opt-in",
+      "explanation": "`FluxConfig` uit `@domg-wc/common` heeft een nieuwe voorkeur `prozaDomain`. vl-proza-message, vl-proza-message-preloader en de nieuwe directive `vlProza` gebruiken dat domein wanneer je er zelf geen meegeeft; een expliciet `domain` heeft voorrang. Roep `FluxConfig.setPreferences` aan vóór de eerste component geregistreerd wordt: later negeert Flux de voorkeuren, met een fout in de console. Zie Recepten/Configuratie.",
+      "example": "```ts\nimport { FluxConfig } from '@domg-wc/common';\n\nFluxConfig.setPreferences({ prozaDomain: 'mijn-domein' });\n```"
+    }
+  }
+}

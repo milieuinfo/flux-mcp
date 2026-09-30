@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b41c7e6": {
+      "impact": "none",
+      "explanation": "Components - Compliance/accessibility in de Storybook van Flux toont nu naast de standaardstory ook de stories 'vl-accessibility - self evaluated' en 'vl-accessibility - expert evaluated'. De component zelf verandert niet."
+    }
+  }
+}

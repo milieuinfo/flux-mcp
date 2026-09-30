@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "bbf991f": {
+      "impact": "automatic",
+      "explanation": "Enter op het numerieke klavier verstuurt het formulier nu ook vanuit een Flux-formulierveld, zoals de gewone Enter-toets; voordien reageerde enkel de Enter-toets van het hoofdklavier. Dat geldt voor de velden die het formulier al op Enter versturen, zoals `vl-input-field`. Velden die dat niet doen, zoals `vl-textarea` en `vl-select-rich`, blijven het formulier niet versturen."
+    }
+  }
+}

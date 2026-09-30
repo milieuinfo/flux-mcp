@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "3eeace4": {
+      "impact": "none",
+      "explanation": "Flux trekt in zijn eigen repo twee transitieve dependencies op met een override: validator naar 13.15.35 en @babel/runtime naar 7.26.10, na een melding van Trivy. De gepubliceerde packages veranderen niet, en die override werkt niet door in jouw project. validator komt niet mee met de packages, @babel/runtime wel onrechtstreeks: @domg-wc/components hangt via @govflanders/vl-widget-global-header-types en @govflanders/vl-widget-global-footer-types af van @govflanders/vl-widget-shared, dat i18next als peerDependency vraagt, en i18next gebruikt @babel/runtime. Staat in je eigen lock-bestand nog een oudere @babel/runtime, dan trek je die daar zelf op."
+    }
+  }
+}

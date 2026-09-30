@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "faad388": {
+      "impact": "automatic",
+      "explanation": "De waarschuwing over `DEFAULT_CLASSNAMES` rond vl-select-rich is weg: de component haalt de standaard CSS-classes van choices.js nu op via `Choices.defaults.allOptions.classNames` in plaats van via `DEFAULT_CLASSNAMES`. Het bestand van vl-select-rich exporteert daardoor `DEFAULT_CLASSNAMES` en `Choices` niet meer; `@domg-wc/components/form` exporteerde ze nooit, dus enkel een import via een intern pad van het package zou dat merken."
+    }
+  }
+}

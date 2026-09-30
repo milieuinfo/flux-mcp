@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "aecafbc": {
+      "impact": "none",
+      "explanation": "Enkel de README van de Flux-repository wijzigde: een nieuw logo, de naam FLUX in plaats van UIG, en aparte links naar de Storybook-documentatie van v1 en v2. De packages veranderen niet."
+    }
+  }
+}

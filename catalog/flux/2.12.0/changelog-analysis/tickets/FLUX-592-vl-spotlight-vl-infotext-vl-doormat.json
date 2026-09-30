@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "8510a7c": {
+      "impact": "automatic",
+      "explanation": "Bij vl-spotlight, vl-infotext en vl-doormat met `external` staat het icoon voor een externe link nu inline direct na de titel (bij vl-infotext na de tekst), in plaats van los onderaan de component. Bij vl-infotext verschijnt het enkel wanneer ook `href` gezet is. Het icoon blijft `aria-hidden`; het is een visuele wijziging die je meekrijgt bij de upgrade."
+    }
+  }
+}

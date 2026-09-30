@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "edd176f": {
+      "impact": "opt-in",
+      "explanation": "@domg-wc/styles exporteert nu vlLayoutStyles: de CSS van de layout-classes (vl-section, vl-grid, vl-group, vl-margin, vl-padding, vl-separator, vl-spacer, vl-stacked en vl-content-block) en van vlAccessibilityStyles, als lijst van CSSResults. Globale styling dringt niet door in een shadow DOM; met vlLayoutStyles gebruik je deze classes ook in je eigen componenten met een shadow DOM. Recepten/CSS Styling in Storybook 2.0.0 verwijst hiervoor nog naar vlElementsStyle, dat niet meer bestaat.",
+      "example": "```ts\nimport { vlLayoutStyles } from '@domg-wc/styles';\nimport { CSSResult, LitElement } from 'lit';\n\nexport class MijnComponent extends LitElement {\n    static get styles(): CSSResult[] {\n        return [...vlLayoutStyles];\n    }\n}\n```"
+    }
+  }
+}

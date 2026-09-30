@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "1457f5a": {
+      "impact": "opt-in",
+      "explanation": "vl-link heeft een nieuw attribuut `type` voor de variant `button-as-link`: het bepaalt het type van de onderliggende `<button>` (`button`, `submit` of `reset`). De standaardwaarde is `button`, die de component nu ook uitdrukkelijk op de knop zet. Zonder `button-as-link` heeft `type` geen effect.",
+      "example": "```html\n<vl-link button-as-link type=\"reset\">Wissen</vl-link>\n```"
+    }
+  }
+}

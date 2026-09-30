@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4f33961": {
+      "impact": "none",
+      "explanation": "Enkel de eigen testen van Flux (vl-map-legend en vl-header) zijn stabieler gemaakt. De packages veranderen niet."
+    }
+  }
+}

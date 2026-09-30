@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "394dbac": {
+      "impact": "opt-in",
+      "explanation": "vl-info-tile heeft twee nieuwe attributen: `highlight` zet een accent in de primaire kleur aan de bovenkant van de tegel, `highlight-left` aan de linkerkant (zie Components - Block/info-tile). Daarnaast krijgt de ondertitel (slot `subtitle`) van elke info tile voortaan de gedempte tekstkleur.",
+      "example": "```html\n<vl-info-tile highlight-left>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "684b782": {
+      "impact": "none",
+      "explanation": "In 2.9.0 verandert er niets voor je project, al zegt de changelog dat vl-alert een newline in het `message` attribuut ondersteunt. De nieuwe regel `white-space: pre-line` zoekt de klasse `vl-alert-message`, terwijl de boodschap in de component de klasse `vl-alert__message` heeft: een newline in `message` verschijnt dus nog altijd als een spatie. Een latere fix (FLUX-537) corrigeert de selector."
+    }
+  }
+}

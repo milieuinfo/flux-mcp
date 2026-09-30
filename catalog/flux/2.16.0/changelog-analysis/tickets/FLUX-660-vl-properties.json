@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "02abeb7": {
+      "impact": "action",
+      "explanation": "vl-properties en vl-search-result-properties houden hun weergave nu synchroon met hun inhoud: ook tekst- en attribuutwijzigingen in bestaande labels en data verschijnen meteen. De inhoud wordt daarvoor altijd gekopieerd naar de shadow DOM. Het attribuut `no-clone`, dat de inhoud verplaatste in plaats van kopieerde, doet niets meer, geeft een eenmalige waarschuwing in de console en verdwijnt in v3; het staat niet meer in de web-types.",
+      "action": "Gebruik je `no-clone` op vl-properties of vl-search-result-properties, verwijder het. Hing je daarbij met JavaScript event listeners of properties aan elementen in een label of data, test dan of die nog werken: wat getoond wordt is nu ook voor jou een kopie, en een kopie neemt listeners en properties niet over. Zonder `no-clone` werd de inhoud al gekopieerd; daar verandert dat niet."
+    }
+  }
+}

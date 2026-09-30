@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "39ab693": {
+      "impact": "automatic",
+      "explanation": "Een interne hernoeming: vl-tabs en vl-side-navigation hangen hun script nu als `vl.tabs` en `vl.sideNavigation` aan de globale `window.vl`, in plaats van als `vl.tabsNext` en `vl.sideNavigationNext`, en het type `VL` uit `@domg-wc/common` bevat `tabsNext` en `sideNavigationNext` niet meer. Wie de componenten gewoon gebruikt, merkt er niets van; enkel eigen code die `vl.tabsNext` of `vl.sideNavigationNext` rechtstreeks aanspreekt, moet de nieuwe naam gebruiken. Op de Storybook-pagina Recepten/Imports staat de import met side-effects nu zonder `next`, als `@domg-wc/components/block/button`; de knop staat in het package echter onder `@domg-wc/components/atom/button`."
+    }
+  }
+}

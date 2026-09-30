@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "80e47a6": {
+      "impact": "opt-in",
+      "explanation": "vl-link heeft een nieuw attribuut `label` dat het `aria-label` van de link invult, of van de knop bij `button-as-link`; het staat in de web-types. Gebruik het wanneer de zichtbare tekst alleen niet zegt waar de link heen gaat of wat de knop doet, en laat het label met de zichtbare tekst beginnen, zodat spraakbesturing de link vindt ('label in naam' op Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.5 Input modaliteiten). Zonder dat je iets doet, krijgen het icoon van `icon` en het icoon van een externe link nu `aria-hidden=\"true\"`, zodat een schermlezer ze overslaat.",
+      "example": "```html\n<vl-link href=\"/aanvragen/123\" label=\"Bekijk aanvraag 123\">Bekijk</vl-link>\n```"
+    }
+  }
+}

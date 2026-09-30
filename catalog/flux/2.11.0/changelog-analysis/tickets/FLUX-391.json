@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "d94d9de": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie van Flux: de nieuwe pagina Patronen/Typografie/Titel/met annotatie toont hoe je een annotatie naast een titel zet, met een `vl-title` en een `vl-text annotation` in een `div` met de klassen `vl-group vl-group--baseline`. Aan de packages verandert niets."
+    }
+  }
+}

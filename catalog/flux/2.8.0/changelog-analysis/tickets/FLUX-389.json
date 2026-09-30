@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "f0a5ac6": {
+      "impact": "none",
+      "explanation": "Enkel documentatie over bestaande mogelijkheden: Recepten/CSS Styling legt nu uit hoe je eigen CSS toevoegt aan elke instantie van een component via de statische `elementStyles` van de klasse, bv. `VlCascaderComponent`, en op applicatieniveau met `GlobalStyles.getInstance().addCustomCss()` uit @domg-wc/common, dat je aanroept vóór je de componenten importeert; `custom-css` werkt volgens die pagina voor alle componenten behalve die van compliance. Components - Block/cascader/cascader kreeg een sectie 'Gekende beperkingen': eigen CSS en klassen raken de boomstructuur in de shadow DOM van de cascader niet, daarvoor gebruik je custom CSS. Afnemen/Migratie v2 - FAQ legt nu o.a. uit waarom klassen uit Web Universum v3 niet meer beschikbaar zijn en dat `vl-u-visually-hidden` vervangen is door `vl-visually-hidden`. In de packages verdween enkel een ongebruikte import uit vl-cascader."
+    }
+  }
+}

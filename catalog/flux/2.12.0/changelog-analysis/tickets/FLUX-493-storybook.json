@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a21f538": {
+      "impact": "none",
+      "explanation": "In de metadata van de Storybook van Flux zijn de verwijzingen naar Jira-tickets bijgewerkt. Dat is documentatie van Flux zelf; de packages veranderen niet."
+    }
+  }
+}

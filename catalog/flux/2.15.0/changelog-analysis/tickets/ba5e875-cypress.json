@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ba5e875": {
+      "impact": "none",
+      "explanation": "Flux kan zijn eigen Cypress-componenttests nu ook in WebKit draaien. Dat raakt enkel de tests van Flux, niet de gepubliceerde packages."
+    }
+  }
+}

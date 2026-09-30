@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "d66177b": {
+      "impact": "action",
+      "explanation": "vl-form-label gebruikt niet langer de oude stylesheets van govflanders-style maar een eigen stylesheet op basis van de Flux-variabelen. Daarbij is de export `formLabelStyles` uit `@domg-wc/components/form` hernoemd naar `vlFormLabelComponentStyles`; de oude naam bestaat niet meer. Nieuw zijn de CSS-variabelen `--vl-form-label--color`, `--vl-form-label--margin-right` en `--vl-form-label--margin-bottom`.",
+      "action": "Importeer je `formLabelStyles` uit `@domg-wc/components/form`, bv. om de classes `vl-form__label`, `vl-form__label--block` of `vl-form__label--light` in een eigen component te gebruiken, importeer dan `vlFormLabelComponentStyles`. Kijk daarna de lettergrootte in je component na: het nieuwe stylesheet zet `font-size: 62.5%` op `:host`.",
+      "example": "```ts\n// voor\nimport { formLabelStyles } from '@domg-wc/components/form';\n// na\nimport { vlFormLabelComponentStyles } from '@domg-wc/components/form';\n```"
+    }
+  }
+}

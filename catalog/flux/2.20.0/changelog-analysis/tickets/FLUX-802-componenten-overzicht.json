@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "782a93c": {
+      "impact": "none",
+      "explanation": "Op Bijdragen/Componenten Overzicht toont elke component nu zijn WCAG-status: 'reviewed', 'n.v.t.', 'TODO' of het Jira-ticket waarin de toegankelijkheid nog openstaat (bv. FLUX-179), in plaats van een niveau zoals brons of zilver. Enkel documentatie; je project verandert niet."
+    }
+  }
+}

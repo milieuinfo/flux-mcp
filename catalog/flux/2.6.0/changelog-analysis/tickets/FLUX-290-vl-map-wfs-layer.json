@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9a62eb2": {
+      "impact": "automatic",
+      "explanation": "Vraagt vl-map-wfs-layer features op zonder extent, dan staat in de url van het WFS-verzoek weer een lege `bbox=`, zoals vóór 2.5.0. Sinds de opt-in voor Lambert 2008 in 2.5.0 stond daar `bbox=NaN,NaN,NaN,NaN`, een ongeldige bounding box."
+    }
+  }
+}

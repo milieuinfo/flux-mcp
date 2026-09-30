@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "e714edf": {
+      "impact": "action",
+      "explanation": "De technische packages kregen een nieuwe indeling. @domg-wc/common-utilities heet nu @domg-wc/common (basisklassen, decorators, registerWebComponents en de andere utilities), de CSS uit @domg-wc/common-utilities/css staat in het nieuwe package @domg-wc/styles, en het package @domg-wc/elements verdwijnt. Later in deze release verhuisde GlobalStyles nog naar @domg-wc/common (UIG-3270) en vlHeading1 tot vlHeading6, vlIconStyles, vlLinkStyles, vlLinkIconStyles en vlParagraphStyles naar @domg-wc/components/atom (UIG-3281).",
+      "action": "Vervang imports uit @domg-wc/common-utilities door @domg-wc/common, en imports uit @domg-wc/common-utilities/css door @domg-wc/styles; GlobalStyles haal je uit @domg-wc/common, en vlHeading1 tot vlHeading6, vlIconStyles, vlLinkStyles, vlLinkIconStyles en vlParagraphStyles uit @domg-wc/components/atom. Verwijder @domg-wc/common-utilities en @domg-wc/elements uit je package.json; @domg-wc/common en @domg-wc/styles komen mee als dependency van @domg-wc/components.",
+      "example": "```ts\n// v1\nimport { registerWebComponents } from '@domg-wc/common-utilities';\nimport { vlGridStyles } from '@domg-wc/common-utilities/css';\n\n// v2\nimport { registerWebComponents } from '@domg-wc/common';\nimport { vlGridStyles } from '@domg-wc/styles';\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b0d3ae2": {
+      "impact": "automatic",
+      "explanation": "vl-loader zet zijn laadtekst nu in een live region met `role=\"status\"`, zodat een schermlezer ze beleefd aankondigt zonder andere meldingen te onderbreken; de lege `role=\"alert\"` en `aria-busy` op de animatie zijn weg. Een live region wordt enkel voorgelezen wanneer haar inhoud wijzigt, dus een vl-loader die je pas bij het laden in de DOM zet, kondigen de meeste schermlezers niet betrouwbaar aan. Wil je dat wel, volg dan het patroon uit Components - Block/loader: plaats de loader van bij het laden van de pagina verborgen en met een lege `text` in de DOM, en maak hem zichtbaar met een tekst zodra het laden begint."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "cfd208b": {
+      "impact": "opt-in",
+      "explanation": "`vl-autocomplete` heeft een nieuwe property `itemTemplate`: een functie die het volledige item krijgt en een lit `TemplateResult` teruggeeft als inhoud van de suggestie, zodat je meer kan tonen dan `title`, `subtitle` en `value`. Is de property gezet, dan geldt `caption-format` niet meer voor de suggesties; vindt de zoekopdracht niets, dan roept de component de functie niet aan en toont ze de tekst uit `no-matches-text`. De component brengt zelf `vl-text` en de klasse `vl-stacked` mee, en de types `AutocompleteItem` en `AutocompleteItemTemplateFn` komen uit `@domg-wc/components/block`. Zet geen links of knoppen in de template, maar handel acties af via het `selected-autocomplete`-event.",
+      "example": "```ts\nconst itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}, eigenaar: ${item.owner}</vl-text>\n    </div>\n`;\n\nhtml`<vl-autocomplete .items=${items} .itemTemplate=${itemTemplate}></vl-autocomplete>`;\n```"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "4359877": {
+      "impact": "action",
+      "explanation": "De legacy-componenten zijn geschrapt: vl-accordion-list, vl-annotation, vl-checkbox, vl-datepicker, vl-radio en vl-radio-group, vl-steps met vl-step en vl-duration-step, vl-tabs met vl-tabs-pane, vl-tab en vl-tab-section, <textarea is=\"vl-textarea\"> met vl-textarea-modal, <div is=\"vl-toaster\">, vl-toggle-button, vl-tooltip, vl-upload, vl-http-400-message tot vl-http-506-message en de oude vl-select-location uit @domg-wc/map. Voor de meeste neemt de vroegere -next-variant nu dezelfde tagnaam over, met een andere API: attributen zonder data-vl- en, bij de formuliercomponenten, de events vl-change en vl-input. Een bestaande <vl-tabs data-vl-…> of <vl-checkbox data-vl-…> geeft dus geen fout, maar werkt niet meer zoals voorheen. Afnemen/Migratie v2 - Impact geeft per component de vervanger.",
+      "action": "Zoek in je code naar de geschrapte legacy-componenten en vervang ze volgens Afnemen/Migratie v2 - Impact: vl-http-XXX-message door <vl-http-error-message error-code=\"XXX\">, vl-annotation door <vl-text annotation>, vl-toggle-button door <vl-button toggle>, vl-accordion-list door de classes van vl-group, en de oude formulier-, tabs-, steps-, toaster- en upload-componenten door hun v2-versie met de nieuwe attributen en events. Voor vl-tooltip noemt de migratiedocumentatie geen vervanger.",
+      "example": "```html\n<!-- v1 -->\n<vl-http-404-message></vl-http-404-message>\n<vl-annotation data-vl-small>Laatst gewijzigd op 1 juni</vl-annotation>\n\n<!-- v2 -->\n<vl-http-error-message error-code=\"404\"></vl-http-error-message>\n<vl-text annotation small>Laatst gewijzigd op 1 juni</vl-text>\n```"
+    }
+  }
+}

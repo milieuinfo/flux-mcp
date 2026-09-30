@@ -1,0 +1,3 @@
+{
+  "summary": "Flux 2.8.1 is een patch met één fix en vraagt geen actie: vl-popover herkent een klik buiten de popover nu correct wanneer de popover en zijn knop in de shadow DOM van een andere component staan, zodat een klik in de popover of op zijn knop hem daar niet langer sluit. vl-tooltip, en een vl-popover met een `trigger` zonder `click`, sluit nu ook bij een klik erbuiten wanneer hij via hover of focus opende. In een randgeval werkt bestaande code anders: open je een popover vanuit je code met de property `open` nadat hij zichzelf al eens sloot, dan sluit een klik erbuiten hem niet meer. De web-types en de dependencies van de packages zijn ongewijzigd, en er zijn geen commits buiten de changelog."
+}

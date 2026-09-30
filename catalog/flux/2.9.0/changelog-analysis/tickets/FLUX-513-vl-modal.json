@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "ee82d83": {
+      "impact": "action",
+      "explanation": "vl-modal heeft twee nieuwe attributen (Components - Block/modal, hoofdstuk Toegankelijkheid). Met `label` krijgt een modal zonder `title` een `aria-label`; heeft hij geen van beide, dan schrijft hij 'vl-modal: title of label attribuut is verplicht.' in de console. Met `focus-on-modal` krijgt de modal bij het openen zelf de focus, met een zichtbare focusrand, in plaats van zijn eerste focusbare element; gebruik dat enkel als die automatische focus problemen geeft, bv. een popover opent; de modal leest het attribuut wanneer hij op de pagina komt, niet wanneer het later wijzigt. De inhoud van de modal is niet langer via `aria-describedby` aan de dialoog gekoppeld, zodat een schermlezer hem niet meer als beschrijving voorleest bij het openen, en vl-button en vl-link geven een `aria-haspopup` attribuut nu door aan hun `<button>` of `<a>` (het staat niet in de web-types, net als `modal-open` uit het voorbeeld, waarmee een knop de modal met die id opent).",
+      "action": "Geef elke vl-modal zonder `title` een `label` met een beschrijvende naam, anders verschijnt de waarschuwing in de console. Zet op de knop of link die de modal opent `aria-haspopup=\"dialog\"`: Storybook noemt dat verplicht, en Flux voegt het niet zelf toe.",
+      "example": "```html\n<vl-button modal-open=\"modal-focus-on-modal\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-focus-on-modal\" label=\"Modal met focus op modal\" closable focus-on-modal>\n    <span slot=\"content\">Lorem ipsum dolor sit amet.</span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>\n```"
+    }
+  }
+}

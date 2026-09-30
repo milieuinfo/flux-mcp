@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "b62fbe3": {
+      "impact": "none",
+      "explanation": "Enkel de testomgeving van Flux: de Cypress-configuratie onderdrukt de waarschuwing 'Critical dependency' die webpack bij elke run voor `cypress-axe` gaf. Je project merkt er niets van."
+    }
+  }
+}

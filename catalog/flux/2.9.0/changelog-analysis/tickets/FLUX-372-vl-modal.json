@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2daddbe": {
+      "impact": "automatic",
+      "explanation": "Een knop met `modal-open=\"<id van de modal>\"` opent een vl-modal nu ook wanneer beide in de shadow DOM van een andere component staan, bv. in het template van je eigen Lit-component. Vroeger zocht vl-modal die knoppen enkel in het document, zodat hij in een shadow DOM niet opende. Zoals voorheen koppelt de modal de knoppen die er staan op het moment dat hij op de pagina komt. Het attribuut `modal-open` staat in de code van vl-modal, maar niet in de web-types, zodat een IDE het niet voorstelt."
+    }
+  }
+}

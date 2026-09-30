@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "7b9696a": {
+      "impact": "automatic",
+      "explanation": "vl-datepicker gebruikt geen stylesheets van govflanders-style meer maar een eigen stylesheet op basis van de Flux-variabelen; het uitzicht kan licht verschuiven. De kleuren van de kalender zijn nu CSS-variabelen op de component (`--vl-datepicker--*`, bv. `--vl-datepicker--day-selected-bg` en `--vl-datepicker--header-background`), die je kan overschrijven. Je hoeft niets te doen.",
+      "a11y": false
+    }
+  }
+}

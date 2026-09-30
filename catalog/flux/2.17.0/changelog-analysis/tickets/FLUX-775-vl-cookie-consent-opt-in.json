@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "91e7b64": {
+      "impact": "none",
+      "explanation": "Een fout in een test van vl-cookie-consent-opt-in in Flux zelf is opgelost. De component en de gepubliceerde packages veranderen niet."
+    }
+  }
+}

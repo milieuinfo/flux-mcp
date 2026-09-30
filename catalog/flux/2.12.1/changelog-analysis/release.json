@@ -1,0 +1,3 @@
+{
+  "summary": "Flux 2.12.1 is een herstelrelease met één fix: het package `@domg-wc/components` bevat nu de `.raw.css`-bestanden die de in 2.12.0 vernieuwde stylesheets van tien formuliercomponenten (onder meer vl-checkbox, vl-select, vl-datepicker en vl-upload) met `?raw` importeren, en die in 2.12.0 ontbraken. Geen enkele wijziging vraagt actie: de regel voor `?raw`-imports die je bundler al nodig had voor `@domg-wc/styles` (zie Afnemen/Aan De Slag), volstaat ook voor deze bestanden. De web-types en de dependencies zijn ongewijzigd tegenover 2.12.0."
+}

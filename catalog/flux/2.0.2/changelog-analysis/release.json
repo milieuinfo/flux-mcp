@@ -1,0 +1,3 @@
+{
+  "summary": "Flux 2.0.2 is een kleine patch zonder wijzigingen aan attributen, events of dependencies; ze vraagt voor een gewone afnemer geen actie. De oude scripts achter de globale `window.vl` (`legacy-core` en `legacy-breakpoint`) laden nu enkel nog met de componenten die ze gebruiken: vl-accordion, vl-modal, vl-side-navigation, vl-tabs, vl-header en vl-footer; andere componenten op basis van `BaseHTMLElement` laden ze niet meer mee, tenzij ze zelf een van die componenten gebruiken. Daarnaast heten de objecten van vl-tabs en vl-side-navigation op `window.vl` nu `vl.tabs` en `vl.sideNavigation` in plaats van `vl.tabsNext` en `vl.sideNavigationNext`. Enkel wie in eigen code op `window.vl`, de class `js` op `<html>` of die oude namen steunt, moet dat nakijken."
+}

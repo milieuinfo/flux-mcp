@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "68fe04e": {
+      "impact": "none",
+      "explanation": "Components - Form/upload documenteert nu ook de publieke methodes `removeFile(file)`, die één bestand uit de lijst van opgeladen bestanden haalt, en `removeAllFiles()`, die alle geselecteerde bestanden verwijdert. Die methodes bestonden al; de code van vl-upload wijzigde niet."
+    }
+  }
+}

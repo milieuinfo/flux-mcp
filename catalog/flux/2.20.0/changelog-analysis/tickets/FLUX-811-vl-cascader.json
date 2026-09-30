@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "6854ffc": {
+      "impact": "opt-in",
+      "explanation": "Een `vl-link` met de class `vl-cascader-link` in het `label`-slot van een `vl-cascader-item` neemt nu de volle breedte van het item in, met het pijltje rechts uitgelijnd, net als bij het `label`-attribuut. Dat geldt ook voor links met die class in een eigen template of via property binding; zonder de class behoudt een link zijn natuurlijke breedte, zoals in het `content`-slot. De beschrijving van het `label`-slot in de web-types vermeldt de class nu ook. Randgeval: een `vl-link` zonder die class in de template van een `vl-cascader-item` met `template-type` (een attribuut dat in de code en in Storybook staat, maar niet in de web-types) nam voordien de volle breedte in en doet dat nu niet meer.",
+      "example": "```html\n<vl-cascader-item label=\"West-Vlaanderen\">\n    <vl-link slot=\"label\" bold button-as-link icon=\"arrow-right-fat\" icon-placement=\"after\" class=\"vl-cascader-link\">\n        Provincie: West-Vlaanderen\n    </vl-link>\n</vl-cascader-item>\n```"
+    }
+  }
+}

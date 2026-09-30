@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "7bbb00d": {
+      "impact": "none",
+      "explanation": "Een wijziging aan de release-configuratie van Flux zelf: de features in de changelog kregen de opmaak van de fixes. De gepubliceerde packages veranderen niet."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "35dd1e4": {
+      "impact": "none",
+      "explanation": "Enkel het Storybook-voorbeeld van vl-rich-data-table met selecteerbare rijen en de testen wijzigden, de packages niet. In dat voorbeeld toonde de checkbox 'Selecteer alles' sinds 2.15.0 geen streepje meer bij een gedeeltelijke selectie, omdat het `indeterminate` op de interne input van vl-checkbox zette. Nam je dat voorbeeld over, zet dan het attribuut `indeterminate` op vl-checkbox zelf en luister naar `vl-input` in plaats van `vl-change`: `vl-change` vuurt ook wanneer je `checked` zelf zet."
+    },
+    "7713e98": {
+      "impact": "automatic",
+      "explanation": "Sinds 2.15.0 was de knop 'Navigatie' die vl-tabs op een smal scherm toont om de tabs open te klappen, ook op desktop zichtbaar, zonder te werken. Op desktop is hij nu weer verborgen."
+    }
+  }
+}

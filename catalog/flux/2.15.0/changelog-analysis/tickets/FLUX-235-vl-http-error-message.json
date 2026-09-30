@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "79dc204": {
+      "impact": "none",
+      "explanation": "Enkel documentatie: de Storybook-pagina van vl-http-error-message raadt nu aan de component standalone op de foutpagina te plaatsen, binnen een `<main>` en zonder vl-functional-header, vl-content-header, vl-header of vl-footer eromheen, zodat de foutpagina zelf zo weinig mogelijk kan falen. De component verandert niet."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "1998055": {
+      "impact": "automatic",
+      "explanation": "Een vl-map-features-layer met features zonder geometrie (`\"geometry\": null`) gaf een fout bij `auto-extent` of `zoomToExtent()`. De property `boundingBox` geeft voor zo'n lege extent nu `undefined`, en de kaart zoomt dan niet. Je hoeft niets te doen."
+    }
+  }
+}

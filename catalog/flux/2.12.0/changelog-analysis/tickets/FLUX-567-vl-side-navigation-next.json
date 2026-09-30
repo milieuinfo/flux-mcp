@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "1f34af2": {
+      "impact": "opt-in",
+      "explanation": "vl-side-navigation-next en vl-side-navigation-layout-next hebben een nieuw attribuut `child-spacing`: met `medium` krijgen de links op het tweede niveau meer verticale ruimte, zoals bij de klassieke vl-side-navigation; `small` is de standaard. De layout geeft het attribuut door aan de navigatie die hij aanmaakt, en de ruimte stel je bij met de CSS-variabele `--vl-side-navigation--child-spacing-margin` (standaard 1.3rem). In de web-types staat `child-spacing` bij vl-side-navigation-layout-next, maar voor vl-side-navigation-next staat het, net als de andere attributen van die component, verkeerdelijk bij de klassieke vl-side-navigation; een IDE stelt het op vl-side-navigation-next dus niet voor.",
+      "example": "```html\n<vl-side-navigation-layout-next child-spacing=\"medium\">\n    <div slot=\"content\">…</div>\n</vl-side-navigation-layout-next>\n```"
+    }
+  }
+}

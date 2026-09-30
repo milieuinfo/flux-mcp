@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "e38e135": {
+      "impact": "opt-in",
+      "explanation": "Een vl-popover blijft nu binnen het zichtbare scherm: past de inhoud er niet in, dan krijgt ze een verticale scrollbar in plaats van buiten beeld te vallen. Is de inhoud scrollbaar en bevat ze niets focusbaars, dan kan je er met het toetsenbord naartoe tabben om te scrollen. Met het nieuwe attribuut `max-height` (een CSS-lengte, bv. `300px` of `50vh`) leg je zelf een maximumhoogte op; de popover neemt het minimum van die waarde en de beschikbare ruimte.",
+      "example": "```html\n<vl-button id=\"popover-trigger\">Meer acties</vl-button>\n<vl-popover for=\"popover-trigger\" max-height=\"300px\">\n    <p>Veel inhoud die bij meer dan 300px hoogte scrollt.</p>\n</vl-popover>\n```"
+    }
+  }
+}

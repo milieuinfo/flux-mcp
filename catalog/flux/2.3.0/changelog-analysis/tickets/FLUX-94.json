@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "7b42f05": {
+      "impact": "automatic",
+      "explanation": "Kleine verbeteringen aan toegankelijkheid die je meekrijgt: de sluitknop van een vl-alert met `closable` krijgt `aria-controls` en `aria-expanded`, de sluitknop en de link Annuleer van vl-modal krijgen `aria-expanded`, de dialoog van vl-modal verliest zijn overbodige `role=\"dialog\"`, de knoppen die de filter van vl-rich-data tonen of verbergen krijgen `aria-controls` en `aria-expanded`, en de knop van vl-side-sheet krijgt `aria-controls`. Het element waarnaar het attribuut `for` van een vl-popover verwijst, krijgt nu altijd `aria-controls` met zijn eigen id: zette je daar zelf een `aria-controls` op, dan overschrijft vl-popover die. Op Components - Block/toaster raadt een nieuwe sectie Toegankelijkheid af om `fade-out` te gebruiken, omdat gebruikers, zeker met een schermlezer, de melding dan misschien niet op tijd kunnen lezen."
+    }
+  }
+}

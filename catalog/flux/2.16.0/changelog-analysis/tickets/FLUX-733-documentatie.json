@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5377fa3": {
+      "impact": "none",
+      "explanation": "Spelling en grammatica in de Storybook-documentatie en in enkele beschrijvingen in de web-types, bv. van vl-infotext, vl-map-measure-control, vl-upload-progress en vl-rich-data-table, zijn verbeterd. Het gedrag van de componenten verandert niet."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "3767d73": {
+      "impact": "action",
+      "explanation": "vl-popover opende tot nu toe altijd wanneer zijn trigger de focus kreeg, welke waarde `trigger` ook had. Vanaf 2.12.0 opent hij op focus enkel nog als `trigger` de waarde `focus` bevat; een popover met de standaard `click` opent dus pas bij een klik of Enter. Een popover met enkel `trigger=\"hover\"` is daardoor niet meer met het toetsenbord te openen. Verliest de trigger de focus, dan sluit de popover nog altijd; vl-tooltip blijft op hover én focus verschijnen.",
+      "action": "Gebruik je `trigger=\"hover\"` zonder `focus`, voeg dan `focus` toe (`trigger=\"hover focus\"`) of gebruik vl-tooltip, zoals Components - Block/popover aanraadt. Rekenen je testen of je code erop dat een popover opent wanneer de trigger de focus krijgt, pas die dan aan.",
+      "example": "```html\n<vl-button id=\"info-trigger\">Info</vl-button>\n<vl-popover for=\"info-trigger\" trigger=\"hover focus\">Meer uitleg</vl-popover>\n```"
+    }
+  }
+}

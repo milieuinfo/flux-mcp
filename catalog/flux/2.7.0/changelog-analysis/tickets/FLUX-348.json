@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9cafa0b": {
+      "impact": "none",
+      "explanation": "Enkel documentatie: Components - Block/functional-header en Components - Block/tabs/tabs vermelden nu dat een vl-tabs in het slot `sub-header` van vl-functional-header het attribuut `within-functional-header` nodig heeft. Met dat attribuut toont vl-tabs enkel de tabs, niet de inhoud van zijn vl-tabs-pane's, en zonder rand en marge onder de tabs. Dat attribuut bestond al, maar staat niet in de web-types; de packages veranderen niet."
+    }
+  }
+}

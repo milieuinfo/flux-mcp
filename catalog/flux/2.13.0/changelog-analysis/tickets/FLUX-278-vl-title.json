@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "f0e6ad0": {
+      "impact": "opt-in",
+      "explanation": "vl-title heeft een nieuw attribuut `appearance` (`h1` tot `h6`) dat een titel de stijl van een ander niveau geeft dan zijn `type`: zo blijft de rangorde van de headings logisch voor schermlezers en zoekmachines, terwijl de titel er anders uitziet. Gebruik het enkel wanneer de visuele hiërarchie afwijkt van de semantische (zie Components - Atom/title). Zonder `type` rendert vl-title nog altijd een `<h1>`, al tonen de web-types nu een lege string als standaardwaarde van `type`.",
+      "example": "```html\n<vl-title type=\"h2\" appearance=\"h3\">Een h2 met de stijl van een h3</vl-title>\n```"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "ff79fff": {
+      "impact": "action",
+      "explanation": "De validatie van vl-datepicker werkt nu ook met `min-date=\"today\"` en `max-date=\"today\"`: een ingetypte datum vóór of na vandaag maakt het veld ongeldig met `rangeUnderflow` of `rangeOverflow`. Het invoermasker van `type=\"date\"` past een ingetypte datum ook niet langer aan `min-date` of `max-date` aan; het controleert enkel nog het formaat, en een datum buiten de range blijft staan en wordt als ongeldig gemeld. In de kalender blijven dagen buiten de range uitgeschakeld. De waarde van `min-date` en `max-date` volgt het `format` (standaard `d.m.Y`, bv. `01.01.2019`) of is `today`; de beschrijving in de web-types gaf eerder `01-01-2019` als voorbeeld.",
+      "action": "Gebruik je `min-date` of `max-date` op een vl-datepicker, zeker met `today`: een ingetypte datum buiten de range houdt de submit van het formulier nu tegen. Voorzie voor dat veld een `vl-form-message` met `state=\"rangeUnderflow\"` en een met `state=\"rangeOverflow\"`, zodat de gebruiker ziet waarom.",
+      "example": "```html\n<vl-datepicker id=\"startdatum\" name=\"startdatum\" min-date=\"today\"></vl-datepicker>\n<vl-form-message for=\"startdatum\" state=\"rangeUnderflow\">\n    Kies vandaag of een latere datum.\n</vl-form-message>\n```"
+    }
+  }
+}

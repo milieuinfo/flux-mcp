@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "0e48dcf": {
+      "impact": "action",
+      "explanation": "vl-progress-bar heet nu vl-progress-indicator, en de klasse VlProgressBarComponent heet VlProgressIndicatorComponent (in @domg-wc/components/block). De API blijft gelijk, op de prefix data-vl- na (zie UIG-3230): de attributen active-step, show-labels, focus-on-change en numeric, de property steps en het event vl-click-step. In de web-types staat de property steps zonder naam, dus een IDE stelt ze niet voor. vl-wizard gebruikt intern de nieuwe component; daar verandert niets.",
+      "action": "Vervang <vl-progress-bar> door <vl-progress-indicator> en VlProgressBarComponent door VlProgressIndicatorComponent.",
+      "example": "```html\n<!-- v1 -->\n<vl-progress-bar data-vl-active-step=\"2\" data-vl-numeric></vl-progress-bar>\n\n<!-- v2 -->\n<vl-progress-indicator active-step=\"2\" numeric></vl-progress-indicator>\n```"
+    }
+  }
+}

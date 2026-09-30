@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "f8314c4": {
+      "impact": "opt-in",
+      "explanation": "vl-select kreeg de property `initialOptions` (attribuut `initial-options`): de opties die een reset van het formulier terugzet. vl-select vult ze bij het toevoegen aan de pagina met een kopie van `options`; wil je na een reset een andere lijst of keuze, stel `initialOptions` daarna in. Een reset vervangt `options` nu door een kopie van `initialOptions` en kiest de laatste optie met `selected: true`, of geen; in 2.1.0 paste de reset de array die je zelf aan `options` gaf ter plaatse aan. `initial-options` staat niet in de web-types.",
+      "example": "```js\nconst select = document.querySelector('vl-select');\nselect.initialOptions = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Lier', value: 'lier', selected: true },\n];\n// na een reset van het formulier is Lier gekozen\n```"
+    }
+  }
+}

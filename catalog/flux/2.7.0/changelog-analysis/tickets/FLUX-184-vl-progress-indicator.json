@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "81765cf": {
+      "impact": "action",
+      "explanation": "vl-progress-indicator kreeg een nieuwe opmaak en werking: de stappen staan in een `<nav>`, een te lang label krijgt een ellipsis met de volledige tekst in de `title`, en de stappen ná de actieve stap zijn standaard uitgeschakelde knoppen, zodat een klik erop geen `vl-click-step` meer afvuurt; in 2.6.0 kon je elke stap aanklikken. Twee nieuwe attributen sturen dat (Components - Block/progress-indicator): `enable-future-steps` houdt de latere stappen aanklikbaar, en `static-steps` toont de stappen louter indicatief, zonder `<nav>` en `<button>`; ze staan niet in de web-types, dus een IDE stelt ze niet voor. `focus-on-change` zet de focus nu op de knop van de actieve stap; in 2.6.0 kreeg een niet-focusbaar element de focus en gebeurde er niets. vl-wizard gebruikt vl-progress-indicator zonder `enable-future-steps`, dus ook daar zijn de stappen na de actieve stap uitgeschakeld.",
+      "action": "Laat je gebruikers met `vl-click-step` naar een latere stap springen, zet dan `enable-future-steps` op vl-progress-indicator; in een vl-wizard kan dat niet, want vl-wizard geeft dat attribuut niet door. Gebruik je `focus-on-change`, kijk dan na of de focus bij elke wijziging van de component naar de actieve stap mag springen. Zoekt een test in de shadow DOM naar `.vl-progress-bar__step` of `.vl-progress-bar__bullet`, gebruik dan `.vl-progress-indicator__segment` en `button.vl-progress-indicator__step`.",
+      "example": "```html\n<!-- latere stappen blijven aanklikbaar -->\n<vl-progress-indicator id=\"stappen\" active-step=\"2\" numeric show-labels enable-future-steps></vl-progress-indicator>\n\n<!-- louter indicatief: geen <nav> en geen knoppen -->\n<vl-progress-indicator active-step=\"2\" numeric show-labels static-steps></vl-progress-indicator>\n\n<script type=\"module\">\n    const indicator = document.querySelector('#stappen');\n    indicator.steps = ['Stap 1/3: Aanvraag', 'Stap 2/3: Gegevens', 'Stap 3/3: Bevestigen'];\n    indicator.addEventListener('vl-click-step', (event) => console.log(event.detail.number));\n</script>\n```"
+    }
+  }
+}

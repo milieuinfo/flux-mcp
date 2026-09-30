@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "778158e": {
+      "impact": "action",
+      "explanation": "`vl-header-next` en `vl-footer-next` vuurden hun `ready`-event per vergissing af op `window` in plaats van op het element, waardoor `@ready` in een template en een listener op het element niets ontvingen. Het event komt nu op het element zelf en bubbelt niet; daardoor werken ook de listeners van `vl-functional-header` (de sticky offset onder de header) en `vl-side-navigation` op dit event. Verder stopt `vl-header-next` met werken zodra hij uit de DOM is, en ruimen `vl-header` en `vl-header-next` met `skeleton` hun skeleton weer op wanneer ze verwijderd worden.",
+      "action": "Luister je op `window` naar het `ready`-event van `vl-header-next` of `vl-footer-next`, registreer de listener dan op het element zelf.",
+      "example": "```js\ndocument.querySelector('vl-header-next').addEventListener('ready', () => {\n    // de widget staat in de DOM\n});\n```"
+    }
+  }
+}

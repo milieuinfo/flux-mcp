@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "9ce319f": {
+      "impact": "action",
+      "explanation": "vl-popover-action rendert nu zelf een `<button>` of, met de nieuwe attributen `href`, `target` en `rel`, een `<a>`, met daarop de rol `option`; die attributen staan niet in de web-types. De popover wordt toegankelijker: het trigger-element krijgt `aria-haspopup=\"true\"` en een `aria-controls` dat nu naar de popover wijst (een popover zonder `id` krijgt er automatisch een), een popover zonder `click` in `trigger` krijgt de rol `tooltip`, en een popover blijft open zolang de muis erboven hangt of de focus erin staat, zodat je er met hover of focus naartoe kan. `content-padding` `small` en `medium` zijn kleiner (0,5rem en 1rem in plaats van 1rem en 1,5rem) en de standaard is nu `medium`, visueel dezelfde 1rem als vroeger; de web-types noemen `2rem` als standaard en vermelden nu ook `strategy`, dat sinds 2.4.0 bestaat.",
+      "action": "Zette je zelf een `<button>` of `<a>` in een vl-popover-action, haal die er dan uit, zoals Components - Block/popover vraagt: zet de `click`- en andere handlers op de vl-popover-action zelf, en voor een link de attributen `href`, `target` en `rel`. Anders staat je knop of link in de knop of link die de actie nu zelf rendert.",
+      "example": "```html\n<!-- tot 2.4.0 -->\n<vl-popover-action icon=\"search\"><a href=\"#zoeken\" target=\"_blank\">Zoeken</a></vl-popover-action>\n<vl-popover-action icon=\"bell\"><button @click=${toonRapporten}>Rapportenoverzicht</button></vl-popover-action>\n\n<!-- vanaf 2.5.0 -->\n<vl-popover-action icon=\"search\" href=\"#zoeken\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Zoeken</vl-popover-action>\n<vl-popover-action icon=\"bell\" @click=${toonRapporten}>Rapportenoverzicht</vl-popover-action>\n```"
+    }
+  }
+}

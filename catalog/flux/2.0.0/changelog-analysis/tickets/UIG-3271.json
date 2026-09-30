@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "23398db": {
+      "impact": "action",
+      "explanation": "De componenten laden de JavaScript-bibliotheken van Digitaal Vlaanderen niet meer (@govflanders/vl-ui-core, vl-ui-util, vl-ui-accordion, vl-ui-infotext, vl-ui-progress-bar en vl-ui-code-preview); de code die nog nodig is, zit nu in Flux zelf. Die packages staan dan ook niet bij de dependencies van @domg-wc/components 2.0.0. vl-code-preview is geschrapt; volgens Afnemen/Migratie v2 - Impact werd die enkel in de oude UIG-documentatie gebruikt.",
+      "action": "Gebruik je <vl-code-preview>, verwijder het of vervang het door eigen code. Laad je zelf scripts uit @govflanders/vl-ui-* en rekende je erop dat Flux die packages meebracht, neem ze dan zelf op als dependency."
+    }
+  }
+}

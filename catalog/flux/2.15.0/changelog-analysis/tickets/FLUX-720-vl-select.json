@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "fd09613": {
+      "impact": "action",
+      "explanation": "Wijzigen of vervangen de `<option>`-elementen van een vl-select, dan neemt vl-select de waarde over van de option met `selected`, en zonder zo'n option wordt de waarde nu een lege string. Zo toont een nieuwe set opties zonder selectie, bv. een aanmaak-popup na een editeer-popup, niet meer de vorige keuze. In 2.14.0 bleef de waarde in dat geval staan, ook een waarde die je eerder zelf zette of die de gebruiker koos. Een wijziging van het `value`-attribuut op vl-select zelf, bv. via de form data, zet de waarde niet terug; dat attribuut staat in de code, maar niet in de web-types, zodat een IDE het niet voorstelt.",
+      "action": "Zet je de waarde van een vl-select met `<option>`-elementen via `value` en komen of wijzigen de opties daarna, bv. omdat ze later geladen worden, zet dan `selected` op de option die gekozen moet zijn. Anders is de waarde na die wijziging een lege string.",
+      "example": "```html\n<vl-select id=\"gemeente\" name=\"gemeente\" placeholder=\"Kies een gemeente\">\n    <option value=\"hasselt\">Hasselt</option>\n    <option value=\"turnhout\" selected>Turnhout</option>\n</vl-select>\n```"
+    }
+  }
+}

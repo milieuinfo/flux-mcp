@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "91dea67": {
+      "impact": "none",
+      "explanation": "De voorbeeldapps, de Storybook-stories en de tooling van Flux zelf declareren hun dependencies nu expliciet. De gepubliceerde packages en hun dependencies veranderen niet."
+    }
+  }
+}

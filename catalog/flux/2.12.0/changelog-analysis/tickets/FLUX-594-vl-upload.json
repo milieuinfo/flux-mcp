@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2fde092": {
+      "impact": "automatic",
+      "explanation": "vl-upload gebruikt een nieuwe eigen stylesheet in plaats van de oude; vaste waarden voor wit, de afgeronde hoeken en de overgang zijn vervangen door Flux-variabelen. Nieuw is de CSS-variabele `--vl-upload--transition` op de component. Je hoeft niets te doen."
+    }
+  }
+}

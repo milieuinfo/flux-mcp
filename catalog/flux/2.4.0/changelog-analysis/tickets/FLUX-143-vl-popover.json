@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "daab8e8": {
+      "impact": "action",
+      "explanation": "vl-popover kent een nieuw attribuut `strategy`, de positioneringsstrategie van floating-ui: `absolute` (standaard) of `fixed`; het staat niet in de web-types. Components - Block/popover legt uit dat een popover met `absolute` zich plaatst tegenover de dichtstbijzijnde gepositioneerde ouder, en raadt aan de eerste ouder van de popover `position: relative` te geven. Verder krijgt vl-popover-action-list de rol `listbox` en vl-popover-action de rol `option`, zodat een schermlezer de acties als keuzelijst voorleest en `aria-selected` op een geselecteerde actie geldig is. De inhoud van een popover is nu hoogstens zo breed als het venster (`max-width: 100vw`) en breekt woorden op elk teken af (`word-break: break-all`), zodat een woord aan het einde van een regel in twee kan worden gesplitst.",
+      "action": "Gebruik je vl-popover-action-list, geef hem dan een toegankelijke naam met `aria-label`: een listbox zonder naam meldt axe als fout tegen WCAG 4.1.2 (regel aria-input-field-name).",
+      "example": "```html\n<vl-button id=\"btn-acties\" ghost icon=\"menu\" label=\"acties\"></vl-button>\n<vl-popover for=\"btn-acties\" placement=\"bottom-end\">\n    <vl-popover-action-list aria-label=\"Acties\">\n        <vl-popover-action>Zoeken</vl-popover-action>\n        <vl-popover-action>Rapportenoverzicht</vl-popover-action>\n    </vl-popover-action-list>\n</vl-popover>\n```"
+    }
+  }
+}

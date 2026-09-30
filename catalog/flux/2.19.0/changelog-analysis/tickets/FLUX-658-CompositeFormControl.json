@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8a0bb40": {
+      "impact": "opt-in",
+      "explanation": "De nieuwe abstracte basisklasse `CompositeFormControl` uit `@domg-wc/components/form` bundelt meerdere form-controls tot één samengesteld veld, zoals een coördinaat of een getal met eenheid. Elk kind dient zijn eigen waarde in onder zijn `name`; de composite heeft geen eigen waarde, valideert de velden samen (`required` betekent dat alle velden ingevuld zijn, en een `customValidator` krijgt de waarden per `name`) en draagt de melding, die ze zelf invult als je de `vl-form-message` leeg laat. De component zelf bouw je in je eigen project, onder je eigen tag; Flux levert de basisklasse en de types `CompositeCustomValidator` en `CompositeValues`. Zie Patronen/Formulier/samengesteld veld.",
+      "example": "```ts\nimport { webComponent } from '@domg-wc/common';\nimport { CompositeFormControl } from '@domg-wc/components/form';\nimport { html } from 'lit';\n\n@webComponent('mijn-composite-input')\nexport class MijnCompositeInput extends CompositeFormControl {\n    render() {\n        return html`<fieldset>\n            <legend class=\"vl-u-visually-hidden\">${this.label}</legend>\n            <slot @slotchange=${this.onSlotChange}></slot>\n        </fieldset>`;\n    }\n}\n```\n\n```html\n<form>\n    <mijn-composite-input id=\"coordinaten\" label=\"Coördinaten (lon, lat)\" required>\n        <vl-input-field id=\"lon\" name=\"coordinaten-lon\" label=\"Longitude\" type=\"number\"></vl-input-field>\n        <vl-input-field id=\"lat\" name=\"coordinaten-lat\" label=\"Latitude\" type=\"number\"></vl-input-field>\n    </mijn-composite-input>\n    <vl-form-message for=\"coordinaten\" state=\"valueMissing\"></vl-form-message>\n</form>\n```"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "f2a3414": {
+      "impact": "opt-in",
+      "explanation": "`vl-alert` heeft een nieuw attribuut `banner` voor een melding over de volledige breedte van de pagina: zonder afgeronde hoeken, met de titel en de boodschap na elkaar op dezelfde regel. De component zet zelf een streepje tussen titel en boodschap wanneer er beide zijn (zet het dus niet in de content), gebruikt altijd de `small` opmaak en is niet bedoeld in combinatie met `naked`. Staat de banner al bij het laden op de pagina, geef hem dan `alert-role=\"no-role\"`, zodat een schermlezer de gebruiker er niet mee onderbreekt. Voor iedereen verandert wel dit: elke `vl-alert` met `closable` krijgt rechts 4rem binnenmarge, zodat de eerste tekstregel niet meer onder de sluitknop doorloopt.",
+      "example": "```html\n<vl-alert banner closable alert-role=\"no-role\" size=\"small\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>\n```"
+    }
+  }
+}

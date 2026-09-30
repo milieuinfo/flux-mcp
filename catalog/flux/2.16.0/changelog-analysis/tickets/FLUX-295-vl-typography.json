@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ed87de8": {
+      "impact": "automatic",
+      "explanation": "vl-typography toont wijzigingen aan zijn inhoud weer nadat het element in de DOM verplaatst werd, bv. door een framework dat het loskoppelt en opnieuw toevoegt. Voordien volgde het na zo'n verplaatsing geen wijzigingen meer. Inhoud die wijzigde terwijl het element losgekoppeld was, verschijnt bij het opnieuw toevoegen."
+    }
+  }
+}

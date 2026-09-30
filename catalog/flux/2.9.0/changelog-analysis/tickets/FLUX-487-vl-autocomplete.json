@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "738009a": {
+      "impact": "automatic",
+      "explanation": "De lijst met suggesties van vl-autocomplete krijgt nu `z-index` 1000 in plaats van 3, zodat ze boven andere elementen op de pagina verschijnt. De waarde komt uit de nieuwe CSS-variabele `--vl-z-layer--autocomplete` in de globale stijlen van @domg-wc/styles; overschrijf die als de lijst toch onder of boven een ander element moet komen."
+    }
+  }
+}

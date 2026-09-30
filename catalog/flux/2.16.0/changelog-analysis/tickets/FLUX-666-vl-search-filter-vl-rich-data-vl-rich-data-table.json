@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "10da246": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-voorbeelden van vl-search-filter, vl-rich-data en vl-rich-data-table wijzigden: de knoppen Zoeken en Reset in de footer van het filter staan nu samen in een `<div class=\"vl-group vl-group--wrap\">`, zodat ze niet meer tegen elkaar plakken. De packages veranderen niet; nam je die voorbeelden over, dan kan je dezelfde opbouw gebruiken."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "eb5793f": {
+      "impact": "automatic",
+      "explanation": "vl-modal bundelt de dialog-polyfill niet meer, zo'n 900 regels code die enkel in browsers zonder native `<dialog>` iets deden, zoals Internet Explorer. Je bundel wordt kleiner; attributen, slots, events en de rest van de API blijven gelijk. Een browser zonder native `<dialog>`, zoals Safari vóór 15.4, vangt vl-modal niet meer op."
+    }
+  }
+}

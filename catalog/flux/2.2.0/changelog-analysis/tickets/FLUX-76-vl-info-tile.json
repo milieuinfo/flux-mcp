@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "d38faec": {
+      "impact": "opt-in",
+      "explanation": "vl-info-tile kan nu een icoon of badge tonen in de kop, vóór de titel: het attribuut `icon` neemt de naam van een Flux-icoon (bv. `file-tasks-check`), `icon-as-badge` zet dat icoon in een ronde badge, en het slot `badge` neemt eigen inhoud op, zoals initialen; `icon` en het slot `badge` gebruik je niet samen. Het slot `footer` bestond al en is nu gedocumenteerd op Components - Block/info-tile als plaats voor actieknoppen; wie het al gebruikt, krijgt nu 1,5rem ruimte boven de footer. Geen van deze attributen en slots staat in de web-types, dus een IDE stelt ze niet voor. De badge gebruikt de nieuwe CSS-variabele `--vl-color--mischka-grey`.",
+      "example": "```html\n<vl-info-tile icon=\"file-tasks-check\" icon-as-badge>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n    <div slot=\"footer\">\n        <vl-button icon=\"file-download\">Download</vl-button>\n    </div>\n</vl-info-tile>\n```"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "616cc1c": {
+      "impact": "action",
+      "explanation": "vl-share-buttons en vl-share-button zijn deprecated en verdwijnen in v3; in v2 blijven ze werken. vl-share-buttons toont elke keer dat hij op de pagina komt een waarschuwing in de console, vl-share-button één keer. Ook de web-types markeren beide elementen als deprecated. Het alternatief is een gewone vl-button per kanaal met `cta-link`, `icon` en een verplicht `label`, in de standaardstijl.",
+      "action": "Gebruik je vl-share-buttons, vervang elke vl-share-button door een vl-button met `cta-link` naar de share-URL van het kanaal, het `icon` van het kanaal en een `label` zoals \"Delen op Facebook\".",
+      "example": "```html\n<vl-button cta-link=\"https://www.facebook.com/sharer/sharer.php?u=…\" icon=\"facebook\" label=\"Delen op Facebook\"></vl-button>\n<vl-button cta-link=\"https://www.linkedin.com/sharing/share-offsite/?url=…\" icon=\"linkedin\" label=\"Delen op LinkedIn\"></vl-button>\n```"
+    }
+  }
+}

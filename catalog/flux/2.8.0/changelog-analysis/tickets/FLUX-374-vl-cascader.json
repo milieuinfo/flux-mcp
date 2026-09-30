@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0b6c0cd": {
+      "impact": "automatic",
+      "explanation": "vl-cascader en vl-cascader-item renderen de templates die je meegeeft (via de property `templates` of met `template-type`, dat wel in de code maar niet in de web-types staat) in hun shadow DOM, waar je eigen CSS niet binnenraakt. Beide passen daar nu de layout-stijlen van @domg-wc/styles toe (`vlLayoutStyles`), zodat klassen als `vl-grid`, `vl-group`, de `vl-padding--…`- en `vl-stacked-…`-klassen en `vl-visually-hidden` in je templates werken; vl-cascader-item kende tot nu enkel `vl-group`, vl-cascader geen enkele. Daarnaast past vl-cascader de stijlen van vl-cascader-item niet meer toe in zijn eigen shadow DOM, waaronder de regel die de knop van een standaarditem over de volle breedte uitrekt: bij items die je via de property `items` meegeeft (in de code en Storybook, niet in de web-types), staat de pijl daardoor direct achter het label in plaats van rechts. Voor andere eigen stijlen legt Recepten/CSS Styling ('Component niveau') uit hoe je CSS toevoegt aan `VlCascaderComponent.elementStyles`."
+    }
+  }
+}

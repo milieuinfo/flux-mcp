@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2373023": {
+      "impact": "automatic",
+      "explanation": "`vl-upload` zet bij een validatiefout nu `aria-invalid=\"true\"` op zijn onderliggende `input type=\"file\"`, zoals de andere formuliervelden. Een schermlezer merkt dat niet: Dropzone verbergt die input met `visibility: hidden`, en op de upload-knop, het enige focusbare element, laat de browser `aria-invalid` vallen. De fout bereikt een schermlezer dus enkel via de foutmelding in `vl-form-message`, die ze in een `role=\"status\"` regio met `aria-live=\"polite\"` voorleest. Die beperking staat beschreven op Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP], met een verwijzing vanaf Components - Form/upload en Patronen/Formulier/blur validatie."
+    }
+  }
+}

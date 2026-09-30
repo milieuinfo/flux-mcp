@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "bbbacb8": {
+      "impact": "automatic",
+      "explanation": "De inhoud van vl-privacy gebruikt voor zijn geneste blokken nu de klasse `vl-stacked` met `vl-stacked-medium` in plaats van geneste `vl-grid`s. Het id `privacy-department` staat nu op de titel 'Het Departement Omgeving en uw privacy' in plaats van op het blok eromheen, zodat die titel ook in de inhoudstafel van de pagina verschijnt, en het vl-document met het privacybeleid onderaan staat niet meer in een kolom van een derde van de breedte. vl-privacy krijgt er geen attribuut bij: je krijgt dit mee zonder iets te doen."
+    },
+    "6ff59e3": {
+      "impact": "opt-in",
+      "explanation": "@domg-wc/styles heeft een nieuwe CSS-klasse `vl-stacked` (geen element) die van een element een flexbox in kolom maakt. Zo werken `vl-stacked-small`, `vl-stacked-medium` en `vl-stacked-large`, die witruimte tussen de kinderen zetten, ook buiten een `vl-grid` of een andere grid- of flexbox-container (Styles/Layout (afnemers)/stacked).",
+      "example": "```html\n<div class=\"vl-stacked vl-stacked-medium\">\n    <div>Eerste blok</div>\n    <div>Tweede blok</div>\n</div>\n```"
+    }
+  }
+}

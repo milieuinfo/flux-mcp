@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "4f6fe55": {
+      "impact": "automatic",
+      "explanation": "vl-select-location erft van vl-select-rich, maar negeert het nieuwe `search-strategy` attribuut: de adressen komen al gefilterd uit de API, en een tweede filter zou juiste resultaten wegfilteren. De zoekfunctie van vl-select-location werkt dus zoals voorheen; het attribuut staat ook niet in zijn web-types."
+    },
+    "93cbbdf": {
+      "impact": "opt-in",
+      "explanation": "vl-select-rich heeft een nieuw, reactief attribuut `search-strategy` dat bepaalt hoe het zoekveld de opties filtert (Components - Form/select-rich, hoofdstuk Zoek strategieën). `default` behoudt het bestaande fuzzy zoeken van Choices.js (Fuse.js); met `exact-and` toont de lijst enkel opties waarvan het label of de value alle zoekwoorden letterlijk bevat, met `exact-or` elke optie die minstens één zoekwoord bevat. Het werkt enkel wanneer het zoekveld aan staat, met `search` of `multiple`.",
+      "example": "```js\nconst kranten = [\n    { label: 'De Standaard van Gent', value: 'standaard-gent' },\n    { label: 'De Standaard van Berchem', value: 'standaard-berchem' },\n    { label: 'Brussel Antwerpen Gent', value: 'brussel-antwerpen-gent' },\n];\n\n// 'standaard gent' toont enkel 'De Standaard van Gent'\nhtml`<vl-select-rich label=\"Krant\" search search-strategy=\"exact-and\" .options=${kranten}></vl-select-rich>`;\n```"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "7e1a004": {
+      "impact": "action",
+      "explanation": "`setSelectedValues()` op vl-select-rich vuurt nu een `vl-change` af wanneer de selectie wijzigt, zoals Storybook al beschreef voor een programmatische selectie; `vl-input` blijft voorbehouden aan de gebruiker. Is de nieuwe selectie geldig, dan volgt ook een `vl-valid`. `setSelectedValues()` staat in de code, maar niet in de web-types en niet bij de publieke methodes in Storybook. Luister je op `vl-change` en roep je `setSelectedValues()` aan, bv. bij het laden van bestaande gegevens, dan loopt je listener daar voortaan ook.",
+      "action": "Roep je `setSelectedValues()` aan op een vl-select-rich waarop je naar `vl-change` of `vl-valid` luistert, kijk dan na of je listener een programmatische selectie mag verwerken, bv. bij het laden van bestaande gegevens. Wil je enkel reageren op een keuze van de gebruiker, luister dan op `vl-input`."
+    }
+  }
+}

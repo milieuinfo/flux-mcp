@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "af13b22": {
+      "impact": "opt-in",
+      "explanation": "Met het nieuwe attribuut `blur-validation` valideert een form control al wanneer de gebruiker het veld verlaat, en na een eerste fout opnieuw tijdens het typen; submit blijft de laatste controle. Het staat op vl-input-field, vl-input-field-masked, vl-textarea, vl-textarea-rich, vl-datepicker, vl-select, vl-select-rich, vl-select-location, vl-radio-group, vl-upload en vl-checkbox, of je zet `blur-validation` of `data-blur-validation` op de `<form>` voor alle velden erin (zie Patronen/Formulier/blur validatie). Zonder het attribuut blijft de validatie enkel op submit, maar voor iedereen staat de tekst van vl-form-message nu in een `aria-live=\"polite\"`-regio, zodat een schermlezer een melding voorleest zodra ze verschijnt; bij vl-upload krijgt de uploadknop de melding niet meer als `aria-description`. Kondig je foutmeldingen zelf aan, bv. met een eigen live region, kijk dan na of ze niet dubbel voorgelezen worden.",
+      "example": "```html\n<form blur-validation>\n    <vl-input-field id=\"naam\" name=\"naam\" required></vl-input-field>\n    <vl-form-message for=\"naam\" state=\"valueMissing\">Gelieve een naam in te vullen.</vl-form-message>\n</form>\n```"
+    }
+  }
+}

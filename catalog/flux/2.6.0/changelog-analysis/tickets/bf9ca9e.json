@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "bf9ca9e": {
+      "impact": "none",
+      "explanation": "Enkel de build en de CI van Flux zelf: Node 22 voor de ontwikkeling van Flux, nieuwere versies van semantic-release en een geschrapte stap in de pipeline. De packages en hun dependencies veranderen niet."
+    }
+  }
+}

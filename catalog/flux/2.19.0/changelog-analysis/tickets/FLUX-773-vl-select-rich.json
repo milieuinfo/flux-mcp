@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "995a202": {
+      "impact": "opt-in",
+      "explanation": "`vl-select-rich` heeft een nieuwe property `itemTemplate`: een functie die de optie krijgt en een lit `TemplateResult` teruggeeft als inhoud van die optie in de dropdown; het gesloten veld toont na een keuze gewoon het `label`, en de property is niet reactief. Voor een titel met één regel eronder volstaat `labelDescription` op de optie, dat nu ook gedocumenteerd en gestyled is; voor de opmaak in een template brengt de component zelf `vl-text` en de klassen `vl-stacked` en `vl-group` mee. `vl-select-location` erft de property en heeft ze ook in zijn web-types, al hebben zijn opties uit de zoekdienst enkel een `label` en een `value`. In beide componenten wordt het label van een gekozen optie nu geëscaped: HTML in een label verschijnt in het gesloten veld als tekst.",
+      "example": "```ts\n// geen links of knoppen in de template: handel acties af via het vl-change-event\nconst itemTemplate = (option) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${option.label}</vl-text>\n        <vl-text annotation>${option.vestiging}</vl-text>\n        <vl-text annotation>${option.labelDescription}</vl-text>\n    </div>\n`;\n\nhtml`<vl-select-rich .options=${options} .itemTemplate=${itemTemplate}></vl-select-rich>`;\n```",
+      "a11y": false
+    }
+  }
+}

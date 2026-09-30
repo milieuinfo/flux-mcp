@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a14517c": {
+      "impact": "none",
+      "explanation": "Nieuwe documentatie: Patronen/Overlays/Modal vs Side sheet legt met een beslistabel uit wanneer je een modal en wanneer een side-sheet gebruikt, en de pagina's van vl-modal en vl-side-sheet verwijzen ernaar. De vuistregel: een modal voor een geïsoleerde taak en altijd bij verwijderen, een side-sheet wanneer de pagina bruikbaar moet blijven, en nooit een modal boven een modal. De packages veranderen niet."
+    }
+  }
+}

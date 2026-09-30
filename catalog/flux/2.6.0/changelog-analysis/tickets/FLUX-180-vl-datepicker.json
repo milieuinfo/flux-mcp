@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "309e646": {
+      "impact": "action",
+      "explanation": "vl-datepicker controleert nu of de waarde binnen `min-date` en `max-date` valt (types `date`, `date-time` en `range`) of binnen `min-time` en `max-time` (type `time`), ook als de gebruiker de datum typt of je de waarde zelf zet. Valt ze erbuiten, dan is het veld ongeldig met de ValidityState `rangeOverflow` (na het maximum) of `rangeUnderflow` (vóór het minimum) en houdt het formulier het versturen tegen; bij `range` telt de einddatum voor het maximum en de begindatum voor het minimum. Voorheen hield het veld een getypte datum buiten die grenzen niet tegen. De `validationMessage` is dan 'Waarde overschrijdt het toegestane maximum.' of 'Waarde ligt onder het toegestane minimum.', en die bij een fout masker is nu Nederlands: 'Waarde voldoet niet aan het opgegeven patroon.' in plaats van 'Value does not meet the given pattern.'; een vl-form-message zonder eigen tekst toont die melding.",
+      "action": "Gebruik je `min-date`, `max-date`, `min-time` of `max-time` in een formulier, voeg dan een vl-form-message toe met `state=\"rangeOverflow\"` en een met `state=\"rangeUnderflow\"` (of een algemene zonder `state`), zodat de gebruiker ziet waarom het versturen niet lukt: anders krijgt het veld enkel de foutstijl. Kijk ook na of een waarde die je vooraf invult binnen de grenzen valt, en pas code of tests aan die op de Engelse tekst van de patroonmelding rekenen.",
+      "example": "```html\n<form>\n    <vl-form-label for=\"datum\">Datum</vl-form-label>\n    <vl-datepicker id=\"datum\" name=\"datum\" label=\"Datum\" format=\"d.m.Y\" min-date=\"08.04.2024\" max-date=\"12.04.2024\"></vl-datepicker>\n    <vl-form-message for=\"datum\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n    <vl-form-message for=\"datum\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    <vl-button type=\"submit\">Versturen</vl-button>\n</form>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "efe406e": {
+      "impact": "automatic",
+      "explanation": "De iconen in vl-pill, vl-tabs, vl-side-navigation, vl-select, vl-select-rich, vl-checkbox en vl-datepicker komen nu uit het gedeelde icoonmechanisme van vl-icon in plaats van uit vaste tekencodes in de CSS. Bij een update van het icoonfont tonen ze zo automatisch het juiste icoon. Visueel verandert er niets en er is niets nieuws om te gebruiken."
+    }
+  }
+}

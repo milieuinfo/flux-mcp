@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "ed327d1": {
+      "impact": "opt-in",
+      "explanation": "vl-step heeft een nieuw attribuut `default-open`: een openklapbare stap (`toggleable`) staat daarmee bij het laden open (Components - Block/steps/step). Zonder `toggleable` doet het niets, en het is niet reactief: het attribuut later zetten of weghalen opent of sluit de stap niet. `default-open` staat in de web-types, de slots `icon`, `title` en `content` uit het voorbeeld enkel in de code.",
+      "example": "```html\n<vl-steps>\n    <vl-step toggleable default-open>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n</vl-steps>\n```"
+    }
+  }
+}

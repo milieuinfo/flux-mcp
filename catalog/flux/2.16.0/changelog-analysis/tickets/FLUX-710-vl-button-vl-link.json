@@ -1,0 +1,14 @@
+{
+  "entries": {
+    "8ea8084": {
+      "impact": "opt-in",
+      "explanation": "vl-button krijgt het attribuut `download`: wijst de `cta-link` naar een bestand, dan downloadt de browser het in plaats van ernaar te navigeren. Een waarde gebruikt hij als voorgestelde bestandsnaam, zonder waarde kiest de browser de naam. Het werkt enkel samen met `cta-link` en enkel voor URLs van hetzelfde domein (en `data:`- of `blob:`-URLs). Maak in de tekst of het `label` duidelijk dat het om een download gaat: een schermlezer kondigt een gewone link aan.",
+      "example": "```html\n<vl-button cta-link=\"/bestanden/verslag.pdf\" download=\"verslag.pdf\">Download verslag.pdf</vl-button>\n```"
+    },
+    "4e71c7a": {
+      "impact": "opt-in",
+      "explanation": "vl-link krijgt het attribuut `download`: wijst de link naar een bestand, dan downloadt de browser het in plaats van ernaar te navigeren. Een waarde gebruikt hij als voorgestelde bestandsnaam, zonder waarde kiest de browser de naam. Het werkt enkel voor URLs van hetzelfde domein (en `data:`- of `blob:`-URLs) en niet samen met `button-as-link`. Maak in de tekst of het `label` duidelijk dat het om een download gaat: een schermlezer kondigt een gewone link aan.",
+      "example": "```html\n<vl-link href=\"/bestanden/verslag.pdf\" download>Download verslag.pdf</vl-link>\n```"
+    }
+  }
+}

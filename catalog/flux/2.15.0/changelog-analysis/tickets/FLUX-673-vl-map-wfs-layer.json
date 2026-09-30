@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "a2811d4": {
+      "impact": "opt-in",
+      "explanation": "vl-map-wfs-layer krijgt het attribuut `cql-filter` om de features server-side te filteren: de laag vraagt dan `cql_filter=BBOX(geometry,extent) AND (filter)` op in plaats van een `bbox`-parameter, en past de filter opnieuw toe wanneer je het attribuut wijzigt. De naam van de geometry-property geef je mee met `geometry-name`; zonder dat attribuut zoekt de laag hem op via `DescribeFeatureType`, en lukt dat niet, dan valt ze met een `console.warn` terug op een gewone `bbox`-request. `cql_filter` is een uitbreiding van GeoServer die niet elke WFS-server kent; zonder `cql-filter` verandert er niets. Let op: een draw-actie met `snapping` gebruikt nu elke vectorlaag die erin staat als snapping-laag, bv. ook een vl-map-features-layer, en niet langer enkel een vl-map-wfs-layer.",
+      "example": "```html\n<vl-map-wfs-layer\n    name=\"Waterlopen\"\n    url=\"https://geoserver.example.be/geoserver/wfs\"\n    layers=\"ns:waterlopen\"\n    geometry-name=\"geom\"\n    cql-filter=\"bekken_naa = 'IJzerbekken'\"\n></vl-map-wfs-layer>\n```"
+    }
+  }
+}

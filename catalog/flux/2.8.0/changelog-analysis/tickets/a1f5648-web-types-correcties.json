@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a1f5648": {
+      "impact": "none",
+      "explanation": "Een fix in het releaseproces van Flux zelf: de release legde de web-types van @domg-wc/components niet meer vast in git, omdat de configuratie nog naar één bestand `components.web-types.json` verwees, terwijl ze intussen per categorie bestaan (atom, block, compliance en form). De packages hadden daar geen last van, want de build genereert de web-types telkens opnieuw voor hij de packages bouwt; voor een afnemer verandert er dus niets. Omdat de kopie in git nu weer bij is, lijken vl-tooltip, `sticky` op vl-functional-header, `static-steps` en `enable-future-steps` op vl-progress-indicator en `within-functional-header` op vl-tabs nieuw in de web-types tegenover 2.7.0, maar ze stonden in 2.7.0 al in de bronnen waaruit de build de web-types genereert."
+    }
+  }
+}

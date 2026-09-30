@@ -1,0 +1,14 @@
+{
+  "entries": {
+    "5a0ff75": {
+      "impact": "action",
+      "explanation": "De CDN-bundel voor toepassingen zonder bundler (de fat-lib) bevat enkel nog de compliance-componenten: vl-header, vl-footer, vl-accessibility, vl-cookie-consent, vl-cookie-statement en vl-privacy. Hij heet nu domg-wc-compliance-2.0.0.min.js; een bundel met alle componenten, zoals domg-wc-x.y.z.min.js in v1, wordt niet meer gepubliceerd. Via npm volstaat @domg-wc/components, en @domg-wc/map voor de kaart: @domg-wc/common en @domg-wc/styles komen mee als dependency. Afnemen/Migratie v2 - FAQ noemt nog domg-wc-2.0.0.min.js, maar Recepten/CDN Bundel - fat-lib en de release gebruiken domg-wc-compliance-2.0.0.min.js.",
+      "action": "Laad je de bundel via de CDN, vervang de URL door https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js. Gebruik je daarnaast andere componenten dan de compliance-componenten, stap dan over op de npm-packages.",
+      "example": "```html\n<script type=\"module\"\n        src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js\"></script>\n```"
+    },
+    "c5ebad8": {
+      "impact": "none",
+      "explanation": "Een aanpassing aan de interne consumer-app van Flux, waarmee het team de afname van de packages en de fat-lib test. De packages veranderen niet."
+    }
+  }
+}

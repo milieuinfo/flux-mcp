@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "45317b1": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-documentatie van Flux verandert: de pagina's Components - Compliance/next/footer en Components - Compliance/next/header hebben een nieuw adres (`components-compliance-next-footer` en `components-compliance-next-header` in plaats van `…-footer-next` en `…-header-next`), en de links ernaar op Planning/Van v2 naar v3 - beschikbaar zijn aangepast. Een bladwijzer naar het oude adres werkt niet meer."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "entries": {
+    "b6b75e0": {
+      "impact": "action",
+      "explanation": "vl-side-navigation-layout, die in 2.10.0 bijkwam, heet nu `vl-side-navigation-layout-next`; de oude tagnaam wordt niet meer geregistreerd, dus een `<vl-side-navigation-layout>` in je HTML is een onbekend element dat geen layout en geen inhoudstafel meer toont. De klasse `VlSideNavigationLayoutComponent`, haar import uit `@domg-wc/components/block/next` en haar attributen blijven gelijk. vl-accessibility, vl-cookie-statement en vl-privacy gebruiken de nieuwe naam al zelf; in Storybook heet de pagina van vl-side-navigation-next nu Components - Block/next/side-navigation.",
+      "action": "Gebruik je `<vl-side-navigation-layout>`, vervang de tag dan door `<vl-side-navigation-layout-next>`, ook in CSS-selectors, `querySelector`- of `closest`-aanroepen en tests.",
+      "example": "```html\n<vl-side-navigation-layout-next>\n    <div slot=\"content\">\n        <!-- Je content met headings en bijhorende id's -->\n    </div>\n</vl-side-navigation-layout-next>\n```"
+    },
+    "071ea59": {
+      "impact": "automatic",
+      "explanation": "De inhoudstafel van vl-side-navigation-next leest de tekst van een titel nu zoals die getoond wordt, ook door shadow DOM en slots heen, en herleidt witruimte tot één spatie. Een titel die je vult met een vl-proza-message binnen een vl-title, verschijnt zo met de tekst van het Proza-bericht in de navigatie; de nieuwe pagina Patronen/Pagina Opbouw/Side Navigation Met Proza Message toont dat met vl-side-navigation-layout-next. Er komt geen attribuut bij: je krijgt dit mee zonder iets te doen."
+    }
+  }
+}

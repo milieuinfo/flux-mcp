@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0ef37cd": {
+      "impact": "automatic",
+      "explanation": "Vraagt de browser van een gebruiker om minder beweging (`prefers-reduced-motion: reduce`, bv. via 'beweging beperken' in het besturingssysteem), dan stoppen nu een aantal animaties: de laadbolletjes van een vl-button met `loading` staan stil in het grijs, vl-loader draait niet meer, de niveaus van vl-cascader en de submenu's van vl-side-navigation verschijnen zonder in te schuiven, en vl-map-loading-indicator toont een pulserende balk over de volledige breedte in plaats van een bewegende. Voor andere gebruikers verandert er niets."
+    }
+  }
+}

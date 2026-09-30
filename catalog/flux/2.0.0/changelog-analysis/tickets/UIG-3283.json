@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "de95121": {
+      "impact": "action",
+      "explanation": "De foutmelding bij een formulierveld, vl-error-message-next in v1, heet in 2.0.0 vl-form-message, en de klasse VlErrorMessageComponent heet VlFormMessageComponent (in @domg-wc/components/form). De attributen blijven gelijk: for, state, show, pre-line en validation-message; in de web-types staat pre-line wel als preLine en ontbreekt validation-message, dus een IDE stelt ze niet correct voor. De formuliercomponenten zoeken bij validatie enkel nog naar een vl-form-message waarvan for gelijk is aan hun id, zodat een oude tag niet meer verschijnt.",
+      "action": "Vervang <vl-error-message-next> door <vl-form-message> met dezelfde attributen, en VlErrorMessageComponent door VlFormMessageComponent uit @domg-wc/components/form. Gebruikte je nog <p is=\"vl-form-validation-message\">, stap dan ook over op <vl-form-message>.",
+      "example": "```html\n<form onsubmit=\"return false;\">\n    <vl-form-label for=\"voornaam\" label=\"Voornaam *\"></vl-form-label>\n    <vl-input-field id=\"voornaam\" name=\"voornaam\" autocomplete=\"given-name\" required></vl-input-field>\n    <vl-form-message for=\"voornaam\" state=\"valueMissing\"> Gelieve een voornaam in te vullen. </vl-form-message>\n</form>\n```"
+    }
+  }
+}

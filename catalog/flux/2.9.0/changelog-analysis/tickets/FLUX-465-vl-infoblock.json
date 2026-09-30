@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "c174309": {
+      "impact": "automatic",
+      "explanation": "Een vl-infoblock zonder `title` attribuut en zonder element in de slot `title` toonde als titel het woord 'tester'. De standaardtitel is nu leeg."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8e5beb5": {
+      "impact": "opt-in",
+      "explanation": "vl-select aanvaardt nu ook opties als gewone HTML: `<option>`-elementen, met `value`, `selected` en `disabled`, en `<optgroup>`-elementen binnen de component, als alternatief voor de `options` property; Components - Form/select beschrijft beide manieren. De component volgt wijzigingen aan die elementen, gebruikt ze bij het laden als `initial-options` voor een reset van het formulier, en negeert ze zodra de `options` property opties bevat; `initial-options` bestond al, maar staat nu ook in de web-types. `options` is voortaan enkel een property: wie opties als JSON in een `options`-attribuut in de HTML zette, wat nooit gedocumenteerd was maar tot nu toe werkte, moet de property of `<option>`-elementen gebruiken.",
+      "example": "```html\n<vl-select id=\"woonplaats\" name=\"woonplaats\" label=\"Kies je woonplaats\" placeholder=\"Kies je woonplaats\">\n    <option value=\"antwerpen\">Antwerpen</option>\n    <option value=\"brussel\" selected>Brussel</option>\n    <option value=\"hasselt\" disabled>Hasselt (niet beschikbaar)</option>\n</vl-select>\n\n<vl-select label=\"geboorteplaats\">\n    <optgroup label=\"België\">\n        <option value=\"hasselt\">Hasselt</option>\n        <option value=\"turnhout\">Turnhout</option>\n    </optgroup>\n    <optgroup label=\"Puerto Rico\">\n        <option value=\"rio-piedras\">Rio Piedras</option>\n    </optgroup>\n</vl-select>\n```"
+    }
+  }
+}

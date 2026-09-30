@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9e267f4": {
+      "impact": "none",
+      "explanation": "Opkuis van de dependencies in de bronrepo van Flux. Voor een afnemer is het enige gevolg dat @domg-wc/components tinymce nu vraagt als gewone versie `6.8.3` in plaats van via de alias `npm:tinymce@6.8.3`: je installeert dezelfde versie van tinymce, en in je project verandert niets."
+    }
+  }
+}

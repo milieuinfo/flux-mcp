@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "6406cc5": {
+      "impact": "none",
+      "explanation": "De voorbeelden op Components - Form/input-group geven de vl-button en het vl-input-field nu een `label`, dat hun aria-label invult, zodat ze een toegankelijke naam hebben. De componenten zelf veranderen niet. Neem je die voorbeelden over, geef dan ook je eigen knoppen en velden in een input-group een naam, zeker een knop met enkel een icoon en een veld zonder vl-form-label."
+    }
+  }
+}

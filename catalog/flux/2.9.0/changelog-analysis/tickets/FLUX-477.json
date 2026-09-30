@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "6bd8b90": {
+      "impact": "opt-in",
+      "explanation": "vl-progress-bar en vl-upload-progress hebben een nieuw attribuut `success` voor een afgeronde voortgang (Components - Block/progress-bar, Components - Block/upload-progress). Een vl-progress-bar krijgt dan de succeskleuren (`--vl-color--background-success` en `--vl-color--background-success-subtle`); vl-upload-progress geeft `success` door aan zijn vl-progress-bar en aan de `message`, en toont het icoon `check-circle` in de kleur `--vl-color--success` in plaats van `file`. vl-upload-progress breekt daarnaast een lange bestandsnaam nu af in plaats van hem uit het vak te laten lopen.",
+      "example": "```html\n<vl-progress-bar value=\"100\" success label=\"Aanvraag verzonden\"></vl-progress-bar>\n<vl-upload-progress filename=\"aanvraag.pdf\" filesize=\"1.2 MB\" progress=\"100\" success message=\"Upload geslaagd\"></vl-upload-progress>\n```"
+    }
+  }
+}

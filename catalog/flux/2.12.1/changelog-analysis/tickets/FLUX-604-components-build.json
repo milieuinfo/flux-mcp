@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "3097387": {
+      "impact": "automatic",
+      "explanation": "In 2.12.0 kregen tien formuliercomponenten een eigen stylesheet die een `.raw.css`-bestand met `?raw` importeert: vl-checkbox, vl-datepicker, vl-form-label, vl-form-message, vl-radio, vl-select, vl-select-rich, vl-textarea, vl-textarea-rich en vl-upload. De build van Flux nam die `.raw.css`-bestanden niet op in het package `@domg-wc/components`, zodat de bundler ze niet vond in een project dat een van die componenten importeerde, ook onrechtstreeks via `@domg-wc/components/form` of via vl-rich-data en vl-cookie-consent-opt-in. Vanaf 2.12.1 zitten ze in het package; de regel voor `?raw`-imports die je bundler al nodig had voor `@domg-wc/styles` (zie Afnemen/Aan De Slag), volstaat ook hiervoor. De build van `@domg-wc/map` neemt voortaan ook `.css`-bestanden op, maar daar zijn er in deze versie geen."
+    }
+  }
+}

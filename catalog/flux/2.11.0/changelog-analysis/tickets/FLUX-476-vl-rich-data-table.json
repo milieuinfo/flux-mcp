@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2f02b6c": {
+      "impact": "none",
+      "explanation": "Enkel de voorbeeldcode van de story met selecteerbare rijen op Components - Block/rich-data-table verandert: de checkbox 'Selecteer alles' in de kop wordt nu aan- en uitgevinkt met het attribuut `checked` van de vl-checkbox in plaats van met `checked` van zijn interne `input`, en alles (de)selecteren haalt het attribuut `indeterminate` van die vl-checkbox weg. vl-rich-data-table zelf blijft gelijk; nam je die voorbeeldcode over, dan kan je dezelfde wijziging overnemen."
+    }
+  }
+}

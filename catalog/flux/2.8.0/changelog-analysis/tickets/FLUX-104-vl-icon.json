@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "382d114": {
+      "impact": "automatic",
+      "explanation": "De web-types van @domg-wc/components en @domg-wc/map sommen nu de toegelaten waarden op van attributen met een vaste keuzelijst, zodat een IDE ze voorstelt: `icon` van vl-icon (alle iconen) en van vl-alert, `icon-placement` van vl-button, vl-link en vl-map-side-sheet, `type` van vl-alert, vl-datepicker, vl-info-tile, vl-pill en vl-step, `content-padding` van vl-accordion en vl-popover, `placement`, `trigger` en `strategy` van vl-popover, `caption-format` en `group-by` van vl-autocomplete, `target` van vl-document, `margin-bottom` van vl-functional-header, `size` van vl-info-tile en vl-spotlight, `mask` van vl-input-field-masked, `position` van vl-select-rich en vl-select-location, `display-style` van vl-tabs, `evaluation` van vl-accessibility, `placement` van vl-map-legend, en `background-type` en `type` van vl-map-baselayer, vl-map-baselayer-grb, vl-map-baselayer-grb-gray en vl-map-baselayer-grb-ortho. Die lijsten zijn niet overal volledig: vl-popover aanvaardt ook bv. `bottom-start` en `hover focus`, vl-alert elk icoon, en vl-input-field-masked ook een eigen mask (FLUX-367). Het nieuwe TypeScript-type voor de iconen wordt niet geëxporteerd en `icon` is een private property van `VlIconComponent`, dus aan de typering in je eigen code verandert niets. Daarnaast toont vl-icon het icoon `next` nu echt: de CSS-regel ervoor stond onder de klasse `vl-icon-` in plaats van `vl-icon--next`."
+    }
+  }
+}

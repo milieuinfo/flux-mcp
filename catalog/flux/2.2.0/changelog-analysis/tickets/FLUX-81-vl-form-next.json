@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "c7405bf": {
+      "impact": "action",
+      "explanation": "Nieuw in `@domg-wc/components/form` is `setFormData(formElement, data)`, de tegenhanger van `parseFormData()`: het vult de velden van een formulier in vanuit een object in hetzelfde formaat, zowel native velden als de Flux-formuliercomponenten (er is geen component vl-form-next). Daarvoor kreeg vl-select het attribuut `value` om de keuze te wijzigen nadat hij op de pagina staat (bij het toevoegen neemt hij de optie met `selected: true` uit `options`), en vl-select-rich de methode `setSelectedValues()`; het attribuut `value` staat niet in de web-types. `parseFormData()` geeft voor een naam die op meerdere velden staat (behalve native radioknoppen) nu altijd een array, ook als er maar één waarde is; in 2.1.0 kreeg je dan een string. Anders dan de pagina Ontwerp/Form/Form Data zegt, vinkt `null` of `undefined` een checkbox niet uit: geef `false` mee.",
+      "action": "Gebruik je `parseFormData()` op een formulier waar meerdere velden dezelfde naam hebben, bv. een groep vl-checkbox, controleer dan je verwerking: die waarde is nu altijd een array, ook als er maar één veld aangevinkt is.",
+      "example": "```js\nimport { parseFormData, setFormData } from '@domg-wc/components/form';\n\nconst form = document.getElementById('profiel');\n// hetzelfde formaat als parseFormData() teruggeeft\nsetFormData(form, { naam: 'Dehbi', hobbies: ['padel', 'dans'], akkoord: true });\nconst data = parseFormData(form);\n```"
+    }
+  }
+}

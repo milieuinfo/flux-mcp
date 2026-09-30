@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "5c35364": {
+      "impact": "opt-in",
+      "explanation": "Met de class `stacked` op een kolom (of `class: 'stacked'` in `props`) zet vl-properties labels en data ook op een groot scherm onder elkaar; `stacked` vervangt `collapsed`, dat als deprecated nog werkt, en `label-width` heeft er geen effect op (zie Components - Block/properties). De layout werd herschreven: labels en data staan nu rechtstreeks in één grid, zonder de `<div class=\"item\">` die elk paar in de shadow DOM omsloot, en op een klein scherm onder elkaar met 2rem tussen de items. Een `custom-css` op vl-properties met een selector op `.item` werkt daardoor niet meer. De stijlen van vl-search-result-properties en vl-contact-card werden daarop mee aangepast.",
+      "example": "```html\n<vl-properties>\n    <div class=\"stacked\">\n        <vl-property>Woonplaats</vl-property>\n        <vl-property-data>Brussel</vl-property-data>\n        <vl-property>Postcode</vl-property>\n        <vl-property-data>1000</vl-property-data>\n    </div>\n</vl-properties>\n```"
+    }
+  }
+}

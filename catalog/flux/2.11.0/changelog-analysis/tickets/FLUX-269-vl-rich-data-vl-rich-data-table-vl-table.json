@@ -1,0 +1,18 @@
+{
+  "entries": {
+    "79fd238": {
+      "impact": "action",
+      "explanation": "vl-rich-data, en dus ook vl-rich-data-table, wisselt nu het attribuut `filter-closed` bij elke submit van het formulier in de filter, bv. met de knop Zoeken, ook zonder `filter-closable`: de filter verdwijnt na het zoeken, de focus gaat naar de filterknop, en zonder `filter-closable` is er geen knop om de filter terug te openen. Voor toegankelijkheid heten de filterknoppen nu 'Filteren' en tonen ze met `aria-expanded` of de filter open is; openen zet de focus op het eerste element in de filter dat focus kan krijgen, en sluiten, ook met Escape in de filter bij `filter-closable` of `mobile-modal`, zet ze terug op de filterknop. De resultaattekst luidt nu 'We vonden 1 resultaat', 'We vonden N resultaten' (N opgemaakt met `formatNumber` uit @domg-wc/common) of 'We vonden geen resultaten' in plaats van altijd 'We vonden N resultaten', en een verborgen live region leest ze een halve seconde later voor. Verder geeft vl-button een `aria-expanded` op het element nu door aan zijn knop (dat attribuut staat niet in de web-types), en krijgt een vl-table met focus de focusrand van Flux.",
+      "action": "Gebruik je vl-rich-data of vl-rich-data-table met een formulier met submitknop in de filter, test dan of de filter na een submit open blijft; zo niet, zet `filter-closable` zodat de gebruiker hem met de filterknop terug kan openen, of haal `filter-closed` na de submit zelf weg met `removeAttribute('filter-closed')`. Controleren je tests de resultaattekst, bv. 'We vonden 0 resultaten', of het element `#search-results-number`, pas ze dan aan: dat element bestaat niet meer."
+    },
+    "bf8f065": {
+      "impact": "opt-in",
+      "explanation": "vl-rich-data-table heeft twee nieuwe attributen: `caption` toont een zichtbare titel boven de tabel, en `label` geeft de tabel een `aria-label` als er geen `caption` is; een tabel zonder beide krijgt geen waarschuwing, want die controle loopt enkel wanneer een van beide wijzigt. Zonder iets te doen zijn sorteerbare kolomkoppen nu een `button` in plaats van een `a` zonder `href`, zodat je ze met het toetsenbord bedient, krijgt de gesorteerde kolom `aria-sort` (`ascending` of `descending`), en meldt een verborgen live region de sortering, bv. 'Gesorteerd op Naam oplopend'. Het bestaande attribuut `multi-sort`, om op meerdere kolommen te sorteren, staat nu ook in de web-types; de attributen `name`, `label`, `selector` en `sortable` van vl-rich-data-field in het voorbeeld staan wel in de code en op Components - Block/rich-data-table, maar niet in de web-types.",
+      "example": "```html\n<vl-rich-data-table caption=\"Sorteerbare tabel\">\n    <vl-rich-data-field name=\"id\" label=\"ID\" selector=\"id\" sortable></vl-rich-data-field>\n    <vl-rich-data-field name=\"name\" label=\"Naam\" selector=\"name\" sortable></vl-rich-data-field>\n</vl-rich-data-table>\n```"
+    },
+    "07647bb": {
+      "impact": "automatic",
+      "explanation": "In een vl-table met uitklapbare rijen (rijen met `data-details-id`) heeft de knop die een rij openklapt nu als naam 'Klap deze rij open', in plaats van het Engelse 'toggle details for' gevolgd door het id van de rij. `aria-expanded` staat nu op de vl-button zelf, die het doorgeeft aan zijn knop, en volgt zo betrouwbaar of de rij open is; de naam blijft dezelfde wanneer de rij open is."
+    }
+  }
+}

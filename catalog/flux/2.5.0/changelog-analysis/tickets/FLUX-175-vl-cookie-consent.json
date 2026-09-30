@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "7b5220c": {
+      "impact": "automatic",
+      "explanation": "vl-cookie-consent markeerde de naam van de eigenaar in zijn tekst met een ongeldig HTML-attribuut `owner`, waardoor een schermlezer stopte met voorlezen; intern is dat nu `data-vl-owner`. Het attribuut `owner` op vl-cookie-consent zelf, waarmee je die naam instelt, blijft ongewijzigd; je hoeft niets te doen."
+    }
+  }
+}

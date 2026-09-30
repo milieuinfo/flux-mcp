@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "52c5ff6": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie: in Storybook heet de sectie met uitgewerkte voorbeelden nu Patronen in plaats van Ontwerp, met onder meer Patronen/Formulier, Patronen/Navigatie, Patronen/Pagina Opbouw en Patronen/Kaart. De pagina's kregen daarmee een nieuwe url (bv. `patronen-formulier-demo` in plaats van `ontwerp-form-demo`), dus een bladwijzer naar een oude pagina werkt niet meer; de packages veranderen niet."
+    }
+  }
+}

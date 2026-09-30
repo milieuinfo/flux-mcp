@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "64cc197": {
+      "impact": "opt-in",
+      "explanation": "Nieuw in @domg-wc/components/form: vl-fieldset (`VlFieldsetComponent`), om gerelateerde formulierelementen te groeperen onder een legende (Components - Form/fieldset). De legende geef je mee in de slot `legend`, niet met een `legend` attribuut zoals het voorbeeld en de tekst over toegankelijkheid in Storybook zeggen; zonder die slot schrijft de component 'vl-fieldset: De \"legend\" slot is vereist.' in de console. Met `border` krijgt de fieldset een rand, met `horizontal` staat de legende naast de inhoud (standaard `vl-column--4` breed, aan te passen met `legend-classes`), en een klik op de legende zet de focus op het eerste formulierelement van Flux in de fieldset. In de web-types heten de slots 'legend slot (vereist)' en 'content slot (vereist)', zodat een IDE `slot=\"legend\"` niet voorstelt.",
+      "example": "```html\n<script type=\"module\">\n    import { VlFieldsetComponent } from '@domg-wc/components/form';\n</script>\n\n<vl-fieldset border>\n    <span slot=\"legend\">Volledige naam</span>\n    <div class=\"vl-group vl-group--collapse-xs\">\n        <vl-input-field name=\"voornaam\" id=\"voornaam\" placeholder=\"Voornaam\" label=\"Voornaam\"></vl-input-field>\n        <vl-input-field name=\"naam\" id=\"naam\" placeholder=\"Naam\" label=\"Naam\"></vl-input-field>\n    </div>\n</vl-fieldset>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "efa4f9b": {
+      "impact": "automatic",
+      "explanation": "De blauwe focus-outline rond vl-side-sheet en vl-tab-panel-next verschijnt enkel nog bij navigatie met het toetsenbord (`:focus-visible`), niet meer na een klik of wanneer je het paneel programmatorisch opent of activeert. Toetsenbordgebruikers houden een zichtbare focus, zoals in Flux v1."
+    }
+  }
+}

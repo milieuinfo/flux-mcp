@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "e961cfd": {
+      "impact": "none",
+      "explanation": "De commit wijzigt enkel de package.json van de Flux-repo zelf, vooral tooling, en raakt de code van de packages niet. Bij het publiceren komen daaruit wel nieuwere versies in de dependencies van `@domg-wc/components`: `@floating-ui/dom` 1.6.3 → 1.7.6, `composed-offset-position` 0.0.4 → 0.0.6, `reflect-metadata` 0.2.1 → 0.2.2 en `vidstack` 1.12.9 → 1.12.13 (zie de samenvatting). Het zijn minor- en patchversies, zonder nieuwe major; je package manager installeert ze mee bij de upgrade."
+    },
+    "e81b13b": {
+      "impact": "none",
+      "explanation": "Enkel de ontwikkelomgeving van Flux: de ongebruikte devDependencies `cypress-vite`, `path`, `prop-types` en `@nx/devkit` zijn geschrapt. De packages en hun dependencies veranderen daardoor niet."
+    }
+  }
+}

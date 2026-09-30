@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "78c7c52": {
+      "impact": "automatic",
+      "explanation": "Op een klein scherm verbergt vl-rich-data met een filter voortaan altijd de filterkolom; de gebruiker opent de filter met de knop \"Filter\". Tot 2.12.1 gebeurde dat enkel met `filter-closable`: zonder dat attribuut stond de filter op een klein scherm gewoon zichtbaar in de pagina, naast de knop. Ook wanneer je `filter-closable` weghaalt, blijft de filterkolom op een klein scherm nu verborgen zolang er een filter is. Op een groot scherm verandert er niets."
+    }
+  }
+}

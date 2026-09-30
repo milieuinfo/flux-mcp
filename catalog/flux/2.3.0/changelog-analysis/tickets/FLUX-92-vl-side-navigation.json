@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ddfb461": {
+      "impact": "automatic",
+      "explanation": "Op mobiel werkt vl-side-navigation beter: de knop die de inhoudstafel opent, komt pas vast in beeld wanneer je er voorbij scrolt, in plaats van na 30 pixels scrollen, en wisselt al tijdens het scrollen in plaats van erna; en de side-navigation bouwt zich opnieuw op wanneer het breakpoint verandert, bv. als je het venster groter of kleiner maakt, zodat ze juist tussen de mobiele en de desktopweergave wisselt. Daarvoor verstuurt `@domg-wc/common` nu een event `vl-breakpoint-changed` op `window`, met het nieuwe breakpoint in `detail.breakpoint`; dat event is niet gedocumenteerd. Components - Block/side-navigation legt nu ook uit dat een side-navigation in een ouder met `hidden` niet sticky wordt: toon die ouder dan met de `when()` directive van Lit in plaats van met `hidden`."
+    }
+  }
+}

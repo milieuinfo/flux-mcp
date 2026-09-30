@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "9da0864": {
+      "impact": "action",
+      "explanation": "vl-form-message krijgt het attribuut `variant`: `error` (standaard, rood), `success` (groen) of `annotation` (grijs, altijd zichtbaar, ook zonder `show`); markup zonder `variant` blijft rood. Een vl-form-message met `state=\"valid\"` verschijnt in groen zodra het veld na een eerste validatie geldig is, en verdwijnt weer als het ongeldig wordt; een message met `variant=\"success\"` of `\"annotation\"` wordt nooit als foutmelding getoond. Verbergt Flux een melding, dan haalt het nu ook de `aria-description` van het veld weg. Bestaande code die op `vl-valid` luistert, kan anders werken: vl-radio-group vuurt het nu zelf af met enkel `value` in het detail (zonder `checked`, ook bij een programmatische waarde) en laat dat van zijn vl-radio's niet meer door, en bij vl-upload bevat het detail enkel nog `value`.",
+      "action": "Luister je op `vl-valid` van vl-radio-group of vl-upload, gebruik dan enkel `detail.value`. Bij vl-radio-group komt het event van de vl-radio-group zelf en zonder `checked`, al vermelden de web-types `checked` nog; een listener op een ouder, zoals de `<form>`, krijgt de `vl-valid` van de afzonderlijke vl-radio's niet meer. Heb je bij vl-upload `type` of `file` nodig, haal die dan uit `vl-change`.",
+      "example": "```html\n<vl-input-field id=\"naam\" name=\"naam\" required></vl-input-field>\n<vl-form-message for=\"naam\" state=\"valueMissing\">Gelieve een naam in te vullen.</vl-form-message>\n<vl-form-message for=\"naam\" state=\"valid\">Dit veld is correct ingevuld.</vl-form-message>\n```"
+    }
+  }
+}

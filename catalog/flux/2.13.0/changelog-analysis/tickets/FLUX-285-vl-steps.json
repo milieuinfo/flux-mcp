@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "6417317": {
+      "impact": "action",
+      "explanation": "vl-steps rendert de stappen nu als geordende lijst (`<ol>`), een uitklapbare stap (`toggleable`) meldt met `aria-expanded` of ze open is, en de inhoud van de slots `icon` en `sub-icon` is verborgen voor schermlezers. vl-step kreeg daarvoor drie attributen, die in de web-types staan maar niet in de changelog: `icon-aria-label` en `timeline-aria-label` geven het icoon of de datum een toegankelijke naam, en `heading-level` (1 tot 6, standaard 3) kiest het niveau van de titel. vl-duration-step hoort voortaan in de vl-step waar hij bij hoort, met `slot=\"duration\"`, in plaats van tussen twee vl-step-elementen; een vl-step die op een vl-duration-step volgt, krijgt nu de gewone marge van 5rem bovenaan. Zie Components - Block/steps/steps, onder Tijdlijn en Toegankelijkheid.",
+      "action": "Gebruik je vl-steps met iconen of als tijdlijn, zet dan op elke vl-step `icon-aria-label` of `timeline-aria-label`, bv. met de volledige datum: anders leest een schermlezer het icoon of de datum niet meer voor. Staat een vl-duration-step tussen twee vl-step-elementen, verplaats hem dan in de vl-step ervoor met `slot=\"duration\"`. Past een titel als `<h3>` niet in de rangorde van je pagina, zet dan `heading-level`.",
+      "example": "```html\n<vl-steps timeline>\n    <vl-step timeline-aria-label=\"1 maart, 12 uur tot 14 uur\">\n        <span slot=\"icon\">1</span>\n        <span slot=\"sub-icon\">maa</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"title-annotation\">12u00 - 14u00</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n        <vl-duration-step slot=\"duration\">Lunch: 1 uur</vl-duration-step>\n    </vl-step>\n    <vl-step timeline-aria-label=\"1 maart, 15 uur tot 17 uur\">\n        <span slot=\"icon\">1</span>\n        <span slot=\"sub-icon\">maa</span>\n        <span slot=\"title\">Stap 2: tweede actie</span>\n        <span slot=\"content\">Dit is de tweede stap content.</span>\n    </vl-step>\n</vl-steps>\n```"
+    }
+  }
+}

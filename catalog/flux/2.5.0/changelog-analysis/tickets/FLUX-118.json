@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "9798075": {
+      "impact": "opt-in",
+      "explanation": "De nieuwe pagina Styles/Layout (afnemers)/accessibility documenteert de class `.vl-visually-hidden`: die verbergt inhoud visueel maar laat ze voorlezen door een schermlezer, bv. voor extra context, een label dat enkel auditief nodig is of een skip-link. De class zat al in `vlLayoutStyles`, die Flux globaal registreert zodra je een Flux-component gebruikt; in een eigen component met shadow DOM voeg je `vlLayoutStyles` zelf toe. Het bestand in `@domg-wc/styles` verhuisde van `base/accessibility/vl-accessibility.css` naar `layout/accessibility/vl-accessibility-styles.css`: `vlAccessibilityStyles` importeer je nog altijd uit `@domg-wc/styles`, maar wie het rechtstreeks uit het oude bestand importeerde, moet het pad aanpassen.",
+      "example": "```html\n<div>\n    Deze content is zichtbaar voor de gebruiker.\n    Maar deze content ...<span class=\"vl-visually-hidden\">... is enkel toegankelijk voor screenreaders.</span>\n</div>\n```"
+    }
+  }
+}

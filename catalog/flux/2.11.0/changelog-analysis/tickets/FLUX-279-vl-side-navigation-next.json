@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ad4eb5f": {
+      "impact": "automatic",
+      "explanation": "vl-side-navigation-next houdt de focus nu in de inhoudstafel (WCAG 2.4.3): verdwijnt het item met de focus, doordat een sectie inklapt of het actieve item bij het scrollen wijzigt, dan gaat de focus naar de link van de actieve titel of het dichtstbijzijnde zichtbare item, en verdwijnt de inhoudstafel zelf, bv. bij een kleiner venster, dan naar de knop die ze toont. Een sectie die je zelf openklapte, blijft open wanneer je verder scrolt, en een sectie die je zelf dichtklapte, klapt weer automatisch open wanneer je er later naar terug scrolt. In een eigen inhoudstafel zet Flux geen `aria-expanded` meer op de links, enkel nog op de knoppen die een sectie in- en uitklappen (WCAG 4.1.2). Er komt geen attribuut bij: je krijgt dit mee zonder iets te doen."
+    }
+  }
+}

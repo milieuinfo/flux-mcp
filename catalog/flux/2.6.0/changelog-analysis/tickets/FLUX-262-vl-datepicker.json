@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4fff915": {
+      "impact": "automatic",
+      "explanation": "Een foutmelding bij vl-datepicker, zoals een vl-form-message na het versturen van het formulier, en de foutstijl van het veld verdwenen tot nu toe zodra het invoerveld de focus kreeg of verloor, ook als de waarde niet veranderde. Dat gebeurt niet meer: ze blijven staan tot de component opnieuw bijwerkt, bv. wanneer de gebruiker de waarde aanpast."
+    }
+  }
+}

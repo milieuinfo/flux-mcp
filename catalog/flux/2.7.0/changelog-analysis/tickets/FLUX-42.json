@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "d4ac35a": {
+      "impact": "automatic",
+      "explanation": "Het test-dashboard met ReportPortal is interne tooling van Flux. Met deze commit werden wel de web-types van @domg-wc/components opnieuw gegenereerd: een IDE stelt nu `label` op vl-icon en `size` (standaard `default`) en `position` (standaard `center`) op vl-modal voor, toont `clickable` op vl-icon als deprecated, en geeft `medium` in plaats van `2rem` als standaard voor `content-padding` op vl-popover. Die attributen bestonden al in de code; hun gedrag verandert niet."
+    }
+  }
+}

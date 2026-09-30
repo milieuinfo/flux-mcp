@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "320046b": {
+      "impact": "automatic",
+      "explanation": "Een vl-button met `cta-link` en `external` zet nu `rel=\"noopener noreferrer nofollow\"` op de link die in een nieuw venster opent: de geopende pagina krijgt geen toegang tot jouw venster en geen Referer mee, en zoekmachines volgen de link niet. Rekent de doelsite op de Referer, bv. voor statistieken, dan ziet ze niet meer van waar de bezoeker komt. Het icoon voor een externe link is nu verborgen voor schermlezers. De beschrijving van `label` raadt aan om bij een externe `cta-link` te zeggen waar de link naartoe gaat, bv. \"Ga naar Vlaanderen.be (opent in een nieuw venster)\"."
+    }
+  }
+}

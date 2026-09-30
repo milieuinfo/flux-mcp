@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "9fa28a2": {
+      "impact": "automatic",
+      "explanation": "Een vl-button met `ghost`, `error` en `disabled` houdt bij hover en focus nu de uitgeschakelde stijl (grijze tekst, geen rand of achtergrond) in plaats van rood te kleuren. Een knop met `loading` en `disabled` samen toont de grijze laadanimatie, ook met `error`."
+    }
+  }
+}

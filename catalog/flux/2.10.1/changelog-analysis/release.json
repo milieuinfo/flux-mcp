@@ -1,0 +1,3 @@
+{
+  "summary": "Flux 2.10.1 verandert niets aan de packages en vraagt geen actie: de web-types en de dependencies zijn dezelfde als in 2.10.0. De twee fixes gaan over de documentatie in Storybook van vl-side-navigation-next en vl-side-navigation-layout, waar de tabel met eigenschappen nu uit het standaardvoorbeeld komt, en over de CI/CD van Flux zelf, die de e2e-testen voortaan tegen een gebouwde Storybook draait."
+}

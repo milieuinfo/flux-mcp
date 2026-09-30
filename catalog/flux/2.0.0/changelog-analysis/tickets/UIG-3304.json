@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "2ddf057": {
+      "impact": "action",
+      "explanation": "<button is=\"vl-button-pill\"> (VlButtonPillComponent) is geschrapt; een klikbare pill maak je met <vl-pill clickable>. De web-types van 2.0.0 vermelden vl-button-pill nog, dus een IDE stelt het nog voor. Voor de rest verbetert deze wijziging de Storybook-documentatie en herstelt ze gebroken links.",
+      "action": "Vervang <button is=\"vl-button-pill\"> door <vl-pill clickable>; het type (success, warning of error) zet je met het attribuut type.",
+      "example": "```html\n<!-- v1 -->\n<button is=\"vl-button-pill\" type=\"button\" data-vl-type=\"success\">Optie 1</button>\n\n<!-- v2 -->\n<vl-pill clickable type=\"success\">Optie 1</vl-pill>\n```"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "5a9a5d4": {
+      "impact": "opt-in",
+      "explanation": "Het `open`-attribuut van vl-modal volgt nu de werkelijke staat: toevoegen opent de modal, verwijderen sluit ze, en opent of sluit de modal op een andere manier (de methodes `open()` en `close()`, een knop, escape of de backdrop), dan zet of verwijdert ze het attribuut zelf. Nieuw zijn de events `vl-open` en `vl-close`, die bubbelen en door de shadow DOM gaan. Open je de modal zonder knop of link, zet dan bij het sluiten zelf de focus terug, bv. in een listener op `vl-close`; opent een knop de modal en roep je daarbij ook `open()` aan, dan keert de focus na het sluiten nu wel naar die knop terug. Selecteren je CSS of testen op `vl-modal[open]`, weet dan dat het attribuut nu ook verschijnt bij openen via een knop of `open()`, en verdwijnt na het sluiten.",
+      "example": "```js\nconst modal = document.querySelector('vl-modal');\nmodal.setAttribute('open', ''); // opent de modal\nmodal.addEventListener('vl-close', () => {\n    // de modal is gesloten en het open-attribuut is weg: zet hier de focus terug\n});\n```"
+    }
+  }
+}

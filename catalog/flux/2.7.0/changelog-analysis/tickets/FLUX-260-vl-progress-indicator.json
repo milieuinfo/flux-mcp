@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "c5f2727": {
+      "impact": "automatic",
+      "explanation": "De knop van een stap van vl-progress-indicator haalt zijn naam voor een schermlezer niet langer uit een `aria-label`, maar uit het zichtbare label (met `show-labels`) of anders uit de tooltip van de stap, via `aria-labelledby`. Omdat de stappen in 2.7.0 vl-tooltip gebruiken in plaats van vl-popover, kondigt een schermlezer een stap ook niet meer aan als knop met een pop-up (`aria-haspopup`, `aria-expanded`). Daarvoor kreeg vl-tooltip het attribuut `type`: met `description` (standaard) krijgt de trigger `aria-describedby`, met `label` krijgt hij `aria-labelledby`, behalve als hij al een `aria-label` heeft (Components - Block/tooltip, 'Tooltip als label'); vl-tooltip, en dus ook `type`, staat niet in de web-types."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "bfb79f3": {
+      "impact": "automatic",
+      "explanation": "vl-textarea-rich gebruikt een nieuwe eigen stylesheet op basis van de Flux-variabelen in plaats van de oude; het uitzicht kan licht verschuiven. Nieuw zijn de CSS-variabelen `--vl-textarea-rich--tbtn-hover-bg`, `--vl-textarea-rich--tbtn-enabled-bg`, `--vl-textarea-rich--dialog-label-color` en `--vl-textarea-rich--dialog-shadow` op de component. Je hoeft niets te doen.",
+      "a11y": false
+    }
+  }
+}

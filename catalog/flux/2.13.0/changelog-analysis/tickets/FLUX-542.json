@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "6b50faa": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-site van Flux: die meet het raadplegen van de documentatie nu met Matomo. De packages veranderen niet."
+    }
+  }
+}

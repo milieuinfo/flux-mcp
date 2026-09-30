@@ -1,0 +1,15 @@
+{
+  "entries": {
+    "6a996d2": {
+      "impact": "opt-in",
+      "explanation": "vl-accordion heeft een nieuw attribuut `alt-background`, dat de accordion een alternatieve grijze achtergrond geeft (`--vl-color--background-alt`). Zie Components - Block/accordion, Alternatieve achtergrond.",
+      "example": "```html\n<vl-accordion toggle-text=\"Lees meer over de onderwijsdoelstelling\" alt-background>\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen.</span>\n</vl-accordion>\n```"
+    },
+    "3902ea6": {
+      "impact": "action",
+      "explanation": "`vl-group--separator-column` tekent de horizontale lijnen nu enkel tussen de items: de lijn boven het eerste item en die onder het laatste item verdwijnen, samen met hun witruimte (1.5rem). Met de nieuwe modifiers `vl-group--separator-column-before` en `vl-group--separator-column-after` voeg je ze weer toe. Voor `vl-group--separator-row`, dat al enkel tussen items een lijn tekende, voegen `vl-group--separator-row-before` en `vl-group--separator-row-after` een verticale lijn uiterst links of rechts toe. De modifiers werken enkel samen met hun separator-class; zie Styles/Layout (afnemers)/group.",
+      "action": "Gebruik je `vl-group--separator-column` en wil je de lijn boven het eerste en onder het laatste item behouden, voeg dan `vl-group--separator-column-before` en `vl-group--separator-column-after` toe aan dezelfde container.",
+      "example": "```html\n<div class=\"vl-group vl-group--column vl-group--separator-column vl-group--separator-column-before vl-group--separator-column-after\">\n    <div>Item 1</div>\n    <div>Item 2</div>\n</div>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "cf459eb": {
+      "impact": "none",
+      "explanation": "Enkel de build van Flux zelf verandert: die draait nu op een Bamboo-agent met meer geheugen, zodat hij niet meer zonder geheugen valt. De packages en je project merken er niets van."
+    }
+  }
+}

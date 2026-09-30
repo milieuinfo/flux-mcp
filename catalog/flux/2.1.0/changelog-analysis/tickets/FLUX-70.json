@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "da09c25": {
+      "impact": "automatic",
+      "explanation": "Het project heet voortaan flux-web-components in plaats van uigov-web-components. In de web-types van de packages heet de bibliotheek nu `flux-web-components`, en de links naar de documentatie die een IDE bij een component toont, wijzen naar `https://milieuinfo.github.io/flux-builds/release-v2/<versie>/storybook/` in plaats van `uigov-builds/release/…`. De Storybook-documentatie (onder meer Introductie en Afnemen/Aan De Slag) verwijst naar de nieuwe repositories flux-web-components, flux-assets en flux-builds. Aan componenten, attributen of styles verandert niets."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "breaking-1": {
+      "impact": "action",
+      "explanation": "2.0.0 is de eerste release van Flux v2. De legacy-componenten en alle is=\"…\"-elementen zijn geschrapt, de -next-componenten en -next-layout-classes nemen hun naam over, alle attributen verliezen de prefix data-vl-, en de packages zijn herschikt naar @domg-wc/common, @domg-wc/styles, @domg-wc/components (atom, block, form en compliance) en @domg-wc/map. Volgens Afnemen/Migratie v2 - Aanpak loopt 2.0.0 voor de behouden componenten functioneel gelijk met v1.48.0; Afnemen/Migratie v2 - Impact geeft per component de v1- en de v2-vorm.",
+      "action": "Volg Afnemen/Migratie v2 - Aanpak: vervang in v1 eerst alle legacy-componenten door hun -next-variant en upgrade daarna naar v2. Verwijder dan de suffix -next van tags en layout-classes en de prefix data-vl- van attributen, pas de imports en je package.json aan (@domg-wc/common-utilities, @domg-wc/elements, @domg-wc/form en @domg-wc/sections verdwijnen) en vervang UigConfig door FluxConfig.",
+      "example": "```html\n<!-- v1 -->\n<vl-alert data-vl-type=\"error\" data-vl-title=\"Fout\"></vl-alert>\n<vl-button-next>Opnieuw proberen</vl-button-next>\n\n<!-- v2 -->\n<vl-alert type=\"error\" title=\"Fout\"></vl-alert>\n<vl-button>Opnieuw proberen</vl-button>\n```"
+    }
+  }
+}

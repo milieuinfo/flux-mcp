@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "f8bf848": {
+      "impact": "none",
+      "explanation": "Een tikfout in de Storybook-pagina Bijdragen/Storybook is verbeterd (`stories-args` wordt `stories-arg`). Dat is documentatie voor wie aan Flux zelf bijdraagt; je project verandert er niet door."
+    }
+  }
+}

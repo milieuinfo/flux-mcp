@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "292ee1c": {
+      "impact": "none",
+      "explanation": "Storybook heeft een nieuwe reeks pagina's over toegankelijkheid. Richtlijnen/Toegankelijkheid - Aanpak beschrijft per principe de succescriteria van niveau A en AA van WCAG 2.2, ingedeeld in brons (A) en zilver (AA), elk met een [basis]- en een [+]-deel: elke toepassing moet minstens aan brons [basis] voldoen, en een publieke toepassing evolueert naar zilver [+]. Richtlijnen/Toegankelijkheid - Praktijk geeft richtlijnen voor formulieren, zoals een label voor elke form control en een foutboodschap die zegt hoe je de fout oplost, en gekende beperkingen, zoals dat Safari met standaardinstellingen met Tab geen focus legt op knoppen, checkboxes en radio's. De packages veranderen niet; verder kwam de pagina Planning/Aanpak Verbeteringen 2025 erbij."
+    }
+  }
+}

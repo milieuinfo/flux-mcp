@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "d943d1b": {
+      "impact": "automatic",
+      "explanation": "vl-popover bepaalt nu met het volledige pad van een klik, ook door shadow DOM heen, of die buiten de popover valt. Tot 2.8.0 keek hij enkel naar het element waarop geklikt werd: staan de popover en zijn knop in de shadow DOM van een andere component, bv. in je eigen Lit-component, dan is dat voor de popover die omliggende component, en gold een klik in de popover of op zijn knop als een klik erbuiten, waardoor hij sloot. vl-tooltip, die op vl-popover gebouwd is, en een vl-popover met een `trigger` zonder `click` luisterden tot 2.8.0 niet naar een klik erbuiten; openen ze via hover of focus, dan sluiten ze nu ook bij een klik buiten de tooltip of popover en het element waarbij die hoort. Randgeval: sluit de popover zichzelf, bv. na een klik erbuiten of Escape, dan luistert hij pas weer naar een klik erbuiten wanneer hij opent via focus of hover op zijn knop; open je hem daarna vanuit je code met de property `open`, dan sluit een klik erbuiten hem niet meer en zet je `open` zelf terug op `false`."
+    }
+  }
+}

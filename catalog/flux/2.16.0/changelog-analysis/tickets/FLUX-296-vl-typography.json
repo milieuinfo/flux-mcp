@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "8375722": {
+      "impact": "automatic",
+      "explanation": "Links naar een `id` op dezelfde pagina, bv. `<a href=\"#mijn-sectie\">`, werken nu binnen vl-typography: een klik scrollt naar het doel, ook als dat in de light DOM of in een andere shadow root staat, en zet de focus erop. Zo'n klik past de URL-hash standaard niet aan; wil je dat wel, bv. om de link te kunnen delen, zet dan het nieuwe attribuut `update-url-hash`. Vanaf de eerste vl-typography op de pagina volgt Flux ook de URL-hash: bij een deep-link, back/forward of een andere wijziging van de hash scrollt het naar het element met dat `id` en zet er de focus op. `@domg-wc/common` biedt de onderliggende functies aan (`enableAnchorNavigation`, `handleAnchorClick`, `dispatchNavigateToAnchor` en `navigateToAnchor`), bv. om vanuit een knop buiten vl-typography naar een doel erin te navigeren."
+    }
+  }
+}

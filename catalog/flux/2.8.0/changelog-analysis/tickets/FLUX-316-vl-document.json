@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "189c124": {
+      "impact": "automatic",
+      "explanation": "Om ook op een lichtgrijze achtergrond, zoals een zebra-tabel of een alert, aan de WCAG-contrastverhouding te voldoen, wijzen `--vl-color--text-subtle` en `--vl-color--icon-subtle` in @domg-wc/styles nu naar de nieuwe variabele `--vl-color--grey-800-transparent` (`rgba(0, 20, 46, 0.6)`) in plaats van `--vl-color--grey-800` (#687483) (Styles/Kleurenpalet). Flux gebruikt die kleuren nu voor een vl-text met `annotation`, een vl-paragraph met `introduction`, een vl-icon met `light`, het icoon van een vl-link met `external` en de metadata van vl-document; `light` en het icoon van een externe link hadden tot nu het lichtere `--vl-color--text-light` (#8695a8). Gebruik je die twee variabelen in je eigen CSS, dan krijg je daar ook de licht transparante kleur; geeft de transparantie problemen in een layout, dan raadt Styles/Kleurenpalet aan terug te vallen op `--vl-color--grey-800`."
+    }
+  }
+}

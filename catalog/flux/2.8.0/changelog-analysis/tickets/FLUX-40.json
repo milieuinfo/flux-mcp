@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "d5b4c89": {
+      "impact": "none",
+      "explanation": "Enkel de referentiecode in `libs/integrations` van de bronrepo gebruikt nu de strict mode van TypeScript, behalve die voor de kaart. Die code is geen package; voor een afnemer verandert er niets."
+    }
+  }
+}

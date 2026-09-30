@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "05113c7": {
+      "impact": "action",
+      "explanation": "Attributen op native HTML-elementen in de shadow DOM van enkele componenten krijgen weer een `data-`-prefix, zodat de gerenderde HTML geldig is: bv. `data-modal-close` in vl-modal, `data-pager-page` in vl-pager, `data-sortable` op de kolomkoppen van vl-rich-data-table, `data-accordion` in vl-accordion en `data-wizard` in vl-wizard. Voor je project verandert er niets zichtbaars, maar end-to-end tests die in de shadow DOM op de oude attributen zoeken, vinden die elementen niet meer.",
+      "action": "Zoeken je end-to-end tests in de shadow DOM van deze componenten op een attribuut zonder `data-`, bv. `[pager-page=2]` in vl-pager of `th[sortable]` in vl-rich-data-table, gebruik dan de `data-`-vorm: `[data-pager-page=2]` en `th[data-sortable]`."
+    },
+    "b5c8f83": {
+      "impact": "automatic",
+      "explanation": "Flux ruimt code op die niets deed. vl-alert zet geen attribuut meer op een native `<button>` in het `actions`-slot (in 2.14.0 was dat `narrow`, waar geen stijl aan hing), en vl-autocomplete zet geen `groupindex` meer op zijn opties. Je merkt er niets van."
+    }
+  }
+}

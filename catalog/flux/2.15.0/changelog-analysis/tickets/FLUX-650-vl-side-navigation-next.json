@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "eb340ba": {
+      "impact": "automatic",
+      "explanation": "Zet je een eigen inhoudstafel met links naar `#id` in vl-side-navigation-next, dan scrollt een klik nu ook naar een titel die in de shadow DOM van een andere component staat; voorheen werd die titel niet gevonden. Een id die met een cijfer begint, zoals `#1-inleiding`, geeft geen fout meer. Het attribuut `max-depth` beperkt die zoektocht door de shadow DOM nu ook voor een eigen inhoudstafel; het staat in de code, maar niet in de web-types van vl-side-navigation-next, zodat een IDE het niet voorstelt."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "aa8cfa9": {
+      "impact": "opt-in",
+      "explanation": "vl-doormat heeft een nieuw attribuut `full-height`, dat de doormat de volledige hoogte van zijn container laat vullen, zodat doormats naast elkaar even hoog worden, ook met een verschillende hoeveelheid tekst. Dat werkt enkel als de container een vaste hoogte heeft, bv. in een `vl-grid` met de doormats als directe kinderen met de classes `vl-column`, `vl-column--align-self-stretch` en een breedte (zie Components - Block/doormat, Verticaal vullend).",
+      "example": "```html\n<div class=\"vl-grid\">\n    <vl-doormat full-height href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n        class=\"vl-column vl-column--6 vl-column--align-self-stretch\">\n        <span slot=\"title\">Bouwen, wonen en energie</span>\n        <span slot=\"text\">Weinig tekst.</span>\n    </vl-doormat>\n    <vl-doormat full-height href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n        class=\"vl-column vl-column--6 vl-column--align-self-stretch\">\n        <span slot=\"title\">Grotere doormat</span>\n        <span slot=\"text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>\n    </vl-doormat>\n</div>\n```"
+    }
+  }
+}

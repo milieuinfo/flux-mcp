@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "1413ae5": {
+      "impact": "action",
+      "explanation": "vl-header zet de globale header nu in een `<header>`-element in plaats van een `<div>` (`#header__container`), zodat schermlezers hem als banner landmark herkennen, zoals bij vl-header-next al het geval was. Een pagina mag maar één banner hebben, en elke `<header>` die niet binnen `<main>`, `<section>`, `<article>` of `<aside>` staat, krijgt die rol ook. Dat geldt voor de interne `<header>` van vl-functional-header, vl-content-header en vl-cascader, en daarmee ook voor vl-accessibility, vl-cookie-statement en vl-privacy, die een vl-functional-header bevatten.",
+      "action": "Gebruik je vl-header, plaats vl-functional-header, vl-content-header, vl-cascader, vl-accessibility, vl-cookie-statement, vl-privacy en je eigen `<header>`-elementen binnen `<main>`, `<section>`, `<article>` of `<aside>`, anders heeft de pagina twee banners. Kijk ook na of CSS op `header` of `div#header__container` nu anders uitvalt, want de container is een `<header>` geworden.",
+      "example": "```html\n<vl-header identifier=\"…\"></vl-header>\n<main>\n    <vl-functional-header title-label=\"Departement Omgeving\"></vl-functional-header>\n    …\n</main>\n```"
+    }
+  }
+}

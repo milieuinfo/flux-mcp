@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "7fe3880": {
+      "impact": "opt-in",
+      "explanation": "De kleuren van vl-pill stel je nu in met CSS-variabelen op het element: `--vl-pill--border-color`, `--vl-pill--text-color` en `--vl-pill--background-color`, en voor hover `--vl-pill--border-color-action`, `--vl-pill--text-color-action` en `--vl-pill--background-color-action`; Flux raadt aan ze in een eigen class te zetten en het contrast en de kleurenblindheid te controleren (zie Components - Block/pill). Een pill met `type` success, warning of error zet die variabelen zelf, dus daar gelden je eigen kleuren niet. De stijl werd daarvoor herschreven, met zichtbare verschillen: een checkable pill heeft niet langer standaard blauwe tekst, en `disabled` geeft nu ook closable en checkable pills de kleuren van een uitgeschakelde pill. Een disabled closable pill heeft voortaan een uitgeschakelde sluitknop, zodat hij geen `close` meer vuurt, en elke disabled pill krijgt `aria-disabled=\"true\"`.",
+      "example": "```html\n<style>\n    .paarse-pil {\n        --vl-pill--border-color: var(--vl-color--primary-niveau2-900);\n        --vl-pill--text-color: var(--vl-color--primary-niveau2-100);\n        --vl-pill--background-color: var(--vl-color--primary-niveau2-900);\n        --vl-pill--border-color-action: var(--vl-color--primary-niveau2-1000);\n        --vl-pill--text-color-action: var(--vl-color--primary-niveau2-100);\n        --vl-pill--background-color-action: var(--vl-color--primary-niveau2-1000);\n    }\n</style>\n<vl-pill class=\"paarse-pil\">paarse pil</vl-pill>\n```"
+    }
+  }
+}

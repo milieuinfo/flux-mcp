@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "b26e0df": {
+      "impact": "automatic",
+      "explanation": "vl-select-rich gebruikt niet langer zeven oude stylesheets maar één eigen stylesheet op basis van de Flux-variabelen, met alle toestanden (hover, focus, open, disabled, error, success) en de pills van `multiple`; het uitzicht kan licht verschuiven. Het zoekveld in de dropdown krijgt nu de focusrand van Flux in plaats van de oranje standaardrand van de browser. Nieuw zijn de CSS-variabelen `--vl-select-rich--button-*`, `--vl-select-rich--nav-icon-color`, `--vl-select-rich--placeholder-color`, `--vl-select-rich--item-highlight-bg` en `--vl-select-rich--group-heading-color` op de component.",
+      "a11y": false
+    }
+  }
+}

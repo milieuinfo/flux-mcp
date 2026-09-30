@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a16461c": {
+      "impact": "automatic",
+      "explanation": "vl-cookie-statement en vl-accessibility zetten geen tweede `vl-content-block` meer binnen hun eigen content-block, zodat de inhoud geen dubbele padding en breedtebeperking meer krijgt. De titels van de contactkaarten in vl-accessibility en vl-privacy zijn nu vl-title-elementen in de gewone tekstgrootte, en de adresgegevens eronder kregen wat ruimte. De changelog noemt dit een feature, maar het is een visuele correctie die je bij de upgrade meekrijgt."
+    }
+  }
+}

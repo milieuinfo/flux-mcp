@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "586d598": {
+      "impact": "action",
+      "explanation": "vl-search is deprecated en verdwijnt in v3; in v2 blijft hij werken, maar bij het eerste gebruik toont hij een waarschuwing in de console. Het alternatief is een zoekformulier met de input-group: een vl-input-field en een vl-button in een `<form role=\"search\">`, waarbij `loading` op de knop herhaald klikken blokkeert zolang de zoekopdracht loopt (Patronen/Zoeken/loading state). vl-map-search gebruikt intern vl-search, dus ook die toont de waarschuwing.",
+      "action": "Gebruik je vl-search, vervang hem door een `<form role=\"search\">` met een vl-input-field en een vl-button in een `vl-group--input-group`, en zet `loading` op de knop zolang de zoekopdracht loopt. Komt de waarschuwing enkel van vl-map-search, dan hoef je niets te doen: die component gebruikt vl-search zelf.",
+      "example": "```html\n<form role=\"search\" aria-label=\"Zoeken op deze site\">\n    <div class=\"vl-group vl-group--input-group\">\n        <vl-input-field input-group block type=\"search\" name=\"zoekterm\" label=\"Zoekterm\"></vl-input-field>\n        <vl-button input-group icon=\"search\" type=\"submit\" label=\"Zoeken\" tertiary></vl-button>\n    </div>\n    <p role=\"status\" aria-live=\"polite\"></p>\n</form>\n```\n\n```ts\nbutton.toggleAttribute('loading', true); // zoekopdracht gestart: knop geblokkeerd, aria-busy actief\n// ... resultaat binnen ...\nbutton.toggleAttribute('loading', false);\nstatus.textContent = '8 resultaten geladen.';\n```"
+    }
+  }
+}

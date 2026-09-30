@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "2c3d907": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie in Storybook verandert: op Components - Block/next/side-navigation-next en Components - Block/next/side-navigation-layout haalt de tabel onder 'Eigenschappen' haar attributen nu uit het standaardvoorbeeld van de component in plaats van uit het hele stories-bestand. vl-side-navigation-next en vl-side-navigation-layout zelf en de web-types blijven gelijk, dus je project merkt er niets van."
+    }
+  }
+}

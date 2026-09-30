@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "440d5ce": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-documentatie van Flux: het interne blok FluxAlert toont zijn melding voortaan als inhoud van vl-alert in plaats van via het attribuut `message`. De packages veranderen niet."
+    }
+  }
+}

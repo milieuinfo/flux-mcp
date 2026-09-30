@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "2f7dc51": {
+      "impact": "opt-in",
+      "explanation": "Met de nieuwe `CrossValidationMixin` en het type `ValidatorWithDeps` uit `@domg-wc/components/form` laat je de geldigheid van een veld afhangen van een ander veld in hetzelfde formulier. Je geeft de validator `dependencySelectors` mee en wrapt het form-component in de mixin; het veld hervalideert zodra een van die velden een `vl-change` afvuurt. Patronen/Formulier/cross-validatie toont drie voorbeelden om over te nemen: een afhankelijke waarde, twee velden die moeten overeenkomen en een conditioneel verplicht veld. Voor alle form-componenten komen er ook twee fixes mee: de foutweergave verdwijnt zodra een veld na een eerste validatie weer geldig wordt, en een uitgestelde blur-validatie loopt niet meer na een reset.",
+      "example": "```ts\nimport { webComponent } from '@domg-wc/common';\nimport { CrossValidationMixin, VlInputFieldComponent, type ValidatorWithDeps } from '@domg-wc/components/form';\n\nconst crossFieldValidator: ValidatorWithDeps = {\n    key: 'customError',\n    message: `Bij de strikte procedure moet de code 'ABC-123' zijn.`,\n    dependencySelectors: ['#procedure'],\n    isValid(instance: HTMLElement, value: string): boolean {\n        if (!value) return true;\n\n        const form = (instance as HTMLElement & { form: HTMLFormElement | null }).form;\n        if (!form) return true;\n\n        const procedure = form.querySelector<HTMLElement & { value: string }>('#procedure')?.value;\n        return procedure !== 'strikt' || value === 'ABC-123';\n    },\n};\n\n@webComponent('vl-input-field-with-cross-validator')\nexport class VlInputFieldWithCrossValidatorComponent extends CrossValidationMixin(VlInputFieldComponent) {\n    static override formControlValidators: ValidatorWithDeps[] = [\n        ...VlInputFieldComponent.formControlValidators,\n        crossFieldValidator,\n    ];\n}\n```"
+    }
+  }
+}

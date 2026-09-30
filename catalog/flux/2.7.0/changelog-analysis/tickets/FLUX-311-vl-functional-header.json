@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0c6a638": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-voorbeelden van vl-functional-header en vl-side-navigation werden opgekuist. De packages veranderen niet."
+    }
+  }
+}

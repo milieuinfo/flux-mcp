@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "16eb1c3": {
+      "impact": "opt-in",
+      "explanation": "`@domg-wc/common` exporteert nieuwe helpers om waarden in de nl-BE-notatie te tonen: `formatNumber`, `formatCurrency`, `formatPercentage`, `formatDate`, `formatTime`, `formatReadableDate` en `formatDaysFromNow`; Recepten/Formattering beschrijft ze. Ze wijken bewust af van de browser: een getal van meer dan vier cijfers krijgt een niet-breekbare spatie tussen de duizendtallen (instelbaar met `thousandsSeparator`), een bedrag een punt, en een datum wordt standaard `DD.MM.YY` (instelbaar met `fullYear` en `dateSeparator`). vl-infotext gebruikt `formatNumber` nu zelf: een waarde van 3200 verschijnt als `3200` in plaats van `3.200`, en 32000 als `32 000` in plaats van `32.000`.",
+      "example": "```ts\nimport { formatDate, formatNumber } from '@domg-wc/common';\n\nformatNumber(1234567); // '1 234 567'\nformatNumber(1234567.89, { thousandsSeparator: '.' }); // '1.234.567,89'\nformatDate(new Date('2025-03-15T13:05:09Z'), { fullYear: true }); // '15.03.2025'\n```"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8f28ff1": {
+      "impact": "opt-in",
+      "explanation": "Nieuw in de grid van @domg-wc/styles: de klasse `vl-column--start-auto` en haar responsieve varianten `vl-column--m-start-auto`, `vl-column--s-start-auto` en `vl-column--xs-start-auto` (Styles/Layout (afnemers)/grid). Ze zetten `grid-column-start` terug op `auto`, zodat een kolom met een vaste startpositie op grote schermen op kleinere schermen weer in de gewone volgorde staat.",
+      "example": "```html\n<div class=\"vl-grid\">\n    <div class=\"vl-column vl-column--4 vl-column--start-9 vl-column--m-6 vl-column--m-start-auto\">\n        start-9 → m-start-auto\n    </div>\n</div>\n```"
+    }
+  }
+}

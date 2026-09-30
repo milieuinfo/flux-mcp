@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "74ac72a": {
+      "impact": "automatic",
+      "explanation": "Het thema van de Storybook van Flux volgt nu de huisstijl van DOMG; dat raakt je project niet. In dezelfde commit wijzigt wel de opmaak van vl-pager, bovenop de vernieuwing van FLUX-254: het aantal resultaten en de paginering staan naast elkaar met een kleine tussenruimte, en op een klein scherm (tot 767px) staan Vorige, de paginanummers en Volgende onder elkaar. Dat is een visuele wijziging die je meekrijgt bij de upgrade."
+    }
+  }
+}

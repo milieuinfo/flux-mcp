@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "6c82b3d": {
+      "impact": "opt-in",
+      "explanation": "vl-properties heeft een nieuw attribuut `no-clone` (Components - Block/properties). Standaard kopieert de component de inhoud van elke `<label>` en `<data>` met kindelementen naar zijn shadow DOM; met `no-clone` verplaatst hij die elementen, zodat het dezelfde objecten blijven, met bv. hun event listeners, maar ze niet meer in je light DOM staan. Tekst zonder kindelementen neemt de component altijd over als tekst, en zonder `no-clone` verandert er niets.",
+      "example": "```html\n<vl-properties no-clone>\n    <label>Dossier</label>\n    <data><vl-link href=\"/dossiers/123\">Dossier 123</vl-link></data>\n</vl-properties>\n```"
+    }
+  }
+}

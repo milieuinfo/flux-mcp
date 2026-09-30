@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "96ff7ce": {
+      "impact": "automatic",
+      "explanation": "vl-radio en vl-radio-group gebruiken niet langer de oude stylesheets van govflanders-style maar een eigen stylesheet op basis van de Flux-variabelen, met de toestanden readonly, disabled, error en success; het uitzicht kan licht verschuiven. Nieuw zijn de CSS-variabelen `--vl-radio--circle-size`, `--vl-radio--dot-size` en `--vl-radio--label-padding-left` op vl-radio. Je hoeft niets te doen."
+    }
+  }
+}

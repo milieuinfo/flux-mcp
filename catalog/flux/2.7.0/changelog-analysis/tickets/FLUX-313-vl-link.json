@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "a74c38d": {
+      "impact": "opt-in",
+      "explanation": "Components - Atom/link raadt nu aan om bij een externe link (`external`) steeds `label` in te vullen, zodat een schermlezer meldt dat de link in een nieuw venster opent, bv. \"Ga naar Vlaanderen.be (opent in een nieuw venster)\"; `label` bestond al en vult het `aria-label` van de link. Flux paste dat zelf toe in vl-accessibility, vl-cookie-statement en vl-privacy: hun links kregen een `label`, de adressen staan in een `<address>`, en in vl-accessibility staan de links naar het bestuursdecreet en de Europese richtlijn nu in een lijst. vl-properties past in zijn shadow DOM nu ook de reset-stijlen van @domg-wc/styles toe (o.a. marges en padding op 0, `font: inherit`, `ul` en `ol` zonder opsommingsteken); die gelden ook voor de HTML uit je `<label>`- en `<data>`-elementen, want de component kopieert die in zijn shadow DOM.",
+      "example": "```html\n<vl-link href=\"https://www.vlaanderen.be\" external label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\">Vlaanderen</vl-link>\n```",
+      "a11y": true
+    }
+  }
+}

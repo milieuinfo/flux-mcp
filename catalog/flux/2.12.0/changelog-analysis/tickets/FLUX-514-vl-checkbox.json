@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "991e9cb": {
+      "impact": "automatic",
+      "explanation": "vl-checkbox gebruikt niet langer de oude stylesheets van govflanders-style maar een eigen stylesheet op basis van de Flux-variabelen, met alle toestanden (focus, checked, indeterminate, disabled, error, success) en de switch-variant; het uitzicht kan licht verschuiven. Zonder eigen `id` krijgt het element vl-checkbox zelf een automatisch `id` (`vl-checkbox-1`, `vl-checkbox-2`, …), dat ook het invoerveld in de shadow DOM gebruikt, zodat het label van een switch altijd aan het invoerveld gekoppeld is. Nieuw zijn de CSS-variabelen `--vl-checkbox--box-size`, `--vl-checkbox--icon-size` en `--vl-checkbox--switch-*` op de component, en in `@domg-wc/styles` de globale variabelen `--vl-border--width`, `--vl-transition--fast`, `--vl-transition`, `--vl-transition--slow`, `--vl-focus--shadow`, `--vl-focus--outline` en `--vl-focus--outline-offset`."
+    }
+  }
+}

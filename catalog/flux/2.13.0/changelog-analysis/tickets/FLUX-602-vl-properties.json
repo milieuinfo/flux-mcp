@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "60cd5de": {
+      "impact": "opt-in",
+      "explanation": "vl-properties heeft een nieuw attribuut `no-padding-bottom`, dat de witruimte onder het laatste item weghaalt, bv. wanneer de omliggende layout al voor ruimte zorgt. Labels en data geef je nu ook op als `<vl-property>` en `<vl-property-data>`: `<label>` en `<data>` werken nog, maar Flux faseert ze uit en gebruikt zelf de nieuwe elementen. Het zijn geen geregistreerde componenten, en de web-types kennen ze niet, dus je IDE stelt ze niet voor. Lange woorden in labels en data worden voortaan afgebroken waar dat kan (`hyphens: auto`).",
+      "example": "```html\n<vl-properties no-padding-bottom>\n    <vl-property>Woonplaats</vl-property>\n    <vl-property-data>Brussel</vl-property-data>\n    <vl-property>Postcode</vl-property>\n    <vl-property-data>1000</vl-property-data>\n</vl-properties>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "e9c69d6": {
+      "impact": "automatic",
+      "explanation": "vl-datepicker liet flatpickr op een mobiel toestel standaard de native datumkiezer van het toestel tonen, in plaats van het eigen invoerveld met de kalenderknop; volgens het Flux-team werkte die variant fundamenteel niet. Op mobiel toont vl-datepicker nu altijd hetzelfde invoerveld en dezelfde kalender als op desktop. Het attribuut `disable-mobile-native-input`, dat dat al afdwong, is geschrapt en staat niet meer in de web-types; staat het nog in je HTML, dan heeft het geen effect meer en mag je het weghalen."
+    }
+  }
+}

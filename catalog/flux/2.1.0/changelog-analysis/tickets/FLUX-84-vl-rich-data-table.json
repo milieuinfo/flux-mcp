@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "7f217f8": {
+      "impact": "opt-in",
+      "explanation": "vl-rich-data-table krijgt de attributen `zebra` en `flux-zebra`, die het doorgeeft aan de interne vl-table: de rijen krijgen afwisselend een andere achtergrondkleur. `zebra` werkt niet voor tabellen met detailrijen, `flux-zebra` wel. Beide staan in de web-types bij vl-table maar niet bij vl-rich-data-table, dus een IDE stelt ze daar niet voor. Sinds deze versie komen ook `collapsed-m`, `collapsed-s` en `collapsed-xs` van vl-rich-data-table op de interne vl-table terecht in plaats van op het `<table>`-element, waar de stijlen ze niet oppikten; wie ze al zette, ziet de tabel nu wel ingeklapt, en elke vl-table krijgt nu `border-collapse: collapse`.",
+      "example": "```html\n<vl-rich-data-table flux-zebra>\n    <vl-rich-data-field name=\"id\" label=\"ID\" selector=\"id\"></vl-rich-data-field>\n    <vl-rich-data-field name=\"name\" label=\"Naam\" selector=\"name\"></vl-rich-data-field>\n</vl-rich-data-table>\n```"
+    }
+  }
+}

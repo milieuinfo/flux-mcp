@@ -1,0 +1,3 @@
+{
+  "summary": "Flux 2.0.1 is een patch met één fix en vraagt geen actie. BaseHTMLElement laadt nu zelf de legacy-code die vl.util.each aanmaakt, zodat componenten die die functie gebruiken, zoals vl-modal en vl-accordion, ze niet meer missen bij het uitvoeren. De web-types en de dependencies van de packages zijn dezelfde als in 2.0.0."
+}

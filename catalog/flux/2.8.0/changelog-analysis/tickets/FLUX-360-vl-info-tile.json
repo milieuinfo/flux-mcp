@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "cff0915": {
+      "impact": "opt-in",
+      "explanation": "vl-info-tile heeft de nieuwe attributen `clickable` en `clickable-label`: met `clickable` legt de component een knop over de hele tegel en vuurt hij bij een klik het event `vl-click-info-tile` af, waarop je bv. naar een detailpagina navigeert (Components - Block/info-tile, 'Clickable'). `clickable-label` wordt het `aria-label` van die knop; laat je het weg, dan schrijft de component `VlInfoTile - clickable-label is vereist.` in de console. `clickable` werkt niet samen met `toggleable`, en het voorbeeld in Storybook combineert het met een menu in het slot `menu`; beide attributen en het event staan in de web-types.",
+      "example": "```html\n<vl-info-tile id=\"tegel-broos\" clickable clickable-label=\"Detailpagina van Broos Deprez openen\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>\n\n<script type=\"module\">\n    document.querySelector('#tegel-broos').addEventListener('vl-click-info-tile', () => {\n        window.location.href = '/personen/broos-deprez';\n    });\n</script>\n```"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "entries": {
+    "b740b03": {
+      "impact": "opt-in",
+      "explanation": "Anders dan de changelog doet vermoeden, lost vl-form-label deze witruimte niet zelf op: de commit voegt enkel documentatie toe. Staat er in je HTML een `<vl-text annotation>` direct na een `<vl-form-label>`, dan zorgt de marge rechts van het label (0.5rem) voor een ongewenste witruimte ertussen; Components - Form/form-label (Witruimte naast annotatie corrigeren) geeft een CSS-regel die je daarvoor zelf toevoegt. Met het nieuwe `annotation` attribuut van vl-form-label heb je die aparte `vl-text` niet meer nodig.",
+      "example": "```css\nvl-form-label:has(+ vl-text[annotation])::part(label) {\n    margin-right: 0;\n}\n```"
+    },
+    "9a8ae95": {
+      "impact": "opt-in",
+      "explanation": "vl-form-label heeft een nieuw attribuut `annotation`: een extra uitleg of een voorbeeld dat inline naast de tekst van het label staat, kleiner en in een subtielere kleur. Flux zet het als een `vl-text` met `annotation` en `small` binnen het label, met `part=\"annotation\"` om het te stylen; zonder `annotation` verandert er niets aan het label.",
+      "example": "```html\n<vl-form-label for=\"naam\" label=\"Naam\" annotation=\"(enkel achternaam)\"></vl-form-label>\n```"
+    }
+  }
+}

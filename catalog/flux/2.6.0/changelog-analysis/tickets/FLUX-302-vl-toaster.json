@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "a52bd46": {
+      "impact": "opt-in",
+      "explanation": "De methode `show()` van vl-toaster aanvaardt nu ook de selector van een `<template>`: ze toont dan een kopie van het eerste element in die template, zonder zijn `id`. Voorheen kloonde `show('#mijn-template')` het `<template>`-element zelf, dat niets toont. Zo kan je meldingen klaarzetten in een `<template>` in plaats van in een verborgen element; de story 'vl-toaster - fade out' op Components - Block/toaster doet het zo.",
+      "example": "```html\n<template id=\"alert-error-template\">\n    <vl-alert type=\"error\" icon=\"warning\" title=\"Error\">\n        <p>Er is een fout opgetreden.</p>\n    </vl-alert>\n</template>\n<vl-toaster id=\"toaster-fade-out\" fade-out></vl-toaster>\n<vl-button id=\"button-error\">Toon foutmelding</vl-button>\n\n<script>\n    document.querySelector('#button-error').addEventListener('vl-click', () => {\n        document.querySelector('vl-toaster#toaster-fade-out').show('#alert-error-template');\n    });\n</script>\n```"
+    }
+  }
+}

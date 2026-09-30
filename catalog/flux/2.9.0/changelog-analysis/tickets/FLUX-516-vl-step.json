@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "e79d5b2": {
+      "impact": "opt-in",
+      "explanation": "Een openklapbare vl-step (`toggleable`) vuurt nu `vl-on-toggle` af wanneer hij opent of sluit, met in `detail.open` of hij open staat (Components - Block/steps/step). Het event bubbelt niet: luister op de vl-step zelf. Een stap met `default-open` vuurt het event ook één keer af wanneer hij bij het laden opengaat.",
+      "example": "```html\n<vl-steps>\n    <vl-step id=\"stap-1\" toggleable>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n</vl-steps>\n\n<script type=\"module\">\n    document.querySelector('#stap-1').addEventListener('vl-on-toggle', (event) => {\n        console.log(`Stap 1 is ${event.detail.open ? 'open' : 'dicht'}`);\n    });\n</script>\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "1f3cf20": {
+      "impact": "none",
+      "explanation": "De bronrepo van Flux kreeg configuratie en instructies voor AI-agents (AGENTS.md, CLAUDE.md, SKILLS.md en een map `.claude/`). Dat raakt enkel wie aan Flux zelf werkt; de packages veranderen niet."
+    }
+  }
+}

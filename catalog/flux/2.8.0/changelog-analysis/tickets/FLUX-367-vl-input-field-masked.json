@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "896b63a": {
+      "impact": "opt-in",
+      "explanation": "vl-input-field-masked kent nu eigen masks: met de statische methode `VlInputFieldMaskedComponent.setMasks()` registreer je masks onder een eigen naam, die je daarna in het attribuut `mask` van elke vl-input-field-masked gebruikt (Components - Form/input-field-masked, 'Custom'). Een mask is een object met de opties van Cleave.js die Flux ondersteunt, bv. `blocks`, `delimiters`, `prefix` en `numericOnly`, plus een `regex` waarmee Flux de ruwe waarde valideert. Roep `setMasks()` op in het entry point van je applicatie, vóór de velden op de pagina komen: de component leest zijn mask wanneer hij aan de pagina gekoppeld wordt, elke oproep vervangt de eigen masks van de vorige, en een naam als `iban` overschrijft het standaardmask. Storybook schrijft `VlInputFieldMasked.setMasks()`, maar de klasse heet `VlInputFieldMaskedComponent` (uit @domg-wc/components/form), en een eigen naam staat niet bij de waarden voor `mask` in de web-types.",
+      "example": "```js\n// in het entry point van je applicatie, vóór de velden op de pagina komen\nimport { VlInputFieldMaskedComponent } from '@domg-wc/components/form';\n\nVlInputFieldMaskedComponent.setMasks({\n    'custom-mask': {\n        blocks: [8, 4],\n        delimiters: ['-'],\n        numericOnly: true,\n        numeralPositiveOnly: true,\n        regex: /^[0-9]{12}$/,\n    },\n});\n\n// daarna in een template: <vl-input-field-masked mask=\"custom-mask\"></vl-input-field-masked>\n```"
+    }
+  }
+}

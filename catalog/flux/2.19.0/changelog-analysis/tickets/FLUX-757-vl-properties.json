@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "d45b5e1": {
+      "impact": "opt-in",
+      "explanation": "`vl-properties` heeft een nieuw attribuut `value-bold` dat de waarde, de inhoud van `vl-property-data`, vet toont (font-weight 500), zoals bij `vl-description-data` maar met het label links en de waarde rechts. Het is enkel een attribuut, zonder property: in een lit-template gebruik je `?value-bold=${...}`.",
+      "example": "```html\n<vl-properties value-bold>\n    <vl-property>Woonplaats</vl-property>\n    <vl-property-data>Brussel</vl-property-data>\n</vl-properties>\n```"
+    }
+  }
+}

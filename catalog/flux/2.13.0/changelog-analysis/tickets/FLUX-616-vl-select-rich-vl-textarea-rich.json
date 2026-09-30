@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "66cc1f9": {
+      "impact": "automatic",
+      "explanation": "vl-select-rich vuurt `vl-input` voortaan enkel af wanneer de gebruiker een optie selecteert of verwijdert, meteen na `vl-change` en met dezelfde `detail.value`; tot 2.12.1 kwam het event van het change-event van de onderliggende `<select>`, vóór `vl-change`. `selectByValue()`, `removeSelectionByValue()`, `removeAllSelections()`, een reset en het zetten van `options` geven enkel `vl-change`. Bij vl-textarea-rich geeft enkel typen `vl-input`; ongedaan maken en opnieuw uitvoeren (undo en redo) geven enkel `vl-change`. Verwachtte je code `vl-input` vóór `vl-change`, kijk die dan na."
+    }
+  }
+}

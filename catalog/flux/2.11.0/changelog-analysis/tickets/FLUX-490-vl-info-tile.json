@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "a3cdd08": {
+      "impact": "opt-in",
+      "explanation": "Het icoon als badge van vl-info-tile (`icon` met `icon-as-badge`) is nu aan te passen met drie CSS-variabelen: `--vl-info-tile-icon-background-color` (standaard `var(--vl-color--background-subtle)`), `--vl-info-tile-icon-border-color` (standaard `var(--vl-color--border-default)`) en `--vl-info-tile-icon-color` (standaard `inherit`). De standaardwaarden staan op `:root` in de styles van @domg-wc/styles en geven hetzelfde resultaat als voorheen; een `type` zoals `error` of `success` zet nog altijd zijn eigen kleuren voor de badge.",
+      "example": "```css\nvl-info-tile {\n    --vl-info-tile-icon-background-color: var(--vl-color--icon-success);\n    --vl-info-tile-icon-border-color: var(--vl-color--border-success-subtle);\n    --vl-info-tile-icon-color: var(--vl-color--border-inverse);\n}\n```"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "946f71a": {
+      "impact": "automatic",
+      "explanation": "Zette je een label of data van vl-properties met een Lit-expressie in de pagina, bv. `<label>${naam}</label>`, dan verschenen de markeringen van Lit (`<!--?lit$…-->`) als zichtbare tekst zodra het element enkel tekst bevatte; de omweg was de expressie in een extra `<span>` te zetten. vl-properties neemt de inhoud van label en data (ook `vl-property` en `vl-property-data`) nu altijd als nodes over in plaats van via `innerHTML`, dus die omweg is niet meer nodig. Met `no-clone` verhuist nu ook een label of data met enkel tekst naar de shadow DOM, in plaats van gekopieerd te worden."
+    }
+  }
+}

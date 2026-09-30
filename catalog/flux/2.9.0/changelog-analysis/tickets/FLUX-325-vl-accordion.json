@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "e107720": {
+      "impact": "opt-in",
+      "explanation": "vl-accordion heeft een nieuw, reactief attribuut `heading-level` (`1` tot `6`): de knop met de titel van de accordion staat dan in een `<h1>` tot `<h6>`, zodat de titel in de koppenstructuur van de pagina en in de lijst met koppen van een schermlezer verschijnt (Components - Block/accordion). Zonder het attribuut verandert er niets; een andere waarde geeft een waarschuwing in de console. Daarnaast vuurt een vl-accordion die van de pagina gehaald en weer toegevoegd wordt, `vl-on-toggle` nog maar één keer per klik, en krijgt hij met `icon` geen tweede icoon meer.",
+      "example": "```html\n<vl-accordion toggle-text=\"Dit is een heading van ingevouwen inhoud\" heading-level=\"3\">\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen.</span>\n</vl-accordion>\n```"
+    }
+  }
+}

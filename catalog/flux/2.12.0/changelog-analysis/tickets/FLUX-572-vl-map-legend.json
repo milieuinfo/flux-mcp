@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a204e53": {
+      "impact": "automatic",
+      "explanation": "vl-map-legend las de kaartlagen enkel in wanneer de legende op de pagina kwam. Nu volgt ze de lagen van vl-map: voeg je een vl-map-features-layer, WFS- of WMS-laag toe als kind van vl-map, of verwijder je er een, dan past de legende zich aan. Je hoeft niets te doen."
+    }
+  }
+}

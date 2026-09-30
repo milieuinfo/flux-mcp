@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a2a1b87": {
+      "impact": "none",
+      "explanation": "Components - Compliance/header en Components - Compliance/footer, en hun next-varianten, raden een vaste opbouw aan voor alle toepassingen van Departement Omgeving, bv. een footer met '[app-name] is een officiële website van de Vlaamse overheid, uitgegeven door Departement Omgeving'; die gegevens stel je in bij Digitaal Vlaanderen wanneer je de identifier aanvraagt, en de beschrijvingen van vl-header en vl-footer in de web-types zeggen hetzelfde. Components - Block/functional-header geeft richtlijnen voor de 'Terug'-link: geen `history.back()`, een vaste URL naar het startpunt van de toepassing of het luik via het attribuut `back-link` (standaard `document.referrer`), een duidelijkere tekst dan 'Terug' via het `back`-slot, en ook een 'Terug'-link op de pagina's voor privacy, toegankelijkheid en cookieverklaring via hun `header`-slot. De code van vl-header en vl-footer wijzigde enkel in schrijfwijze; voor je project verandert er niets, tenzij je de richtlijnen wil volgen."
+    }
+  }
+}

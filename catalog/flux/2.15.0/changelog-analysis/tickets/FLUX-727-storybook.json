@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "8b55e1e": {
+      "impact": "automatic",
+      "explanation": "De verwijzingen naar het Webuniversum in Storybook en in de web-types wijzen nu naar het Vlaanderen Design System op vlaanderen.be. In de web-types gaat het om de beschrijving van het attribuut `icon` van vl-alert en vl-infoblock, die een IDE toont; die verwijst voor de lijst met iconen nu naar https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon. Aan de componenten verandert niets."
+    }
+  }
+}

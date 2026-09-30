@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "6f4ca44": {
+      "impact": "automatic",
+      "explanation": "vl-steps, vl-step en vl-duration-step halen hun stijl nu volledig uit Flux in plaats van uit de govflanders-stijl, met kleine visuele verschillen in de lay-out, bv. een iets andere achtergrondkleur van een stap. Het pijltje van een `toggleable` stap is nu een vl-icon. De attributen `line`, `timeline`, `simple-timeline` en `last-step-no-line` van vl-step bestonden al, maar staan nu in de web-types, en `heading-level` heeft er de waarden `1` tot `6`. Zette je de property `headingLevel` met een getal, gebruik dan het attribuut `heading-level` of een string: een getal geeft nu altijd een `h3`."
+    }
+  }
+}

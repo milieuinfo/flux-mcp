@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4069f66": {
+      "impact": "none",
+      "explanation": "Enkel de build van Flux zelf verandert: de e2e-testen in de CI/CD draaien nu tegen een gebouwde Storybook, geserveerd met `http-server`, in plaats van tegen `storybook dev`. `http-server` is een devDependency van de bronrepo en komt niet in de packages terecht, dus je project merkt er niets van."
+    }
+  }
+}

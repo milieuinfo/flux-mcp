@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "ed87be7": {
+      "impact": "automatic",
+      "explanation": "Het invoerveld dat vl-select-rich intern aanmaakt, kreeg een attribuut `@keydown` met de broncode van een interne functie als waarde, zichtbaar in de HTML van de component. Dat attribuut is weg. Het was nooit een werkende event listener: de toetsenbordafhandeling van vl-select-rich verandert niet. De changelog noemt dit een feature, maar het is een opkuis die je bij de upgrade meekrijgt."
+    }
+  }
+}

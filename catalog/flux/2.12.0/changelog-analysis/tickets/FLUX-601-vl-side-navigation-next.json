@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "bbe7471": {
+      "impact": "automatic",
+      "explanation": "vl-side-navigation-next (ook de navigatie die vl-side-navigation-layout-next aanmaakt) zette bij het laden van de pagina ten onrechte de focus op het eerste navigatie-item. De component herstelt de focus nu enkel nog wanneer het item dat de focus had uit de navigatie verdwijnt, en zet hem dan op een naburig item. Je hoeft niets te doen."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "eb8dae5": {
+      "impact": "automatic",
+      "explanation": "In een vl-select-rich met `multiple` toonde het zoekveld de native ×-knop van de browser, die over het eerste getypte teken lag. Flux zet het zoekveld nu zoals bedoeld om van `type=\"search\"` naar `type=\"text\"`. Daarmee krijgt het ook de attributen die al voorzien waren maar nooit gezet werden: `autocomplete=\"off\"`, `spellcheck=\"false\"`, `role=\"textbox\"`, `aria-autocomplete=\"list\"` en `aria-label=\"zoek item\"`."
+    }
+  }
+}

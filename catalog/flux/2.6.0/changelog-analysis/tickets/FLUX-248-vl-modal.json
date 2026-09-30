@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "f78d592": {
+      "impact": "automatic",
+      "explanation": "Sinds 2.5.0 kreeg de binnenste wrapper van elke vl-modal een hoogte van 100%. Vanaf 2.6.0 geldt dat enkel nog voor een modal met `size=\"full-screen\"` of met `position=\"left\"` of `\"right\"`, zodat de wrapper van een gewone modal, ook met `size=\"medium\"` of `\"large\"`, weer de hoogte van zijn inhoud krijgt. De attributen `size` en `position` staan wel in de code, maar niet in de web-types: een IDE stelt ze niet voor."
+    }
+  }
+}

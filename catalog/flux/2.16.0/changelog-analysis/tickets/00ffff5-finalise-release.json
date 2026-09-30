@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "00ffff5": {
+      "impact": "none",
+      "explanation": "Een fix aan het releasescript van Flux zelf: enkel de hoofd-release-branch wordt nog naar develop gerebased. De gepubliceerde packages veranderen niet."
+    }
+  }
+}

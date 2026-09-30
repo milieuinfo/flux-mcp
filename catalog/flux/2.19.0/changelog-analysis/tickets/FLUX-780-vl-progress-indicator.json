@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "e1b195c": {
+      "impact": "automatic",
+      "explanation": "Stond een `vl-progress-indicator` met labels in een container die nog verborgen was, zoals een modal die nog niet openstond, dan viel het laatste label buiten de rechterrand. De component berekent de ruimte voor dat label nu opnieuw zodra de component of het laatste label van grootte verandert, dus ook wanneer de container zichtbaar wordt, en niet enkel bij het wisselen van stap."
+    }
+  }
+}

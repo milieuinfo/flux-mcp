@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "51ff7b1": {
+      "impact": "none",
+      "explanation": "Correctie van het Storybook-voorbeeld Patronen/Navigatie/Side Navigation/met proza message, dat vl-side-navigation-layout-next combineert met vl-proza-message. Het raakt enkel de documentatie van Flux, niet de packages."
+    },
+    "bdf0ff8": {
+      "impact": "automatic",
+      "explanation": "De documentatie verwijst nu naar de pagina's onder Patronen, zoals Patronen/Formulier/demo en Patronen/Formulier/validatie, in plaats van naar de oude pagina's onder Ontwerp. Dezelfde links staan in de beschrijvingen van de formuliercomponenten in de web-types (bv. vl-checkbox, vl-input-field, vl-select, vl-upload), die je IDE toont; de oude link `ontwerp-form-demo` bestond niet meer. Aan de componenten zelf verandert niets."
+    }
+  }
+}

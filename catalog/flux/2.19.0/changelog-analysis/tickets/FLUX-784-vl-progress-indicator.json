@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "cfe65f3": {
+      "impact": "automatic",
+      "explanation": "De verbindingslijnen tussen de stappen van `vl-progress-indicator` verdwenen achter een ondoorzichtige achtergrond wanneer een omliggend element een eigen stacking context vormde; enkel de bolletjes bleven zichtbaar. Elk segment tekent zijn lijn nu in zijn eigen stacking context, zodat ze altijd zichtbaar is."
+    }
+  }
+}

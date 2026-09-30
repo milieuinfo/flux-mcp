@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "6899016": {
+      "impact": "none",
+      "explanation": "Flux zelf bouwt en publiceert nu met pnpm in plaats van npm, omwille van supply-chain security. De gepubliceerde packages en hun dependencies veranderen daardoor niet, en je kan ze met elke package manager blijven afnemen. De documentatie voor afnemers raadt wel pnpm aan (Afnemen/Aan De Slag) en vraagt om `@domg-wc/common` als eigen dependency op te nemen zodra je er rechtstreeks uit importeert, bv. `registerWebComponents`: onder pnpm of een andere strikte package manager is een package dat enkel via `@domg-wc/components` binnenkomt, niet importeerbaar."
+    },
+    "4d555a6": {
+      "impact": "none",
+      "explanation": "Nieuwe pagina Recepten/Van npm naar pnpm voor wie zijn eigen project naar pnpm wil migreren: waarom pnpm, een stappenplan in acht stappen (van corepack en `.npmrc` tot CI, Docker en een vangnet tegen `npm install`) en een cheatsheet. Let bij zo'n migratie op `minimumReleaseAge`: pnpm 11 installeert standaard geen versie die jonger is dan 24 uur, dus zet `@domg-wc/*` in `minimumReleaseAgeExclude` als je een verse Flux-release meteen wil afnemen."
+    }
+  }
+}

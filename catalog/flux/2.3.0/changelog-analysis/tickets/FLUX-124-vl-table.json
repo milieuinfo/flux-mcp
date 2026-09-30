@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "72bd94e": {
+      "impact": "opt-in",
+      "explanation": "In een vl-table geef je een rij (`<tr>`) of een cel (`<td>`) in de `<tbody>` nu ook een status met de kortere classes `vl-table--success` (groen), `vl-table--warning` (oranje), `vl-table--error` (rood) en `vl-table--disabled` (grijs). Ze doen hetzelfde als de bestaande `vl-table__element--success`, `vl-table__element--warning`, `vl-table__element--error` en `vl-table__element--disabled`, die blijven werken; de uitleg staat onder Styling op Components - Block/table.",
+      "example": "```html\n<vl-table>\n    <table>\n        <thead>\n            <tr>\n                <th>Naam</th>\n                <th>Verzamelaar</th>\n                <th>Verzamelaarnummer</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr class=\"vl-table--success\">\n                <th>Success rij</th>\n                <td>Franz Heylemans</td>\n                <td>160</td>\n            </tr>\n            <tr>\n                <th>Individuele cellen</th>\n                <td class=\"vl-table--warning\">Warning</td>\n                <td class=\"vl-table--error\">Error</td>\n            </tr>\n        </tbody>\n    </table>\n</vl-table>\n```"
+    }
+  }
+}

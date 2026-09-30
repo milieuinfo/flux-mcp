@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "04aa089": {
+      "impact": "action",
+      "explanation": "Een feature met een ongeldige geometrie, bv. een polygoon die zichzelf kruist, krijgt in een kaartlaag die je met vl-map-layer-style stijlt nu standaard een rode, gestreepte \"invalid\" stijl in plaats van jouw kleuren; dat geldt voor wat een gebruiker tekent én voor bestaande data. Met het attribuut `allow-invalid-geometry` op vl-map zet je dat uit; map/map ('Ongeldige geometrieën') noemt het verkeerdelijk `allow-invalid-geometries`, en dat attribuut doet niets. De nieuwe methode `hasInvalidGeometries()` op vl-map zegt of een kaartlaag een ongeldige geometrie bevat, en met het attribuut `invalid` op vl-map-layer-style toon je een laag zelf in die stijl. `invalid` staat ook in de web-types van vl-map-layer-circle-style, maar die stijl past de invalid stijl nooit toe.",
+      "action": "Toon je data die ongeldige geometrieën kan bevatten, bv. uit een WFS of een features-laag, en wil je die niet in het rood, zet dan `allow-invalid-geometry` (enkelvoud) op vl-map.",
+      "example": "```html\n<!-- ongeldige geometrieën niet in de rode invalid stijl tonen -->\n<vl-map id=\"my-map\" allow-invalid-geometry>…</vl-map>\n\n<script type=\"module\">\n    const map = document.querySelector('#my-map');\n    if (map.hasInvalidGeometries()) {\n        console.warn('De kaart bevat een ongeldige geometrie.');\n    }\n</script>\n```"
+    }
+  }
+}

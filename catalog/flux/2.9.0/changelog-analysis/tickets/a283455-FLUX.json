@@ -1,0 +1,10 @@
+{
+  "entries": {
+    "a283455": {
+      "impact": "action",
+      "explanation": "`@domg-wc/components/compliance` exporteert `VlHeaderNext` en `VlFooterNext` niet meer. De klassen heten nu `VlHeader` en `VlFooter` en komen uit het nieuwe pad `@domg-wc/components/compliance/next`, zoals op Planning/Van v2 naar v3 - beschikbaar staat. De tags `vl-header-next` en `vl-footer-next` blijven dezelfde; `VlHeader` en `VlFooter` uit `@domg-wc/components/compliance` blijven de legacy vl-header en vl-footer.",
+      "action": "Importeer je `VlHeaderNext` of `VlFooterNext` uit `@domg-wc/components/compliance`, importeer dan `VlHeader` en `VlFooter` uit `@domg-wc/components/compliance/next`. Gebruik je in hetzelfde bestand ook de legacy `VlHeader` of `VlFooter`, geef dan een alias, bv. `VlHeader as VlHeaderNext`.",
+      "example": "```js\n// tot 2.8.1\nimport { VlHeaderNext, VlFooterNext } from '@domg-wc/components/compliance';\n\n// vanaf 2.9.0\nimport { VlHeader as VlHeaderNext, VlFooter as VlFooterNext } from '@domg-wc/components/compliance/next';\n```"
+    }
+  }
+}

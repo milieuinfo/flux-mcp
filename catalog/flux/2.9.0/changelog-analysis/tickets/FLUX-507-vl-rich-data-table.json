@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "06b8def": {
+      "impact": "automatic",
+      "explanation": "De filter van vl-rich-data en vl-rich-data-table staat nu gelijk met de rest: het formulier in de filter-slot (met `vl-search-filter`) heeft er geen padding meer links en bovenaan, en de 8px witruimte boven de filter is weg. Een `vl-title type=\"h2\"` in het formulier van een vl-search-filter staat nu, net als een gewone `<h2>` daar, in hoofdletters, met een regelhoogte van 2.7rem."
+    }
+  }
+}

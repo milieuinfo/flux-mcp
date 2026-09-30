@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "135d415": {
+      "impact": "opt-in",
+      "explanation": "vl-map-wmts-layer heeft een nieuw attribuut `from-capabilities`: de laag haalt dan de GetCapabilities van de WMTS-dienst op (`<url>?SERVICE=WMTS&REQUEST=GetCapabilities`) en bouwt haar bron met de TileMatrix-resoluties en matrixIds van de server, in plaats van ze zelf te berekenen. Gebruik het voor een WMTS-laag waarvan de dienst andere TileMatrix-waarden heeft dan Flux berekent; de laag komt pas op de kaart nadat de capabilities geladen zijn, en omdat de browser ze ophaalt, moet de dienst dat vanaf je domein toelaten (CORS). Het attribuut is niet reactief, en zonder het attribuut werkt de laag zoals voorheen.",
+      "example": "```html\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-wmts-layer\n        name=\"DOV Klimaat Doorgrondkaart\"\n        url=\"https://www.dov.vlaanderen.be/geoserver/klimaat/gwc/service/wmts\"\n        layer=\"klimaat_doorgrondkaart\"\n        from-capabilities\n    ></vl-map-wmts-layer>\n</vl-map>\n```"
+    }
+  }
+}

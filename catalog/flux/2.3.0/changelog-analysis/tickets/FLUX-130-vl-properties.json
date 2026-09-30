@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4a81a07": {
+      "impact": "automatic",
+      "explanation": "vl-properties toont nu de volledige inhoud van een `<label>` of `<data>` die tekst en elementen mengt, bv. een `vl-icon` gevolgd door tekst: tot nu toe verdween de tekst naast een element. Een `<label>` of `<data>` met enkel tekst toont tekens als `&`, `<` of een harde spatie nu correct, waar eerder `&amp;`, `&lt;` of `&nbsp;` op het scherm kwam."
+    }
+  }
+}

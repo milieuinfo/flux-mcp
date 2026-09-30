@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "63eef49": {
+      "impact": "automatic",
+      "explanation": "Een vl-map-select-actions of vl-map-multiselect-actions die aan meerdere kaartlagen gekoppeld is, blijft nu bruikbaar zolang minstens één van die lagen zichtbaar is, en deactiveert pas wanneer ze allemaal verborgen zijn. Voorheen verloor de actie haar werking zodra één laag verborgen of getoond werd. De pagina map/action/layer-action/select-action/multiselect-actions in Storybook toont het gedrag."
+    }
+  }
+}

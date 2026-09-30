@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "7179279": {
+      "impact": "none",
+      "explanation": "Een wijziging aan de build van Flux: de sjablonen voor de `package.json` van de packages kregen een andere bestandsnaam. De gepubliceerde packages en hun dependencies blijven dezelfde."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "3cdd68d": {
+      "impact": "automatic",
+      "explanation": "Op een breed scherm verbergt Escape in de filter van vl-rich-data (en dus ook van vl-rich-data-table) de filter nu enkel nog wanneer het attribuut `filter-closable` op de component staat. Zonder `filter-closable` verdween de filter vroeger ook bij Escape, maar was er geen knop om hem terug te tonen. Op een klein scherm, waar vl-search-filter als modal verschijnt (het attribuut `mobile-modal`, dat vl-search-filter zelf zet onder 767px breedte), sluit Escape de filter zoals voordien."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "527aa44": {
+      "impact": "opt-in",
+      "explanation": "vl-functional-header heeft een nieuw attribuut `sticky`: de header blijft dan bij het scrollen bovenaan het scherm plakken, net onder een vl-header of vl-header-next, waarvan hij de hoogte als offset neemt (Components - Block/functional-header, 'Sticky functional header', en Ontwerp/Functional Header/Voorbeeld Met Sticky En Side Navigation). `sticky` staat niet in de web-types, dus je IDE stelt het niet voor. vl-side-navigation berekent zijn offset nu uit de werkelijke hoogte van vl-header of vl-header-next plus die van een sticky vl-functional-header, in plaats van een vaste 43 pixels: zonder zo'n header plakt de zijnavigatie nu tegen de bovenrand in plaats van 43 pixels lager, en bij het scrollen naar een item houdt ze nu ook rekening met vl-header-next. vl-header, vl-header-next en vl-functional-header kregen daarvoor een property `height`, die niet in de web-types staat.",
+      "example": "```html\n<vl-header identifier=\"...\"></vl-header>\n<vl-functional-header sticky>\n    <div slot=\"title\">Sticky functional header demo</div>\n</vl-functional-header>\n```"
+    }
+  }
+}

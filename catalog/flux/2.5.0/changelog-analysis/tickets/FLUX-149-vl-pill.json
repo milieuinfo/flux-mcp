@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "487d000": {
+      "impact": "none",
+      "explanation": "De default story op Components - Block/pill/pill toont nu de gekozen `type` als tekst van de pill, zodat je ziet welke variant je bekijkt. De packages veranderen niet."
+    }
+  }
+}

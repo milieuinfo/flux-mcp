@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "8686168": {
+      "impact": "automatic",
+      "explanation": "vl-form-message gebruikt niet langer de oude stylesheets van govflanders-style maar een eigen stylesheet op basis van de Flux-variabelen (`--vl-color--error`, `--vl-color--success`); het uitzicht kan licht verschuiven. Nieuw zijn de CSS-variabelen `--vl-form-message--margin-top` en `--vl-form-message--margin-bottom` op de component. Je hoeft niets te doen."
+    }
+  }
+}

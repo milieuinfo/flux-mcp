@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "f9232cc": {
+      "impact": "opt-in",
+      "explanation": "vl-step heeft een nieuwe property `contentRenderer`: een functie `(open: boolean) => TemplateResult` die de inhoud van de stap tekent volgens of hij open of dicht staat, bv. een samenvatting als hij dicht is en alle details als hij open is (Components - Block/steps/step). Ze werkt enkel met `toggleable`, en zolang ze ingesteld is, negeert de stap de slot `content`. Het is een Lit-template, dus je maakt het met `html` uit `lit`.",
+      "example": "```js\nimport { html } from 'lit';\n\nhtml`\n    <vl-steps>\n        <vl-step\n            toggleable\n            .contentRenderer=${(open) =>\n                open\n                    ? html`<p><strong>Open:</strong> Dit is de uitgebreide content die alleen zichtbaar is wanneer de step geopend is.</p>`\n                    : html`<p><em>Gesloten:</em> Klik om meer te zien...</p>`}\n        >\n            <span slot=\"icon\">1</span>\n            <span slot=\"title\">Stap 1: dynamische content</span>\n        </vl-step>\n    </vl-steps>\n`;\n```"
+    },
+    "1e7e85a": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie van Flux verandert: Components - Block/steps/step beschrijft nu de slots van vl-step (`icon`, `sub-icon`, `title`, `title-annotation`, `subtitle` en `content`). Die slots staan daardoor ook in de web-types, zodat je IDE ze voorstelt; de werking van vl-step verandert niet."
+    }
+  }
+}

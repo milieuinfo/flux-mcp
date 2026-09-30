@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a5b8720": {
+      "impact": "automatic",
+      "explanation": "Het veld van vl-select-rich (de container `.vl-select__inner`) krijgt nu uitdrukkelijk de achtergrondkleur `--vl-color--background-default`. Dat is een visuele fix die je meekrijgt bij de upgrade; de nieuwe stylesheet van FLUX-584 in dezelfde release behoudt ze."
+    }
+  }
+}

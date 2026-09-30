@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "f2ebc5f": {
+      "impact": "opt-in",
+      "explanation": "Er zijn twee nieuwe componenten voor de global header en footer (widget v5) van Digitaal Vlaanderen: `vl-header-next` en `vl-footer-next`, met de klassen `VlHeaderNext` en `VlFooterNext` uit `@domg-wc/components/compliance`; ze staan niet in de web-types. `vl-header` en `vl-footer` werken zoals voorheen, maar Storybook noemt ze nu legacy-componenten die vervangen worden (Planning/Van v2 naar v3 - beschikbaar): in v3 heten de next-varianten `vl-header` en `vl-footer`. `vl-header-next` kent `identifier`, `development`, `simple`, `skeleton`, `authenticated-user-url`, `login-url`, `logout-url`, `switch-capacity-url` en de property `applicationLinks` (type `ApplicationMenuLink` uit `@govflanders/vl-widget-global-header-types`), maar niet meer `login-redirect-url`, `reject-logout` of `logoutCallback`, want sinds v5 hoef je automatische logout requests niet meer af te wijzen. Beide laden de widget van `widgets.vlaanderen.be` (met `development`: `widgets.tni-vlaanderen.be`) in plaats van `prod.widgets.burgerprofiel.vlaanderen.be`, en sturen hun `ready` event naar `window` in plaats van naar het element.",
+      "example": "```js\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlFooterNext, VlHeaderNext } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlHeaderNext, VlFooterNext]);\n\n// het ready event komt op window, niet op het element\nwindow.addEventListener('ready', () => console.log('widget geladen'));\n```\n\n```html\n<vl-header-next identifier=\"<identifier van je header>\" skeleton></vl-header-next>\n<vl-footer-next identifier=\"<identifier van je footer>\"></vl-footer-next>\n```"
+    }
+  }
+}

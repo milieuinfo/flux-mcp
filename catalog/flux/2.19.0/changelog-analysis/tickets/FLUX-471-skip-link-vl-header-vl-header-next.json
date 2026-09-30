@@ -1,0 +1,14 @@
+{
+  "entries": {
+    "19f3b89": {
+      "impact": "automatic",
+      "explanation": "Springt de pagina naar een anker, dan komt het doel nu onder een sticky of fixed header terecht in plaats van erachter. Dat geldt voor de skip-link van `vl-header`, `vl-header-next` en `vl-functional-header`, en voor anchor-links en deeplinks met een hash die via de anker-navigatie van Flux lopen. Het doel krijgt daarvoor zo nodig een inline `scroll-margin-top`; zet je zelf al een `scroll-margin-top` die het doel onder de header houdt, dan past de component niets aan. `@domg-wc/common` exporteert de hulpfuncties `getStickyOffsetTop` en `scrollIntoViewBelowSticky` ook voor eigen gebruik."
+    },
+    "03eff7a": {
+      "impact": "action",
+      "explanation": "`vl-header` en `vl-header-next` hebben een nieuw attribuut `skip-to-content-id`: met de id van de eerste heading van je pagina-inhoud verschijnt bovenaan de pagina een skip-link \"Ga meteen naar de inhoud\", die zichtbaar wordt bij focus en de focus en de scroll naar die inhoud brengt (WCAG 2.4.1); de styling ervan laadt de header zelf. Zonder het attribuut is er geen skip-link, maar logt de header nu een waarschuwing in de console, zoals `vl-functional-header` al deed. De header leest het attribuut enkel wanneer hij in de DOM komt; `vl-header-next` staat niet in de web-types, dus een IDE stelt het attribuut daar niet voor.",
+      "action": "Gebruik je `vl-header` of `vl-header-next`, geef dan `skip-to-content-id` mee met de id van de eerste heading van je pagina-inhoud; anders verschijnt er een waarschuwing in de console telkens de header in de DOM komt. Heb je al een eigen skip-link naar de inhoud, haal die dan weg wanneer je het attribuut zet: de header laat ze staan, zodat er anders twee zijn.",
+      "example": "```html\n<vl-header identifier=\"...\" skip-to-content-id=\"main-content\"></vl-header>\n\n<main>\n    <h1 id=\"main-content\">Titel van de pagina</h1>\n</main>\n```"
+    }
+  }
+}

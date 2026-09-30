@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8efb347": {
+      "impact": "opt-in",
+      "explanation": "vl-link vuurt bij elke klik een `vl-click` event af, zoals vl-button; het bubbelt en gaat door de shadow DOM (`bubbles: true, composed: true`), dus je vangt het ook op een ouder-element op. Het native `click` event blijft werken; gebruik één van beide op hetzelfde element, anders loopt je callback dubbel. Anders dan bij vl-button gaat `vl-click` altijd af, want vl-link heeft geen disabled-toestand. Luistert een ouder-element al naar `vl-click` van knoppen, dan krijgt het nu ook de kliks op links erin (zie Components - Atom/link, Events).",
+      "example": "```html\n<vl-link href=\"https://www.vlaanderen.be\">Vlaanderen</vl-link>\n<script>\n    document.querySelector('vl-link').addEventListener('vl-click', () => {\n        console.log('link geklikt');\n    });\n</script>\n```"
+    }
+  }
+}

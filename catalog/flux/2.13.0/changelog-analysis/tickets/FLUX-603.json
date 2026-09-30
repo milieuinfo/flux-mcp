@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "a993629": {
+      "impact": "none",
+      "explanation": "Raakt enkel wie de CDN-bundel met de compliance-componenten laadt, de fat-lib `domg-wc-compliance-<versie>.min.js` (zie Recepten/CDN Bundel - fat-lib); de npm-packages veranderen niet. Flux bouwt die bundel nu verplicht als één bestand, zonder aparte chunks: zo'n chunk zou de browser apart ophalen vanaf de root van jouw site (de bundel gebruikt `publicPath: '/'`), niet vanaf de CDN. Je krijgt de fix door in de URL van het script naar versie 2.13.0 te verwijzen."
+    }
+  }
+}

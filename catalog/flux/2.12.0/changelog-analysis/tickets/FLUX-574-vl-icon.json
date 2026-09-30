@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "5a18442": {
+      "impact": "automatic",
+      "explanation": "Een vl-icon met een `label` krijgt nu ook `role=\"img\"` bij zijn `aria-label`, zodat een schermlezer het als afbeelding met die naam voorleest. Een icoon zonder `label` blijft decoratief (`aria-hidden=\"true\"`). Je hoeft niets te doen."
+    }
+  }
+}

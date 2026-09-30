@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "0d093bc": {
+      "impact": "automatic",
+      "explanation": "Zonder `pattern` zet vl-input-field geen leeg `pattern` attribuut meer op het `<input>` in zijn shadow DOM. De validatie van Flux verandert niet: die negeerde een lege `pattern` al."
+    }
+  }
+}

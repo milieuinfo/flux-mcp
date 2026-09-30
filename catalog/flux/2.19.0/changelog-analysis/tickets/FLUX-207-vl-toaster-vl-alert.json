@@ -1,0 +1,13 @@
+{
+  "entries": {
+    "ca607d5": {
+      "impact": "opt-in",
+      "explanation": "`showAlert()` van `vl-toaster` zet elke key van het meegegeven object als attribuut op de `vl-alert` die hij aanmaakt. Het type van dat object is nu `VlAlertAttributes` (te importeren uit `@domg-wc/components/block`, net als `ALERT_ROLE`) en gebruikt de attribuutnamen, zodat je met de key `'alert-role'` de nieuwe ARIA-rol van de melding kiest; een camelCase-key zoals `alertRole` werd een attribuut `alertrole` en had geen effect. Bestaande aanroepen werken zoals voorheen."
+    },
+    "8ec5138": {
+      "impact": "opt-in",
+      "explanation": "`vl-alert` heeft een nieuw attribuut `alert-role` voor de ARIA-rol van de melding: `alert` (default, het gedrag van voorheen), `alertdialog` voor een melding die een actie vraagt, en `no-role` voor een melding die al bij het laden van de pagina zichtbaar is; een onbekende waarde valt terug op `alert`. Bij `alertdialog` krijgt de melding de titel als naam en de boodschap als beschrijving en is ze focusbaar, maar de focus verplaatsen doe je zelf met `alert.focus()`; de sectie Toegankelijkheid op Components - Block/alert legt uit welke rol bij welke context past. Randgeval: `focus()` op een `vl-alert` legt de focus nu op de melding in de shadow DOM, die enkel bij `alertdialog` focusbaar is; wie `vl-alert` zelf een `tabindex` gaf en er `focus()` op riep, krijgt bij de andere rollen geen focus meer. Daarnaast komt er een fix mee: inhoud die pas na de eerste render in het `actions`-slot terechtkomt, wordt nu getoond; voordien kon die visueel verborgen blijven.",
+      "example": "```html\n<!-- melding die al bij het laden van de pagina zichtbaar is -->\n<vl-alert alert-role=\"no-role\" type=\"info\" icon=\"info-circle\" title=\"Onderhoud\">\n    <span>Op zaterdag is dit loket beperkt beschikbaar.</span>\n</vl-alert>\n```"
+    }
+  }
+}

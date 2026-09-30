@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "6329fba": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie: Afnemen/Migratie v2 - FAQ kreeg een inhoudstafel en een nieuwe vraag over CSS-imports met `?raw` in Webpack 5, met als antwoord een regel met `resourceQuery: /raw/` en `type: 'asset/source'` en, voor TypeScript, een `declare module '*.css?raw'`. Aan de packages verandert niets."
+    },
+    "bd255ce": {
+      "impact": "none",
+      "explanation": "Enkel de documentatie: Afnemen/Migratie v2 - Impact beschrijft nu vl-tooltip, dat in v2.0.0 verdween en vanaf v2.7.0 terug is met een andere API: `for` met het id van het trigger-element is verplicht, en `data-vl-placement` en `data-vl-static` worden `placement` en `open`. vl-tooltip zelf verandert niet."
+    }
+  }
+}

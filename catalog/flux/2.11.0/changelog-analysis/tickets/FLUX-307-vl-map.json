@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "b9942f2": {
+      "impact": "opt-in",
+      "explanation": "vl-map-layer-style heeft een nieuw attribuut `pattern`: een `data:image/...`-URL, bv. een SVG met diagonale arcering, die als herhalend patroon over de `color` van de vlakken op de kaart komt en die vl-map-legend ook in het symbool van die stijl toont. Flux laadt het patroon wanneer de stijl aan de laag wordt toegevoegd; het attribuut is niet reactief. vl-map-layer-circle-style erft het attribuut en de web-types noemen het ook daar, maar een cirkelstijl gebruikt het op de kaart niet: enkel de legende toont er het patroon.",
+      "example": "```html\n<vl-map-features-layer name=\"Patronen\" projection-code=\"EPSG:31370\">\n    <!-- pattern: bv. 'data:image/svg+xml;base64,' + btoa('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\"><line x1=\"0\" y1=\"10\" x2=\"10\" y2=\"0\" stroke=\"red\" stroke-width=\"2\"/></svg>') -->\n    <vl-map-layer-style\n        name=\"Diagonale arcering\"\n        pattern=\"data:image/svg+xml;base64,…\"\n        color=\"rgba(255,0,0,0.3)\"\n        border-color=\"#c00\"\n        border-size=\"2\"\n    ></vl-map-layer-style>\n</vl-map-features-layer>\n```"
+    }
+  }
+}

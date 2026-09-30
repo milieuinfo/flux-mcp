@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "431d7a4": {
+      "impact": "opt-in",
+      "explanation": "vl-upload heeft een nieuwe methode `getRejectedFiles()` die de bestanden teruggeeft die Dropzone weigerde, bv. omdat hun type of grootte niet toegelaten is, naast de bestaande `getFiles()`, die de aanvaarde bestanden teruggeeft. Zonder Dropzone-instantie geeft ze een lege lijst.",
+      "example": "```js\nconst upload = document.querySelector('vl-upload');\nconst geweigerd = upload.getRejectedFiles();\n```"
+    }
+  }
+}

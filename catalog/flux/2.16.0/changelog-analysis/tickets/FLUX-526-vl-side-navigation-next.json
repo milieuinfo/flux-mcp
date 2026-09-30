@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "8ab4718": {
+      "impact": "opt-in",
+      "explanation": "vl-side-navigation-next en vl-side-navigation-layout-next krijgen het attribuut `multi-active`: dan zijn alle items waarvan de inhoud zichtbaar is actief, aangeduid met één doorlopende lijn uiterst links. Zonder het attribuut blijft enkel het bovenste item actief, waardoor de laatste items onderaan soms nooit actief worden. Het attribuut is niet reactief, zet het dus meteen in de HTML; het event `active-heading-changed` bevat nu ook `activeHeadingIds`, de actieve id's in volgorde. De web-types zetten `multi-active`, net als de andere attributen van vl-side-navigation-next, onder vl-side-navigation, de oude component die het niet kent; een IDE stelt het daarom niet voor op vl-side-navigation-next.",
+      "example": "```html\n<vl-side-navigation-layout-next multi-active>\n    <div slot=\"content\">\n        <h2 id=\"sectie-1\">Sectie 1</h2>\n        …\n    </div>\n</vl-side-navigation-layout-next>\n```"
+    }
+  }
+}

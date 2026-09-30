@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "1834b2f": {
+      "impact": "automatic",
+      "explanation": "vl-select-rich laat toetscombinaties met Ctrl, Alt of Meta (Cmd of de Windows-toets) voortaan met rust: zo'n toetsaanslag opent de keuzelijst niet meer en start geen actie van de onderliggende bibliotheek Choices.js, zodat sneltoetsen blijven werken terwijl de focus in het veld staat. Flux houdt zo'n `keydown` daarvoor tegen met `stopImmediatePropagation()`, in de capture-fase op vl-select-rich zelf. Een `keydown`-listener die je op vl-select-rich zelf registreert, krijgt zo'n toetscombinatie daardoor niet meer; een listener met `capture: true` op een ouder-element of op `document` wel. In de bubbelfase kwam een `keydown` uit vl-select-rich ook vóór 2.13.0 niet verder dan het element zelf, want vl-select-rich stopte die al."
+    }
+  }
+}

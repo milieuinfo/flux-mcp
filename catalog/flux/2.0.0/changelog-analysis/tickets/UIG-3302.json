@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "4b162d0": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-documentatie van Flux: de laatste voorbeelden met -next-componenten en is=\"…\"-elementen zijn vervangen door de v2-componenten, o.a. op de pagina's van alert, http-error-message, popover, rich-data, side-sheet, table en Recepten/Debounce. De packages veranderen niet."
+    }
+  }
+}

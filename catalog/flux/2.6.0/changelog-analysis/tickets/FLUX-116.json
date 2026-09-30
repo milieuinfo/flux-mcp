@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "10c51b8": {
+      "impact": "automatic",
+      "explanation": "vl-button haalt zijn styling nu uit één gedeelde bouwsteen, `vlButtonStyles`, voor zowel de gewone knop als de link-variant met `cta-link`. Voor je project betekent dat vooral dat een vl-button met `cta-link` dezelfde regels volgt als een gewone knop: dezelfde minimale hoogte voor elke variant, en `ghost`, dat voor een link-knop geen eigen stijl had en hem als primaire knop toonde, werkt nu ook daar. Verder houdt een `narrow`-knop met `tertiary` of `ghost` zijn verticale padding, toont een knop met `error` tijdens `loading` een rode rand, rode tekst en rode laadbolletjes op een transparante achtergrond in plaats van de grijze laadstijl, blijft het icoon van een knop zonder tekst tijdens `loading` onzichtbaar zijn plaats innemen, en heeft de zoekknop van vl-search rechte hoeken aan de linkerkant. `vlButtonStyles` is volgens Components - Atom/button-style (intern) een bouwsteen voor Flux-componenten en wordt niet geëxporteerd via `@domg-wc/components/atom`; de vroegere `buttonStyles` en `linkButtonStyles` zijn verwijderd, maar ook die stonden niet in de index van het package."
+    }
+  }
+}

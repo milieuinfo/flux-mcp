@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "53040a9": {
+      "impact": "action",
+      "explanation": "`vl-http-error-message` toont de debug-info (URL, tijd, user-agent) nu als definitielijst (`<dl>`) in plaats van als tabel, zodat een schermlezer ze als beschrijvende paren aankondigt. De inhoudskolom lijnt voor elke foutcode en schermbreedte links op dezelfde plaats uit, en de foutteksten vragen de helpdesk te mailen met \"de URL in de adresbalk\" in plaats van \"de URL hierboven\". Wie de component enkel toont, krijgt dat vanzelf mee, maar end-to-end-testen die in de shadow DOM `tr > td#url` zoeken of de oude fouttekst verwachten, slagen niet meer.",
+      "action": "Zoeken je end-to-end-testen in de shadow DOM van `vl-http-error-message` naar `tr > td#url`, `tr > td#time` of `tr > td#user-agent`, gebruik dan `dl > dd#url`, `dl > dd#time` en `dl > dd#user-agent`. Verwachten ze in de fouttekst \"de URL hierboven\", verwacht dan \"de URL in de adresbalk\"."
+    }
+  }
+}

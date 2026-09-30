@@ -1,0 +1,36 @@
+{
+  "entries": {
+    "77edaf7": {
+      "impact": "none",
+      "explanation": "De build van Flux zelf loopt voortaan via Jenkins; de Bamboo build is verwijderd. De pagina Beheren/CI - CD beschrijft de nieuwe pijplijn. De gepubliceerde packages en de manier waarop je ze afneemt, veranderen niet."
+    },
+    "8f5edd2": {
+      "impact": "none",
+      "explanation": "De tests in de build van Flux zelf lopen nu parallel, zodat de build sneller klaar is. De gepubliceerde packages veranderen niet."
+    },
+    "17bbac2": {
+      "impact": "none",
+      "explanation": "De eerste opzet van de Jenkins-build van Flux zelf. Nieuw is dat een commit die enkel documentatie wijzigt nu ook een patch release geeft, met een eigen sectie Documentation in de changelog: een patch release kan dus enkel nieuwe documentatie bevatten. De gepubliceerde packages veranderen niet."
+    },
+    "2d45277": {
+      "impact": "none",
+      "explanation": "Verbeteringen aan de Jenkins-pijplijn van Flux zelf. De gepubliceerde packages veranderen niet."
+    },
+    "2ecd23f": {
+      "impact": "none",
+      "explanation": "De build van Flux zelf publiceert de resultaten van de Cypress-tests nu in Jenkins. De gepubliceerde packages veranderen niet."
+    },
+    "6ebf1fc": {
+      "impact": "none",
+      "explanation": "De tests van Flux zelf hebben consistentere namen en het testrapport in Jenkins groepeert ze per categorie. De gepubliceerde packages veranderen niet."
+    },
+    "a85a953": {
+      "impact": "none",
+      "explanation": "Opkuis van de CI-scripts van Flux zelf, met onder meer duidelijkere uitvoer wanneer een stap faalt. De gepubliceerde packages veranderen niet."
+    },
+    "3bef0d8": {
+      "impact": "none",
+      "explanation": "De controle na een release, die de zonet gepubliceerde packages installeert zoals een afnemer ze krijgt, draait nu in een eigen, lege omgeving. Voordien vond die controle ook dependencies in de installatie van de volledige repo van Flux, en slaagde ze dus ook als een package een dependency gebruikte die het niet declareert. De gepubliceerde packages veranderen niet."
+    }
+  }
+}

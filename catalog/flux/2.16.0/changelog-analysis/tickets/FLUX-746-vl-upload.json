@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "010e1fb": {
+      "impact": "none",
+      "explanation": "De documentatie van vl-upload legt nu uit dat `max-size` in MiB (1024-basis) gevalideerd wordt en niet in MB, terwijl de interface bewust \"MB\" toont: een `max-size` van 900 laat tot 943.718.400 bytes toe. Flux raadt aan om de bestandsgrootte ook in de backend te valideren, in MB, met een limiet die iets hoger ligt dan `max-size`. Het gedrag verandert niet."
+    }
+  }
+}

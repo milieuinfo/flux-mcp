@@ -1,0 +1,8 @@
+{
+  "entries": {
+    "c735321": {
+      "impact": "none",
+      "explanation": "Enkel de Storybook-documentatie van Flux verandert: Styles/Layout (afnemers)/grid heeft een nieuw hoofdstuk 'Niet: vl-grid in vl-grid'. Het raadt af een `vl-grid` in een kolom van een andere `vl-grid` te zetten; wil je binnen een kolom enkel items naast elkaar, gebruik dan `vl-group`."
+    }
+  }
+}
