@@ -3,18 +3,20 @@
 MCP-server (Model Context Protocol) voor **Flux**: stelt de Flux-catalogus en bijhorende resources beschikbaar
 aan LLM-agents en tooling via MCP. De server zelf kent Figma niet.
 
-Daarnaast verrijkt deze repo de FLUX Figma-library met wat we over de componenten weten, om te beginnen met
-de Code Connect snippets. Een agent vindt die niet hier, maar via de Figma MCP-server, terwijl hij in Figma
-werkt. Die twee sporen staan los van elkaar; wat ze delen is de kennis per component, die hier in git leeft.
+Daarnaast verrijkt deze repo de FLUX Figma-library met wat we over de componenten weten: de Code Connect
+snippets, de component descriptions en de documentation links. Een agent vindt die niet hier, maar via de
+Figma MCP-server, terwijl hij in Figma werkt. Die twee sporen staan los van elkaar; wat ze delen is de kennis
+per component, die hier in git leeft.
 
 ## Structuur
 
 | Folder                | Inhoud                                                              |
 |-----------------------|---------------------------------------------------------------------|
 | `server/`             | de MCP-server zelf                                                  |
-| `catalog/figma/`      | wat we naar Figma schrijven: `code-connect/v2/` (de templates)       |
+| `catalog/figma/`      | wat we naar Figma schrijven: `code-connect/v2/` (de templates) en `descriptions/v2/` (de kennis per component) |
 | `prompts/`            | MCP-prompts die de server aanbiedt (concept)                        |
 | `resources/`          | scripts enzo                                                        |
+| `tsconfig.json`       | enkel om de templates in de catalogus te laten typechecken; er wordt niets gecompileerd |
 
 Alle scripts lopen via `pnpm run` (zie `package.json`); installeer eerst met `pnpm install`.
 
@@ -25,7 +27,16 @@ Voor versie `X.Y.Z`; `FIGMA_TOKEN` staat in je omgeving. Details in de secties h
 1. `pnpm run figma:web-components:copy-figma X.Y.Z`: templates van tag `vX.Y.Z` naar de catalogus.
 2. `pnpm run figma:code-connect:publish --dry-run`: valideert tegen Figma, publiceert niets.
 3. `pnpm run figma:code-connect:publish`: publiceert de snippets (of via Jenkins, `CODE_CONNECT_ACTION` publish).
-4. Commit de catalogus.
+4. `pnpm run figma:descriptions:write X.Y.Z`: payload met descriptions en documentation links.
+5. Commit de catalogus.
+6. Maak in Figma een branch van de library.
+7. Laat een AI-agent met de Figma MCP `prompts/figma-descriptions.md` uitvoeren op die branch. Hij toont wat
+   verschilt en schrijft pas na je akkoord.
+8. Review de branch, merge hem en publiceer de library.
+
+Een description aanpassen doe je in `catalog/figma/descriptions/v2/<soort>/<naam>.figma.md` (via een PR), nooit
+rechtstreeks in Figma. Bij de volgende release neemt stap 7 ze mee; wil je ze eerder in Figma, herhaal dan
+stap 4 en 6 tot 8.
 
 ## Bronrepo
 
@@ -98,6 +109,61 @@ Goed om te weten:
   allebei.
 - De versie van de Code Connect CLI staat gepind in `package.json`: we publiceren met dezelfde versie als
   waarmee de templates gevalideerd zijn.
+
+## Kennis per component en Figma-descriptions
+
+`catalog/figma/descriptions/v2/<soort>/<naam>.figma.md` bundelt wat een ontwerper, een developer of een AI over één
+component in Figma moet weten; sommige van die componenten bestaan enkel in Figma. Het bestand staat in
+dezelfde soort en heet zoals het Code Connect template waar het bij hoort:
+`descriptions/v2/atom/vl-button.figma.md` hoort bij `code-connect/v2/atom/vl-button.figma.ts`. De kennis loopt
+door over Flux-releases heen; ze hoort bij de Figma-library, niet bij een versie van de web componenten. Welke
+library, leidt het script af uit de major van de versie die je meegeeft.
+
+Zo ziet zo'n bestand eruit:
+
+```markdown
+---
+storybook: components-atom-button
+---
+
+# vl-button
+
+## Figma
+
+Knop voor een actie op de pagina.
+
+• …
+```
+
+- `storybook` is de id van de documentatiepagina, zonder `--documentatie`.
+- Onder `## Figma` staat de tekst die als component description in Figma komt. De Figma MCP geeft die aan een
+  AI mee als "usage descriptions … best practices", samen met de documentation link. Schrijf ze voor wie
+  ontwerpt of van design naar code gaat: wat het component is, waar het vaak misloopt en wat er voor
+  toegankelijkheid in de code moet gebeuren. Details horen in Storybook.
+
+Na een release en een `figma:web-components:copy-figma` bouw je de descriptions en documentation links voor
+die versie:
+
+```bash
+pnpm run figma:descriptions:write 2.20.0    # dist/descriptions/2.20.0.json
+```
+
+De payload is wegwerp en staat in `.gitignore`: de versie bepaalt enkel naar welke Storybook-release de
+documentation links wijzen. Genereer ze opnieuw wanneer je naar Figma schrijft.
+
+Het script koppelt elk bestand via het template aan zijn Figma node, controleert of de Storybook-pagina in die
+release bestaat en weigert teksten boven 1200 tekens. Onder elke description zet het een regel dat de tekst
+gegenereerd is uit dat `.figma.md` bestand en dat ze niet in Figma aangepast mag worden.
+
+Het resultaat in Figma zetten kan niet vanuit een script of vanuit Jenkins: descriptions en documentation links
+zijn enkel via de Plugin API te wijzigen, niet via de REST API. Het werk verdeelt zich daarom zo:
+
+1. De developer maakt in de Figma-file van de library een branch.
+2. Een AI-agent met de Figma MCP schrijft de descriptions uit `catalog/figma/descriptions/v2/` en de
+   documentation links in die branch weg. Hij gebruikt daarvoor `dist/descriptions/<versie>.json`,
+   dat die teksten al koppelt aan de juiste Figma node en Storybook-versie. De werkwijze staat in de prompt
+   `prompts/figma-descriptions.md`: hij toont eerst wat verschilt en schrijft pas na akkoord.
+3. De developer reviewt de wijzigingen in de branch, merget ze en publiceert de library.
 
 ## Status
 
