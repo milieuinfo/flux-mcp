@@ -1,0 +1,31 @@
+# De server
+
+De MCP-koppeling bestaat nog niet. Wat er is, zijn de queries op de catalogus, als gewone functies met tests. De
+MCP-server hangt ze later aan tools en resources.
+
+Een fout in de vraag, zoals een onbekende versie, geeft een `CatalogError`.
+
+## De changelog: `server/src/catalog.mjs`
+
+| Functie                                  | Vraag                                                                          |
+|------------------------------------------|--------------------------------------------------------------------------------|
+| `listVersions()`                         | welke versies zijn er?                                                         |
+| `getChangelog(versie, filters)`          | wat veranderde er in één versie? Filters: type, impact, component, label       |
+| `getChangesBetween(van, tot, filters)`   | wat verandert er bij een upgrade? Zie hieronder                                |
+| `getComponentHistory(component, bereik)` | wat veranderde er per versie aan één component?                                |
+| `findChanges(zoekterm)`                  | in welke versie zit `FLUX-800`, of een wijziging over "window ready"? Zoekt ook in de uitleg |
+
+`getChangesBetween` geeft per impact, eerst wat actie vraagt, en per component, met de netto diff van de web-types en
+de dependencies, en de commits buiten de changelog.
+
+**Wat standaard wegvalt.** Bij een upgrade telt enkel wat het project raakt. `getChangesBetween` en
+`getComponentHistory` laten daarom standaard weg:
+
+- entries met impact `none`: `hiddenNoImpact` zegt hoeveel, `includeNoImpact` toont ze toch;
+- elementen waarvan in de web-types enkel de tekst wijzigde: `hiddenDescriptions` zegt hoeveel, `includeDescriptions`
+  toont ze toch.
+
+`getChangelog` en `findChanges` tonen alles, want een afnemer mag weten wat er nieuw is.
+
+**Een onderbroken keten.** Ontbreekt er een versie tussen `van` en `tot`, dan zegt `getChangesBetween` dat met
+`complete: false`, `missing` en een `warning`.

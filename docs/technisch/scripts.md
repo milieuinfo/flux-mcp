@@ -25,3 +25,9 @@ FLUX_REPO=~/repos/flux-web-components pnpm run figma:web-components:copy-figma 2
 - Je clone moet de gevraagde tag kennen, anders eerst `git fetch --tags`.
 - Je clone wordt nooit gewijzigd: `figma:web-components:copy-figma` kloont ook een lokale bron eerst naar een
   tijdelijke map.
+
+## Andere bronnen
+
+| Variabele            | Bron                                   | Standaard                                                          |
+|----------------------|----------------------------------------|--------------------------------------------------------------------|
+| `FLUX_REGISTRY`      | de registry van de packages            | `https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm` |

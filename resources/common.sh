@@ -1,5 +1,5 @@
 # Wat de bash-scripts delen: de bronrepo en de versie van een Flux-release. Wordt gesourced door de common.sh van
-# een spoor, niet rechtstreeks door een script.
+# een spoor, niet rechtstreeks door een script. Voor de Node-scripts staat hetzelfde in resources/common.mjs.
 
 # De repo van Flux Web Components; zie docs/technisch/scripts.md. Met FLUX_REPO gebruik je een lokale clone.
 # FLUX_REPO_URL blijft de publieke repo, ook als er van een lokale clone gekloond wordt.
