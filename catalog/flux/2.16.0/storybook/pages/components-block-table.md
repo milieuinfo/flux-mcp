@@ -1,0 +1,168 @@
+# Table
+
+> [!NOTE]
+> **Opgelet**
+> In de v2 versie van deze component gebruik je hem via de custom-tag, de interne implementatie is voor de rest
+> gelijk gebleven aan deze van de v1 versie. In de toekomst zal deze component grondig herwerkt worden; in de
+> context van een herwerking van de vl-table.
+
+## Doel
+
+Gebruik de `table` component om op een gestructureerde manier (grote hoeveelheden) relationele data te tonen.
+
+## Voorbeeld
+
+```js
+import { VlTableComponent } from '@domg-wc/components/block';
+```
+
+```html
+<vl-table>
+    <table>
+        <caption>
+             Table
+        </caption>
+        <thead>
+            <tr>
+                <th>Entry Header 1</th>
+                <th>Entry Header 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Entry Header 1">Entry line 1</td>
+                <td data-title="Entry Header 2">Entry line 2</td>
+            </tr>
+            <tr>
+                <td data-title="Entry Header 1">Entry line 1</td>
+                <td data-title="Entry Header 2">Entry line 2</td>
+            </tr>
+        </tbody>
+    </table>
+</vl-table>
+```
+
+## Default
+
+> Story: [vl-table - default](/?path=/story/components-block-table--table-default)
+
+## Configuratie
+
+> API: vl-table
+
+## Functionaliteit
+
+Standaard is er geen sorteer, filtering of paginatie functionaliteit beschikbaar voor de `table`. Hiervoor is de
+[rich-table](/?path=/docs/components-block-rich-table--rich-table-default) beschikbaar.
+
+Wat dit component wel méér heeft dan die van Digitaal Vlaanderen zijn expandable/collapsible rows. Zie de specifieke
+stories hieronder.
+
+De visuele mark-up volgt standaard die van Digitaal Vlaanderen, inclusief responsiveness.
+
+## Lege cellen
+
+Het is aan te raden om in lege cellen de waarde `&nbsp;` te plaatsen, dit zorgt ervoor dat rijen hun hoogte behouden
+indien elke cel van een rij leeg is.
+
+## Joined row titles
+
+Gebruik de matrix-variant om gegevens met 2 dimensies weer te geven. Zowel de rijen als de kolommen krijgen een titel.
+De titels zijn gescheiden van de inhoud met een vetgedrukte lijn.
+
+Om dit toe te passen maak je zelf gebruik van native html-attribuut `rowspan`.
+
+> Story: [vl-table - joined row titles](/?path=/story/components-block-table--table-joined-row-titles)
+
+## Expandable
+
+Om een rij te laten uitklappen ("expanden") moet je het volgende doen:
+
+Als je 2 rijen hebt, en je wil rij A altijd zichtbaar zetten en rij B verborgen tot die wordt opengeklapt:
+
+- maak een nieuwe rij B direct na rij A
+- zet je het attribuut `data-details-id` op de rij B
+- je kan ook meerdere rijen uitklapbaar maken, zolang je maar dezelfde `data-details-id` hergebruikt
+
+**voorbeeld expandable row**
+
+```html
+<tr id="rij-A">
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+</tr>
+<tr data-details-id="details-row-A" id="rij-B">
+    <td>details on previous row</td>
+</tr>
+```
+
+Dan zal er automatisch een `button` toegevoegd worden die de gebruiker toelaat de rij B te zien wanneer op de
+desbetreffende knop bij rij A wordt gedrukt.
+
+> Story: [vl-table - expandable](/?path=/story/components-block-table--table-expandable)
+
+### Colspan
+
+We berekenen automatisch de `colspan` van de rij die uitklapt, zodat de rij die uitklapt de volledige breedte
+van de tabel inneemt.
+Dit doen we enkel als de rij die uitklapt een enkele cel bevat. Als de rij die uitklapt meerdere cellen bevat,
+moet je zelf de `colspan` instellen.
+
+### Expandable with custom toggle
+
+Je kan ook de knop die de rij open en dicht klapt zelf kiezen.
+
+Als je 2 rijen hebt, en je wil rij A altijd zichtbaar zetten en rij B verborgen tot die wordt opengeklapt:
+
+Om dit te doen, doe het volgende:
+
+- op de rij die meer details geeft op de voorgaande rij, moet de juiste id worden toegekend
+
+```html
+<tr data-details-id="details-row1">
+    <td>Details 1</td>
+</tr>
+```
+
+- op rij die meer details heeft, een cel toevoegen die:
+    - `data-with-expand-details` heeft als attribuut
+    - een element naar keuze heeft, die `toggleDetails([id])` gaat aanroepen met de juiste id voor de openklapbare rij
+      bv.:
+
+```html
+<td data-with-expand-details>
+    <vl-button onclick="table.toggleDetails('details-row-1')">click to toggle details</vl-button>
+</td>
+```
+
+**_In dit voorbeeld vind je bij `Show code` broncode in `lit-html`-syntax. Voor code voorbeelden in HTML/JavaScript
+verwijzen we naar hierboven._**
+
+> Story: [vl-table - expandable custom toggle details column](/?path=/story/components-block-table--table-expandable-custom-toggle-details-column)
+
+## Styling
+
+De tabel ondersteunt verschillende stijlen voor de rijen, om de status van gegevens aan te geven:
+
+### Rij styling
+
+Je kunt de volgende CSS-klassen gebruiken om specifieke stijlen toe te passen op hele rijen of individuele cellen:
+
+- **Success**: Gebruik `vl-table--success` voor een groene achtergrond (met groene rand)
+- **Warning**: Gebruik `vl-table--warning` voor een oranje achtergrond (met oranje rand)
+- **Error**: Gebruik `vl-table--error` voor een rode achtergrond (met rode rand)
+- **Disabled**: Gebruik `vl-table--disabled` voor een grijze achtergrond
+
+Deze klassen kunnen zowel op een `<tr>` element worden toegepast om een hele rij te stylen, als op een `<td>` element om een individuele cel te stylen.
+
+> Story: [vl-table - row styling](/?path=/story/components-block-table--table-row-styling)
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+We nemen de functionaliteit & styling over van het equivalente component van Digitaal Vlaanderen.
+
+[Documentatie Digitaal Vlaanderen - Data Table](https://www.vlaanderen.be/vlaanderen-design-system/componenten/data-table)

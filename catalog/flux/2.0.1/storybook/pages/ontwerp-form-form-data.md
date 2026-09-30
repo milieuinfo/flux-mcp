@@ -1,0 +1,49 @@
+# Form - Data
+> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/?path=/docs/ontwerp-form-validation--documentatie)
+
+Om de form data te verzamelen, kan je de [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API gebruiken.
+
+Echter, deze API is niet altijd even handig in gebruik. Als je `FormData.entries()` gebruikt, dan krijg je een iterator van de waardes.
+Dit is voldoende voor inputs met 1 waarde, maar voor inputs met meerdere waardes krijg je enkel de laatst gekozen waarde terug.
+
+Daarom leek het ons aangewezen dat je altijd met een consistent object kan werken:
+- voor inputs met 1 waarde, krijg je altijd een enkele waarde
+- voor inputs met meerdere waardes (bv. multiselect), krijg je altijd een array van waardes
+
+## parseFormData(formElement: Form, multiFormControlNames?: string[])
+
+We hebben een helper functie voorzien om de form data te parsen naar een object met de waardes van de velden.
+
+Deze functie aanvaard 2 parameters:
+- `formElement: Form`: het Form element waarvan je de data wil parsen
+- `multiFormControlNames?: string[]`: een array van form control namen die meerdere waardes kunnen hebben.
+Als deze parameter niet wordt meegegeven, dan wordt er gezocht naar alle form controls die meerdere waardes kunnen hebben aan de hand van het `multiple` attribuut.
+
+### Gebruik
+
+```js
+import { parseFormData } from "@domg-wc/components/form";
+```
+
+```html
+<form @submit=${this.onSubmit}>
+  ...
+</form>
+```
+
+```typescript
+onSubmit(event: Event): void {
+    // voorkomt het standaardgedrag van het formulier,
+    // zodat we de formulierinzending zelf kunnen afhandelen.
+    event.preventDefault();
+
+    // parse de form data
+    const data = parseFormData(event.target as HTMLFormElement);
+    // print de form data in de console
+    console.log(data);
+}
+```
+
+### Voorbeeld
+
+> Story: [Form Data](/?path=/story/ontwerp-form-form-data--form-data)

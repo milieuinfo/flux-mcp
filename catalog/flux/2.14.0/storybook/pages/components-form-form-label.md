@@ -1,0 +1,50 @@
+# Form Label
+
+## Doel
+
+Gebruik de `form-label` component om een form label af te beelden.
+
+Zie het [form demo](/?path=/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.
+
+## Voorbeeld
+
+```js
+import { VlFormLabelComponent } from '@domg-wc/components/form';
+```
+
+```html
+<vl-form-label></vl-form-label>
+```
+
+> Story: [vl-form-label - default](/?path=/story/components-form-form-label--form-label-default)
+
+## Configuratie
+
+> API: vl-form-label
+
+## Annotatie
+
+Gebruik het `annotation` attribuut om extra uitleg of een voorbeeld inline naast de label tekst weer te geven.
+De annotatie wordt kleiner en in een subtielere kleur weergegeven.
+
+> Story: [vl-form-label - annotation](/?path=/story/components-form-form-label--form-label-with-annotation)
+
+## Witruimte naast annotatie corrigeren
+
+Wanneer een `vl-form-label` met een `annotation` onmiddellijk gevolgd wordt door een `vl-text[annotation]`-sibling in de light DOM,
+kan er een ongewenste witruimte verschijnen tussen de twee elementen.
+Dit is een light-DOM compositieprobleem: de marge van het label kan niet via de shadow DOM worden aangepast op basis van een sibling-relatie.
+
+Voeg deze CSS-regel toe in de styles van de host component:
+
+```css
+vl-form-label:has(+ vl-text[annotation])::part(label) {
+    margin-right: 0;
+}
+```
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Form Message](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-form-message)

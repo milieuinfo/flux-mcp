@@ -1,0 +1,99 @@
+# Digitaal Vlaanderen Header
+
+Injecteert de global header widget (v5) van Digitaal Vlaanderen.
+Default wordt de header geïnjecteerd in het native `<body>` element.
+
+Voor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende
+template aan te houden:
+
+>   **[Logo Vlaanderen]** | **[App-name]** | witruimte | **Aanmelden** | **Hulp nodig?**
+
+- **"Logo Vlaanderen"** is hierbij een link naar https://vlaanderen.be.
+- **"App-name"** blijft op alle pagina's de naam van de applicatie en krijgt als link de startpagina van de applicatie.
+- Onder **"Aanmelden"** kan je app-links definiëren (zie [Applicatieve links](#applicatieve-links)).
+- Onder **"Hulp nodig?"** komt de tekst: **"Neem contact op met Departement Omgeving"**, gevolgd door verschillende
+contact opties (telefoonnummer, adres, e-mailadres).
+
+Deze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke
+identifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit
+[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen.
+
+## Voorbeeld
+
+```js
+import { VlHeaderNext } from '@domg-wc/components/compliance';
+```
+
+```html
+<vl-header-next></vl-header-next>
+```
+
+> Story: [vl-header-next - default](/?path=/story/components-compliance-header-next--header-default)
+
+## Configuratie
+
+> API: geen element in de web-types. Zie de argTypes in [Storybook](/?path=/story/components-compliance-header-next--header-default).
+
+## Sessies
+
+### Configuratie
+
+Bij het aanpassen van volgende attributen wordt achterliggend de `window.globalHeaderClient.accessMenu.setProfile()` methode van DV opnieuw aangeroepen:
+
+-   `login-url`
+-   `logout-url`
+-   `switch-capacity-url`
+
+Zie [global header interfaces | setProfile](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/AccessMenuMethods.html#setprofile) voor de technische informatie.
+
+Zie [Digitaal Vlaanderen - De endpoints overschrijven](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-endpoints-overschrijven) voor meer informatie (v4 documentatie).
+
+## Applicatieve Links
+
+Je kan applicatieve links toevoegen aan de header door gebruik te maken van de `applicationLinks` property.
+
+Deze property verwacht een array met objecten van het volgende type:
+
+```js
+type ApplicationMenuLink = {
+    label: string;
+    href: string;
+    icon?: string;
+    target?: string;
+};
+```
+
+De `ApplicationMenuLink` TypeScript Type kan je zo importeren: `import { ApplicationMenuLink } from '@govflanders/vl-widget-global-header-types';`
+
+Zie [global header interfaces | ApplicationMenuLink](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/ApplicationMenuLink.html) voor de technische informatie.
+
+Zie [Digitaal Vlaanderen - Header applicatieve links](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6508874105/Aanmeldmenu#Applicatieve-links) voor meer informatie (v4 documentatie).
+
+### Logout request
+
+Sinds global header v5 is het niet meer nodig om automatische logout requests te rejecten. Onderstaande informatie gaat over de v4 implementatie (voorlopig behouden in de documentatie als referentie).
+
+> Bij het gebruik maken van sessies kan het logout request afgehandeld worden.
+
+> Dit kan handig zijn als je wilt dat de gebruiker niet automatisch wordt uitgelogd bv. bij inactiviteit of als de sessie verlopen is.
+>
+> Door gebruik te maken van het `reject-logout` attribuut worden alle logout requests afgewezen, behalve een logout request door de gebruiker.
+>
+> Met de `logoutCallback` property kan je een callback functie meegeven die wordt aangeroepen bij een logout request.
+
+> De logout reason wordt meegegeven aan de callback, door een boolean promise terug te geven kan je de logout accepteren of afwijzen.
+
+> De mogelijke reasons zijn: `inactivity` en `expired`.
+
+> Een logout request door de gebruiker wordt nooit afgewezen.
+>
+>
+> Zie [De aanvragen voor applicatie logout afhandelen via JavaScript](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-aanvragen-voor-applicatie-logout-afhandelen-via-JavaScript) voor meer informatie (v4 documentatie).
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)
+
+[Global Header - interfaces](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/modules.html)

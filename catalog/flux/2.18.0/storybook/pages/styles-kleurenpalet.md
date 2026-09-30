@@ -1,0 +1,124 @@
+# Kleurenpalet
+
+## Inhoudstafel
+- [Concept](#concept)
+- [Hoofdkleuren](#hoofdkleuren)
+- [Status en ondersteunende kleuren](#status-en-ondersteunende-kleuren)
+- [Thema kleuren](#thema-kleuren)
+- [Kleurgebruik in grafieken](#kleurgebruik-in-grafieken)
+- [Toegankelijkheid](#toegankelijkheid)
+
+## Concept
+
+Dit kleurenpalet is overgenomen van het
+[kleurenpalet van Vlaanderen Design System](https://www.vlaanderen.be/vlaanderen-design-system/foundations/kleuren).
+
+De kleuren op deze pagina zijn globaal beschikbaar als CSS variabelen.
+Je kan ze toepassen op onderstaande manier:
+
+```css
+div {
+    color: var(--vl-color--text-default);
+    border: 1px solid var(--vl-color--border-default);
+    background-color: var(--vl-color--background-default);
+}
+```
+
+### Hoofdkleuren
+
+| Kleur | Beschrijving | Waarden |
+| --- | --- | --- |
+| Primaire kleur | Vormt de visuele identiteit van de Vlaamse Overheid. | Primary: var(--vl-color--primary), Primary 300: var(--vl-color--primary-300), Primary 100: var(--vl-color--primary-100) |
+| Acties | Duidt interactieve elementen aan. | Action: var(--vl-color--action), Action hover: var(--vl-color--action-800), Action active: var(--vl-color--action-900) |
+| Tekst | De standaard tekstkleur en twee varianten. | Default: var(--vl-color--text-default), Subtle: var(--vl-color--text-subtle), Disabled: var(--vl-color--text-disabled) |
+| Randen | De standaard randkleur en twee varianten. | Default: var(--vl-color--border-default), Bold: var(--vl-color--border-bold), Disabled: var(--vl-color--border-disabled) |
+| Achtergrond | De standaard achtergrondkleur en twee varianten. | Default: var(--vl-color--background-default), Subtle: var(--vl-color--background-subtle), Bold/Disabled: var(--vl-color--background-bold) |
+
+### Status en ondersteunende kleuren
+
+| Kleur | Beschrijving | Waarden |
+| --- | --- | --- |
+| Algemene status kleuren | Statuskleuren geven gebruikers feedback over de status van een actie of element. | Success: var(--vl-color--success), Warning: var(--vl-color--warning), Error: var(--vl-color--error) |
+| Success set | Set om een success kader op te bouwen. | Tekst: var(--vl-color--text-success), Rand: var(--vl-color--border-success), Achtergrond: var(--vl-color--background-success-subtle) |
+| Warning set | Set om een warning kader op te bouwen. | Tekst: var(--vl-color--text-warning), Rand: var(--vl-color--border-warning), Achtergrond: var(--vl-color--background-warning-subtle) |
+| Error set | Set om een error kader op te bouwen. | Tekst: var(--vl-color--text-error), Rand: var(--vl-color--border-error), Achtergrond: var(--vl-color--background-error-subtle) |
+| Primary set | Set om een primary kader op te bouwen. | Tekst: var(--vl-color--text-primary), Rand: var(--vl-color--border-primary), Achtergrond: var(--vl-color--background-primary-subtle) |
+| Action set | Set om een action kader op te bouwen. | Tekst: var(--vl-color--active-text-action), Rand: var(--vl-color--border-action), Achtergrond: var(--vl-color--background-action-subtle) |
+| Info set | Set om een info kader op te bouwen. | Tekst: var(--vl-color--text-default), Rand: var(--vl-color--border-default), Achtergrond: var(--vl-color--background-info-subtle) |
+
+### Thema kleuren
+
+[Departement Omgeving](https://omgeving.vlaanderen.be/) heeft een eigen set van thematische kleuren.
+Dit wordt gezien als een **niveau 2** thema. **Niveau 1** is het algemene Vlaamse thema met geel, zwart en blauw
+als hoofdkleuren.
+
+| Kleur | Beschrijving | Waarden |
+| --- | --- | --- |
+| Hoofdkleur | Standaard themakleur met twee varianten voor accenten of contrast-aanpassingen. | Hoofdkleur: var(--vl-color--domg-hoofdkleur), Licht: var(--vl-color--domg-hoofdkleur-light), Extra licht: var(--vl-color--domg-hoofdkleur-extra-light) |
+| Steunkleur | Een extra steunkleur voor accenten. bv headings. | Steunkleur: var(--vl-color--domg-steunkleur), Licht: var(--vl-color--domg-steunkleur-light), Extra licht: var(--vl-color--domg-steunkleur-extra-light) |
+
+### Kleurgebruik in grafieken
+
+Gebruik in grafieken liefst één kleur met verschillende helderheid.
+Dit vermijdt "overlappende" kleuren indien een persoon bepaalde kleuren niet kan zien.
+Je kan verschillende kleuren combineren als je daarbij oplet om per kleur een bepaalde helderheid aan te houden.
+In het onderste voorbeeld zijn geel de "lichte" kleuren, blauw-groen de "normale" kleuren en blauw de "donkere" kleuren.
+
+| Kleur | Beschrijving | Waarden |
+| --- | --- | --- |
+| Blauw varianten |  | A: var(--vl-color--action-200), B: var(--vl-color--action-400), C: var(--vl-color--action-600), D: var(--vl-color--action-800), E: var(--vl-color--action-1000) |
+| Geel varianten |  | A: var(--vl-color--primary-200), B: var(--vl-color--primary-400), C: var(--vl-color--primary-600), D: var(--vl-color--primary-800), E: var(--vl-color--primary-1000) |
+| Blauw-groen varianten |  | A: var(--vl-color--primary-niveau2-200), B: var(--vl-color--primary-niveau2-400), C: var(--vl-color--primary-niveau2-600), D: var(--vl-color--primary-niveau2-800), E: var(--vl-color--primary-niveau2-1000) |
+| Combinatie |  | A: var(--vl-color--primary-200), B: var(--vl-color--primary-400), C: var(--vl-color--primary-600), D: var(--vl-color--primary-niveau2-400), E: var(--vl-color--primary-niveau2-600), F: var(--vl-color--primary-niveau2-800), G: var(--vl-color--action-600), H: var(--vl-color--action-800), I: var(--vl-color--action-1000) |
+
+## Toegankelijkheid
+
+Al deze kleuren zijn ontworpen met toegankelijkheid in gedachten en voldoen aan de WCAG 2.1-richtlijnen voor contrast.
+
+- Normale tekst (kleiner dan 24px of 19px vet) moet een minimaal contrast van 4.5:1 hebben.
+- Grote tekst (24px of 19px vet en groter) moet een minimaal contrast van 3:1 hebben.
+- UI-componenten (zoals knoppen en invoervelden) moeten een minimaal contrast van 3:1 hebben.
+
+### Annotations, externe links, andere subtiel grijze content
+Voor `--vl-color--text-subtle` en `--vl-color--icon-subtle` gebruikten we `--vl-color--grey-800`. Deze kleur had een te
+lage contrast-ratio bij gebruik op een lichtgrijze achtergrond (bv in een table met zebra stijl of alert).
+
+Deze kleur is licht aangepast en heeft een subtiele transparantie meegekregen om ervoor te zorgen dat ze ook voldoet aan
+de WCAG-richtlijnen indien ze op een lichtgrijze achtergrond gebruikt wordt. Dit is getest met nieuwe en oude
+grijswaarden: #e8ebee, #f3f5f6, #f7f9fc, #ffffff.
+
+Op een witte achtergrond komt ze heel dicht in de buurt van de oorspronkelijke `--vl-color--grey-800`, ondanks de
+transparantie.
+
+Indien de transparantie problemen geeft in een bepaalde layout, kan je terugvallen op de oorspronkelijke
+`--vl-color--grey-800` waarde.
+
+Hieronder zie je een voorbeeld van een alert met een annotation tekst en het externe link icoon.
+
+<vl-alert title="Voorbeeld van een alert">
+
+<vl-text annotation>Voorbeeld van een annotation tekst.</vl-text>
+
+<vl-link external href="#">Voorbeeld van het externe link icoon</vl-link>
+
+</vl-alert>
+
+### Betekenisvolle kleuren
+
+> [!WARNING]
+> **Opgelet**
+> Kleur mag nooit het enige middel zijn om informatie over te brengen. Gebruik altijd een combinatie van kleur, tekst en
+> iconografie voor maximale toegankelijkheid.
+
+Test bij twijfel je gekozen kleuren met een tool als [Emulate vision deficiencies](https://dev.to/josefine/accessibility-testing-with-chrome-devtools-2bl4#emulate-vision-deficiencies) in Chrome Dev Tools.
+
+Voor de gecombineerde grafiekkleuren levert dat deze resultaten op.
+Dit is uiteraard slechts een benadering van de werkelijkheid.
+
+|  |  |
+| --- | --- |
+| Origineel | ![Originele grafiek kleuren](/apps/storybook/resources/style/grafiek-kleuren-origineel.png) |
+| Protanopia (geen rood) | ![emulatie van protanopia](/apps/storybook/resources/style/grafiek-kleuren-1-protanopia.png) |
+| Deuteranopia (geen groen) | ![emulatie van deuteranopia](/apps/storybook/resources/style/grafiek-kleuren-2-deuteranopia.png) |
+| Tritanopia (geen blauw) | ![emulatie van tritanopia](/apps/storybook/resources/style/grafiek-kleuren-3-tritanopia.png) |
+| Achromatopsia (geen kleur) | ![emulatie van achromatopsia](/apps/storybook/resources/style/grafiek-kleuren-4-achromatopsia.png) |

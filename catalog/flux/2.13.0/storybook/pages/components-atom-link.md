@@ -1,0 +1,109 @@
+# Link
+
+## Doel
+
+Gebruik de `link` component om een link af te beelden op een pagina.
+
+## Voorbeeld
+
+```js
+import { VlLinkComponent } from '@domg-wc/components/atom';
+```
+
+```html
+<vl-link></vl-link>
+```
+
+> Story: [vl-link - default](/?path=/story/components-atom-link--link-default)
+
+## Configuratie
+
+> API: vl-link
+
+## Varianten
+
+### Bold
+
+> Story: [vl-link - bold](/?path=/story/components-atom-link--link-bold)
+
+### Small
+
+> Story: [vl-link - small](/?path=/story/components-atom-link--link-small)
+
+### Large
+
+> Story: [vl-link - large](/?path=/story/components-atom-link--link-large)
+
+### Error
+
+> Story: [vl-link - error](/?path=/story/components-atom-link--link-error)
+
+### External
+
+Vul steeds het `label` attribuut in om duidelijk te maken dat de link in een nieuw venster opent.
+
+> Story: [vl-link - external](/?path=/story/components-atom-link--link-external)
+
+### Icon
+
+> Story: [vl-link - icon](/?path=/story/components-atom-link--link-icon)
+
+### Button als link
+
+Soms wil je een button stylen als een link. Een specifieke use-case is bvb. om van `Annuleren` een link te maken
+zodat die visueel minder prominent is dan de knop `Opslaan`.
+
+Als richtlijn geldt:
+- gebruik een `<button>`-element wanneer het een actie is die op dezelfde pagina blijft
+  bvb. het sluiten van een modal, het gaan naar een volgende stap, het openklappen van een accordion, enzovoort.
+- gebruik een `<a>`-element om te navigeren naar een andere pagina.
+
+Via het `type`-attribuut kan je het type van de onderliggende `<button>` instellen. De standaardwaarde is `button`.
+
+> Story: [vl-link - button as link](/?path=/story/components-atom-link--button-styled-as-link)
+
+## Events
+
+`vl-link` dispatcht bij elke klik een custom `vl-click` event (`bubbles: true, composed: true`), zodat het event de
+Shadow DOM boundary overschrijdt en door parent-elementen kan worden opgevangen.
+
+```html
+<vl-link href="https://www.vlaanderen.be">Vlaanderen</vl-link>
+<script>
+  document.querySelector('vl-link').addEventListener('vl-click', () => {
+    console.log('link geklikt');
+  });
+</script>
+```
+
+Het native `click` event blijft ook werken — beide zijn geldig. Kies één van beide en gebruik ze niet gelijktijdig op
+hetzelfde element om dubbele callbacks te vermijden.
+
+> **Relatie met `vl-button`:** `vl-button` dispatcht `vl-click` alleen als de knop niet disabled of in laadstatus is.
+`vl-link` heeft (nog) geen disabled-state, dus `vl-click` wordt altijd gedispatcht. De conventie is consistent: alle
+interactieve flux-atoms dispatchen `vl-<actie>`.
+
+## Toegankelijkheid
+
+Zorg er steeds voor dat de link een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd
+wordt bij het klikken op de link. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers
+gebruiken.
+
+Zorg er bij externe links voor dat gebruikers weten dat de link in een nieuw venster opent. Dit kan je doen adhv het
+`external` attribuut en door dit expliciet te vermelden in de linktekst of door het `label` attribuut te gebruiken om
+een beschrijvende `aria-label` toe te voegen aan de link. Indien `label` gebruikt wordt, is dit de enige linktekst die
+door schermlezers wordt voorgelezen. Dus neem ook de zichtbare linktekst hierin op.
+
+Indien de link enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende
+`aria-label` wordt toegevoegd aan de link.
+
+Indien de link een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde
+(`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt
+schermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven
+aan de onderliggende link.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Link](https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-link)

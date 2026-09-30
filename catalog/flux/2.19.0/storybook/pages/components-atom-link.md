@@ -1,0 +1,138 @@
+# Link
+
+## Doel
+
+Gebruik de `link` component om een link af te beelden op een pagina.
+
+## Voorbeeld
+
+```js
+import { VlLinkComponent } from '@domg-wc/components/atom';
+```
+
+```html
+<vl-link></vl-link>
+```
+
+> Story: [vl-link - default](/?path=/story/components-atom-link--link-default)
+
+## Configuratie
+
+> API: vl-link
+
+## Varianten
+
+### Bold
+
+> Story: [vl-link - bold](/?path=/story/components-atom-link--link-bold)
+
+### Small
+
+> Story: [vl-link - small](/?path=/story/components-atom-link--link-small)
+
+### Large
+
+> Story: [vl-link - large](/?path=/story/components-atom-link--link-large)
+
+### Error
+
+> Story: [vl-link - error](/?path=/story/components-atom-link--link-error)
+
+### External
+
+Een externe link opent in een nieuw tabblad en toont automatisch het external icoon na de linktekst.
+
+Voor schermlezers voegt de component automatisch de visueel verborgen tekst "(opent in een nieuw venster)" toe na de
+linktekst. Je hoeft dit dus niet zelf te voorzien. Het external icoon zelf is decoratief (`aria-hidden`) en wordt niet
+voorgelezen.
+
+Gebruik je het `label` attribuut, dan vervangt dat de volledige voorgelezen linktekst en wordt de automatische melding
+niet toegevoegd. Neem in dat geval zelf de vermelding op, bv.
+`label="Ga naar Vlaanderen.be (opent in een nieuw venster)"`.
+
+> Story: [vl-link - external](/?path=/story/components-atom-link--link-external)
+
+### Icon
+
+> Story: [vl-link - icon](/?path=/story/components-atom-link--link-icon)
+
+### Download
+
+Wijst de link naar een bestand, gebruik dan het `download` attribuut om aan te geven dat de browser het bestand
+moet downloaden in plaats van ernaar te navigeren. Geef je een waarde mee, dan wordt die gebruikt als suggestie voor de
+bestandsnaam; zonder waarde kiest de browser zelf een bestandsnaam.
+
+Beperkingen:
+
+-   het `download` attribuut werkt enkel voor same-origin URLs (en `data:` of `blob:` URLs), dit is een
+browser-beperking van het [native anchor `download` attribuut](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download)
+-   het attribuut werkt niet in combinatie met `button-as-link`
+
+Tip: maak in de zichtbare tekst of het `label` attribuut duidelijk dat het om een download gaat, zodat ook
+screen-reader gebruikers dit weten (bv. "Download verslag.pdf" i.p.v. "Verslag"). Een anchor met het `download`
+attribuut wordt nog steeds aangekondigd als een gewone link.
+
+> Story: [vl-link - download](/?path=/story/components-atom-link--link-download)
+
+### Button als link
+
+Soms wil je een button stylen als een link. Een specifieke use-case is bvb. om van `Annuleren` een link te maken
+zodat die visueel minder prominent is dan de knop `Opslaan`.
+
+Als richtlijn geldt:
+- gebruik een `<button>`-element wanneer het een actie is die op dezelfde pagina blijft
+  bvb. het sluiten van een modal, het gaan naar een volgende stap, het openklappen van een accordion, enzovoort.
+- gebruik een `<a>`-element om te navigeren naar een andere pagina.
+
+Via het `type`-attribuut kan je het type van de onderliggende `<button>` instellen. De standaardwaarde is `button`.
+
+> Story: [vl-link - button as link](/?path=/story/components-atom-link--button-styled-as-link)
+
+## Events
+
+`vl-link` dispatcht bij elke klik een custom `vl-click` event (`bubbles: true, composed: true`), zodat het event de
+Shadow DOM boundary overschrijdt en door parent-elementen kan worden opgevangen.
+
+```html
+<vl-link href="https://www.vlaanderen.be">Vlaanderen</vl-link>
+<script>
+  document.querySelector('vl-link').addEventListener('vl-click', () => {
+    console.log('link geklikt');
+  });
+</script>
+```
+
+Het native `click` event blijft ook werken — beide zijn geldig. Kies één van beide en gebruik ze niet gelijktijdig op
+hetzelfde element om dubbele callbacks te vermijden.
+
+> **Relatie met `vl-button`:** `vl-button` dispatcht `vl-click` alleen als de knop niet disabled of in laadstatus is.
+`vl-link` heeft (nog) geen disabled-state, dus `vl-click` wordt altijd gedispatcht. De conventie is consistent: alle
+interactieve flux-atoms dispatchen `vl-<actie>`.
+
+## Toegankelijkheid
+
+Zorg er steeds voor dat de link een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd
+wordt bij het klikken op de link. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers
+gebruiken.
+
+Bij externe links (het `external` attribuut) meldt de component zelf aan schermlezers dat de link in een nieuw venster
+opent: na de linktekst wordt de visueel verborgen tekst "(opent in een nieuw venster)" voorgelezen. Je hoeft dit dus
+niet zelf te voorzien in de linktekst of via het `label` attribuut.
+
+Indien `label` gebruikt wordt, is dit de enige linktekst die door schermlezers wordt voorgelezen; de automatische
+melding wordt dan niet toegevoegd. Neem in dat geval zowel de zichtbare linktekst als de vermelding "(opent in een
+nieuw venster)" op in het label.
+
+Indien de link enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende
+`aria-label` wordt toegevoegd aan de link.
+
+Indien de link een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde
+(`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt
+schermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven
+aan de onderliggende link.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Link](https://www.vlaanderen.be/vlaanderen-design-system/componenten/link)

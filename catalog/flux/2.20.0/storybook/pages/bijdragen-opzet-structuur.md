@@ -1,0 +1,169 @@
+# Opzet & Structuur
+
+## Inhoudstafel
+
+-   [Opzet](#opzet)
+-   [Structuur](#structuur)
+
+## Opzet
+
+De code van de web-componenten bibliotheek zit in GitHub onder de
+[flux-web-components](https://github.com/milieuinfo/flux-web-components) repository. Het is een monorepo, opgezet met
+custom scripts, wel wordt de [Nx](https://nx.dev/) structuur gevolgd (vroeger was het Nx).
+
+Ontwikkeling gebeurt [branch-based](/?path=/docs/bijdragen-git-branching-strategie--documentatie) waarbij het
+[release proces](/?path=/docs/beheren-ci-cd--documentatie) volledig geautomatiseerd is.
+
+Naast de web-componenten bibliotheek zijn er nog [andere repositories](/?path=/docs/beheren-repositories--documentatie).
+
+### Private dependencies
+
+Een aantal dependencies zijn interne private npm packages. Om deze te kunnen installeren moet de Artifactory registry
+correct geconfigureerd worden, met een persoonlijke authToken, in het root `~/.npmrc` bestand. Meer informatie vind je
+[hier](/?path=/docs/recepten-artifactory-configuratie--documentatie).
+
+### Node versie en Volta
+
+We gebruiken Node en [pnpm](#package-manager-pnpm) om dependencies te beheren en scripts uit te voeren. De Node versie is vastgelegd in de
+package.json.
+
+We gebruiken [Volta](https://get.volta.sh) om de juiste Node versie te installeren:
+
+```
+volta install node@22.20.0
+node -v
+v22.20.0
+```
+
+Indien de versie niet klopt moet je de `PATH` variabele aanpassen en de Volta bin vooraan zetten. In `~/.zprofile` kan
+je daarvoor deze lijn toevoegen:
+
+```
+export PATH="/Users/(your user)/.volta/bin:$PATH"
+```
+
+### Package manager: pnpm
+
+De repo gebruikt **pnpm** in plaats van npm. De reden is **supply-chain security**, niet snelheid.
+
+Bij het installeren voert npm de lifecycle-scripts (`preinstall`/`install`/`postinstall`) van elke dependency
+automatisch uit, ook de transitieve. Dat is het [aanvalsoppervlak](https://en.wikipedia.org/wiki/Attack_surface)
+voor supply-chain-aanvallen: een gecompromitteerde package voert kwaadaardige code uit tijdens het installeren. Pnpm draait die scripts standaard niet. Enkel packages die in
+`allowBuilds` op `true` staan (in de root `pnpm-workspace.yaml`) mogen build-scripts uitvoeren; de andere staan op
+`false` en zijn geblokkeerd. In deze repo staan `cypress` (downloadt de Cypress binary) en `playwright-webkit`
+(downloadt de WebKit-browser voor de component-tests op WebKit) op `true`. In CI is die WebKit-download een no-op
+door `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` in de Jenkins-pod. `strictDepBuilds` laat de install bovendien falen
+zodra een build-script niet expliciet toegelaten of geweigerd is, zodat een nieuw of onverwacht script niet ongemerkt
+kan draaien.
+
+Daarnaast is pnpm strenger over afhankelijkheden: een package dat je gebruikt maar niet expliciet in `package.json`
+hebt opgenomen (een phantom dependency), werkt onder pnpm niet meer. Bij npm werkt dat vaak toevallig wel doordat npm
+het naar de root van `node_modules` hoist, waardoor zulke phantom dependencies onopgemerkt blijven.
+
+Je hoeft pnpm niet apart te installeren: Node bevat een hulpmiddel (corepack) dat automatisch de juiste versie van
+pnpm gebruikt. Welke versie dat is, staat vast in de `package.json` van het project, zodat iedereen met dezelfde
+versie werkt. Corepack zet je eenmalig aan met:
+
+```
+corepack enable
+```
+
+Beheer je Node met Volta (zie hierboven), dan werkt `corepack enable` niet: Volta plaatst een eigen `pnpm`-shim
+die corepack overschaduwt. Laat Volta dan zelf pnpm beheren (`VOLTA_FEATURE_PNPM=1`); het
+[migratierecept](/?path=/docs/recepten-van-npm-naar-pnpm--documentatie) beschrijft de stappen bij stap 1.
+
+**npm wordt geweigerd.** Het veld `devEngines` in `package.json` verklaart pnpm als package manager van dit project,
+met `onFail: "error"`. npm 10.9 en hoger (de npm van Node 22) leest dat veld bij de start van elk commando en stopt
+meteen met `EBADDEVENGINES`, nog vóór het iets resolvet of schrijft. Dat geldt voor `npm install`, maar ook voor
+`npm run`, `npm ci` en de rest: gebruik `pnpm run`, `pnpm exec`, enzovoort. Zet ook je IDE op pnpm als package
+manager, anders krijg je diezelfde foutmelding bij IDE-acties. Een oudere npm kent het veld niet en wordt pas
+achteraf door de `preinstall`-guard tegengehouden, zie de aandachtspunten onder de cheatsheet.
+
+Bij een pnpm-upgrade zet je in `devEngines.packageManager.version` exact dezelfde waarde als in `packageManager`
+(versie mét hash). Wijkt die af, dan waarschuwt pnpm bij elke install dat `packageManager` genegeerd wordt, of weigert
+het. Door dat veld schrijft pnpm ook zijn eigen integriteitsgegevens (pnpm en `@pnpm/exe`) als tweede document in
+`pnpm-lock.yaml`; dat blok hoort gewoon mee in de commit.
+
+Wil je een eigen project van npm naar pnpm migreren? Dat is een ander onderwerp dan deze repo; volg daarvoor het
+recept [Van npm naar pnpm](/?path=/docs/recepten-van-npm-naar-pnpm--documentatie).
+
+### Pnpm Cheatsheet
+
+Hieronder de cheatsheet voor wie van npm komt (enkel de commando's die anders werken):
+
+| Taak | npm | pnpm |
+| --- | --- | --- |
+| Clean install (CI, reproduceerbaar) | `npm ci` | `pnpm install --frozen-lockfile` |
+| Install (dev) | `npm install` | `pnpm install` |
+| Script draaien | `npm run <script&gt;` | `pnpm run <script&gt;` |
+| Script met argument | `npm run <script&gt; -- <arg&gt;` | `pnpm run <script&gt; <arg&gt;` |
+| Binary uitvoeren | `npx <bin&gt;` | `pnpm exec <bin&gt;` |
+
+Drie aandachtspunten:
+ - Bij "Script met argument" geeft pnpm de `--` letterlijk door als argument, npm stript die. Gebruik in pnpm dus
+   geen `--` voor het argument, anders komt `--` als eerste argument in het script terecht.
+ - `pnpm install` gebruikt in CI automatisch `--frozen-lockfile` (pnpm detecteert de CI-omgeving); lokaal mag de
+   lockfile wel wijzigen.
+ - Een `npm install` uit gewoonte stopt met npm 10.9 of hoger meteen op `devEngines` (zie hierboven), zonder iets te
+   schrijven. Een oudere npm, of een `--force`, wordt pas achteraf geweigerd door de `preinstall`-guard
+   (`resources/utils-build/only-allow-pnpm.mjs`); npm heeft dan al een `node_modules` en een `package-lock.json`
+   weggeschreven. Ruim die op met `rm -rf node_modules package-lock.json` en installeer opnieuw met `pnpm install`.
+   `package-lock.json` staat in `.gitignore`, zodat zo'n lockfile nooit per ongeluk mee gecommit raakt.
+
+## Structuur
+
+Hieronder staat de projectstructuur van de [flux-web-components](https://github.com/milieuinfo/flux-web-components)
+repo beschreven, achter de pijltjes staan de artifacts gespecifieerd die uit de sub-projecten komen.
+
+```
+─ flux-web-components/
+  ├─ apps/
+  │  ├─ consumer/
+  │  ├─ consumer-e2e/
+  │  ├─ integrator/
+  │  ├─ integrator-e2e/ (Cypress CSP testen)
+  │  ├─ playground-lit/
+  │  ├─ playground-native/
+  │  ├─ playground-react/
+  │  ├─ storybook/
+  │  ├─ storybook-e2e/ (Cypress testen tov storybook)
+  │   -> worden niet als artifact gepubliceerd
+  ├─ libs/
+  │  ├─ common/
+  │  │   -> @domg-wc/common
+  │  ├─ components/
+  │  │   -> @domg-wc/components
+  │  ├─ integrations/
+  │  │   -> geen artifact, enkel voor intern gebruik in de integrator-app
+  │  ├─ map
+  │  │   -> @domg-wc/map
+  │  ├─ styles
+  │  │   -> @domg-wc/styles
+  ├─ resources/
+```
+
+Er zitten verschillende applicaties en libs in de repo.
+
+### Storybook
+
+Storybook (deze documentatie) streeft naar het aanbieden van zo correct mogelijke informatie en documentatie.
+
+### Playground's
+
+De verschillende Playground applicaties zijn bedoeld om integraties en combinaties van componenten in verschillende
+frameworks te testen.
+
+### Consumer
+
+Consumer is de toepassing om te verifiëren dat de gereleasete artifacts afneembaar zijn. Er zitten afnames in
+met named-imports, side-effect-imports en imports van de fat-lib.
+
+### Integrator
+
+Integrator wordt gebruikt om integraties te voorzien die ruimer zijn dan 1 component of die technisch nodig zijn
+om getest te kunnen worden, het wordt bvb. voor CSP verificatie gebruikt.
+
+### Libs
+
+De feitelijke componenten zitten opgesplitst in een aantal bibliotheken onder de libs folder. Ze worden aangeboden
+als [npm packages](/?path=/docs/afnemen-artifacts--documentatie).

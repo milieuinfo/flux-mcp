@@ -1,0 +1,66 @@
+# Styling
+
+## Elementen & CSS
+
+Alle `@domg-wc elementen`, zijnde de web-componenten die zich in de package `@domg-wc/elements` bevinden, zorgen
+ervoor dat eenmalig alle css op document niveau geregistreerd wordt. Technisch gebeurt dat door de decorator
+`@elementStyles` die de onderstaande `RegisterStyles.registerElementsStyles()` methode uitvoert:
+
+```
+class RegisterStyles {
+    static elementStylesRegistered = false;
+
+    static registerElementsStyles() {
+        if (UigConfig.getPreferences().autoRegisterStyles && !this.elementStylesRegistered) {
+            document.adoptedStyleSheets = [
+                ...document.adoptedStyleSheets,
+                ...(allElementStyles.map((style) => style.styleSheet) as CSSStyleSheet[]),
+            ];
+            this.elementStylesRegistered = true;
+            console.log('RegisterStyles: element-styling toegevoegd aan het document');
+        }
+    }
+}
+```
+
+## Eigen componenten met shadow DOM
+
+Zoals hierboven vermeld injecteren de `@domg-wc elementen` hun eigen styling op root niveau.
+Dit is voldoende in een applicatie waar de elementen niet gebruikt worden binnen andere shadow DOM's.
+
+> [!WARNING]
+> **Opgelet**
+> Als je zelf componenten ontwikkelt met een shadow DOM, dan moet je onze styling opnieuw injecteren in je component.<br>
+> De shadow DOM zal de styling niet doorlaten die globaal op het document niveau geregistreerd is.
+
+In `Lit` kan je dit bvb. zo doen:
+
+```ts
+import { vlElementsStyle } from '@domg-wc/styles';
+
+export class ComponentMetShadowDom extends LitElement {
+
+    static get styles(): CSSResult[] {
+        return [...vlElementsStyle];
+    }
+}
+```
+
+## Custom CSS
+
+> [!WARNING]
+> **Opgelet**
+> Je kan de styling van DV breken bij het gebruik hiervan!
+
+Voor de componenten onder `map`, `form` en `components` is het mogelijk om een custom CSS-string mee te geven aan het
+attribuut `custom-css`. Deze CSS wordt dan toegevoegd aan de adoptedStyleSheets van de shadow DOM van
+de desbetreffende component.
+
+```html
+<vl-accordion-list custom-css=".vl-accordion-list {border: 10px solid lightblue}">
+```
+
+## Deactivatie Globale Styling
+
+Indien gewenst kan je de automatische registratie van globale (document) styling de-activeren via de
+`autoRegisterStyles` property, zie [configuratie](/?path=/docs/recepten-configuratie--documentatie).

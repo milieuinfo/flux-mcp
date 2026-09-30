@@ -1,0 +1,102 @@
+# Map
+
+Gebruik de `map` component om een kaart af te beelden met verschillende lagen en acties.
+
+## Voorbeeld
+
+```js
+import { VlMap } from '@domg-wc/map';
+```
+
+```html
+<vl-map></vl-map>
+```
+
+> Story: [vl-map - default](/?path=/story/map-map--map-default)
+
+## Lambert 2008
+
+In het kader van de transitie naar het Lambert 2008 coördinatenstelsel, hebben we ervoor gekozen om te starten met een
+opt-in voor Lambert 2008. In een volgende versie wordt dit de default. Om kaarten en kaartlagen weer te geven als
+Lambert 2008 kan je het attribuut `lambert2008` toevoegen:
+
+```html
+<vl-map lambert2008></vl-map>
+```
+
+### Lambert 72 data op een Lambert 2008 kaart
+
+Indien je vector kaartlagen (features en WFS) gebruikt met Lambert 72 coördinaten op een Lambert 2008 kaart, moet je de
+projectie code `EPSG:31370` meegeven als attribuut op de kaartlaag. Geef je geen projectie code mee, dan zal de
+kaartlaag de projectie code van de kaart overnemen.
+
+```html
+<vl-map lambert2008>
+    <vl-map-features-layer projection-code="EPSG:31370" ...></vl-map-features-layer>
+    <vl-map-wfs-layer projection-code="EPSG:31370" ...></vl-map-wfs-layer>
+</vl-map>
+```
+
+> [!WARNING]
+> **Opgelet**
+> De client-side transformatie van Lambert 72 naar Lambert 2008 heeft een begrensde nauwkeurigheid van ~1m. Is cm
+> nauwkeurigheid vereist, dan is het belangrijk dat de kaart en de kaartlagen hetzelfde coördinatenstelsel gebruiken.
+
+### Intekenen op een Lambert 2008 kaart
+
+Om in te tekenen op een Lambert 2008 kaart moet een Lambert 2008 kaartlaag gebruikt worden, omwille van de
+beschikbare nauwkeurigheid van ~1m van de Lambert 72 naar Lambert 2008 transformatie.
+
+Vereist je project Lambert 72 coordinaten bij het intekenen, dan wordt het upgraden naar de Lambert 2008 kaart
+beter uitgesteld tot wanneer het project ook Lambert 2008 data ondersteunt. De regel hierbij is dat het
+coördinatenstelsel van intekenen hetzelfde moet zijn als dat van de kaart.
+
+## Ongeldige geometrieën
+
+Wanneer je op de kaart een ongeldige geometrie tekent, bijvoorbeeld een zelf-kruisende polygoon, dan krijgt deze
+standaard een rode "invalid" stijl. Indien je dit niet wenst kan je het
+attribuut `allow-invalid-geometries` gebruiken.
+
+Om te controleren of een kaart 1 of meerdere ongeldige geometrieën bevat kan je de methode
+`hasInvalidGeometries` gebruiken:
+
+```typescript
+const map = document.querySelector<VlMap>('#my-map');
+const hasInvalidGeometries = map.hasInvalidGeometries();
+```
+
+## Configuratie
+
+> API: vl-map
+
+## Varianten
+
+### Volledige hoogte
+
+De map de volledige beschikbare hoogte in laten nemen kan op de volgende manier:
+    - plaats op de parent een `height` of een `min-height`
+    - plaats op de parent `display: flex` en `flex-direction: column`
+    - plaats op de vl-map het attribuut `full-height`
+    - zorg dat de parent **geen elementen** heeft met `position: fixed` die deel uit moeten maken van de hoogte
+
+> Story: [vl-map - full height](/?path=/story/map-map--map-full-height)
+
+### Playground
+
+Zie de code onder de story voor het volledige voorbeeld.
+
+> Story: [vl-map - playground](/?path=/story/map-map--map-playground)
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+De `map` component is een component van Departement Omgeving en heeft geen Digitaal Vlaanderen documentatie.
+
+### Legacy Documentatie
+
+[Legacy Storybook - Map](https://webcomponenten.omgeving.vlaanderen.be/storybook/?path=/docs/custom-elements-vl-map--default)
+
+[Legacy Documentatie - Map](https://webcomponenten.omgeving.vlaanderen.be/doc/VlMap.html)
+
+[Legacy Demo - Map](https://webcomponenten.omgeving.vlaanderen.be/demo/vl-map.html)

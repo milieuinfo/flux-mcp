@@ -1,0 +1,39 @@
+# Map WFS Layer
+
+## Doel
+
+Gebruik de `map-wfs-layer` component om een WFS kaartlaag af te beelden.
+
+Deze component erft over van de `VlMapVectorLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse.
+
+## Voorbeeld
+
+```js
+import { VlMapWfsLayer } from '@domg-wc/map';
+```
+
+```html
+<vl-map-wfs-layer></vl-map-wfs-layer>
+```
+
+> Story: [vl-map-wfs-layer - default](/?path=/story/map-layer-vector-layer-wfs-layer--map-wfs-layer-default)
+
+## Filteren met de cql-filter
+
+Met het `cql-filter` attribuut filter je de features van de laag server-side. De waarde wordt als `cql_filter` query
+parameter naar de WFS server gestuurd, gecombineerd met een ruimtelijke `BBOX`-clausule:
+`cql_filter=BBOX(geometry,extent) AND (filter)`. Zonder `cql-filter` blijft het gedrag ongewijzigd (een gewone
+`bbox`-parameter).
+
+De `BBOX`-clausule heeft de naam van de geometry-property nodig. Geef die expliciet mee via `geometry-name`, of laat ze
+weg: dan wordt ze best-effort gedetecteerd via een `DescribeFeatureType` call. Faalt die detectie (bv. een
+niet-standaard WFS-server), dan valt de laag veilig terug op een gewone `bbox`-request en verschijnt er een
+`console.warn` - geef in dat geval `geometry-name` expliciet mee.
+
+> **Let op:** `cql_filter` is een GeoServer-specifieke extensie en wordt niet door elke WFS-implementatie ondersteund.
+
+> Story: [vl-map-wfs-layer - cql-filter](/?path=/story/map-layer-vector-layer-wfs-layer--map-wfs-layer-cql-filter)
+
+## Configuratie
+
+> API: vl-map-wfs-layer

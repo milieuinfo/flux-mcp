@@ -1,0 +1,85 @@
+# Artifacts
+
+## Inhoudstafel
+
+- [Overzicht](#overzicht)
+- [Afname](#afname)
+- [@domg-wc/common](#domg-wccommon)
+- [@domg-wc/components/block](#domg-wccomponentsblock)
+- [@domg-wc/components/form](#domg-wccomponentsform)
+- [@domg-wc/components/compliance](#domg-wccomponentscompliance)
+- [@domg-wc/map](#domg-wcmap)
+- [fat-lib: domg-wc-compliance](#fat-lib-domg-wc-compliance)
+
+## Overzicht
+
+Alle web-componenten van Departement Omgeving zijn beschikbaar via npm artifacts onder de npm scope `@domg-wc`;
+__common__ bevat technische code, __styles__ alle styling en layouts die op het document gezet worden,
+__components__ en __map__ bevatten de web-componenten. De web-componenten nodig voor legacy toepassingen zijn ook
+beschikbaar via de CDN, zie ['fat-lib: domg-wc-compliance'](#fat-lib-domg-wc-compliance).
+
+## Afname
+
+Om de artifacts af te nemen kan je __als medewerker__ van Departement Omgeving je `~/.npmrc` bestand lokaal als volgt
+configureren:
+
+```
+registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/
+//repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/:_authToken=***
+```
+
+Als je __geen medewerker__ bent, en dus geen account hebt voor die registry, kan je de artifacts toch als volgt afnemen:
+
+```
+; Standaard: de publieke registry.
+registry=https://registry.npmjs.org/
+
+; Alleen deze scopes gaan naar de publiek beschikbare artifacts in de Artifactory van Departement Omgeving.
+@domg:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/
+@domg-wc:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/
+```
+
+## @domg-wc/styles
+
+__styles__ bevat basis css: zowel de css die globaal op het document gezet wordt als de layout specifiek css
+
+## @domg-wc/common
+
+__common__ is een technische bibliotheek met basis code en utilities, waaronder `registerWebComponents`. Neem ze op als
+dependency zodra je er rechtstreeks uit importeert; enkel transitief via __components__ volstaat niet onder een strikte
+package manager zoals pnpm.
+
+## @domg-wc/components
+
+Historisch werd een __component__ geïmplementeerd als een `BaseElement`: een eigen basis klasse beschikbaar in
+@domg-wc/common via de methode `BaseElementOfType`. Nieuwere componenten worden geïmplementeerd m.b.v.
+[LitElement](https://lit.dev/docs/api/LitElement/); het doel op (lange) termijn is van alles (ook van de compliance
+en map) LitElementen te maken.
+
+Een __component__ heeft technisch volgende eigenschappen:
+
+- extends van BaseElement of van LitElement
+- steeds te gebruiken als custom tag; bvb. `<vl-breadcrumb></vl-breadcrumb>`
+- heeft __steeds__ een shadow DOM
+- de styling komt mee met de component (wordt geïnjecteerd in de shadow DOM)
+
+De componenten zijn onderverdeeld in 4 soorten:
+
+- __atom__ : kleine, native componenten, o.a. button, icon, link, ...
+- __block__ : de typische bouwstenen met middelmatige complexiteit,  o.a. accordion, alert, ...
+- __compliance__ : bevat de Departement Omgeving specifieke componenten; o.a. header, footer, privacy, ...
+- __form__ : de input componenten; typisch in een formulier te gebruiken
+
+## @domg-wc/map
+
+De __map__ is de grootste en uitgebreidste component. Het is een kaart component die achterliggend
+[OpenLayers v8.2.0](https://openlayers.org) gebruikt. De functionaliteit zit in sub-componenten
+die een plugin opzet volgen.
+
+## fat-lib: domg-wc-compliance
+
+Voor legacy toepassingen is er een 'fat-lib' variant van de web-componenten beschikbaar, hierin zijn enkel de
+'compliance' componenten beschikbaar (vl-header / vl-footer / vl-accessibility / ...). Via de CDN van Departement
+Omgeving kan je daar ge-versioneerd naar refereren conform: `https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js`.
+Bij de import worden de beschikbare web-componenten geregistreerd. Zie
+[CDN Bundel - fat-lib](/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie) onder `Cookbook` voor meer informatie.

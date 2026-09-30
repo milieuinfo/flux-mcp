@@ -1,0 +1,50 @@
+# Form Fieldset
+
+## Doel
+
+Gebruik de `vl-fieldset` component om een fieldset af te beelden.
+
+Fieldsets worden gebruikt om gerelateerde formulierelementen te groeperen binnen een formulier.
+
+In uitzonderlijke gevallen kan dit gebruikt worden om verschillende input fields te groeperen onder één label. Gebruik
+dit enkel wanneer andere layoutmogelijkheden niet mogelijk zijn.
+
+Zie het [form demo](/?path=/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form.
+
+## Voorbeeld
+
+```js
+import { VlFieldsetComponent } from '@domg-wc/components/form';
+```
+
+```html
+<vl-fieldset legend="Fieldset legend"></vl-fieldset>
+```
+
+> Story: [vl-fieldset - default](/?path=/story/components-form-fieldset--fieldset-default)
+
+## Configuratie
+
+> API: vl-fieldset
+
+## Varianten
+
+### Horizontale fieldset
+Wanneer je een horizontale layout wenst, kan je het `horizontal` attribuut toevoegen aan de `vl-fieldset` component.
+In dit geval krijgt de legend ook een vaste breedte van `vl-column--4`, dit is aanpasbaar adhv het `legend-classes`
+attribuut (een space-separated list van classes).
+
+De breedte van de inhoud dien je zelf te bepalen door de juiste column classes toe te voegen aan de directe child van de
+`vl-fieldset` component (bv. `vl-column vl-column--8 vl-column--s-12`).
+
+> Story: [vl-fieldset - horizontal](/?path=/story/components-form-fieldset--fieldset-horizontal)
+
+### Met rand
+
+> Story: [vl-fieldset - with border](/?path=/story/components-form-fieldset--fieldset-with-border)
+
+## Toegankelijkheid
+
+Het `legend` attribuut is verplicht en wordt gebruikt om de groep van formulierelementen te beschrijven.
+
+Gebruik steeds gelabelde formulierelementen binnen de fieldset om de toegankelijkheid te garanderen.

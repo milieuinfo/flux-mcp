@@ -1,0 +1,54 @@
+# HTTP Error Message
+
+## Doel
+
+Gebruik de `http-error-message` component om een error boodschap aan de gebruiker te tonen.
+
+## Aanbevolen gebruik
+
+Plaats `vl-http-error-message` **standalone** op de foutpagina, zonder `vl-functional-header`,
+`vl-content-header`, `vl-header` of `vl-footer` eromheen.
+
+De motivering is _less = safer_: hoe meer in te laden content er op een foutpagina staat, hoe groter
+de kans dat het tonen van die foutpagina zélf opnieuw faalt. Een foutpagina verschijnt per definitie
+wanneer er al iets misging - extra header/footer/navigatie die data ophaalt of afhankelijkheden laadt,
+vergroot het risico op een tweede fout. Door enkel de error-component te tonen blijft de pagina zo
+robuust mogelijk.
+
+```html
+<main>
+    <vl-http-error-message error-code="500"></vl-http-error-message>
+</main>
+```
+
+### Toegankelijkheid
+
+De `vl-http-error-message` zelf is WCAG 2.1 AA-conform (titel als `<h2>`, alt-tekst op de afbeelding).
+Zorg dat de omringende pagina een toegankelijke basis houdt: een `lang`-attribuut op `<html>`, een
+zinvolle `<title>`, en de error-component binnen een `<main>`-landmark - zoals in het voorbeeld -
+zodat assistive technology de inhoud als hoofdinhoud herkent.
+
+## Voorbeeld
+
+```js
+import { VlHttpErrorMessage } from '@domg-wc/components/block';
+```
+
+```html
+<vl-http-error-message></vl-http-error-message>
+```
+
+> Story: [vl-http-error-message - default](/?path=/story/components-block-http-error-message--http-error-message-default)
+
+## Configuratie
+
+> API: vl-http-error-message
+
+## Varianten
+
+Het gebruik van `vl-http-400-message` en andere specifieke http error messages is deprecated.
+Deze kunnen met de `http-error-message` gecreëerd worden d.m.v. het `error-code` attribuut.
+
+### 400 error
+
+> Story: [vl-http-error-message - 400](/?path=/story/components-block-http-error-message--http-error-message-400)

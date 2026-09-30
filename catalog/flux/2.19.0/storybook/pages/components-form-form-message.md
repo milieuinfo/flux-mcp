@@ -1,0 +1,91 @@
+# Form Message
+
+## Doel
+
+Gebruik de `form-message` component om een boodschap af te beelden voor een input veld.
+
+Zie het [form demo](/?path=/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.
+
+Gebruik `vl-form-message` zodra een boodschap aan een form-control gekoppeld is: de component werkt samen met de
+validatie-lifecycle van de control (tonen/verbergen en `aria-description`).
+
+## Voorbeeld
+
+```js
+import { VlFormMessageComponent } from '@domg-wc/components/form';
+```
+
+```html
+<vl-form-message></vl-form-message>
+```
+
+> Story: [vl-form-message - default](/?path=/story/components-form-form-message--form-message-default)
+
+## Configuratie
+
+> API: vl-form-message
+
+## Gebruik
+
+### Volgorde
+
+We raden aan 1 form message per validatie te tonen. Als er meerdere validaties zijn, toon de belangrijkste eerst.
+De volgorde waarin de form messages getoond worden volgt dezelfde volgorde van `vl-form-message` componenten in
+de DOM. Een voorbeeld hiervan kan je vinden in onze [form demo](/?path=/docs/patronen-formulier-demo--documentatie).
+
+### Varianten
+
+Met het `variant` attribuut bepaal je de visuele stijl van de message: `error` (default, rood), `success` (groen) of
+`annotation` (grijs). Bestaande markup zonder `variant` blijft de error-stijl tonen. Een `variant="annotation"` is een
+altijd zichtbare, informatieve tekst.
+
+De success-stijl wordt daarnaast ook automatisch toegepast bij `state="valid"`, zodat een auto-success boodschap geen
+expliciete `variant` nodig heeft (zie [Success](#success)).
+
+> Story: [vl-form-message - success](/?path=/story/components-form-form-message--form-message-success)
+
+> Story: [vl-form-message - annotation](/?path=/story/components-form-form-message--form-message-annotation)
+
+### Success
+
+Plaats een `vl-form-message` met `state="valid"` bij het veld om een success-boodschap automatisch te laten verschijnen
+zodra het veld valid is na een eerste validatie. De aanwezigheid van die boodschap is voldoende - er is geen extra
+attribuut op de form-control nodig, en de groene success-stijl wordt automatisch toegepast. De boodschap volgt dezelfde
+lifecycle als een foutmelding: ze verschijnt zodra het veld - na een eerdere foutmelding - correct wordt ingevuld, en
+verdwijnt opnieuw zodra het veld terug invalid is.
+
+```html
+<vl-input-field id="naam" name="naam" required></vl-input-field>
+<vl-form-message for="naam" state="valueMissing">Gelieve een naam in te vullen.</vl-form-message>
+<vl-form-message for="naam" state="valid">Dit veld is correct ingevuld.</vl-form-message>
+```
+
+> Wil je een boodschap los van de validatie-lifecycle manueel in de success-stijl tonen, gebruik dan
+> `variant="success"`. Wil je de form-control zelf in een success-stijl tonen (zonder boodschap), gebruik dan het
+> `success` attribuut op de form-control.
+
+### Foutmeldingen
+
+Bij het instellen van een foutmelding is het belangrijk om suggesties mee te geven over hoe de foute invoer kan worden
+rechtgezet. Een goede foutmelding beschrijft niet enkel wat er fout is, maar geeft de gebruiker ook duidelijke aanwijzingen
+om het probleem op te lossen.
+
+## Validatie
+> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/?path=/docs/patronen-formulier-validatie--documentatie)
+
+De `vl-form-message` componenten worden getoond afhankelijk van de validatie status van de form controls. De
+validatie status wordt bepaald door de `validity` property die afhangt van gebruikersinteractie.
+
+## validationMessage
+
+Het `validation-message` attribuut komt overeen met de `validationMessage` property van de `ValidityState` interface.
+Dit attribuut wordt automatisch ingevuld door de form control op basis van de validatie status.
+
+Als er geen boodschap in het default slot wordt ingesteld, wordt de `validation-message` als inhoud van de
+`vl-form-message` weergegeven.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Form Message](https://www.vlaanderen.be/vlaanderen-design-system/componenten/form-message)

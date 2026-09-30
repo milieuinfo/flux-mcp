@@ -1,0 +1,35 @@
+# Accessibility styles
+
+## Doel
+
+Onder accessibility styles groeperen we stijlen die de layout beïnvloeden om de toegankelijkheid van een applicatie
+te verbeteren.
+
+## Visually hidden
+
+`.vl-visually-hidden` verbergt content visueel, maar houdt ze toegankelijk voor screenreaders.
+Ze wordt gebruikt wanneer informatie niet zichtbaar hoeft te zijn voor ziende gebruikers, maar wel nog betekenisvol
+is voor assistieve technologie.
+
+Het helpt extra context of labels beschikbaar te maken voor screenreader-gebruikers en wordt typisch toegepast op:
+  - Beschrijvende teksten die visueel overbodig zijn
+  - Formulierlabels of instructies die enkel auditief nodig zijn
+  - Skip-links of navigatiehulpmiddelen
+
+> Story: [vl-visually-hidden - default](/?path=/story/styles-layout-accessibility--visually-hidden-default)
+
+## Skip link
+
+Je kan `.vl-skip-link` toevoegen aan een link (native a-element) om er een skip-link van te maken. De skip-link moet een
+interne anchor-link zijn en dus als href de ID meekrijgen van de eerste heading van de content of van de content zelf.
+
+Je kan de skip-link op twee manieren activeren:
+
+- **Start een screenreader**, bv VoiceOver (command+F5), en navigeer naar het begin van de pagina.
+- **Gebruik Tab** om naar het begin van de pagina te navigeren. Zodra de skip-link focus krijgt zal hij verschijnen.
+
+Klikken op de skip-link brengt je meteen naar de inhoud. De header wordt niet voorgelezen.
+
+Meer info vind je in de [documentatie over toegankelijke navigatie: "Blokken omzeilen"](/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie#blokken-omzeilen).
+
+> Story: [vl-skip-link - default](/?path=/story/styles-layout-accessibility--skip-link-default)

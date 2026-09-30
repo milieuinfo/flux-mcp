@@ -1,0 +1,32 @@
+# Wizard
+
+## Doel
+
+Gebruik een `wizard` om een gebruiker door een meerstapsproces te begeleiden. Een wizard maakt het mogelijk om een
+ingewikkeld proces op te delen in overzichtelijke, kleine stappen. Een wizard biedt ook de mogelijkheid opties in een
+bepaalde stap aan te passen op basis van keuzes die de gebruiker in een voorgaande stap heeft gemaakt.
+
+## Voorbeeld
+
+```js
+import { VlWizard } from '@domg-wc/components/block';
+```
+
+```html
+<vl-wizard>
+    <vl-wizard-pane name="Step 1"><p>Pane content 1</p></vl-wizard-pane>
+    <vl-wizard-pane name="Step 2"><p>Pane content 2</p></vl-wizard-pane>
+</vl-wizard>
+```
+
+> Story: [vl-wizard - default](/?path=/story/components-block-wizard-wizard--wizard-default)
+
+## Configuratie
+
+> API: vl-wizard
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Wizard](https://overheid.vlaanderen.be/webuniversum/v3/documentation/js-components/vl-ui-wizard)

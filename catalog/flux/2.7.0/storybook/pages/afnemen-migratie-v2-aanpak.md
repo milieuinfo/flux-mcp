@@ -1,0 +1,169 @@
+# Migratie v2 - Aanpak
+
+## Inhoudstafel
+
+- [Aanpak Overzicht](#aanpak-overzicht)
+- [Aanpak Detail](#aanpak-detail)
+    - [1. Migratie naar de nieuwste v1 release](#1-migratie-naar-de-nieuwste-v1-release)
+    - [2. Legacy componenten vervangen door hun "next"-variant](#2-legacy-componenten-vervangen-door-hun-next-variant)
+        - [2.1 Elementen wegwerken](#21-elementen-wegwerken)
+            - [2.1.1 Grid wijzigingen](#211-grid-wijzigingen)
+        - [2.2 "next"-varianten implementeren](#22-next-varianten-implementeren)
+        - [2.3 "vl-u-..." utility classes](#23-vl-u--utility-classes)
+    - [3. Migratie naar de v2 release](#3-migratie-naar-de-v2-release)
+        - [3.1 Wijzigingen in v2](#31-wijzigingen-in-v2)
+        - [3.2 Migratie acties](#32-migratie-acties)
+        - [3.3 Imports](#31-imports)
+        - [3.4 Optimalisaties](#34-optimalisaties)
+
+## Aanpak Overzicht
+
+De makkelijkste manier om te migreren naar v2 is als volgt:
+
+1. migreer minstens naar de v1 release waarvan v2 afgesplitst is: v1.48.2 - hoger mag ook
+2. vervang de legacy componenten door hun "next"-variant
+3. migreer naar de v2 release (best ineens naar de nieuwste v2 versie)
+
+Op deze manier kan je tijdens de migratie de legacy componenten blijven gebruiken en ze geleidelijk vervangen door
+hun "next"-variant. Nadat alle legacy componenten vervangen zijn door hun "next"-variant kan je de migratie naar
+v2 uitvoeren. Die stap bestaat dan grotendeels uit het verwijderen van de `-next` suffix en het aanpassen van de
+imports.
+
+## Aanpak Detail
+
+### 1. Migratie naar de nieuwste v1 release
+
+De v2 versie is gestart op basis van v1.48.2 - deze bevat de laatste bugfixes en verbeteringen van
+de legacy componenten.
+
+Het heeft de voorkeur om v1.48.2 te gebruiken als basis voor de migratie naar v2, deze release bevat
+(voor de componenten die behouden bleven) dezelfde functionaliteit als de eerste v2 release. Op die manier zullen de
+verdere stappen in de migratie eenvoudiger zijn.
+
+### 2. Legacy componenten vervangen door hun "next"-variant
+
+De legacy componenten zijn componenten die geschrapt worden, ze moeten vervangen worden door de equivalente
+[next-component](/?path=/docs/afnemen-migratie-v2-impact--documentatie) of
+[next-layout](/?path=/docs/styles-concept--documentatie#layout-afnemers).
+
+<vl-alert type="info" title="Info" icon="info-circle" size="small" custom-css=".vl-alert{margin-bottom: 3rem;}">
+
+Zie [Migratie v2 - Impact](/?path=/docs/afnemen-migratie-v2-impact--documentatie) voor gedetaileerde informatie over welke elementen vervangen worden.
+In deze stap migreren we naar de waarden onder **v1 - Gebruik**.
+
+</vl-alert>
+
+#### **2.1 Elementen wegwerken**
+
+Vervang alle `<x is="...">` elementen door hun nieuwe component of class.
+
+Een aantal elementen verdwijnen, bv:
+`<body is="vl-body">` → `<body>`
+
+Een aantal elementen worden vervangen door componenten, bv:
+`<button is="vl-button">` →  `<vl-button-next>`
+
+Een aantal elementen worden vervangen door classes, bv:
+`is="vl-grid"` en `is="vl-form-grid"` → `class="vl-grid-next"`
+
+<vl-alert type="info" title="Vergeet niet" icon="info-circle" size="small" custom-css=".vl-alert{margin-bottom: 3rem;}">
+
+- Imports aan te passen naar `@domg-wc/components/next/...`
+- Componenten te registreren met `registerWebComponents()`
+- CSS styles toe te voegen via `static get styles()`
+- Legacy imports (zoals `VlGridElement`, `vlElementsStyle`, etc.) te verwijderen
+- Opletten bij het selecteren van elementen in code of in tests
+  bv: `.querySelector('h1')` of `.querySelector('[is="vl-button"]')` zullen breken
+
+</vl-alert>
+
+#### **2.2 "next"-varianten implementeren**
+
+Voor alle componenten met een "next"-variant in [deze lijst](/?path=/docs/afnemen-migratie-v2-impact--documentatie) onder **v1 - Gebruik**, moet er eerst naar deze implementatie gemigreerd worden. Deze upgrade bevat breaking changes, dus in deze stap is het essentieel om goed te testen of alles blijft werken en eventuele fixes door te voeren.
+
+#### **2.3 "vl-u-..." utility classes**
+
+Sommige `vl-u-...` classes worden als component of stijl aangeboden in onze bibliotheek, zoals bv `vl-text`. Indien ze niet beschikbaar zijn, bieden we deze (nog) niet aan. Je kan hiervoor een request indienen. Voorlopig zal de CSS-code gekopiëerd moeten worden naar de componenten die deze utility classes gebruiken.
+
+### 3. Migratie naar de v2 release
+
+Functioneel (voor de behouden componenten) loopt v2.0.0 gelijk met v1 release v1.48.2.
+
+#### **3.1 Wijzigingen in v2**
+
+Volgende wijzigingen werden doorgevoerd in v2 tov v1:
+
+- alle legacy componenten uit v1 werden verwijderd
+- alle "next"-componenten zijn gepromoveerd: deze hebben geen `-next` suffix meer en bij alle attributen werd de `data-vl-`-prefix
+ verwijderd.
+- de [package structuur](/?path=/docs/bijdragen-opzet-structuur--documentatie) wijzigde, dit heeft impact op de imports
+
+<vl-alert type="info" title="Info" icon="info-circle" size="small" custom-css=".vl-alert{margin-bottom: 3rem;}">
+
+Zie [Migratie v2 - Impact](/?path=/docs/afnemen-migratie-v2-impact--documentatie) voor gedetaileerde informatie over welke componeten vervangen worden.
+In deze stap migreren we naar de waarden onder **v2 - Gebruik**.
+
+</vl-alert>
+
+#### **3.2 Migratie acties**
+
+De te ondernemen acties om te migreren zijn:
+
+- verwijder de `-next` suffix van de componenten
+- pas de imports aan (zie [hieronder](#33-imports))
+- verwijder de `data-vl-` prefix van de attributen
+
+<vl-alert type="info" title="Opgelet" icon="info-circle" size="small" custom-css=".vl-alert{margin-bottom: 3rem;}">
+
+Het gebruik van `.dataset.vl...` zal niet meer werken. Dit kan vervangen worden door `.getAttribute('...')`.
+<table}>
+<tr>
+<th>v1</th>
+<th>v2</th>
+</tr>
+<tr>
+<td>data-vl-max-resolution</td>
+<td>max-resolution</td>
+</tr>
+<tr>
+<td>element.dataset.vlMaxResolution</td>
+<td>element.getAttribute('max-resolution')</td>
+</tr>
+</table>
+
+</vl-alert>
+
+#### **3.3 Imports**
+
+De v2 versie kan je installeren via npm:
+```
+npm uninstall @domg-wc/common-utilities @domg-wc/form @domg-wc/sections @domg-wc/elements && npm install @domg-wc/common@^2.1.0 @domg-wc/components@^2.1.0 @domg-wc/map@^2.1.0 @domg-wc/styles@^2.1.0
+```
+
+Dit kuist de oude installatiefiles op en voegt deze nieuwe dependencies toe aan je package.json:
+```
+"@domg-wc/common": "2.1.0",
+"@domg-wc/components": "2.1.0",
+"@domg-wc/map": "2.1.0",
+"@domg-wc/styles": "2.1.0",
+```
+
+Te wijzigen imports:
+
+| v1 import | v2 import |
+| --- | --- |
+| @domg-wc/common-utilities | @domg-wc/common |
+| @domg-wc/common-utilities/css | @domg-wc/styles |
+| @domg-wc/components/next/... | @domg-wc/components/[atom, block, form] |
+| @domg-wc/sections/... | @domg-wc/components/compliance |
+| @domg-wc/form/... | @domg-wc/components/form |
+| @domg-wc/elements | *(verwijderd)* |
+| @domg-wc/components/proza-message/vl-proza-rest-client.util | @domg-wc/components/block/proza-message/vl-proza-rest-client.util |
+
+#### **3.4 Optimalisaties**
+
+- Gebruik waar mogelijk `vlLayoutStyles` ipv de meer specifiekere `vlGridStyles`, `vlMarginStyles`, ...
+
+---
+
+Bekijk de [Migratie v2 - FAQ](/?path=/docs/afnemen-migratie-v2-faq--documentatie) voor meer specifieke vragen.

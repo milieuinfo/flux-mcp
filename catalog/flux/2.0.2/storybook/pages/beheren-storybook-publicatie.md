@@ -1,0 +1,39 @@
+# Storybook Publicatie
+
+## Inhoudstafel
+
+- [Beschrijving](#beschrijving)
+- [Structuur](#structuur)
+
+## Beschrijving
+
+Documentatie wordt geversioneerd gepubliceerd op https://milieuinfo.github.io/uigov-builds, de structuur van die
+[repo](https://github.com/milieuinfo/uigov-builds) staat hier beschreven.
+
+## Structuur
+
+```
+uigov-builds/
+├─ develop/
+│  ├─ 2.0.0-beta.2/ [beta versies worden enkel op aanvraag toegevoegd]
+│  │  ├─ artifacts/ [beta artifacts]
+│  │  │  ├─ domg-wc-common-2.0.0.beta.2.tgz
+│  │  │  ├─ domg-wc-components-2.0.0.beta.2.tgz
+│  │  │  ...
+│  │  ├─ storybook/ [beta storybook]
+│  ├─ latest/
+│  │  ├─ storybook/
+│  │  │  ├─ index.html [redirects naar de recentste beta storybook]
+│  ├─ index.html [landingspagina met links naar de verschillende develop versies]
+├─ release/ [een sub-folder per ge-releasde versie]
+│  ├─ 1.0.0/
+│  │  ├─ storybook/
+│  │  ...
+│  ├─ 1.9.0/
+│  │  ├─ storybook/
+│  ├─ latest/
+│  │  ├─ storybook/
+│  │  │  ├─ index.html [redirects naar de recentste storybook]
+│  ├─ index.html [landingspagina met links naar de verschillende release versies]
+├─ index.html [landingspagina met links naar develop en release]
+```

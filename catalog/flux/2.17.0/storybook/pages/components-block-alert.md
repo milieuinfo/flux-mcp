@@ -1,0 +1,94 @@
+# Alert
+
+## Doel
+
+Gebruik de `alert` component om de gebruiker op de hoogte te houden van belangrijke informatie.
+
+## Voorbeeld
+
+```js
+import { VlAlert } from '@domg-wc/components/block';
+```
+
+```html
+<vl-alert></vl-alert>
+```
+
+> Story: [vl-alert - default](/?path=/story/components-block-alert--alert-default)
+
+## Configuratie
+
+> API: vl-alert
+
+## Varianten
+
+### Error
+
+> Story: [vl-alert - error](/?path=/story/components-block-alert--alert-error)
+
+### Info
+
+> Story: [vl-alert - info](/?path=/story/components-block-alert--alert-info)
+
+### Success
+
+> Story: [vl-alert - success](/?path=/story/components-block-alert--alert-success)
+
+### Warning
+
+> Story: [vl-alert - warning](/?path=/story/components-block-alert--alert-warning)
+
+### With button
+
+> Story: [vl-alert - with button](/?path=/story/components-block-alert--alert-with-button)
+
+### With title slot
+
+> Story: [vl-alert - with title slot](/?path=/story/components-block-alert--alert-with-title-slot)
+
+### With close button
+
+> Story: [vl-alert - closeable](/?path=/story/components-block-alert--alert-closeable)
+
+### Naked error
+
+> Story: [vl-alert - naked error](/?path=/story/components-block-alert--alert-naked-error)
+
+### Naked warning
+
+> Story: [vl-alert - naked warning](/?path=/story/components-block-alert--alert-naked-warning)
+
+### Naked success
+
+> Story: [vl-alert - naked success](/?path=/story/components-block-alert--alert-naked-success)
+
+### Multiline
+
+Stelt `white-space: pre-line;` in voor de boodschap zodat nieuwe regels (newline karakters) in rekening worden gebracht.
+
+> [!WARNING]
+> **Opgelet**
+> Let op: bij het gebruik van slot content moet de tekst direct na de opening-tag starten, zonder newline.
+> Een newline na de opening-tag wordt door `pre-line` als witruimte weergegeven.
+
+```html
+<!-- Correct -->
+<vl-alert multiline
+    ><span>Eerste regel.</span>
+    <span>Tweede regel.</span>
+</vl-alert>
+
+<!-- Fout: newline na opening-tag geeft extra witruimte -->
+<vl-alert multiline>
+    <span>Eerste regel.</span>
+    <span>Tweede regel.</span>
+</vl-alert>
+```
+
+> Story: [vl-alert - multiline](/?path=/story/components-block-alert--alert-multiline)
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Alert](https://www.vlaanderen.be/vlaanderen-design-system/componenten/alert)

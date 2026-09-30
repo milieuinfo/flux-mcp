@@ -1,0 +1,63 @@
+# CI - CD
+
+## Inhoudstafel
+
+- [Beschrijving](#beschrijving)
+- [Jenkins Configuratie](#jenkins-configuratie)
+- [Jenkins Release](#jenkins-release)
+
+## Beschrijving
+
+De build loopt via Jenkins. De Bamboo build wordt niet meer ondersteund.
+
+Om de versionering te sturen en een changelog te genereren wordt de
+[semantic-release](https://github.com/semantic-release/semantic-release) plugin gebruikt.
+
+De verschillende releases zijn terug te vinden op de
+[release pagina](https://github.com/milieuinfo/flux-web-components/releases) van de GitHub repository.
+
+## Jenkins Configuratie
+
+De build configuratie zit in het `Jenkinsfile.groovy` bestand in de root van de repository. De bijhorende bash-scripts
+staan in `resources/ci-jenkins/bash`, de semantic-release configuratie in `resources/ci-jenkins/release`.
+
+Het is een declaratieve multibranch pipeline die op Kubernetes draait: elke stage die een eigen `agent` declareert
+krijgt een eigen pod met een eigen workspace. De volledige pijplijn wordt overgeslagen als de commit een `[skip ci]`
+bevat. Volgende stages zijn gedefinieerd:
+
+1. __Trivy scan__ - security scan van de drie `pnpm-lock.yaml`-bestanden (root, `apps/consumer` en
+   `apps/consumer-e2e`), zodat geen dependency-lijst buiten de scan valt
+2. __build-en-tests__ - met de volgende stages die parallel lopen, elk in een eigen pod:
+    * __build-apps-and-libs__ (de build) - stasht de gebouwde libs en fat-lib voor de release stage
+    * __unit-component-integrator-tests__ (verschillende testen)
+    * __e2e-tests-storybook__ (Storybook e2e-testen)
+3. __release-and-publish__ - loopt enkel voor develop-, bugfix- en release-branches; er is een licht verschillende
+   flow voor release en pre-release branches
+4. __verify-release__ - verifieert dat de ge-releaste artifacts afneembaar zijn
+5. __finalise-release__ - rebaset een hoofd-release branch (`release-v<major>`) naar zijn develop branch
+   (`develop-v<major>`), zodat de `chore(release)` commit mee terug in develop komt
+
+De drie release stages draaien sequentieel op de top-level agent en delen dus één workspace en checkout:
+__verify-release__ heeft de `build/dist` output van __release-and-publish__ nodig, en __finalise-release__ werkt op
+dezelfde git checkout verder. De scripts beslissen zelf op basis van de branchnaam of ze effectief iets doen.
+
+## Jenkins Release
+
+Een release vindt plaats in de __release-and-publish__ stage en wordt gestuurd door
+[semantic-release](https://github.com/semantic-release/semantic-release). De configuratie van die plugin zit in 2
+bestanden onder `resources/ci-jenkins/release`: `.releaserc-develop` en `.releaserc-release`. Het script kopieert de
+juiste variant naar `.releaserc` in de root: de develop variant voor de pre-release branches (branchnaam bevat
+'develop' of 'bugfix'), de release variant voor de release branches (branchnaam bevat 'release').
+
+In die __release-and-publish__ stap gebeurt het volgende:
+
+- semantic-release bepaalt het nieuwe versie nummer a.d.h.v. de commits (fix / feat / breaking-change) - met een
+  `-develop` suffix voor develop branches
+- de te publiceren artifacts krijgen het versie nummer
+- er wordt een tag gelegd met het versie nummer
+- de artifacts worden gepushed naar [Artifactory](https://repo.omgeving.vlaanderen.be/ui/packages)
+- de fat-lib wordt als tgz naar Artifactory ge-upload (om op de CDN te geraken)
+- Storybook wordt opnieuw gebouwd - pas dan is de `CHANGELOG.md` up-to-date - en als
+  `storybook-<versie>.tgz` build-artifact gearchiveerd
+- in het geval van een release wordt er een changelog aangemaakt en een
+[GitHub release](https://github.com/milieuinfo/flux-web-components/releases) uitgevoerd

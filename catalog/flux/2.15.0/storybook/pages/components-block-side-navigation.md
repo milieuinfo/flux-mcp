@@ -1,0 +1,330 @@
+# Side Navigation
+
+> [!NOTE]
+> **Opgelet**
+> De v2 versie van deze component gebruik je via custom-tags, de interne implementatie is gelijk gebleven aan
+> de v1 versie. In v3 zal deze component grondig herwerkt worden.
+
+## Doel
+
+Gebruik de `side-navigation` component om een compact navigatie-element aan een pagina toe te voegen. Het vat de
+inhoud van lange pagina's samen, leidt de gebruiker door de pagina inhoud en kan ook naar externe pagina's verwijzen.
+
+De `vl-side-navigation` wordt opgebouwd uit volgende sub-componenten:
+
+- VlSideNavigationComponent `[vl-side-navigation]`
+- VlSideNavigationTitleComponent
+
+    `[vl-side-navigation-h1 / vl-side-navigation-h2 / vl-side-navigation-h3 /`
+    `vl-side-navigation-h4 / vl-side-navigation-h5 / vl-side-navigation-h6]`
+- VlSideNavigationContentComponent `[vl-side-navigation-content]`
+- VlSideNavigationGroupComponent `[vl-side-navigation-group]`
+- VlSideNavigationItemComponent `[vl-side-navigation-item]`
+- VlSideNavigationToggleComponent `[vl-side-navigation-toggle]`
+- VlSideNavigationReferenceComponent `[vl-side-navigation-reference]`
+
+```js
+import { VlSideNavigationComponent } from '@domg-wc/components/block';
+```
+
+```html
+<vl-side-navigation></vl-side-navigation>
+```
+
+> Story: [vl-side-navigation - default](/?path=/story/components-block-side-navigation--side-navigation-default)
+
+## Code Voorbeeld
+
+**Side-navigation code voorbeeld**
+
+```html
+<section class="vl-section">
+    <div class="vl-content-block">
+        <div class="vl-grid vl-stacked-medium">
+            <div
+                class="vl-column vl-column--8 vl-column--m-9 vl-column--s-12 vl-column--xs-12"
+            >
+                <vl-side-navigation-reference>
+                    <section id="content-1" class="vl-section">
+                        <vl-title type="h2">Content 1</vl-title>
+                    </section>
+                    <section id="content-1-1" class="vl-section">
+                        <vl-title type="h3">Content 1 - 1</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-1-2" class="vl-section">
+                        <vl-title type="h3">Content 1 - 2</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-1-3" class="vl-section">
+                        <vl-title type="h3">Content 1 - 3</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-1-4" class="vl-section">
+                        <vl-title type="h3">Content 1 - 4</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-2" class="vl-section">
+                        <vl-title type="h2">Content 2</vl-title>
+                    </section>
+                    <section id="content-2-1" class="vl-section">
+                        <vl-title type="h3">Content 2 - 1</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-2-2" class="vl-section">
+                        <vl-title type="h3">Content 2 - 2</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-2-3" class="vl-section">
+                        <vl-title type="h3">Content 2 - 3</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-2-4" class="vl-section">
+                        <vl-title type="h3">Content 2 - 4</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                    <section id="content-3" class="vl-section">
+                        <vl-title type="h2">Content 3</vl-title>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                            qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+                </vl-side-navigation-reference>
+            </div>
+            <div class="vl-column vl-column--3 vl-column--m-3 vl-column--s-12 vl-column--xs-12 vl-column--start-10 vl-column--s-start-1">
+                <vl-side-navigation aria-label="inhoudsopgave" hash-sync side-navigation-id="side-navigation">
+                    <vl-side-navigation-h5>Op deze pagina</vl-side-navigation-h5>
+                    <vl-side-navigation-content>
+                        <vl-side-navigation-group>
+                            <vl-side-navigation-item parent="content-1">
+                                <vl-side-navigation-toggle href="#content-1" child="content-1">
+                                    content 1
+                                </vl-side-navigation-toggle>
+                                <ul>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-1-1" parent="content-1">content 1 - 1</a>
+                                    </vl-side-navigation-item>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-1-2" parent="content-1">content 1 - 2</a>
+                                    </vl-side-navigation-item>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-1-3" parent="content-1">content 1 - 3</a>
+                                    </vl-side-navigation-item>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-1-4" parent="content-1">content 1 - 4</a>
+                                    </vl-side-navigation-item>
+                                </ul>
+                            </vl-side-navigation-item>
+                            <vl-side-navigation-item parent="content-2">
+                                <vl-side-navigation-toggle href="#content-2" child="content-2">
+                                    content 2
+                                </vl-side-navigation-toggle>
+                                <ul>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-2-1" parent="content-2">content 2 - 1</a>
+                                    </vl-side-navigation-item>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-2-2" parent="content-2">content 2 - 2</a>
+                                    </vl-side-navigation-item>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-2-3" parent="content-2">content 2 - 3</a>
+                                    </vl-side-navigation-item>
+                                    <vl-side-navigation-item>
+                                        <a href="#content-2-4" parent="content-2">content 2 - 4</a>
+                                    </vl-side-navigation-item>
+                                </ul>
+                            </vl-side-navigation-item>
+                            <vl-side-navigation-item>
+                                <a href="#content-3">
+                                    content 3
+                                </a>
+                            </vl-side-navigation-item>
+                        </vl-side-navigation-group>
+                    </vl-side-navigation-content>
+                </vl-side-navigation>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+## Responsive variant
+
+Op mobiel zal de `vl-side-navigation` een knop bovenaan tonen die de gebruiker de mogelijkheid geeft het
+navigatie-menu te openen. Als de gebruiker scrollt, zal deze knop verdwijnen en komt er na een korte delay een sticky
+knop met dezelfde functionaliteit rechtsonder de pagina. Deze knop blijft zichtbaar zolang de gebruiker scrollt in een
+gebied gerelateerd tot de `vl-side-navigation-reference`.
+
+## Parent en child links
+
+Het is mogelijk om parent en child links te gebruiken (zie content 1 en content 2). Dit gebeurt op de volgende
+manier (we gebruiken content 1 als voorbeeld):
+
+1. Plaats op het parent `VlSideNavigationItem` component het attribuut `parent="content-1"`
+2. Plaats op het `VlSideNavigationToggle` component het attribuut `child="content-1"`
+3. Plaats op de child links het attribuut `parent="content-1"`
+
+Plaats naast het `VlSideNavigationToggle` component een lijst element (`<ul>`) met daaronder `VlSideNavigationItem`
+componenten als items.
+
+Gebruik geen `VlSideNavigationToggle` component indien er geen subnavigatie is. Een gewone link (`<a href="#">`)
+onder het `VlSideNavigationItem` component volstaat dan.
+
+## Hash sync
+
+Indien er geen gebruik gemaakt wordt van hash-routing en de url hash op geen enkele andere manier gemanipuleerd wordt,
+kan `hash-sync` geactiveerd worden.
+
+Dit werkt in twee richtingen:
+- Indien er een hash aanwezig is in de url die overeenkomt met een element op de pagina dan zal de browser automatisch
+scrollen naar dat item.
+- Wanneer je klikt op een item in de side navigation, zal de url hash worden bijgewerkt naar het id van dat item.
+
+## Gekende beperkingen
+
+### Proza messages
+
+Door de complexiteit van de side-navigation kan het zijn dat er problemen optreden met het renderen van Proza messages.
+Proza messages renderen regelmatig niet tot er een resize van de window optreedt. Om dit op te lossen kan je gebruik
+maken van het `side-navigation-id` attribuut, aan dit attribuut geef je een unieke string mee. Deze manier van
+werken is een tijdelijke quick-fix, in de nieuwe versie van de side-navigation gaat dit probleem niet voorkomen.
+
+### Initialisatie in een hidden parent
+
+Als de side-navigation gerenderd wordt in een parent component die `hidden` is, bijvoorbeeld bij verschillende stappen
+in een flow, dan gaat de initialisatie fout en zal de side-navigation niet sticky worden bij het scrollen. Dit komt
+omdat de side-navigation bij het initialiseren een aantal dimensies capteerd en, in het geval dat er een parent
+`hidden` is, één van de waardes op 0 komt te staan. Dit kan vermeden worden door het gebruik van `hidden` te vervangen
+door de `when()` directive van Lit.
+
+#### ❌ Voorbeeld met "hidden"
+
+```ts
+<flow-met-stappen>
+    <stap-met-side-navigation ?hidden="${this.__stap !== 'stap-1'}"></stap-met-side-navigation>
+</flow-met-stappen>
+```
+
+#### ✅ Voorbeeld met "when()"
+
+```ts
+<flow-met-stappen>
+    ${
+        when(this.__stap === 'stap-1', () =>
+            html`<stap-met-side-navigation></stap-met-side-navigation>`
+        )
+    }
+</flow-met-stappen>
+```
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Side Navigation](https://www.vlaanderen.be/vlaanderen-design-system/componenten/side-navigation)

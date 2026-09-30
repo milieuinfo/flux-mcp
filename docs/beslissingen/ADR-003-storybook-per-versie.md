@@ -481,8 +481,8 @@ Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
 
 ### 9. Stappenplan
 
-1. **De omzetting en `storybook:copy`**, met tests per soort blok (inline fragmenten). Klaar; de pagina's van alle
-   26 versies volgen.
+1. **De omzetting en `storybook:copy`**, met tests per soort blok (inline fragmenten) en de pagina's van alle 26
+   versies in de catalogus. Klaar.
 2. **De queries**, met hun tests. Zonder analyse is de catalogus al bruikbaar: tekst, API, status en links. Klaar.
 3. **De analyse:** `prompts/storybook-analyse.md`, `prompts/storybook-review.md`, `storybook:analyse` en
    `storybook:check`. Gebouwd; de eerste run volgt: 2.20.0 volledig, dan 2.19.0, die enkel de gewijzigde pagina's

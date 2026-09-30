@@ -1,0 +1,18 @@
+# Content Block
+
+## Inhoudstafel
+
+- [Doel](#doel)
+- [Gebruik](#gebruik)
+
+## Doel
+
+`vl-content-block` is een layout component die gebruikt wordt om content te groeperen. Het element krijgt een vaste
+breedte en wordt in het midden gecentreerd. Dit is equivalent van wat bij Digitaal Vlaanderen als
+[Layout](https://overheid.vlaanderen.be/webuniversum/v3/documentation/grid) wordt aangeboden.
+
+## Gebruik
+
+### Default
+
+> Story: [vl-content-block - default](/?path=/story/styles-layout-afnemers-content-block--content-block-default)

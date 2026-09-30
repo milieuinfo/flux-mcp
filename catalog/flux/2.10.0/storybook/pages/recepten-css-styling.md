@@ -1,0 +1,107 @@
+# Styling
+
+## Globale CSS
+
+Alle Flux web-componenten, zijnde de web-componenten die zich in de package `@domg-wc/components` bevinden, zorgen
+ervoor dat eenmalig alle css op document niveau geregistreerd wordt. Technisch gebeurt dat door de basis klasse
+`BaseLitElement` die de onderstaande `GlobalStyles.getInstance().register()` methode uitvoert:
+
+```
+public register() {
+    if (!this.registered) {
+        if (FluxConfig.getPreferences().autoRegisterStyles) {
+            document.adoptedStyleSheets = [
+                ...document.adoptedStyleSheets,
+                ...(this.defaultStyles.map((style) => style.styleSheet) as CSSStyleSheet[]),
+            ];
+            console.info('GlobalStyles: global styling toegevoegd aan het document');
+        } else {
+            console.info(
+                'GlobalStyles: geen global styling toegevoegd aan het document - autoRegisterStyles is uitgeschakeld'
+            );
+        }
+        this.registered = true;
+        this.registerCustomCSS();
+    }
+}
+```
+
+## Eigen componenten met shadow DOM
+
+Zoals hierboven vermeld injecteren de `@domg-wc elementen` hun eigen styling op root niveau.
+Dit is voldoende in een applicatie waar de elementen niet gebruikt worden binnen andere shadow DOM's.
+
+> [!WARNING]
+> **Opgelet**
+> Als je zelf componenten ontwikkelt met een shadow DOM, dan moet je onze styling opnieuw injecteren in je component.<br>
+> De shadow DOM zal de styling niet doorlaten die globaal op het document niveau geregistreerd is.
+
+In `Lit` kan je dit bvb. zo doen:
+
+```ts
+import { vlElementsStyle } from '@domg-wc/styles';
+
+export class ComponentMetShadowDom extends LitElement {
+
+    static get styles(): CSSResult[] {
+        return [...vlElementsStyle];
+    }
+}
+```
+
+## Custom CSS
+
+### Component niveau
+
+> [!WARNING]
+> **Opgelet**
+> Je kan de styling van DV breken bij het gebruik hiervan!
+
+Voor alle componenten behalve `compliance` is het mogelijk om een custom CSS-string mee te geven aan het
+attribuut `custom-css`. Deze CSS wordt dan toegevoegd aan de adoptedStyleSheets van de shadow DOM van
+de desbetreffende component.
+
+```html
+<vl-accordion-list custom-css=".vl-accordion-list {border: 10px solid lightblue}">
+```
+
+Een alternatieve manier om dezelfde custom CSS toe te voegen bij elke instantie van dat component:
+
+```ts
+import { VlCascaderComponent } from '@domg-wc/components/block';
+VlCascaderComponent.elementStyles = [...VlCascaderComponent.elementStyles, css`
+    .sbs-title-annotation-group {
+        gap: var(--vl-spacing--xxsmall);
+    }
+`];
+```
+
+### Applicatie niveau
+
+Onze globale styling wordt automatisch op de DOM geplaatst. Je dient de volgende functie aan te roepen om je er van te
+te verzekeren dat je applicatie-specifieke CSS pas ingeladen wordt nadat onze CSS ingeladen is:
+
+<vl-alert type="info" title="Opgelet" icon="info-circle" size="small" custom-css=".vl-alert{margin-bottom: 3rem;}">
+
+Je dient onderstaande code aan te roepen vóór je onze componenten importeert.
+
+</vl-alert>
+
+```js
+import { css } from 'lit';
+import { GlobalStyles } from '@domg-wc/common';
+
+const customCSS = css`
+:root {
+    --vl-side-sheet-width: 580px; /* voor desktop */
+    --vl-side-sheet-width-mobile: 100%; /* voor mobile */
+}
+`;
+
+GlobalStyles.getInstance().addCustomCss([customCSS]);
+```
+
+## Deactivatie Globale Styling
+
+Indien gewenst kan je de automatische registratie van globale (document) styling de-activeren via de
+`autoRegisterStyles` property, zie [configuratie](/?path=/docs/recepten-configuratie--documentatie).

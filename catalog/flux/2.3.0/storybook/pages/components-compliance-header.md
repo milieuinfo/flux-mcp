@@ -1,0 +1,82 @@
+# Digitaal Vlaanderen Header
+
+Injecteert de global header widget van Digitaal Vlaanderen.
+Default wordt de header geïnjecteerd in het native `<body>` element.
+
+## Voorbeeld
+
+```js
+import { VlHeader } from '@domg-wc/components/compliance';
+```
+
+```html
+<vl-header></vl-header>
+```
+
+> Story: [vl-header - default](/?path=/story/components-compliance-header--header-default)
+
+## Configuratie
+
+> API: vl-header
+
+## Sessies
+
+### Configuratie
+
+Bij het aanpassen van volgende attributen wordt achterliggend de `session.configure()` methode van DV opnieuw aangeroepen:
+
+-   `login-url`
+-   `login-redirect-url`
+-   `logout-url`
+-   `switch-capacity-url`
+
+Zie [Digitaal Vlaanderen - De endpoints overschrijven](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-endpoints-overschrijven) voor meer informatie.
+
+## Applicatieve Links
+
+Je kan applicatieve links toevoegen aan de header door gebruik te maken van de `applicationLinks` property.
+
+Deze property verwacht een array met objecten van het volgende type:
+
+```js
+export type ApplicationLink = {
+    label: string;
+    href: string;
+    icon?: string;
+    target?: string;
+};
+```
+
+Zie [Digitaal Vlaanderen - Header applicatieve links](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6508874105/Aanmeldmenu#Applicatieve-links) voor meer informatie.
+
+### Logout request
+
+Bij het gebruik maken van sessies kan het logout request afgehandeld worden.
+
+Dit kan handig zijn als je wilt dat de gebruiker niet automatisch wordt uitgelogd bv. bij inactiviteit of als de sessie verlopen is.
+
+Door gebruik te maken van het `reject-logout` attribuut worden alle logout requests afgewezen, behalve een logout request door de gebruiker.
+
+Met de `logoutCallback` property kan je een callback functie meegeven die wordt aangeroepen bij een logout request.
+
+De logout reason wordt meegegeven aan de callback, door een boolean promise terug te geven kan je de logout accepteren of afwijzen.
+
+De mogelijke reasons zijn: `inactivity` en `expired`.
+
+Een logout request door de gebruiker wordt nooit afgewezen.
+
+Zie [De aanvragen voor applicatie logout afhandelen via JavaScript](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-aanvragen-voor-applicatie-logout-afhandelen-via-JavaScript) voor meer informatie.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)
+
+### Legacy Documentatie
+
+[Legacy Storybook - Header](https://webcomponenten.omgeving.vlaanderen.be/storybook/?path=/docs/custom-elements-vl-header--default)
+
+[Legacy Documentatie - Header](https://webcomponenten.omgeving.vlaanderen.be/doc/VlHeader.html)
+
+[Legacy Demo - Header](https://webcomponenten.omgeving.vlaanderen.be/demo/vl-header.html)

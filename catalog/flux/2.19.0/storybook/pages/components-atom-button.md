@@ -1,0 +1,178 @@
+# Button
+
+## Doel
+
+Gebruik de `button` component om een button af te beelden op een pagina.
+
+## Voorbeeld
+
+```js
+import { VlButtonComponent } from '@domg-wc/components/atom';
+```
+
+```html
+<vl-button></vl-button>
+```
+
+> Story: [vl-button - primary](/?path=/story/components-atom-button--button-primary)
+
+## Configuratie
+
+> API: vl-button
+
+## Varianten
+
+### Secondary
+
+Gebruik een secondary button om een 1 of meerdere buttons af te beelden in combinatie met een primary button.
+
+> Story: [vl-button - secondary](/?path=/story/components-atom-button--button-secondary)
+
+### Tertiary
+
+Gebruik een tertiary button om een 1 of meerdere buttons af te beelden in combinatie met een primary button.
+
+Een tertiary button is subtieler dan een secondary button.
+
+> Story: [vl-button - tertiary](/?path=/story/components-atom-button--button-tertiary)
+
+### Ghost
+
+Gebruik een ghost button om enkel de knop tekst of icoon af te beelden, zonder opmaak (border, background).
+Een ghost button neemt de andere variaties over van de tertiary button (hover, focus, disabled, error, ...).
+
+> Story: [vl-button - ghost](/?path=/story/components-atom-button--button-ghost)
+
+### Disabled
+
+Gebruik een disabled button om aan te tonen dat een actie niet uitgevoerd kan worden.
+
+> Story: [vl-button - disabled](/?path=/story/components-atom-button--button-disabled)
+
+### Error
+
+Gebruik een error button om de belangrijkheid van een actie aan te tonen.
+
+> Story: [vl-button - error](/?path=/story/components-atom-button--button-error)
+
+### Block
+
+> Story: [vl-button - block](/?path=/story/components-atom-button--button-block)
+
+### Large
+
+> Story: [vl-button - large](/?path=/story/components-atom-button--button-large)
+
+### Wide
+
+> Story: [vl-button - wide](/?path=/story/components-atom-button--button-wide)
+
+### Narrow
+
+> Story: [vl-button - narrow](/?path=/story/components-atom-button--button-narrow)
+
+### Loading
+
+Gebruik een loading button om aan te tonen dat een actie enige tijd in beslag neemt.
+
+Gedurende het uitvoeren van de actie kan je de button als een loading button afbeelden.
+
+We raden aan een loading button enkel te gebruiken voor primary buttons.
+
+Indien je wil dat de loading button ook disabled is, kan je het `disabled` attribuut in combinatie met het `loading`
+attribuut gebruiken.
+
+> Story: [vl-button - loading](/?path=/story/components-atom-button--button-loading)
+
+### Icoon
+
+> Story: [vl-button - icon](/?path=/story/components-atom-button--button-icon)
+
+### Enkel icoon
+
+Om een icon-only button weer te geven kan je onderstaande code gebruiken.
+Het invullen van het `label` attribuut is hierbij verplicht ([WCAG richtlijn](https://www.w3.org/TR/WCAG22/#name-role-value)).
+
+> Story: [vl-button - icon only](/?path=/story/components-atom-button--button-icon-only)
+
+Voor een variant zonder opmaak (border, background), kan je het `ghost` attribuut gebruiken.
+
+> Story: [vl-button - icon only - ghost](/?path=/story/components-atom-button--button-icon-only-ghost)
+
+### Toggle
+
+Gebruik een toggle button om aan te duiden dat een actie aan of uit staat.
+
+De button wordt aan- of uitgezet door er op te klikken.
+
+Gebruik het `on` attribuut om de button programmatorisch aan- of uit te zetten.
+
+Gebruik het `controlled` attribuut als je wil dat de button zich niet zelf aan- of uitzet, gebruik dan het `on`
+attribuut om de button aan- of uit te zetten.
+
+> Story: [vl-button - toggle](/?path=/story/components-atom-button--button-toggle)
+
+### CTA link
+
+In specifieke gevallen kan het nodig zijn een link af te beelden als een button. Daarvoor kan je dan de `cta-link`
+(call to action link) specifiëren, de button wordt dan technisch een link met een href, visueel blijft het een
+button. Bij voorkeur wordt de `vl-button` gebruikt om een actie uit te voeren en de `vl-link` om
+naar een andere pagina te navigeren.
+
+Aanbevelingen:
+
+-   probeer `cta-link` enkel te gebruiken als het echt nodig is, zoals om de aandacht te vestigen op een link
+voor het uitvoeren van een belangrijke actie, bv.:
+-   een link, die in een overzicht van objecten, wijst naar een formulier om een nieuw object aan te maken
+-   de "Begin hier" link in een onboarding flow
+-   bij "Registreer" of "Maak een account aan"
+-   zorg ervoor dat de stijl verschillend is t.o.v. een standaard button (gebruik bv. een icoon)
+
+Beperkingen:
+
+-   bij gebruik van `cta-link` wordt de `<button>` tag vervangen door een `<a>` tag, hierdoor kan dit niet binnen een
+form gebruikt worden
+-   het type attribuut heeft geen effect bij gebruik van `cta-link`
+
+Meer context over wanneer een button of een link te gebruiken kan je vinden in de blogpost
+['but sometimes buttons look like links'](https://adamsilver.io/blog/but-sometimes-buttons-look-like-links/).
+
+> Story: [vl-button - cta-link](/?path=/story/components-atom-button--button-cta-link)
+
+### CTA link als download
+
+Wijst de `cta-link` naar een bestand, gebruik dan het `download` attribuut om aan te geven dat de browser het bestand
+moet downloaden in plaats van ernaar te navigeren. Geef je een waarde mee, dan wordt die gebruikt als suggestie voor de
+bestandsnaam; zonder waarde kiest de browser zelf een bestandsnaam.
+
+Beperkingen:
+
+-   het `download` attribuut werkt enkel voor same-origin URLs (en `data:` of `blob:` URLs), dit is een
+browser-beperking van het [native anchor `download` attribuut](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download)
+-   het attribuut wordt enkel gebruikt als de `cta-link` is ingesteld
+
+Tip: maak in de zichtbare tekst of het `label` attribuut duidelijk dat het om een download gaat, zodat ook
+screen-reader gebruikers dit weten (bv. "Download verslag.pdf" i.p.v. "Verslag"). Een anchor met het `download`
+attribuut wordt nog steeds aangekondigd als een gewone link.
+
+> Story: [vl-button - cta-link - download](/?path=/story/components-atom-button--button-cta-link-download)
+
+### Input Group
+
+Het `input-group` attribuut is er om de knop een specifieke stijl te geven in combinatie met een input-field. Het
+attribuut doet enkel iets in die combinatie. Zie [Input Group [next]](/?path=/docs/components-form-input-group--documentatie)
+voor meer informatie en voorbeelden.
+
+## Toegankelijkheid
+
+Zorg er steeds voor dat de button een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd wordt bij het klikken op de button. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers gebruiken.
+
+Indien de button enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende `aria-label` wordt toegevoegd aan de button.
+
+Indien de button een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde (`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt schermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven aan de onderliggende button.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Button](https://www.vlaanderen.be/vlaanderen-design-system/componenten/button)

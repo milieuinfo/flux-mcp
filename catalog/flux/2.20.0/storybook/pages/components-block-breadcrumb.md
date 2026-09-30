@@ -1,0 +1,55 @@
+# Breadcrumb
+
+## Doel
+
+Gebruik de `breadcrumb` component om de locatie van de huidige pagina af te beelden binnen een navigeerbare hiërarchie.
+
+## Voorbeeld
+
+```js
+import { VlBreadcrumbComponent } from '@domg-wc/components/block';
+```
+
+```html
+<vl-breadcrumb></vl-breadcrumb>
+```
+
+> Story: [vl-breadcrumb - default](/?path=/story/components-block-breadcrumb--breadcrumb-default)
+
+## Configuratie
+
+> API: vl-breadcrumb, vl-breadcrumb-item
+
+## Varianten
+
+### Breadcrumb met buttons
+
+Gebruik een breadcrumb met buttons voor interactieve breadcrumbs die bijvoorbeeld submenu's openen.
+
+Vermijd het gebruik van links en buttons binnen dezelfde breadcrumb component.
+
+Het laatste breadcrumb item is de huidige locatie. Geef dat item geen `href` en geen `type="button"`, dan wordt het
+als tekst weergegeven en is het niet aanklikbaar.
+
+> Story: [vl-breadcrumb - buttons](/?path=/story/components-block-breadcrumb--breadcrumb-buttons)
+
+### Lange tekst afkappen
+
+Houd de tekst van een breadcrumb item kort. Komt de tekst uit data, en heb je de lengte dus niet in de hand, dan kan
+het `ellipsis` attribuut helpen.
+
+Standaard loopt een lang breadcrumb item door over meerdere regels. Is de ruimte beperkt, bijvoorbeeld in een
+`side-sheet`, dan houdt `ellipsis` elk breadcrumb item op één regel: een breadcrumb item dat niet past, begint op een
+nieuwe regel en wordt pas afgekapt met een ellipsis (…) als het ook daar te breed is.
+
+De afgekapte tekst blijft volledig beschikbaar voor schermlezers, maar is visueel niet meer leesbaar. Gebruik
+`ellipsis` dus enkel waar de ruimte echt beperkt is.
+
+```html
+<vl-breadcrumb ellipsis>
+    <vl-breadcrumb-item href="#">Vlaanderen Intern</vl-breadcrumb-item>
+    <vl-breadcrumb-item>Een breadcrumb item met een heel lange titel</vl-breadcrumb-item>
+</vl-breadcrumb>
+```
+
+> Story: [vl-breadcrumb - ellipsis](/?path=/story/components-block-breadcrumb--breadcrumb-ellipsis)

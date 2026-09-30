@@ -1,0 +1,47 @@
+# Configuratie
+
+M.b.v. de statische klasse `FluxConfig` kunnen voorkeuren gewijzigd worden.
+
+De defaults zijn:
+- autoRegisterStyles: true
+- logWebComponentRegistration: false
+- logTreeshakeRegistration: false
+- prozaDomain: undefined
+
+## Proza domein
+
+Door `prozaDomain` in te stellen hoef je het domein niet meer op elke `vl-proza-message`,
+`vl-proza-message-preloader` of `vlProza` directive aanroep mee te geven.
+Indien er geen expliciet domein wordt meegegeven, wordt het `prozaDomain` uit de `FluxConfig` gebruikt.
+
+```
+FluxConfig.setPreferences({ prozaDomain: 'mijn-domein' });
+```
+
+## Afname via de npm-packages
+
+Wijzig de defaults als volgt; voordat het eerste element geïmporteerd wordt.
+
+```
+import { FluxConfig } from '@domg-wc/common';
+
+FluxConfig.setPreferences({ logWebComponentRegistration: true });
+```
+
+**Opmerking**: ervoor zorgen dat deze code als eerste uitgevoerd wordt (alvorens de eerste component geregistreerd
+wordt) is specifiek aan de opzet en bundeling van de toepassing. Wat altijd zou moeten werken is:
+ - een bestand aanmaken met bovenstaande code in (de import en het setPreferences statement) bvb. in `app.config.ts`
+ - en dan dit bestand via een neven-effect import `import './app/app.config';` als allereerste importeren
+
+## Afname via 'fat-lib'
+
+Wijzig de defaults m.b.v. het desbetreffende attribuut.
+
+```
+<script type="module"
+    auto-register-styles="false"
+    log-web-component-registration="true"
+    log-treeshake-registration="true"
+    src="https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js">
+</script>
+```

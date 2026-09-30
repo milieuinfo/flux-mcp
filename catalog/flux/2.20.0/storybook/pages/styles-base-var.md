@@ -1,0 +1,371 @@
+# Var
+
+## Inhoudstafel
+
+- [Doel](#doel)
+- [Gebruik](#gebruik)
+- [Voorbeeld](#voorbeeld)
+- [Variabelen](#variabelen)
+
+## Doel
+
+Voor consistentie in de styling en soms om waardes een naam te geven worden standaard CSS variabelen gebruikt.
+De variabelen worden steeds globaal gespecifieerd en kunnen in een concrete component (in die scope) een afwijkende
+waarde krijgen. Dit moet niet gezien worden als theming, er is maar 1 stijl: die van Vlaanderen.
+
+## Gebruik
+
+Het zijn standaard [CSS variabelen](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties):
+ze beginnen dus met `--` en zijn te gebruiken met `var()`.
+
+```css
+.my-details {
+    background-color: var(--vl-color--background-default);
+}
+```
+
+## Voorbeeld
+
+> Story: [vl-var - color](/?path=/story/styles-base-var--var-color)
+
+## Variabelen
+
+Hieronder volgt een overzicht van alle variabelen.
+Dit is een representatie van de broncode, ze zijn dus steeds up-to-date.
+
+### Color
+
+Meer informatie over het beschikbare kleurenpalet en toegankelijkheid van kleuren vind je op de
+[kleurenpalet documentatie pagina](/?path=/docs/styles-kleurenpalet--documentatie).
+
+**Color Variables**
+
+```css
+/* Legacy kleuren */
+:root {
+    --vl-color--white: #ffffff;
+
+    --vl-color--accent: #ffe615;
+    --vl-color--background: var(--vl-color--white);
+    --vl-color--background-alt: #f7f9fc;
+    --vl-color--map-background: #ffffff;
+    --vl-color--doormat-background: #33333233;
+
+    --vl-color--text: #333332;
+    --vl-color--text-alt: #687483;
+    --vl-color--text-light: #8695a8;
+
+    --vl-color--border: #cbd2da;
+    --vl-color--border-alt: #8695a8;
+    --vl-color--border-alt--background: #f3f5f6;
+
+    --vl-color--action: #0055cc;
+    --vl-color--action-hover: #003bb0;
+    --vl-color--action-hover-background: #e6eefa;
+    --vl-color--action-active: #004099; /* --vl-color--action 10% darker */
+    --vl-color--action-visited: #660599;
+    --vl-color--action-disabled: #687483;
+    --vl-color--action-disabled-background: #cbd2d9;
+    --vl-color--action-tertiary: var(--vl-color--action);
+    --vl-color--action-tertiary-hover: var(--vl-color--action);
+    --vl-color--action-tertiary-border: #c6cdd3;
+    --vl-color--action-tertiary-border-hover: #5990de;
+    
+    --vl-color--error: #d2373c;
+    --vl-color--error-hover: #aa2729;
+    --vl-color--error-background: #fbebec;
+    --vl-color--error-bg: var(--vl-color--error-background);
+    --vl-color--error-text: var(--vl-color--error-hover);
+    --vl-color--error-border: #f1aeae;
+
+    --vl-color--success: #009e47;
+    --vl-color--success-bg: #e6f5ed;
+    --vl-color--success-text: #007a37;
+    --vl-color--success-border: #99d8b5;
+
+    --vl-color--warning: #ffa10a;
+    --vl-color--warning-bg: #fff6e7;
+    --vl-color--warning-text: #9f5804;
+    --vl-color--warning-border: #ffd99d;
+
+    --vl-color--focus: rgba(0, 85, 204, 0.65); /* --vl-color--action 65% opacity — 8-digit hex (#0055cca6) fails in Edge outline-color context */
+
+    --vl-color--label: #687483;
+}
+
+/* Uit Vlaanderen Design System: https://www.vlaanderen.be/vlaanderen-design-system/foundations/kleuren */
+:root {
+    /* ── Alias definitions ──────────────────────────────────────── */
+    --vl-color--white:                #ffffff;
+    --vl-color--grey-100:             #f7f9fc;
+    --vl-color--grey-200:             #eceff4;
+    --vl-color--grey-300:             #cfd5dd;
+    --vl-color--grey-400:             #c3cad3;
+    --vl-color--grey-500:             #a7b1bf;
+    --vl-color--grey-600:             #8695a8;
+    --vl-color--grey-700:             #788799;
+    --vl-color--grey-800:             #687483;
+    /* edit FLUX: Door de transparantie is deze kleur ook conform de WCAG contrast ratio richtlijnen bij gebruik 
+       op een lichtgrijze achtergrond. Getest met nieuwe en oude grijswaarden: #e8ebee, #f3f5f6, #f7f9fc, #ffffff
+     */
+    --vl-color--grey-800-transparent:  rgba(0, 20, 46, 0.6);
+    --vl-color--grey-900:             #4d535b;
+    --vl-color--grey-1000:            #333332;
+
+    --vl-color--primary-100:          #fffdf2;
+    --vl-color--primary-200:          #fffce4;
+    --vl-color--primary-300:          #fff8c6;
+    --vl-color--primary-400:          #fff4a1;
+    --vl-color--primary-500:          #fff172;
+    --vl-color--primary-600:          #ffed00;
+    --vl-color--primary-700:          #e4d400;
+    --vl-color--primary-800:          #c6b800;
+    --vl-color--primary-900:          #a19600;
+    --vl-color--primary-1000:         #726a00;
+    --vl-color--primary:              var(--vl-color--primary-600);
+
+    --vl-color--primary-niveau2-100:  #f2f9f9;
+    --vl-color--primary-niveau2-200:  #e5f2f3;
+    --vl-color--primary-niveau2-300:  #c8e5e7;
+    --vl-color--primary-niveau2-400:  #a6d7da;
+    --vl-color--primary-niveau2-500:  #7ac7cd;
+    --vl-color--primary-niveau2-600:  #32b7be;
+    --vl-color--primary-niveau2-700:  #2da4aa;
+    --vl-color--primary-niveau2-800:  #278e93;
+    --vl-color--primary-niveau2-900:  #207478;
+    --vl-color--primary-niveau2-1000: #165255;
+    --vl-color--primary-niveau2:      var(--vl-color--primary-niveau2-600);
+
+    --vl-color--action-100:           #e4ebf5;
+    --vl-color--action-200:           #b2ccef;
+    --vl-color--action-300:           #8db4e8;
+    --vl-color--action-400:           #5990de;
+    --vl-color--action-500:           #2971d6;
+    --vl-color--action-600:           #0055cc;
+    --vl-color--action-700:           #0048ad;
+    --vl-color--action-800:           #003b8e;
+    --vl-color--action-900:           #002f70;
+    --vl-color--action-1000:          #00265b;
+    --vl-color--action:               var(--vl-color--action-600);
+
+    --vl-color--error-100:            #fbeded;
+    --vl-color--error-400:            #f1aeae;
+    --vl-color--error-600:            #d2373c;
+    --vl-color--error-700:            #bc3136;
+    --vl-color--error-800:            #aa2729;
+    --vl-color--error-900:            #852326;
+    --vl-color--error:                var(--vl-color--error-600);
+
+    --vl-color--warning-100:          #fff9e8;
+    --vl-color--warning-400:          #ffe49c;
+    --vl-color--warning-600:          #ffa10a;
+    --vl-color--warning-700:          #d07b06;
+    --vl-color--warning-800:          #9f5804;
+    --vl-color--warning:              var(--vl-color--warning-600);
+
+    --vl-color--success-100:          #ecf6ee;
+    --vl-color--success-400:          #9fd5af;
+    --vl-color--success-600:          #009e47;
+    --vl-color--success-800:          #007a37;
+    --vl-color--success:              var(--vl-color--success-600);
+
+    --vl-color--on-primary:           var(--vl-color--grey-1000);
+    --vl-color--focus-on-primary:     var(--vl-color--action-800);
+
+    /* ── Background tokens (reference aliases) ───────────────────── */
+    --vl-color--background-default:          var(--vl-color--white);
+    --vl-color--background-subtle:           var(--vl-color--grey-100);
+    --vl-color--background-bold:             var(--vl-color--grey-300);
+    --vl-color--background-bolder:           var(--vl-color--grey-600);
+    --vl-color--background-disabled:         var(--vl-color--grey-300);
+    --vl-color--background-disabled-subtle:  var(--vl-color--grey-100);
+    --vl-color--background-inverse:          var(--vl-color--grey-800);
+    --vl-color--background-action:           var(--vl-color--action);
+    --vl-color--background-action-soft:      var(--vl-color--action-400);
+    --vl-color--background-action-subtle:    var(--vl-color--action-100);
+    --vl-color--background-selected:         var(--vl-color--action);
+    --vl-color--background-primary:          var(--vl-color--primary);
+    --vl-color--background-primary-subtle:   var(--vl-color--primary-100);
+    --vl-color--background-error:            var(--vl-color--error-600);
+    --vl-color--background-error-subtle:     var(--vl-color--error-100);
+    --vl-color--background-warning:          var(--vl-color--warning-600);
+    --vl-color--background-warning-subtle:   var(--vl-color--warning-100);
+    --vl-color--background-success:          var(--vl-color--success-600);
+    --vl-color--background-success-subtle:   var(--vl-color--success-100);
+    --vl-color--background-info-subtle:      var(--vl-color--grey-200);
+    --vl-color--background-backdrop:         var(--vl-color--grey-200);
+    --vl-color--background-on-primary:       var(--vl-color--on-primary);
+
+    /* ── Border tokens (reference aliases) ─────────────────────── */
+    --vl-color--border-default:              var(--vl-color--grey-300);
+    --vl-color--border-bold:                 var(--vl-color--grey-600);
+    --vl-color--border-boldest:              var(--vl-color--grey-1000);
+    --vl-color--border-input:                var(--vl-color--grey-600);
+    --vl-color--border-disabled:             var(--vl-color--grey-300);
+    --vl-color--border-inverse:              var(--vl-color--white);
+    --vl-color--border-primary:              var(--vl-color--primary);
+    --vl-color--border-primary-subtle:       var(--vl-color--primary-300);
+    --vl-color--border-error:                var(--vl-color--error-600);
+    --vl-color--border-error-subtle:         var(--vl-color--error-400);
+    --vl-color--border-warning:              var(--vl-color--warning-600);
+    --vl-color--border-warning-subtle:       var(--vl-color--warning-400);
+    --vl-color--border-success:              var(--vl-color--success-600);
+    --vl-color--border-success-subtle:       var(--vl-color--success-400);
+    --vl-color--border-action:               var(--vl-color--action);
+    --vl-color--border-action-subtle:        var(--vl-color--action-400);
+    --vl-color--border-on-primary:           var(--vl-color--on-primary);
+    --vl-color--border-focus:                var(--vl-color--action-400);
+    --vl-color--border-focus-on-primary:     var(--vl-color--focus-on-primary);
+
+    /* ── Icon tokens (reference aliases) ─────────────────────── */
+    --vl-color--icon-default:                var(--vl-color--grey-1000);
+    --vl-color--icon-subtle:                 var(--vl-color--grey-800-transparent); /* edit FLUX */
+    --vl-color--icon-disabled:               var(--vl-color--grey-600);
+    --vl-color--icon-inverse:                var(--vl-color--white);
+    --vl-color--icon-primary:                var(--vl-color--primary);
+    --vl-color--icon-action:                 var(--vl-color--action);
+    --vl-color--icon-error:                  var(--vl-color--error-600);
+    --vl-color--icon-warning:                var(--vl-color--warning-700);
+    --vl-color--icon-success:                var(--vl-color--success-600);
+    --vl-color--icon-on-primary:             var(--vl-color--on-primary);
+    --vl-color--icon-on-action:              var(--vl-color--white);
+
+    /* ── Link tokens (reference aliases) ─────────────────────── */
+    --vl-color--link-default:                var(--vl-color--action);
+    --vl-color--link-hover:                  var(--vl-color--action-800);
+    --vl-color--link-active:                 var(--vl-color--action-900);
+
+    /* ── Text tokens (reference aliases) ─────────────────────── */
+    --vl-color--text-default:                var(--vl-color--grey-1000);
+    --vl-color--text-subtle:                 var(--vl-color--grey-800-transparent); /* edit FLUX */ 
+    --vl-color--text-disabled:               var(--vl-color--grey-600);
+    --vl-color--text-inverse:                var(--vl-color--white);
+    --vl-color--text-primary:                var(--vl-color--grey-1000);
+    --vl-color--text-action:                 var(--vl-color--action);
+    --vl-color--text-error:                  var(--vl-color--error-700);
+    --vl-color--text-warning:                var(--vl-color--warning-800);
+    --vl-color--text-success:                var(--vl-color--success-800);
+    --vl-color--text-on-primary:             var(--vl-color--on-primary);
+    --vl-color--text-on-action:              var(--vl-color--white);
+
+    /* ── State: Active (reference aliases) ───────────────────── */
+    --vl-color--active-bg-action:            var(--vl-color--action-900);
+    --vl-color--active-bg-error:             var(--vl-color--error-900);
+    --vl-color--active-border-action:       var(--vl-color--action-900);
+    --vl-color--active-border-error:        var(--vl-color--error-900);
+    --vl-color--active-icon-action:         var(--vl-color--action-900);
+    --vl-color--active-icon-error:          var(--vl-color--error-900);
+    --vl-color--active-text-action:         var(--vl-color--action-900);
+    --vl-color--active-text-error:          var(--vl-color--error-900);
+
+    /* ── State: Hover (reference aliases) ────────────────────── */
+    --vl-color--hover-bg-action:             var(--vl-color--action-800);
+    --vl-color--hover-bg-error:              var(--vl-color--error-800);
+    --vl-color--hover-border-action:        var(--vl-color--action-800);
+    --vl-color--hover-border-error:         var(--vl-color--error-800);
+    --vl-color--hover-icon-action:          var(--vl-color--action-800);
+    --vl-color--hover-icon-error:           var(--vl-color--error-800);
+    --vl-color--hover-text-action:          var(--vl-color--action-800);
+    --vl-color--hover-text-error:           var(--vl-color--error-800);
+}
+
+/* Uit: https://assets.vlaanderen.be/image/upload/v1746006009/repositories-prd/kleurenpaletOMG_zcsfqh.pdf */
+:root {
+    --vl-color--domg-hoofdkleur: #447a6d;
+    --vl-color--domg-hoofdkleur-light: #47a491;
+    --vl-color--domg-hoofdkleur-extra-light: #56baa4;
+
+    --vl-color--domg-steunkleur: #6c5a44;
+    --vl-color--domg-steunkleur-light: #a67d43;
+    --vl-color--domg-steunkleur-extra-light: #c58835;
+}
+```
+
+### General
+
+**General Variables**
+
+```css
+:root {
+    --vl-page--min-width: 768px;
+    --vl-page--max-width: 1024px;
+    --vl-page--max-width-wide: 1280px;
+    --vl-page--padding: 30px;
+
+    /* breakpoints */
+    --vl-bp--xsmall: 500px;
+    --vl-bp--small: 767px;
+    --vl-bp--medium: 1023px;
+    --vl-bp--large: 1600px;
+
+    --vl-box--max-width: 1600px;
+
+    /* Border */
+    --vl-border--radius: 0.3rem;
+    --vl-border--width: 0.1rem;
+
+    /* Transitions */
+    --vl-transition--fast: 0.1s cubic-bezier(1, 0.1, 0, 0.9);
+    --vl-transition: 0.2s cubic-bezier(1, 0.1, 0, 0.9);
+    --vl-transition--slow: 0.3s ease;
+
+    /* Focus state */
+    --vl-focus--shadow: 0 0 0 2px var(--vl-color--white), 0 0 0 5px var(--vl-color--focus);
+    --vl-focus--outline: 3px solid var(--vl-color--focus);
+    --vl-focus--outline-offset: 2px;
+}
+```
+
+### Media Screen
+
+De resolutie in een media query specifiëren via een css variabele wordt niet door browsers ondersteund. Om toch de
+'breakpoints' eenduidig te specifiëren worden ze als standaard TypeScript variabelen gedefinieerd.
+
+**Media Screen Variables**
+
+```ts
+export const vlMediaScreenExtraSmall = 500;
+export const vlMediaScreenSmall = 767;
+export const vlMediaScreenMedium = 1023;
+export const vlMediaScreenLarge = 1600;
+
+export const vlPageMaxWidthWide = 1280;
+```
+
+### Spacing
+
+**Spacing Variables**
+
+```css
+:root {
+    --vl-spacing--xxsmall: 0.5rem;
+    --vl-spacing--xsmall: 1rem;
+    --vl-spacing--small: 1.5rem;
+    --vl-spacing--normal: 2rem;
+    --vl-spacing--medium: 3rem;
+    --vl-spacing--large: 6rem;
+}
+```
+
+### Typography
+
+**Typography Variables**
+
+```css
+:root {
+    --vl-font: 'Flanders Art Sans', sans-serif;
+    --vl-icon-font: 'vlaanderen-icon';
+
+    --vl-font-size--xxlarge: 2.8rem;
+    --vl-font-size--xlarge: 2.2rem;
+    --vl-font-size--large: 2rem;
+    --vl-font-size: 1.8rem;
+    --vl-font-size--mobile: 1.6rem;
+    --vl-font-size--small: 1.6rem;
+    --vl-font-size--xsmall: 1.4rem;
+    --vl-font-size--xxsmall: 1.2rem;
+
+    --vl-line-height: 1.5;
+    --vl-line-height--mobile: 1.33;
+}
+```

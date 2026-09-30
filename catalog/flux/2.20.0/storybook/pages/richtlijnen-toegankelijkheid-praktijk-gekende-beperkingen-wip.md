@@ -1,0 +1,28 @@
+# Gekende Beperkingen [WIP]
+
+## `aria-invalid` bij `vl-upload`
+
+Bij een validatiefout krijgt `vl-upload` als enige form control geen `aria-invalid` in de accessibility tree. Het
+enige focusbare element is de upload-knop, en `aria-invalid` wordt niet ondersteund op `role="button"`, dus de
+browser laat het attribuut daar vallen. De onderliggende `input type="file"` draagt het wel, maar Dropzone verbergt
+die met `visibility: hidden`, waardoor ze sowieso buiten de accessibility tree valt.
+
+De ongeldige toestand komt daarom niet van de control zelf, maar van de foutmelding: `vl-form-message` rendert ze in
+een `role="status"` regio met `aria-live="polite"`, zodat een screenreader ze voorleest zodra ze verschijnt. De
+gebruiker hoort dus wel wat er fout is, alleen niet dat het veld zelf ongeldig staat. Dit rechtzetten vraagt dat de
+file-input echt zichtbaar wordt voor screenreaders, wat raakt aan de manier waarop Dropzone haar input verbergt.
+
+## Focus op niet-tekstuele inputs
+
+Op Safari is het niet mogelijk om, met standaard instellingen, focus te leggen op een niet-tekstuele input zoals
+buttons, checkboxes of radios. Dit is een [probleem gemeld bij Safari](https://bugs.webkit.org/show_bug.cgi?id=22261) -
+waar het gemarkeerd is als WONTFIX.
+
+Volgens onze WCAG expert is dit een bewuste keuze van Apple en leidt dit al jaren tot verwarring.
+
+Om toch een focus te kunnen leggen op deze elementen kan je:
+- als gebruiker op Mac: `tab`+`option` drukken
+- of gebruik maken van de volgende instelling in Safari:
+    - ga naar `Safari > Settings > Advanced`
+    - zet de optie `Press Tab to highlight each item on a web page` aan; dan zal elke `tab` uitgevoerd worden als
+      `tab`+`option`

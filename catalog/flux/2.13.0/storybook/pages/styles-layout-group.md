@@ -1,0 +1,65 @@
+# Group
+
+## Doel
+
+`vl-group` voorziet style-classes om horizontaal en verticaal (identieke) componenten te groeperen. De CSS
+is een specifieke implementatie gebruik makend van de [CSS Flexbox Layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/),
+die standaard door [browsers](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) voorzien wordt.
+
+## Gebruik
+
+### Default
+
+Default worden items in een `vl-group` naast elkaar (horizontaal) gegroepeerd.
+
+> Story: [vl-group - buttons](/?path=/story/styles-layout-group--group-buttons)
+
+### Verticaal Groeperen
+
+Met `vl-group--column` worden items onder elkaar gegroepeerd. In onderstaand voorbeeld wordt ook
+`vl-group--separator-column` toegevoegd en `vl-group--stretch-children` om de volledige breedte in te nemen.
+
+> Story: [vl-group - accordions](/?path=/story/styles-layout-group--group-accordions)
+
+### Uitlijning
+
+De uitlijning volgt de opzet van flex-box:
+ - op de **hoofdas uitlijnen** doe je met `vl-group--justify-start`, `vl-group--justify-center` en
+   `vl-group--justify-end`
+ - op de **dwarsas uitlijnen** doe je met `vl-group--align-start`, `vl-group--align-center` en
+   `vl-group--align-end`
+
+Met `vl-group--space-between` wordt het eerste item in het begin gezet, het laatste op het einde en de overige
+ertussen - gelijkmatig verdeeld.
+
+Met `vl-group--baseline` worden de items uitgelijnd volgens de tekst basis van hun eerste element.
+Dit is vooral handig voor items met een verschillende `font-size`, zoals een heading met daarnaast een tekstuele link.
+
+De container waarin uitgelijnd wordt dient voldoende ruimte te hebben om uit te lijnen!
+
+### Witruimte
+
+Witruimte wordt voorzien door de default 'gap'. Er zijn 3 modifiers om die 'gap' te schrappen:
+`vl-group--no-gap` / `vl-group--no-row-gap` / `vl-group--no-column-gap`.
+
+### Scheidingslijnen
+
+Tussen items kan een grijze lijn getoond worden. In row layout (default) gebruik je `vl-group--separator-row`,
+in kolom layout `vl-group--separator-column`.
+
+### Wrapping
+
+Om wrapping toe te voegen is er de modifier `vl-group--wrap`.
+
+### Responsief
+
+Er bestaan 4 responsieve style-classes `vl-group--collapse-l` / `vl-group--collapse-m` /
+`vl-group--collapse-s` / `vl-group--collapse-cs` voor de verschillende scherm groottes: **large** (&gt;1023px),
+**medium** (&lt;1023px), **small** (&lt;767px) en **extra-small** (&lt;500px). Door de desbetreffende class toe te
+voegen wordt er bij / vanaf die desbetreffende scherm grootte links uitgelijnd in kolom layout.
+
+### Input Group
+
+De style-class `vl-group--input-group` is er om de groep een specifieke stijl te geven bij een combinatie van een knop
+en een input veld. De class heeft enkel effect bij die combinatie. Zie [Input Group [next]](/?path=/docs/components-form-input-group--documentatie)
+voor meer informatie en voorbeelden.

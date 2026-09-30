@@ -1,0 +1,135 @@
+# Side sheet
+
+## Doel
+
+De `side-sheet`-component heeft containers die aan de linker- of rechterrand van het scherm zijn verankerd. Deze kunnen
+geopend of gesloten worden aan de hand van een knop.
+
+## Wanneer gebruik je een side-sheet?
+
+Twijfel je tussen een side-sheet en een modal? Een side-sheet laat de pagina-context zichtbaar en bruikbaar terwijl
+de gebruiker een taak uitvoert; een modal schermt de pagina net af voor een geïsoleerde taak. Let op: een links of
+rechts uitgelijnde modal lijkt op een side-sheet, maar legt wél een overlay over de pagina. Zie
+[Patronen/Overlays/Modal vs Side sheet](/?path=/docs/patronen-overlays-modal-vs-side-sheet--documentatie) voor het
+volledige keuzekader.
+
+## Eén side-sheet per pagina
+
+Render nooit meer dan één `side-sheet` tegelijk, ook geen bijkomende verborgen exemplaren. Een open `side-sheet` houdt
+op een mobiel scherm de focus bij zijn eigen inhoud. Staan er twee open, dan proberen ze allebei de focus naar zich toe
+te trekken en wordt het onvoorspelbaar waar de gebruiker terechtkomt. De component vangt de ergste gevolgen op, zodat
+een bestaande toepassing niet vastloopt, maar de focusvolgorde klopt dan niet meer.
+
+Heb je meerdere panelen nodig, wissel dan de inhoud van dezelfde `side-sheet`, of sluit het ene paneel voor je het
+andere opent.
+
+## Voorbeeld
+
+```js
+import { VlSideSheet } from '@domg-wc/components/block';
+```
+
+```html
+<vl-side-sheet>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna ante.</p>
+    <p>Sed vehicula tortor quis dignissim tincidunt.</p>
+</vl-side-sheet>
+```
+
+## Default
+
+> Story: [vl-side-sheet - default](/?path=/story/components-block-side-sheet--side-sheet-default)
+
+## Configuratie
+
+> API: vl-side-sheet
+
+## Varianten
+
+### Custom icon
+
+Standaard is er een pijltje dat aanduidt of de `side-sheet` open of gesloten is. Je kan dit vervangen door een custom
+icon in te stellen. [Hier](https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon) vind je een
+overzicht van alle beschikbare icons.
+
+Deze blijft dan dezelfde in de 2 richtingen.
+
+### Breedte zelf instellen.
+
+Het is ook mogelijk de breedte zelf in te stellen.
+
+Dan kan je voor mobile en/of desktop de width instellen door de respectievelijke css variabelen in te stellen. Dit
+stelt de `width` in voor het component.
+- breekpunt voor desktop naar mobile is vanaf `767px`
+- voor desktop gebruik je `--vl-side-sheet-width`
+- voor mobile gebruik je `--vl-side-sheet-width-mobile`
+- hier kan je ook gelijk welke andere waardes meegeven die geldig zijn voor `width`
+
+```css
+:root {
+    --vl-side-sheet-width: 480px; /* voor desktop */
+    --vl-side-sheet-width-mobile: 100%; /* voor mobile */
+}
+```
+
+**Let op:** de toggle knop staat bij een open `side-sheet` naast de `side-sheet`. De standaardbreedte op mobile
+(`calc(100vw - 56px)`) laat daar net plaats voor. Stel je `--vl-side-sheet-width-mobile` in op `100%`, dan valt de
+toggle knop buiten het scherm en kan de gebruiker de `side-sheet` er niet meer mee sluiten. Voorzie in dat geval zelf
+een sluitknop in de `side-sheet` die `close()` aanroept, zoals in het
+[voorbeeld van buitenaf openen & sluiten](#voorbeeld-van-buitenaf-openen--sluiten). Geef die knop een toegankelijke
+naam, bijvoorbeeld `label="Sluit de side-sheet"` bij een knop met enkel een icoon.
+
+### Openen en sluiten zonder knop
+
+Je kan de `side-sheet` openen zonder de toggle knop;
+- stel `hide-toggle-button` in op `true`
+- roep `toggle()` aan op de `side-sheet`-instantie te wisselen tussen open en gesloten status
+- alternatief kan je ook uitdrukkelijk `open()` en `close()` aanroepen
+
+Hieronder volgt een voorbeeld met broncode:
+
+### Voorbeeld van buitenaf openen & sluiten
+
+> Story: [vl-side-sheet - toggle](/?path=/story/components-block-side-sheet--side-sheet-toggle)
+
+**voorbeeld code om side-sheet te openen en te sluiten van buitenaf**
+
+```ts
+import { VlSideSheet } from '../vl-side-sheet.component';
+
+export const sideSheetToggleImplementation = () => {
+    let sideSheet: VlSideSheet;
+    let listenerButton: HTMLElement;
+    customElements.whenDefined('vl-side-sheet').then(() => {
+        sideSheet = document.querySelector('#side-sheet-toggle') as unknown as VlSideSheet;
+        listenerButton = document.querySelector(
+            '#vl-side-sheet-open-button-with-close-listener'
+        ) as unknown as HTMLElement;
+    });
+    const toggleSideSheet = () => sideSheet?.toggle();
+
+    const openSideSheet = () => sideSheet?.open();
+    const closeSideSheet = () => sideSheet?.close();
+
+    return { toggleSideSheet, openSideSheet, closeSideSheet };
+};
+
+export default sideSheetToggleImplementation;
+```
+
+## Custom CSS Properties
+
+|  |  |  |
+| --- | --- | --- |
+| Naam | Beschrijving | Default |
+| `--vl-side-sheet-width` | breedte van het element | 33% |
+| `--vl-side-sheet-width-mobile` | breedte van het element bij scherm kleiner dan 767px | calc(100vw - 56px) |
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+Er is geen `side-sheet`-component bij Digitaal Vlaanderen.
+
+In de Vue Component library van Digitaal Vlaanderen is er echter wel een component die er dicht tegen aanleunt:
+`vl-side-bar`-component (link [side-bar-component](https://overheid.vlaanderen.be/webuniversum/v3/vue-documentation/?path=/story/components-vl-sidebar--sidebar-collapsible)).

@@ -1,0 +1,44 @@
+# Proza Message Preloader
+
+## Doel
+
+Gebruik de `proza-message-preloader` component om alle Proza berichten van een domein in 1 keer op te halen en in
+cache te stoppen.
+
+De [proza-message](/?path=/docs/components-block-proza-message--proza-message-default) component gaat eerst kijken of het bericht in
+de cache zit vooraleer een request naar buiten te sturen.
+
+Deze component voeg je 1 keer toe in je applicatie per domein, bij voorkeur op het hoogste niveau.
+
+## Voorbeeld
+
+```js
+import { VlProzaMessagePreloader } from '@domg-wc/components/block';
+```
+
+```html
+<vl-proza-message-preloader></vl-proza-message-preloader>
+```
+
+> Story: [vl-proza-message-preloader - default](/?path=/story/components-block-proza-message-proza-message-preloader--proza-message-preloader-default)
+
+## Configuratie
+
+> API: vl-proza-message-preloader
+
+## Base Url
+
+Je kan optioneel een `baseUrl` meegeven aan de `proza-message` component waarvan de Proza berichten opgehaald
+worden.
+
+De Proza berichten zullen opgehaald worden vanaf `{baseUrl}proza/domein/{domain}/{code}`.
+
+Indien er geen `baseUrl` meegegeven wordt, worden de Proza berichten opgehaald relatief tov de huidige url op het pad
+`proza/domein/{domain}/{code}`.
+
+Dit attribuut is niet reactief, zorg ervoor dat als je dit attribuut gebruikt het meteen correct ingevuld staat.
+
+## Manuele preloads
+
+Je kan `VlProzaMessagePreloader.preload('domein')` gebruiken om manueel domeinen te preloaden indien je controle wilt
+over de volgorde van de domeinen of het moment waarop de preload gebeurt.

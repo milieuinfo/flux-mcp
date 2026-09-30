@@ -1,0 +1,22 @@
+# Git Release Branching
+
+## Inhoudstafel
+
+- [Beschrijving](#beschrijving)
+- [Diagram](#diagram)
+
+## Beschrijving
+
+Onderstaand diagram geeft een overzicht van hoe commit's - door ze naar verschillende branches te brengen - tot
+(pre-)releases leiden. De blauwe boxen geven tags aan die gelegd worden in GitHub. Voor elke tag zal er een
+artifact geproduceerd worden met de tag als suffix. De release- en pre-release-artifacts zijn beschikbaar via
+[artifactory](https://repo.omgeving.vlaanderen.be/ui/packages).
+
+Via de pre-release branches worden er beta-releases gebouwd, via de release-branches finale releases.
+
+Na een commit op eender welke branch loopt de build en alle testen, zie
+[Beheren/CI - CD](/?path=/docs/beheren-ci-cd--documentatie) voor uitgebreidere informatie.
+
+## Diagram
+
+![UIG Branching Strategie](/apps/storybook/resources/beheren/git-branching-strategie-uig.png)

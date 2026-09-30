@@ -1,0 +1,39 @@
+# Title
+
+## Doel
+
+Gebruik de `title` component om een title af te beelden.
+
+Deze component geniet de voorkeur boven het oude [vl-title](/?path=/docs/elements-title-h1--documentatie) element.
+
+## Voorbeeld
+
+```js
+import { VlTitleComponent } from '@domg-wc/components/atom';
+```
+
+```html
+<vl-title></vl-title>
+```
+
+> Story: [vl-title - default](/?path=/story/components-atom-title--title-default)
+
+## Configuratie
+
+> API: vl-title
+
+## Toegankelijkheid
+
+### Richtlijnen:
+
+Gebruik opeenvolgende rangorde om de titel te bepalen en sla geen rangorde over.
+
+**WEL** bv. `h1` voor de hoofdtitel, `h2` voor de subtitel, `h3` voor de subsubtitel
+
+**NIET** bv. `h2` voor de hoofdtitel, `h4` voor de subtitel.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Title](https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-titles)

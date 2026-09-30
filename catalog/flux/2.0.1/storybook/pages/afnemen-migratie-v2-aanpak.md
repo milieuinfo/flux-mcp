@@ -1,0 +1,53 @@
+# Migratie v2 - Aanpak
+
+## Inhoudstafel
+
+- [Aanpak Overzicht](#aanpak-overzicht)
+- [Aanpak Detail](#aanpak-detail)
+
+## Aanpak Overzicht
+
+De makkelijkste manier om te migreren naar v2 is als volgt:
+
+1. migreer minstens naar de v1 release waarvan v2 afgesplitst is: v1.48.0 - hoger mag ook
+2. vervang de legacy componenten door hun next variant
+3. migreer naar de v2 release (best ineens naar de nieuwste v2 versie)
+
+Op deze manier kan je tijdens de migratie de legacy componenten blijven gebruiken en ze geleidelijk vervangen door
+hun `next`-variant. Nadat alle legacy componenten vervangen zijn door hun `next`-variant kan je de migratie naar
+v2 uitvoeren. Die stap bestaat dan grotendeels uit het verwijderen van de `-next` suffix en het aanpassen van de
+imports.
+
+## Aanpak Detail
+
+### 1. Migratie naar de nieuwste v1 release
+
+De v2 versie is gestart op basis van v1.48.0 - deze bevat de laatste bugfixes en verbeteringen van
+de legacy componenten.
+
+Het heeft de voorkeur om v1.48.0 te gebruiken als basis voor de migratie naar v2, deze release bevat
+(voor de componenten die behouden bleven) dezelfde functionaliteit als de eerste v2 release. Op die manier zullen de
+verdere stappen in de migratie eenvoudiger zijn.
+
+### 2. Legacy componenten vervangen door hun next variant
+
+De legacy componenten zijn componenten die geschrapt worden, ze moeten vervangen worden door de equivalente
+[next-component](/?path=/docs/afnemen-migratie-v2-impact--documentatie) of
+[next-layout](/?path=/docs/styles-concept--documentatie#layout-afnemers).
+
+### 3. Migratie naar de v2 release
+
+Functioneel (voor de behouden componenten) loopt v2.0.0 gelijk met v1 release v1.48.0.
+
+Volgende wijzigingen werden doorgevoerd in v2 tov v1:
+
+- alle legacy componenten uit v1 werden verwijderd
+- alle `-next` componenten zijn gepromoveerd: deze hebben geen `-next` suffix meer en overal werd de `data-vl-`-prefix
+ verwijderd (bij alle attributen).
+- de [package structuur](/?path=/docs/bijdragen-opzet-structuur--documentatie) wijzigde, dit heeft impact op de imports
+
+De te ondernemen acties om te migreren zijn dus:
+
+- verwijder de `-next` suffix van de componenten
+- pas de imports aan
+- verwijder de `data-vl-` prefix van de attributen

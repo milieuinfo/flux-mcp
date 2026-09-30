@@ -1,0 +1,91 @@
+# Digitaal Vlaanderen Header
+
+## Doel
+
+Injecteert de global header widget van Digitaal Vlaanderen.
+Default wordt de header geïnjecteerd in het native `<body>` element.
+
+Voor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende
+template aan te houden:
+
+>   **[Logo Vlaanderen]** | **[App-name]** | witruimte | **Aanmelden** | **Hulp nodig?**
+
+- **"Logo Vlaanderen"** is hierbij een link naar https://vlaanderen.be.
+- **"App-name"** blijft op alle pagina's de naam van de applicatie en krijgt als link de startpagina van de applicatie.
+- Onder **"Aanmelden"** kan je app-links definiëren (zie [Applicatieve links](#applicatieve-links)).
+- Onder **"Hulp nodig?"** komt de tekst: **"Neem contact op met Departement Omgeving"**, gevolgd door verschillende
+contact opties (telefoonnummer, adres, e-mailadres).
+
+Deze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke
+identifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit
+[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen.
+
+## Voorbeeld
+
+```js
+import { VlHeader } from '@domg-wc/components/compliance';
+```
+
+```html
+<vl-header></vl-header>
+```
+
+> Story: [vl-header - default](/?path=/story/components-compliance-header--header-default)
+
+## Configuratie
+
+> API: vl-header
+
+## Sessies
+
+### Configuratie
+
+Bij het aanpassen van volgende attributen wordt achterliggend de `session.configure()` methode van DV opnieuw aangeroepen:
+
+-   `login-url`
+-   `login-redirect-url`
+-   `logout-url`
+-   `switch-capacity-url`
+
+Zie [Digitaal Vlaanderen - De endpoints overschrijven](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-endpoints-overschrijven) voor meer informatie.
+
+## Applicatieve Links
+
+Je kan applicatieve links toevoegen aan de header door gebruik te maken van de `applicationLinks` property.
+
+Deze property verwacht een array met objecten van het volgende type:
+
+```js
+export type ApplicationLink = {
+    label: string;
+    href: string;
+    icon?: string;
+    target?: string;
+};
+```
+
+Zie [Digitaal Vlaanderen - Header applicatieve links](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6508874105/Aanmeldmenu#Applicatieve-links) voor meer informatie.
+
+### Logout request
+
+Bij het gebruik maken van sessies kan het logout request afgehandeld worden.
+
+Dit kan handig zijn als je wilt dat de gebruiker niet automatisch wordt uitgelogd bv. bij inactiviteit of als de sessie verlopen is.
+
+Door gebruik te maken van het `reject-logout` attribuut worden alle logout requests afgewezen, behalve een logout request door de gebruiker.
+
+Met de `logoutCallback` property kan je een callback functie meegeven die wordt aangeroepen bij een logout request.
+
+De logout reason wordt meegegeven aan de callback, door een boolean promise terug te geven kan je de logout accepteren of afwijzen.
+
+De mogelijke reasons zijn: `inactivity` en `expired`.
+
+Een logout request door de gebruiker wordt nooit afgewezen.
+
+Zie [De aanvragen voor applicatie logout afhandelen via JavaScript](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-aanvragen-voor-applicatie-logout-afhandelen-via-JavaScript) voor meer informatie.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)

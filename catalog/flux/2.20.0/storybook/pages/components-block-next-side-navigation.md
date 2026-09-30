@@ -1,0 +1,114 @@
+# Side Navigation Next
+
+## Doel
+
+Gebruik de `side-navigation` component om een compact navigatie-element aan een pagina toe te voegen. Het vat de
+inhoud van lange pagina's samen aan de hand van de titels en leidt de gebruiker door de pagina inhoud.
+
+> [!NOTE]
+> **Opgelet**
+> Er bestaat een bijbehorend **Side Navigation Layout** component dat automatisch de grid-layout en een side navigation combineert.
+> Heb je meer controle of maatwerk nodig, gebruik dan `vl-side-navigation-next` rechtstreeks. Voor de standaard combinatie van layout en inhoudsopgave volstaat het layout-component.
+> Voor meer informatie: [Side Navigation Layout](/?path=/docs/components-next-side-navigation-layout--documentatie).
+
+## Voorbeeld
+
+```js
+import { VlSideNavigationComponent } from '@domg-wc/components/block/next';
+```
+
+```html
+<vl-side-navigation-next></vl-side-navigation-next>
+```
+
+## Gebruik
+
+De side navigation component scant automatisch de headings in de pagina en genereert een inhoudsopgave.
+Alternatief kan je ook zelf een inhoudsopgave opstellen. [Zie hier voor een code voorbeeld.](#custom-table-of-contents)
+
+## CSS variabelen
+
+De sticky positie van de table of contents (inhoudsopgave) wordt bepaald door de CSS variabele
+`--vl-side-navigation-top`. Gebruik deze variabele wanneer er een sticky element boven de side navigation staat
+zodat de side-navigation niet onder dat element schuift.
+
+- **`--vl-side-navigation-top`** (standaard: `50px`): de `top`-waarde voor de sticky positie van de TOC.
+Accepteert elke geldige CSS waarde (bijv. `140px`, `10rem`, of `var(--header-height)`). Definieer de variabele op een
+voorouder van de side navigation (bijv. op `main` of op de layout container).
+
+## Eigenschappen
+
+Het attribuut **`closed`** zorgt ervoor dat de inhoudstafel standaard verborgen is. Dit heeft enkel effect wanneer **`compact`** is gezet of bij mobiele weergave (viewport &lt; 768px); op desktop zonder compact wordt de navigatie altijd getoond.
+
+> API: vl-side-navigation-next, vl-side-navigation-section-next
+
+## Voorbeelden
+
+> [!NOTE]
+> **Opgelet**
+> De voorbeelden hieronder worden in een iframe weergegeven.
+> De scroll-tracking van de side navigation werkt enkel wanneer
+> je **binnen de iframe scrollt** (klik eerst op een navigatie-link om de content te scrollen).
+>  Wanneer je door de documentatiepagina zelf scrollt, verandert de positie van de content binnen het iframe niet,
+>   waardoor de actieve sectie niet wordt bijgewerkt.
+
+In een echte applicatie en in de individuele stories, waar de content in dezelfde viewport scrollt, werkt de scroll-tracking correct.
+
+### Default
+
+> Story: [vl-side-navigation-next - default](/?path=/story/components-block-next-side-navigation--side-navigation-default)
+
+**Compact (navigatie standaard gesloten)**
+
+Met het attribuut `compact` wordt de compacte weergave geforceerd: de navigatie staat standaard gesloten en kan via de toggle knop worden opengeklapt.
+
+> Story: [vl-side-navigation-next - compact](/?path=/story/components-block-next-side-navigation--side-navigation-compact)
+
+## Scoping met heading-root-selector
+
+Je kan de side navigation beperken tot een specifieke sectie van de pagina door gebruik te maken van het `heading-root-selector` attribuut:
+
+```html
+<vl-side-navigation-next heading-root-selector="#section-1"></vl-side-navigation-next>
+```
+
+Dit zal enkel headings binnen het element met id `section-1` scannen.
+
+### Custom Table of Contents
+
+Je kan zelf ook een table of contents opstellen. Het is hierbij belangrijk dat je gebruik maakt van `vl-link`
+componenten die verwijzen naar headings met bestaande id's.
+
+> Story: [vl-side-navigation-next - custom table of contents](/?path=/story/components-block-next-side-navigation--side-navigation-with-custom-toc)
+
+### Multi-sectie (auto + custom in één nav)
+
+Plaats meerdere `vl-side-navigation-section-next` in één `vl-side-navigation-next`: combineer een
+**auto-gegenereerde** sectie (gescoped op een gekozen container-id) met een **custom-TOC** sectie, in één nav en
+één drawer op mobile.
+
+```html
+<vl-side-navigation-next>
+  <vl-side-navigation-section-next type="auto" heading-root-selector="#hoofdstukken" section-title="Op deze pagina">
+  </vl-side-navigation-section-next>
+
+  <vl-side-navigation-section-next section-title="Bijlagen">
+    <ul>
+      <li><vl-link href="#bijlage-a">Bijlage A</vl-link></li>
+      <li><vl-link href="#bijlage-b">Bijlage B</vl-link></li>
+    </ul>
+  </vl-side-navigation-section-next>
+</vl-side-navigation-next>
+```
+
+- **Auto-sectie**: `type="auto"` scant de headings binnen `heading-root-selector` (hier `#hoofdstukken`). Scan-props
+  (`min-level`, `max-level`, `max-depth`, `exclude-selectors`) mogen op de parent of per sectie als override.
+- **Custom-sectie** (zonder `type="auto"`): lever zelf een `<ul>` met `vl-link`s naar bestaande heading-id's.
+
+> Story: [vl-side-navigation-next - sections](/?path=/story/components-block-next-side-navigation--side-navigation-with-sections)
+
+## Referenties
+
+- [Digitaal Vlaanderen - Side Navigation](https://www.vlaanderen.be/vlaanderen-design-system/componenten/side-navigation)
+
+<vl-side-navigation-next compact exclude-selectors="iframe, #storybook-root" closed></vl-side-navigation-next>

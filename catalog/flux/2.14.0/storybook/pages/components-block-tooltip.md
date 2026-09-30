@@ -1,0 +1,72 @@
+# Tooltip
+
+## Doel
+
+Een tooltip is een klein contextueel venster dat verschijnt wanneer de gebruiker over een element hovert of het
+element focust. Gebruik een tooltip om korte bijkomende informatie te tonen.
+
+## Voorbeeld
+
+```js
+import { VlTooltipComponent } from '@domg-wc/components/block';
+```
+
+```html
+<vl-button id="tooltip-trigger"></vl-button>
+<vl-tooltip for="tooltip-trigger"></vl-tooltip>
+```
+
+> Story: [vl-tooltip - default](/?path=/story/components-block-tooltip--tooltip-default)
+
+## Configuratie
+
+> API: vl-tooltip
+
+## Gebruik
+
+### Standaard pijl & afstand
+
+Standaard wordt:
+- de pijl getoond (je kan de pijl verbergen met `hide-arrow`)
+- wordt de `distance` ingesteld op `10px`
+
+### Oriëntatie
+> [Raadpleeg de placement documentatie van floating-ui](https://floating-ui.com/docs/tutorial#placements)
+
+Je kan de oriëntatie bepalen van de tooltip als daarvoor plaats is met `placement`. Als er niet genoeg ruimte is zal `floating-ui` achterliggend een alternatieve oriëntatie kiezen.
+
+Je kan een `-start` of `-end` suffix toevoegen zodat de oriëntatie start of eindigt aan respectievelijk het begin of einde van het referentie-element.
+
+### Strategy
+> [Raadpleeg de strategy documentatie van floating-ui](https://floating-ui.com/docs/computePosition#strategy)
+
+Standaard is `strategy` ingesteld op `absolute`. De tooltip zal gepositioneerd worden ten opzichte van het
+dichtstbijzijnde gepositioneerde parent-element (bv. een element met `position: relative`).
+
+Om te vermijden dat de tooltip gepositioneerd wordt tegenover het verkeerde element, kan je best de eerste parent van
+de tooltip instellen op `position: relative` zodat de tooltip steeds gepositioneerd wordt zoals verwacht.
+
+## Varianten
+
+### Tooltip als label
+
+Een tooltip kan dienst doen als "label" van de trigger knop of als extra "description" voor de trigger. Dit bepaalt of
+de trigger een `aria-labelledby` of `aria-describedby` attribuut krijgt. Standaard gaan we uit van "description".
+Indien de trigger al een `aria-label` heeft wordt "label" genegeerd. Voor een patroon waarbij een
+button enkel een icoon bevat, raden we de default variant aan met `<vl-button label="Mijn aria label">`.
+
+> Story: [vl-tooltip - as label](/?path=/story/components-block-tooltip--tooltip-as-label)
+
+## Toegankelijkheid
+
+Een tooltip moet altijd verschijnen op hover én focus. Hier wordt in de achtergrond voor gezorgd in vl-tooltip.
+
+Een tooltip mag geen interactieve elementen bevatten. Indien dat toch vereist is moet het
+[vl-popover](/?path=/docs/components-block-popover--documentatie) component gebruikt worden, dat eigen
+toegankelijkheidsaanpassingen heeft voor deze situatie.
+
+## Referenties
+
+### floating-ui
+
+De tooltip-component gebruikt achterliggend [floating-ui](https://floating-ui.com/).

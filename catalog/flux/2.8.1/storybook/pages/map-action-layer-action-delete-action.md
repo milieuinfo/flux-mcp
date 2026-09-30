@@ -1,0 +1,40 @@
+# Map Delete Action
+
+## Doel
+
+Gebruik het `map-delete-action` component om een feature op een
+[map-features-layer](/?path=/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te verwijderen.
+
+Dit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse.
+
+## Voorbeeld
+
+```js
+import { VlMapDeleteAction } from '@domg-wc/map';
+```
+
+```html
+<vl-map-delete-action></vl-map-delete-action>
+```
+
+> Story: [vl-map-delete-action - default](/?path=/story/map-action-layer-action-delete-action--map-delete-action-default)
+
+## Configuratie
+
+> API: vl-map-delete-action
+
+## Varianten
+
+### Custom style
+
+> Story: [vl-map-delete-action - custom style](/?path=/story/map-action-layer-action-delete-action--map-delete-action-custom-style)
+
+## Referenties
+
+### Legacy Documentatie
+
+[Legacy Storybook - Map Delete Action](https://webcomponenten.omgeving.vlaanderen.be/storybook/?path=/docs/custom-elements-vl-map-vl-map-delete-action--default)
+
+[Legacy Documentatie - Map Delete Action](https://webcomponenten.omgeving.vlaanderen.be/doc/VlMapDeleteAction.html)
+
+[Legacy Demo - Map Delete Action](https://webcomponenten.omgeving.vlaanderen.be/demo/vl-map-delete-action.html)

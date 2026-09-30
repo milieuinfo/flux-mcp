@@ -1,0 +1,209 @@
+# Migratie v2 - FAQ
+
+## Inhoudstafel
+
+- [Kan ik direct importeren of moet ik de registerWebComponents functie gebruiken?](#kan-ik-direct-importeren-of-moet-ik-de-registerwebcomponents-functie-gebruiken)
+- [Blijft de fat-js bundel beschikbaar?](#blijft-de-fat-js-bundel-beschikbaar)
+- [CSS import met ?raw werkt niet in Webpack. Wat ontbreekt er?](#css-import-met-raw-werkt-niet-in-webpack-wat-ontbreekt-er)
+- [Hoe komt dat klasses die in Web Universum v3 staan, niet meer beschikbaar zijn?](#hoe-komt-dat-klasses-die-in-web-universum-v3-staan-niet-meer-beschikbaar-zijn)
+- [vl-u-visually-hidden werkt niet meer.](#vl-u-visually-hidden-werkt-niet-meer)
+- [De event listeners werken niet meer.](#de-event-listeners-werken-niet-meer)
+- [Attributen-wijzigingen.](#attributen-wijzigingen)
+- [Eigen stylesheet instellen werkt niet?](#eigen-stylesheet-instellen-werkt-niet)
+- [Wat is de impact op vl-grid?](#wat-is-de-impact-op-vl-grid)
+- [data-vl-no-space-top op een section werkt niet meer.](#data-vl-no-space-top-op-een-section-werkt-niet-meer)
+- [De form validation error message verschijnt niet. Wat kan de oorzaak zijn?](#de-form-validation-error-message-verschijnt-niet-wat-kan-de-oorzaak-zijn)
+- [Na het verwijderen van de data-vl- prefix zijn er zaken gebroken. Hoe kan dit?](#na-het-verwijderen-van-de-data-vl-prefix-zijn-er-zaken-gebroken-hoe-kan-dit)
+
+## Kan ik direct importeren of moet ik de registerWebComponents functie gebruiken?
+
+**Antwoord:** Beide methoden worden ondersteund:
+
+- Directe import (auto-registratie):
+    ```js
+    import '@domg-wc/components/button';
+    ```
+- Expliciete registratie:
+  ```js
+  import { VlButtonComponent } from '@domg-wc/components';
+  import { registerWebComponents } from '@domg-wc/common';
+  registerWebComponents([VlButtonComponent]);
+  ```
+
+De expliciete registratie wordt aangeraden om tree-shaking te optimaliseren en alleen de benodigde componenten te laden.
+Declareer dan ook `@domg-wc/common` als dependency in je `package.json`: je importeert er rechtstreeks uit, en onder
+pnpm of een andere strikte package manager volstaat de transitieve aanwezigheid via `@domg-wc/components` niet.
+
+[Meer informatie over hoe imports wijzigen vind je hier](/?path=/docs/afnemen-migratie-v2-aanpak--documentatie#33-imports)
+
+## Blijft de fat-js bundel beschikbaar?
+
+**Antwoord:** De fat-js bundel blijft beschikbaar voor legacy toepassingen. In v2 is deze aangepast om de nieuwe componentimplementaties te gebruiken, maar de API blijft grotendeels hetzelfde. Je kunt deze gebruiken via de CDN:
+
+```html
+<script src="https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-2.0.0.min.js"></script>
+```
+
+Echter, voor nieuwe projecten wordt het aangeraden om de npm-packages te gebruiken in plaats van de fat-js bundel.
+
+## CSS import met ?raw werkt niet in Webpack. Wat ontbreekt er?
+
+**Probleem:** Imports zoals `import varsCss from './vl-vars.raw.css?raw'` falen of geven geen string terug.
+
+**Oplossing:** Zorg dat Webpack 5 een aparte rule heeft voor `?raw`, zodat CSS als string ingelezen wordt:
+
+```js
+// webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        resourceQuery: /raw/, // matcht ?raw
+        type: 'asset/source', // geeft file-inhoud als string terug
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'], // normale CSS verwerking
+      },
+    ],
+  },
+};
+```
+
+Indien je TypeScript gebruikt, voeg dan ook een module-declaratie toe:
+
+```ts
+declare module '*.css?raw' {
+    const content: string;
+    export default content;
+}
+```
+
+## Hoe komt dat klasses die in Web Universum v3 staan, niet meer beschikbaar zijn?
+
+**Antwoord:** Vroeger gebruikten we de css klasses van Digitaal Vlaanderen, zoals die gedocumenteerd waren in Web
+Universum v3, als basis voor onze web componenten, zoals bv. de `vl-u-visually-hidden`-klasse of de `vl-grid`-klasse.
+
+Wat voor ons problematisch was, is dat bestaande klasses van DV voor conflicten zorgden; `vl-grid` bv
+aan onze kant gebruikt achterliggend CSS grid, terwijl die van Web Universum v3 `flexbox` gebruikt.
+
+Daarnaast pasten we vaak onze HTML templates aan, aan de CSS van DV, ipv andersom. Vanaf v2 hebben we beslist om de CSS
+te schrijven die het beste past bij onze HTML template, in plaats van onze HTML templates te wijzigen zodat we DV's CSS
+kunnen afnemen zonder enige wijziging.
+
+De CSS van DV kwam transitief binnen, ook hetgeen wij niet gedocumenteerd hebben in onze storybook.
+Nu staat al die CSS aan onze kant en behouden we enkel wat we zelf gebruiken.
+
+Daarnaast schrijven we nu voor nieuwe componenten onze eigen CSS, maar volgen daar op vlak van spacing, styling
+& layout wel de guidelines die Digitaal Vlaanderen vooropstelt.
+
+## vl-u-visually-hidden werkt niet meer.
+
+**Antwoord:** De `vl-u-visually-hidden`-klasse is nu vervangen door `vl-visually-hidden`,
+[zie deze pagina voor meer info](/?path=/docs/styles-layout-afnemers-accessibility--documentatie)
+
+## De event listeners werken niet meer.
+
+**Probleem:** Event listeners die luisteren naar v1 events zoals `vl-checked`, `vl-input` of `vl-select` werken niet meer.
+
+**Oplossing:** Update de event namen naar de nieuwe v2 namen (zie desbetreffende documentatie).
+Met name voor de form-gerelateerde componenten zijn de meeste events nu gestandaardiseerd naar `vl-change` en `vl-input`
+
+Vroeger was er geen mogelijkheid om op basis van events te weten, of de gebruiker de value veranderde,
+of als het programmatorisch gebeurde, in beide gevallen werd hetzelfde event gedispatcht.
+
+Nu voorzien we aparte `vl-input` en `vl-change` events. Gelijkaardig aan de HTML-standaard,
+representeert `vl-input` event gebruikersinteractie terwijl `vl-change` event voor eender welke wijziging wordt
+voorzien (zowel gebruikersinteractie als programmatorische wijziging).
+
+```javascript
+// V1
+radio.addEventListener('vl-checked', (event) => { ... });
+
+// V2
+radio.addEventListener('vl-change', (event) => { console.log('bij elke wijziging') });
+radio.addEventListener('vl-input', (event) => { console.log('enkel bij gebruikersinteractie') });
+```
+
+## Attributen-wijzigingen.
+
+**Probleem:** Sommige attributen zijn gewijzigd van naam of format.
+
+**Oplossing:** Raadpleeg de component-specifieke documentatie voor een gedetailleerd overzicht van wijzigingen per
+component.
+
+Algemene wijzigingen:
+
+- `data-vl-*`-attributen verliezen de `data-vl-`-prefix; bv. `data-vl-size="4"` → `size="4"`
+- alle componenten met `is=""` attributen zijn geschrapt; bv. `is="vl-button-pill"` → `<vl-pill clickable>`
+
+## Eigen stylesheet instellen werkt niet?
+
+**Probleem:** Custom styling wordt overschreven of werkt niet.
+
+**Oplossing:**
+
+Onze [globale styling](/?path=/docs/recepten-css-styling--documentatie#globale-css) wordt automatisch op de DOM geplaatst.
+Je dient de volgende functie aan te roepen om je er van te
+te verzekeren dat je applicatie-specifieke CSS pas ingeladen wordt nadat onze CSS ingeladen is:
+
+```js
+import { css } from 'lit';
+import { GlobalStyles } from '@domg-wc/common';
+
+const customCSS = css`
+ :root {
+    --vl-side-sheet-width: 580px; /* voor desktop */
+    --vl-side-sheet-width-mobile: 100%; /* voor mobile */
+  }
+`;
+
+GlobalStyles.getInstance().addCustomCss([customCSS]);
+```
+
+## Wat is de impact op vl-grid?
+
+**Antwoord:** De grid is grondig gewijzigd en heeft een aantal specifieke aanpassingen nodig.
+
+- `vl-grid` gebruikt nu achterliggend [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout)
+ipv flexbox
+- `vl-column` heeft een default waarde nodig zoals `vl-column--12` (bij `is="vl-grid"` was dat niet het geval).
+- Kolommen worden op een nieuwe manier aangeboden:
+
+| Oude attribuut | Nieuwe aanpak / vervanging |
+| --- | --- |
+| data-vl-size="n" | class="vl-column--n" |
+| data-vl-extra-small-size="n" | class="vl-column--xs-n" |
+| data-vl-small-size="n" | class="vl-column--s-n" |
+| data-vl-medium-size="n" | class="vl-column--m-n" |
+| data-vl-medium-max-size="12" | mag weg (bij andere waarden dan "12" moeten de kolombreedtes herberekend worden naar een 12 kolommen grid) |
+
+Verifieer na de wijzigingen de grid layout zeker ook op verschillende resoluties.
+
+De `data-vl-is-stacked...` attributen op `vl-grid` kunnen vervangen worden door de stacked classes: `vl-stacked-...`.
+Zie [vl-stacked documentatie](/?path=/docs/styles-layout-stacked--documentatie).
+
+Voor meer informatie kan je de [vl-grid documentatie hier raadplegen](/?path=/docs/styles-layout-grid--documentatie).
+
+## data-vl-no-space-top op een section werkt niet meer.
+
+**Antwoord:** Klopt, in het geval van `<section is="vl-region">` zouden we aanraden dit te vervangen door `<section class="vl-section">`, waar we echter geen alternatief aanbieden voor `data-vl-no-space-top`.
+Een mogelijke oplossing is om hier de class `vl-section` te laten vallen en puur het semantische `<section>` element over te houden.
+
+## De form validation error message verschijnt niet. Wat kan de oorzaak zijn?
+
+**Antwoord**: Dit zijn de stappen om `is="vl-form-validation-message data-vl-error"` te migreren:
+- Eerst migreren naar de v1 "next"-variant: `<vl-error-message-next>`
+- Vervolgens migreren naar de v2 variant: `<vl-form-message>`
+- Indien de message niet verschijnt kan dit komen omdat het component niet gekoppeld is aan een form element met het `for`-attribuut.
+- Indien de message niet kan gekoppeld worden aan een form element, moet het attribuut `show` toegevoegd worden.
+
+## Na het verwijderen van de data-vl- prefix zijn er zaken gebroken. Hoe kan dit?
+
+**Antwoord**: Dit kan komen door het gebruik van `data-vl-` in selectors of via het dataset object.
+
+- Selectors als `component-naam[data-vl-...]`, `[data-vl-...]` zullen breken. Hier moet ook de `data-vl-` prefix gewist worden.
+- Referenties via het dataset object zullen ook breken. Gebruik hiervoor `getAttribute` in de plaats.
+  bv: `data-vl-max-resolution` → `element.dataset.vlMaxResolution` wordt:
+  `max-resolution` → `element.getAttribute('max-resolution')`

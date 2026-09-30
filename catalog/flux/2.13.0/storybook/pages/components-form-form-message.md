@@ -1,0 +1,62 @@
+# Form Message
+
+## Doel
+
+Gebruik de `form-message` component om een boodschap af te beelden voor een input veld.
+
+Zie het [form demo](/?path=/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.
+
+## Voorbeeld
+
+```js
+import { VlFormMessageComponent } from '@domg-wc/components/form';
+```
+
+```html
+<vl-form-message></vl-form-message>
+```
+
+> Story: [vl-form-message - default](/?path=/story/components-form-form-message--form-message-default)
+
+## Configuratie
+
+> API: vl-form-message
+
+## Gebruik
+
+### Volgorde
+
+We raden aan 1 form message per validatie te tonen. Als er meerdere validaties zijn, toon de belangrijkste eerst.
+De volgorde waarin de form messages getoond worden volgt dezelfde volgorde van `vl-form-message` componenten in
+de DOM. Een voorbeeld hiervan kan je vinden in onze [form demo](/?path=/docs/patronen-formulier-demo--documentatie).
+
+### Success
+
+Als je expliciet wil aantonen dat de form-control correct is ingevuld, kan je het `success` attribuut gebruiken op de
+gerelateerde form-control.
+
+### Foutmeldingen
+
+Bij het instellen van een foutmelding is het belangrijk om suggesties mee te geven over hoe de foute invoer kan worden
+rechtgezet. Een goede foutmelding beschrijft niet enkel wat er fout is, maar geeft de gebruiker ook duidelijke aanwijzingen
+om het probleem op te lossen.
+
+## Validatie
+> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/?path=/docs/patronen-formulier-validatie--documentatie)
+
+De `vl-form-message` componenten worden getoond afhankelijk van de validatie status van de form controls. De
+validatie status wordt bepaald door de `validity` property die afhangt van gebruikersinteractie.
+
+## validationMessage
+
+Het `validation-message` attribuut komt overeen met de `validationMessage` property van de `ValidityState` interface.
+Dit attribuut wordt automatisch ingevuld door de form control op basis van de validatie status.
+
+Als er geen boodschap in het default slot wordt ingesteld, wordt de `validation-message` als inhoud van de
+`vl-form-message` weergegeven.
+
+## Referenties
+
+### Digitaal Vlaanderen
+
+[Documentatie Digitaal Vlaanderen - Form Message](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-form-message)
