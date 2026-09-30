@@ -1,0 +1,86 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-72",
+  "entries": [
+    {
+      "id": "330f6a7",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-72"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG documentatie correcties",
+      "text": "FLUX-72 - WCAG documentatie correcties",
+      "commits": [
+        {
+          "sha": "330f6a7e5689fe24e471442fc827fd8f9eefd8f7",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/330f6a7e5689fe24e471442fc827fd8f9eefd8f7"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 8,
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.3 Aanpasbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie",
+            "added": "            technologieën moeten die kunnen weergeven, bijvoorbeeld een schermlezer."
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht--documentatie",
+            "added": "            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-1-tekstalternatieven--documentatie\">1.1 Tekstalternatieven</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-2-op-tijd-gebaseerde-media--documentatie\">1.2 Op tijd gebaseerde media</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black'}}>Ondertitels voor doven en slechthorenden (live)</div>\n            <div style={{color: 'black'}}>Audiodescriptie (vooraf opgenomen)</div>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie\">1.3 Aanpasbaar</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black'}}>Weergavestand</div>\n            <div style={{color: 'black'}}>Identificeer het doel van de input</div>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-4-onderscheidbaar--documentatie\">1.4 Onderscheidbaar</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black'}}>Contrast (minimum)</div>\n            <div style={{color: 'black'}}>Herschalen van tekst</div>\n            <div style={{color: 'black'}}>Afbeeldingen van tekst</div>\n            <div style={{color: 'black'}}>Reflow</div>\n            <div style={{color: 'black'}}>Contrast van niet-tekstuele content</div>\n            <div style={{color: 'black'}}>Tekstafstand</div>\n            <div style={{color: 'black'}}>Content bij hover of focus</div>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.5 Input modaliteiten",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie",
+            "added": "            Gebruikers van een schermlezer weten dan welke actie er aan een onderdeel verbonden is."
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht--documentatie",
+            "added": "            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-1-toetsenbordtoegankelijk--documentatie\">2.1 Toetsenbordtoegankelijk</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-2-genoeg-tijd--documentatie\">2.2 Genoeg tijd</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-3-toevallen-en-fysieke-reacties--documentatie\">2.3 Toevallen en fysieke reacties</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie\">2.4 Navigeerbaar</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie\">2.5 Input modaliteiten</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht--documentatie",
+            "added": "            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie\">3.1 Leesbaar</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie\">3.2 Voorspelbaar</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>\n\n[…]\n\n            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie\">3.3 Assistentie bij invoer</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/4. Robuust/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht--documentatie",
+            "added": "            <div style={{color: 'black', fontWeight: 'bold'}}>\n                <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie\">4.1 Compatibel</a>\n            </div>\n\n[…]\n\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>plus</div></td>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/Toegankelijkheid en WCAG",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "added": "en **[plus]**. De [basis] omvat alle zaken die logisch aanvoelen en vaak gewoon een gevolg zijn van goede UX. Onder\n[plus] vallen zaken die vaak niet relevant zijn (bvb. video) en die als ze dat wel zijn een inspanning vergen.\n\n[…]\n\n - **Brons** - [basis] en [plus] - omvat alles van niveau A in WCAG 2.2\n - **Zilver** - [basis] en [plus] - omvat alles van niveau AA in WCAG 2.2\n\n[…]\n\nHet doel is dat **elke toepassing** onafhankelijk van het bereik of doelgroep **voldoet aan brons[basis]**.<br/>\n**Publieke toepassingen** moeten een traject voorzien om te **evolueren naar zilver[plus]**.\n\n[…]\n\neerst uit met 'bewegingsactivering' en 'grootte van het aanwijsgebied (minimum)'. De volgorde, eerst brons[plus] of\neerst zilver[basis], kies je zelf. Pas nadat brons[plus] en zilver[basis] in orde zijn evolueer je naar zilver[plus] en\npak je 'sleepbewegingen' aan.\n\n[…]\n\n - Wettelijk moet er niet voldaan worden aan WCAG 2.2, we maken echter geen onderscheid tussen de minor versies,"
+          }
+        ]
+      }
+    }
+  ]
+}

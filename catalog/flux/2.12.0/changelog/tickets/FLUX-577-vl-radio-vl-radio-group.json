@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-577",
+  "entries": [
+    {
+      "id": "96ff7ce",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-577"
+      ],
+      "scope": "vl-radio & vl-radio-group",
+      "components": [],
+      "topics": [
+        "vl-radio & vl-radio-group"
+      ],
+      "mentions": [
+        "vl-radio",
+        "vl-radio-group"
+      ],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-577 - vl-radio & vl-radio-group - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "96ff7ce4ffb2da10a5af7373a4e59e888bfb6d7a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/96ff7ce4ffb2da10a5af7373a4e59e888bfb6d7a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - vlLegacyStyles, baseStyle, resetStyle en radioStyle (govflanders-style) vervangen door vlResetStyles en vlRadioComponentStyles\n - vl-radio.component.raw.css aangemaakt met :host variabelen (font-size base, circle-size, dot-size, label-padding-left)\n - vl-radio.component.css.ts aangemaakt met volledige radio styles\n - vl-radio-group.component.css.ts aangemaakt met .vl-u-visually-hidden utility\n - vl-radio.component.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color-*)\n - readonly fix en alle states (disabled, error, success) uitgewerkt met section comments\n - component-specifieke CSS variabelen voor circle-size, dot-size en label-padding-left\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, events\n - image snapshots toegevoegd voor visuele regressie testing (mount, checked, disabled, error, success, block)",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 4,
+          "storybook": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/radio-group/vl-radio-group.component.css.ts",
+          "libs/components/src/form/radio-group/vl-radio-group.component.ts",
+          "libs/components/src/form/radio-group/vl-radio.component.css.ts",
+          "libs/components/src/form/radio-group/vl-radio.component.flux-css.ts",
+          "libs/components/src/form/radio-group/vl-radio.component.raw.css",
+          "libs/components/src/form/radio-group/vl-radio.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

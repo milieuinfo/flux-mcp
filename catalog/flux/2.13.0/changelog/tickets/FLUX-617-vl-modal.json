@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-617",
+  "entries": [
+    {
+      "id": "eb5793f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-617"
+      ],
+      "scope": "vl-modal",
+      "components": [
+        "vl-modal"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "verwijder dialog-polyfill (IE10-only)",
+      "text": "FLUX-617 - vl-modal - verwijder dialog-polyfill (IE10-only)",
+      "commits": [
+        {
+          "sha": "eb5793f43eafd27184ae753a882991e590fe0fcf",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/eb5793f43eafd27184ae753a882991e590fe0fcf"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De dialog-polyfill in vl-modal.lib.js was expliciet bedoeld voor \"IE10 and lower only\" en is al lang no-op runtime, maar bundelt wel ~880 regels code onnodig mee. Native <dialog> is ondersteund in alle evergreen browsers (Safari sinds 15.4 / maart 2022).\n\nWijzigingen (minimale ingreep, Voorstel 1 uit refinement):\n- dialogPolyfill IIFE verwijderd uit vl-modal.lib.js (-911 regels).\n- Aanroep dialogPolyfill.registerDialog(element) in Modal.dress verwijderd, inclusief bijhorende comment.\n- Hulpfuncties die uitsluitend door de polyfill werden gebruikt mee verwijderd: _typeof, createCommonjsModule, activeElement. _classCallCheck / _defineProperties / _createClass blijven staan omdat de Modal-klasse ze nog gebruikt.\n\nBewust niet aangepakt (scope + ticket-aandachtspunt): de mFallbackBackdropClass-constante en het gebruik ervan in de closable-handler zijn dode logica in moderne browsers zonder polyfill, maar niet schadelijk - opruim is stof voor een follow-up ticket samen met de UMD-wrapper en de vl.util.* helpers.\n\nPublieke API (vl.modal.dress / toggle / dressAll, attributes, slots, events, CSS custom properties) ongewijzigd. Alle 15 bestaande Cypress component-tests groen.",
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/modal/vl-modal.lib.js"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

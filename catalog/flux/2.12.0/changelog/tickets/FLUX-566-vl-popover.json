@@ -1,0 +1,64 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-566",
+  "entries": [
+    {
+      "id": "3767d73",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-566"
+      ],
+      "scope": "vl-popover",
+      "components": [
+        "vl-popover"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "niet standaard openen op focus",
+      "text": "FLUX-566 - vl-popover - niet standaard openen op focus",
+      "commits": [
+        {
+          "sha": "3767d73fbe602c30a1fdde64635fa20ebaa43dab",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/3767d73fbe602c30a1fdde64635fa20ebaa43dab"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button-style/vl-button-style.util.ts",
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-tooltip--documentatie",
+            "title": "Components - Block/tooltip",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-tooltip--documentatie",
+            "added": "## Toegankelijkheid\n\nEen tooltip moet altijd verschijnen op hover én focus. Hier wordt in de achtergrond voor gezorgd in vl-tooltip.\n\nEen tooltip mag geen interactieve elementen bevatten. Indien dat toch vereist is moet het\n[vl-popover](/docs/components-block-popover--documentatie) component gebruikt worden, dat eigen\ntoegankelijkheidsaanpassingen heeft voor deze situatie."
+          }
+        ]
+      }
+    }
+  ]
+}

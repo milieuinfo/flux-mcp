@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-275",
+  "entries": [
+    {
+      "id": "9fa28a2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-275"
+      ],
+      "scope": "vl-button",
+      "components": [
+        "vl-button"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "combinatie ghost, error, disabled, hover blijft nu disabled stijl",
+      "text": "FLUX-275 - vl-button - combinatie ghost, error, disabled, hover blijft nu disabled stijl",
+      "commits": [
+        {
+          "sha": "9fa28a25af4ab8c788189b02bd99775029577eed",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9fa28a25af4ab8c788189b02bd99775029577eed"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button-style/vl-button-style.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

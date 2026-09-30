@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-671",
+  "entries": [
+    {
+      "id": "016ea00",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-671"
+      ],
+      "scope": "vl-footer-next",
+      "components": [
+        "vl-footer-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "reserveer ruimte voor sticky footer bar",
+      "text": "FLUX-671 - vl-footer-next - reserveer ruimte voor sticky footer bar",
+      "commits": [
+        {
+          "sha": "016ea0076689ec1702602da4682103cf3749c744",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/016ea0076689ec1702602da4682103cf3749c744"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-next-footer--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+            "added": "## Sticky footer bar\n\nIn collapsible modus toont de widget een `position: fixed` bar onderaan de pagina. Zonder\ngereserveerde ruimte bedekt die bar de onderste content. De component reserveert daarom\nstandaard `48px`: dat is de hoogte van de bar op een smal scherm, op een breed scherm is\nde bar `35px`.\n\nAfnemers kunnen die hoogte overschrijven of de reservering volledig uitzetten via de\nCSS-variabele `--vl-footer--bar-reserved-height`, gezet op `:root`, `body` of een ander\nelement boven de footer container:\n\n```css\n/* Eigen hoogte reserveren */\n:root {\n    --vl-footer--bar-reserved-height: 60px;\n}\n\n/* Reservering uitzetten (bv. wanneer de pagina de ruimte zelf al voorziet) */\n:root {\n    --vl-footer--bar-reserved-height: 0px;\n}\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

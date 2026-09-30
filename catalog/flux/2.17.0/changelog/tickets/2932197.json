@@ -1,0 +1,38 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "2932197",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "testen waren soms flaky door gelekte state (scrollpositie en location.hash)",
+      "text": "testen waren soms flaky door gelekte state (scrollpositie en location.hash)",
+      "commits": [
+        {
+          "sha": "29321971a0200ccc3b69f32940075c7a2c27910f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/29321971a0200ccc3b69f32940075c7a2c27910f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

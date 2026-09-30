@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-674",
+  "entries": [
+    {
+      "id": "21ce087",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-674"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "external icon rechtgezet",
+      "text": "FLUX-674 - vl-link - external icon rechtgezet",
+      "commits": [
+        {
+          "sha": "21ce08795392504f5ad89a8152cd1858c5ac5233",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/21ce08795392504f5ad89a8152cd1858c5ac5233"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-link.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

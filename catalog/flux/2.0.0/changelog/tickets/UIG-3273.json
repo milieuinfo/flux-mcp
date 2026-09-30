@@ -1,0 +1,125 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3273",
+  "entries": [
+    {
+      "id": "c00a70b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3273"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "code formattering uitgevoerd op alle .ts, .js, .css en .json bestanden",
+      "text": "UIG-3273 - code formattering uitgevoerd op alle .ts, .js, .css en .json bestanden",
+      "commits": [
+        {
+          "sha": "c00a70b9332ae5b255f3e7246cc5d72b225eaff6",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/c00a70b9332ae5b255f3e7246cc5d72b225eaff6"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 31,
+          "styles": 4,
+          "docs": 2,
+          "storybook": 8,
+          "examples": 9,
+          "tests": 51,
+          "tooling": 23
+        },
+        "publishedFiles": [
+          "libs/common/src/models/vl.model.ts",
+          "libs/common/src/util/legacy-core.js",
+          "libs/components/src/atom/index.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.model.ts",
+          "libs/components/src/block/pill/vl-pill.model.ts",
+          "libs/components/src/block/search-result/vl-search-result-properties.css.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.lib.js",
+          "libs/components/src/block/spotlight/vl-spotlight.model.ts",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/accessibility/vl-accessibility.model.ts",
+          "libs/components/src/form/dropzone-types.d.ts",
+          "libs/components/src/form/input-field/vl-input-field.css.ts",
+          "libs/components/src/form/input-field/vl-input-field.defaults.ts",
+          "libs/components/src/form/select-rich/styles/vl-multiselect.dv-css.ts",
+          "libs/components/src/form/select-rich/styles/vl-select-rich.flux-css.ts",
+          "libs/components/src/form/select-rich/styles/vl-select.dv-css.ts",
+          "libs/components/src/form/select/styles/vl-select.dv-css.ts",
+          "libs/map/src/actions/draw/draw-action.ts",
+          "libs/map/src/actions/draw/draw-line-action.ts",
+          "libs/map/src/actions/draw/draw-polygon-action.ts",
+          "libs/map/src/actions/map/map-with-actions.ts",
+          "libs/map/src/actions/measure/measure-action.ts",
+          "libs/map/src/actions/modify/modify-action.ts",
+          "libs/map/src/actions/modify/modify-and-translate-action.ts",
+          "libs/map/src/actions/modify/split-action.ts",
+          "libs/map/src/actions/modify/translate-action.ts",
+          "libs/map/src/actions/select/box-select-action.ts",
+          "libs/map/src/actions/snap/snap-interaction.ts",
+          "libs/map/src/actions/source/composite-vector-source.ts",
+          "libs/map/src/actions/tooltips.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-vector-layer.ts",
+          "libs/map/src/components/layer/vl-map-layer.ts",
+          "libs/map/src/components/legend/vl-map-legend.flux-css.ts",
+          "libs/map/src/components/loading-indicator/vl-map-loading-indicator.ts",
+          "libs/map/src/utils/lambert-coordinaat.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-control--documentatie",
+            "title": "map/controls/action-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-controls-action-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-grid--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

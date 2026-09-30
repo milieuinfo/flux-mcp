@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-514",
+  "entries": [
+    {
+      "id": "991e9cb",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-514"
+      ],
+      "scope": "vl-checkbox",
+      "components": [
+        "vl-checkbox"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-514 - vl-checkbox - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "991e9cbad3bfe9983163d5f7930a6ec26f1a8ab4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/991e9cbad3bfe9983163d5f7930a6ec26f1a8ab4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - resetStyle en vlCheckboxFluxStyles (govflanders-style) vervangen door vlResetStyles en vlCheckboxComponentFluxStyles\n - vl-checkbox.component.raw.css aangemaakt met :host variabelen (font-size base, box-size, icon-size, switch dimensies)\n - vl-checkbox.component.css.ts aangemaakt met volledige checkbox en switch styles\n - vl-checkbox.component.flux-css.ts verwijderd\n - auto-generated id toegevoegd via instanceCounter voor accessibility\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--*)\n - alle states uitgewerkt: focus, checked, indeterminate, disabled, error, success\n - switch variant styles geïntegreerd met section comments\n - component-specifieke CSS variabelen voor box-size, icon-size en switch dimensies\n\nGlobale CSS variabelen uitgebreid (vl-general.raw.css):\n - --vl-border--width toegevoegd\n - transitie-variabelen toegevoegd: --vl-transition--fast, --vl-transition, --vl-transition--slow\n - focus state variabelen toegevoegd\n\nCypress image snapshot infrastructuur opgezet (eerste component die dit gebruikt):\n - @simonsmith/cypress-image-snapshot package toegevoegd\n - plugin geconfigureerd in cypress.config.ts met addMatchImageSnapshotPlugin\n - matchImageSnapshot command geregistreerd in support/component.ts met drempelwaarden (0.001%)\n - TypeScript types uitgebreid in support/cypress-chainable.d.ts\n\nCypress component testen:\n - geherstructureerd in 3 logische describe-blokken: properties & states, events, form integration\n - image snapshots toegevoegd voor visuele regressie testing (mount, checked, indeterminate, disabled, error, error-checked, success, block)\n - computed style assertions toegevoegd voor error en success states\n - nieuwe test toegevoegd: form reset herstelt initiële waarde",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 4,
+          "storybook": 1,
+          "tests": 1,
+          "tooling": 7
+        },
+        "publishedFiles": [
+          "libs/components/src/form/checkbox/vl-checkbox.component.css.ts",
+          "libs/components/src/form/checkbox/vl-checkbox.component.flux-css.ts",
+          "libs/components/src/form/checkbox/vl-checkbox.component.raw.css",
+          "libs/components/src/form/checkbox/vl-checkbox.component.ts",
+          "libs/styles/src/base/var/vl-general.raw.css"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

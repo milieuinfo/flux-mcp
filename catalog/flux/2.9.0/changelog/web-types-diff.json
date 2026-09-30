@@ -1,0 +1,748 @@
+{
+  "base": "2.8.1",
+  "added": [
+    {
+      "element": "vl-fieldset",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `vl-fieldset` component om een fieldset af te beelden.\n\nFieldsets worden gebruikt om gerelateerde formulierelementen te groeperen binnen een formulier.\n\nIn uitzonderlijke gevallen kan dit gebruikt worden om verschillende input fields te groeperen onder één label. Gebruik\ndit enkel wanneer andere layoutmogelijkheden niet mogelijk zijn.\n\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form.",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-form-fieldset--documentatie"
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-accordion",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "heading-level",
+            "description": "Bepaalt het heading level (h1, h2, h3, ...) van de titel van de accordion.",
+            "type": "'1' | '2' | '3' | '4' | '5' | '6'",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-functional-header",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "skip-to-content-id",
+            "description": "Aanbevolen voor [toegankelijkheidsrichtlijn 2.4 Blokken omzeilen](/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie#blokken-omzeilen). Vul hier de ID in van de eerste heading van de content.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-modal",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "label",
+            "description": "Attribuut gebruikt om een aria-label toe te voegen aan de modal. Dit is verplicht indien er geen title attribuut is opgegeven.",
+            "default": ""
+          },
+          {
+            "name": "focus-on-modal",
+            "description": "Attribuut om de focus op de modal zelf te zetten bij het openen.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-progress-bar",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "success",
+            "description": "Past de \"success\" stijl toe.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "search-strategy",
+            "description": "De zoek strategie die gebruikt wordt bij het zoeken in de opties.<br>Dit attribuut is reactief.",
+            "type": "'default' | 'exact-and' | 'exact-or'",
+            "default": "default"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-step",
+      "category": "block",
+      "inChangelog": true,
+      "slots": {
+        "added": [
+          {
+            "name": "icon",
+            "description": "Element voor het hoofd-icoon van de step.",
+            "default": ""
+          },
+          {
+            "name": "sub-icon",
+            "description": "Element voor het sub-icoon van de step.",
+            "default": ""
+          },
+          {
+            "name": "title",
+            "description": "Element voor de titel van de step.",
+            "default": ""
+          },
+          {
+            "name": "title-annotation",
+            "description": "Element voor een annotatie bij de titel van de step.",
+            "default": ""
+          },
+          {
+            "name": "subtitle",
+            "description": "Element voor de subtitel van de step.",
+            "default": ""
+          },
+          {
+            "name": "content",
+            "description": "Element voor de hoofdcontent van de step.<br>Wordt genegeerd wanneer de `contentRenderer` property is ingesteld.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "properties": {
+        "added": [
+          {
+            "name": "contentRenderer",
+            "description": "Functie die aangeroepen wordt om dynamische content te renderen op basis van de open/closed state.<br>Signatuur: `(open: boolean) => TemplateResult`<br>Werkt enkel in combinatie met het `toggleable` attribuut.<br>Wanneer deze property is ingesteld, wordt het `content` slot genegeerd.",
+            "type": "(open: boolean) => TemplateResult",
+            "default": "undefined"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "events": {
+        "added": [
+          {
+            "name": "vl-on-toggle",
+            "description": "Afgevuurd bij het openen of sluiten van de toggleable step.<br>Het event bevat of de step geopend of gesloten is.<br>Werkt enkel in combinatie met het `toggleable` attribuut.",
+            "type": "{ open: boolean }"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-upload-progress",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "success",
+            "description": "Past de \"success\" stijl toe.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-accessibility",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": "Toegankelijkheidsverklaring pagina."
+    },
+    {
+      "element": "vl-accordion",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik de `accordion` component om informatie te tonen of te verbergen aan de hand van een toggle.\nVoor meer informatie over het afbeelden van meerdere accordions zie de\n[accordion-list](/docs/components-block-accordion-list--documentatie) component."
+    },
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik de `alert` component om de gebruiker op de hoogte te houden van belangrijke informatie."
+    },
+    {
+      "element": "vl-autocomplete",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik de `autocomplete` component om een lijst met suggesties weer te geven, gefilterd op de ingevoerde tekst. De\nlijst kan een statische lijst zijn (`static-list`) of kan worden opgehaald uit een api (dataFetcher)."
+    },
+    {
+      "element": "vl-breadcrumb",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `breadcrumb` component om de locatie van de huidige pagina af te beelden binnen een navigeerbare hiërarchie."
+    },
+    {
+      "element": "vl-button",
+      "category": "atom",
+      "inChangelog": true,
+      "description": "Gebruik de `button` component om een button af te beelden op een pagina."
+    },
+    {
+      "element": "vl-cascader",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `cascader` component om hiërarchische data weer te geven als een drilldown van lijsten."
+    },
+    {
+      "element": "vl-checkbox",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `checkbox` component om de gebruiker de mogelijkheid te geven om 1 of meerdere dingen te selecteren in een\nlijst.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-content-header",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `content-header` component bovenaan informerende pagina's. Hij biedt gebruikers alle informatie over de\nwebsite die ze bezoeken."
+    },
+    {
+      "element": "vl-cookie-consent",
+      "category": "compliance",
+      "inChangelog": true,
+      "description": "De cookie consent kan gebruikt worden om de gebruiker te informeren over al de cookies die gebruikt worden.\nDaarnaast kunnen er mits toestemming van de gebruiker analytics worden toegepast."
+    },
+    {
+      "element": "vl-cookie-statement",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": "Cookieverklaring pagina."
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `datepicker` component om de gebruiker op een gebruiksvriendelijke manier een datum of tijd te laten selecteren.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-document",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `document` component om een link naar een bestand toe te voegen dat de gebruiker in de browser kan bekijken\nof downloaden."
+    },
+    {
+      "element": "vl-doormat",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `doormat` component om een snel en duidelijk overzicht weer te geven van de informatie op je website.<br/>\nElke doormat krijgt zijn eigen titel, tekst, optionele afbeelding en linkt naar een pagina binnen je website."
+    },
+    {
+      "element": "vl-footer",
+      "category": "compliance",
+      "inChangelog": true,
+      "description": "<span style=\"color: rgb(240,0,0)\">[legacy-component]</span><br/>Injecteert de footer widget van Digitaal Vlaanderen.\nDefault wordt de footer geïnjecteerd in het native `<body>` element.\n\nVoor het consistent gebruik van de footer doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n\n>   **[app-name] is een officiële website van de Vlaamse overheid**\n>    uitgegeven door Departement Omgeving\n\n\n\"Departement Omgeving\" is hierbij een externe link naar https://omgeving.vlaanderen.be/.\n\nDeze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit\n[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen."
+    },
+    {
+      "element": "vl-form-label",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `form-label` component om een form label af te beelden.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-form-message",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `form-message` component om een boodschap af te beelden voor een input veld.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-functional-header",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik de `functional-header` component om bovenaan de pagina generieke informatie te tonen zoals bijvoorbeeld\neen titel en acties."
+    },
+    {
+      "element": "vl-header",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": "<span style=\"color: rgb(240,0,0)\">[legacy-component]</span><br/>Injecteert de global header widget van Digitaal Vlaanderen.\nDefault wordt de header geïnjecteerd in het native `<body>` element.\n\nVoor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n\n>   **[Logo Vlaanderen]** | **[App-name]** | witruimte | **Aanmelden** | **Hulp nodig?**\n\n- **\"Logo Vlaanderen\"** is hierbij een link naar https://vlaanderen.be.\n- **\"App-name\"** blijft op alle pagina's de naam van de applicatie en krijgt als link de startpagina van de applicatie.\n- Onder **\"Aanmelden\"** kan je app-links definiëren (zie [Applicatieve links](#applicatieve-links)).\n- Onder **\"Hulp nodig?\"** komt de tekst: **\"Neem contact op met Departement Omgeving\"**, gevolgd door verschillende\ncontact opties (telefoonnummer, adres, e-mailadres).\n\nDeze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit\n[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen."
+    },
+    {
+      "element": "vl-http-error-message",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `http-error-message` component om een error boodschap aan de gebruiker te tonen."
+    },
+    {
+      "element": "vl-icon",
+      "category": "atom",
+      "inChangelog": false,
+      "description": "Gebruik de `icon` component om een icoon af te beelden op een pagina.<br/>\nZie het [overzicht](#overzicht) onderaan voor alle beschikbare iconen."
+    },
+    {
+      "element": "vl-info-tile",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik de `info-tile` component in informatieve en interactieve dashboards."
+    },
+    {
+      "element": "vl-infotext",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `infotext` component om belangrijke nummers duidelijk weer te gevem.<br/>"
+    },
+    {
+      "element": "vl-input-field",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `input-field` component om een input veld toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `input-field-masked` component om een input veld met een mask toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-input-slider",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `input-slider` om een waarde te selecteren tussen een minimum en maximum waarde.\n**Let op**: deze component is niet dezelfde als de `vl-ui-range` component van Digitaal Vlaanderen."
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": false,
+      "description": "Gebruik de `link` component om een link af te beelden op een pagina.<br/>"
+    },
+    {
+      "element": "vl-map",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map` component om een kaart af te beelden met verschillende lagen en acties."
+    },
+    {
+      "element": "vl-map-action-control",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-action-control` component om een map-actie aan of uit te zetten met behulp van een\n[button met toggle](/docs/components-atom-button--documentatie#toggle).<br/>\nEen `map-action-control` linken aan een map-actie gebeurt op de volgende manier:\n    - plaats op de `map-action-control` het attribuut `action-id` met als waarde bv. 'draw-polygon-action'\n    - plaats op de map-actie het attribuut `id` en geef hier dezelfde waarde mee als in de vorige stap"
+    },
+    {
+      "element": "vl-map-action-controls",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-action-controls` component als wrapper rond\n[map-action-control](/docs/map-controls-action-control--map-action-control-default) componenten.<br/>\nDe `map-action-controls` zorgt ervoor dat de map-acties in de rechterbovenhoek van de `map` afgebeeld worden.<br/>\nVerder zorgt deze ervoor dat er altijd maar 1 actieve `map-action-control` is."
+    },
+    {
+      "element": "vl-map-baselayer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-baselayer` component om een basis kaartlaag af te beelden."
+    },
+    {
+      "element": "vl-map-baselayer-grb",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-baselayer-grb` component om een basis GRB kaartlaag af te beelden.<br/>\nDit component erft over van het [map-baselayer](/docs/map-baselayer--map-baselayer-default) component."
+    },
+    {
+      "element": "vl-map-baselayer-grb-gray",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-baselayer-grb-gray` component om een basis GRB kaartlaag met grijstinten af te beelden.<br/>\nDeze component erft over van de [map-baselayer](/docs/map-baselayer--map-baselayer-default) component."
+    },
+    {
+      "element": "vl-map-baselayer-grb-ortho",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-baselayer-grb-ortho` component om een basis GRB ortho kaartlaag af te beelden.<br/>\nDeze component erft over van de [map-baselayer](/docs/map-baselayer--map-baselayer-default) component."
+    },
+    {
+      "element": "vl-map-click-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-click-action` component om een klikactie op de [map](/docs/map-map--map-default) op te vangen.<br/>\nBij het klikken op de [map](/docs/map-map--map-default) wordt er een `vl-map-click-action-pindrop` op de kaart geplaatst."
+    },
+    {
+      "element": "vl-map-current-location",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-current-location` component om een huidige locatie knop af te beelden op de map.<br/>\nNa het drukken op de knop wordt de huidige locatie van de gebruiker centraal afgebeeld."
+    },
+    {
+      "element": "vl-map-delete-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-delete-action` component om een feature op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te verwijderen.<br/>\nDit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-draw-action-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-draw-action-style` component om een style mee te geven aan de `map-draw-action`."
+    },
+    {
+      "element": "vl-map-draw-line-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-draw-line-action` component om een lijn te tekenen op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDeze component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-draw-point-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-draw-point-action` component om een punt te tekenen op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDit component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-draw-polygon-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-draw-polygon-action` component om een polygon te tekenen op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDit component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-features-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-features-layer` component om een kaartlaag af te beelden waarbij je een set van te tonen features kan\nstellen.<br/>\nDeze component erft over van de `VlMapVectorLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse."
+    },
+    {
+      "element": "vl-map-image-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-image-wms-layer` component om een WMS kaartlaag af te beelden waarbij de bevraging telkens met één\nafbeelding gebeurt.<br/>\nDeze component erft over van de `VlMapWmsLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse."
+    },
+    {
+      "element": "vl-map-layer-circle-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-layer-circle-style` component om een\n[features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te stylen.<br/>\nDeze component erft over van de [map-layer-style](/docs/map-layer-style--map-layer-style-default) component."
+    },
+    {
+      "element": "vl-map-layer-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-layer-style` component om een\n[features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) of een\n[wfs-layer](/docs/map-layer-vector-layer-wfs-layer--map-wfs-layer-default) te stylen.<br/>\n**Let op**: Bij gebruik van de [map-legend](/docs/map-legend--map-legend-features-layer-multiple-styles) worden de\nattributen niet reactief toegepast op de legende."
+    },
+    {
+      "element": "vl-map-layer-switcher",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-layer-switcher` component om kaartlagen zichtbaar of onzichtbaar te maken."
+    },
+    {
+      "element": "vl-map-legend",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-legend` component om een legende af te beelden op de kaart."
+    },
+    {
+      "element": "vl-map-legend-item",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-legend-item` component om een custom legende af te beelden op de kaart.\n\nIndien geen icon- en labelslots meegegeven zijn zal het `map-legend-item` de default style items van de bijhorende laag tonen."
+    },
+    {
+      "element": "vl-map-loading-indicator",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-loading-indicator` component om op te vangen wanneer de [vl-map](/docs/map-map--map-default) aan het\nladen is.<br/>\nToont een 'loading' bar bovenaan de map."
+    },
+    {
+      "element": "vl-map-measure-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-measure-action` component om de afstand tussen 2 punten te meten op een\n[map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default).<br/>\nDit component erft over van de `VlMapDrawAction` klasse, die op zijn beurt overerft van de `VlMapLayerAction` klasse,\ndie op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-measure-control",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-measure-control` component om de meet-actie aan of uit te zetten door behulp van een\n[button met toggle](/docs/components-atom-button--documentatie#toggle)."
+    },
+    {
+      "element": "vl-map-modify-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-modify-action` component om een feature op een [map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) aan te passen.<br/>\nDit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-multiselect-actions",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-multiselect-actions` component om meerdere overlappende features samen te selecteren.<br/>\nDeze component erft over van de\n[map-select-actions](/docs/map-action-layer-action-select-action--map-select-actions-default) component."
+    },
+    {
+      "element": "vl-map-overview-map",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-overview-map` component zodat gebruikers kunnen wisselen tussen de verschillende basis kaartlagen."
+    },
+    {
+      "element": "vl-map-search",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-search` component om een zoekbalk toe te voegen aan de map waarmee gebruikers kunnen zoeken op adres.<br/>\nDeze component maakt gebruik van de [select-location](/docs/map-select-location--select-location-default) component en\nvan de [search](/docs/components-block-search--search-default) component."
+    },
+    {
+      "element": "vl-map-select-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-select-action` component om een feature op een [map-features-layer](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te selecteren.<br/>\nDit component erft over van de `VlMapLayerAction` klasse, die op zijn beurt overerft van de `VlMapAction` klasse."
+    },
+    {
+      "element": "vl-map-select-actions",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik het `map-select-actions` component om features op meerdere\n[map-features-layers](/docs/map-layer-vector-layer-features-layer--map-features-layer-default) te selecteren.<br/>\nDeze component erft over van de\n[map-select-action](/docs/map-action-layer-action-select-action--map-select-action-default) component."
+    },
+    {
+      "element": "vl-map-side-sheet",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-side-sheet` component om een uitklapbaar zijpaneel af te beelden over de map.<br/>\nDeze component erft over van de [side-sheet](/docs/components-block-side-sheet--side-sheet-default) component en heeft ook al diens functionaliteit.<br/>\n**Let op**: de default positie van de `map-side-sheet` is links, terwijl de default positie van de\n[side-sheet](/docs/components-block-side-sheet--side-sheet-default) rechts is."
+    },
+    {
+      "element": "vl-map-tiled-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-tiled-wms-layer` component om een WMS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapWmsLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse."
+    },
+    {
+      "element": "vl-map-wfs-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-wfs-layer` component om een WFS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapVectorLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse."
+    },
+    {
+      "element": "vl-map-wms-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-wms-style` component om een WMS kaartlaag server side te stijlen.<br/>"
+    },
+    {
+      "element": "vl-map-wmts-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-wmts-layer` component om een WMTS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapLayer` klasse."
+    },
+    {
+      "element": "vl-map-xyz-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-xyz-wms-layer` component om een WMS kaartlaag af te beelden.<br/>\nDeze component erft over van de `VlMapWmsLayer` klasse, die op zijn beurt overerft van de `VlMapLayer` klasse."
+    },
+    {
+      "element": "vl-paragraph",
+      "category": "atom",
+      "inChangelog": false,
+      "description": "Gebruik de `paragraph` component om een paragraaf af te beelden op een pagina.<br/>"
+    },
+    {
+      "element": "vl-popover",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Een popover is een nieuw, meestal kleiner venster / popup dat boven de andere inhoud op het scherm verschijnt.\nHet doel van de popover is het bouwen van context- of submenu's. Je kan deze menu's opbouwen a.d.h.v. de\n`vl-popover-action-list` en `vl-popover-action` componenten. De popover kan ook andere interactieve HTML-elementen\nbevatten."
+    },
+    {
+      "element": "vl-privacy",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": "Privacy pagina."
+    },
+    {
+      "element": "vl-progress-bar",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik een `vl-progress-bar` om procentuele voortgang te tonen."
+    },
+    {
+      "element": "vl-progress-indicator",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik een `progress-indicator` om de vooruitgang te tonen van een proces dat uit verschillende stappen bestaat."
+    },
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `properties` component om properties te tonen op een pagina. Je kan de properties specifiëren als\ninner-html of als json-structuur meegeven aan het `props` attribuut."
+    },
+    {
+      "element": "vl-proza-message",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `proza-message` component om een Proza bericht af te beelden dat achterliggend beheerd kan worden door de\nbusiness.<br/>\nVoor het ophalen van alle Proza berichten voor een domein zie de\n[proza-message-preloader](/docs/components-block-proza-message-preloader--proza-message-preloader-default) component."
+    },
+    {
+      "element": "vl-proza-message-preloader",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `proza-message-preloader` component om alle Proza berichten van een domein in 1 keer op te halen en in\ncache te stoppen.<br/>\nDe [proza-message](/docs/components-block-proza-message--proza-message-default) component gaat eerst kijken of het bericht in\nde cache zit vooraleer een request naar buiten te sturen.<br/>\nDeze component voeg je 1 keer toe in je applicatie per domein, bij voorkeur op het hoogste niveau."
+    },
+    {
+      "element": "vl-radio-group",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `radio-group` component om de gebruiker de mogelijkheid te geven om 1 keuze te selecteren in een lijst.<br/>\nWanneer mogelijk, selecteer geen `radio` van vooraf zodat de gebruiker een bewuste keuze kan maken.<br/>\nDe `radio` component is een onderdeel van de `radio-group` component.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-rich-data-table",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Een tabel op basis van een dynamische lijst van data die uitgebreid kan worden met functionaliteiten om het consumeren\nvan data door de gebruiker te verbeteren.\n\nDe code voorbeelden bij elke story is dezelfde code die gebruikt wordt om de stories te laten werken.\n- combineert de functionaliteiten van het [rich-data](?path=/docs/components-block-rich-data--rich-data-default)-component en [data-table](?path=/docs/elements-data-table--data-table-default)-component.\n- om de velden te configureren kan je gebruik maken van `rich-data-field`"
+    },
+    {
+      "element": "vl-search-filter",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `search-filter` component om een zoek filter te tonen op een pagina."
+    },
+    {
+      "element": "vl-search-result",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `search-result` component om een zoekresultaat weer te geven.<br/>\n\nVolgende sub-componenten zijn beschikbaar om het zoekresultaat op te bouwen:\n\n- VlSearchResultProperties `[vl-search-result-properties]`\n- VlSearchResultText `[vl-search-result-text]`\n- VlSearchResultTitle `[vl-search-result-title]`"
+    },
+    {
+      "element": "vl-select",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `select` component om een select veld toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": true,
+      "description": "Gebruik de `vl-select-location` component om een zoekbalk af te beelden waarmee er een adres geselecteerd kan worden.\n\nDeze component erft over van de [vl-select-rich](/docs/components-form-select-rich--documentatie) component."
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": true,
+      "description": "- [Doel](#doel)\n - [Voorbeeld](#voorbeeld)\n - [Configuratie](#configuratie)\n - [Publieke methodes](#publieke-methodes)\n - [Styles](#styles)\n - [Events](#events)\n - [Select opties](#select-opties)\n - [Accessibility](#accessibility)\n - [Varianten](#varianten)\n - [Zoek strategieën](#zoek-strategieën)\n - [Validatie](#validatie)\n - [Referenties](#referenties)"
+    },
+    {
+      "element": "vl-side-navigation",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `side-navigation` component om een compact navigatie-element aan een pagina toe te voegen. Het vat de\ninhoud van lange pagina's samen, leidt de gebruiker door de pagina inhoud en kan ook naar externe pagina's verwijzen.\n\nDe `vl-side-navigation` wordt opgebouwd uit volgende sub-componenten:\n\n- VlSideNavigation `[vl-side-navigation]`\n- VlSideNavigationTitle<br/>\n    `[vl-side-navigation-h1 / vl-side-navigation-h2 / vl-side-navigation-h3 /`\n    `vl-side-navigation-h4 / vl-side-navigation-h5 / vl-side-navigation-h6]`\n- VlSideNavigationContent `[vl-side-navigation-content]`\n- VlSideNavigationGroup `[vl-side-navigation-group]`\n- VlSideNavigationItem `[vl-side-navigation-item]`\n- VlSideNavigationToggle `[vl-side-navigation-toggle]`\n- VlSideNavigationReference `[vl-side-navigation-reference]`\n\n```js\nimport { VlSideNavigation } from '@domg-wc/components/block';\n```\n\n```html\n<vl-side-navigation></vl-side-navigation>\n```\n\n<Canvas of={VlSideNavigationStories.SideNavigationDefault}/>"
+    },
+    {
+      "element": "vl-side-sheet",
+      "category": "block",
+      "inChangelog": false,
+      "description": "De `side-sheet`-component heeft containers die aan de linker- of rechterrand van het scherm zijn verankerd. Deze kunnen\ngeopend of gesloten worden aan de hand van een knop."
+    },
+    {
+      "element": "vl-steps",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `steps` component om een verticale lijst van stappen af te beelden om de gebruiker door een procedure te\nbegeleiden.<br/>\n\nDeze component is de nieuwe versie van de [vl-steps](/docs/components-block-steps--documentatie) component, we raden aan deze versie te gebruiken."
+    },
+    {
+      "element": "vl-table",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `table` component om op een gestructureerde manier (grote hoeveelheden) relationele data te tonen."
+    },
+    {
+      "element": "vl-tabs",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `tabs` component om gerelateerde informatie op te splitsen in kleinere stukken content.\nOp mobiel wordt de tab navigatie omgevormd tot een uitklapbaar menu."
+    },
+    {
+      "element": "vl-text",
+      "category": "atom",
+      "inChangelog": false,
+      "description": "Gebruik de `text` component om een tekst af te beelden op andere wijze.<br/>"
+    },
+    {
+      "element": "vl-textarea",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `textarea` component om een textarea veld toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\nDeze component bevat geen rich-text modus: gebruik daarvoor\n[vl-textarea-rich](/docs/components-form--text-area-rich--documentatie)."
+    },
+    {
+      "element": "vl-textarea-rich",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `textarea-rich` component om een rich textarea veld toe te voegen aan een pagina.<br/>"
+    },
+    {
+      "element": "vl-title",
+      "category": "atom",
+      "inChangelog": false,
+      "description": "Gebruik de `title` component om een title af te beelden.<br/>\n\nDeze component geniet de voorkeur boven het oude [vl-title](/docs/elements-title-h1--documentatie) element."
+    },
+    {
+      "element": "vl-toaster",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `toaster` component om meldingen af te beelden.<br/>"
+    },
+    {
+      "element": "vl-tooltip",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Een tooltip is een klein contextueel venster dat verschijnt wanneer de gebruiker over een element hovert of het\nelement focust. Gebruik een tooltip om korte bijkomende informatie te tonen."
+    },
+    {
+      "element": "vl-upload",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `upload` component om één of meerdere bestanden te selecteren of te slepen naar het upload-veld.\n\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-upload-progress",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik `vl-upload-progress` om procentuele voortgang van een bestandsupload te tonen.\n\nDit component laadt toe om de upload te annuleren of te herstarten en heeft de mogelijkheid om een foutboodschap\nweer te geven."
+    },
+    {
+      "element": "vl-video-player",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `video-player` component om een video-player af te beelden.<br/>\n\nDeze component is de nieuwe versie van het [vl-video-player](/docs/elements-video-player--documentatie) element, we raden aan om op termijn deze versie\nte gebruiken."
+    },
+    {
+      "element": "vl-wizard",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik een `wizard` om een gebruiker door een meerstapsproces te begeleiden. Een wizard maakt het mogelijk om een\ningewikkeld proces op te delen in overzichtelijke, kleine stappen. Een wizard biedt ook de mogelijkheid opties in een\nbepaalde stap aan te passen op basis van keuzes die de gebruiker in een voorgaande stap heeft gemaakt."
+    },
+    {
+      "element": "vl-wizard-pane",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `wizard-pane` component om een stap in de wizard af te beelden.\nTe gebruiken in combinatie met de [wizard](/docs/components-block-wizard-wizard--documentatie) component"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "base": "2.10.1",
+  "added": [
+    {
+      "element": "vl-side-navigation-layout-next",
+      "category": "block",
+      "inChangelog": true,
+      "description": "<span style=\"color: rgb(25,140,25)\">[next-component]</span><br/>De side navigation layout bouwt automatisch een inhoudstafel op voor een gestructureerde tekst met behulp van de\n[side navigation](/docs/components-next-side-navigation-side-navigation--documentatie).",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie"
+    }
+  ],
+  "removed": [
+    {
+      "element": "vl-side-navigation-layout",
+      "category": "block",
+      "inChangelog": true,
+      "description": "<span style=\"color: rgb(25,140,25)\">[next-component]</span><br/>De side navigation layout bouwt automatisch een inhoudstafel op voor een gestructureerde tekst met behulp van de\n[side navigation](/docs/components-next-side-navigation-side-navigation--documentatie).",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.1/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie"
+    }
+  ],
+  "changed": [
+    {
+      "element": "vl-description-data",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "items-size",
+            "description": "Kolombreedte (teller van het 12-kolomsysteem) voor elk item op grote schermen, typisch desktop.",
+            "default": {
+              "before": "12 / number of data items",
+              "after": "12 / aantal items"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-description-data-item",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "items-size",
+            "description": "Kolombreedte van dit item op grote schermen. Overschrijft het `items-size` attribuut van de parent `vl-description-data`.",
+            "default": "undefined"
+          },
+          {
+            "name": "items-medium-size",
+            "description": "Kolombreedte van dit item op middelgrote schermen. Overschrijft het `items-medium-size` attribuut van de parent `vl-description-data`.",
+            "default": "undefined"
+          },
+          {
+            "name": "items-small-size",
+            "description": "Kolombreedte van dit item op kleine schermen. Overschrijft het `items-small-size` attribuut van de parent `vl-description-data`.",
+            "default": "undefined"
+          },
+          {
+            "name": "items-extra-small-size",
+            "description": "Kolombreedte van dit item op zeer kleine schermen. Overschrijft het `items-extra-small-size` attribuut van de parent `vl-description-data`.",
+            "default": "undefined"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-doormat",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "link-label",
+            "description": "Aria-label voor de link. Aanbevolen voor toegankelijkheid. Let op: `aria-label` vervangt de volledige linktekst, bv. \"Bouwen, wonen en energie - opent in nieuw venster\" bij external links.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-info-tile",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "heading-level",
+            "description": "Het heading-level van de titel (h1 t.e.m. h6). Indien niet opgegeven of ongeldig, wordt standaard h3 gebruikt.",
+            "type": "'1' | '2' | '3' | '4' | '5' | '6'",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-infotext",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "link-label",
+            "description": "Aria-label voor de link. Aanbevolen voor toegankelijkheid. Let op: `aria-label` vervangt de volledige linktekst, bv. \"Bezoekers per dag - opent in nieuw venster\" bij external links.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-features-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "z-index",
+            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-image-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "z-index",
+            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-layer-circle-style",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "pattern",
+            "description": "Een data:image/...-URL die een patroon (bv. diagonale arcering) voorstelt. Wanneer ingesteld, wordt dit patroon als background-image getoond in de laag en in de legende, in combinatie (bovenop) de achtergrondkleur."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-layer-style",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "pattern",
+            "description": "Een data:image/...-URL die een patroon (bv. diagonale arcering) voorstelt. Wanneer ingesteld, wordt dit patroon als background-image getoond in de laag en in de legende, in combinatie (bovenop) de achtergrondkleur."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-tiled-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "z-index",
+            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-wfs-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "z-index",
+            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-wmts-layer",
+      "category": "map",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "z-index",
+            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+            "default": "null"
+          },
+          {
+            "name": "from-capabilities",
+            "description": "Haalt de TileMatrix configuratie op uit de WMTS GetCapabilities response.<br>Dit attribuut is niet reactief.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-xyz-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "z-index",
+            "description": "De z-index van de kaartlaag. Bepaalt de volgorde waarin kaartlagen worden weergegeven.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-rich-data-table",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "multi-sort",
+            "description": "Maakt het mogelijk om op meerdere kolommen te sorteren.",
+            "default": "false"
+          },
+          {
+            "name": "label",
+            "description": "Wordt gebruikt als aria-label voor de tabel. Optioneel indien er een caption gedefinieerd is. Voor screenreaders heeft label voorrang op caption als beide aanwezig zijn, maar het is aanbevolen om caption te gebruiken als er een zichtbare titel voor de tabel gewenst is.",
+            "default": ""
+          },
+          {
+            "name": "caption",
+            "description": "Caption van de tabel. Optioneel indien er een label gedefinieerd is.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-spotlight",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "link-label",
+            "description": "Aria-label voor de link. Aanbevolen voor toegankelijkheid. Let op: `aria-label` vervangt de volledige linktekst, bv. \"Premies voor renovatie - opent in nieuw venster\" bij external links.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-accordion",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": [
+        {
+          "name": "heading-level",
+          "description": "Het heading-level van de titel (h1 t.e.m. h6). Indien niet opgegeven of ongeldig, wordt standaard h3 gebruikt."
+        }
+      ]
+    },
+    {
+      "element": "vl-description-data",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "bordered",
+          "description": "Voegt een rand toe aan de description-data."
+        },
+        {
+          "name": "items-medium-size",
+          "description": "Kolombreedte (teller van het 12-kolomsysteem) voor elk item op middelgrote schermen, typisch tablet."
+        },
+        {
+          "name": "items-small-size",
+          "description": "Kolombreedte (teller van het 12-kolomsysteem) voor elk item op kleine schermen, typisch mobiel."
+        },
+        {
+          "name": "items-extra-small-size",
+          "description": "Kolombreedte (teller van het 12-kolomsysteem) voor elk item op zeer kleine schermen."
+        }
+      ]
+    }
+  ]
+}

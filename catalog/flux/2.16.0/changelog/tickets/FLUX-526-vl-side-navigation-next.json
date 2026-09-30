@@ -1,0 +1,66 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-526",
+  "entries": [
+    {
+      "id": "8ab4718",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-526"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "meerdere items als actief aanduiden",
+      "text": "FLUX-526 - vl-side-navigation-next - meerdere items als actief aanduiden",
+      "commits": [
+        {
+          "sha": "8ab471855c30e19a55f3e7a99f59375556132880",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8ab471855c30e19a55f3e7a99f59375556132880"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Nieuw multi-active attribuut markeert alle items waarvan content zichtbaar is als actief, niet enkel het bovenste. De actieve items worden samen aangeduid met een doorlopende lijn uiterst links.",
+        "published": true,
+        "areas": {
+          "code": 6,
+          "styles": 1,
+          "storybook": 4,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-custom-toc.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.defaults.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation--documentatie",
+            "title": "Components - Block/next/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-next-side-navigation-layout--documentatie",
+            "title": "Components - Block/next/side-navigation-layout",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

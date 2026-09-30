@@ -1,0 +1,311 @@
+{
+  "base": "2.14.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-checkbox",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          },
+          {
+            "name": "anchor-positioning",
+            "description": "Activeert CSS Anchor Positioning + Popover API voor de kalender positionering. Dit zorgt ervoor dat de kalender correct wordt gepositioneerd in scrollbare containers en niet wordt afgekapt door overflow of transform op ancestor-elementen (bijv. in een modal).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-form-message",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "variant",
+            "description": "De visuele stijl van de message: `error` (default), `success` of `annotation`. Gebruik `annotation` voor een altijd zichtbare, informatieve tekst. De success-stijl wordt ook automatisch toegepast bij `state=\"valid\"`.",
+            "type": "'error' | 'success' | 'annotation'",
+            "default": "error"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-functional-header",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "title-label",
+            "description": "Tekst van de titel.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-input-field",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-wfs-layer",
+      "category": "map",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "cql-filter",
+            "description": "Een CQL-expressie waarmee de features van de WFS-laag server-side gefilterd worden. De waarde wordt als <code>cql_filter</code> query parameter naar de server gestuurd, gecombineerd met een <code>BBOX</code>-clausule op de geometry-property: <code>cql_filter=BBOX(geometry,extent) AND (filter)</code> in plaats van een <code>bbox</code> parameter. <br><strong>Let op:</strong> <code>cql_filter</code> is een GeoServer-specifieke extensie en wordt niet door elke WFS-implementatie ondersteund.<br>Dit attribuut is reactief.",
+            "default": ""
+          },
+          {
+            "name": "geometry-name",
+            "description": "De naam van de geometry-property die in de CQL <code>BBOX(...)</code>-clausule gebruikt wordt. Enkel relevant samen met <code>cql-filter</code>. Indien niet meegegeven wordt de geometry-property best-effort gedetecteerd via een <code>DescribeFeatureType</code> call; geef dit attribuut expliciet mee wanneer die auto-detectie faalt.<br>Dit attribuut is niet reactief.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-popover",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "max-height",
+            "description": "Optionele maximumhoogte van de popover-inhoud (CSS-lengte, bv. `300px` of `50vh`). Bij overschrijding scrollt de inhoud verticaal. De effectieve hoogte is het minimum van deze waarde en de automatisch berekende viewport-ruimte.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-radio-group",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-textarea",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-textarea-rich",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-upload",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "blur-validation",
+            "description": "Activeert on-blur validatie met live recovery.<br>Wanneer aan: het veld valideert op `focusout` zodra het focus had en weer verlaten wordt (ongeacht of de waarde gewijzigd is). Na de eerste foutmelding schakelt het veld over op live re-validatie tijdens typen, tot de waarde geldig is. Submit blijft de definitieve check.<br>Cascade: je kan dit ook in één keer voor alle form controls onder een form inschakelen door `blur-validation` of `data-blur-validation` op het `<form>` element te zetten. Een veld met het eigen attribuut blijft daarnaast los werken.<br>Default: `false` (gedrag van vóór deze feature, validatie enkel op submit).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Icon van de waarschuwing.<br>Het icoon kan gekozen worden uit de lijst op https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon."
+        }
+      ]
+    },
+    {
+      "element": "vl-form-message",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `form-message` component om een boodschap af te beelden voor een input veld.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\nGebruik `vl-form-message` zodra een boodschap aan een form-control gekoppeld is: de component werkt samen met de\nvalidatie-lifecycle van de control (tonen/verbergen en `aria-description`).",
+      "attributes": [
+        {
+          "name": "state",
+          "description": "De `ValidityState`-sleutel waarvoor de message getoond moet worden. Gebruik `state=\"valid\"` voor een success-boodschap (groen) die automatisch verschijnt zodra het veld geldig is na een eerste validatie."
+        }
+      ]
+    },
+    {
+      "element": "vl-functional-header",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "title",
+          "description": "**Deprecated** - gebruik `title-label`. Het standaard HTML `title`-attribuut toont een ongewenste native browser-tooltip. Bestaande `title`-waarden blijven werken (de tooltip wordt weggenomen), maar migreer best naar `title-label`."
+        }
+      ]
+    },
+    {
+      "element": "vl-infoblock",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Attribuut dat wordt gebruikt om een icoon vooraan aan de titel toe te voegen. Het icoon kan gekozen worden uit de lijst op https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon."
+        }
+      ]
+    },
+    {
+      "element": "vl-text",
+      "category": "atom",
+      "inChangelog": false,
+      "description": "Gebruik de `text` component om een tekst af te beelden op andere wijze.<br/>\n\n`vl-text` is puur stilistisch en heeft geen koppeling met form-controls of validatie. Wil je een boodschap tonen die\nhoort bij een form-control (bv. een fout-, success- of toelichtingsboodschap), gebruik dan\n[`vl-form-message`](/docs/components-form-form-message--documentatie): die werkt samen met de validatie-lifecycle en\nzorgt voor de juiste `aria`-koppeling."
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-595",
+  "entries": [
+    {
+      "id": "d5d7c1e",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-595"
+      ],
+      "scope": "vl-modal",
+      "components": [
+        "vl-modal"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "transform centering vervangen door margin: auto",
+      "text": "FLUX-595 - vl-modal - transform centering vervangen door margin: auto",
+      "commits": [
+        {
+          "sha": "d5d7c1e7f98e2ddc3b9b32bc5c8e58b6a6931839",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d5d7c1e7f98e2ddc3b9b32bc5c8e58b6a6931839"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Tijdens het schrijven van datepicker-in-modal tests bleek dat vl-modal's transform: translate(-50%, -50%) alle children met position: fixed of CSS Anchor Positioning brak (waaronder vl-datepicker met anchor-positioning). De transform creëert een nieuw containing block dat top-layer en anchor-positioning logica verstoort.\n\nModal centering is daarom vervangen door inset: 0 + margin: auto, wat de standaard manier is waarop <dialog> met showModal() gecentreerd wordt — zonder transform side-effects op children.\n\n- vl-modal: transform: translate(-50%, -50%) → inset: 0 + margin: auto\n- 6 modal regression tests: verifieer centering na transform-wijziging (default/medium/large, left, right, center)\n- 6 modal varianten × 2 modi (default + anchor-positioning): datepicker-in-modal positie tests\n- Test toleranties verhoogd voor cross-browser compatibiliteit (Chrome/Firefox/WebKit)\n- Storybook story uitgebreid: vl-datepicker met anchor-positioning binnen vl-modal",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/modal/vl-modal.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-modal--documentatie",
+            "title": "Components - Block/modal",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-modal--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "69fc071",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-595"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "anchor-positioning attribuut toegevoegd via Popover API + CSS Anchor Positioning",
+      "text": "FLUX-595 - vl-datepicker - anchor-positioning attribuut toegevoegd via Popover API + CSS Anchor Positioning",
+      "commits": [
+        {
+          "sha": "69fc0718ced67105e226241fe5b15d5163e4b549",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/69fc0718ced67105e226241fe5b15d5163e4b549"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Lost een positionering-bug op waarbij de kalender op een verkeerde plek opent wanneer een ancestor element een transform, overflow:auto/scroll, sticky positionering of overflow-clipping heeft. De oude getBoundingClientRect + scroll offset hack faalt in deze contexten omdat de placeholder div in shadow DOM niet kan ontsnappen aan het containing block.\n\nIntroductie `anchor-positioning` attribuut:\n- Popover API (popover=\"manual\") voor top-layer rendering — ontsnapt aan elke ancestor context\n- CSS Anchor Positioning (anchor-name, position-anchor, anchor()) voor browser-native positionering\n- @position-try fallbacks voor automatische boven/onder flip + viewport boundary handling\n- AnchorPositioningController (reusable Reactive Controller) bundelt de Popover-logica\n- 2px gap + Firefox opacity workaround voor popover transitions\n\nGraceful fallback:\n- Wanneer de browser de Popover API of CSS Anchor Positioning niet ondersteunt (oudere Safari, Firefox), valt de component automatisch terug op de default flatpickr placeholder-positionering.\n- AnchorPositioningController.isSupported() feature-detect, useAnchorPositioning getter en een @supports (anchor-name: --x) CSS-gate spiegelen elkaar zodat er geen halve toestand ontstaat.\n\nDefault mode (zonder attribuut) blijft backwards compatible; wel werd window.scrollY/X offset toegevoegd zodat page-level scroll in default mode niet langer kapot is.\n\nDocumentatie:\n- Datepicker docs: anchor-positioning sectie (when-to-use, techniek, browser-ondersteuning + fallback)\n- Planning/Van v2 naar v3: Datepicker met v3-plan om dit het default gedrag te maken",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 2,
+          "storybook": 2,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-anchor-positioning.controller.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.popover-reset.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.positioning-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": "resultaat oplevert, kan dit op drie manieren aangepast worden:\n\n[…]\n\n-   Het `anchor-positioning` attribuut: indien aanwezig rendert de kalender in de browser top-layer,\n    zodat ancestor `transform`, `overflow` of `sticky` de positionering niet kan breken.\n\n```html\n<vl-datepicker anchor-positioning></vl-datepicker>\n```\n\n> ⚠️ `anchor-positioning` wijzigt het render-model (top-layer ipv shadow DOM). Test grondig als\n> je app afhankelijk is van de huidige DOM-positie of stacking volgorde van de kalender.\n\n[…]\n\n- Het `anchor-positioning` attribuut vereist Popover API + CSS Anchor Positioning (Chrome/Edge 125+, Safari 26+). Op andere browsers (oudere Safari, Firefox) valt de datepicker stil terug op de default positionering."
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "### Datepicker\n\nIn v2 is het `anchor-positioning` attribuut toegevoegd. In v3 wordt deze codepath de default\nen wordt de oude positionering verwijderd. Apps die `anchor-positioning` in v2 niet hebben gezet\nmoeten na de v3 upgrade verifiëren dat hun datepicker correct rendert.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Default</th>\n        <th>v3 - Default</th>\n        <th>v2 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Datepicker](/docs/components-form-datepicker--documentatie)</td>\n        <td>release v2.14.0</td>\n        <td>flatpickr getBoundingClientRect positionering</td>\n        <td>Popover API + CSS Anchor Positioning</td>\n        <td><code>{`<vl-datepicker anchor-positioning>`}</code></td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

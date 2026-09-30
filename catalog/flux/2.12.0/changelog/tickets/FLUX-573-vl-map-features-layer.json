@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-573",
+  "entries": [
+    {
+      "id": "1998055",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-573"
+      ],
+      "scope": "vl-map-features-layer",
+      "components": [
+        "vl-map-features-layer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "vermijden dat er een fout komt bij een lege geometrie",
+      "text": "FLUX-573 - vl-map-features-layer - vermijden dat er een fout komt bij een lege geometrie",
+      "commits": [
+        {
+          "sha": "199805569233aa84eb6c6d4c620c1cf88e9dca65",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/199805569233aa84eb6c6d4c620c1cf88e9dca65"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

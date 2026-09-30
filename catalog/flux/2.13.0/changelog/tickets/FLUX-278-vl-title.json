@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-278",
+  "entries": [
+    {
+      "id": "f0e6ad0",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-278"
+      ],
+      "scope": "vl-title",
+      "components": [
+        "vl-title"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "appearance attribuut",
+      "text": "FLUX-278 - vl-title - appearance attribuut",
+      "commits": [
+        {
+          "sha": "f0e6ad083a2f6f998bb3be2ede6aa4df4c44c409",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f0e6ad083a2f6f998bb3be2ede6aa4df4c44c409"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/title/vl-title.component.ts",
+          "libs/components/src/atom/title/vl-title.css.ts",
+          "libs/components/src/atom/title/vl-title.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-title--documentatie",
+            "title": "Components - Atom/title",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-atom-title--documentatie",
+            "added": "## Varianten\n\n### Underline\n\n\n### No space bottom\n\n\n### Alt\n\n\n### Appearance\n\nGebruik `appearance` alleen wanneer visuele hiërarchie afwijkt van semantische hiërarchie.\n\nDe heading‑rangorde moet altijd logisch blijven voor screenreaders en SEO."
+          }
+        ]
+      }
+    }
+  ]
+}

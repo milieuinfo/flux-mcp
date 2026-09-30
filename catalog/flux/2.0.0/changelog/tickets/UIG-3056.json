@@ -1,0 +1,667 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3056",
+  "entries": [
+    {
+      "id": "e714edf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3056"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "aanpassingen aan de module structuur",
+      "text": "UIG-3056 - aanpassingen aan de module structuur",
+      "commits": [
+        {
+          "sha": "e714edf38bd40cf311a9eeb97b78710b5f92c82d",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/e714edf38bd40cf311a9eeb97b78710b5f92c82d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 147,
+          "styles": 58,
+          "docs": 54,
+          "storybook": 272,
+          "examples": 12,
+          "tests": 161,
+          "tooling": 149
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.element.ts",
+          "libs/common/src/base/base.html.element.ts",
+          "libs/common/src/base/base.lit.element.ts",
+          "libs/common/src/config/uig-config.ts",
+          "libs/common/src/constants/constants.ts",
+          "libs/common/src/constants/index.ts",
+          "libs/common/src/declare-module.d.ts",
+          "libs/common/src/decorator/decorators.ts",
+          "libs/common/src/index.ts",
+          "libs/common/src/models/index.ts",
+          "libs/common/src/models/vl.model.ts",
+          "libs/common/src/type/types.ts",
+          "libs/common/src/util/html-element.builder.ts",
+          "libs/common/src/util/mutation-utils.ts",
+          "libs/common/src/util/utils.ts",
+          "libs/components/src/accordion/vl-accordion.component.ts",
+          "libs/components/src/alert/vl-alert.component.ts",
+          "libs/components/src/autocomplete/vl-autocomplete.component.ts",
+          "libs/components/src/breadcrumb/vl-breadcrumb-item.component.ts",
+          "libs/components/src/breadcrumb/vl-breadcrumb.component.ts",
+          "libs/components/src/button/vl-button.component.ts",
+          "libs/components/src/button/vl-button.css.ts",
+          "libs/components/src/button/vl-button.defaults.ts",
+          "libs/components/src/button/vl-link-button.css.ts",
+          "libs/components/src/cascader/vl-cascader-item.component.ts",
+          "libs/components/src/cascader/vl-cascader.component.ts",
+          "libs/components/src/cascader/vl-cascader.utils.ts",
+          "libs/components/src/code-preview/vl-code-preview.component.ts",
+          "libs/components/src/contact-card/vl-contact-card.component.ts",
+          "libs/components/src/content-header/vl-content-header.component.ts",
+          "libs/components/src/description-data/vl-description-data-item.component.ts",
+          "libs/components/src/description-data/vl-description-data.component.ts",
+          "libs/components/src/document/vl-document.component.ts",
+          "libs/components/src/doormat/vl-doormat.component.ts",
+          "libs/components/src/doormat/vl-doormat.css.ts",
+          "libs/components/src/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/http-error-message/vl-http-error-message.uig-css.ts",
+          "libs/components/src/icon/vl-all-icons.component.ts",
+          "libs/components/src/icon/vl-icon.component.ts",
+          "libs/components/src/info-tile/vl-info-tile.component.ts",
+          "libs/components/src/infoblock/vl-infoblock.component.ts",
+          "libs/components/src/infotext/vl-infotext.component.ts",
+          "libs/components/src/infotext/vl-infotext.css.ts",
+          "libs/components/src/input-slider/vl-input-slider.component.ts",
+          "libs/components/src/link/vl-button-as-link.css.ts",
+          "libs/components/src/link/vl-link.component.ts",
+          "libs/components/src/link/vl-link.defaults.ts",
+          "libs/components/src/loader/vl-loader.component.ts",
+          "libs/components/src/modal/vl-modal.component.ts",
+          "libs/components/src/pager/vl-pager.component.ts",
+          "libs/components/src/paragraph/vl-paragraph.component.ts",
+          "libs/components/src/pill/vl-button-pill.component.ts",
+          "libs/components/src/pill/vl-pill.component.ts",
+          "libs/components/src/popover/vl-popover-action-list.component.ts",
+          "libs/components/src/popover/vl-popover-action.component.ts",
+          "libs/components/src/popover/vl-popover.component.ts",
+          "libs/components/src/progress-bar/vl-progress-bar.component.ts",
+          "libs/components/src/properties/vl-properties.component.ts",
+          "libs/components/src/properties/vl-properties.css.ts",
+          "libs/components/src/proza-message/vl-proza-message-preloader.component.ts",
+          "libs/components/src/proza-message/vl-proza-message.component.ts",
+          "libs/components/src/proza-message/vl-proza-message.uig-css.ts",
+          "libs/components/src/rich-data-table/vl-rich-data-field.component.ts",
+          "libs/components/src/rich-data-table/vl-rich-data-sorter.component.ts",
+          "libs/components/src/rich-data-table/vl-rich-data-table.component.ts",
+          "libs/components/src/rich-data-table/vl-rich-data-table.uig-css.ts",
+          "libs/components/src/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/rich-data/vl-rich-data.uig-css.ts",
+          "libs/components/src/search-filter/vl-search-filter.component.ts",
+          "libs/components/src/search-filter/vl-search-filter.global.css.ts",
+          "libs/components/src/search-result/vl-search-result-properties.component.ts",
+          "libs/components/src/search-result/vl-search-result-text.component.ts",
+          "libs/components/src/search-result/vl-search-result-title.component.ts",
+          "libs/components/src/search-result/vl-search-result.component.ts",
+          "libs/components/src/search-result/vl-search-result.css.ts",
+          "libs/components/src/search/vl-search.component.ts",
+          "libs/components/src/share-buttons/vl-share-button.component.ts",
+          "libs/components/src/share-buttons/vl-share-buttons.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation-content.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation-group.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation-item.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation-reference.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation-title.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation-toggle.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.css.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.scrollspy.lib.js",
+          "libs/components/src/side-sheet/vl-side-sheet.component.ts",
+          "libs/components/src/side-sheet/vl-side-sheet.uig-css.ts",
+          "libs/components/src/spotlight/vl-spotlight.component.ts",
+          "libs/components/src/steps/vl-duration-step.component.ts",
+          "libs/components/src/steps/vl-step.component.ts",
+          "libs/components/src/steps/vl-steps.component.ts",
+          "libs/components/src/table/vl-table.component.ts",
+          "libs/components/src/table/vl-table.css.ts",
+          "libs/components/src/tabs/vl-tab-section.component.ts",
+          "libs/components/src/tabs/vl-tab.component.ts",
+          "libs/components/src/tabs/vl-tabs-pane.component.ts",
+          "libs/components/src/tabs/vl-tabs.component.ts",
+          "libs/components/src/template/vl-template.component.ts",
+          "libs/components/src/text/vl-text.component.ts",
+          "libs/components/src/text/vl-text.css.ts",
+          "libs/components/src/title/vl-title.component.ts",
+          "libs/components/src/title/vl-title.css.ts",
+          "libs/components/src/toaster/vl-toaster.component.ts",
+          "libs/components/src/typography/vl-typography.component.ts",
+          "libs/components/src/video-player/vl-video-player.component.ts",
+          "libs/components/src/wizard/vl-wizard-pane.component.ts",
+          "libs/components/src/wizard/vl-wizard.component.ts",
+          "libs/map/src/components/action/click-action/vl-map-click-action-pindrop.ts",
+          "libs/map/src/components/action/click-action/vl-map-click-action.ts",
+          "libs/map/src/components/action/draw-action/draw-action-style/vl-map-draw-action-style.ts",
+          "libs/map/src/components/action/draw-action/draw-line-action/vl-map-draw-line-action.ts",
+          "libs/map/src/components/action/draw-action/draw-point-action/vl-map-draw-point-action.ts",
+          "libs/map/src/components/action/draw-action/draw-polygon-action/vl-map-draw-polygon-action.ts",
+          "libs/map/src/components/action/draw-action/measure-action/vl-map-measure-action.ts",
+          "libs/map/src/components/action/layer-action/delete-action/test-custom-map-delete-action.ts",
+          "libs/map/src/components/action/layer-action/delete-action/vl-map-delete-action.ts",
+          "libs/map/src/components/action/layer-action/modify-action/test-custom-map-modify-action.ts",
+          "libs/map/src/components/action/layer-action/modify-action/vl-map-modify-action.ts",
+          "libs/map/src/components/action/layer-action/select-action/multiselect-actions/vl-map-multiselect-actions.ts",
+          "libs/map/src/components/action/layer-action/select-action/select-actions/vl-map-select-actions.ts",
+          "libs/map/src/components/action/layer-action/select-action/test-custom-map-select-action.ts",
+          "libs/map/src/components/action/layer-action/select-action/vl-map-select-action.ts",
+          "libs/map/src/components/action/layer-action/vl-map-layer-action.ts",
+          "libs/map/src/components/action/vl-map-action.ts",
+          "libs/map/src/components/baselayer/vl-map-base-layer-grb-gray/vl-map-base-layer-grb-gray.ts",
+          "libs/map/src/components/baselayer/vl-map-base-layer-grb-ortho/vl-map-base-layer-grb-ortho.ts",
+          "libs/map/src/components/baselayer/vl-map-base-layer-grb/vl-map-base-layer-grb.ts",
+          "libs/map/src/components/baselayer/vl-map-base-layer.ts",
+          "libs/map/src/components/controls/action-control/vl-map-action-control.ts",
+          "libs/map/src/components/controls/measure-control/vl-map-measure-control.ts",
+          "libs/map/src/components/controls/vl-map-action-controls.ts",
+          "libs/map/src/components/current-location/vl-map-current-location.ts",
+          "libs/map/src/components/current-location/vl-map-current-location.uig-css.ts",
+          "libs/map/src/components/layer-style/vl-map-layer-circle-style/vl-map-layer-circle-style.ts",
+          "libs/map/src/components/layer-style/vl-map-layer-style.ts",
+          "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-wfs-layer/vl-map-wfs-layer.ts",
+          "libs/map/src/components/layer/vl-map-layer.ts",
+          "libs/map/src/components/layer/wms-layer/vl-map-image-wms-layer/vl-map-image-wms-layer.ts",
+          "libs/map/src/components/layer/wms-layer/vl-map-tiled-wms-layer/vl-map-tiled-wms-layer.ts",
+          "libs/map/src/components/layer/wms-layer/vl-map-wms-style/vl-map-wms-style.ts",
+          "libs/map/src/components/layer/wms-layer/vl-map-xyz-wms-layer/vl-map-xyz-wms-layer.ts",
+          "libs/map/src/components/layer/wmts-layer/vl-map-wmts-layer.ts",
+          "libs/map/src/components/legend-item/vl-map-legend-item.ts",
+          "libs/map/src/components/legend/vl-map-legend.ts",
+          "libs/map/src/components/legend/vl-map-legend.uig-css.ts",
+          "libs/map/src/components/loading-indicator/vl-map-loading-indicator.ts",
+          "libs/map/src/components/overview-map/vl-map-overview-map.ts",
+          "libs/map/src/components/search/vl-map-search.ts",
+          "libs/map/src/components/select-location/vl-select-location.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet-menu-item.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet-menu.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet.ts",
+          "libs/map/src/vl-map.ts",
+          "libs/map/src/vl-map.uig-css.ts",
+          "libs/styles/src/base/accessibility/vl-accessibility.css.ts",
+          "libs/styles/src/base/body/vl-body.css.ts",
+          "libs/styles/src/base/font/vl-font.css.ts",
+          "libs/styles/src/base/heading/vl-heading.css.ts",
+          "libs/styles/src/base/icon/vl-icon-mapping.css.ts",
+          "libs/styles/src/base/icon/vl-icon.css.ts",
+          "libs/styles/src/base/link/vl-link-icon.css.ts",
+          "libs/styles/src/base/link/vl-link.css.ts",
+          "libs/styles/src/base/mixin/vl-animations.css.ts",
+          "libs/styles/src/base/mixin/vl-outlines.css.ts",
+          "libs/styles/src/base/paragraph/vl-paragraph.css.ts",
+          "libs/styles/src/base/reset/vl-reset.css.ts",
+          "libs/styles/src/base/var/vl-color.css.ts",
+          "libs/styles/src/base/var/vl-color.raw.css",
+          "libs/styles/src/base/var/vl-general.css.ts",
+          "libs/styles/src/base/var/vl-general.raw.css",
+          "libs/styles/src/base/var/vl-media-screen.css.ts",
+          "libs/styles/src/base/var/vl-spacing.css.ts",
+          "libs/styles/src/base/var/vl-spacing.raw.css",
+          "libs/styles/src/base/var/vl-typography.css.ts",
+          "libs/styles/src/base/var/vl-typography.raw.css",
+          "libs/styles/src/base/var/vl-z-layer.css.ts",
+          "libs/styles/src/base/var/vl-z-layer.raw.css",
+          "libs/styles/src/declare-module.d.ts",
+          "libs/styles/src/global-styles-legacy.ts",
+          "libs/styles/src/global-styles.ts",
+          "libs/styles/src/index.ts",
+          "libs/styles/src/layout/content-block/vl-content-block.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-l.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-m.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-s.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-xs.css.ts",
+          "libs/styles/src/layout/grid/grid/vl-grid-l.css.ts",
+          "libs/styles/src/layout/grid/grid/vl-grid-m.css.ts",
+          "libs/styles/src/layout/grid/grid/vl-grid-s.css.ts",
+          "libs/styles/src/layout/grid/grid/vl-grid-xs.css.ts",
+          "libs/styles/src/layout/grid/vl-grid.css.ts",
+          "libs/styles/src/layout/grid/vl-grid.raw.css",
+          "libs/styles/src/layout/group/vl-group.css.ts",
+          "libs/styles/src/layout/margin/vl-margin.css.ts",
+          "libs/styles/src/layout/padding/vl-padding.css.ts",
+          "libs/styles/src/layout/section/vl-section.css.ts",
+          "libs/styles/src/layout/section/vl-section.raw.css",
+          "libs/styles/src/layout/separator/vl-separator.css.ts",
+          "libs/styles/src/layout/spacer/vl-spacer.css.ts",
+          "libs/styles/src/layout/stacked/vl-stacked.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "        \"@domg-wc/common\": \"2.0.0\",\n        \"@domg-wc/components\": \"2.0.0\",\n        \"@domg-wc/form\": \"2.0.0\",\n        \"@domg-wc/sections\": \"2.0.0\",\n        \"@domg-wc/map\": \"2.0.0\",\n\n[…]\n\n> De minimaal op te nemen packages om componenten af te nemen zijn: __'@domg-wc/common'__"
+          },
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "- [@domg-wc/common](#domg-wccommon)\n\n[…]\n\n__common__ bevat technische code, de overige artifacts: __elements__, __components__, __map__, __form__,\n\n[…]\n\n## @domg-wc/common\n\n[…]\n\n__common__ is een technische bibliotheek met basis code en utilities\n\n[…]\n\n@domg-wc/common via de methode `BaseElementOfType`. Nieuwere componenten worden geïmplementeerd m.b.v."
+          },
+          {
+            "id": "bijdragen-opzet-structuur--documentatie",
+            "title": "Bijdragen/Opzet & Structuur",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+            "added": "  │  │   -> @domg-wc/common\n\n[…]\n\n  │  ├─ map\n  │  │   -> @domg-wc/map\n\n[…]\n\n  │  ├─ styles\n  │  │   -> @domg-wc/styles"
+          },
+          {
+            "id": "bijdragen-storybook--documentatie",
+            "title": "Bijdragen/Storybook",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-storybook--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-click-action--documentatie",
+            "title": "map/action/click-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-click-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-action-style--documentatie",
+            "title": "map/action/draw-action/draw-action-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-draw-action-draw-action-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-line-action--documentatie",
+            "title": "map/action/draw-action/draw-line-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-draw-action-draw-line-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-point-action--documentatie",
+            "title": "map/action/draw-action/draw-point-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-draw-action-draw-point-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-polygon-action--documentatie",
+            "title": "map/action/draw-action/draw-polygon-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-measure-action--documentatie",
+            "title": "map/action/draw-action/measure-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-draw-action-measure-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-delete-action--documentatie",
+            "title": "map/action/layer-action/delete-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-layer-action-delete-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-modify-action--documentatie",
+            "title": "map/action/layer-action/modify-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-layer-action-modify-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action--documentatie",
+            "title": "map/action/layer-action/select-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-layer-action-select-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "title": "map/action/layer-action/select-action/multiselect-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action-select-actions--documentatie",
+            "title": "map/action/layer-action/select-action/select-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-action-layer-action-select-action-select-actions--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer--documentatie",
+            "title": "map/baselayer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-baselayer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb--documentatie",
+            "title": "map/baselayer/baselayer-grb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-baselayer-baselayer-grb--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-gray--documentatie",
+            "title": "map/baselayer/baselayer-grb-gray",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-baselayer-baselayer-grb-gray--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-ortho--documentatie",
+            "title": "map/baselayer/baselayer-grb-ortho",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-baselayer-baselayer-grb-ortho--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-control--documentatie",
+            "title": "map/controls/action-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-controls-action-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-controls--documentatie",
+            "title": "map/controls/action-controls",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-controls-action-controls--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-measure-control--documentatie",
+            "title": "map/controls/measure-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-current-location--documentatie",
+            "title": "map/current-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-current-location--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-style--documentatie",
+            "title": "map/layer-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-style-layer-circle-style--documentatie",
+            "title": "map/layer-style/layer-circle-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-switcher--documentatie",
+            "title": "map/layer-switcher",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-vector-layer-features-layer--documentatie",
+            "title": "map/layer/vector-layer/features-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-vector-layer-wfs-layer--documentatie",
+            "title": "map/layer/vector-layer/wfs-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-image-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/image-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-wms-layer-image-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/tiled-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-wms-style--documentatie",
+            "title": "map/layer/wms-layer/wms-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-wms-layer-wms-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/xyz-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wmts-layer--documentatie",
+            "title": "map/layer/wmts-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-legend--documentatie",
+            "title": "map/legend",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-legend--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-legend-item--documentatie",
+            "title": "Map/legend-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-legend-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-loading-indicator--documentatie",
+            "title": "map/loading-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-loading-indicator--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-overview-map--documentatie",
+            "title": "map/overview-map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-overview-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-search--documentatie",
+            "title": "map/search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-search--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-select-location--documentatie",
+            "title": "map/select-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-select-location--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-side-sheet-side-sheet--documentatie",
+            "title": "map/side-sheet/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-side-sheet-side-sheet--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-side-sheet-side-sheet-menu-item--documentatie",
+            "title": "map/side-sheet/side-sheet-menu-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-side-sheet-side-sheet-menu-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-custom-validation--documentatie",
+            "title": "Ontwerp/Form/Custom Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-custom-validation--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-form-data--documentatie",
+            "title": "Ontwerp/Form/Form Data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-form-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-validation--documentatie",
+            "title": "Ontwerp/Form/Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-validation--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-map-niet-lambert-72-lagen--documentatie",
+            "title": "Ontwerp/Map/Niet-Lambert-72-lagen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-map-niet-lambert-72-lagen--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-popover-menu--documentatie",
+            "title": "Ontwerp/Popover/Menu",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-popover-menu--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-popover-menu-accordion--documentatie",
+            "title": "Ontwerp/Popover/Menu Accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-popover-menu-accordion--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-popover-menu-info-tile--documentatie",
+            "title": "Ontwerp/Popover/Menu Info Tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-popover-menu-info-tile--documentatie",
+            "added": null
+          },
+          {
+            "id": "recepten-configuratie--documentatie",
+            "title": "Recepten/Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+            "added": null
+          },
+          {
+            "id": "recepten-css-styling--documentatie",
+            "title": "Recepten/CSS Styling",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-css-styling--documentatie",
+            "added": null
+          },
+          {
+            "id": "recepten-debounce--documentatie",
+            "title": "Recepten/Debounce",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-debounce--documentatie",
+            "added": "# Debounce (Common)"
+          },
+          {
+            "id": "recepten-imports--documentatie",
+            "title": "Recepten/Imports",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-imports--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-body--documentatie",
+            "title": "Styles/Base (intern)/body",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-base-body--documentatie",
+            "added": "# Body\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Implementatie](#implementatie)\n\n\n## Doel\n\nOp het document wordt automatisch de specifieke styling voor de native `<html>` en `<body>` tags voorzien.\n\nDit zorgt er voor dat:\n\n- het specifieke 'Vlaanderen' font gebruikt wordt\n- de [62,5% font size trick](https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/) wordt toegepast,\nwaardoor `1rem == 10px`\n- op kleine schermen (&lt;767) het font en de lijn hoogte iets kleiner gemaakt worden\n\n\n## Implementatie\n\n<details open>\n    <summary>Html / Body Code</summary>\n</details>"
+          },
+          {
+            "id": "styles-base-font--documentatie",
+            "title": "Styles/Base (intern)/font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-base-font--documentatie",
+            "added": "# Font\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Implementatie](#implementatie)\n- [Voorbeelden](#voorbeelden)\n\n\n## Doel\n\nVanuit Digitaal Vlaanderen worden er 2 fonts voorzien: `Flanders Art Sans` en `vlaanderen-icon`.\n\nHet `Flanders Art Sans` font is het default font, wat zowel voor de normale als de italic styling dient.\nBeide styles zijn beschikbaar in de gewichten: 300, 400, 500 en 700.\n\n[Alle iconen](/docs/components-icon--documentatie#overzicht) komen uit het font `vlaanderen-icon`.\n\n\n## Implementatie\n\n<details open>\n    <summary>Font Code</summary>\n</details>\n\n\n## Voorbeelden\n\nIn deze voorbeelden zie je de verschillende fonts in gebruikt, er worden telkens specifieke wrappers voorzien via een\ncustom style-class.\n\n<br/>\n\n### Flanders Art Sans - normal\n\n\n### Flanders Art Sans - italic"
+          },
+          {
+            "id": "styles-base-mixin--documentatie",
+            "title": "Styles/Base (intern)/mixin",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-base-mixin--documentatie",
+            "added": "# Mixin\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Voorbeelden](#voorbeelden)\n\n\n## Doel\n\nOm in CSS duplicatie tegen te gaan voorzien we mixins. Het concept is gelijk aan SCSS mixins: geparametriseerde\nmethodes die styling encapsuleren. Al onze code wordt in TypeScript geschreven, daardoor zijn de mixins geschreven als\n'css-in-ts'.\n\n\n## Voorbeelden\n\n### vlWaveAnimationMixin\n\nDe `vlWaveAnimationMixin` wordt hier ge-wrapped in een custom style-class. Dit is de animatie die gebruikt wordt in\n`<vl-button>`.\n\n\n### vlFocusOutlineMixin\n\nDe `vlFocusOutlineMixin` wordt hier ge-wrapped in een custom style-class. Dit zorgt voor de specifieke stijl van een\nitem dat de focus krijgt. Wordt gebruikt in `<vl-link>`, `<vl-button>` en `vl-link-button.`"
+          },
+          {
+            "id": "styles-base-var--documentatie",
+            "title": "Styles/Base (intern)/var",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-base-var--documentatie",
+            "added": "# Var\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n- [Voorbeeld](#voorbeeld)\n- [Variabelen](#variabelen)\n\n\n## Doel\n\nVoor consistentie in de styling en soms om waardes een naam te geven worden standaard CSS variabelen gebruikt.\nDe variabelen worden steeds globaal gespecifieerd en kunnen in een concrete component (in die scope) een afwijkende\nwaarde krijgen. Dit moet niet gezien worden als theming, er is maar 1 stijl: die van Vlaanderen.\n\n\n## Gebruik\n\nHet zijn standaard [CSS variabelen](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties):\nze beginnen dus met `--` en zijn te gebruiken met `var()`.\n\n```\n.my-details {\n  background-color: var(--vl-color--background-alt);\n}\n```\n\n\n## Voorbeeld\n\n\n\n## Variabelen\n\nHieronder volgt een overzicht van alle variabelen, dit is een representatie van de code, ze zijn dus steeds up-to-date.\n\n### Color\n\n<details open>\n    <summary>Color Variables</summary>\n</details>\n\n### General\n\n<details open>\n    <summary>General Variables</summary>\n</details>\n\n### Media Screen\n\nDe resolutie in een media query specifiëren via een css variabele wordt niet door browsers ondersteund. Om toch de\n'breakpoints' eenduidig te specifiëren worden ze als standaard TypeScript variabelen gedefinieerd.\n\n<details open>\n    <summary>Media Screen Variables</summary>\n</details>\n\n### Spacing\n\n<details open>\n    <summary>Spacing Variables</summary>\n</details>\n\n### Typography\n\n<details open>\n    <summary>Typography Variables</summary>\n</details>"
+          },
+          {
+            "id": "styles-layout-afnemers-content-block--documentatie",
+            "title": "Styles/Layout (afnemers)/content-block",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-content-block--documentatie",
+            "added": "# Content Block\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n\n## Doel\n\n`vl-content-block` is een layout component die gebruikt wordt om content te groeperen. Het element krijgt een vaste\n breedte en wordt in het midden gecentreerd. Dit is equivalent van wat bij Digitaal Vlaanderen als\n [Layout](https://overheid.vlaanderen.be/webuniversum/v3/documentation/grid) wordt aangeboden.\n\n\n## Gebruik\n\n### Default"
+          },
+          {
+            "id": "styles-layout-afnemers-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-grid--documentatie",
+            "added": "# Grid\n## Inhoudstafel\n## Doel\n## Grid Opzet\n### **vl-grid - opzet**\n### **vl-grid - variabelen**\n### **vl-grid - code**\n### **vl-grid - justify-items / align-items**\n### **vl-grid - responsive**\n## Column Opzet\n### **vl-column - kolom**\n### **vl-column - justify-self / align-self**\n### **vl-column - responsive**\n## Responsief Voorbeeld\n### Large - default (&gt;1023px)\n### Medium (&lt;1023)\n### Small (&lt;767)\n### Extra-Small (&lt;500)\n## Form Grid\n(147 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "styles-layout-afnemers-group--documentatie",
+            "title": "Styles/Layout (afnemers)/group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-group--documentatie",
+            "added": "# Group\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n\n## Doel\n\n`vl-group` voorziet style-classes om horizontaal en verticaal (identieke) componenten te groeperen. De CSS\nis een specifieke implementatie gebruik makend van de [CSS Flexbox Layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/),\ndie standaard door [browsers](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) voorzien wordt.\n\n\n## Gebruik\n\n### Default\n\nDefault worden items in een `vl-group` naast elkaar (horizontaal) gegroepeerd.\n\n\n### Verticaal Groeperen\n\nMet `vl-group--column` worden items onder elkaar gegroepeerd. In onderstaand voorbeeld wordt ook\n`vl-group--separator-column` toegevoegd en `vl-group--stretch-children` om de volledige breedte in te nemen.\n\n\n### Uitlijning\n\nDefault worden items links uitgelijnd. Centreren kan met `vl-group--justify-center`, rechts uitlijnen\nmet `vl-group--justify-end`. In combinatie met de kolom layout (`vl-group--column`), wijzigt de richting.\nEr wordt dan respectievelijk boven, midden of onderaan uitgelijnd.\n\nMet `vl-group--space-between` wordt het eerste item uiterst links gezet, het laaste uiterst rechts en de\noverige ertussen, gelijkmatig verdeeld.\n\nMet `vl-group--baseline` worden de items uitgelijnd volgens de tekst basis van hun eerste element.\nDit is vooral handig voor items met een verschillende `font-size`, zoals een heading met daarnaast een tekstuele link.\n\nDe container waarin uitgelijnd wordt dient ruimte te hebben om uit te lijnen!\n\n### Scheidingslijnen\n\nTussen items kan een grijze lijn getoond worden. In row layout (default) gebruik je `vl-group--separator-row`,\nin kolom layout `vl-group--separator-column`.\n\n### Responsief\n\nEr bestaan 4 responsieve style-classes `vl-group--collapse-l` / `vl-group--collapse-m` /\n`vl-group--collapse-s` / `vl-group--collapse-cs` voor de verschillende scherm groottes: **large** (&gt;1023px),\n**medium** (&lt;1023px), **small** (&lt;767px) en **extra-small** (&lt;500px). Door de desbetreffende class toe te\nvoegen wordt er bij / vanaf die desbetreffende scherm grootte links uitgelijnd in kolom layout.\n\n### Input Group\n\nDe style-class `vl-group--input-group` is er om de groep een specifieke stijl te geven bij een combinatie van een knop\nen een input veld. De class heeft enkel effect bij die combinatie. Zie [Input Group [next]](/docs/form-input-group--documentatie)\nvoor meer informatie en voorbeelden."
+          },
+          {
+            "id": "styles-layout-afnemers-margin--documentatie",
+            "title": "Styles/Layout (afnemers)/margin",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-margin--documentatie",
+            "added": "# Margin\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n\n## Doel\n\nMet deze style-classes kan de margin beïnvloed worden. De implementatie en gebruik van margin en padding zijn\ngelijklopend. Op [web.dev](https://web.dev) vind je meer informatie\n[over margin](https://web.dev/learn/css/spacing#margin).\n\n<img src={marginEnPadding} alt=\"margin en padding\" style={{maxWidth: 300 + 'px'}} />\n\n\n## Gebruik\n\nDe mogelijkheden zijn bewust beperkt gehouden. Afnemers moeten er naar streven zich te beperken tot de\nhieronder besproken (voorziene) style-classes. Echter, zoals steeds: het is niet verboden om eigen styling\n(en dus een afwijking) te voorzien als dat de layout en bladspiegel ten goede komt.\n\nIn onderstaande voorbeelden wordt bij het 'default voorbeeld' de margin expliciet op 15px gezet, de overige voorbeelden\ntonen de impact op het 'default voorbeeld'.\n\n### vl-margin - default\n\nDe default marge wordt beïnvloed door de container, typisch wat er voor die resolutie bepaald is door\n[vl-section](/docs/styles-layout-afnemers-section--documentatie).\n\n\n### vl-margin--small\n\nDe margin onderaan en bovenaan wordt op de variabele `--vl-spacing--small` (1.5rem) gezet, links en rechts is er geen\nmargin (0), voor kleine schermen (&lt;767px) wordt de `--vl-spacing--normal` (2rem) gebruikt (boven- en onderaan).\n\n\n### vl-margin--medium\n\nDe margin onderaan en bovenaan wordt op de variabele `--vl-spacing--medium` (3rem) gezet, links en rechts is er geen\nmargin (0), voor kleine schermen (&lt;767px) wordt de `--vl-spacing--normal` (2rem) gebruikt (boven- en onderaan).\n\n\n### vl-margin--no\n\nNergens margin: alle margin rondom staat op 0.\n\n\n### vl-margin--no-bottom\n\nOnderaan geen margin: deze wordt op 0 gezet.\n\n\n### vl-margin--no-top\n\nBovenaan geen margin: deze wordt op 0 gezet."
+          },
+          {
+            "id": "styles-layout-afnemers-padding--documentatie",
+            "title": "Styles/Layout (afnemers)/padding",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-padding--documentatie",
+            "added": "# Padding\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n\n## Doel\n\nMet deze style-classes kan de padding beïnvloed worden. De implementatie en gebruik van padding en margin zijn\ngelijklopend. Op [web.dev](https://web.dev) vind je meer informatie\n[over padding](https://web.dev/learn/css/spacing#padding).\n\n<img src={marginEnPadding} alt=\"margin en padding\" style={{maxWidth: 300 + 'px'}} />\n\n\n## Gebruik\n\nDe mogelijkheden zijn bewust beperkt gehouden. Afnemers moeten er naar streven zich te beperken tot de\nhieronder besproken (voorziene) style-classes. Echter, zoals steeds: het is niet verboden om eigen styling\n(en dus een afwijking) te voorzien als dat de layout en bladspiegel ten goede komt.\n\nIn onderstaande voorbeelden wordt bij het 'default voorbeeld' de margin expliciet op 15px gezet, de overige voorbeelden\ntonen de impact op het 'default voorbeeld'.\n\n### vl-padding - default\n\nDe default padding wordt beïnvloed door de container, typisch wat er voor die resolutie bepaald is door\n[vl-section](/docs/styles-layout-afnemers-section--documentatie).\n\n\n### vl-padding--small\n\nDe padding onderaan en bovenaan wordt op de variabele `--vl-spacing--small` (1.5rem) gezet, links en rechts is er geen\npadding (0), voor kleine schermen (&lt;767px) wordt de `--vl-spacing--normal` (2rem) gebruikt (boven- en onderaan).\n\n\n### vl-padding--medium\n\nDe padding onderaan en bovenaan wordt op de variabele `--vl-spacing--medium` (3rem) gezet, links en rechts is er geen\npadding (0), voor kleine schermen (&lt;767px) wordt de `--vl-spacing--normal` (2rem) gebruikt (boven- en onderaan).\n\n\n### vl-padding--no\n\nNergens padding: alle padding rondom staat op 0.\n\n\n### vl-padding--no-bottom\n\nOnderaan geen padding: deze wordt op 0 gezet.\n\n\n### vl-padding--no-top\n\nBovenaan geen padding: deze wordt op 0 gezet."
+          },
+          {
+            "id": "styles-layout-afnemers-section--documentatie",
+            "title": "Styles/Layout (afnemers)/section",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-section--documentatie",
+            "added": "# Section\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n\n## Doel\n\nDe `vl-section` verdeeld de toepassing in delen en zorgt voor consistente witruimte.\n\n\n## Gebruik\n\n### Default Secties\n\nEr is de standaard `vl-section` en de `vl-section--alt` waarbij de laatste een lichtgrijze achtergrond\nkrijgt krijgt. Om minder (dan de standaard) witruimte te krijgen zijn er de optionele classes `vl-section--small`\nen `vl-section--medium`. Scheidingslijnen worden verkregen door `vl-section--bordered` te gebruiken.\n\nIn onderstaand voorbeeld wordt dit alles toegepast, als ook kleur variabelen overschreven (om de kleuren prominenter\nte maken).\n\n\n\n### Overlappende Sectie\n\nVoor specifieke gevallen kan er een overlappende sectie voorzien worden.\n\n<img src={sectionOverlap} alt=\"section overlap\" style={{border: 'lightgray 1px solid'}}/>\n\n<br/>\n<br/>\n\n<details>\n    <summary>section overlap - code</summary>\n    <Source\n        code={VlSectionStories.SectionOverlap.toString()}\n        language=\"html\" dark format={true}\n    ></Source>\n</details>"
+          },
+          {
+            "id": "styles-layout-afnemers-separator--documentatie",
+            "title": "Styles/Layout (afnemers)/separator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-separator--documentatie",
+            "added": "# Separator\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n\n## Doel\n\nDe 'separator' style-class tekent een scheidingslijn, je zet ze op een `<hr>`.\n\n## Gebruik\n\n### vl-separator\n\n\n### vl-separator-slash\n\n\n### vl-separator-wave"
+          },
+          {
+            "id": "styles-layout-afnemers-spacer--documentatie",
+            "title": "Styles/Layout (afnemers)/spacer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-spacer--documentatie",
+            "added": "# Spacer\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n## Doel\n\nDe 'spacer' style-classes voorzien onderaan (extra) witruimte.\n\n## Gebruik\n\nDe spacers kunnen op een willekeurig element gebruikt worden. In de voorbeelden hieronder zie je telkens 2\nseparators met op de eerste de desbetreffende spacer.\n\n### vl-spacer\n\nVoeg onderaan een marge van 2rem toe.\n\n\n### vl-spacer-xxsmall\n\nVoeg onderaan een marge van 0.5rem toe.\n\n\n### vl-spacer-xsmall\n\nVoeg onderaan een marge van 1rem toe.\n\n\n### vl-spacer-small\n\nVoeg onderaan een marge van 1.5rem toe.\n\n\n### vl-spacer-medium\n\nVoeg onderaan een marge van 3rem toe.\n\n\n### vl-spacer-large\n\nVoeg onderaan een marge van 6rem toe.\n\n\n### vl-spacer-none\n\nVerwijder de marge onderaan."
+          },
+          {
+            "id": "styles-layout-afnemers-stacked--documentatie",
+            "title": "Styles/Layout (afnemers)/stacked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-stacked--documentatie",
+            "added": "# Stacked\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Gebruik](#gebruik)\n\n## Doel\n\nDe 'stacked' style-classes beïnvloeden de ruimte tussen kind items.\n\n## Gebruik\n\nOp de omsluitende parent de class `vl-stacked-large`, `vl-stacked-medium` of `vl-stacked-small` zetten,\n voegt witruimte toe tussen de kinderen.\n\n### vl-stacked-large\n\n\n### vl-stacked-medium\n\n\n### vl-stacked-small"
+          }
+        ]
+      }
+    }
+  ]
+}

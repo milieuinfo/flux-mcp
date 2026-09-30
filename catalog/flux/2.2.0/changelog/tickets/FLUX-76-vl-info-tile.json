@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-76",
+  "entries": [
+    {
+      "id": "d38faec",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-76"
+      ],
+      "scope": "vl-info-tile",
+      "components": [
+        "vl-info-tile"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "icon attribuut, icon-as-badge attribuut en badge slot toegevoegd en footer slot gedocumenteerd",
+      "text": "FLUX-76 - vl-info-tile - icon attribuut, icon-as-badge attribuut en badge slot toegevoegd en footer slot gedocumenteerd",
+      "commits": [
+        {
+          "sha": "d38faec33f1d8bb761deb5d6791f34baedd82e87",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d38faec33f1d8bb761deb5d6791f34baedd82e87"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 2,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.html.element.ts",
+          "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+          "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts",
+          "libs/styles/src/base/var/vl-color.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

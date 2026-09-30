@@ -1,0 +1,82 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-91",
+  "entries": [
+    {
+      "id": "b86e28f",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-91"
+      ],
+      "scope": "vl-content-block",
+      "components": [
+        "vl-content-block"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "box-sizing gefixt",
+      "text": "FLUX-91 - vl-content-block - box-sizing gefixt",
+      "commits": [
+        {
+          "sha": "b86e28f82f0040e04492f2339dbcf86fcb112058",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b86e28f82f0040e04492f2339dbcf86fcb112058"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/content-block/vl-content-block.css.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "a29f5a2",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-91"
+      ],
+      "scope": "vl-side-navigation",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "vlLegacyStyles toegevoegd",
+      "text": "FLUX-91 - vl-side-navigation - vlLegacyStyles toegevoegd",
+      "commits": [
+        {
+          "sha": "a29f5a21ebd628d7b39150efbdb2ff600e7fcce5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a29f5a21ebd628d7b39150efbdb2ff600e7fcce5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "examples": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/side-navigation/vl-side-navigation.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

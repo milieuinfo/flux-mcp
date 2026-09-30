@@ -1,0 +1,78 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3232",
+  "entries": [
+    {
+      "id": "39643f4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3232"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "elementen geschrapt",
+      "text": "UIG-3232 - elementen geschrapt",
+      "commits": [
+        {
+          "sha": "39643f4c17dca63474a7ed03990f59c6858954d1",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/39643f4c17dca63474a7ed03990f59c6858954d1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "web-types voor elementen bijgewerkt Cypress testen bijgewerkt",
+        "published": true,
+        "areas": {
+          "code": 7,
+          "docs": 14,
+          "storybook": 71,
+          "examples": 6,
+          "tests": 51,
+          "tooling": 125
+        },
+        "publishedFiles": [
+          "libs/components/src/code-preview/vl-code-preview.component.ts",
+          "libs/components/src/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/info-tile/vl-info-tile.component.ts",
+          "libs/components/src/progress-bar/vl-progress-bar.component.ts",
+          "libs/components/src/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/search/vl-search.component.ts",
+          "libs/components/src/side-sheet/vl-side-sheet.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "> De minimaal op te nemen packages om componenten af te nemen zijn: __'@domg-wc/common-utilities'__\n en __'@domg-wc/components'__. De __'@domg-wc/sections'__ zal typisch ook opgenomen worden"
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/map-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "recepten-imports--documentatie",
+            "title": "Recepten/Imports",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-imports--documentatie",
+            "added": "registerWebComponents([VlButtonComponent]);"
+          },
+          {
+            "id": "recepten-tree-shaking--documentatie",
+            "title": "Recepten/Tree Shaking",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-tree-shaking--documentatie",
+            "added": "VlButtonComponent;"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-320",
+  "entries": [
+    {
+      "id": "1834b2f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-320"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "modifier keys toelaten",
+      "text": "FLUX-320 - vl-select-rich - modifier keys toelaten",
+      "commits": [
+        {
+          "sha": "1834b2f37c07c1c3b3b0447c9f1c3e199cbf1763",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1834b2f37c07c1c3b3b0447c9f1c3e199cbf1763"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

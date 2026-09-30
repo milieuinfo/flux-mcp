@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-367",
+  "entries": [
+    {
+      "id": "896b63a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-367"
+      ],
+      "scope": "vl-input-field-masked",
+      "components": [
+        "vl-input-field-masked"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "custom mask toegevoegd",
+      "text": "FLUX-367 - vl-input-field-masked - custom mask toegevoegd",
+      "commits": [
+        {
+          "sha": "896b63a36aab238275e280c6c3f1ee58cca4265d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/896b63a36aab238275e280c6c3f1ee58cca4265d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/input-field-masked/default-masks.ts",
+          "libs/components/src/form/input-field-masked/masks.ts",
+          "libs/components/src/form/input-field-masked/vl-input-field-masked.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-input-field-masked--documentatie",
+            "title": "Components - Form/input-field-masked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-input-field-masked--documentatie",
+            "added": "### Custom\n\nJe kan ook zelf masks toevoegen door de functie `VlInputFieldMasked.setMasks()` aan te roepen.\n\nHieronder volgt een code voorbeeld:\n\n```js\nexport const CUSTOM_MASK = {\n  blocks: [8, 4],\n  delimiters: ['-'],\n  numericOnly: true,\n  numeralPositiveOnly: true,\n  regex: /^[0-9]{12}$/\n}\n\nVlInputFieldMaskedComponent.setMasks({'custom-mask': CUSTOM_MASK})\n```\n\nJe roept deze best aan bij het entry point van je applicatie. Daarna is de mask beschikbaar voor elke\n`vl-input-field-masked`."
+          }
+        ]
+      }
+    }
+  ]
+}

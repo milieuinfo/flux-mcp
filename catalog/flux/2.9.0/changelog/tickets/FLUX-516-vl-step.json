@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-516",
+  "entries": [
+    {
+      "id": "e79d5b2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-516"
+      ],
+      "scope": "vl-step",
+      "components": [
+        "vl-step"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-on-toggle"
+      ],
+      "summary": "vl-on-toggle event",
+      "text": "FLUX-516 - vl-step - vl-on-toggle event",
+      "commits": [
+        {
+          "sha": "e79d5b264e958a6c287ec59a0633525101915249",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e79d5b264e958a6c287ec59a0633525101915249"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/steps/vl-step.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

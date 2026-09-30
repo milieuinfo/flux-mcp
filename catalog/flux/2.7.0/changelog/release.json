@@ -1,0 +1,374 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "date": "2025-11-21",
+  "previous": "2.6.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.6.0...v2.7.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 14,
+      "fix": 3,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 10,
+      "automatic": 2,
+      "none": 5
+    },
+    "a11y": 2
+  },
+  "components": [
+    {
+      "name": "vl-functional-header",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-functional-header--documentatie"
+    },
+    {
+      "name": "vl-link",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-atom-link--documentatie"
+    },
+    {
+      "name": "vl-map",
+      "category": "map",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-map--documentatie"
+    },
+    {
+      "name": "vl-map-layer-switcher",
+      "category": "map",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-layer-switcher--documentatie"
+    },
+    {
+      "name": "vl-popover",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-popover--documentatie"
+    },
+    {
+      "name": "vl-progress-indicator",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-progress-indicator--documentatie"
+    },
+    {
+      "name": "vl-properties",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-properties--documentatie"
+    },
+    {
+      "name": "vl-rich-data-table",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-rich-data-table--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-tooltip",
+      "category": null,
+      "docUrl": null
+    }
+  ],
+  "entries": [
+    {
+      "id": "f86b00b",
+      "ticket": "FLUX-292",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-292 - vl-properties - warning verwijderd",
+      "file": "tickets/FLUX-292-vl-properties.json"
+    },
+    {
+      "id": "0c6a638",
+      "ticket": "FLUX-311",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-311 - vl-functional-header - documentatie opgekuist",
+      "file": "tickets/FLUX-311-vl-functional-header.json"
+    },
+    {
+      "id": "b5b78c1",
+      "ticket": "FLUX-358",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-358 - vl-properties - columns layout brak uit zijn parent container",
+      "file": "tickets/FLUX-358-vl-properties.json"
+    },
+    {
+      "id": "9e267f4",
+      "ticket": "FLUX-171",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-171 - opkuis package dependencies mbt tinymce",
+      "file": "tickets/FLUX-171.json"
+    },
+    {
+      "id": "81765cf",
+      "ticket": "FLUX-184",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-184 - vl-progress-indicator - component update",
+      "file": "tickets/FLUX-184-vl-progress-indicator.json"
+    },
+    {
+      "id": "85fcb5c",
+      "ticket": "FLUX-203",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-203 - vl-rich-data-table - fixes aan responsive layout",
+      "file": "tickets/FLUX-203-vl-rich-data-table.json"
+    },
+    {
+      "id": "cd4adcf",
+      "ticket": "FLUX-253",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-253 - vl-select-rich - werking events verbeterd",
+      "file": "tickets/FLUX-253-vl-select-rich.json"
+    },
+    {
+      "id": "c5f2727",
+      "ticket": "FLUX-260",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-260 - vl-progress-indicator - screenreader verbetering",
+      "file": "tickets/FLUX-260-vl-progress-indicator.json"
+    },
+    {
+      "id": "bd6b246",
+      "ticket": "FLUX-303",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-303 - vl-map-layer-switcher - sync layer visibility",
+      "file": "tickets/FLUX-303-vl-map-layer-switcher.json"
+    },
+    {
+      "id": "04aa089",
+      "ticket": "FLUX-304",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-304 - vl-map - invalid style toegevoegd voor ongeldige geometry, 'allow-invalid-geometry' attribuut en 'hasInvalidGeometries' method toegevoegd op vl-map",
+      "file": "tickets/FLUX-304-vl-map.json"
+    },
+    {
+      "id": "9841432",
+      "ticket": "FLUX-305",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-305 - indentering aanpassing t.g.v. Storybook v9",
+      "file": "tickets/FLUX-305.json"
+    },
+    {
+      "id": "a74c38d",
+      "ticket": "FLUX-313",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-313 - vl-link - label documentatie",
+      "file": "tickets/FLUX-313-vl-link.json"
+    },
+    {
+      "id": "e99584c",
+      "ticket": "FLUX-334",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-334 - vl-popover - aanpassingen bij gebruik als tooltip (layout en WCAG correcties)",
+      "file": "tickets/FLUX-334-vl-popover-vl-tooltip.json"
+    },
+    {
+      "id": "9c73a9a",
+      "ticket": "FLUX-334",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-334 - vl-tooltip - introductie component",
+      "file": "tickets/FLUX-334-vl-popover-vl-tooltip.json"
+    },
+    {
+      "id": "9cafa0b",
+      "ticket": "FLUX-348",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-348 - vl-functional-header met vl-tabs documentatie uitgebreid",
+      "file": "tickets/FLUX-348.json"
+    },
+    {
+      "id": "cd63fef",
+      "ticket": "FLUX-362",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-362 - fat-js 2.6.0 is beschikbaar via de cdn",
+      "file": "tickets/FLUX-362.json"
+    },
+    {
+      "id": "d4ac35a",
+      "ticket": "FLUX-42",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-42 - test-dashboard met ReportPortal",
+      "file": "tickets/FLUX-42.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-292",
+      "file": "tickets/FLUX-292-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "f86b00b"
+      ]
+    },
+    {
+      "ticket": "FLUX-311",
+      "file": "tickets/FLUX-311-vl-functional-header.json",
+      "components": [
+        "vl-functional-header"
+      ],
+      "entries": [
+        "0c6a638"
+      ]
+    },
+    {
+      "ticket": "FLUX-358",
+      "file": "tickets/FLUX-358-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "b5b78c1"
+      ]
+    },
+    {
+      "ticket": "FLUX-171",
+      "file": "tickets/FLUX-171.json",
+      "components": [],
+      "entries": [
+        "9e267f4"
+      ]
+    },
+    {
+      "ticket": "FLUX-184",
+      "file": "tickets/FLUX-184-vl-progress-indicator.json",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "entries": [
+        "81765cf"
+      ]
+    },
+    {
+      "ticket": "FLUX-203",
+      "file": "tickets/FLUX-203-vl-rich-data-table.json",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "entries": [
+        "85fcb5c"
+      ]
+    },
+    {
+      "ticket": "FLUX-253",
+      "file": "tickets/FLUX-253-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "cd4adcf"
+      ]
+    },
+    {
+      "ticket": "FLUX-260",
+      "file": "tickets/FLUX-260-vl-progress-indicator.json",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "entries": [
+        "c5f2727"
+      ]
+    },
+    {
+      "ticket": "FLUX-303",
+      "file": "tickets/FLUX-303-vl-map-layer-switcher.json",
+      "components": [
+        "vl-map-layer-switcher"
+      ],
+      "entries": [
+        "bd6b246"
+      ]
+    },
+    {
+      "ticket": "FLUX-304",
+      "file": "tickets/FLUX-304-vl-map.json",
+      "components": [
+        "vl-map"
+      ],
+      "entries": [
+        "04aa089"
+      ]
+    },
+    {
+      "ticket": "FLUX-305",
+      "file": "tickets/FLUX-305.json",
+      "components": [],
+      "entries": [
+        "9841432"
+      ]
+    },
+    {
+      "ticket": "FLUX-313",
+      "file": "tickets/FLUX-313-vl-link.json",
+      "components": [
+        "vl-link"
+      ],
+      "entries": [
+        "a74c38d"
+      ]
+    },
+    {
+      "ticket": "FLUX-334",
+      "file": "tickets/FLUX-334-vl-popover-vl-tooltip.json",
+      "components": [
+        "vl-popover",
+        "vl-tooltip"
+      ],
+      "entries": [
+        "e99584c",
+        "9c73a9a"
+      ]
+    },
+    {
+      "ticket": "FLUX-348",
+      "file": "tickets/FLUX-348.json",
+      "components": [],
+      "entries": [
+        "9cafa0b"
+      ]
+    },
+    {
+      "ticket": "FLUX-362",
+      "file": "tickets/FLUX-362.json",
+      "components": [],
+      "entries": [
+        "cd63fef"
+      ]
+    },
+    {
+      "ticket": "FLUX-42",
+      "file": "tickets/FLUX-42.json",
+      "components": [],
+      "entries": [
+        "d4ac35a"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

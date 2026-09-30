@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-126",
+  "entries": [
+    {
+      "id": "4880d3d",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-126"
+      ],
+      "scope": "vl-side-navigation",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "hash-sync attribute vervangt has-hash-routing",
+      "text": "FLUX-126 - vl-side-navigation - hash-sync attribute vervangt has-hash-routing",
+      "commits": [
+        {
+          "sha": "4880d3d4ffcb5f01e85aabda901f92ad06b9c4e4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4880d3d4ffcb5f01e85aabda901f92ad06b9c4e4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation-toggle.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "Plaats naast het `VlSideNavigationToggle` component een lijst element (`<ul>`) met daaronder `VlSideNavigationItem`\ncomponenten als items.\n\n[…]\n\nGebruik geen `VlSideNavigationToggle` component indien er geen subnavigatie is. Een gewone link (`<a href=\"#\">`)\nonder het `VlSideNavigationItem` component volstaat dan.\n\n## Hash sync\n\nIndien er geen gebruik gemaakt wordt van hash-routing en de url hash op geen enkele andere manier gemanipuleerd wordt,\nkan `hash-sync` geactiveerd worden.\n\nDit werkt in twee richtingen:\n- Indien er een hash aanwezig is in de url die overeenkomt met een element op de pagina dan zal de browser automatisch\nscrollen naar dat item.\n- Wanneer je klikt op een item in de side navigation, zal de url hash worden bijgewerkt naar het id van dat item.\n\n[…]\n\nAls de side-navigation gerenderd wordt in een parent component die `hidden` is, bijvoorbeeld bij verschillende stappen\nin een flow, dan gaat de initialisatie fout en zal de side-navigation niet sticky worden bij het scrollen. Dit komt\nomdat de side-navigation bij het initialiseren een aantal dimensies capteerd en, in het geval dat er een parent\n`hidden` is, één van de waardes op 0 komt te staan. Dit kan vermeden worden door het gebruik van `hidden` te vervangen\ndoor de `when()` directive van Lit."
+          }
+        ]
+      }
+    }
+  ]
+}

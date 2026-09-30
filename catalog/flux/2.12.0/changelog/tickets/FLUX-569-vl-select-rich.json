@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-569",
+  "entries": [
+    {
+      "id": "eb8dae5",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-569"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "native browser × knop overlapt eerste karakter in multiple select",
+      "text": "FLUX-569 - vl-select-rich - native browser × knop overlapt eerste karakter in multiple select",
+      "commits": [
+        {
+          "sha": "eb8dae5d89114da978cbbe3c3e1eeb3f76d26b4c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/eb8dae5d89114da978cbbe3c3e1eeb3f76d26b4c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "setChoicesInputAttributes() werd nooit uitgevoerd omdat callbackOnInit als arrow function draait tijdens de new Choices() constructor, vóór de toekenning van this.choices.\n\nHierdoor bleef this.choices null en werd de input type niet gewijzigd van 'search' naar 'text'. Input met type search zorgt voor een native `x`\n\nOpgelost door als fallback het input element via een shadow DOM query op te halen wanneer this.choices nog niet beschikbaar is.",
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

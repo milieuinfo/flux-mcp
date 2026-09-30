@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3299",
+  "entries": [
+    {
+      "id": "edd176f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3299"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "layoutStyles ontsloten",
+      "text": "UIG-3299 - layoutStyles ontsloten",
+      "commits": [
+        {
+          "sha": "edd176f5f6c7271628a665ed8b20cae67e52c378",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/edd176f5f6c7271628a665ed8b20cae67e52c378"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/styles/global-styles.ts",
+          "libs/styles/src/index.ts",
+          "libs/styles/src/vl-global-styles.ts",
+          "libs/styles/src/vl-styles.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-659",
+  "entries": [
+    {
+      "id": "750dbf1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-659"
+      ],
+      "scope": "vl-input-field",
+      "components": [
+        "vl-input-field"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "describedby attribuut",
+      "text": "FLUX-659 - vl-input-field - describedby attribuut",
+      "commits": [
+        {
+          "sha": "750dbf1cc97f472c2760c64b05cf8fcd9447bc5e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/750dbf1cc97f472c2760c64b05cf8fcd9447bc5e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 2,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/fieldset/vl-fieldset.component.ts",
+          "libs/components/src/form/input-field/vl-input-field.component.ts",
+          "libs/components/src/form/input-field/vl-input-field.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": "### Describedby\n\nMet het `describedby` attribuut koppel je een extra beschrijving aan het veld voor gebruikers van een screenreader.\nVerwijs naar het `id` van een element in de light DOM; de tekst wordt overgenomen en via `aria-describedby`\ngekoppeld aan het veld. Handig wanneer visuele context (bv. een eenheid naast het veld) ook hoorbaar moet zijn. De\nkoppeling volgt latere tekstwijzigingen van het aangeduide element. Het bron-element krijgt automatisch\n`aria-hidden` (tenzij je het zelf al zette) zodat de beschrijving niet twee keer wordt voorgelezen.\n\n```html\n<vl-input-field label=\"Lengte\" describedby=\"eenheid\"></vl-input-field>\n<span aria-hidden=\"true\">m</span>\n<span class=\"vl-visually-hidden\" id=\"eenheid\">meter</span>\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

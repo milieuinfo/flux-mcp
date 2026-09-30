@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-512",
+  "entries": [
+    {
+      "id": "4c7e229",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-512"
+      ],
+      "scope": "vl-upload",
+      "components": [
+        "vl-upload"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "opladen van meerdere bestanden",
+      "text": "FLUX-512 - vl-upload - opladen van meerdere bestanden",
+      "commits": [
+        {
+          "sha": "4c7e22958f94f67d3c0acaca2a7131c591c7c1fc",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4c7e22958f94f67d3c0acaca2a7131c591c7c1fc"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

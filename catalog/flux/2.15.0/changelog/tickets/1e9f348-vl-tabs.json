@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "1e9f348",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": "vl-tabs",
+      "components": [
+        "vl-tabs"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "type-only exports zodat Storybook/Vite de barrel kan laden",
+      "text": "vl-tabs - type-only exports zodat Storybook/Vite de barrel kan laden",
+      "commits": [
+        {
+          "sha": "1e9f348503589d9479cb74538eba99569f7948ff",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1e9f348503589d9479cb74538eba99569f7948ff"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De event-detail types werden als waarde ge(re-)exporteerd. Omdat het `export type`-declaraties zijn bestaan ze niet op runtime, waardoor Vite faalt met 'does not provide an export named TabClickEventDetail' zodra een story de next/tabs-barrel laadt. Types nu via import type / export type.",
+        "published": true,
+        "areas": {
+          "code": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/index.ts",
+          "libs/components/src/block/next/tabs/index.ts",
+          "libs/components/src/block/next/tabs/vl-tab-link.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

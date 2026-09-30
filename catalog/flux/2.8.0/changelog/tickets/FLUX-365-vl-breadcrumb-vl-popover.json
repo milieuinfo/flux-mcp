@@ -1,0 +1,107 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-365",
+  "entries": [
+    {
+      "id": "ff03a87",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-365"
+      ],
+      "scope": "vl-breadcrumb",
+      "components": [
+        "vl-breadcrumb"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "breadcrumb items als buttons",
+      "text": "FLUX-365 - vl-breadcrumb - breadcrumb items als buttons",
+      "commits": [
+        {
+          "sha": "ff03a8761876f1d4d42b040f0b3d88bbf84be384",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ff03a8761876f1d4d42b040f0b3d88bbf84be384"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "styles": 1,
+          "docs": 2,
+          "storybook": 3,
+          "examples": 1,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.component.ts",
+          "libs/components/src/block/breadcrumb/vl-breadcrumb-item.component.ts",
+          "libs/components/src/block/breadcrumb/vl-breadcrumb-item.model.ts",
+          "libs/components/src/block/breadcrumb/vl-breadcrumb.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-breadcrumb--documentatie",
+            "title": "Components - Block/breadcrumb/breadcrumb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+            "added": "## Varianten\n\n[…]\n\n### Breadcrumb met buttons\n\n[…]\n\nGebruik een breadcrumb met buttons voor interactieve breadcrumbs die bijvoorbeeld submenu's openen.\n\n[…]\n\nVermijd het gebruik van links en buttons binnen dezelfde breadcrumb component."
+          },
+          {
+            "id": "components-block-breadcrumb-breadcrumb-item--documentatie",
+            "title": "Components - Block/breadcrumb/breadcrumb-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-breadcrumb-breadcrumb-item--documentatie",
+            "added": "# Breadcrumb Item\n\n\nGebruik de `breadcrumb-item` component om een stap binnen de breadcrumbs weer te geven.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-breadcrumb-item></vl-breadcrumb-item>\n```\n\n\n\n## Configuratie\n\n\n## Varianten\n\n### Link breadcrumb item\n\nDit is de default variant. Type `link` kan weggelaten worden.\nHet wordt automatisch als link weergegeven wanneer er een `href` attribuut wordt meegegeven.\n\n\n### Button breadcrumb item\n\nIndien je onderliggend een button wenst te gebruiken, kan je het type `button` gebruiken.\nEen `@click` handler is in dat geval vereist.\n\nVermijd het gebruik van links en buttons binnen dezelfde breadcrumb component.\n\n\n### Text breadcrumb item\n\nIndien je een breadcrumb item wenst weer te geven zonder link of button, kan je het type `text` gebruiken.\nDit is bijvoorbeeld handig voor het weergeven van de huidige pagina.\nIndien je zowel `type` als `href` weglaat, wordt het item automatisch als text weergegeven."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dcf4449",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-365"
+      ],
+      "scope": "vl-popover",
+      "components": [
+        "vl-popover"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG - button als referentie element",
+      "text": "FLUX-365 - vl-popover - WCAG - button als referentie element",
+      "commits": [
+        {
+          "sha": "dcf44497b1531d96c88094aff574e3f4baa3de70",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/dcf44497b1531d96c88094aff574e3f4baa3de70"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover-action-list.component.ts",
+          "libs/components/src/block/popover/vl-popover-action.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

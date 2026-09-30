@@ -1,0 +1,89 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-568",
+  "entries": [
+    {
+      "id": "6329fba",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-568"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "migratie faq uitgebreid",
+      "text": "FLUX-568 - migratie faq uitgebreid",
+      "commits": [
+        {
+          "sha": "6329fba722a252b51d698e87e7667dc85e012dcb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6329fba722a252b51d698e87e7667dc85e012dcb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "## Inhoudstafel\n\n- [Kan ik direct importeren of moet ik de registerWebComponents functie gebruiken?](#kan-ik-direct-importeren-of-moet-ik-de-registerwebcomponents-functie-gebruiken)\n- [Blijft de fat-js bundel beschikbaar?](#blijft-de-fat-js-bundel-beschikbaar)\n- [CSS import met ?raw werkt niet in Webpack. Wat ontbreekt er?](#css-import-met-raw-werkt-niet-in-webpack-wat-ontbreekt-er)\n- [Hoe komt dat klasses die in Web Universum v3 staan, niet meer beschikbaar zijn?](#hoe-komt-dat-klasses-die-in-web-universum-v3-staan-niet-meer-beschikbaar-zijn)\n- [vl-u-visually-hidden werkt niet meer.](#vl-u-visually-hidden-werkt-niet-meer)\n- [De event listeners werken niet meer.](#de-event-listeners-werken-niet-meer)\n- [Attributen-wijzigingen.](#attributen-wijzigingen)\n- [Eigen stylesheet instellen werkt niet?](#eigen-stylesheet-instellen-werkt-niet)\n- [Wat is de impact op vl-grid?](#wat-is-de-impact-op-vl-grid)\n- [data-vl-no-space-top op een section werkt niet meer.](#data-vl-no-space-top-op-een-section-werkt-niet-meer)\n- [De form validation error message verschijnt niet. Wat kan de oorzaak zijn?](#de-form-validation-error-message-verschijnt-niet-wat-kan-de-oorzaak-zijn)\n- [Na het verwijderen van de data-vl- prefix zijn er zaken gebroken. Hoe kan dit?](#na-het-verwijderen-van-de-data-vl-prefix-zijn-er-zaken-gebroken-hoe-kan-dit)\n\n[…]\n\n## CSS import met ?raw werkt niet in Webpack. Wat ontbreekt er?\n\n**Probleem:** Imports zoals `import varsCss from './vl-vars.raw.css?raw'` falen of geven geen string terug.\n\n**Oplossing:** Zorg dat Webpack 5 een aparte rule heeft voor `?raw`, zodat CSS als string ingelezen wordt:\n\n```js\n// webpack.config.js\nmodule.exports = {\n  module: {\n    rules: [\n      {\n        test: /\\.css$/i,\n        resourceQuery: /raw/, // matcht ?raw\n        type: 'asset/source', // geeft file-inhoud als string terug\n      },\n      {\n        test: /\\.css$/i,\n        use: ['style-loader', 'css-loader'], // normale CSS verwerking\n      },\n    ],\n  },\n};\n```\n\nIndien je TypeScript gebruikt, voeg dan ook een module-declaratie toe:\n\n```ts\ndeclare module '*.css?raw' {\n    const content: string;\n    export default content;\n}\n```\n\n[…]\n\n## vl-u-visually-hidden werkt niet meer.\n\n[…]\n\n## Attributen-wijzigingen.\n\n[…]\n\n## data-vl-no-space-top op een section werkt niet meer.\n\n[…]\n\n## Na het verwijderen van de data-vl- prefix zijn er zaken gebroken. Hoe kan dit?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bd255ce",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-568"
+      ],
+      "scope": "vl-tooltip",
+      "components": [
+        "vl-tooltip"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "migratie impact gedocumenteerd",
+      "text": "FLUX-568 - vl-tooltip - migratie impact gedocumenteerd",
+      "commits": [
+        {
+          "sha": "bd255ce6fe47c84d0fcad639b382d0bf49654a7a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bd255ce6fe47c84d0fcad639b382d0bf49654a7a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "### Tooltip\n\nDe `Tooltip` is verwijderd in v2.0.0 en opnieuw beschikbaar vanaf v2.7.0, maar de API is gewijzigd.\n    In v1 werd de trigger impliciet bepaald door de context; in v2.7.0 is `for` verplicht en verwijs je expliciet naar het `id` van het trigger-element.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v1 - Artifact</th>\n        <th>v1 - Gebruik</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>\n            <a href={`${v1StorybookLink}/docs/components-tooltip--documentatie`}\n            >Tooltip</a>\n        </td>\n        <td>impact</td>\n        <td>components</td>\n        <td><code>{`<vl-tooltip data-vl-placement=\"top\" data-vl-static>...</vl-tooltip>`}</code></td>\n        <td>components/block</td>\n        <td><code>{`<vl-tooltip for=\"trigger-id\" placement=\"top\" open>...</vl-tooltip>`}</code></td>\n    </tr>\n</table>\n\nnieuw in v2.7.0:\n- `for` attribuut is verplicht om het trigger-element te koppelen\n- `data-vl-placement` en `data-vl-static` worden respectievelijk `placement` en `open`\n- extra configuratie via `distance`, `hide-arrow`, `strategy` en `type`"
+          }
+        ]
+      }
+    }
+  ]
+}

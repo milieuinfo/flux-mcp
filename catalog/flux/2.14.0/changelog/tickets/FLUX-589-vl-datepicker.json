@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-589",
+  "entries": [
+    {
+      "id": "ff79fff",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-589"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "min-date / max-date en 'today' ondersteuning",
+      "text": "FLUX-589 - vl-datepicker - min-date / max-date en 'today' ondersteuning",
+      "commits": [
+        {
+          "sha": "ff79fffa5179fb154a727058a188f5f13e1ba0c1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ff79fffa5179fb154a727058a188f5f13e1ba0c1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- helpers.ts: 'today' correct verwerkt in getDatepickerBoundary zodat rangeOverflow/rangeUnderflow validators werken met min-date/max-date=\"today\"\n- masks.ts: dateMin/dateMax uit Cleave.js verwijderd — mask beperkt zich tot formaatvalidatie, geen clamping\n- vl-datepicker.component.ts: createDateMask-aanroep vereenvoudigd\n- vl-datepicker.component.cy.ts: validatietests voor rangeOverflow/rangeUnderflow (date + today), kalender-disable tests toegevoegd\n- stories-doc.mdx: sectie 'Min-date en Max-date' toegevoegd met uitleg over formaat en 'today', heading gecorrigeerd",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/helpers.ts",
+          "libs/components/src/form/datepicker/masks.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": "## Varianten\n\n### Static\n\n\n### Range\n\n\n### Time\n\n\n### Min-date en Max-date\n\nJe kan de selecteerbare datumrange beperken via de `min-date` en `max-date` attributen.\nDe waarde moet conform het ingestelde `format` zijn (standaard `d.m.Y`), of de speciale waarde `'today'` voor de huidige datum.\n\n> Met `format=\"d.m.Y\"` (standaard): `min-date=\"01.01.2019\"` en `max-date=\"31.12.2019\"`\n```html\n<vl-datepicker min-date=\"01.01.2019\" max-date=\"31.12.2019\"></vl-datepicker>\n```\n\n> Gebruik `'today'` om de huidige datum als grens in te stellen:\n```html\n<vl-datepicker min-date=\"today\"></vl-datepicker>\n```\n\n\n- Dagen buiten de opgegeven range worden uitgeschakeld in de kalender.\n- Ingetypte datums buiten de range worden gevalideerd via respectievelijk de `rangeUnderflow` en `rangeOverflow` ValidityState keys.\n\n### Date-time"
+          }
+        ]
+      }
+    }
+  ]
+}

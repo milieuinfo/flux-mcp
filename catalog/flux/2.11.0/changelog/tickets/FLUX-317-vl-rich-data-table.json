@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-317",
+  "entries": [
+    {
+      "id": "43b20de",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-317"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "enkel column-gap wanneer filter zichtbaar is",
+      "text": "FLUX-317 - vl-rich-data-table - enkel column-gap wanneer filter zichtbaar is",
+      "commits": [
+        {
+          "sha": "43b20dedc3c4063e89ecd0e5c6414fab9f58a7c3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/43b20dedc3c4063e89ecd0e5c6414fab9f58a7c3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

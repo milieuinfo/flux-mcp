@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-532",
+  "entries": [
+    {
+      "id": "7b9696a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-532"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-532 - vl-datepicker - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "7b9696a0f273963c9fee9c4be5990bd26956feda",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7b9696a0f273963c9fee9c4be5990bd26956feda"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - @domg/govflanders-style dependencies volledig verwijderd\n - vl-datepicker.component.raw.css aangemaakt met variabelen\n - vl-datepicker.component.css.ts aangemaakt met component styles\n - icon font definities toegevoegd (.vl-vi-calendar, .vl-vi-clock)\n - vl-datepicker.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - duplicate :root en .vl-vi blokken verwijderd\n - :host block toegevoegd met datepicker-specifieke CSS variabelen\n - hardcoded kleuren vervangen door shared design system variabelen (--vl-color-*)\n - verbeterde organisatie met section comments\n\n Cypress component testen:\n  - geherstructureerd en uitgebreid\n  - georganiseerd in 9 logische blokken (basic, properties, dates, constraints, calendar, events, form, accessibility, keyboard, edge cases, interaction, mobile)\n  - image snapshots toegevoegd voor visuele regressie testing\n  - mobiele test duplicatie verwijderd",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 3,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-datepicker.component.css.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.raw.css",
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

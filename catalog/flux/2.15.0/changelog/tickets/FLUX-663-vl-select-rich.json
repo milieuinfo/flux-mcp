@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-663",
+  "entries": [
+    {
+      "id": "7e1a004",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-663"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-change-event"
+      ],
+      "summary": "setSelectedValues() dispatcht nu vl-change-event",
+      "text": "FLUX-663 - vl-select-rich - setSelectedValues() dispatcht nu vl-change-event",
+      "commits": [
+        {
+          "sha": "7e1a0049b0386ad6bdc6b900f4812231bd687d7e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7e1a0049b0386ad6bdc6b900f4812231bd687d7e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

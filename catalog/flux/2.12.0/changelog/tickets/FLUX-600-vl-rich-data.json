@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-600",
+  "entries": [
+    {
+      "id": "97431ab",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-600"
+      ],
+      "scope": "vl-rich-data",
+      "components": [
+        "vl-rich-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "filter niet sluiten op submit",
+      "text": "FLUX-600 - vl-rich-data - filter niet sluiten op submit",
+      "commits": [
+        {
+          "sha": "97431ab24e804b46523438f70327990b91efd8b0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/97431ab24e804b46523438f70327990b91efd8b0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

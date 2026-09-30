@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.10.1",
+  "ticket": "FLUX-27",
+  "entries": [
+    {
+      "id": "2c3d907",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-27"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "storybook verbeterd",
+      "text": "FLUX-27 - vl-side-navigation-next - storybook verbeterd",
+      "commits": [
+        {
+          "sha": "2c3d907cf4d8a7f1c0eae4a07557eacf8952f1af",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2c3d907cf4d8a7f1c0eae4a07557eacf8952f1af"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation-layout--documentatie",
+            "title": "Components - Block/next/side-navigation-layout",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.1/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-next-side-navigation-next--documentatie",
+            "title": "Components - Block/next/side-navigation-next",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.1/storybook/?path=/docs/components-block-next-side-navigation-next--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

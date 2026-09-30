@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-254",
+  "entries": [
+    {
+      "id": "8ef7f42",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-254"
+      ],
+      "scope": "vl-pager",
+      "components": [
+        "vl-pager"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen",
+      "text": "FLUX-254 - vl-pager - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "8ef7f426fbca411048cdc3d92bbba109ffd0fc07",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8ef7f426fbca411048cdc3d92bbba109ffd0fc07"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 4,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/pager/vl-pager.component.ts",
+          "libs/components/src/block/pager/vl-pager.flux-css.ts",
+          "libs/styles/src/base/mixin/vl-accessibility.css.ts",
+          "libs/styles/src/index.ts",
+          "libs/styles/src/layout/accessibility/vl-accessibility-styles.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

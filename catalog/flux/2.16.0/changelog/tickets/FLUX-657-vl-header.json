@@ -1,0 +1,74 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-657",
+  "entries": [
+    {
+      "id": "1413ae5",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-657"
+      ],
+      "scope": "vl-header",
+      "components": [
+        "vl-header"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "banner landmark herkenbaar voor screenreaders",
+      "text": "FLUX-657 - vl-header - banner landmark herkenbaar voor screenreaders",
+      "commits": [
+        {
+          "sha": "1413ae59481fe136ed5a0503bc922944b3e15156",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1413ae59481fe136ed5a0503bc922944b3e15156"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "+ consumer-fat-lib - vl-accessibility in main wrappen tegen dubbele banner landmark",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 4,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/header/vl-header.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-cascader-cascader--documentatie",
+            "title": "Components - Block/cascader/cascader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+            "added": "## Toegankelijkheid\n\n{`\n    Plaats deze component binnen een \\`<main>\\`, \\`<section>\\`, \\`<article>\\` of \\`<aside>\\`, zodat\n    de interne \\`<header>\\` geen impliciete banner-role krijgt. De banner-role is voorbehouden voor\n    de globale \\`<vl-header>\\` en moet uniek zijn per pagina.\n`}"
+          },
+          {
+            "id": "components-block-content-header--documentatie",
+            "title": "Components - Block/content-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-content-header--documentatie",
+            "added": "## Toegankelijkheid\n\n{`\n    Plaats deze component binnen een \\`<main>\\`, \\`<section>\\`, \\`<article>\\` of \\`<aside>\\`, zodat\n    de interne \\`<header>\\` geen impliciete banner-role krijgt. De banner-role is voorbehouden voor\n    de globale \\`<vl-header>\\` en moet uniek zijn per pagina.\n`}"
+          },
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "{`\n    Plaats deze component binnen een \\`<main>\\`, \\`<section>\\`, \\`<article>\\` of \\`<aside>\\`, zodat\n    de interne \\`<header>\\` geen impliciete banner-role krijgt. De banner-role is voorbehouden voor\n    de globale \\`<vl-header>\\` en moet uniek zijn per pagina.\n`}"
+          },
+          {
+            "id": "components-block-wizard-wizard--documentatie",
+            "title": "Components - Block/wizard/wizard",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-wizard-wizard--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

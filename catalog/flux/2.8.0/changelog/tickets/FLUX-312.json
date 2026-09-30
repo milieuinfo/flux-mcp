@@ -1,0 +1,821 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-312",
+  "entries": [
+    {
+      "id": "af2b45a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-312"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "component kwaliteit in Storybook",
+      "text": "FLUX-312 - component kwaliteit in Storybook",
+      "commits": [
+        {
+          "sha": "af2b45af298c2ea04bb399dfa8b5f803db81fab1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/af2b45af298c2ea04bb399dfa8b5f803db81fab1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- capteren van de meta-data in .json bestanden\n- onder 'Bijdragen' een 'Componenten Overzicht'\n- badge's op de component detail pagina's",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "docs": 128,
+          "storybook": 38,
+          "tests": 12,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/grid/vl-grid.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "De `data-vl-is-stacked...` attributen op `vl-grid` kunnen vervangen worden door de stacked classes: `vl-stacked-...`. Zie [Stacked](/docs/styles-layout-stacked--documentatie).\n\n[…]\n\nCheck voor meer informatie de [vl-grid documentatie](/docs/styles-layout-grid--documentatie)."
+          },
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "        <td>[Content Block](/docs/styles-layout-content-block--documentatie)</td>\n\n[…]\n\n        <td>[Grid](/docs/styles-layout-grid--documentatie)</td>\n\n[…]\n\n        <td>[Grid Column](/docs/styles-layout-grid--documentatie#column-opzet)</td>\n\n[…]\n\n        <td>[Grid](/docs/styles-layout-grid--documentatie)</td>\n\n[…]\n\n        <td>[Grid Column](/docs/styles-layout-grid--documentatie#column-opzet)</td>\n\n[…]\n\n        <td>[Group](/docs/styles-layout-group--documentatie)</td>\n\n[…]\n\n        <td>[Input Group](/docs/styles-layout-group--documentatie#input-group)</td>\n\n[…]\n\n        <td>[Margin](/docs/styles-layout-margin--documentatie)</td>\n\n[…]\n\n        <td>[Padding](/docs/styles-layout-padding--documentatie)</td>\n\n[…]\n\n        <td>[Section](/docs/styles-layout-section--documentatie)</td>\n\n[…]\n\n        <td>[Separator](/docs/styles-layout-separator--documentatie)</td>\n\n[…]\n\n        <td>[Spacer](/docs/styles-layout-spacer--documentatie)</td>\n\n[…]\n\n        <td>[Stacked](/docs/styles-layout-stacked--documentatie)</td>"
+          },
+          {
+            "id": "bijdragen-componenten-overzicht--documentatie",
+            "title": "Bijdragen/Componenten Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/bijdragen-componenten-overzicht--documentatie",
+            "added": "# Componenten Overzicht"
+          },
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": "## Doel\n\n[…]\n\nvoor het uitvoeren van een belangrijke actie, bv.:\n-   een link, die in een overzicht van objecten, wijst naar een formulier om een nieuw object aan te maken\n-   de \"Begin hier\" link in een onboarding flow\n-   bij \"Registreer\" of \"Maak een account aan\"\n\n[…]\n\nform gebruikt worden"
+          },
+          {
+            "id": "components-atom-button-style--documentatie",
+            "title": "Components - Atom/button-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-button-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-heading-style--documentatie",
+            "title": "Components - Atom/heading-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-heading-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-icon--documentatie",
+            "title": "Components - Atom/icon",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-icon--documentatie",
+            "added": "## Doel\n\n[…]\n\nZie het [overzicht](#overzicht) onderaan voor alle beschikbare iconen."
+          },
+          {
+            "id": "components-atom-icon-style--documentatie",
+            "title": "Components - Atom/icon-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-icon-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-atom-link-style--documentatie",
+            "title": "Components - Atom/link-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-link-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-paragraph--documentatie",
+            "title": "Components - Atom/paragraph",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-paragraph--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-atom-paragraph-style--documentatie",
+            "title": "Components - Atom/paragraph-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-paragraph-style--documentatie",
+            "added": "De `paragraph` CSS voorziet specifieke styling voor paragrafen. Het doel is deze implementatie te embedden in de css"
+          },
+          {
+            "id": "components-atom-text--documentatie",
+            "title": "Components - Atom/text",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-text--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-atom-title--documentatie",
+            "title": "Components - Atom/title",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-atom-title--documentatie",
+            "added": "## Doel\n\n[…]\n\nDeze component geniet de voorkeur boven het oude [vl-title](/docs/elements-title-h1--documentatie) element."
+          },
+          {
+            "id": "components-block-accordion--documentatie",
+            "title": "Components - Block/accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-accordion--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-autocomplete--documentatie",
+            "title": "Components - Block/autocomplete",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-breadcrumb--documentatie",
+            "title": "Components - Block/breadcrumb/breadcrumb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-breadcrumb-breadcrumb-item--documentatie",
+            "title": "Components - Block/breadcrumb/breadcrumb-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-breadcrumb-breadcrumb-item--documentatie",
+            "added": "Dit is de default variant. Type `link` kan weggelaten worden.\n\n[…]\n\nIndien je onderliggend een button wenst te gebruiken, kan je het type `button` gebruiken."
+          },
+          {
+            "id": "components-block-cascader-cascader--documentatie",
+            "title": "Components - Block/cascader/cascader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-content-header--documentatie",
+            "title": "Components - Block/content-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-content-header--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-document--documentatie",
+            "title": "Components - Block/document",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-document--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-doormat--documentatie",
+            "title": "Components - Block/doormat",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-doormat--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "## Doel\n\n[…]\n\n    - De ingestelde URL verwijst naar een vast en logisch startpunt,\n\n[…]\n\n      van het huidige luik.\n\n[…]\n\n- \"Terug\" moet vermeden worden als naam, want het zegt niet naar waar je terugkeert.\n\n[…]\n\n- Indien de functional header \"breadcrumbs\" bevat ipv een \"Terug\"-link,\n  zoals in de [breadcrumbs variant](#met-breadcrumb), dan wijst de eerste link altijd naar het \"startpunt\" van de\n\n[…]\n\n- Vergeet de \"Terug\"-link ook niet in te stellen op de statische pagina's:\n  [privacy](/docs/components-compliance-privacy--documentatie),\n  [toegankelijkheid](/docs/components-compliance-accessibility--documentatie) en\n  [cookieverklaring](/docs/components-compliance-cookie-statement--documentatie).\n\n[…]\n\n  met het `header`-slot.\n\n[…]\n\nbovenaan het scherm blijft plakken wanneer je naar beneden scrollt. Indien er een side navigation aanwezig is op de"
+          },
+          {
+            "id": "components-block-http-error-message--documentatie",
+            "title": "Components - Block/http-error-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-http-error-message--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-infotext--documentatie",
+            "title": "Components - Block/infotext",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-infotext--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-input-slider--documentatie",
+            "title": "Components - Block/input-slider",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-input-slider--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-pill--documentatie",
+            "title": "Components - Block/pill",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-pill--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": "## Doel\n\n[…]\n\nHet doel van de popover is het bouwen van context- of submenu's. Je kan deze menu's opbouwen a.d.h.v. de\n`vl-popover-action-list` en `vl-popover-action` componenten. De popover kan ook andere interactieve HTML-elementen\nbevatten."
+          },
+          {
+            "id": "components-block-progress-indicator--documentatie",
+            "title": "Components - Block/progress-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-progress-indicator--documentatie",
+            "added": "## Doel\n\n[…]\n\nvia de default `title` tooltip.\n\n[…]\n\nDe laatste stap neemt de beschikbare breedte in, naar gelang de breedte van het"
+          },
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-proza-message-proza-message--documentatie",
+            "title": "Components - Block/proza-message/proza-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-proza-message-proza-message--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-proza-message-proza-message-preloader--documentatie",
+            "title": "Components - Block/proza-message/proza-message-preloader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-proza-message-proza-message-preloader--documentatie",
+            "added": "## Doel\n\n[…]\n\n## Voorbeeld"
+          },
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-search-filter--documentatie",
+            "title": "Components - Block/search-filter",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-search-filter--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-search-result--documentatie",
+            "title": "Components - Block/search-result",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-search-result--documentatie",
+            "added": "## Doel\n\n[…]\n\n[Group](/docs/styles-layout-group--documentatie) layout."
+          },
+          {
+            "id": "components-block-share-buttons-share-button--documentatie",
+            "title": "Components - Block/share-buttons/share-button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-share-buttons-share-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-share-buttons-share-buttons--documentatie",
+            "title": "Components - Block/share-buttons/share-buttons",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-share-buttons-share-buttons--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": "## Doel\n\nGebruik de `steps` component om een verticale lijst van stappen af te beelden om de gebruiker door een procedure te\nbegeleiden.<br/>"
+          },
+          {
+            "id": "components-block-table--documentatie",
+            "title": "Components - Block/table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-table--documentatie",
+            "added": "    {`\n\n[…]\n\n## Doel\n\nGebruik de `table` component om op een gestructureerde manier (grote hoeveelheden) relationele data te tonen."
+          },
+          {
+            "id": "components-block-tabs-tabs--documentatie",
+            "title": "Components - Block/tabs/tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-tabs-tabs--documentatie",
+            "added": "## Doel\n\nGebruik de `tabs` component om gerelateerde informatie op te splitsen in kleinere stukken content.\nOp mobiel wordt de tab navigatie omgevormd tot een uitklapbaar menu."
+          },
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-tooltip--documentatie",
+            "title": "Components - Block/tooltip",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-tooltip--documentatie",
+            "added": "## Doel\n\nEen tooltip is een klein contextueel venster dat verschijnt wanneer de gebruiker over een element hovert of het\nelement focust. Gebruik een tooltip om korte bijkomende informatie te tonen.\n\n[…]\n\nOm te vermijden dat de tooltip gepositioneerd wordt tegenover het verkeerde element, kan je best de eerste parent van\n\n[…]\n\nEen tooltip kan dienst doen als \"label\" van de trigger knop of als extra \"description\" voor de trigger. Dit bepaalt of\nde trigger een `aria-labelledby` of `aria-describedby` attribuut krijgt. Standaard gaan we uit van \"description\".\nIndien de trigger al een `aria-label` heeft wordt \"label\" genegeerd. Voor een patroon waarbij een\nbutton enkel een icoon bevat, raden we de default variant aan met `<vl-button label=\"Mijn aria label\">`."
+          },
+          {
+            "id": "components-block-typography--documentatie",
+            "title": "Components - Block/typography",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-typography--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-video-player--documentatie",
+            "title": "Components - Block/video-player",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-video-player--documentatie",
+            "added": "## Doel\n\n[…]\n\nDeze component is de nieuwe versie van het [vl-video-player](/docs/elements-video-player--documentatie) element, we raden aan om op termijn deze versie\nte gebruiken."
+          },
+          {
+            "id": "components-block-wizard-wizard--documentatie",
+            "title": "Components - Block/wizard/wizard",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-wizard-wizard--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-block-wizard-wizard-pane--documentatie",
+            "title": "Components - Block/wizard/wizard-pane",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-wizard-wizard-pane--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-compliance-accessibility--documentatie",
+            "title": "Components - Compliance/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-accessibility--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-compliance-cookie-consent--documentatie",
+            "title": "Components - Compliance/cookie-consent",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-cookie-consent--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-compliance-cookie-statement--documentatie",
+            "title": "Components - Compliance/cookie-statement",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-cookie-statement--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-compliance-footer--documentatie",
+            "title": "Components - Compliance/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+            "added": "## Doel\n\n[…]\n\nVoor het consistent gebruik van de footer doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n[…]\n\n>   **[app-name] is een officiële website van de Vlaamse overheid**\n>    uitgegeven door Departement Omgeving\n\n[…]\n\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit"
+          },
+          {
+            "id": "components-compliance-footer-next--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-footer-next--documentatie",
+            "added": "## Doel\n\n[…]\n\nVoor het consistent gebruik van de footer doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n[…]\n\n>   **[app-name] is een officiële website van de Vlaamse overheid**\n>    uitgegeven door Departement Omgeving\n\n[…]\n\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit"
+          },
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": "## Doel\n\n[…]\n\nVoor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n[…]\n\n- Onder **\"Hulp nodig?\"** komt de tekst: **\"Neem contact op met Departement Omgeving\"**, gevolgd door verschillende\n\n[…]\n\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit"
+          },
+          {
+            "id": "components-compliance-header-next--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-header-next--documentatie",
+            "added": "## Doel\n\n[…]\n\nVoor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n[…]\n\n- Onder **\"Hulp nodig?\"** komt de tekst: **\"Neem contact op met Departement Omgeving\"**, gevolgd door verschillende\n\n[…]\n\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit"
+          },
+          {
+            "id": "components-compliance-privacy--documentatie",
+            "title": "Components - Compliance/privacy",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-compliance-privacy--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": "## Doel\n\nGebruik de `checkbox` component om de gebruiker de mogelijkheid te geven om 1 of meerdere dingen te selecteren in een\nlijst.<br/>"
+          },
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-form-label--documentatie",
+            "title": "Components - Form/form-label",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-form-label--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-input-field-masked--documentatie",
+            "title": "Components - Form/input-field-masked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-input-field-masked--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-input-group--documentatie",
+            "title": "Components - Form/input-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-input-group--documentatie",
+            "added": "## Doel\n\nDe `Input Group` combineert een `Input Field` met een `Button`. Deze combinatie kan eender waar\ngebruikt worden, het moet niet persé in een formulier! `Input Group` is geen aparte component:\n[Group](/docs/styles-layout-group--documentatie), [Button](/docs/components-atom-button--documentatie)\nen [Input Field](/docs/components-form-input-field--documentatie) kunnen in de juiste toestand gebracht worden om"
+          },
+          {
+            "id": "components-form-radio-group--documentatie",
+            "title": "Components - Form/radio-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-radio-group--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": "## Doel\n\n[…]\n\n[Documentatie Digitaal Vlaanderen - Select](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-select)\n\n[…]\n\n[Documentatie Digitaal Vlaanderen - Multiselect](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-multiselect)"
+          },
+          {
+            "id": "components-form-textarea--documentatie",
+            "title": "Components - Form/textarea",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-textarea--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-click-action--documentatie",
+            "title": "map/action/click-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-click-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-draw-action-draw-action-style--documentatie",
+            "title": "map/action/draw-action/draw-action-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-draw-action-draw-action-style--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-draw-action-draw-line-action--documentatie",
+            "title": "map/action/draw-action/draw-line-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-draw-action-draw-line-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-draw-action-draw-point-action--documentatie",
+            "title": "map/action/draw-action/draw-point-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-draw-action-draw-point-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-draw-action-draw-polygon-action--documentatie",
+            "title": "map/action/draw-action/draw-polygon-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+            "added": "## Doel\n\n[…]\n\nWanneer je op de kaart een ongeldige polygon tekent, bijvoorbeeld één die zichzelf kruist, dan krijgt deze standaard\neen rode \"invalid\" stijl."
+          },
+          {
+            "id": "map-action-draw-action-measure-action--documentatie",
+            "title": "map/action/draw-action/measure-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-draw-action-measure-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-layer-action-delete-action--documentatie",
+            "title": "map/action/layer-action/delete-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-layer-action-delete-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-layer-action-modify-action--documentatie",
+            "title": "map/action/layer-action/modify-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-layer-action-modify-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-layer-action-select-action--documentatie",
+            "title": "map/action/layer-action/select-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-layer-action-select-action--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "title": "map/action/layer-action/select-action/multiselect-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-action-layer-action-select-action-select-actions--documentatie",
+            "title": "map/action/layer-action/select-action/select-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-action-layer-action-select-action-select-actions--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-baselayer--documentatie",
+            "title": "map/baselayer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-baselayer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-baselayer-baselayer-grb--documentatie",
+            "title": "map/baselayer/baselayer-grb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-baselayer-baselayer-grb--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-gray--documentatie",
+            "title": "map/baselayer/baselayer-grb-gray",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-baselayer-baselayer-grb-gray--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-ortho--documentatie",
+            "title": "map/baselayer/baselayer-grb-ortho",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-baselayer-baselayer-grb-ortho--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-controls-action-control--documentatie",
+            "title": "map/controls/action-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-controls-action-control--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-controls-action-controls--documentatie",
+            "title": "map/controls/action-controls",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-controls-action-controls--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-controls-measure-control--documentatie",
+            "title": "map/controls/measure-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-current-location--documentatie",
+            "title": "map/current-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-current-location--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-style--documentatie",
+            "title": "map/layer-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-style--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-style-layer-circle-style--documentatie",
+            "title": "map/layer-style/layer-circle-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-switcher--documentatie",
+            "title": "map/layer-switcher",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-vector-layer-features-layer--documentatie",
+            "title": "map/layer/vector-layer/features-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-vector-layer-wfs-layer--documentatie",
+            "title": "map/layer/vector-layer/wfs-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-wms-layer-image-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/image-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-wms-layer-image-wms-layer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/tiled-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-wms-layer-wms-style--documentatie",
+            "title": "map/layer/wms-layer/wms-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-wms-layer-wms-style--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/xyz-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-layer-wmts-layer--documentatie",
+            "title": "map/layer/wmts-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-legend--documentatie",
+            "title": "map/legend",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-legend--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-legend-item--documentatie",
+            "title": "Map/legend-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-legend-item--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-loading-indicator--documentatie",
+            "title": "map/loading-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-loading-indicator--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-map--documentatie",
+            "added": "## Doel\n\n[…]\n\nIn het kader van de transitie naar het Lambert 2008 coördinatenstelsel, hebben we ervoor gekozen om te starten met een\nopt-in voor Lambert 2008. In een volgende versie wordt dit de default. Om kaarten en kaartlagen weer te geven als\nLambert 2008 kan je het attribuut `lambert2008` toevoegen:\n\n[…]\n\nIndien je vector kaartlagen (features en WFS) gebruikt met Lambert 72 coördinaten op een Lambert 2008 kaart, moet je de\nprojectie code `EPSG:31370` meegeven als attribuut op de kaartlaag. Geef je geen projectie code mee, dan zal de\n\n[…]\n\n    De client-side transformatie van Lambert 72 naar Lambert 2008 heeft een begrensde nauwkeurigheid van ~1m. Is cm\n\n[…]\n\nOm in te tekenen op een Lambert 2008 kaart moet een Lambert 2008 kaartlaag gebruikt worden, omwille van de\n\n[…]\n\nbeter uitgesteld tot wanneer het project ook Lambert 2008 data ondersteunt. De regel hierbij is dat het\n\n[…]\n\nWanneer je op de kaart een ongeldige geometrie tekent, bijvoorbeeld een zelf-kruisende polygoon, dan krijgt deze\nstandaard een rode \"invalid\" stijl. Indien je dit niet wenst kan je het\n\n[…]\n\nOm te controleren of een kaart 1 of meerdere ongeldige geometrieën bevat kan je de methode"
+          },
+          {
+            "id": "map-overview-map--documentatie",
+            "title": "map/overview-map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-overview-map--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-search--documentatie",
+            "title": "map/search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-search--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-select-location--documentatie",
+            "title": "map/select-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-select-location--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "map-side-sheet-side-sheet--documentatie",
+            "title": "map/side-sheet/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/map-side-sheet-side-sheet--documentatie",
+            "added": "## Doel"
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": "Maak voor het opbouwen van de grid structuur gebruik van de [vl-grid classes](/docs/styles-layout-grid--documentatie).<br/>"
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "added": "We gebruiken een [vl-button](/docs/components-atom-button--documentatie) component gecombineerd met de [vl-group](/docs/styles-layout-group--documentatie) stijl om een actie knop rechts uit te lijnen naast een breadcrumb of andere variant.\n\n[…]\n\n- [vl-group](/docs/styles-layout-group--documentatie)"
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "added": "We gebruiken een [vl-search](/docs/components-block-search--documentatie) component gecombineerd met de [vl-group](/docs/styles-layout-group--documentatie) stijl om een zoekveld rechts uit te lijnen naast een breadcrumb of andere variant.\n\n[…]\n\n- [vl-group](/docs/styles-layout-group--documentatie)"
+          },
+          {
+            "id": "planning-componenten-overzicht--documentatie",
+            "title": "Planning/Componenten Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/planning-componenten-overzicht--documentatie",
+            "added": "# Componenten Overzicht"
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "# Van v2 naar v3 - beschikbaar\n\n## Inhoudstafel\n\n- [Aanpak](#aanpak)\n- [Geïmpacteerde Web Componenten](#geïmpacteerde-web-componenten)\n\n\n## Aanpak\n\nOp deze pagina vind je een overzicht van de web componenten die geïmpacteerd zijn door de migratie van\nv2 naar v3 en die reeds beschikbaar zijn.\n\nHieronder vind je alfabetisch, per component, een tabel met daarin een overzicht van wat er in v2 en v3\nbeschikbaar is (zal zijn), je kan doorklikken op de naam om naar de documentatie van die component te gaan.\n\n- elke component is ontdubbeld, de legacy variant staat in een donkere rij, de next variant in de erop volgende\nwitte rij\n- voor de next variant staat gespecifieerd sinds welke release hij beschikbaar is\n- typisch hebben de legacy en de next variant dezelfde naam, maar niet altijd\n- momenteel zijn er enkel v1 en v2 releases, wat er zal gebeuren in v3 is informatief; er is nog geen v3 beschikbaar\n\n\n## Geïmpacteerde Web Componenten\n\n### Footer\n\n`Footer [legacy]` wordt vervangen door `Footer [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Footer [legacy]](/docs/components-compliance-footer--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Footer [next]](/docs/components-compliance-footer-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-footer-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n    </tr>\n</table>\n\n### Header\n\n`Header [legacy]` wordt vervangen door `Header [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Header [legacy]](/docs/components-compliance-header--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Header [next]](/docs/components-compliance-header-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-header-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "styles-base-body--documentatie",
+            "title": "Styles/Base (intern)/body",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-base-body--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-font--documentatie",
+            "title": "Styles/Base (intern)/font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-base-font--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-mixin--documentatie",
+            "title": "Styles/Base (intern)/mixin",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-base-mixin--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-var--documentatie",
+            "title": "Styles/Base (intern)/var",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-base-var--documentatie",
+            "added": "Hieronder volgt een overzicht van alle variabelen."
+          },
+          {
+            "id": "styles-kleurenpalet--documentatie",
+            "title": "Styles/Kleurenpalet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-kleurenpalet--documentatie",
+            "added": "Dit kleurenpalet is overgenomen van het\n\n[…]\n\nDe kleuren op deze pagina zijn globaal beschikbaar als CSS variabelen.\n\n[…]\n\n    colors={{\n        Primary: 'var(--vl-color--primary)',\n        'Primary 300': 'var(--vl-color--primary-300)',\n        'Primary 100': 'var(--vl-color--primary-100)',\n\n[…]\n\n    colors={{\n        Action: 'var(--vl-color--action)',\n\n[…]\n\n    colors={{\n\n[…]\n\n    colors={{\n        Default: 'var(--vl-color--border-default)',\n        Bold: 'var(--vl-color--border-bold)',\n        Disabled: 'var(--vl-color--border-disabled)',\n\n[…]\n\n    colors={{\n        Default: 'var(--vl-color--background-default)',\n        Subtle: 'var(--vl-color--background-subtle)',\n        'Bold/Disabled': 'var(--vl-color--background-bold)',\n\n[…]\n\n      Rand: 'var(--vl-color--border-success)',\n      Achtergrond: 'var(--vl-color--background-success-subtle)',\n\n[…]\n\n      Rand: 'var(--vl-color--border-warning)',\n      Achtergrond: 'var(--vl-color--background-warning-subtle)',\n\n[…]\n\n      Rand: 'var(--vl-color--border-error)',\n      Achtergrond: 'var(--vl-color--background-error-subtle)',\n\n[…]\n\n      Rand: 'var(--vl-color--border-primary)',\n      Achtergrond: 'var(--vl-color--background-primary-subtle)',\n\n[…]\n\n      Rand: 'var(--vl-color--border-action)',\n      Achtergrond: 'var(--vl-color--background-action-subtle)',\n\n[…]\n\n      Rand: 'var(--vl-color--border-default)',\n      Achtergrond: 'var(--vl-color--background-info-subtle)',\n\n[…]\n\n[Departement Omgeving](https://omgeving.vlaanderen.be/) heeft een eigen set van thematische kleuren.\n\n[…]\n\nGebruik in grafieken liefst één kleur met verschillende helderheid.\nDit vermijdt \"overlappende\" kleuren indien een persoon bepaalde kleuren niet kan zien.\n\n[…]\n\nKleur mag nooit het enige middel zijn om informatie over te brengen. Gebruik altijd een combinatie van kleur, tekst en\n\n[…]\n\nVoor de gecombineerde grafiekkleuren levert dat deze resultaten op."
+          },
+          {
+            "id": "styles-layout-accessibility--documentatie",
+            "title": "Styles/Layout (afnemers)/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-accessibility--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-content-block--documentatie",
+            "title": "Styles/Layout (afnemers)/content-block",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-content-block--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-grid--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-group--documentatie",
+            "title": "Styles/Layout (afnemers)/group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-group--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-margin--documentatie",
+            "title": "Styles/Layout (afnemers)/margin",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-margin--documentatie",
+            "added": "[vl-section](/docs/styles-layout-section--documentatie)."
+          },
+          {
+            "id": "styles-layout-padding--documentatie",
+            "title": "Styles/Layout (afnemers)/padding",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-padding--documentatie",
+            "added": "[vl-section](/docs/styles-layout-section--documentatie)."
+          },
+          {
+            "id": "styles-layout-section--documentatie",
+            "title": "Styles/Layout (afnemers)/section",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-section--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-separator--documentatie",
+            "title": "Styles/Layout (afnemers)/separator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-separator--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-spacer--documentatie",
+            "title": "Styles/Layout (afnemers)/spacer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-spacer--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-stacked--documentatie",
+            "title": "Styles/Layout (afnemers)/stacked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-layout-stacked--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

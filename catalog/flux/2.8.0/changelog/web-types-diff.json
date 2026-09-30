@@ -1,0 +1,1281 @@
+{
+  "base": "2.7.0",
+  "added": [
+    {
+      "element": "vl-progress-bar",
+      "category": "block",
+      "inChangelog": true,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-progress-bar--documentatie"
+    },
+    {
+      "element": "vl-tooltip",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-tooltip--documentatie"
+    },
+    {
+      "element": "vl-upload-progress",
+      "category": "block",
+      "inChangelog": true,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-upload-progress--documentatie"
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-accessibility",
+      "category": "compliance",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "evaluation",
+            "type": {
+              "before": null,
+              "after": "'EXPERT_EVALUATED' | 'SELF_EVALUATED' | 'NOT_EVALUATED'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-accordion",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "content-padding",
+            "type": {
+              "before": null,
+              "after": "'none' | 'small' | 'medium' | 'large'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "icon",
+            "type": {
+              "before": null,
+              "after": "'warning' | 'check' | 'info-circle'"
+            }
+          },
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'info' | 'success' | 'warning' | 'error'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-autocomplete",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "caption-format",
+            "type": {
+              "before": null,
+              "after": "'title-only' | 'subtitle-only' | 'value-only' | 'title-subtitle-vertical' | 'title-subtitle-horizontal' | 'subtitle-title-horizontal'"
+            }
+          },
+          {
+            "name": "group-by",
+            "type": {
+              "before": null,
+              "after": "'title' | 'subtitle'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-breadcrumb-item",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "type",
+            "description": "Type breadcrumb-item.",
+            "type": "'link' | 'button' | 'text'"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-button",
+      "category": "atom",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "icon-placement",
+            "type": {
+              "before": null,
+              "after": "'before' | 'after'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-checkbox",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "indeterminate",
+            "description": "Toont de indeterminate state van de checkbox. De switch-variant ondersteunt geen indeterminate state.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'date' | 'range' | 'time' | 'date-time'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-document",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "target",
+            "type": {
+              "before": null,
+              "after": "'_blank' | '_self' | '_parent' | '_top' | 'timeline' | 'question'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-functional-header",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "sticky",
+            "description": "Maakt de functional header sticky.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "margin-bottom",
+            "type": {
+              "before": null,
+              "after": "'none' | 'small' | 'medium' | 'large'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-icon",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "icon",
+            "type": {
+              "before": null,
+              "after": "'add' | 'addressbook' | 'airplane' | 'alarm-silent' | 'alarm' | 'alert-circle-filled' | 'alert-circle' | 'alert-small' | 'alert-triangle-filled' | 'alert-triangle' | 'align-center' | 'align-justify' | 'align-left' | 'align-right' | 'apple' | 'area' | 'arrange-1-to-9' | 'arrange-9-to-1' | 'arrange-a-to-z' | 'arrange-amount-large-to-small' | 'arrange-amount-small-to-large' | 'arrange-z-to-a' | 'arrow-bottom' | 'arrow-down-fat' | 'arrow-down-thin' | 'arrow-down' | 'arrow-freemove' | 'arrow-left-fat' | 'arrow-left-thin' | 'arrow-left' | 'arrow-right-fat' | 'arrow-right-thin' | 'arrow-right' | 'arrow-thin' | 'arrow-up-fat' | 'arrow-up-thin' | 'arrow-up' | 'arrow' | 'asterisk' | 'audio-description' | 'back' | 'ban' | 'banking-bill-euro' | 'battery-charging' | 'bell' | 'bike-closed-criterium' | 'bike-open-criterium' | 'bike' | 'bin' | 'binoculars' | 'boat-ship' | 'bold' | 'book' | 'bookmark-alt-1' | 'bookmark-alt-2' | 'bookmark' | 'breadcrumb-separator' | 'briefcase' | 'building-2' | 'building-big' | 'building' | 'bullet' | 'burger-alt' | 'burger' | 'burgerprofiel' | 'bus' | 'business-graph-bar' | 'business-graph-pie' | 'cabinet' | 'cake' | 'calculator' | 'calendar-add' | 'calendar-check' | 'calendar-subtract' | 'calendar' | 'calendar_check' | 'calendar_date' | 'camera' | 'car-wheel' | 'car' | 'chat-bubble-square-alert' | 'chat-bubble-square-alt' | 'chat-bubble-square' | 'chat-help' | 'chat' | 'check-circle' | 'check-filled' | 'check-naked' | 'check-shield' | 'check-small' | 'check-thin' | 'check' | 'child' | 'clock' | 'close-filled' | 'close-light' | 'close-naked' | 'close' | 'cloud-download' | 'cloud-upload' | 'cloud' | 'code-branch' | 'coffee-cup' | 'cog' | 'coin-stack' | 'compass' | 'computer-screen' | 'confluence' | 'construction-crane' | 'construction-shack' | 'contactbook' | 'contacts' | 'content-book-favorite-star' | 'content-book' | 'content-box' | 'content-filter' | 'content-layers-hide' | 'content-layers-show' | 'content-note' | 'content-view-column' | 'content-view-module' | 'contract' | 'control-cross-over' | 'copy-paste' | 'copyright' | 'credit-card' | 'crop' | 'cross-thin' | 'cross' | 'cursor-arrow-big' | 'cursor-arrow-small' | 'cursor-finger-down' | 'cursor-finger-left' | 'cursor-finger-right' | 'cursor-finger-up' | 'cursor-hand' | 'cursor-hold' | 'dashboard' | 'data-download' | 'data-transfer' | 'data-upload' | 'demonstration' | 'diagram' | 'direction-sign' | 'document-small' | 'document' | 'double-arrow' | 'download-harddisk' | 'drawer-down' | 'drawer' | 'drink-bottle' | 'eco-throw-trash' | 'edit' | 'eloket' | 'email-read' | 'email' | 'enlarge' | 'envelope' | 'expand-horizontal-alt' | 'expand-horizontal' | 'expand-vertical' | 'expand' | 'external' | 'face-id' | 'facebook' | 'faq' | 'fastback' | 'fastforward' | 'fax' | 'field' | 'file-audio' | 'file-copy' | 'file-download' | 'file-edit' | 'file-image' | 'file-new' | 'file-office-doc' | 'file-office-pdf' | 'file-office-ppt' | 'file-office-xls' | 'file-swap' | 'file-tasks-check' | 'file-upload' | 'file-video' | 'file-zipped-new' | 'file-zipped-vice' | 'file' | 'files-coding' | 'film' | 'fingerprint' | 'flickr' | 'focus' | 'folder' | 'font' | 'food-apple' | 'food-grain' | 'gender-female-male' | 'gender-female' | 'gender-male' | 'gender-transgender' | 'globe-alt' | 'globe' | 'google-play' | 'googleplus' | 'graduate' | 'graduation-hat' | 'hammer-anvil' | 'hammer' | 'hand-hint' | 'harddisk' | 'headphone' | 'health-first-aid-kit' | 'health-heart-pulse' | 'health-hospital' | 'hide' | 'hierarchy' | 'hotel-bath-shower' | 'hotel-bed' | 'hotel-fire-alarm' | 'hotel-shower' | 'hourglass' | 'id-card' | 'id' | 'images-copy' | 'images' | 'inbox' | 'indent-left' | 'indent-right' | 'info-circle' | 'info-filled' | 'info-naked' | 'info' | 'instagram' | 'ironing' | 'italic' | 'jira' | 'key' | 'keyboard' | 'laptop' | 'leisure-ticket' | 'lightbulb' | 'link-broken' | 'link' | 'linkedin' | 'list-add' | 'list-bullets-alt' | 'list-bullets' | 'list-numbers' | 'list' | 'loader' | 'location-direction-arrow' | 'location-gps' | 'location-map' | 'location' | 'lock-unlock' | 'lock' | 'login' | 'logout' | 'long-arrow' | 'magic-wand' | 'magnifier' | 'mail' | 'market' | 'menu' | 'messenger' | 'microphone-off' | 'microphone' | 'milk-carton' | 'minus-circle' | 'minus' | 'mobile-phone' | 'money-note' | 'move-down' | 'move-left-right' | 'move-up' | 'moving-elevator' | 'music-note' | 'nature-leaf' | 'nature-tree' | 'nav-down-double' | 'nav-down-light' | 'nav-down' | 'nav-left-double' | 'nav-left-light' | 'nav-left' | 'nav-right-double' | 'nav-right-light' | 'nav-right' | 'nav-show-more-horizontal' | 'nav-show-more-vertical' | 'nav-up-double' | 'nav-up-light' | 'nav-up' | 'news' | 'newsletter' | 'newspaper' | 'next' | 'organization-network' | 'other-annoyances-alt' | 'other-annoyances' | 'paint-brush' | 'paint-palette' | 'paper' | 'paperclip' | 'paperplane' | 'paragraph' | 'pause' | 'pencil-ruler' | 'pencil-write' | 'pencil' | 'pennants' | 'phone-incoming' | 'phone-off' | 'phone-outgoing' | 'phone-record' | 'phone-signal-low' | 'phone-speaker' | 'phone' | 'pick-up' | 'pin-paper' | 'pin' | 'pinterest' | 'places-factory' | 'places-home' | 'play' | 'playstreet' | 'plug' | 'plus-circle-filled' | 'plus-circle' | 'plus-naked' | 'plus' | 'power-button' | 'printer-view' | 'printer' | 'profile-active' | 'programming-bug' | 'programming-jigsaw' | 'publication' | 'question-mark-filled' | 'question-mark-naked' | 'question-mark-small' | 'question-mark' | 'question' | 'recreation' | 'reply-all' | 'reply' | 'rewards-certified-badge' | 'rewards-gift' | 'road-block' | 'road' | 'romance-marriage-license' | 'ruler' | 'safe' | 'save' | 'scaffold' | 'scan' | 'scissors' | 'search' | 'server' | 'settings' | 'share-megaphone' | 'share-rss-feed' | 'share' | 'shipping-truck' | 'shopping-basket-add' | 'shopping-basket-subtract' | 'shopping-basket' | 'shopping-cart' | 'shopping' | 'shrink' | 'sign-disable' | 'sign-recycle' | 'sitemap' | 'skype' | 'smiley-poker-face' | 'smiley-smile' | 'snapchat' | 'snippet' | 'sort' | 'speaker-volume-decrease' | 'speaker-volume-high' | 'speaker-volume-increase' | 'speaker-volume-low' | 'speaker-volume-medium' | 'speaker-volume-off' | 'sports-competition' | 'spotify' | 'stop' | 'subtract-filled' | 'subtract-naked' | 'subtract' | 'subway' | 'suitcase' | 'switches' | 'symbol-wifi-check' | 'symbol-wifi-close' | 'symbol-wifi' | 'synchronize-timeout' | 'synchronize' | 't-shirt' | 'tablet' | 'tag-add' | 'tag-check' | 'tag-close' | 'tag-double' | 'tag-edit' | 'tag-subtract' | 'tag-view' | 'tag' | 'taxi' | 'television' | 'terrace' | 'text-cursor' | 'text-eraser' | 'text-redo' | 'text-undo' | 'timeline' | 'tint' | 'train' | 'trash' | 'trophy' | 'twitter' | 'underline' | 'university' | 'up-down-arrows' | 'upload-harddisk' | 'usb' | 'user-alt' | 'user-box' | 'user-download' | 'user-email' | 'user-female' | 'user-group' | 'user-male' | 'user-reception' | 'user-redirect' | 'user-remove' | 'user-setting' | 'user-signup' | 'user' | 'vaccum-cleaner' | 'video-subtitle' | 'view-add' | 'view-hide' | 'vlaanderen' | 'vote-flag' | 'vote-heart' | 'vote-star-filled' | 'vote-star' | 'vote-thumbs-down' | 'vote-thumbs-up' | 'voucher-check' | 'voucher-download' | 'voucher-scissors' | 'vouchers-list' | 'wallet' | 'warning' | 'whatsapp' | 'whiskey-bottle-glass' | 'window-forward' | 'wrench' | 'www' | 'x' | 'youtube' | 'zoom-in' | 'zoom-out'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-info-tile",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "clickable",
+            "description": "Maakt de info-tile aanklikbaar. <br>Werkt niet in combinatie met `toggleable`-attribuut",
+            "default": "false"
+          },
+          {
+            "name": "clickable-label",
+            "description": "Stelt de aria-label in van de button die de info-tile aanklikbaar maakt. <br>Van belang voor WCAG wanneer het `clickable`-attribuut aanstaat.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "size",
+            "type": {
+              "before": null,
+              "after": "'small' | 'medium' | 'large'"
+            }
+          },
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'default' | 'alt' | 'warning' | 'error' | 'success'"
+            }
+          }
+        ]
+      },
+      "events": {
+        "added": [
+          {
+            "name": "vl-click-info-tile",
+            "description": "Event dat afgevuurd wordt als er op de info-tile wordt geklikt."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "mask",
+            "type": {
+              "before": null,
+              "after": "'iban' | 'rrn' | 'uuid' | 'date' | 'numerical' | 'price' | 'phone' | 'phoneinternational' | 'mobile'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "icon-placement",
+            "type": {
+              "before": null,
+              "after": "'before' | 'after'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-map-baselayer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "background-type",
+            "type": {
+              "before": null,
+              "after": "'xyz' | 'wms' | 'wmts' | 'vector'"
+            }
+          },
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'wmts' | 'wfs'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-map-baselayer-grb",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "background-type",
+            "type": {
+              "before": null,
+              "after": "'xyz' | 'wms' | 'wmts' | 'vector'"
+            }
+          },
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'wmts' | 'wfs'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-map-baselayer-grb-gray",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "background-type",
+            "type": {
+              "before": null,
+              "after": "'xyz' | 'wms' | 'wmts' | 'vector'"
+            }
+          },
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'wmts' | 'wfs'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-map-baselayer-grb-ortho",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "background-type",
+            "type": {
+              "before": null,
+              "after": "'xyz' | 'wms' | 'wmts' | 'vector'"
+            }
+          },
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'wmts' | 'wfs'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-map-legend",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "placement",
+            "type": {
+              "before": null,
+              "after": "'top_left' | 'top_right' | 'bottom_left' | 'bottom_right'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-map-side-sheet",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "icon-placement",
+            "type": {
+              "before": null,
+              "after": "'before' | 'after'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-pill",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'success' | 'warning' | 'error'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-popover",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "content-padding",
+            "type": {
+              "before": null,
+              "after": "'none' | 'small' | 'medium' | 'large'"
+            }
+          },
+          {
+            "name": "placement",
+            "description": "Voorkeursoriëntatie van de popover als de ruimte het toelaat. Je kan ook `-start` of `-end` suffix toevoegen zodat oriëntatie start of eindigt aan respectievelijk begin of einde van het trigger element.<br />[Raadpleeg de placement documentatie van floating-ui](https://floating-ui.com/docs/tutorial#placements).",
+            "type": {
+              "before": null,
+              "after": "'top' | 'right' | 'bottom' | 'left'"
+            }
+          },
+          {
+            "name": "trigger",
+            "type": {
+              "before": null,
+              "after": "'click' | 'focus' | 'hover'"
+            }
+          },
+          {
+            "name": "strategy",
+            "description": "Positioneringsstrategie van de popover.<br />[Raadpleeg de strategy documentatie van floating-ui](https://floating-ui.com/docs/computePosition#strategy).",
+            "type": {
+              "before": null,
+              "after": "'absolute' | 'fixed'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-progress-indicator",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "static-steps",
+            "description": "Gebruik het `static-steps` attribuut indien de stappen niet aanklikbaar zijn. Deze worden dan als `div` ipv als `button` gerenderd.",
+            "default": "false"
+          },
+          {
+            "name": "enable-future-steps",
+            "description": "Voorkomt het disablen van stappen na de huidige stap.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "no-clone",
+            "description": "Default wordt de inhoud van label en data ge-cloned: van de Light DOM naar de shadow DOM, met no-clone actief wordt de inhoud verplaatst.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "position",
+            "type": {
+              "before": null,
+              "after": "'auto' | 'top' | 'bottom'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "position",
+            "type": {
+              "before": null,
+              "after": "'auto' | 'top' | 'bottom'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-spotlight",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "size",
+            "type": {
+              "before": null,
+              "after": "'xs' | 's' | 'l'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-step",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "default-open",
+            "description": "Indien gezet zal de step standaard geopend zijn. Werkt enkel in combinatie met het `toggleable` attribuut. <br>Dit attribuut is niet reactief.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "type",
+            "type": {
+              "before": null,
+              "after": "'highlighted' | 'disabled' | 'success' | 'warning' | 'error'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-tabs",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "within-functional-header",
+            "description": "Duidt aan dat de tabs in de functional header gerenderd worden. Aan de hand van dit attribuut wordt de layout van de tabs licht aangepast.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "display-style",
+            "type": {
+              "before": null,
+              "after": "'default' | 'tabs' | 'collapsed'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-upload",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "sub-title",
+            "default": {
+              "before": "Sleep de bijlage naar hier om toe te voegen",
+              "after": "Sleep de bijlage naar hier om toe te voegen."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-accessibility",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-accordion",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-autocomplete",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "events": [
+        {
+          "name": "search",
+          "description": "Dit custom event wordt getriggerd wanneer de gebruiker karakters ingeeft in het tekstvak terwijl de component geen items heeft. Gebruik dit event wanneer je de suggestielijst wilt vullen met items uit een API-call. Bekijk de story \"WithInputAndApiCall\" voor meer details."
+        },
+        {
+          "name": "selected-autocomplete",
+          "description": "Dit custom event wordt getriggerd wanneer de gebruiker een item selecteert uit de suggestielijst. De geselecteerde waarde kan worden opgevraagd via het detail van het event."
+        }
+      ]
+    },
+    {
+      "element": "vl-breadcrumb",
+      "category": "block",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-button",
+      "category": "atom",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-cascader",
+      "category": "block",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-checkbox",
+      "category": "form",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-content-header",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-cookie-consent",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-cookie-statement",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-document",
+      "category": "block",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-doormat",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-footer",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": null,
+      "attributes": [
+        {
+          "name": "identifier",
+          "description": "De identifier die gebruikt wordt om bij Digitaal Vlaanderen de footer op te halen. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via het stappenplan van Digitaal Vlaanderen. <a href=\"https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Ga naar het stappenplan van Digitaal Vlaanderen (opent in een nieuw venster)\">Ga naar het stappenplan van Digitaal Vlaanderen.</a>"
+        }
+      ]
+    },
+    {
+      "element": "vl-form-label",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-form-message",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-functional-header",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "attributes": [
+        {
+          "name": "disable-back-link",
+          "description": "Schakelt de terug-link uit. Dit zorgt ervoor dat de terug-link gerenderd wordt als button in plaats van als link.<br/><br/> **Let op**: indien je dit attribuut gebruikt, moet je zelf het event `vl-click-back` afhandelen. Het `back-link` attribuut wordt genegeerd indien dit attribuut gebruikt wordt."
+        }
+      ],
+      "slots": [
+        {
+          "name": "back-link",
+          "description": "Wordt afgebeeld ipv de terug-link.<br>Kan niet in combinatie gebruikt worden met:<br>• back attribuut<br>• back-link attribuut<br>• disable-back-link <br>• back slot<br>• sub-header slot"
+        }
+      ]
+    },
+    {
+      "element": "vl-header",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": null,
+      "attributes": [
+        {
+          "name": "identifier",
+          "description": "De identifier die gebruikt wordt om bij Digitaal Vlaanderen de header op te halen. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via het stappenplan van Digitaal Vlaanderen. <a href=\"https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Ga naar het stappenplan van Digitaal Vlaanderen (opent in een nieuw venster)\">Ga naar het stappenplan van Digitaal Vlaanderen.</a>"
+        }
+      ]
+    },
+    {
+      "element": "vl-http-error-message",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-icon",
+      "category": "atom",
+      "inChangelog": true,
+      "description": null,
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Een beschrijvende tekst voor het icoon, wordt gebruikt door screenreaders. <br><br><strong>Opgelet</strong>: indien `label` niet meegegeven wordt, wordt het icoon als 'decoratief' beschouwd en zal het genegeerd worden door screenreaders, door middel van `aria-hidden`."
+        },
+        {
+          "name": "clickable",
+          "description": "**Deprecated**: De `clickable` property is deprecated wegens niet WCAG-compliant. Gebruik in de plaats een `vl-button` of `vl-link` met een icon."
+        }
+      ]
+    },
+    {
+      "element": "vl-info-tile",
+      "category": "block",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-infotext",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-input-field",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-input-slider",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": true,
+      "description": null,
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Vult het aria-label attribuut van de link in. Geef een duidelijke omschrijving mee van waar de link naartoe leidt. bv \"Ga naar Vlaanderen.be (opent in een nieuw venster)"
+        }
+      ]
+    },
+    {
+      "element": "vl-map",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-action-control",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-action-controls",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-baselayer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-baselayer-grb",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-baselayer-grb-gray",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-baselayer-grb-ortho",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-click-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-current-location",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-delete-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-draw-action-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-draw-line-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-draw-point-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-draw-polygon-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-features-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-image-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-layer-circle-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-layer-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-layer-switcher",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-legend",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-legend-item",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-loading-indicator",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-measure-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-measure-control",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-modify-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-multiselect-actions",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-overview-map",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-search",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-select-action",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-select-actions",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-side-sheet",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-tiled-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-wfs-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-wms-style",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-wmts-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-map-xyz-wms-layer",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-paragraph",
+      "category": "atom",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-popover",
+      "category": "block",
+      "inChangelog": true,
+      "description": null,
+      "attributes": [
+        {
+          "name": "distance",
+          "description": "Afstand van de popover tegenover het trigger element."
+        }
+      ]
+    },
+    {
+      "element": "vl-privacy",
+      "category": "compliance",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-progress-indicator",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-proza-message",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-proza-message-preloader",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-radio-group",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-rich-data-table",
+      "category": "block",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-search-filter",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-search-result",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-select",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-side-navigation",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-side-sheet",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-steps",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-table",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-tabs",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-text",
+      "category": "atom",
+      "inChangelog": true,
+      "description": null
+    },
+    {
+      "element": "vl-textarea",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-textarea-rich",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-title",
+      "category": "atom",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-toaster",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-upload",
+      "category": "form",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-video-player",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-wizard",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    },
+    {
+      "element": "vl-wizard-pane",
+      "category": "block",
+      "inChangelog": false,
+      "description": null
+    }
+  ]
+}

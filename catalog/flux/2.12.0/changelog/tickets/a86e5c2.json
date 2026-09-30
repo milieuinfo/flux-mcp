@@ -1,0 +1,38 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "a86e5c2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "de component testen loggen elke minuut dat ze nog bezig zijn",
+      "text": "de component testen loggen elke minuut dat ze nog bezig zijn",
+      "commits": [
+        {
+          "sha": "a86e5c288a61b94984f411961cbd495cd2231ac0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a86e5c288a61b94984f411961cbd495cd2231ac0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

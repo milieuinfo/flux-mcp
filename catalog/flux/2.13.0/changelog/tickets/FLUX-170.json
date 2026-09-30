@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-170",
+  "entries": [
+    {
+      "id": "51b392c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-170"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "verify-release op Bamboo",
+      "text": "FLUX-170 - verify-release op Bamboo",
+      "commits": [
+        {
+          "sha": "51b392cb3aded9300bd2cadab63612ad165183c5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/51b392cb3aded9300bd2cadab63612ad165183c5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "examples": 5,
+          "tests": 5,
+          "tooling": 6
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

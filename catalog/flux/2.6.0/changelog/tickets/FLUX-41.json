@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-41",
+  "entries": [
+    {
+      "id": "6ac44eb",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-41"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie voor stories zonder .mdx werken terug",
+      "text": "FLUX-41 - documentatie voor stories zonder .mdx werken terug",
+      "commits": [
+        {
+          "sha": "6ac44eb588b7fae023905e8cf1efba4ca1f40675",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6ac44eb588b7fae023905e8cf1efba4ca1f40675"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-description-data-description-data--documentatie",
+            "title": "Components - Block/description-data/description-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-document--documentatie",
+            "title": "Components - Block/document",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-document--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

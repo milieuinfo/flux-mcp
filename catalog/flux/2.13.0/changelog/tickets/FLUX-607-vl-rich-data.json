@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-607",
+  "entries": [
+    {
+      "id": "78c7c52",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-607"
+      ],
+      "scope": "vl-rich-data",
+      "components": [
+        "vl-rich-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "`filter-closable`-werking verbeterd",
+      "text": "FLUX-607 - vl-rich-data - `filter-closable`-werking verbeterd",
+      "commits": [
+        {
+          "sha": "78c7c52e37483006c86bc6859cedd45f724093a5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/78c7c52e37483006c86bc6859cedd45f724093a5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

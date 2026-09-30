@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-587",
+  "entries": [
+    {
+      "id": "aa8cfa9",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-587"
+      ],
+      "scope": "vl-doormat",
+      "components": [
+        "vl-doormat"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "full-height property toegevoegd",
+      "text": "FLUX-587 - vl-doormat - full-height property toegevoegd",
+      "commits": [
+        {
+          "sha": "aa8cfa9537fbc9ceec6f5dfa3f2d0bbdfdaff3cd",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/aa8cfa9537fbc9ceec6f5dfa3f2d0bbdfdaff3cd"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/doormat/vl-doormat.component.ts",
+          "libs/components/src/block/doormat/vl-doormat.css.ts",
+          "libs/components/src/block/doormat/vl-doormat.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-doormat--documentatie",
+            "title": "Components - Block/doormat",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-doormat--documentatie",
+            "added": "### Verticaal vullend\n\nDe doormat krijgt een hoogte van 100%. Dit werkt enkel wanneer de container een vaste hoogte heeft.\n\nDit kan je doen door bv. met een `vl-grid` layout werken, met meerdere doormat components als directe kinderen.\nVervolgens op elke doormat de CSS-classes `vl-column`, `vl-column--align-self-stretch` en de gewenste breedteclasses\nplaatsen."
+          }
+        ]
+      }
+    }
+  ]
+}

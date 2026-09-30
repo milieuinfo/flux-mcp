@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "ba5e875",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": "cypress",
+      "components": [],
+      "topics": [
+        "cypress"
+      ],
+      "mentions": [],
+      "summary": "experimentele WebKit-ondersteuning in Cypress component-tests",
+      "text": "cypress - experimentele WebKit-ondersteuning in Cypress component-tests",
+      "commits": [
+        {
+          "sha": "ba5e87571cd4a92cb1842e763a70040dcddfb260",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ba5e87571cd4a92cb1842e763a70040dcddfb260"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Voegt Playwright-WebKit integratie + experimentalWebKitSupport toe zodat component-tests ook op WebKit gedraaid kunnen worden (npx cypress run --component --browser webkit).\n\nImage-snapshots worden op WebKit overgeslagen: WebKit (headless) rendert op een andere devicePixelRatio dan de electron/Chromium-baselines, waardoor matchImageSnapshot altijd een size mismatch geeft. Functionele en positie-tests draaien wel cross-browser. Geldt voor alle component-tests",
+        "published": false,
+        "areas": {
+          "tooling": 4
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

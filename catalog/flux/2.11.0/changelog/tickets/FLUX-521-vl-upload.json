@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-521",
+  "entries": [
+    {
+      "id": "431d7a4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-521"
+      ],
+      "scope": "vl-upload",
+      "components": [
+        "vl-upload"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "getRejectedFiles() toegevoegd",
+      "text": "FLUX-521 - vl-upload - getRejectedFiles() toegevoegd",
+      "commits": [
+        {
+          "sha": "431d7a464553f0eb3c44a7b7fdf6dcbcf6cd8388",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/431d7a464553f0eb3c44a7b7fdf6dcbcf6cd8388"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "### getRejectedFiles(): DropzoneFile[]\n\nGeeft een lijst van geweigerde bestanden terug."
+          }
+        ]
+      }
+    }
+  ]
+}

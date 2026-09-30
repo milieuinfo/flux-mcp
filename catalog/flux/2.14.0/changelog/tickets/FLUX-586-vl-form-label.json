@@ -1,0 +1,106 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-586",
+  "entries": [
+    {
+      "id": "b740b03",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-586"
+      ],
+      "scope": "vl-form-label",
+      "components": [
+        "vl-form-label"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-text"
+      ],
+      "summary": "witruimte tussen label en vl-text annotation verholpen",
+      "text": "FLUX-586 - vl-form-label - witruimte tussen label en vl-text annotation verholpen",
+      "commits": [
+        {
+          "sha": "b740b03be7136b5779da898f94dd898643fd3379",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b740b03be7136b5779da898f94dd898643fd3379"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-label/vl-form-label.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-form-label--documentatie",
+            "title": "Components - Form/form-label",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-form-label--documentatie",
+            "added": "## Witruimte naast annotatie corrigeren\n\nWanneer een `vl-form-label` met een `annotation` onmiddellijk gevolgd wordt door een `vl-text[annotation]`-sibling in de light DOM,\nkan er een ongewenste witruimte verschijnen tussen de twee elementen.\nDit is een light-DOM compositieprobleem: de marge van het label kan niet via de shadow DOM worden aangepast op basis van een sibling-relatie.\n\nVoeg deze CSS-regel toe in de styles van de host component:\n\n```css\nvl-form-label:has(+ vl-text[annotation])::part(label) {\n    margin-right: 0;\n}\n```"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9a8ae95",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-586"
+      ],
+      "scope": "vl-form-label",
+      "components": [
+        "vl-form-label"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "annotation attribuut toegevoegd",
+      "text": "FLUX-586 - vl-form-label - annotation attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "9a8ae95628048d5db7dac1c5305351bf008cf609",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9a8ae95628048d5db7dac1c5305351bf008cf609"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-label/vl-form-label.component.css.ts",
+          "libs/components/src/form/form-label/vl-form-label.component.ts",
+          "libs/components/src/form/form-label/vl-form-label.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-form-label--documentatie",
+            "title": "Components - Form/form-label",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-form-label--documentatie",
+            "added": "## Annotatie\n\nGebruik het `annotation` attribuut om extra uitleg of een voorbeeld inline naast de label tekst weer te geven.\nDe annotatie wordt kleiner en in een subtielere kleur weergegeven."
+          }
+        ]
+      }
+    }
+  ]
+}

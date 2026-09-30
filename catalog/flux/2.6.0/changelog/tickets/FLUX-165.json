@@ -1,0 +1,75 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-165",
+  "entries": [
+    {
+      "id": "5776139",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-165"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie kleurenpalet",
+      "text": "FLUX-165 - documentatie kleurenpalet",
+      "commits": [
+        {
+          "sha": "57761398b52f8a53eb115f47fea2995f25168014",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/57761398b52f8a53eb115f47fea2995f25168014"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 6,
+          "docs": 7,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts",
+          "libs/styles/src/base/var/vl-color-domg.raw.css",
+          "libs/styles/src/base/var/vl-color-foundation-v2.raw.css",
+          "libs/styles/src/base/var/vl-color.css.ts",
+          "libs/styles/src/base/var/vl-color.raw.css",
+          "libs/styles/src/layout/section/vl-section.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-var--documentatie",
+            "title": "Styles/Base (intern)/var",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/styles-base-var--documentatie",
+            "added": "```css\n\n[…]\n\n    background-color: var(--vl-color--background-default);\n\n[…]\n\nHieronder volgt een overzicht van alle variabelen.\nDit is een representatie van de broncode, ze zijn dus steeds up-to-date.\n\n[…]\n\nMeer informatie over het beschikbare kleurenpalet en toegankelijkheid van kleuren vind je op de\n[kleurenpalet documentatie pagina](/docs/styles-kleurenpalet--documentatie)."
+          },
+          {
+            "id": "styles-kleurenpalet--documentatie",
+            "title": "Styles/Kleurenpalet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/styles-kleurenpalet--documentatie",
+            "added": "# Kleurenpalet\n## Inhoudstafel\n## Concept\n### Hoofdkleuren\n### Status en ondersteunende kleuren\n### Thema kleuren\n### Kleurgebruik in grafieken\n## Toegankelijkheid\n(259 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "styles-layout-afnemers-section--documentatie",
+            "title": "Styles/Layout (afnemers)/section",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/styles-layout-afnemers-section--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

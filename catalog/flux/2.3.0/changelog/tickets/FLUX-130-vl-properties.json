@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-130",
+  "entries": [
+    {
+      "id": "4a81a07",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-130"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "mix van text & element nodes wordt nu wel ondersteund",
+      "text": "FLUX-130 - vl-properties - mix van text & element nodes wordt nu wel ondersteund",
+      "commits": [
+        {
+          "sha": "4a81a07c60d58b5e38c0af184c88c9ad89eacfc5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4a81a07c60d58b5e38c0af184c88c9ad89eacfc5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.builder.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

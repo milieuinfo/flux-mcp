@@ -1,0 +1,51 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-578",
+  "entries": [
+    {
+      "id": "a88b733",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-578"
+      ],
+      "scope": "vl-textarea",
+      "components": [
+        "vl-textarea"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-578 - vl-textarea - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "a88b7330c8f09a72ffda680d122bba07f08b3866",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a88b7330c8f09a72ffda680d122bba07f08b3866"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - baseStyle, resetStyle en textareaStyle (govflanders-style) vervangen door vlResetStyles en vlTextareaComponentStyles\n - vl-textarea.component.raw.css aangemaakt met :host variabelen (padding, margin, font-size base)\n - vl-textarea.component.css.ts aangemaakt met volledige textarea styles\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--*)\n - alle states uitgewerkt: hover, focus, disabled, error, success, placeholder\n - .vl-textarea--block variant toegevoegd\n - hover/focus combinaties met error/success states correct afgehandeld\n - disabled hover-fix zodat border en padding niet verschuiven\n\nCypress component testen:\n - geherstructureerd in 3 logische describe-blokken: properties & states, events, form integration\n - image snapshots toegevoegd voor visuele regressie testing (mount, block, disabled, error, success)\n - computed style assertions toegevoegd voor error (border-color, background-color) en success (border-color)\n - nieuwe test toegevoegd: form reset herstelt initiële waarde",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 2,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/textarea/vl-textarea.component.css.ts",
+          "libs/components/src/form/textarea/vl-textarea.component.raw.css",
+          "libs/components/src/form/textarea/vl-textarea.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

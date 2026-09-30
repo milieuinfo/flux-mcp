@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-266",
+  "entries": [
+    {
+      "id": "ba3113c",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-266"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-proza-message"
+      ],
+      "summary": "vl-proza-message mocking werkt nu onafhankelijk van het domein waar Storybook staat",
+      "text": "FLUX-266 - vl-proza-message mocking werkt nu onafhankelijk van het domein waar Storybook staat",
+      "commits": [
+        {
+          "sha": "ba3113cdfc1c2b7f0b95b4859f67fc4da2695632",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ba3113cdfc1c2b7f0b95b4859f67fc4da2695632"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

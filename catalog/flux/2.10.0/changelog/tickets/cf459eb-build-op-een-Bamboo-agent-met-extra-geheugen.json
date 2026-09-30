@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.10.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "cf459eb",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": "build op een Bamboo agent met extra geheugen",
+      "components": [],
+      "topics": [
+        "build op een Bamboo agent met extra geheugen"
+      ],
+      "mentions": [],
+      "summary": "om te voorkomen dat die niet meer OOM gaat",
+      "text": "build op een Bamboo agent met extra geheugen - om te voorkomen dat die niet meer OOM gaat",
+      "commits": [
+        {
+          "sha": "cf459eb47571e3bceaa613fb39aa733b536f4fb5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cf459eb47571e3bceaa613fb39aa733b536f4fb5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

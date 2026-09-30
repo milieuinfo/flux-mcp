@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-180",
+  "entries": [
+    {
+      "id": "309e646",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-180"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "min-max validatie na manuele invoer",
+      "text": "FLUX-180 - vl-datepicker - min-max validatie na manuele invoer",
+      "commits": [
+        {
+          "sha": "309e64626f3db341b9470ea0d46ecb72c757403e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/309e64626f3db341b9470ea0d46ecb72c757403e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/helpers.ts",
+          "libs/components/src/form/datepicker/validators.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

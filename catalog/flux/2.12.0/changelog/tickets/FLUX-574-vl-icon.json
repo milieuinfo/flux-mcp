@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-574",
+  "entries": [
+    {
+      "id": "5a18442",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-574"
+      ],
+      "scope": "vl-icon",
+      "components": [
+        "vl-icon"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "role=\"img\" toevoegen indien aria-label gebruikt wordt",
+      "text": "FLUX-574 - vl-icon - role=\"img\" toevoegen indien aria-label gebruikt wordt",
+      "commits": [
+        {
+          "sha": "5a184423ceb1e0108c5bd07acd5ed14897a7567f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5a184423ceb1e0108c5bd07acd5ed14897a7567f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/icon/vl-icon.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

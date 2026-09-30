@@ -1,0 +1,72 @@
+{
+  "base": "2.13.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-accordion",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "alt-background",
+            "description": "Toont de accordion met een alternatieve grijze achtergrond.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [
+          {
+            "name": "disable-mobile-native-input",
+            "description": "Rendert de native datepicker op mobiele toestellen in plaats van flatpickr calendar. [Meer Info](https://flatpickr.js.org/mobile-support/)",
+            "default": "false"
+          }
+        ],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-form-label",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "annotation",
+            "description": "De annotatie tekst die naast het label getoond wordt (bv. een voorbeeld of extra uitleg).",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "min-date",
+          "description": "Minimum datum conform het ingestelde formaat (bv. '01.01.2019') of 'today' voor vandaag."
+        },
+        {
+          "name": "max-date",
+          "description": "Maximum datum conform het ingestelde formaat (bv. '31.12.2019') of 'today' voor vandaag."
+        }
+      ]
+    }
+  ]
+}

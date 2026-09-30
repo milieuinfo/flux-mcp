@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-774",
+  "entries": [
+    {
+      "id": "3985e2b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-774"
+      ],
+      "scope": "vl-video-player",
+      "components": [
+        "vl-video-player"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "type attribuut voor expliciet mimetype",
+      "text": "FLUX-774 - vl-video-player - type attribuut voor expliciet mimetype",
+      "commits": [
+        {
+          "sha": "3985e2b12bdd7c46bfb5e619e37af84b81db2abb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/3985e2b12bdd7c46bfb5e619e37af84b81db2abb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Voegt een optioneel 'type'-attribuut toe zodat een bron-URL zonder bestandsextensie (bv. een download-/API-link) toch afgespeeld kan worden. Bij gezet type geeft de component src als { src, type } aan vidstack, dat een <source>-element rendert i.p.v. het src-attribuut. Zonder type blijft het bestaande gedrag (extensie-inferentie) ongewijzigd.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/video-player/vl-video-player.component.ts",
+          "libs/components/src/block/video-player/vl-video-player.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-video-player--documentatie",
+            "title": "Components - Block/video-player",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-video-player--documentatie",
+            "added": "## Mediatype instellen\n\nStandaard leidt de speler het mediatype af uit de bestandsextensie in de `source`-URL (bv. `.mp4`).\nWanneer de bron-URL geen extensie bevat - bijvoorbeeld een download- of API-link zoals\n`https://.../stukken/123/download` - kan het type niet afgeleid worden. Zet het `type`-attribuut in dat geval\nexpliciet:\n\n```html\n<vl-video-player source=\"https://.../stukken/123/download\" type=\"video/mp4\"></vl-video-player>\n```\n\nOndersteunde waarden zijn de video-mimetypes van de speler, o.a. `video/mp4`, `video/webm`, `video/ogg`."
+          }
+        ]
+      }
+    }
+  ]
+}

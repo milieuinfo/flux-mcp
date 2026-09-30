@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-634",
+  "entries": [
+    {
+      "id": "6880e95",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-634"
+      ],
+      "scope": "agents",
+      "components": [],
+      "topics": [
+        "agents"
+      ],
+      "mentions": [],
+      "summary": "settings.local.json mergen i.p.v. symlinken",
+      "text": "FLUX-634 - agents - settings.local.json mergen i.p.v. symlinken",
+      "commits": [
+        {
+          "sha": "6880e95d77cdc37271d4beb1fdd99ac3118ad036",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6880e95d77cdc37271d4beb1fdd99ac3118ad036"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "settings.local.json was een symlink naar de profile-folder. Claude Code schrijft zelf in dat bestand (\"altijd toelaten\"-keuzes), waardoor die runtime-keuzes naar de gecommitte profile-folder lekten en activatie in worktrees botste op een al bestaand bestand.\n\nDe profile-allowlist wordt nu gemerged in settings.local.json (geen symlink). Bestaande keuzes blijven; bij profielwissel wordt enkel de vorige profile-laag verwijderd, bijgehouden in het gitignored .claude/.profile-injected.json. Alles per-repo / per-worktree. Vergt jq. Oude symlinks worden automatisch gemigreerd.\n\nBonus in karim profile:\n- branch-safety regel in AGENTS.md (Claude pusht niet, geen upstream zetten)\n- mcp__claude-peers__set_summary toegevoegd aan de allowlist",
+        "published": false,
+        "areas": {
+          "tooling": 6
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

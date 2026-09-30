@@ -1,0 +1,71 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-116",
+  "entries": [
+    {
+      "id": "10c51b8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-116"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "vlButtonStyles mixin + button layout fixes",
+      "text": "FLUX-116 - vlButtonStyles mixin + button layout fixes",
+      "commits": [
+        {
+          "sha": "10c51b82060c39918bae2588c2443f12a3961bbe",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/10c51b82060c39918bae2588c2443f12a3961bbe"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "styles": 4,
+          "docs": 1,
+          "storybook": 4,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button-style/vl-button-style.css.ts",
+          "libs/components/src/atom/button-style/vl-button-style.util.ts",
+          "libs/components/src/atom/button/vl-button.component.ts",
+          "libs/components/src/atom/button/vl-button.css.ts",
+          "libs/components/src/atom/button/vl-link-button.css.ts",
+          "libs/components/src/block/search/vl-search.component.ts",
+          "libs/components/src/block/search/vl-search.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-button-style--documentatie",
+            "title": "Components - Atom/button-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-atom-button-style--documentatie",
+            "added": "# Button Style\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Voorbeelden](#voorbeelden)\n\n\n## Doel\n\nDe `button` CSS voorziet specifieke styling voor buttons. Het doel is deze implementatie te embedden in de css van concrete\ncomponenten. Het is een bouwblok, niet bedoeld voor rechtstreeks gebruik! In een eindtoepassing een button toevoegen\ngebeurd m.b.v. de [vl-button](/docs/components-atom-button--documentatie) component.\n\nComponenten zelf kunnen ook buttons bevatten en gebruiken deze CSS-klasse om geneste shadow-dom's te vermijden.\n\n\n## Voorbeelden\n\nIn dit voorbeeld zie je verschillende buttons, ze worden hier specifiek ge-wrapped in een custom style-class.\n\n\n<details open>\n    <summary>Code</summary>\n    <Source code={`\n\n@webComponent('my-component-with-button')\nexport class MyComponentWithButton extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [vlButtonStyles('button', '.my-button')];\n    }\n\n    render(): TemplateResult {\n        return html\\`\n            <button class=\"my-button\">My styled button</button>\n        \\`\n    }\n}\n\n    `} language=\"ts\" dark={true}/>\n</details>"
+          },
+          {
+            "id": "components-atom-link-style--documentatie",
+            "title": "Components - Atom/link-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-atom-link-style--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

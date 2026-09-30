@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-168",
+  "entries": [
+    {
+      "id": "6406cc5",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-168"
+      ],
+      "scope": "vl-input-group",
+      "components": [
+        "vl-input-group"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG-verbeteringen toegevoegd",
+      "text": "FLUX-168 - vl-input-group - WCAG-verbeteringen toegevoegd",
+      "commits": [
+        {
+          "sha": "6406cc5576975d5c136a596044b13930fd385fb6",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6406cc5576975d5c136a596044b13930fd385fb6"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-form-input-group--documentatie",
+            "title": "Components - Form/input-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-form-input-group--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

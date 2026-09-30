@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-161",
+  "entries": [
+    {
+      "id": "52480af",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-161"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "styling documentatie",
+      "text": "FLUX-161 - styling documentatie",
+      "commits": [
+        {
+          "sha": "52480af6e9462b7e586108123379588d9ab8721c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/52480af6e9462b7e586108123379588d9ab8721c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

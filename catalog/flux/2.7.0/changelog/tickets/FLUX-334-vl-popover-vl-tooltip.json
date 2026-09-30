@@ -1,0 +1,124 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-334",
+  "entries": [
+    {
+      "id": "e99584c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-334"
+      ],
+      "scope": "vl-popover",
+      "components": [
+        "vl-popover"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "aanpassingen bij gebruik als tooltip (layout en WCAG correcties)",
+      "text": "FLUX-334 - vl-popover - aanpassingen bij gebruik als tooltip (layout en WCAG correcties)",
+      "commits": [
+        {
+          "sha": "e99584c7616aed741f8a271c3ae3a984df1a4e7e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e99584c7616aed741f8a271c3ae3a984df1a4e7e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover.component.ts",
+          "libs/components/src/block/popover/vl-popover.defaults.ts",
+          "libs/components/src/block/popover/vl-popover.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": "### Tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9c73a9a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-334"
+      ],
+      "scope": "vl-tooltip",
+      "components": [
+        "vl-tooltip"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie component",
+      "text": "FLUX-334 - vl-tooltip - introductie component",
+      "commits": [
+        {
+          "sha": "9c73a9a185fa799eb50b2ec88a33cfc784c0e44e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9c73a9a185fa799eb50b2ec88a33cfc784c0e44e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 8,
+          "styles": 2,
+          "docs": 2,
+          "storybook": 5,
+          "tests": 6,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover.component.ts",
+          "libs/components/src/block/popover/vl-popover.defaults.ts",
+          "libs/components/src/block/popover/vl-popover.flux-css.ts",
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts",
+          "libs/components/src/block/tooltip/index.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.component.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.defaults.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": "Een popover is een nieuw, meestal kleiner venster / popup dat boven de andere inhoud op het scherm verschijnt.\nHet doel van de popover is het bouwen van context- of submenu's. Je kan deze menu's opbouwen adhv de `vl-popover-action-list` en `vl-popover-action` componenten. De popover kan ook andere interactieve HTML-elementen bevatten.\n\n[…]\n\n<vl-button id=\"popover-trigger\"></vl-button>\n<vl-popover for=\"popover-trigger\"></vl-popover>\n\n[…]\n\n- de pijl getoond (je kan de pijl verbergen met `hide-arrow`)\n\n[…]\n\n### Oriëntatie\n> [Raadpleeg de placement documentatie van floating-ui](https://floating-ui.com/docs/tutorial#placements)\n\nJe kan de oriëntatie bepalen van de popover als daarvoor plaats is met `placement`. Als er niet genoeg ruimte is zal `floating-ui` achterliggend een alternatieve oriëntatie kiezen.\n\n[…]\n\nJe kan een `-start` of `-end` suffix toevoegen zodat de oriëntatie start of eindigt aan respectievelijk het begin of einde van het referentie-element.\n\n[…]\n\n> [Raadpleeg de strategy documentatie van floating-ui](https://floating-ui.com/docs/computePosition#strategy)\n\n[…]\n\nStandaard is `strategy` ingesteld op `absolute`. De popover zal gepositioneerd worden ten opzichte van het\n\n[…]\n\nOm te vermijden dat de popover gepositioneerd wordt tegenover het verkeerde element, kan je best de eerste parent van de popover instellen op `position: relative` zodat de popover steeds gepositioneerd wordt zoals verwacht.\n\n[…]\n\n### Hover / Tooltip\n\nJe kan de standaard `click` waarde voor `trigger` ook instellen op bv. de combinatie van `hover` & `focus` interacties.\n\n[…]\n\nHet gebruik van het vl-popover component als tooltip is echter **deprecated**. Gebruik hiervoor het [vl-tooltip](/docs/components-block-tooltip--documentatie) component.\n\n[…]\n\nDe popover-component gebruikt achterliggend [floating-ui](https://floating-ui.com/)."
+          },
+          {
+            "id": "components-block-tooltip--documentatie",
+            "title": "Components - Block/tooltip",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-tooltip--documentatie",
+            "added": "# Tooltip\n\n\nEen tooltip is een klein contextueel venster dat verschijnt wanneer de gebruiker over een element hovert of het element focust. Gebruik een tooltip om korte bijkomende informatie te tonen.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-button id=\"tooltip-trigger\"></vl-button>\n<vl-tooltip for=\"tooltip-trigger\"></vl-tooltip>\n```\n\n\n\n## Configuratie\n\n\n\n## Gebruik\n\n### Standaard pijl & afstand\n\nStandaard wordt:\n- de pijl getoond (je kan de pijl verbergen met `hide-arrow`)\n- wordt de `distance` ingesteld op `10px`\n\n### Oriëntatie\n> [Raadpleeg de placement documentatie van floating-ui](https://floating-ui.com/docs/tutorial#placements)\n\nJe kan de oriëntatie bepalen van de tooltip als daarvoor plaats is met `placement`. Als er niet genoeg ruimte is zal `floating-ui` achterliggend een alternatieve oriëntatie kiezen.\n\nJe kan een `-start` of `-end` suffix toevoegen zodat de oriëntatie start of eindigt aan respectievelijk het begin of einde van het referentie-element.\n\n### Strategy\n> [Raadpleeg de strategy documentatie van floating-ui](https://floating-ui.com/docs/computePosition#strategy)\n\nStandaard is `strategy` ingesteld op `absolute`. De tooltip zal gepositioneerd worden ten opzichte van het\ndichtstbijzijnde gepositioneerde parent-element (bv. een element met `position: relative`).\n\nOm te vermijden dat de tooltip gepositioneerd wordt tegenover het verkeerde element, kan je best de eerste parent van de tooltip instellen op `position: relative` zodat de tooltip steeds gepositioneerd wordt zoals verwacht.\n\n## Referenties\n\n### floating-ui\n\nDe tooltip-component gebruikt achterliggend [floating-ui](https://floating-ui.com/)."
+          }
+        ]
+      }
+    }
+  ]
+}

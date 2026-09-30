@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-42",
+  "entries": [
+    {
+      "id": "d4ac35a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-42"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "test-dashboard met ReportPortal",
+      "text": "FLUX-42 - test-dashboard met ReportPortal",
+      "commits": [
+        {
+          "sha": "d4ac35a2c2b5994ed9efa08c20ded4c81c376feb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d4ac35a2c2b5994ed9efa08c20ded4c81c376feb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- Cypress / package upgrades\n- scripts om een ReportPortal launch expliciet te starten en stoppen\n- activatie van ReportPortal via de environment variabele RP_ACTIVE\n- de describe's van jest / e2e / component testen gestroomlijnd\n- in Cypress het rapport verrijken met een attribuut, in Jest kan dat niet",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "examples": 2,
+          "tests": 295,
+          "tooling": 21
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/atom.web-types.json",
+          "libs/components/src/block/block.web-types.json"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

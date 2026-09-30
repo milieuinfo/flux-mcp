@@ -1,0 +1,240 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "date": "2025-09-09",
+  "previous": "2.3.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.3.0...v2.4.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 10,
+      "fix": 1,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 6,
+      "automatic": 1,
+      "none": 4
+    },
+    "a11y": 3
+  },
+  "components": [
+    {
+      "name": "vl-button",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-atom-button--documentatie"
+    },
+    {
+      "name": "vl-input-group",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-popover",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-block-popover--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-side-navigation",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-block-side-navigation--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "811e494",
+      "ticket": "FLUX-144",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-144 - vl-select-rich - klik wordt niet langer onderdrukt",
+      "file": "tickets/FLUX-144-vl-select-rich.json"
+    },
+    {
+      "id": "926f877",
+      "ticket": null,
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "aangepast jaarplan 2025",
+      "file": "tickets/926f877.json"
+    },
+    {
+      "id": "72a5194",
+      "ticket": null,
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "de documentatie staat nu onder 'flux.omgeving.vlaanderen.be'",
+      "file": "tickets/72a5194.json"
+    },
+    {
+      "id": "4880d3d",
+      "ticket": "FLUX-126",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-126 - vl-side-navigation - hash-sync attribute vervangt has-hash-routing",
+      "file": "tickets/FLUX-126-vl-side-navigation.json"
+    },
+    {
+      "id": "daab8e8",
+      "ticket": "FLUX-143",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-143 - vl-popover - positioneringsdocumentatie uitgebreid en strategy property toegevoegd",
+      "file": "tickets/FLUX-143-vl-popover.json"
+    },
+    {
+      "id": "231680b",
+      "ticket": "FLUX-155",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-155 - string literals verbeterd",
+      "file": "tickets/FLUX-155.json"
+    },
+    {
+      "id": "4162cad",
+      "ticket": "FLUX-166",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-166 - vl-button - disabled ghost button blijft transparant",
+      "file": "tickets/FLUX-166-vl-button.json"
+    },
+    {
+      "id": "6406cc5",
+      "ticket": "FLUX-168",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-168 - vl-input-group - WCAG-verbeteringen toegevoegd",
+      "file": "tickets/FLUX-168-vl-input-group.json"
+    },
+    {
+      "id": "292ee1c",
+      "ticket": "FLUX-72",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-72 - WCAG aanpak en documentatie",
+      "file": "tickets/FLUX-72.json"
+    },
+    {
+      "id": "26e82fa",
+      "ticket": "FLUX-99",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-99 - componenten CSP compliant gemaakt",
+      "file": "tickets/FLUX-99.json"
+    },
+    {
+      "id": "0213e61",
+      "ticket": "FLUX-99",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-99 - CSP documentatie",
+      "file": "tickets/FLUX-99.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-144",
+      "file": "tickets/FLUX-144-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "811e494"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/926f877.json",
+      "components": [],
+      "entries": [
+        "926f877"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/72a5194.json",
+      "components": [],
+      "entries": [
+        "72a5194"
+      ]
+    },
+    {
+      "ticket": "FLUX-126",
+      "file": "tickets/FLUX-126-vl-side-navigation.json",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "entries": [
+        "4880d3d"
+      ]
+    },
+    {
+      "ticket": "FLUX-143",
+      "file": "tickets/FLUX-143-vl-popover.json",
+      "components": [
+        "vl-popover"
+      ],
+      "entries": [
+        "daab8e8"
+      ]
+    },
+    {
+      "ticket": "FLUX-155",
+      "file": "tickets/FLUX-155.json",
+      "components": [],
+      "entries": [
+        "231680b"
+      ]
+    },
+    {
+      "ticket": "FLUX-166",
+      "file": "tickets/FLUX-166-vl-button.json",
+      "components": [
+        "vl-button"
+      ],
+      "entries": [
+        "4162cad"
+      ]
+    },
+    {
+      "ticket": "FLUX-168",
+      "file": "tickets/FLUX-168-vl-input-group.json",
+      "components": [
+        "vl-input-group"
+      ],
+      "entries": [
+        "6406cc5"
+      ]
+    },
+    {
+      "ticket": "FLUX-72",
+      "file": "tickets/FLUX-72.json",
+      "components": [],
+      "entries": [
+        "292ee1c"
+      ]
+    },
+    {
+      "ticket": "FLUX-99",
+      "file": "tickets/FLUX-99.json",
+      "components": [],
+      "entries": [
+        "26e82fa",
+        "0213e61"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

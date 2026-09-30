@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-603",
+  "entries": [
+    {
+      "id": "a993629",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-603"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "fat-lib zonder chunking",
+      "text": "FLUX-603 - fat-lib zonder chunking",
+      "commits": [
+        {
+          "sha": "a993629cda8b9f621acfd3fa67489b0aea963a5c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a993629cda8b9f621acfd3fa67489b0aea963a5c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "(cherry picked from commit 79b2a9bc59b8dd6823a085e72b8dad8bccf52245)",
+        "published": false,
+        "areas": {
+          "tooling": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

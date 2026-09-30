@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-640",
+  "entries": [
+    {
+      "id": "4e910c0",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-640"
+      ],
+      "scope": "vl-side-navigation",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "externe links navigeren nu correct",
+      "text": "FLUX-640 - vl-side-navigation - externe links navigeren nu correct",
+      "commits": [
+        {
+          "sha": "4e910c0f9f6761468c35fbd0836770cedfb0b76e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4e910c0f9f6761468c35fbd0836770cedfb0b76e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- Vroege return voor niet-hash hrefs in click handler zodat browser navigatie afhandelt (externe URLs, relatieve paden); enkel hrefs met '#' triggeren nog preventDefault + smooth scroll logica.\n- Cypress test: externe link produceert geen console.warn en preventDefault wordt niet aangeroepen door de component.\n- Cypress test next: bevestigt dat vl-side-navigation-next externe links in custom TOC al correct doorlaat via het a[href^=\"#\"]-filter in setupCustomTocLinkHandlers (design keuze, geen fix nodig).",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

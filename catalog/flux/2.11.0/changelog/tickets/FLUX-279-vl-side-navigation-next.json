@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-279",
+  "entries": [
+    {
+      "id": "ad4eb5f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-279"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG - focus behandeling verbeterd wanneer die verdwijnt tijdens scroll",
+      "text": "FLUX-279 - vl-side-navigation-next - WCAG - focus behandeling verbeterd wanneer die verdwijnt tijdens scroll",
+      "commits": [
+        {
+          "sha": "ad4eb5f024adb2df857ce89a81a213646a53fa4e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ad4eb5f024adb2df857ce89a81a213646a53fa4e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [
+        "2.4.3",
+        "4.1.2"
+      ],
+      "source": {
+        "body": "- focus recovery geïmplementeerd (WCAG 2.4.3): volgt het actieve element betrouwbaar door de shadow DOM en verplaatst de focus naar de dichtstbijzijnde logische element wanneer het actieve item verborgen, verwijderd of ingeklapt wordt.\n- Rendering en status van de inhoudsopgave (TOC) geoptimaliseerd: ondersteuning toegevoegd om vooraf opgebouwde boomstructuur aan de template door te geven om overbodige herberekeningen te voorkomen, en de logica voor handmatig uit- en inklappen vereenvoudigd.\n- Cypress-testen verbeterd: expliciete setupstappen toegevoegd en gerichte shadow DOM-elementen gebruikt om toetsenbordinteracties betrouwbaar te testen.\n- (WCAG 4.1.2) `aria-expanded` mag alleen op de toggle button staan, niet op de anchor link, om te vermijden dat screenreaders ten onrechte aangeven dat de link content in- of uitklapt.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-custom-toc.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

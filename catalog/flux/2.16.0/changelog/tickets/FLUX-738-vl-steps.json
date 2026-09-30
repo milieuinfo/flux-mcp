@@ -1,0 +1,65 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-738",
+  "entries": [
+    {
+      "id": "6f4ca44",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-738"
+      ],
+      "scope": "vl-steps",
+      "components": [
+        "vl-steps"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "layout fixes",
+      "text": "FLUX-738 - vl-steps - layout fixes",
+      "commits": [
+        {
+          "sha": "6f4ca4423485a0c1ec2353f031aad777fdd99896",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6f4ca4423485a0c1ec2353f031aad777fdd99896"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "styles": 3,
+          "storybook": 3,
+          "tests": 5
+        },
+        "publishedFiles": [
+          "libs/components/src/block/steps/vl-duration-step.component.ts",
+          "libs/components/src/block/steps/vl-duration-step.flux-css.ts",
+          "libs/components/src/block/steps/vl-step.component.ts",
+          "libs/components/src/block/steps/vl-step.flux-css.ts",
+          "libs/components/src/block/steps/vl-steps.component.ts",
+          "libs/components/src/block/steps/vl-steps.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

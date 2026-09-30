@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-645",
+  "entries": [
+    {
+      "id": "4ecec39",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-645"
+      ],
+      "scope": "vl-checkbox",
+      "components": [
+        "vl-checkbox"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "test gebruikt nu checked-attribuut i.p.v. private property",
+      "text": "FLUX-645 - vl-checkbox - test gebruikt nu checked-attribuut i.p.v. private property",
+      "commits": [
+        {
+          "sha": "4ecec395646bfbb2f693686c1e20955bd9d33f87",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4ecec395646bfbb2f693686c1e20955bd9d33f87"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

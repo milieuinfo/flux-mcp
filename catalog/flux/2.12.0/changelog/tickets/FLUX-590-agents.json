@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-590",
+  "entries": [
+    {
+      "id": "1f3cf20",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-590"
+      ],
+      "scope": "agents",
+      "components": [],
+      "topics": [
+        "agents"
+      ],
+      "mentions": [],
+      "summary": "configuratie en project skills toegevoegd",
+      "text": "FLUX-590 - agents - configuratie en project skills toegevoegd",
+      "commits": [
+        {
+          "sha": "1f3cf208e556993c106b43fb710916cf733232e1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1f3cf208e556993c106b43fb710916cf733232e1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- AGENTS.md toegevoegd met projectcontext, conventies en patronen voor alle AI agents\n- CLAUDE.md toegevoegd als Claude Code-specifiek entrypoint\n- SKILLS.md toegevoegd met agent-agnostische playbooks (new-component, run-tests, test-coverage)\n- .claude/ directory ingericht met gedeelde team-permissies (settings.json), README en skill stubs\n- .gitignore uitgebreid voor AI agent lokale bestanden (.cursor/, .cline/, .windsurf/, .claude/plans/)",
+        "published": false,
+        "areas": {
+          "tooling": 9
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

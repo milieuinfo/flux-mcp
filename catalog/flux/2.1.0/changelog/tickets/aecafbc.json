@@ -1,0 +1,38 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "aecafbc",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "readme uitgebreid met Storybook v2",
+      "text": "readme uitgebreid met Storybook v2",
+      "commits": [
+        {
+          "sha": "aecafbc012cd99d032c1f7375cbc2277a2970050",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/aecafbc012cd99d032c1f7375cbc2277a2970050"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

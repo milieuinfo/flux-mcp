@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-480",
+  "entries": [
+    {
+      "id": "0d093bc",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-480"
+      ],
+      "scope": "vl-input-field",
+      "components": [
+        "vl-input-field"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "geen lege pattern renderen",
+      "text": "FLUX-480 - vl-input-field - geen lege pattern renderen",
+      "commits": [
+        {
+          "sha": "0d093bc10fa5819c353e8519079b48c02445749f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0d093bc10fa5819c353e8519079b48c02445749f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/input-field/vl-input-field.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

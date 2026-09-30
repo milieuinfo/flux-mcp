@@ -1,0 +1,121 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-645",
+  "entries": [
+    {
+      "id": "af13b22",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-645"
+      ],
+      "scope": "form controls",
+      "components": [],
+      "topics": [
+        "form controls"
+      ],
+      "mentions": [],
+      "summary": "blur-validation attribuut",
+      "text": "FLUX-645 - form controls - blur-validation attribuut",
+      "commits": [
+        {
+          "sha": "af13b22c1982dc2c77237961f731dcfbd494c623",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/af13b22c1982dc2c77237961f731dcfbd494c623"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Opt-in attribuut op de FormControl base class dat validatie op blur toont (na focus) met live recovery, in plaats van enkel op submit. Default gedrag blijft ongewijzigd.\n\n- Per veld (blur-validation) of per form (blur-validation / data-blur-validation, cascade).\n- Werkt op alle 10 form controls via de base class.\n- Foutmelding wordt aangekondigd via een aria-live=polite region in vl-form-message, aria-invalid geeft de toestand aan.\n- Storybook: nieuwe sectie Patronen > Formulier > blur validatie.\n- POC in playground-lit.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 2,
+          "storybook": 11,
+          "examples": 3,
+          "tests": 11,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-control/form-control.defaults.ts",
+          "libs/components/src/form/form-control/form-control.ts",
+          "libs/components/src/form/form-message/vl-form-message.component.ts",
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-input-field-masked--documentatie",
+            "title": "Components - Form/input-field-masked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-input-field-masked--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-radio-group--documentatie",
+            "title": "Components - Form/radio-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-radio-group--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-textarea--documentatie",
+            "title": "Components - Form/textarea",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-textarea--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": null
+          },
+          {
+            "id": "patronen-formulier-blur-validatie--documentatie",
+            "title": "Patronen/Formulier/blur validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/patronen-formulier-blur-validatie--documentatie",
+            "added": "# Formulier - Blur-validatie\n\n> Voor de basis van formuliervalidatie, zie\n> [Formulier - Validatie](/docs/patronen-formulier-validatie--documentatie).\n\nStandaard valideren de formulier componenten pas wanneer de form gesubmit wordt. Met het optionele\n`blur-validation` attribuut kan je validatie al tijdens het invullen tonen, zonder dat je hier zelf\ncode voor moet schrijven.\n\n## Gedrag\n\nWanneer `blur-validation` aanstaat:\n\n- Het veld valideert zodra het focus kreeg en weer verlaten wordt (`focusout`), ongeacht of de gebruiker de\n  waarde gewijzigd heeft.\n- Na de eerste foutmelding schakelt het veld over op **live re-validatie tijdens typen**: de foutmelding verdwijnt\n  op het moment dat de waarde geldig wordt, zonder dat de gebruiker opnieuw moet wegklikken.\n- Submit blijft de definitieve check: bij submit wordt nog steeds alles gevalideerd en springt de focus naar het\n  eerste ongeldige veld.\n\nDe foutmeldingen lopen via hetzelfde mechanisme als de standaard validatie\n([`vl-form-message`](/docs/components-form-form-message--documentatie) + `ValidityState`). Je hoeft enkel\nhet attribuut toe te voegen.\n\n## Per veld\n\nZet `blur-validation` op een individuele form control.\n\nIn onderstaand voorbeeld: tab in het veld en terug eruit zonder te typen om de `valueMissing` fout te zien, of typ\neen ongeldige waarde (bv. een cijfer of één letter) en verlaat het veld. Corrigeer daarna en zie de fout live\nverdwijnen.\n\n\n## Op de form (cascade)\n\nZet `blur-validation` (of `data-blur-validation`) op het `<form>` element om het gedrag in één keer in te schakelen\nvoor **alle** form controls eronder. De velden zelf hebben dan geen attribuut nodig.\n\n\nEen veld met een eigen `blur-validation` attribuut blijft daarnaast los werken. Form-niveau en veld-niveau zijn\nbeide manieren om hetzelfde gedrag aan te zetten (OR-logica, er is geen per-veld opt-out).\n\n## Toegankelijkheid\n\n`blur-validation` is bewust opt-in. Validatie pas op `focusout` (en niet op elke toetsaanslag) beperkt\nruis voor screenreaders tijdens het invullen.\n\nDe foutmelding wordt gerenderd in een `aria-live=\"polite\"` regio (via `vl-form-message`), zodat screen\nreaders ze voorlezen zodra ze verschijnt of wijzigt. `aria-atomic=\"true\"` zorgt dat telkens de volledige\nboodschap wordt voorgelezen. De control zelf krijgt `aria-invalid=\"true\"` zodat de ongeldige toestand\nook los van de melding kenbaar is.\n\n## Lijst componenten met `blur-validation`\n\nHet attribuut zit op de gedeelde `FormControl` base class en werkt dus op alle form controls:\n\n- [vl-input-field](/docs/components-form-input-field--documentatie)\n- [vl-input-field-masked](/docs/components-form-input-field-masked--documentatie)\n- [vl-textarea](/docs/components-form-textarea--documentatie)\n- [vl-textarea-rich](/docs/components-form-textarea-rich--documentatie)\n- [vl-datepicker](/docs/components-form-datepicker--documentatie)\n- [vl-select-rich](/docs/components-form-select-rich--documentatie)\n- [vl-select](/docs/components-form-select--documentatie)\n- [vl-radio-group](/docs/components-form-radio-group--documentatie)\n- [vl-upload](/docs/components-form-upload--documentatie)\n- [vl-checkbox](/docs/components-form-checkbox--documentatie)"
+          }
+        ]
+      }
+    }
+  ]
+}

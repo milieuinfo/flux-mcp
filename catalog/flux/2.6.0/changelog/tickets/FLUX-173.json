@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-173",
+  "entries": [
+    {
+      "id": "0ef37cd",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-173"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "prefers-reduced-motion respecteren waar mogelijk",
+      "text": "FLUX-173 - prefers-reduced-motion respecteren waar mogelijk",
+      "commits": [
+        {
+          "sha": "0ef37cd2611ddfd5191850f4f231d49aba4d3043",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0ef37cd2611ddfd5191850f4f231d49aba4d3043"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 4,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.css.ts",
+          "libs/components/src/atom/button/vl-link-button.css.ts",
+          "libs/components/src/block/cascader/vl-cascader.flux-css.ts",
+          "libs/components/src/block/loader/vl-loader.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.css.ts",
+          "libs/map/src/components/loading-indicator/vl-map-loading-indicator.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

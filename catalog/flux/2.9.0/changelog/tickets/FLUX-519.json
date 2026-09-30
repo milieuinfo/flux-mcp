@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-519",
+  "entries": [
+    {
+      "id": "8f28ff1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-519"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-grid",
+        "vl-column"
+      ],
+      "summary": "vl-grid- vl-column--start-auto & varianten toegevoegd",
+      "text": "FLUX-519 - vl-grid- vl-column--start-auto & varianten toegevoegd",
+      "commits": [
+        {
+          "sha": "8f28ff185a3da4a3e2d269d363f8a8af9f27a6db",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8f28ff185a3da4a3e2d269d363f8a8af9f27a6db"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Momenteel zijn er geen klasse om bij onze `vl-grid`, `grid-column-start: auto` in te stellen, terwijl dit wel moet kunnen als je op verschillende media queries andere `grid-column-start` op `auto` / `initial` wil instellen.",
+        "published": true,
+        "areas": {
+          "styles": 4,
+          "docs": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/grid/column/vl-column-l.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-m.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-s.css.ts",
+          "libs/styles/src/layout/grid/column/vl-column-xs.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "styles-layout-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-grid--documentatie",
+            "added": "Om een kolom start positie te resetten naar de automatische flow is er `vl-column--start-auto` met de\nresponsieve varianten `vl-column--X-start-auto` waarbij X [m, s, xs] kan zijn. Dit is nuttig wanneer je een\nexpliciete start positie hebt op grotere schermen maar wil terugkeren naar de natuurlijke flow op kleinere\nschermen (zie laatste rij in onderstaand voorbeeld)."
+          }
+        ]
+      }
+    }
+  ]
+}

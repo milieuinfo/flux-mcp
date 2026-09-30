@@ -1,0 +1,70 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-276",
+  "entries": [
+    {
+      "id": "616cc1c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-276"
+      ],
+      "scope": "vl-share-buttons",
+      "components": [
+        "vl-share-buttons"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-button"
+      ],
+      "summary": "deprecaten met verwijzing naar vl-button",
+      "text": "FLUX-276 - vl-share-buttons - deprecaten met verwijzing naar vl-button",
+      "commits": [
+        {
+          "sha": "616cc1c210bc569f9d9a6860728130864d0cef54",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/616cc1c210bc569f9d9a6860728130864d0cef54"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-share-buttons en vl-share-button zijn deprecated in v2 en worden verwijderd in v3. Gebruikers krijgen een console-waarschuwing en worden via Storybook, de migratietabel en de IDE web-types naar het alternatief geleid: een vl-button per kanaal met cta-link, icon en label in de standaard action-stijl. De componenten blijven functioneel werken in v2.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 3,
+          "storybook": 2,
+          "tests": 1,
+          "tooling": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/block/share-buttons/vl-share-button.component.ts",
+          "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-share-buttons-share-button--documentatie",
+            "title": "Components - Block/share-buttons/share-button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-share-buttons-share-button--documentatie",
+            "added": "# Share Button\n\n\n{`\n Deze component is <strong>deprecated</strong> en wordt verwijderd in <strong>v3</strong>. Gebruik in plaats daarvan\n een <code>vl-button</code> met <code>cta-link</code> en <code>icon</code> in de standaard action-stijl. Zie de\n <a href=\"/docs/components-block-share-buttons-share-buttons--documentatie#ontwerp\">Share Buttons documentatie</a>\n voor het alternatief.\n`}\n\n\n## Doel\n\nDe `share-button` component is één enkele deelknop binnen een `share-buttons` rij.\n\n\n## Voorbeeld\n\n\n\n## Configuratie"
+          },
+          {
+            "id": "components-block-share-buttons-share-buttons--documentatie",
+            "title": "Components - Block/share-buttons/share-buttons",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-share-buttons-share-buttons--documentatie",
+            "added": "# Share Buttons\n\n\n{`\n Deze component is <strong>deprecated</strong> en wordt verwijderd in <strong>v3</strong>. Gebruik in plaats daarvan\n een <code>vl-button</code> met <code>cta-link</code> en <code>icon</code> in de standaard action-stijl (zie\n <a href=\"#ontwerp\">Ontwerp</a>).\n`}\n\n\n## Doel\n\nDe `share-buttons` component toont een rij knoppen om een pagina te delen op sociale media.\n\n\n## Voorbeeld\n\n\n\n## Configuratie\n\n\n\n## Ontwerp\n\nVervang elke share-knop door een gewone [`vl-button`](/docs/components-atom-button--documentatie) in de standaard action-stijl met `cta-link`, `icon` en een\nverplicht `label` voor toegankelijkheid (WCAG 2.1 AA). Geef per kanaal een eigen knop met de bijhorende share-URL:\n\n```html\n<vl-button cta-link=\"https://www.facebook.com/sharer/sharer.php?u=…\" icon=\"facebook\" label=\"Delen op Facebook\"></vl-button>\n<vl-button cta-link=\"https://www.linkedin.com/sharing/share-offsite/?url=…\" icon=\"linkedin\" label=\"Delen op LinkedIn\"></vl-button>\n```"
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "### Share Buttons\n\n`Share Buttons` is deprecated in v2 en wordt verwijderd in v3. Er komt geen `next`-variant: gebruik een\n`vl-button` met `cta-link`, `icon` en een verplicht `label` (standaard action-blauw).\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Share Buttons [legacy]](/docs/components-block-share-buttons-share-buttons--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-share-buttons>`}</code></td>\n        <td>-</td>\n        <td><code>-</code></td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

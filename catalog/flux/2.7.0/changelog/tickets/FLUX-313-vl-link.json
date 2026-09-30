@@ -1,0 +1,102 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-313",
+  "entries": [
+    {
+      "id": "a74c38d",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-313"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "label documentatie",
+      "text": "FLUX-313 - vl-link - label documentatie",
+      "commits": [
+        {
+          "sha": "a74c38d2e5cfe46d9cd67a3e3d2eb5776bdf92a3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a74c38d2e5cfe46d9cd67a3e3d2eb5776bdf92a3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "docs": 2,
+          "storybook": 9,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.component.ts",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/accessibility/child/wcag-link.component.ts",
+          "libs/components/src/compliance/accessibility/vl-accessibility.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/bottom.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "Vul steeds het `label` attribuut in om duidelijk te maken dat de link in een nieuw venster opent."
+          },
+          {
+            "id": "components-block-contact-card--documentatie",
+            "title": "Components - Block/contact-card",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-contact-card--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-proza-message--documentatie",
+            "title": "Components - Block/proza-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-proza-message--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-proza-message-preloader--documentatie",
+            "title": "Components - Block/proza-message-preloader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-proza-message-preloader--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-footer--documentatie",
+            "title": "Components - Compliance/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-footer-next--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-compliance-footer-next--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-header-next--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-compliance-header-next--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

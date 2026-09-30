@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-348",
+  "entries": [
+    {
+      "id": "9cafa0b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-348"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-functional-header",
+        "vl-tabs"
+      ],
+      "summary": "vl-functional-header met vl-tabs documentatie uitgebreid",
+      "text": "FLUX-348 - vl-functional-header met vl-tabs documentatie uitgebreid",
+      "commits": [
+        {
+          "sha": "9cafa0bf21ac36638f669270ea3a716793662518",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9cafa0bf21ac36638f669270ea3a716793662518"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2,
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "Gebruik het [vl-tabs](/docs/components-block-tabs-tabs--documentatie) component in het `sub-header` slot om tabs af te beelden binnen de `functional-header`.\n\n{`\n    Opgelet: het \\`vl-tabs\\` component moet in dit geval het attribuut \\`within-functional-header\\` meekrijgen.\n`}"
+          },
+          {
+            "id": "components-block-tabs-tabs--documentatie",
+            "title": "Components - Block/tabs/tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-tabs-tabs--documentatie",
+            "added": "### In functional header\n\nWanneer de tabs in een functional header gerenderd worden, moet het attribuut `within-functional-header` toegevoegd worden.\n\nHier vind je een [voorbeeld van een functional header met tabs](/story/components-block-functional-header--functional-header-tabs)."
+          }
+        ]
+      }
+    }
+  ]
+}

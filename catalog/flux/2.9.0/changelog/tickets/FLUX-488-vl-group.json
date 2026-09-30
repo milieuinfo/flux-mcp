@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-488",
+  "entries": [
+    {
+      "id": "1c396b0",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-488"
+      ],
+      "scope": "vl-group",
+      "components": [
+        "vl-group"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "css modifiers voor de justify en align varianten",
+      "text": "FLUX-488 - vl-group - css modifiers voor de justify en align varianten",
+      "commits": [
+        {
+          "sha": "1c396b0bc79a284a75d2f749ebd154ea76bb223f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1c396b0bc79a284a75d2f749ebd154ea76bb223f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "de vroegere default `align-items: center` werd geschrapt waardoor de default nu eigenlijk `align-items: flex-start` werd",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/group/vl-group.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "styles-layout-group--documentatie",
+            "title": "Styles/Layout (afnemers)/group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-group--documentatie",
+            "added": "De uitlijning volgt de opzet van flex-box:\n - op de **hoofdas uitlijnen** doe je met `vl-group--justify-start`, `vl-group--justify-center` en\n   `vl-group--justify-end`\n - op de **dwarsas uitlijnen** doe je met `vl-group--align-start`, `vl-group--align-center` en\n   `vl-group--align-end`\n\n[…]\n\nMet `vl-group--space-between` wordt het eerste item in het begin gezet, het laatste op het einde en de overige\nertussen - gelijkmatig verdeeld.\n\n[…]\n\nDe container waarin uitgelijnd wordt dient voldoende ruimte te hebben om uit te lijnen!"
+          }
+        ]
+      }
+    }
+  ]
+}

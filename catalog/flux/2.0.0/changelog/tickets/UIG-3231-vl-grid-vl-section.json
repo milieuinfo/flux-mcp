@@ -1,0 +1,50 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3231",
+  "entries": [
+    {
+      "id": "65572f9",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3231"
+      ],
+      "scope": "vl-grid, vl-section",
+      "components": [
+        "vl-grid",
+        "vl-section"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie verbeterd",
+      "text": "UIG-3231 - vl-grid, vl-section - documentatie verbeterd",
+      "commits": [
+        {
+          "sha": "65572f9ba7bec0b1d54e359f07a6a2a3507065f2",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/65572f9ba7bec0b1d54e359f07a6a2a3507065f2"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 11
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "styles-layout-afnemers-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-layout-afnemers-grid--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

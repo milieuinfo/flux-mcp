@@ -1,0 +1,76 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-304",
+  "entries": [
+    {
+      "id": "04aa089",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-304"
+      ],
+      "scope": "vl-map",
+      "components": [
+        "vl-map"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "invalid style toegevoegd voor ongeldige geometry, 'allow-invalid-geometry' attribuut en 'hasInvalidGeometries' method toegevoegd op vl-map",
+      "text": "FLUX-304 - vl-map - invalid style toegevoegd voor ongeldige geometry, 'allow-invalid-geometry' attribuut en 'hasInvalidGeometries' method toegevoegd op vl-map",
+      "commits": [
+        {
+          "sha": "04aa08976d0b43c1e25e263d6e60198e94ed5998",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/04aa08976d0b43c1e25e263d6e60198e94ed5998"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 3,
+          "storybook": 4,
+          "tests": 3,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer-style/vl-map-layer-circle-style/vl-map-layer-circle-style.ts",
+          "libs/map/src/components/layer-style/vl-map-layer-style.ts",
+          "libs/map/src/utils/ol-util.ts",
+          "libs/map/src/vl-map.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-action-draw-action-draw-line-action--documentatie",
+            "title": "map/action/draw-action/draw-line-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-action-draw-action-draw-line-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-polygon-action--documentatie",
+            "title": "map/action/draw-action/draw-polygon-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+            "added": "## Ongeldige polygonen\n\nWanneer je op de kaart een ongeldige polygon tekent, bijvoorbeeld één die zichzelf kruist, dan krijgt deze standaard\neen rode \"invalid\" stijl.\n[Zie de vl-map documentatie voor meer informatie](/docs/map-map--documentatie#ongeldige-geometrieën)."
+          },
+          {
+            "id": "map-layer-style--documentatie",
+            "title": "map/layer-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-layer-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-map--documentatie",
+            "added": "## Ongeldige geometrieën\n\nWanneer je op de kaart een ongeldige geometrie tekent, bijvoorbeeld een zelf-kruisende polygoon, dan krijgt deze\nstandaard een rode \"invalid\" stijl. Indien je dit niet wenst kan je het\nattribuut `allow-invalid-geometries` gebruiken.\n\nOm te controleren of een kaart 1 of meerdere ongeldige geometrieën bevat kan je de methode\n`hasInvalidGeometries` gebruiken:\n\n```typescript\nconst map = document.querySelector<VlMap>('#my-map');\nconst hasInvalidGeometries = map.hasInvalidGeometries();\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

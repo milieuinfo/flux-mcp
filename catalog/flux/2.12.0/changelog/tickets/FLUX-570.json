@@ -1,0 +1,199 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-570",
+  "entries": [
+    {
+      "id": "51ff7b1",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-570"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "correctie van 'side navigation met proza message' onder patronen",
+      "text": "FLUX-570 - correctie van 'side navigation met proza message' onder patronen",
+      "commits": [
+        {
+          "sha": "51ff7b1c48791ac094e026398d2ea83119dcc445",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/51ff7b1c48791ac094e026398d2ea83119dcc445"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 4,
+          "tests": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "patronen-navigatie-side-navigation-met-proza-message--documentatie",
+            "title": "Patronen/Navigatie/Side Navigation/met proza message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-side-navigation-met-proza-message--documentatie",
+            "added": "# Side Navigation - met Proza Message\n\nIn dit voorbeeld wordt `vl-side-navigation-layout-next` gecombineerd met `vl-proza-message`. De titels in de content worden\ngevuld via Proza berichten en verschijnen zo ook in de side navigation.\n\nDit voorbeeld toont ook:\n\n- titels gevuld via `vl-proza-message` binnen `vl-title`\n- automatische side navigation op basis van de standaard headingniveaus\n\n## Componenten\n\n- [vl-side-navigation-layout-next](/docs/components-block-next-side-navigation-layout--documentatie)\n- [vl-proza-message](/docs/components-block-proza-message--documentatie)\n- [vl-proza-message-preloader](/docs/components-block-proza-message-proza-message-preloader--documentatie)\n\n## Demo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bdf0ff8",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-570"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "referenties naar patronen (ipv ontwerp)",
+      "text": "FLUX-570 - referenties naar patronen (ipv ontwerp)",
+      "commits": [
+        {
+          "sha": "bdf0ff824f86396f211d7b4644091f83fa451132",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bdf0ff824f86396f211d7b4644091f83fa451132"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 19
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form.web-types.json"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "        <td>[Form](/docs/patronen-formulier-demo--documentatie)</td>"
+          },
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "demo van deze opzet vind je hier: [Voorbeeld Met Sticky En Side Navigation](/docs/patronen-navigatie-functionele-header-sticky-met-side-navigation--documentatie).\n\n[…]\n\nZie [Patronen/Navigatie/Functionele Header](/docs/patronen-navigatie-functionele-header-met-button--documentatie) voor voorbeelden\nvan functional headers met een extra button of search component, of met de combinatie van \"Terug\"-link en tabs.\n\n[…]\n\nVul steeds `skip-to-content-id` in. Kies hiervoor de ID van de eerste heading van de content.\nIndien er uitzonderlijk geen headings zijn, kies dan voor de ID van de content zelf.\n\n[…]\n\nEen ingevulde `skip-to-content-id` zorgt ervoor dat er een skip-link gerenderd wordt. Dit laat gebruikers toe om meteen\nte skippen naar de content en de header over te slaan. Vooral voor screenreader-gebruikers vormt dit een grote\ntijdswinst bij het navigeren. Ook voor andere gebruikers kan dit interessant zijn, daarom wordt deze link zichtbaar\nbij focus."
+          },
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-fieldset--documentatie",
+            "title": "Components - Form/fieldset",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-fieldset--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nGebruik steeds gelabelde formulierelementen binnen de fieldset om de toegankelijkheid te garanderen."
+          },
+          {
+            "id": "components-form-form-label--documentatie",
+            "title": "Components - Form/form-label",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-form-label--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+          },
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nde DOM. Een voorbeeld hiervan kan je vinden in onze [form demo](/docs/patronen-formulier-demo--documentatie).\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-input-field-masked--documentatie",
+            "title": "Components - Form/input-field-masked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-input-field-masked--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-radio-group--documentatie",
+            "title": "Components - Form/radio-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-radio-group--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nMeer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n[Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-textarea--documentatie",
+            "title": "Components - Form/textarea",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-textarea--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nMeer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": "Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n[Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+          },
+          {
+            "id": "design-system--documentatie",
+            "title": "Design System",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/design-system--documentatie",
+            "added": "- een set van leidraden - de pagina's te vinden ander RICHTLIJNEN, PATRONEN en RECEPTEN"
+          },
+          {
+            "id": "patronen-navigatie-popover-accordion-met-menu--documentatie",
+            "title": "Patronen/Navigatie/Popover/accordion met menu",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-popover-accordion-met-menu--documentatie",
+            "added": "## Patroon"
+          },
+          {
+            "id": "patronen-navigatie-popover-info-tile-met-menu--documentatie",
+            "title": "Patronen/Navigatie/Popover/info tile met menu",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-popover-info-tile-met-menu--documentatie",
+            "added": "## Patroon"
+          },
+          {
+            "id": "patronen-navigatie-popover-menu--documentatie",
+            "title": "Patronen/Navigatie/Popover/menu",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-popover-menu--documentatie",
+            "added": "## Patroon\n\n[…]\n\n  van het patroon en de context."
+          }
+        ]
+      }
+    }
+  ]
+}

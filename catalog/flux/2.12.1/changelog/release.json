@@ -1,0 +1,51 @@
+{
+  "schema": 4,
+  "version": "2.12.1",
+  "date": "2026-03-30",
+  "previous": "2.12.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.12.0...v2.12.1",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 0,
+      "fix": 1,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 0,
+      "automatic": 0,
+      "none": 1
+    },
+    "a11y": 0
+  },
+  "components": [],
+  "entries": [
+    {
+      "id": "3097387",
+      "ticket": "FLUX-604",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-604 - components build - raw css bestanden toevoegen aan dist",
+      "file": "tickets/FLUX-604-components-build.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-604",
+      "file": "tickets/FLUX-604-components-build.json",
+      "components": [],
+      "entries": [
+        "3097387"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

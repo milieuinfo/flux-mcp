@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-635",
+  "entries": [
+    {
+      "id": "5ba2037",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-635"
+      ],
+      "scope": "vl-doormat",
+      "components": [
+        "vl-doormat"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "title-only rendering zonder witruimte",
+      "text": "FLUX-635 - vl-doormat - title-only rendering zonder witruimte",
+      "commits": [
+        {
+          "sha": "5ba20374543f2cf0833d8862f97f3bc383684998",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5ba20374543f2cf0833d8862f97f3bc383684998"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Een vl-doormat zonder text-slot rendert nu compact, zonder de overbodige witruimte onder de titel die ontstond door titel- en text-margins die stapelden boven een lege wrapper. Doormats mét text behouden hun bestaande spacing en de publieke API blijft ongewijzigd.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/doormat/vl-doormat.component.ts",
+          "libs/components/src/block/doormat/vl-doormat.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-doormat--documentatie",
+            "title": "Components - Block/doormat",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-doormat--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

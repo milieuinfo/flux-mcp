@@ -1,0 +1,239 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "date": "2025-07-03",
+  "previous": "2.1.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.1.0...v2.2.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 6,
+      "fix": 4,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 5,
+      "automatic": 3,
+      "none": 2
+    },
+    "a11y": 0
+  },
+  "components": [
+    {
+      "name": "vl-content-block",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-cookie-statement",
+      "category": "compliance",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.2.0/storybook/?path=/docs/components-compliance-cookie-statement--documentatie"
+    },
+    {
+      "name": "vl-form-next",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-info-tile",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.2.0/storybook/?path=/docs/components-block-info-tile--documentatie"
+    },
+    {
+      "name": "vl-select",
+      "category": "form",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.2.0/storybook/?path=/docs/components-form-select--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.2.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-side-navigation",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.2.0/storybook/?path=/docs/components-block-side-navigation--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "7435b4d",
+      "ticket": "FLUX-70",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-70 - flux ipv uig",
+      "file": "tickets/FLUX-70.json"
+    },
+    {
+      "id": "008e28e",
+      "ticket": "FLUX-89",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-89 - vl-side-navigation - link tussen content en links hersteld",
+      "file": "tickets/FLUX-89-vl-side-navigation.json"
+    },
+    {
+      "id": "b86e28f",
+      "ticket": "FLUX-91",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-91 - vl-content-block - box-sizing gefixt",
+      "file": "tickets/FLUX-91-vl-content-block-vl-side-navigation.json"
+    },
+    {
+      "id": "a29f5a2",
+      "ticket": "FLUX-91",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-91 - vl-side-navigation - vlLegacyStyles toegevoegd",
+      "file": "tickets/FLUX-91-vl-content-block-vl-side-navigation.json"
+    },
+    {
+      "id": "d38faec",
+      "ticket": "FLUX-76",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-76 - vl-info-tile - icon attribuut, icon-as-badge attribuut en badge slot toegevoegd en footer slot gedocumenteerd",
+      "file": "tickets/FLUX-76-vl-info-tile.json"
+    },
+    {
+      "id": "b230ad3",
+      "ticket": "FLUX-77",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-77 - vl-select-rich - choices.js bijgewerkt",
+      "file": "tickets/FLUX-77-vl-select-rich.json"
+    },
+    {
+      "id": "f8314c4",
+      "ticket": "FLUX-80",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-80 - vl-select - werking van initiële opties verbeterd",
+      "file": "tickets/FLUX-80-vl-select.json"
+    },
+    {
+      "id": "c7405bf",
+      "ticket": "FLUX-81",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-81 - vl-form-next - introductie setFormData() functie om form data in te stellen",
+      "file": "tickets/FLUX-81-vl-form-next.json"
+    },
+    {
+      "id": "5b1724f",
+      "ticket": "FLUX-85",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-85 - v2 migratie documentatie en FAQs toegevoegd",
+      "file": "tickets/FLUX-85.json"
+    },
+    {
+      "id": "a16461c",
+      "ticket": "FLUX-90",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-90 - vl-cookie-statement - vl-accessibility - geneste vl-content-block verwijderd",
+      "file": "tickets/FLUX-90-vl-cookie-statement.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-70",
+      "file": "tickets/FLUX-70.json",
+      "components": [],
+      "entries": [
+        "7435b4d"
+      ]
+    },
+    {
+      "ticket": "FLUX-89",
+      "file": "tickets/FLUX-89-vl-side-navigation.json",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "entries": [
+        "008e28e"
+      ]
+    },
+    {
+      "ticket": "FLUX-91",
+      "file": "tickets/FLUX-91-vl-content-block-vl-side-navigation.json",
+      "components": [
+        "vl-content-block",
+        "vl-side-navigation"
+      ],
+      "entries": [
+        "b86e28f",
+        "a29f5a2"
+      ]
+    },
+    {
+      "ticket": "FLUX-76",
+      "file": "tickets/FLUX-76-vl-info-tile.json",
+      "components": [
+        "vl-info-tile"
+      ],
+      "entries": [
+        "d38faec"
+      ]
+    },
+    {
+      "ticket": "FLUX-77",
+      "file": "tickets/FLUX-77-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "b230ad3"
+      ]
+    },
+    {
+      "ticket": "FLUX-80",
+      "file": "tickets/FLUX-80-vl-select.json",
+      "components": [
+        "vl-select"
+      ],
+      "entries": [
+        "f8314c4"
+      ]
+    },
+    {
+      "ticket": "FLUX-81",
+      "file": "tickets/FLUX-81-vl-form-next.json",
+      "components": [
+        "vl-form-next"
+      ],
+      "entries": [
+        "c7405bf"
+      ]
+    },
+    {
+      "ticket": "FLUX-85",
+      "file": "tickets/FLUX-85.json",
+      "components": [],
+      "entries": [
+        "5b1724f"
+      ]
+    },
+    {
+      "ticket": "FLUX-90",
+      "file": "tickets/FLUX-90-vl-cookie-statement.json",
+      "components": [
+        "vl-cookie-statement"
+      ],
+      "entries": [
+        "a16461c"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

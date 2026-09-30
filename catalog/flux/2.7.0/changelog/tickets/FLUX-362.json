@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-362",
+  "entries": [
+    {
+      "id": "cd63fef",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-362"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "fat-js 2.6.0 is beschikbaar via de cdn",
+      "text": "FLUX-362 - fat-js 2.6.0 is beschikbaar via de cdn",
+      "commits": [
+        {
+          "sha": "cd63fef861bf18529e6dce5ada56f0250fc39ad2",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cd63fef861bf18529e6dce5ada56f0250fc39ad2"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "examples": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

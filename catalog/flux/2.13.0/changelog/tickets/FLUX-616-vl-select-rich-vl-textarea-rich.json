@@ -1,0 +1,49 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-616",
+  "entries": [
+    {
+      "id": "66cc1f9",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-616"
+      ],
+      "scope": "vl-select-rich / vl-textarea-rich",
+      "components": [
+        "vl-select-rich",
+        "vl-textarea-rich"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-input"
+      ],
+      "summary": "vl-input event bij gebruikersinteractie",
+      "text": "FLUX-616 - vl-select-rich / vl-textarea-rich - vl-input event bij gebruikersinteractie",
+      "commits": [
+        {
+          "sha": "66cc1f9fb1a72277e29b16c5219f23fc68eee58f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/66cc1f9fb1a72277e29b16c5219f23fc68eee58f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Spiegelt het dispatchInput-patroon uit VlTextareaComponent in beide rich-varianten zodat vl-input strikt alleen op user-interactie vuurt.\n\nvl-textarea-rich:\n- TinyMCE listener gesplitst: alleen het `input`-event zet dispatchInput = true; `change redo undo` updaten wel de waarde maar zonder flag.\n- Parent's updated() dispatcht vl-input op basis van de flag.\n\nvl-select-rich:\n- Fragiele onInput() (op native select @change) verwijderd, inclusief @change-binding in de template.\n- dispatchInput wordt nu alleen gezet in onChange() (de addItem/removeItem-handler) bij echte user-interactie via Choices.js.\n- Guard: expliciete dispatchInput = false in resetFormControl, selectByValue, removeSelectionByValue, removeAllSelections én in de options-tak van updated(), zodat programmatische mutaties (async load, initiële selectie, pre-selected options) nooit vl-input triggeren.\n- JSDoc op onChange bijgewerkt om de user-interactie-only semantiek vast te leggen.\n\nTests:\n- vl-select-rich: nieuwe Cypress tests voor (a) user-selectie na (synchrone) async options-load, (b) pre-selected opties via programmatische options-set die geen vl-input triggeren, (c) user-selectie na écht asynchrone options-load (setTimeout/Promise), (d) selectByValue / removeSelectionByValue / removeAllSelections triggeren wel vl-change maar geen vl-input.\n- vl-textarea-rich: nieuwe Cypress tests voor (a) vl-input bij user-typen, (b) vl-change bij user-typen, (c) geen vl-input bij programmatische value-set.\n\nvl-change gedrag blijft ongewijzigd; additieve, non-breaking fix.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

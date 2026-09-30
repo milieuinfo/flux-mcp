@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-625",
+  "entries": [
+    {
+      "id": "394dbac",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-625"
+      ],
+      "scope": "vl-info-tile",
+      "components": [
+        "vl-info-tile"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "highlight en highlight-left varianten",
+      "text": "FLUX-625 - vl-info-tile - highlight en highlight-left varianten",
+      "commits": [
+        {
+          "sha": "394dbacada9ec9798fc817094b539cd8048e9314",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/394dbacada9ec9798fc817094b539cd8048e9314"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "examples": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+          "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": "### Highlight\n\n\n### Highlight left"
+          }
+        ]
+      }
+    }
+  ]
+}

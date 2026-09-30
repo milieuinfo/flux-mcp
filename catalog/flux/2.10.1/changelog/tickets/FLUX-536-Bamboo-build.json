@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.10.1",
+  "ticket": "FLUX-536",
+  "entries": [
+    {
+      "id": "4069f66",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-536"
+      ],
+      "scope": "Bamboo build",
+      "components": [],
+      "topics": [
+        "Bamboo build"
+      ],
+      "mentions": [],
+      "summary": "in CI/CD Storybook via :build en http-server e2e-testen ipv via 'storybook dev'",
+      "text": "FLUX-536 - Bamboo build - in CI/CD Storybook via :build en http-server e2e-testen ipv via 'storybook dev'",
+      "commits": [
+        {
+          "sha": "4069f661a0858866207f8224a63e5036e1ac4eda",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4069f661a0858866207f8224a63e5036e1ac4eda"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

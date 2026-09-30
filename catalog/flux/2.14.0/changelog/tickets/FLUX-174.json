@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-174",
+  "entries": [
+    {
+      "id": "d8384d8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-174"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "basis documentatie voor de Matomo analytics",
+      "text": "FLUX-174 - basis documentatie voor de Matomo analytics",
+      "commits": [
+        {
+          "sha": "d8384d814739edb94b18311a1fbfce80d0555515",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d8384d814739edb94b18311a1fbfce80d0555515"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "richtlijnen-analytics-matomo-analytics--documentatie",
+            "title": "Richtlijnen/Analytics/Matomo Analytics",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/richtlijnen-analytics-matomo-analytics--documentatie",
+            "added": "# Matomo Analytics\n\n## Inleiding\n\n[Matomo](https://matomo.org/) is een open source web-analytics platform en het privacy-vriendelijke alternatief\nvoor Google Analytics. In tegenstelling tot veel andere oplossingen blijven de gegevens onder eigen beheer: bij\nDepartement Omgeving wordt Matomo zelf gehost, waardoor bezoekersgegevens binnen de eigen infrastructuur blijven.\n\nMatomo verzamelt onder andere pageviews, sessies, gebruikte browsers/toestellen en navigatiepatronen. Het laat\ntoe om via *custom dimensions* en *events* extra context mee te sturen.\n\nMeer info op de [Matomo website](https://matomo.org/).\n\n\n## Omgevingen\n\nVoor de Storybook-logging maken we gebruik van drie Matomo-omgevingen van Departement Omgeving:\n\n- [https://stats-ontwikkel.omgeving.vlaanderen.be](https://stats-ontwikkel.omgeving.vlaanderen.be) - ontwikkelomgeving,\n  ook gebruikt vanaf lokale hosts (`localhost`, `127.0.0.1`, `192.168.*`)\n- [https://stats-oefen.omgeving.vlaanderen.be](https://stats-oefen.omgeving.vlaanderen.be) - oefenomgeving\n- [https://stats.omgeving.vlaanderen.be](https://stats.omgeving.vlaanderen.be) - productieomgeving\n\nDe productieomgeving is degene die je best raadpleegt.\n\n\n## Matomo logging in Storybook\n\nVoor Storybook hebben we een eigen, lichte Matomo-integratie voorzien. Die bestaat uit twee bestanden met een\nbewust verschillende plaatsing:\n\n- `apps/storybook/resources/public/matomo-loader.js` - zit in de `staticDirs` van Storybook en wordt dus per\n  build mee uitgeleverd in de root van elke gepubliceerde versie.\n- `apps/storybook/matomo-tracking.js` - staat bewust **niet** in `staticDirs`. Dit bestand wordt na het builden\n  één keer hoger in de boom geplaatst (typisch in `release-vX/` of `flux-builds/`), zodat alle gepubliceerde\n  versies datzelfde centrale bestand gebruiken.\n\nDe loader probeert het trackingscript in een aantal stappen op te halen: `./matomo-tracking.js`,\n`../matomo-tracking.js`, `../../matomo-tracking.js` en `../../../matomo-tracking.js`. Op die manier vindt elke\nversie het centrale bestand, ongeacht hoe diep ze in de mappenboom zit.\n\n**Waarom deze opzet?** Wijzigingen aan de tracking-logica vereisen zo geen rebuild en redeploy van elke\ngepubliceerde versie. Eén centraal `matomo-tracking.js` vervangen volstaat - alle versies pikken de nieuwe\nversie op via de loader-fallback.\n\n### Wat wordt er gelogd?\n\nHet trackingscript voorziet onder meer:\n\n- een initiële pageview bij het laden van Storybook\n- pageviews bij SPA-navigatie (Storybook wisselt van story zonder volledige page-reload); hiervoor worden\n  `pushState` en `replaceState` gepatcht zodat een `locationchange` event afgevuurd wordt\n- een **custom dimension** (`dimension 1`) met de Storybook-versie, afgeleid uit het URL-pad\n  (`/release-vX/<versie>/storybook/`); voor lokale builds is dat `local`\n- het forceren van een *new visit* wanneer een gebruiker tussen versies navigeert, zodat gebruik per versie\n  zuiver geteld wordt"
+          }
+        ]
+      }
+    }
+  ]
+}

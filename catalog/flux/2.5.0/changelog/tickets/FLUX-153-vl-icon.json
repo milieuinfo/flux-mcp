@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-153",
+  "entries": [
+    {
+      "id": "1b10a28",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-153"
+      ],
+      "scope": "vl-icon",
+      "components": [
+        "vl-icon"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "toegankelijkheid verbeteringen",
+      "text": "FLUX-153 - vl-icon - toegankelijkheid verbeteringen",
+      "commits": [
+        {
+          "sha": "1b10a28e7136a92fe5c5f9fa93c85adf9e79d55b",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1b10a28e7136a92fe5c5f9fa93c85adf9e79d55b"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/icon/vl-icon.component.ts",
+          "libs/components/src/atom/icon/vl-icon.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-icon--documentatie",
+            "title": "Components - Atom/icon",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-icon--documentatie",
+            "added": "### Label (toegankelijkheid)\n\n[…]\n\nStandaard wordt een icon als decoratief beschouwd en wordt er `aria-hidden` op geplaatst. Indien het relevant is voor de\ninhoud en gelezen moet worden door screenreaders moet er een `label` meegegeven worden."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-371",
+  "entries": [
+    {
+      "id": "3954c65",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-371"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "cursor: pointer ingesteld voor button-as-link",
+      "text": "FLUX-371 - vl-link - cursor: pointer ingesteld voor button-as-link",
+      "commits": [
+        {
+          "sha": "3954c6560597e1b74f829e4d78744603137a3b24",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/3954c6560597e1b74f829e4d78744603137a3b24"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-button-as-link.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

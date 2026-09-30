@@ -1,0 +1,38 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "926f877",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "aangepast jaarplan 2025",
+      "text": "aangepast jaarplan 2025",
+      "commits": [
+        {
+          "sha": "926f877cda27540444850313dc70021b07605f98",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/926f877cda27540444850313dc70021b07605f98"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

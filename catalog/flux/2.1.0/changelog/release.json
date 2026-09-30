@@ -1,0 +1,185 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "date": "2025-06-18",
+  "previous": "2.0.2",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.0.2...v2.1.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 6,
+      "fix": 1,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 5,
+      "automatic": 1,
+      "none": 1
+    },
+    "a11y": 0
+  },
+  "components": [
+    {
+      "name": "vl-content-block",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-functional-header",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.1.0/storybook/?path=/docs/components-block-functional-header--documentatie"
+    },
+    {
+      "name": "vl-rich-data",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.1.0/storybook/?path=/docs/components-block-rich-data--documentatie"
+    },
+    {
+      "name": "vl-rich-data-table",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.1.0/storybook/?path=/docs/components-block-rich-data-table--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.1.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "3cdd68d",
+      "ticket": "FLUX-75",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-75 - vl-rich-data - escape functionaliteit verbeterd",
+      "file": "tickets/FLUX-75-vl-rich-data.json"
+    },
+    {
+      "id": "da09c25",
+      "ticket": "FLUX-70",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-70 - flux ipv uigov",
+      "file": "tickets/FLUX-70.json"
+    },
+    {
+      "id": "ed87be7",
+      "ticket": "FLUX-73",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-73 - vl-select-rich - oplossing voor keydown broncode in html",
+      "file": "tickets/FLUX-73-vl-select-rich.json"
+    },
+    {
+      "id": "a420643",
+      "ticket": "FLUX-74",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-74 - vl-content-block / vl-functional-header - voorbeelden van een volledige breedte layout toegevoegd",
+      "file": "tickets/FLUX-74-vl-content-block-vl-functional-header.json"
+    },
+    {
+      "id": "b211c93",
+      "ticket": "FLUX-83",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-83 - vl-rich-data / vl-rich-data-table - \"filter-max-width\" attribuut toegevoegd",
+      "file": "tickets/FLUX-83-vl-rich-data-vl-rich-data-table.json"
+    },
+    {
+      "id": "7f217f8",
+      "ticket": "FLUX-84",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-84 - vl-rich-data-table - \"zebra\" en \"flux-zebra\" attributen toegevoegd",
+      "file": "tickets/FLUX-84-vl-rich-data-table.json"
+    },
+    {
+      "id": "aecafbc",
+      "ticket": null,
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "readme uitgebreid met Storybook v2",
+      "file": "tickets/aecafbc.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-75",
+      "file": "tickets/FLUX-75-vl-rich-data.json",
+      "components": [
+        "vl-rich-data"
+      ],
+      "entries": [
+        "3cdd68d"
+      ]
+    },
+    {
+      "ticket": "FLUX-70",
+      "file": "tickets/FLUX-70.json",
+      "components": [],
+      "entries": [
+        "da09c25"
+      ]
+    },
+    {
+      "ticket": "FLUX-73",
+      "file": "tickets/FLUX-73-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "ed87be7"
+      ]
+    },
+    {
+      "ticket": "FLUX-74",
+      "file": "tickets/FLUX-74-vl-content-block-vl-functional-header.json",
+      "components": [
+        "vl-content-block",
+        "vl-functional-header"
+      ],
+      "entries": [
+        "a420643"
+      ]
+    },
+    {
+      "ticket": "FLUX-83",
+      "file": "tickets/FLUX-83-vl-rich-data-vl-rich-data-table.json",
+      "components": [
+        "vl-rich-data",
+        "vl-rich-data-table"
+      ],
+      "entries": [
+        "b211c93"
+      ]
+    },
+    {
+      "ticket": "FLUX-84",
+      "file": "tickets/FLUX-84-vl-rich-data-table.json",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "entries": [
+        "7f217f8"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/aecafbc.json",
+      "components": [],
+      "entries": [
+        "aecafbc"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

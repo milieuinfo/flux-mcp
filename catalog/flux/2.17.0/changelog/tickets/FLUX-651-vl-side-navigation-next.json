@@ -1,0 +1,64 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-651",
+  "entries": [
+    {
+      "id": "fff92c4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-651"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "multi-sectie ondersteuning (auto + custom in 1 nav)",
+      "text": "FLUX-651 - vl-side-navigation-next - multi-sectie ondersteuning (auto + custom in 1 nav)",
+      "commits": [
+        {
+          "sha": "fff92c4515107fe1e66c53a27ef60c8ec7602162",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/fff92c4515107fe1e66c53a27ef60c8ec7602162"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Nieuw sub-component vl-side-navigation-section-next laat een enkele vl-side-navigation-next meerdere secties combineren in een nav: een auto-gegenereerde inhoudstafel, custom-TOC-secties naar andere headings, en actie-secties (links/knoppen). De DOM-volgorde is de render-volgorde. De sectie-titel is de eerste vl-title of h1-h6 child; de component genereert waar nodig een id en wired aria-labelledby van de sectie-ul naar dat titel-element. Een nav-landmark en een drawer op mobile/compact.\n\nBackwards compatibel: lege slot blijft de bestaande auto-TOC, een kale ul blijft de bestaande custom-TOC, en zodra er minstens een vl-side-navigation-section-next child staat schakelt de component naar sections-mode.\n\nmulti-active werkt in sections-mode: de actief-indicator tekent een segment per nav-sectie (gegroepeerd per sectie-container) in plaats van een doorlopende lijn over de sectietitels. Afgestemd op de FLUX-526 Set-API (activeHeadingIds).",
+        "published": true,
+        "areas": {
+          "code": 6,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 3,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/index.ts",
+          "libs/components/src/block/next/side-navigation/index.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-section.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-sections.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation--documentatie",
+            "title": "Components - Block/next/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+            "added": "### Multi-sectie (auto + custom in één nav)\n\nPlaats meerdere `vl-side-navigation-section-next` in één `vl-side-navigation-next`: combineer een\n**auto-gegenereerde** sectie (gescoped op een gekozen container-id) met een **custom-TOC** sectie, in één nav en\néén drawer op mobile.\n\n```html\n<vl-side-navigation-next>\n  <vl-side-navigation-section-next type=\"auto\" heading-root-selector=\"#hoofdstukken\" section-title=\"Op deze pagina\">\n  </vl-side-navigation-section-next>\n\n  <vl-side-navigation-section-next section-title=\"Bijlagen\">\n    <ul>\n      <li><vl-link href=\"#bijlage-a\">Bijlage A</vl-link></li>\n      <li><vl-link href=\"#bijlage-b\">Bijlage B</vl-link></li>\n    </ul>\n  </vl-side-navigation-section-next>\n</vl-side-navigation-next>\n```\n\n- **Auto-sectie**: `type=\"auto\"` scant de headings binnen `heading-root-selector` (hier `#hoofdstukken`). Scan-props\n  (`min-level`, `max-level`, `max-depth`, `exclude-selectors`) mogen op de parent of per sectie als override.\n- **Custom-sectie** (zonder `type=\"auto\"`): lever zelf een `<ul>` met `vl-link`s naar bestaande heading-id's."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-143",
+  "entries": [
+    {
+      "id": "daab8e8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-143"
+      ],
+      "scope": "vl-popover",
+      "components": [
+        "vl-popover"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "positioneringsdocumentatie uitgebreid en strategy property toegevoegd",
+      "text": "FLUX-143 - vl-popover - positioneringsdocumentatie uitgebreid en strategy property toegevoegd",
+      "commits": [
+        {
+          "sha": "daab8e869a61f34c8368604ffa7959f21a165bda",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/daab8e869a61f34c8368604ffa7959f21a165bda"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Als deel van dit ticket ook enkele WCAG-verbeteringen doorgevoerd",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover-action-list.component.ts",
+          "libs/components/src/block/popover/vl-popover-action.component.ts",
+          "libs/components/src/block/popover/vl-popover.component.ts",
+          "libs/components/src/block/popover/vl-popover.defaults.ts",
+          "libs/components/src/block/popover/vl-popover.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-accordion--documentatie",
+            "title": "Components - Block/accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-block-accordion--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": "## Gebruik\n\n[…]\n\n### Strategy\n> [strategy documentatie bij floating-ui](https://floating-ui.com/docs/computePosition#strategy)\n\nDefault is positioneringsstrategie ingesteld op `absolute`. De popover zal gepositioneerd worden ten opzichte van het\ndichtstbijzijnde gepositioneerde parent-element (bv. een element met `position: relative`).\n\nOm te vermijden dat de popover gepositioneerd wordt tegenover het verkeerde element, kan je best de eerste parent van\nde popover instellen op `position: relative` zodat de popover steeds gepositioneerd wordt zoals verwacht.\n\n[…]\n\nDe popover-component gebruikt achterliggend [floating-ui](https://floating-ui.com/)"
+          }
+        ]
+      }
+    }
+  ]
+}

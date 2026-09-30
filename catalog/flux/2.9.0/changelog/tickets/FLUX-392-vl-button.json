@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-392",
+  "entries": [
+    {
+      "id": "d281e64",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-392"
+      ],
+      "scope": "vl-button",
+      "components": [
+        "vl-button"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "cta-link met role=\"button\" verscheen niet in link overzicht van VoiceOver",
+      "text": "FLUX-392 - vl-button - cta-link met role=\"button\" verscheen niet in link overzicht van VoiceOver",
+      "commits": [
+        {
+          "sha": "d281e641678dc7a3c95aec601c5e04e227da8f82",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d281e641678dc7a3c95aec601c5e04e227da8f82"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "base": "2.12.1",
+  "added": [
+    {
+      "element": "vl-tab-link-next",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie"
+    },
+    {
+      "element": "vl-tab-next",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie"
+    },
+    {
+      "element": "vl-tab-panel-next",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie"
+    },
+    {
+      "element": "vl-tabs-next",
+      "category": "block",
+      "inChangelog": true,
+      "description": "<span style=\"color: rgb(25,140,25)\">[next-component]</span><br/>Gebruik deze component om content op te delen in verschillende tabbladen.\n\nDit component heeft twee varianten:\n\n- **Standaard tabs patroon**:\n    - Deze variant wordt best gebruikt als **widget op een pagina** en niet als navigatie element.\n    - Deze implementatie volgt de [ARIA tab patroon richtlijnen](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) voor `role=\"tablist\"`.\n    - De tabs zijn bedienbaar met de pijltjestoetsen.\n    - De tabpanelen worden allemaal gerenderd, maar enkel het selecteerde tabpaneel wordt getoond.\n    - Bij deze variant gebruik je de `<vl-tab-next>` als tab elementen en de `<vl-tab-panel-next>` als tabpanelen.\n- **Horizontale navigatie**:\n    - Deze variant implementeert geen `role=\"tablist\"` maar doet dienst als **navigatie element**.\n    - Bij deze variant gebruik je de `<vl-tab-link-next>` als tab elementen.",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie"
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-doormat",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "full-height",
+            "description": "Strekt de doormat verticaal uit om de volledige hoogte van de container te vullen.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-info-tile",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "highlight",
+            "description": "Voegt een accent toe aan de bovenkant van de info tile.",
+            "default": "false"
+          },
+          {
+            "name": "highlight-left",
+            "description": "Voegt een accent toe aan de linkerkant van de info tile.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": true,
+      "events": {
+        "added": [
+          {
+            "name": "vl-click",
+            "description": "Event dat afgevuurd wordt bij het klikken op de link."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "no-padding-bottom",
+            "description": "Haalt de witruimte onder het laatste item weg. Gebruik dit indien er via stacking al witruimte aanwezig is.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-step",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "heading-level",
+            "description": "Het heading niveau voor de step titel.",
+            "default": "3"
+          },
+          {
+            "name": "icon-aria-label",
+            "description": "Aria label voor de icon container.",
+            "default": "null"
+          },
+          {
+            "name": "timeline-aria-label",
+            "description": "Aria label voor de timeline datum container, bijvoorbeeld voor volledige datum.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-textarea-rich",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "height",
+            "description": "De hoogte van de editor in pixels (inclusief toolbar en statusbalk).<br/>Er is een minimale hoogte van **70px**.<br/>Dit attribuut is niet reactief.",
+            "default": "250"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "rows",
+            "description": "**Deprecated** Heeft geen effect op de `vl-textarea-rich` editor. Gebruik `height` om de hoogte in te stellen.",
+            "default": {
+              "before": "null",
+              "after": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-title",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "appearance",
+            "description": "Bepaalt de visuele stijl van de titel, onafhankelijk van het semantische type. Handig voor het behouden van semantiek terwijl je een andere stijl wilt toepassen.",
+            "default": "''"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "type",
+            "default": {
+              "before": "h1",
+              "after": ""
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "label-width",
+          "description": "De breedte van de labels, in %. Heeft geen impact als de properties 'stacked' worden."
+        }
+      ]
+    }
+  ]
+}

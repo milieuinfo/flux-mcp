@@ -1,0 +1,514 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "date": "2026-04-30",
+  "previous": "2.12.1",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.12.1...v2.13.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 18,
+      "fix": 6,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 15,
+      "automatic": 4,
+      "none": 5
+    },
+    "a11y": 1
+  },
+  "components": [
+    {
+      "name": "vl-doormat",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-doormat--documentatie"
+    },
+    {
+      "name": "vl-info-tile",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-info-tile--documentatie"
+    },
+    {
+      "name": "vl-link",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-atom-link--documentatie"
+    },
+    {
+      "name": "vl-modal",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-modal--documentatie"
+    },
+    {
+      "name": "vl-pill",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-pill-pill--documentatie"
+    },
+    {
+      "name": "vl-properties",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-properties--documentatie"
+    },
+    {
+      "name": "vl-rich-data",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-rich-data--documentatie"
+    },
+    {
+      "name": "vl-rich-data-table",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-rich-data-table--documentatie"
+    },
+    {
+      "name": "vl-search-result-title",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-search-result--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-steps",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-steps-steps--documentatie"
+    },
+    {
+      "name": "vl-tabs-next",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie"
+    },
+    {
+      "name": "vl-textarea-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-form-textarea-rich--documentatie"
+    },
+    {
+      "name": "vl-title",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-atom-title--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "a993629",
+      "ticket": "FLUX-603",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-603 - fat-lib zonder chunking",
+      "file": "tickets/FLUX-603.json"
+    },
+    {
+      "id": "78c7c52",
+      "ticket": "FLUX-607",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-607 - vl-rich-data - `filter-closable`-werking verbeterd",
+      "file": "tickets/FLUX-607-vl-rich-data.json"
+    },
+    {
+      "id": "23b005f",
+      "ticket": "FLUX-612",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-612 - vl-search-result-title - height naar min-height voor multiline wrapping",
+      "file": "tickets/FLUX-612-vl-search-result-title.json"
+    },
+    {
+      "id": "e953c9a",
+      "ticket": "FLUX-622",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-622 - vl-rich-data - verberg mobiele filterknop als er geen filter aanwezig is",
+      "file": "tickets/FLUX-622-vl-rich-data-vl-rich-data-table.json"
+    },
+    {
+      "id": "78d7071",
+      "ticket": "FLUX-631",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-631 - vl-textarea-rich - vl-input event dispatchen bij gebruikersinvoer",
+      "file": "tickets/FLUX-631-vl-textarea-rich.json"
+    },
+    {
+      "id": "440d5ce",
+      "ticket": null,
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FluxAlert - message",
+      "file": "tickets/440d5ce-FluxAlert.json"
+    },
+    {
+      "id": "5a76a78",
+      "ticket": "FLUX-15",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-15 - vl-tabs-next - introductie nieuw component",
+      "file": "tickets/FLUX-15-vl-tabs-next.json"
+    },
+    {
+      "id": "e11c696",
+      "ticket": "FLUX-15",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-15 - vl-tabs-next - mobiele layout",
+      "file": "tickets/FLUX-15-vl-tabs-next.json"
+    },
+    {
+      "id": "51b392c",
+      "ticket": "FLUX-170",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-170 - verify-release op Bamboo",
+      "file": "tickets/FLUX-170.json"
+    },
+    {
+      "id": "5c35364",
+      "ticket": "FLUX-263",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-263 - vl-properties - stacked ipv collapsed",
+      "file": "tickets/FLUX-263-vl-properties.json"
+    },
+    {
+      "id": "f0e6ad0",
+      "ticket": "FLUX-278",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-278 - vl-title - appearance attribuut",
+      "file": "tickets/FLUX-278-vl-title.json"
+    },
+    {
+      "id": "6417317",
+      "ticket": "FLUX-285",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-285 - vl-steps - WCAG verbeteringen",
+      "file": "tickets/FLUX-285-vl-steps.json"
+    },
+    {
+      "id": "1834b2f",
+      "ticket": "FLUX-320",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-320 - vl-select-rich - modifier keys toelaten",
+      "file": "tickets/FLUX-320-vl-select-rich.json"
+    },
+    {
+      "id": "6b50faa",
+      "ticket": "FLUX-542",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-542 - Storybook consultatie tracken via Matomo",
+      "file": "tickets/FLUX-542.json"
+    },
+    {
+      "id": "aa8cfa9",
+      "ticket": "FLUX-587",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-587 - vl-doormat - full-height property toegevoegd",
+      "file": "tickets/FLUX-587-vl-doormat.json"
+    },
+    {
+      "id": "7fe3880",
+      "ticket": "FLUX-598",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-598 - vl-pill - aangepaste kleuren",
+      "file": "tickets/FLUX-598-vl-pill.json"
+    },
+    {
+      "id": "60cd5de",
+      "ticket": "FLUX-602",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-602 - vl-properties - no-padding-bottom attribuut toegevoegd, woorden splitsen waar mogelijk, label en data elementen uitfaseren",
+      "file": "tickets/FLUX-602-vl-properties.json"
+    },
+    {
+      "id": "33f4fad",
+      "ticket": "FLUX-606",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-606 - vl-textarea-rich - height attribuut toegevoegd",
+      "file": "tickets/FLUX-606-vl-textarea-rich.json"
+    },
+    {
+      "id": "946f71a",
+      "ticket": "FLUX-609",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-609 - vl-properties - voorkom zichtbare Lit-markers in label/data",
+      "file": "tickets/FLUX-609-vl-properties.json"
+    },
+    {
+      "id": "66cc1f9",
+      "ticket": "FLUX-616",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-616 - vl-select-rich / vl-textarea-rich - vl-input event bij gebruikersinteractie",
+      "file": "tickets/FLUX-616-vl-select-rich-vl-textarea-rich.json"
+    },
+    {
+      "id": "eb5793f",
+      "ticket": "FLUX-617",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-617 - vl-modal - verwijder dialog-polyfill (IE10-only)",
+      "file": "tickets/FLUX-617-vl-modal.json"
+    },
+    {
+      "id": "8efb347",
+      "ticket": "FLUX-619",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-619 - vl-link - vl-click event toevoegen",
+      "file": "tickets/FLUX-619-vl-link.json"
+    },
+    {
+      "id": "613d096",
+      "ticket": "FLUX-622",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-622 - vl-rich-data-table - cypress componenttesten gemigreerd vanuit storybook E2E",
+      "file": "tickets/FLUX-622-vl-rich-data-vl-rich-data-table.json"
+    },
+    {
+      "id": "394dbac",
+      "ticket": "FLUX-625",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-625 - vl-info-tile - highlight en highlight-left varianten",
+      "file": "tickets/FLUX-625-vl-info-tile.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-603",
+      "file": "tickets/FLUX-603.json",
+      "components": [],
+      "entries": [
+        "a993629"
+      ]
+    },
+    {
+      "ticket": "FLUX-607",
+      "file": "tickets/FLUX-607-vl-rich-data.json",
+      "components": [
+        "vl-rich-data"
+      ],
+      "entries": [
+        "78c7c52"
+      ]
+    },
+    {
+      "ticket": "FLUX-612",
+      "file": "tickets/FLUX-612-vl-search-result-title.json",
+      "components": [
+        "vl-search-result-title"
+      ],
+      "entries": [
+        "23b005f"
+      ]
+    },
+    {
+      "ticket": "FLUX-622",
+      "file": "tickets/FLUX-622-vl-rich-data-vl-rich-data-table.json",
+      "components": [
+        "vl-rich-data",
+        "vl-rich-data-table"
+      ],
+      "entries": [
+        "e953c9a",
+        "613d096"
+      ]
+    },
+    {
+      "ticket": "FLUX-631",
+      "file": "tickets/FLUX-631-vl-textarea-rich.json",
+      "components": [
+        "vl-textarea-rich"
+      ],
+      "entries": [
+        "78d7071"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/440d5ce-FluxAlert.json",
+      "components": [],
+      "entries": [
+        "440d5ce"
+      ]
+    },
+    {
+      "ticket": "FLUX-15",
+      "file": "tickets/FLUX-15-vl-tabs-next.json",
+      "components": [
+        "vl-tabs-next"
+      ],
+      "entries": [
+        "5a76a78",
+        "e11c696"
+      ]
+    },
+    {
+      "ticket": "FLUX-170",
+      "file": "tickets/FLUX-170.json",
+      "components": [],
+      "entries": [
+        "51b392c"
+      ]
+    },
+    {
+      "ticket": "FLUX-263",
+      "file": "tickets/FLUX-263-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "5c35364"
+      ]
+    },
+    {
+      "ticket": "FLUX-278",
+      "file": "tickets/FLUX-278-vl-title.json",
+      "components": [
+        "vl-title"
+      ],
+      "entries": [
+        "f0e6ad0"
+      ]
+    },
+    {
+      "ticket": "FLUX-285",
+      "file": "tickets/FLUX-285-vl-steps.json",
+      "components": [
+        "vl-steps"
+      ],
+      "entries": [
+        "6417317"
+      ]
+    },
+    {
+      "ticket": "FLUX-320",
+      "file": "tickets/FLUX-320-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "1834b2f"
+      ]
+    },
+    {
+      "ticket": "FLUX-542",
+      "file": "tickets/FLUX-542.json",
+      "components": [],
+      "entries": [
+        "6b50faa"
+      ]
+    },
+    {
+      "ticket": "FLUX-587",
+      "file": "tickets/FLUX-587-vl-doormat.json",
+      "components": [
+        "vl-doormat"
+      ],
+      "entries": [
+        "aa8cfa9"
+      ]
+    },
+    {
+      "ticket": "FLUX-598",
+      "file": "tickets/FLUX-598-vl-pill.json",
+      "components": [
+        "vl-pill"
+      ],
+      "entries": [
+        "7fe3880"
+      ]
+    },
+    {
+      "ticket": "FLUX-602",
+      "file": "tickets/FLUX-602-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "60cd5de"
+      ]
+    },
+    {
+      "ticket": "FLUX-606",
+      "file": "tickets/FLUX-606-vl-textarea-rich.json",
+      "components": [
+        "vl-textarea-rich"
+      ],
+      "entries": [
+        "33f4fad"
+      ]
+    },
+    {
+      "ticket": "FLUX-609",
+      "file": "tickets/FLUX-609-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "946f71a"
+      ]
+    },
+    {
+      "ticket": "FLUX-616",
+      "file": "tickets/FLUX-616-vl-select-rich-vl-textarea-rich.json",
+      "components": [
+        "vl-select-rich",
+        "vl-textarea-rich"
+      ],
+      "entries": [
+        "66cc1f9"
+      ]
+    },
+    {
+      "ticket": "FLUX-617",
+      "file": "tickets/FLUX-617-vl-modal.json",
+      "components": [
+        "vl-modal"
+      ],
+      "entries": [
+        "eb5793f"
+      ]
+    },
+    {
+      "ticket": "FLUX-619",
+      "file": "tickets/FLUX-619-vl-link.json",
+      "components": [
+        "vl-link"
+      ],
+      "entries": [
+        "8efb347"
+      ]
+    },
+    {
+      "ticket": "FLUX-625",
+      "file": "tickets/FLUX-625-vl-info-tile.json",
+      "components": [
+        "vl-info-tile"
+      ],
+      "entries": [
+        "394dbac"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

@@ -1,0 +1,79 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-270",
+  "entries": [
+    {
+      "id": "586d598",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-270"
+      ],
+      "scope": "vl-search",
+      "components": [
+        "vl-search"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "deprecaten met zoek-patroon als alternatief",
+      "text": "FLUX-270 - vl-search - deprecaten met zoek-patroon als alternatief",
+      "commits": [
+        {
+          "sha": "586d5981d49fd17cbff0be712a8e5615a85270fb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/586d5981d49fd17cbff0be712a8e5615a85270fb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-search wordt gemarkeerd als deprecated (wordt verwijderd in v3) maar blijft functioneel werken. Als alternatief toont een nieuw Storybook-patroon onder Patronen/Zoeken hoe je met de input-group een zoekformulier bouwt dat feedback geeft terwijl de zoekopdracht loopt, zodat gebruikers niet meermaals op de zoekknop kunnen klikken.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 8,
+          "storybook": 1,
+          "tests": 1,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/search/vl-search.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-search--documentatie",
+            "title": "Components - Block/search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-search--documentatie",
+            "added": "# Search\n\n\n{`\n Deze component is <strong>deprecated</strong> en wordt verwijderd in <strong>v3</strong>. Bouw voortaan een\n zoekformulier met een <code>input-group</code> (<code>vl-input-field</code> + <code>vl-button</code> met\n <code>loading</code>) zoals beschreven onder het [zoek-patroon](/docs/patronen-zoeken-loading-state--documentatie).\n`}\n\n\n## Doel\n\nDe `search` component toont een zoekveld met een zoekknop.\n\n\n## Voorbeeld\n\n\n\n## Configuratie"
+          },
+          {
+            "id": "patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+            "title": "Patronen/Navigatie/Functionele Header/met back en tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+            "added": null
+          },
+          {
+            "id": "patronen-navigatie-functionele-header-met-search--documentatie",
+            "title": "Patronen/Navigatie/Functionele Header/met search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-navigatie-functionele-header-met-search--documentatie",
+            "added": "In dit voorbeeld tonen we hoe een zoekformulier kan toegevoegd worden aan de\n[vl-functional-header](/docs/components-block-functional-header--documentatie).\n\n[…]\n\nWe bouwen het zoekformulier met de [Input Group](/docs/components-form-input-group--documentatie)\n(een [vl-input-field](/docs/components-form-input-field--documentatie) en een\n[vl-button](/docs/components-atom-button--documentatie) in een `<form role=\"search\">`), gecombineerd met de\n[vl-group](/docs/styles-layout-group--documentatie) stijl om het zoekveld rechts uit te lijnen naast een\nbreadcrumb of andere variant. Zie ook het [zoek-patroon](/docs/patronen-zoeken-loading-state--documentatie)\nvoor een uitwerking met loading state.\n\n[…]\n\n- [vl-input-field](/docs/components-form-input-field--documentatie)\n- [vl-button](/docs/components-atom-button--documentatie)"
+          },
+          {
+            "id": "patronen-zoeken-loading-state--documentatie",
+            "title": "Patronen/Zoeken/loading state",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-zoeken-loading-state--documentatie",
+            "added": "# Zoeken - loading state\n\nEen zoekformulier wordt opgebouwd met de [Input Group](/docs/components-form-input-group--documentatie):\neen [vl-input-field](/docs/components-form-input-field--documentatie) en een\n[vl-button](/docs/components-atom-button--documentatie) in de juiste toestand, gewrapt in een\n`<form>`. Zo is er geen aparte zoek-component nodig.\n\nBij trage backends (bv. een MAGDA-call) is het belangrijk om aan te geven dat de zoekopdracht loopt,\nzodat gebruikers niet meermaals klikken. De `loading`-toestand van `vl-button` blokkeert het klikken\nen zet `aria-busy`; zodra het resultaat binnen is zet je `loading` terug op `false`.\n\n\n## Opbouw\n\n```html\n<form role=\"search\" aria-label=\"Zoeken op deze site\">\n    <div class=\"vl-group vl-group--input-group\">\n        <vl-input-field input-group block type=\"search\" name=\"zoekterm\" label=\"Zoekterm\"></vl-input-field>\n        <vl-button input-group icon=\"search\" type=\"submit\" label=\"Zoeken\" tertiary></vl-button>\n    </div>\n    <p role=\"status\" aria-live=\"polite\"></p>\n</form>\n```\n\nDe loading-state stuur je aan op de `vl-button`: zet `loading` zodra je de zoekopdracht start en\nhaal het er weer af zodra het resultaat binnen is.\n\n```ts\nbutton.toggleAttribute('loading', true); // zoekopdracht gestart: knop geblokkeerd, aria-busy actief\n// ... resultaat binnen ...\nbutton.toggleAttribute('loading', false); // terug naar de normale toestand\nstatus.textContent = '8 resultaten geladen.'; // aankondiging via aria-live\n```\n\n## Toegankelijkheid (WCAG 2.2 AA)\n\n- **`role=\"search\"` landmark** - gebruik dit enkel voor de globale site-search, zodat hulptechnologie\n  het zoekblok als landmark herkent. Staan er meerdere zoekvelden op één pagina (bv. een filter binnen\n  een lijst), geef dan elke `role=\"search\"` een eigen `aria-label`, of laat de role weg voor secundaire\n  zoekvelden.\n- **`aria-busy` tijdens het zoeken** - `vl-button` zet `aria-busy=\"true\"` en `aria-disabled=\"true\"`\n  zolang `loading` aanstaat en blokkeert herhaald klikken. Dat is voldoende om de knop-toestand te\n  communiceren, maar niet om het resultaat aan te kondigen.\n- **Resultaten aankondigen via `aria-live`** - `aria-busy` alleen meldt een screenreader niet dat de\n  zoekopdracht klaar is. Voorzie een `aria-live=\"polite\"`-regio (`role=\"status\"`) en vul die met een\n  korte samenvatting zodra het resultaat binnen is (bv. \"8 resultaten geladen\"). Zo voldoe je aan\n  [WCAG 4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html).\n- **Label** - het `label`-attribuut op `vl-input-field` is verplicht voor een toegankelijke naam; de\n  `vl-button` ontleent zijn naam aan het label \"Zoeken\" en is visueel gelabeld door het \"search\" icoon."
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "### Search\n\n`Search` is deprecated in v2 en wordt verwijderd in v3. Bouw voortaan een zoekformulier\nmet de [`input-group`](/docs/components-form-input-group--documentatie) (`vl-input-field` + `vl-button` met\n`loading`) - zie het [zoek-patroon](/docs/patronen-zoeken-loading-state--documentatie).\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Search [legacy]](/docs/components-block-search--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-search>`}</code></td>\n        <td>-</td>\n        <td><code>-</code></td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

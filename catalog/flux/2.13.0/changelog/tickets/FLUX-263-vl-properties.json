@@ -1,0 +1,77 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-263",
+  "entries": [
+    {
+      "id": "5c35364",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-263"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "stacked ipv collapsed",
+      "text": "FLUX-263 - vl-properties - stacked ipv collapsed",
+      "commits": [
+        {
+          "sha": "5c3536424bdda6c9cd183bc8f7d03218a6f20e01",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5c3536424bdda6c9cd183bc8f7d03218a6f20e01"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "styles": 3,
+          "docs": 1,
+          "storybook": 5,
+          "tests": 3,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/contact-card/vl-contact-card.flux-css.ts",
+          "libs/components/src/block/properties/vl-properties.component.ts",
+          "libs/components/src/block/properties/vl-properties.css.ts",
+          "libs/components/src/block/properties/vl-properties.model.ts",
+          "libs/components/src/block/search-result/vl-search-result-properties.css.ts",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/bottom.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-contact-card--documentatie",
+            "title": "Components - Block/contact-card",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-contact-card--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "    class?: string; // column / column--full-width / stacked (collapsed)\n\n[…]\n\n### Stacked\n\n[…]\n\nafgedwongen worden via de `stacked` class (`stacked` vervangt de deprecated class `collapsed`)."
+          },
+          {
+            "id": "components-block-search-result--documentatie",
+            "title": "Components - Block/search-result",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-search-result--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3260",
+  "entries": [
+    {
+      "id": "4e00a17",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3260"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-elements"
+      ],
+      "summary": "styles verwijderd uit vl-elements.uig-css.ts",
+      "text": "UIG-3260 - styles verwijderd uit vl-elements.uig-css.ts",
+      "commits": [
+        {
+          "sha": "4e00a17c2f483f999143de672a97202b5fdee4f1",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/4e00a17c2f483f999143de672a97202b5fdee4f1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

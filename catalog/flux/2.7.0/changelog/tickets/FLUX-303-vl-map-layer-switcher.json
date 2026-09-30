@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-303",
+  "entries": [
+    {
+      "id": "bd6b246",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-303"
+      ],
+      "scope": "vl-map-layer-switcher",
+      "components": [
+        "vl-map-layer-switcher"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "sync layer visibility",
+      "text": "FLUX-303 - vl-map-layer-switcher - sync layer visibility",
+      "commits": [
+        {
+          "sha": "bd6b2462128b49b9eab40fead19ae6ae4a3b4c8a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bd6b2462128b49b9eab40fead19ae6ae4a3b4c8a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/checkbox/vl-checkbox.component.ts",
+          "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-layer-switcher--documentatie",
+            "title": "map/layer-switcher",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+            "added": "Gebruik de zoom controls om de verschillende kaartlagen te laten verschijnen."
+          }
+        ]
+      }
+    }
+  ]
+}

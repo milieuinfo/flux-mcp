@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-623",
+  "entries": [
+    {
+      "id": "797b4ee",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-623"
+      ],
+      "scope": "vl-search-filter",
+      "components": [
+        "vl-search-filter"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "h2-spacing en geneste-section",
+      "text": "FLUX-623 - vl-search-filter - h2-spacing en geneste-section",
+      "commits": [
+        {
+          "sha": "797b4ee7b0c25d32431e65dfa000f7f374f2a587",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/797b4ee7b0c25d32431e65dfa000f7f374f2a587"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Een vl-title[type=h2]-sectiekop en een native section h2 krijgen nu dezelfde, onder-witruimte. Een geneste section-in-section krijgt nog 1 lijn.",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/search-filter/vl-search-filter.global.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

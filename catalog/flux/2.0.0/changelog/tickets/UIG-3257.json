@@ -1,0 +1,84 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3257",
+  "entries": [
+    {
+      "id": "2b4d4e5",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3257"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "v2 storybook documentatie aangepast",
+      "text": "UIG-3257 - v2 storybook documentatie aangepast",
+      "commits": [
+        {
+          "sha": "2b4d4e519b7d1b52348b37a3aa9c8b105db5eeb4",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/2b4d4e519b7d1b52348b37a3aa9c8b105db5eeb4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 13,
+          "storybook": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "Bevat form-gerelateerde web-componenten."
+          },
+          {
+            "id": "afnemen-starter-app--documentatie",
+            "title": "Afnemen/Starter App",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+            "added": "Om de codekwaliteit te verhogen, raden we aan om [TypeScript](https://www.typescriptlang.org/) te gebruiken."
+          },
+          {
+            "id": "beheren-icon-font--documentatie",
+            "title": "Beheren/Icon Font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/beheren-icon-font--documentatie",
+            "added": "- [V2 opzet](#v2-opzet)\n\n[…]\n\n## v2 opzet"
+          },
+          {
+            "id": "design-system--documentatie",
+            "title": "Design System",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/design-system--documentatie",
+            "added": "  [`<vl-icon>`](/docs/components-icon--documentatie)\n\n[…]\n\n- een layout / grid opzet - wordt via het styling artifact aangeboden"
+          },
+          {
+            "id": "introductie--documentatie",
+            "title": "Introductie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/introductie--documentatie",
+            "added": "De [backlog](https://www.milieuinfo.be/jira/secure/RapidBoard.jspa?rapidView=980&projectKey=FLUX&view=planning&issueLimit=100#) wordt stelselmatig\n\n[…]\n\n`flux - web-components`."
+          },
+          {
+            "id": "planning-aanpak-v2-v3--documentatie",
+            "title": "Planning/Aanpak v2, v3, ...",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/planning-aanpak-v2-v3--documentatie",
+            "added": "- [Waarom Next Componenten](#waarom-next-componenten)"
+          },
+          {
+            "id": "styles-concept--documentatie",
+            "title": "Styles/Concept",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/styles-concept--documentatie",
+            "added": "- [Layout](#layout-afnemers)"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-727",
+  "entries": [
+    {
+      "id": "8b55e1e",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-727"
+      ],
+      "scope": "storybook",
+      "components": [],
+      "topics": [
+        "storybook"
+      ],
+      "mentions": [],
+      "summary": "Web Universum referenties & links aangepast naar VDS",
+      "text": "FLUX-727 - storybook - Web Universum referenties & links aangepast naar VDS",
+      "commits": [
+        {
+          "sha": "8b55e1e1111b148c1c4d0636344cd4709b54b2b5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8b55e1e1111b148c1c4d0636344cd4709b54b2b5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 47,
+          "storybook": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/block.web-types.json"
+        ],
+        "storybook": [
+          {
+            "id": "bijdragen-richtlijnen--documentatie",
+            "title": "Bijdragen/Richtlijnen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/bijdragen-richtlijnen--documentatie",
+            "added": "website vind je het overzicht van alle [beschikbare iconen](https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon)."
+          },
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Button](https://www.vlaanderen.be/vlaanderen-design-system/componenten/button)"
+          },
+          {
+            "id": "components-atom-icon--documentatie",
+            "title": "Components - Atom/icon",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-atom-icon--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Icon](https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon)"
+          },
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Link](https://www.vlaanderen.be/vlaanderen-design-system/componenten/link)"
+          },
+          {
+            "id": "components-atom-paragraph--documentatie",
+            "title": "Components - Atom/paragraph",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-atom-paragraph--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Introduction](https://www.vlaanderen.be/vlaanderen-design-system/componenten/introduction)"
+          },
+          {
+            "id": "components-atom-title--documentatie",
+            "title": "Components - Atom/title",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-atom-title--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Title](https://www.vlaanderen.be/vlaanderen-design-system/componenten/titles)"
+          },
+          {
+            "id": "components-block-accordion--documentatie",
+            "title": "Components - Block/accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-accordion--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Accordion](https://www.vlaanderen.be/vlaanderen-design-system/componenten/accordion)"
+          },
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Alert](https://www.vlaanderen.be/vlaanderen-design-system/componenten/alert)"
+          },
+          {
+            "id": "components-block-autocomplete--documentatie",
+            "title": "Components - Block/autocomplete",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-content-header--documentatie",
+            "title": "Components - Block/content-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-content-header--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Content Header](https://www.vlaanderen.be/vlaanderen-design-system/componenten/content-header)"
+          },
+          {
+            "id": "components-block-document--documentatie",
+            "title": "Components - Block/document",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-document--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Document](https://www.vlaanderen.be/vlaanderen-design-system/componenten/document)"
+          },
+          {
+            "id": "components-block-doormat--documentatie",
+            "title": "Components - Block/doormat",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-doormat--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Doormat](https://www.vlaanderen.be/vlaanderen-design-system/componenten/doormat)"
+          },
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Functional Header](https://www.vlaanderen.be/vlaanderen-design-system/componenten/application-header)"
+          },
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Info Tile](https://www.vlaanderen.be/vlaanderen-design-system/componenten/info-tile)"
+          },
+          {
+            "id": "components-block-infoblock--documentatie",
+            "title": "Components - Block/infoblock",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-infoblock--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-infotext--documentatie",
+            "title": "Components - Block/infotext",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-infotext--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-input-slider--documentatie",
+            "title": "Components - Block/input-slider",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-input-slider--documentatie",
+            "added": "De stijl van deze component is gebaseerd op de `vl-ui-range` [component van Digitaal Vlaanderen](https://www.vlaanderen.be/vlaanderen-design-system/componenten/range)."
+          },
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Popover](https://www.vlaanderen.be/vlaanderen-design-system/componenten/popover)"
+          },
+          {
+            "id": "components-block-progress-indicator--documentatie",
+            "title": "Components - Block/progress-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-progress-indicator--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Progress Bar](https://www.vlaanderen.be/vlaanderen-design-system/componenten/progress-bar)"
+          },
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "[Properties](https://www.vlaanderen.be/vlaanderen-design-system/componenten/properties)"
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Rich Data Table](https://www.vlaanderen.be/vlaanderen-design-system/componenten/data-table)"
+          },
+          {
+            "id": "components-block-search-filter--documentatie",
+            "title": "Components - Block/search-filter",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-search-filter--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-search-result--documentatie",
+            "title": "Components - Block/search-result",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-search-result--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Side Navigation](https://www.vlaanderen.be/vlaanderen-design-system/componenten/side-navigation)"
+          },
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": "icon in te stellen. [Hier](https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon) vind je een"
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Steps](https://www.vlaanderen.be/vlaanderen-design-system/componenten/steps)"
+          },
+          {
+            "id": "components-block-table--documentatie",
+            "title": "Components - Block/table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-table--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Data Table](https://www.vlaanderen.be/vlaanderen-design-system/componenten/data-table)"
+          },
+          {
+            "id": "components-block-tabs-tabs--documentatie",
+            "title": "Components - Block/tabs/tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-tabs-tabs--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Tabs](https://www.vlaanderen.be/vlaanderen-design-system/componenten/tabs-tab-navigation)"
+          },
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Toaster](https://www.vlaanderen.be/vlaanderen-design-system/componenten/toaster)"
+          },
+          {
+            "id": "components-block-typography--documentatie",
+            "title": "Components - Block/typography",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-typography--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Typography](https://www.vlaanderen.be/vlaanderen-design-system/componenten/typography)"
+          },
+          {
+            "id": "components-block-video-player--documentatie",
+            "title": "Components - Block/video-player",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-video-player--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - VideoPlayer](https://www.vlaanderen.be/vlaanderen-design-system/componenten/video-player)"
+          },
+          {
+            "id": "components-block-wizard-wizard--documentatie",
+            "title": "Components - Block/wizard/wizard",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-wizard-wizard--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-wizard-wizard-pane--documentatie",
+            "title": "Components - Block/wizard/wizard-pane",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-wizard-wizard-pane--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Checkbox](https://www.vlaanderen.be/vlaanderen-design-system/componenten/checkbox)"
+          },
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Datepicker](https://www.vlaanderen.be/vlaanderen-design-system/componenten/datepicker)"
+          },
+          {
+            "id": "components-form-form-label--documentatie",
+            "title": "Components - Form/form-label",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-form-label--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Form Message](https://www.vlaanderen.be/vlaanderen-design-system/componenten/form-message)"
+          },
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Form Message](https://www.vlaanderen.be/vlaanderen-design-system/componenten/form-message)"
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Input field](https://www.vlaanderen.be/vlaanderen-design-system/componenten/input-field)"
+          },
+          {
+            "id": "components-form-radio-group--documentatie",
+            "title": "Components - Form/radio-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-radio-group--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen](https://www.vlaanderen.be/vlaanderen-design-system/componenten/radio)"
+          },
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Select](https://www.vlaanderen.be/vlaanderen-design-system/componenten/select)"
+          },
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Select](https://www.vlaanderen.be/vlaanderen-design-system/componenten/select)\n\n[…]\n\n[Documentatie Digitaal Vlaanderen - Multiselect](https://www.vlaanderen.be/vlaanderen-design-system/componenten/multiselect)"
+          },
+          {
+            "id": "components-form-textarea--documentatie",
+            "title": "Components - Form/textarea",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-textarea--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Textarea](https://www.vlaanderen.be/vlaanderen-design-system/componenten/text-area)"
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "[Documentatie Digitaal Vlaanderen - Upload](https://www.vlaanderen.be/vlaanderen-design-system/componenten/upload)"
+          },
+          {
+            "id": "introductie--documentatie",
+            "title": "Introductie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/introductie--documentatie",
+            "added": "Webuniversum v3 van"
+          },
+          {
+            "id": "planning-aanpak-v2-v3--documentatie",
+            "title": "Planning/Aanpak v2, v3, ...",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/planning-aanpak-v2-v3--documentatie",
+            "added": "vanuit het idee de code van Webuniversum v3 as-is af te nemen.\n\n[…]\n\nComponenten zoals de DV [vl-ui-button](https://www.vlaanderen.be/vlaanderen-design-system/componenten/button)\n\n[…]\n\nHTMLButtonElement. De reden is dat de scss van DV enkel werkt op een `button` tag, een custom component maken met als"
+          },
+          {
+            "id": "planning-historiek-toekomst--documentatie",
+            "title": "Planning/Historiek & Toekomst",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+            "added": "gecapteerd door het Webuniversum in de vorm van"
+          },
+          {
+            "id": "styles-concept--documentatie",
+            "title": "Styles/Concept",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/styles-concept--documentatie",
+            "added": "De layout utitily classes van Digitaal"
+          },
+          {
+            "id": "styles-layout-content-block--documentatie",
+            "title": "Styles/Layout (afnemers)/content-block",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/styles-layout-content-block--documentatie",
+            "added": " [Layout](https://www.vlaanderen.be/vlaanderen-design-system/foundations/grid) wordt aangeboden."
+          }
+        ]
+      }
+    }
+  ]
+}

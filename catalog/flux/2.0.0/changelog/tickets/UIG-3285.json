@@ -1,0 +1,121 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3285",
+  "entries": [
+    {
+      "id": "5a0ff75",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3285"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "correcties om de npm packages en fat-lib af te nemen",
+      "text": "UIG-3285 - correcties om de npm packages en fat-lib af te nemen",
+      "commits": [
+        {
+          "sha": "5a0ff757ab7eb874a446cdacbc41408edf83210b",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/5a0ff757ab7eb874a446cdacbc41408edf83210b"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 17,
+          "docs": 5,
+          "examples": 22,
+          "tests": 1,
+          "tooling": 14
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.element.ts",
+          "libs/common/src/config/flux-config.ts",
+          "libs/common/src/index.ts",
+          "libs/common/src/util/legacy-initialisation.ts",
+          "libs/common/src/util/legacy-utils.js",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/accessibility/child/header.component.ts",
+          "libs/components/src/compliance/accessibility/child/inaccessible-content.component.ts",
+          "libs/components/src/compliance/accessibility/child/side-navigation.component.ts",
+          "libs/components/src/compliance/accessibility/child/title.component.ts",
+          "libs/components/src/compliance/accessibility/vl-accessibility.component.ts",
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts",
+          "libs/components/src/compliance/cookie-statement/child/header.component.ts",
+          "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/header.component.ts",
+          "libs/components/src/compliance/privacy/vl-privacy.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "- [fat-lib: domg-wc-compliance](#fat-lib-domg-wc-compliance)\n\n[…]\n\n['fat-lib: domg-wc-compliance'](#fat-lib-domg-wc-compliance).\n\n[…]\n\n## fat-lib: domg-wc-compliance\n\n[…]\n\nVoor legacy toepassingen is er een 'fat-lib' variant van de web-componenten beschikbaar, hierin zijn enkel de\n'compliance' componenten beschikbaar (vl-header / vl-footer / vl-accessibility / ...). Via de CDN van Departement\nOmgeving kan je daar ge-versioneerd naar refereren conform: `https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js`.\nBij de import worden de beschikbare web-componenten geregistreerd. Zie\n[CDN Bundel - fat-lib](/docs/recepten-cdn-bundel-fat-lib--documentatie) onder `Cookbook` voor meer informatie."
+          },
+          {
+            "id": "bijdragen-opzet-structuur--documentatie",
+            "title": "Bijdragen/Opzet & Structuur",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+            "added": "met named-imports, side-effect-imports en imports van de fat-lib."
+          },
+          {
+            "id": "recepten-cdn-bundel-fat-lib--documentatie",
+            "title": "Recepten/CDN Bundel - fat-lib",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie",
+            "added": "# CDN Bundel - fat-lib\n\nVoor gewone websites of legacy toepassingen (die geen bundler gebruiken) worden de 'compliance' web-componenten\nook beschikbaar gesteld via een statische bundel op de CDN. Doordat er dan geen bundler gebruikt wordt kan er geen\ntree-shaking plaatsvinden, om die rede bieden we het script enkel geversioneerd aan en niet onder een 'latest' variant.\nOp die manier moet je expliciet een versie specifiëren (om bewust te upgraden) en mag het bestand ge-cached worden - bij\neen nieuwe versie wijzigt de naam.\n\nDe `fat-lib` bestanden zijn beschikbaar onder `https://cdn.omgeving.vlaanderen.be/domg/domg-wc/x.y.z/`, daar staan per versie 3\nbestanden:\n\n- **domg-wc-compliance-2.0.0.js** - de leesbare variant [4,1 MB]\n- **domg-wc-compliance-2.0.0.js.map** - de map file om de leesbare variant te debuggen [5,1 MB]\n- **domg-wc-compliance-2.0.0.min.js** - de productie versie [2,4 MB]\n\n```\n<!DOCTYPE html>\n<html lang=\"nl\">\n<head>\n  <title>UIG Demo</title>\n  <script type=\"module\"\n          src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js\"></script>\n</head>\n<body>\n  <div class=\"vl-content-block\">...</div>\n</body>\n</html>\n```"
+          },
+          {
+            "id": "recepten-configuratie--documentatie",
+            "title": "Recepten/Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+            "added": "## Afname via 'fat-lib'\n\n[…]\n\n    src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js\">"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5ebad8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3285"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "package afname via de consumer-app",
+      "text": "UIG-3285 - package afname via de consumer-app",
+      "commits": [
+        {
+          "sha": "c5ebad8199fd8b72facf9591442e9aa5d768e5dc",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/c5ebad8199fd8b72facf9591442e9aa5d768e5dc"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "examples": 4,
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-475",
+  "entries": [
+    {
+      "id": "84ad38c",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-475"
+      ],
+      "scope": "vl-map-layer-switcher",
+      "components": [
+        "vl-map-layer-switcher"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "alle dynamisch toegevoegde kaartlagen correct tonen",
+      "text": "FLUX-475 - vl-map-layer-switcher - alle dynamisch toegevoegde kaartlagen correct tonen",
+      "commits": [
+        {
+          "sha": "84ad38c098be5315458cfd77da7aa27ac8c3fc04",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/84ad38c098be5315458cfd77da7aa27ac8c3fc04"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer/wms-layer/vl-map-wms-layer.ts",
+          "libs/map/src/components/layer/wmts-layer/vl-map-wmts-layer.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

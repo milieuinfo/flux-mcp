@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-703",
+  "entries": [
+    {
+      "id": "7179279",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-703"
+      ],
+      "scope": "web-types",
+      "components": [],
+      "topics": [
+        "web-types"
+      ],
+      "mentions": [],
+      "summary": "hernoeming van de template package.json's",
+      "text": "FLUX-703 - web-types - hernoeming van de template package.json's",
+      "commits": [
+        {
+          "sha": "71792793f50dc5d648c004da03badb5fd2b2580b",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/71792793f50dc5d648c004da03badb5fd2b2580b"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 13
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

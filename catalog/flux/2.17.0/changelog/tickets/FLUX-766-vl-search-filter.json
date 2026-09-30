@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-766",
+  "entries": [
+    {
+      "id": "4ba452d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-766"
+      ],
+      "scope": "vl-search-filter",
+      "components": [
+        "vl-search-filter"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "section in section",
+      "text": "FLUX-766 - vl-search-filter - section in section",
+      "commits": [
+        {
+          "sha": "4ba452d35de6f03d1713d2e3ec6e76eedf2dacd7",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4ba452d35de6f03d1713d2e3ec6e76eedf2dacd7"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De section in een section css is enkel geldig voor geneste secties binnen de vl-search-filter",
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/search-filter/vl-search-filter.global.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

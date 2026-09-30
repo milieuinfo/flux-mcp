@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-124",
+  "entries": [
+    {
+      "id": "72bd94e",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-124"
+      ],
+      "scope": "vl-table",
+      "components": [
+        "vl-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie verbeterd van de styling mogelijkheden",
+      "text": "FLUX-124 - vl-table - documentatie verbeterd van de styling mogelijkheden",
+      "commits": [
+        {
+          "sha": "72bd94ebb529522a60c64c9d12579ef6efbc70a3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/72bd94ebb529522a60c64c9d12579ef6efbc70a3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/table/vl-table.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-table--documentatie",
+            "title": "Components - Block/table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-table--documentatie",
+            "added": "## Styling\n\nDe tabel ondersteunt verschillende stijlen voor de rijen, om de status van gegevens aan te geven:\n\n### Rij styling\n\nJe kunt de volgende CSS-klassen gebruiken om specifieke stijlen toe te passen op hele rijen of individuele cellen:\n\n- **Success**: Gebruik `vl-table--success` voor een groene achtergrond (met groene rand)\n- **Warning**: Gebruik `vl-table--warning` voor een oranje achtergrond (met oranje rand)\n- **Error**: Gebruik `vl-table--error` voor een rode achtergrond (met rode rand)\n- **Disabled**: Gebruik `vl-table--disabled` voor een grijze achtergrond\n\nDeze klassen kunnen zowel op een `<tr>` element worden toegepast om een hele rij te stylen, als op een `<td>` element om een individuele cel te stylen."
+          }
+        ]
+      }
+    }
+  ]
+}

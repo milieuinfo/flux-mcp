@@ -1,0 +1,153 @@
+{
+  "schema": 4,
+  "version": "2.10.0",
+  "ticket": "FLUX-27",
+  "entries": [
+    {
+      "id": "8de71f8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-27"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "integratie van side-navigation in onze eigen code",
+      "text": "FLUX-27 - vl-side-navigation-next - integratie van side-navigation in onze eigen code",
+      "commits": [
+        {
+          "sha": "8de71f84a16205f3e12f366a3127c2e2d6e0ca55",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8de71f84a16205f3e12f366a3127c2e2d6e0ca55"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-function-header sticky story aangepast page layout voorbeeld aangepast vl-accessibility aangepast vl-steps stories aangepast vl-cookie-statement aangepast vl-privacy aangepast",
+        "published": true,
+        "areas": {
+          "code": 10,
+          "docs": 2,
+          "storybook": 1,
+          "examples": 1,
+          "tests": 9
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/accessibility/child/compliance-status.component.ts",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/accessibility/child/inaccessible-content.component.ts",
+          "libs/components/src/compliance/accessibility/child/setup-statement.component.ts",
+          "libs/components/src/compliance/accessibility/child/side-navigation.component.ts",
+          "libs/components/src/compliance/accessibility/vl-accessibility.component.ts",
+          "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts",
+          "libs/components/src/compliance/privacy/vl-privacy.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-sticky-en-side-navigation--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Sticky En Side Navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-sticky-en-side-navigation--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "f382f9b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-27"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie component",
+      "text": "FLUX-27 - vl-side-navigation-next - introductie component",
+      "commits": [
+        {
+          "sha": "f382f9b1c37feb05b3b37f5a1b75c129934c47b1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f382f9b1c37feb05b3b37f5a1b75c129934c47b1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 14,
+          "styles": 2,
+          "docs": 4,
+          "storybook": 6,
+          "examples": 1,
+          "tests": 6,
+          "tooling": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/utils.ts",
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/next/index.ts",
+          "libs/components/src/block/next/side-navigation/index.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-custom-toc.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.defaults.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-scanner.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.defaults.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.model.ts",
+          "libs/styles/src/theming/var/vl-components.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation-layout--documentatie",
+            "title": "Components - Block/next/side-navigation-layout",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+            "added": "# Side Navigation Layout\n\n\n## Doel\n\nDe side navigation layout bouwt automatisch een inhoudstafel op voor een gestructureerde tekst met behulp van de\n[side navigation](/docs/components-next-side-navigation-side-navigation--documentatie).\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-side-navigation-layout>\n    <div slot=\"content\">\n        <!-- Je content met headings en bijhorende id's-->\n    </div>\n</vl-side-navigation-layout>\n```\n\n## Gebruik\n\nDe side navigation layout component zorgt automatisch voor de juiste grid layout voor een meegegeven tekst en genereert\neen [side navigation](/docs/components-next-side-navigation-side-navigation--documentatie), indien niet expliciet meegegeven.\n\n**Slots:**\n\n- **`content`** — Verplicht. Hier komt de hoofdinhoud (secties met headings en id's). De layout scant deze content om de inhoudsopgave op te bouwen; het root-element moet overeenkomen met het `heading-root-selector` attribuut of een kind daarvan bevatten.\n- **`navigation`** — Optioneel. Voor een eigen navigatie-component (bijv. `vl-side-navigation-next` met custom TOC). Weglaten zorgt voor een automatisch gegenereerde side navigation.\n\n## CSS variabelen\n\nDe sticky positie van de table of contents (inhoudsopgave) wordt bepaald door de CSS variabele\n`--vl-side-navigation-top`. Gebruik deze variabele wanneer er een sticky element boven de side navigation staat\nzodat de side-navigation niet onder dat element schuift.\n\n- **`--vl-side-navigation-top`** (standaard: `50px`): de `top`-waarde voor de sticky positie van de TOC.\nAccepteert elke geldige CSS waarde (bijv. `140px`, `10rem`, of `var(--header-height)`). Definieer de variabele op een\nvoorouder van de side navigation (bijv. op `main` of op de layout container).\n\n## Eigenschappen\n\n\n## Voorbeelden\n\n    {`\n    De voorbeelden hieronder worden in een iframe weergegeven.\n    De scroll-tracking van de side navigation werkt enkel wanneer\n    je **binnen de iframe scrollt** (klik eerst op een navigatie-link om de content te scrollen).\n     Wanneer je door de documentatiepagina zelf scrollt, verandert de positie van de content binnen het iframe niet,\n      waardoor de actieve sectie niet wordt bijgewerkt.\n`}\n\nIn een echte applicatie en in de individuele stories, waar de content in dezelfde viewport scrollt, werkt de scroll-tracking correct.\n\n### Default (Automatische navigatie)\n\nDe layout component genereert automatisch een side navigation op basis van de headings met id's in de content.\n\n\n### Met vl-steps\n\n\n### Twee layouts met eigen content\n\nJe kunt meerdere side-navigation-layout componenten onder elkaar plaatsen; elk met eigen content en automatisch gegenereerde inhoudsopgave.\n\n\n### Met custom TOC\n\nJe kan een custom TOC meegeven met eigen titels. Scroll tracking blijft automatisch werken zolang je in de `vl-link`\nelementen refereert naar de relevante titels in de tekst.\n\n\n## Referenties\n\n- [Digitaal Vlaanderen - Side Navigation](https://www.vlaanderen.be/vlaanderen-design-system/componenten/side-navigation)\n\n<vl-side-navigation-next compact exclude-selectors=\"iframe, #storybook-root\" closed></vl-side-navigation-next>"
+          },
+          {
+            "id": "components-block-next-side-navigation-next--documentatie",
+            "title": "Components - Block/next/side-navigation-next",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.0/storybook/?path=/docs/components-block-next-side-navigation-next--documentatie",
+            "added": "# Side Navigation Next\n\n\n## Doel\n\nGebruik de `side-navigation` component om een compact navigatie-element aan een pagina toe te voegen. Het vat de\ninhoud van lange pagina's samen aan de hand van de titels en leidt de gebruiker door de pagina inhoud.\n\n{`\n    Er bestaat een bijbehorend **Side Navigation Layout** component dat automatisch de grid-layout en een side navigation combineert.\n    Heb je meer controle of maatwerk nodig, gebruik dan \\`vl-side-navigation-next\\` rechtstreeks. Voor de standaard combinatie van layout en inhoudsopgave volstaat het layout-component.\n    Voor meer informatie: [Side Navigation Layout](/docs/components-next-side-navigation-layout--documentatie).\n`}\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-side-navigation-next></vl-side-navigation-next>\n```\n\n## Gebruik\n\nDe side navigation component scant automatisch de headings in de pagina en genereert een inhoudsopgave.\nAlternatief kan je ook zelf een inhoudsopgave opstellen. [Zie hier voor een code voorbeeld.](#custom-table-of-contents)\n\n## CSS variabelen\n\nDe sticky positie van de table of contents (inhoudsopgave) wordt bepaald door de CSS variabele\n`--vl-side-navigation-top`. Gebruik deze variabele wanneer er een sticky element boven de side navigation staat\nzodat de side-navigation niet onder dat element schuift.\n\n- **`--vl-side-navigation-top`** (standaard: `50px`): de `top`-waarde voor de sticky positie van de TOC.\nAccepteert elke geldige CSS waarde (bijv. `140px`, `10rem`, of `var(--header-height)`). Definieer de variabele op een\nvoorouder van de side navigation (bijv. op `main` of op de layout container).\n\n## Eigenschappen\n\nHet attribuut **`closed`** zorgt ervoor dat de inhoudstafel standaard verborgen is. Dit heeft enkel effect wanneer **`compact`** is gezet of bij mobiele weergave (viewport &lt; 768px); op desktop zonder compact wordt de navigatie altijd getoond.\n\n\n## Voorbeelden\n\n    {`\n    De voorbeelden hieronder worden in een iframe weergegeven.\n    De scroll-tracking van de side navigation werkt enkel wanneer\n    je **binnen de iframe scrollt** (klik eerst op een navigatie-link om de content te scrollen).\n     Wanneer je door de documentatiepagina zelf scrollt, verandert de positie van de content binnen het iframe niet,\n      waardoor de actieve sectie niet wordt bijgewerkt.\n`}\n\nIn een echte applicatie en in de individuele stories, waar de content in dezelfde viewport scrollt, werkt de scroll-tracking correct.\n\n### Default\n\n\n<details>\n<summary>Compact (navigatie standaard gesloten)</summary>\n\nMet het attribuut `compact` wordt de compacte weergave geforceerd: de navigatie staat standaard gesloten en kan via de toggle knop worden opengeklapt.\n\n\n</details>\n\n## Scoping met heading-root-selector\n\nJe kan de side navigation beperken tot een specifieke sectie van de pagina door gebruik te maken van het `heading-root-selector` attribuut:\n\n```html\n<vl-side-navigation-next heading-root-selector=\"#section-1\"></vl-side-navigation-next>\n```\n\nDit zal enkel headings binnen het element met id `section-1` scannen.\n\n### Custom Table of Contents\n\nJe kan zelf ook een table of contents opstellen. Het is hierbij belangrijk dat je gebruik maakt van `vl-link`\ncomponenten die verwijzen naar headings met bestaande id's.\n\n\n\n## Referenties\n\n- [Digitaal Vlaanderen - Side Navigation](https://www.vlaanderen.be/vlaanderen-design-system/componenten/side-navigation)\n\n<vl-side-navigation-next compact exclude-selectors=\"iframe, #storybook-root\" closed></vl-side-navigation-next>"
+          },
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "- VlSideNavigationComponent `[vl-side-navigation]`\n- VlSideNavigationTitleComponent<br/>\n\n[…]\n\n- VlSideNavigationContentComponent `[vl-side-navigation-content]`\n- VlSideNavigationGroupComponent `[vl-side-navigation-group]`\n- VlSideNavigationItemComponent `[vl-side-navigation-item]`\n- VlSideNavigationToggleComponent `[vl-side-navigation-toggle]`\n- VlSideNavigationReferenceComponent `[vl-side-navigation-reference]`"
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "### Side Navigation\n\n`Side Navigation [legacy]` wordt vervangen door `Side Navigation [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Side Navigation [legacy]](/docs/components-block-side-navigation--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-side-navigation>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Side Navigation [next]](/docs/components-next-side-navigation-side-navigation--documentatie)</td>\n        <td>release v2.9.0</td>\n        <td>components/block/next</td>\n        <td><code>{`<vl-side-navigation-next>`}</code></td>\n        <td>components/block</td>\n        <td><code>{`<vl-side-navigation>`}</code></td>\n    </tr>\n</table>\n\n### Side Navigation Layout\n\n`Side Navigation Layout` is een nieuwe component zonder legacy equivalent. Deze component biedt een out-of-the-box\nlayout oplossing met automatische grid styling voor de\n    [Side Navigation [next]](/docs/components-next-side-navigation-side-navigation--documentatie).\n\nDeze component is niet compatibel met de oude [Side Navigation [legacy]](/docs/components-block-side-navigation--documentatie).\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Side Navigation Layout](/docs/components-next-side-navigation-side-navigation-layout--documentatie)</td>\n        <td>release v2.9.0</td>\n        <td>components/block/next</td>\n        <td><code>{`<vl-side-navigation-layout>`}</code></td>\n        <td>components/block</td>\n        <td><code>{`<vl-side-navigation-layout>`}</code></td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

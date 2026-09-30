@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-601",
+  "entries": [
+    {
+      "id": "bbe7471",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-601"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "focus recovery verbeterd",
+      "text": "FLUX-601 - vl-side-navigation-next - focus recovery verbeterd",
+      "commits": [
+        {
+          "sha": "bbe7471b01f497e2f9fe3eadfcee86c0494a4e78",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bbe7471b01f497e2f9fe3eadfcee86c0494a4e78"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Bij het laden van de pagina werd focus onterecht op het eerste navigatie-item gezet. De MutationObserver voor focus-recovery trackt nu welk element focus had via een focusin listener en herstelt focus alleen als dat specifieke element uit de DOM van de side-navigation verwijderd wordt",
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-463",
+  "entries": [
+    {
+      "id": "e38e135",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-463"
+      ],
+      "scope": "vl-popover",
+      "components": [
+        "vl-popover"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "max-height met interne scrolling",
+      "text": "FLUX-463 - vl-popover - max-height met interne scrolling",
+      "commits": [
+        {
+          "sha": "e38e135f2eb4db99ad8598237aa3eaddaf8d2108",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e38e135f2eb4db99ad8598237aa3eaddaf8d2108"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De popover blijft nu binnen het zichtbare scherm: bij te veel inhoud krijgt de inhoud een verticale scrollbar in plaats van buiten beeld te vallen. Afnemers kunnen optioneel een eigen max-height opleggen via het nieuwe max-height attribuut.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "styles": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover.component.ts",
+          "libs/components/src/block/popover/vl-popover.defaults.ts",
+          "libs/components/src/block/popover/vl-popover.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

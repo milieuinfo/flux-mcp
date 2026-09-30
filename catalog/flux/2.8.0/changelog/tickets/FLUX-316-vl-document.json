@@ -1,0 +1,67 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-316",
+  "entries": [
+    {
+      "id": "189c124",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-316"
+      ],
+      "scope": "vl-document",
+      "components": [
+        "vl-document"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-icon",
+        "vl-link",
+        "vl-text"
+      ],
+      "summary": "vl-icon - vl-link - vl-text - WCAG contrast ratio",
+      "text": "FLUX-316 - vl-document - vl-icon - vl-link - vl-text - WCAG contrast ratio",
+      "commits": [
+        {
+          "sha": "189c12473cb46415ef53877bc87e094d066cb1c3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/189c12473cb46415ef53877bc87e094d066cb1c3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 7,
+          "docs": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/icon-style/vl-icon-style.css.ts",
+          "libs/components/src/atom/link-style/vl-link-style.css.ts",
+          "libs/components/src/atom/paragraph-style/vl-paragraph-style.css.ts",
+          "libs/components/src/atom/text/vl-text.css.ts",
+          "libs/components/src/block/document/vl-document.component.ts",
+          "libs/components/src/block/document/vl-document.flux-css.ts",
+          "libs/components/src/form/input-field/vl-input-field.css.ts",
+          "libs/styles/src/base/var/vl-color-foundation-v2.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "styles-kleurenpalet--documentatie",
+            "title": "Styles/Kleurenpalet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/styles-kleurenpalet--documentatie",
+            "added": "### Annotations, externe links, andere subtiel grijze content\nVoor `--vl-color--text-subtle` en `--vl-color--icon-subtle` gebruikten we `--vl-color--grey-800`. Deze kleur had een te\nlage contrast-ratio bij gebruik op een lichtgrijze achtergrond (bv in een table met zebra stijl of alert).\n\nDeze kleur is licht aangepast en heeft een subtiele transparantie meegekregen om ervoor te zorgen dat ze ook voldoet aan\nde WCAG-richtlijnen indien ze op een lichtgrijze achtergrond gebruikt wordt. Dit is getest met nieuwe en oude\ngrijswaarden: #e8ebee, #f3f5f6, #f7f9fc, #ffffff.\n\nOp een witte achtergrond komt ze heel dicht in de buurt van de oorspronkelijke `--vl-color--grey-800`, ondanks de\ntransparantie.\n\nIndien de transparantie problemen geeft in een bepaalde layout, kan je terugvallen op de oorspronkelijke\n`--vl-color--grey-800` waarde.\n\nHieronder zie je een voorbeeld van een alert met een annotation tekst en het externe link icoon.\n\n<vl-alert title=\"Voorbeeld van een alert\">\n  <vl-text annotation>Voorbeeld van een annotation tekst.</vl-text><br />\n  <vl-link external href=\"#\">Voorbeeld van het externe link icoon</vl-link>\n</vl-alert>\n\n### Betekenisvolle kleuren"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-389",
+  "entries": [
+    {
+      "id": "f0a5ac6",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-389"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "storybook verbeteringen",
+      "text": "FLUX-389 - storybook verbeteringen",
+      "commits": [
+        {
+          "sha": "f0a5ac6cc2c30584207b786aa18c388dce89c3fd",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f0a5ac6cc2c30584207b786aa18c388dce89c3fd"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 5,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/cascader/vl-cascader.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "[Meer informatie over hoe imports wijzigen vind je hier](/docs/afnemen-migratie-v2-aanpak--documentatie#33-imports)\n\n[…]\n\n<br/>\n## Hoe komt dat klasses die in Web Universum v3 staan, niet meer beschikbaar zijn?\n\n**Antwoord:** Vroeger gebruikten we de css klasses van Digitaal Vlaanderen, zoals die gedocumenteerd waren in Web\nUniversum v3, als basis voor onze web componenten, zoals bv. de `vl-u-visually-hidden`-klasse of de `vl-grid`-klasse.\n\nWat voor ons problematisch was, is dat bestaande klasses van DV voor conflicten zorgden; `vl-grid` bv\naan onze kant gebruikt achterliggend CSS grid, terwijl die van Web Universum v3 `flexbox` gebruikt.\n\nDaarnaast pasten we vaak onze HTML templates aan, aan de CSS van DV, ipv andersom. Vanaf v2 hebben we beslist om de CSS\nte schrijven die het beste past bij onze HTML template, in plaats van onze HTML templates te wijzigen zodat we DV's CSS\nkunnen afnemen zonder enige wijziging.\n\nDe CSS van DV kwam transitief binnen, ook hetgeen wij niet gedocumenteerd hebben in onze storybook.\nNu staat al die CSS aan onze kant en behouden we enkel wat we zelf gebruiken.\n\nDaarnaast schrijven we nu voor nieuwe componenten onze eigen CSS, maar volgen daar op vlak van spacing, styling\n& layout wel de guidelines die Digitaal Vlaanderen vooropstelt.\n\n\n## `vl-u-visually-hidden` werkt niet meer\n\n**Antwoord:** De `vl-u-visually-hidden`-klasse is nu vervangen door `vl-visually-hidden`,\n[zie deze pagina voor meer info](docs/styles-layout-afnemers-accessibility--documentatie)\n\n[…]\n\n<br/>\n## Eigen stylesheet instellen werkt niet?\n\n**Probleem:** Custom styling wordt overschreven of werkt niet.\n\n**Oplossing:**\n\nOnze [globale styling](/docs/recepten-css-styling--documentatie#globale-css) wordt automatisch op de DOM geplaatst.\nJe dient de volgende functie aan te roepen om je er van te\nte verzekeren dat je applicatie-specifieke CSS pas ingeladen wordt nadat onze CSS ingeladen is:\n\n```js\n\nconst customCSS = css`\n :root {\n    --vl-side-sheet-width: 580px; /* voor desktop */\n    --vl-side-sheet-width-mobile: 100%; /* voor mobile */\n  }\n`;\n\nGlobalStyles.getInstance().addCustomCss([customCSS]);\n```\n\n[…]\n\n- `vl-grid` gebruikt nu achterliggend [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout)\nipv flexbox\n\n[…]\n\nDe `data-vl-is-stacked...` attributen op `vl-grid` kunnen vervangen worden door de stacked classes: `vl-stacked-...`.\nZie [vl-stacked documentatie](/docs/styles-layout-stacked--documentatie).\n\n[…]\n\nVoor meer informatie kan je de [vl-grid documentatie hier raadplegen](/docs/styles-layout-grid--documentatie)."
+          },
+          {
+            "id": "components-block-cascader-cascader--documentatie",
+            "title": "Components - Block/cascader/cascader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+            "added": "## Gekende beperkingen\n\nDe cascader zal het huidige niveau van de meegegeven boomstructuur in zijn eigen shadow DOM renderen.\nDit heeft als gevolg dat eigen CSS en klasses, die toegepast zijn op die boomstructuur, niet door de shadow DOM\nzullen penetreren.\n\nOm dit op te lossen, dien je Custom CSS toe te voegen (die dan wel zal werken op de styles binnen de shadow DOM van\nde cascader). [Hier vind je meer uitleg over Custom CSS toevoegen](/docs/recepten-css-styling--documentatie#custom-css)"
+          },
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": "Technisch zal de component zich in zijn shadow DOM renderen als een"
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": "    Indien je een form control wrapped in een custom component, zorg er voor dat dit custom component geen shadow DOM\n\n[…]\n\n    Als dit custom component een shadow DOM heeft, zal het native HtmlFormElement de form control niet meer vinden."
+          },
+          {
+            "id": "recepten-css-styling--documentatie",
+            "title": "Recepten/CSS Styling",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/recepten-css-styling--documentatie",
+            "added": "### Component niveau\n\n[…]\n\n    {`\n\n[…]\n\nVoor alle componenten behalve `compliance` is het mogelijk om een custom CSS-string mee te geven aan het\n\n[…]\n\nEen alternatieve manier om dezelfde custom CSS toe te voegen bij elke instantie van dat component:\n\n```ts\nVlCascaderComponent.elementStyles = [...VlCascaderComponent.elementStyles, css`\n    .sbs-title-annotation-group {\n        gap: var(--vl-spacing--xxsmall);\n    }\n`];\n```\n\n### Applicatie niveau\n\nOnze globale styling wordt automatisch op de DOM geplaatst. Je dient de volgende functie aan te roepen om je er van te\nte verzekeren dat je applicatie-specifieke CSS pas ingeladen wordt nadat onze CSS ingeladen is:\n\n<vl-alert type=\"info\" title=\"Opgelet\" icon=\"info-circle\" size=\"small\" custom-css=\".vl-alert{margin-bottom: 3rem;}\">\n    <Markdown options={{ forceInline: true }} style={{ fontSize: '14px' }}>{'Je dient onderstaande code aan te roepen vóór je onze componenten importeert.'}</Markdown>\n</vl-alert>\n\n```js\n\nconst customCSS = css`\n:root {\n    --vl-side-sheet-width: 580px; /* voor desktop */\n    --vl-side-sheet-width-mobile: 100%; /* voor mobile */\n}\n`;\n\nGlobalStyles.getInstance().addCustomCss([customCSS]);\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

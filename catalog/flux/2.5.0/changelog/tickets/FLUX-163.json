@@ -1,0 +1,81 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-163",
+  "entries": [
+    {
+      "id": "a2a1b87",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-163"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-header",
+        "vl-footer",
+        "vl-functional-header"
+      ],
+      "summary": "vl-header, vl-footer, vl-functional-header richtlijnen",
+      "text": "FLUX-163 - vl-header, vl-footer, vl-functional-header richtlijnen",
+      "commits": [
+        {
+          "sha": "a2a1b87f1eff1267955ab8e8ca32b95ab566cc56",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a2a1b87f1eff1267955ab8e8ca32b95ab566cc56"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 5,
+          "storybook": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "## Consistent gebruik van de \"Terug\"-link\n\nDe volgende richtlijnen gelden voor het instellen van de \"Terug\"-link:\n\n- Vermijd het gebruik van `history.back()`. De gebruiker kan op verschillende manieren op je pagina belandt zijn.\n- Je moet expliciet een URL instellen.\n    - De ingestelde URL verwijst naar een vast en logisch startpunt,\n      relatief tov de pagina waarop de gebruiker zich bevindt.\n    - Kies als URL het startpunt van de toepassing, tenzij deze meerdere luiken bevat. Kies in dat geval het startpunt\n      van het huidige luik.\n    - Je kan de URL van de \"Terug\"-link vervangen met het `back-link`-attribuut.\n- \"Terug\" moet vermeden worden als naam, want het zegt niet naar waar je terugkeert.\n  Je kan de tekst van de \"Terug\"-link vervangen met het `back`-slot.\n- Indien de functional header \"breadcrumbs\" bevat ipv een \"Terug\"-link,\n  zoals in de [breadcrumbs variant](#met-breadcrumb), dan wijst de eerste link altijd naar het \"startpunt\" van de\n  toepassing. Vermijd termen als \"Home\" of \"Start\", maar gebruik de naam van de toepassing of de naam van het luik\n  waar je naar terugkeert.\n- Vergeet de \"Terug\"-link ook niet in te stellen op de statische pagina's:\n  [privacy](/docs/components-compliance-privacy--documentatie),\n  [toegankelijkheid](/docs/components-compliance-accessibility--documentatie) en\n  [cookieverklaring](/docs/components-compliance-cookie-statement--documentatie).\n  Je kan de standaard functional header in deze componenten vervangen\n  met het `header`-slot.\n- Je kan de \"Terug\"-link in zijn geheel vervangen met het `back-link`-slot.\n\n[…]\n\n### Andere patronen\n\n[…]\n\nZie [Ontwerp/Functional Header](/docs/ontwerp-functional-header-voorbeeld-met-button--documentatie) voor voorbeelden van functional headers met een extra button of search component, of met de combinatie van \"Terug\"-link en tabs."
+          },
+          {
+            "id": "components-compliance-footer--documentatie",
+            "title": "Components - Compliance/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+            "added": "Voor het consistent gebruik van de footer doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n\n>   **[app-name] is een officiële website van de Vlaamse overheid**\n>    uitgegeven door Departement Omgeving\n\n\n\"Departement Omgeving\" is hierbij een externe link naar https://omgeving.vlaanderen.be/.\n\nDeze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit\n[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen."
+          },
+          {
+            "id": "components-compliance-footer-next--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-footer-next--documentatie",
+            "added": "Voor het consistent gebruik van de footer doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n\n>   **[app-name] is een officiële website van de Vlaamse overheid**\n>    uitgegeven door Departement Omgeving\n\n\n\"Departement Omgeving\" is hierbij een externe link naar https://omgeving.vlaanderen.be/.\n\nDeze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit\n[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen."
+          },
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": "Voor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n\n>   **[Logo Vlaanderen]** | **[App-name]** | witruimte | **Aanmelden** | **Hulp nodig?**\n\n- **\"Logo Vlaanderen\"** is hierbij een link naar https://vlaanderen.be.\n- **\"App-name\"** blijft op alle pagina's de naam van de applicatie en krijgt als link de startpagina van de applicatie.\n- Onder **\"Aanmelden\"** kan je app-links definiëren (zie [Applicatieve links](#applicatieve-links)).\n- Onder **\"Hulp nodig?\"** komt de tekst: **\"Neem contact op met Departement Omgeving\"**, gevolgd door verschillende\ncontact opties (telefoonnummer, adres, e-mailadres).\n\nDeze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit\n[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen."
+          },
+          {
+            "id": "components-compliance-header-next--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-header-next--documentatie",
+            "added": "Voor het consistent gebruik van de header doorheen alle applicaties van Departement Omgeving, raden we aan om volgende\ntemplate aan te houden:\n\n\n>   **[Logo Vlaanderen]** | **[App-name]** | witruimte | **Aanmelden** | **Hulp nodig?**\n\n- **\"Logo Vlaanderen\"** is hierbij een link naar https://vlaanderen.be.\n- **\"App-name\"** blijft op alle pagina's de naam van de applicatie en krijgt als link de startpagina van de applicatie.\n- Onder **\"Aanmelden\"** kan je app-links definiëren (zie [Applicatieve links](#applicatieve-links)).\n- Onder **\"Hulp nodig?\"** komt de tekst: **\"Neem contact op met Departement Omgeving\"**, gevolgd door verschillende\ncontact opties (telefoonnummer, adres, e-mailadres).\n\nDeze gegevens worden beheerd door Digitaal Vlaanderen en kunnen ingesteld worden bij het verkrijgen van de unieke\nidentifier. Deze identifier kan aangevraagd worden bij Team Infra van Departement Omgeving of via dit\n[stappenplan](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer#stappenplan-koppeling-met-de-global-header-en-footer) van Digitaal Vlaanderen."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "ticket": "FLUX-84",
+  "entries": [
+    {
+      "id": "7f217f8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-84"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "\"zebra\" en \"flux-zebra\" attributen toegevoegd",
+      "text": "FLUX-84 - vl-rich-data-table - \"zebra\" en \"flux-zebra\" attributen toegevoegd",
+      "commits": [
+        {
+          "sha": "7f217f8ce4bdf110b5ac3ff9c1f634ae830d1814",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7f217f8ce4bdf110b5ac3ff9c1f634ae830d1814"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "storybook": 4,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts",
+          "libs/components/src/block/table/vl-table.component.ts",
+          "libs/components/src/block/table/vl-table.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-548",
+  "entries": [
+    {
+      "id": "9947ea1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-548"
+      ],
+      "scope": "vl-proza-message",
+      "components": [
+        "vl-proza-message"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "domeinconfiguratie toegevoegd in FluxConfig",
+      "text": "FLUX-548 - vl-proza-message - domeinconfiguratie toegevoegd in FluxConfig",
+      "commits": [
+        {
+          "sha": "9947ea12ca7417da098375fcf7ca3790900eb608",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9947ea12ca7417da098375fcf7ca3790900eb608"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- `vlProza.setDefaultDomain` vervangen door `FluxConfig.setPreferences` voor het instellen van het Proza domein\n- Ondersteuning voor gedeelde domeinconfiguratie toegevoegd via `FluxConfig` voor `vl-proza-message` en `vl-proza-message-preloader`\n- Documentatie en tests bijgewerkt om configuratie-aanpak toe te lichten",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/config/flux-config.ts",
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/proza-message/index.ts",
+          "libs/components/src/block/proza-message/vl-proza-message-preloader.component.ts",
+          "libs/components/src/block/proza-message/vl-proza-message.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "recepten-configuratie--documentatie",
+            "title": "Recepten/Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+            "added": "- prozaDomain: undefined\n\n\n## Proza domein\n\nDoor `prozaDomain` in te stellen hoef je het domein niet meer op elke `vl-proza-message`,\n`vl-proza-message-preloader` of `vlProza` directive aanroep mee te geven.\nIndien er geen expliciet domein wordt meegegeven, wordt het `prozaDomain` uit de `FluxConfig` gebruikt.\n\n```\nFluxConfig.setPreferences({ prozaDomain: 'mijn-domein' });\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

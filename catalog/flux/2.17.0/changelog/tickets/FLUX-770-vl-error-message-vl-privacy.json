@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-770",
+  "entries": [
+    {
+      "id": "637a88f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-770"
+      ],
+      "scope": "vl-error-message, vl-privacy",
+      "components": [
+        "vl-error-message",
+        "vl-privacy"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "aangepast naar correcte cdn url",
+      "text": "FLUX-770 - vl-error-message, vl-privacy - aangepast naar correcte cdn url",
+      "commits": [
+        {
+          "sha": "637a88f8be8815bc85ecce410037b71bf7fc7246",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/637a88f8be8815bc85ecce410037b71bf7fc7246"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "milieuinfo is de oude cdn url, deze zal op termijn niet meer beschikbaar zijn. Bij deze zijn al de referenties naar de https://cdn.omgeving.vlaanderen.be veranderd.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/http-error-message/error-codes.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-http-error-message--documentatie",
+            "title": "Components - Block/http-error-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-http-error-message--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

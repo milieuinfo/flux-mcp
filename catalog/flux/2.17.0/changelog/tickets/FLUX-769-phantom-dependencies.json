@@ -1,0 +1,65 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-769",
+  "entries": [
+    {
+      "id": "91dea67",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-769"
+      ],
+      "scope": "phantom dependencies",
+      "components": [],
+      "topics": [
+        "phantom dependencies"
+      ],
+      "mentions": [],
+      "summary": "ontbrekende imports expliciet declareren",
+      "text": "FLUX-769 - phantom dependencies - ontbrekende imports expliciet declareren",
+      "commits": [
+        {
+          "sha": "91dea6774937e08c887cd64c13c6e9a09f2b8c1e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/91dea6774937e08c887cd64c13c6e9a09f2b8c1e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "apps/consumer: html-webpack-plugin en terser-webpack-plugin als devDependency, @domg-wc/common als dependency toegevoegd. apps/consumer-e2e: cypress, cypress-axe en @types/node als devDependency toegevoegd. Storybook-stories importeren html en ifDefined nu uit lit i.p.v. lit-html. eslint-plugin-storybook als devDependency toegevoegd (import in eslint.config.mjs).",
+        "published": false,
+        "areas": {
+          "docs": 2,
+          "storybook": 1,
+          "examples": 1,
+          "tests": 1,
+          "tooling": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": null
+          },
+          {
+            "id": "patronen-navigatie-side-navigation-met-proza-message--documentatie",
+            "title": "Patronen/Navigatie/Side Navigation/met proza message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/patronen-navigatie-side-navigation-met-proza-message--documentatie",
+            "added": null
+          },
+          {
+            "id": "patronen-typografie-titel-met-annotatie--documentatie",
+            "title": "Patronen/Typografie/Titel/met annotatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

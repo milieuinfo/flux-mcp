@@ -1,0 +1,26 @@
+{
+  "base": "2.16.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "package": "@domg-wc/components",
+      "dependencies": {
+        "added": [
+          {
+            "name": "@oddbird/popover-polyfill",
+            "version": "0.6.1"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "@govflanders/vl-widget-global-header-types",
+            "before": "2.0.20",
+            "after": "2.0.39"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-123",
+  "entries": [
+    {
+      "id": "f0171be",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-123"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "events & React documentatie uitgebreid",
+      "text": "FLUX-123 - events & React documentatie uitgebreid",
+      "commits": [
+        {
+          "sha": "f0171be6334112e57fb3e56cd786e079f3f74d75",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f0171be6334112e57fb3e56cd786e079f3f74d75"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

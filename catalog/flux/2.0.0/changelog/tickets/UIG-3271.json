@@ -1,0 +1,63 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3271",
+  "entries": [
+    {
+      "id": "23398db",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3271"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "DV libraries weggewerkt",
+      "text": "UIG-3271 - DV libraries weggewerkt",
+      "commits": [
+        {
+          "sha": "23398db50417d2381b6c8050ef9f9ab29f0ee00b",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/23398db50417d2381b6c8050ef9f9ab29f0ee00b"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 19,
+          "storybook": 1,
+          "tests": 4,
+          "tooling": 8
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/legacy-breakpoint.js",
+          "libs/common/src/util/legacy-core.js",
+          "libs/common/src/util/legacy-initialisation.ts",
+          "libs/common/src/util/legacy-utils.js",
+          "libs/components/src/accordion/vl-accordion.component.ts",
+          "libs/components/src/accordion/vl-accordion.lib.js",
+          "libs/components/src/code-preview/index.ts",
+          "libs/components/src/code-preview/vl-code-preview.component.ts",
+          "libs/components/src/declare-module.d.ts",
+          "libs/components/src/index.ts",
+          "libs/components/src/info-tile/vl-info-tile.component.ts",
+          "libs/components/src/modal/vl-modal.component.ts",
+          "libs/components/src/progress-bar/vl-progress-bar.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.lib.js",
+          "libs/components/src/tabs/vl-tabs.component.ts",
+          "libs/components/src/tabs/vl-tabs.lib.js",
+          "libs/components/src/wizard/vl-wizard.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

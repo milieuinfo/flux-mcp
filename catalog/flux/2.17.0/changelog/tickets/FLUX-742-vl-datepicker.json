@@ -1,0 +1,69 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-742",
+  "entries": [
+    {
+      "id": "bf4eb67",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-742"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "anchor-positioning standaard aan met inline-positioning opt-out",
+      "text": "FLUX-742 - vl-datepicker - anchor-positioning standaard aan met inline-positioning opt-out",
+      "commits": [
+        {
+          "sha": "bf4eb67b153947eec5d64ea56dc45f8155995d61",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bf4eb67b153947eec5d64ea56dc45f8155995d61"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Anchor-positioning (Popover API + CSS Anchor Positioning) is nu de default kalenderpositionering, zowel op native browsers als via de floating-ui fallback. Het oude flatpickr-in-DOM-gedrag blijft beschikbaar via het nieuwe inline-positioning attribuut; de CSS-regels en JS-gates zijn omgekeerd zodat de anchor-modus geldt tenzij inline-positioning gezet is.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 2,
+          "storybook": 3,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.positioning-css.ts",
+          "libs/components/src/form/form.web-types.json"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-modal--documentatie",
+            "title": "Components - Block/modal",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-modal--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": "De datepicker kalender positioneert zichzelf automatisch. Standaard rendert de kalender in de browser top-layer\n(via CSS Anchor Positioning + Popover API), zodat ancestor `transform`, `overflow` of `sticky` de positionering\nniet kan breken. Indien de automatische positionering niet het gewenste resultaat oplevert, kan dit op drie\nmanieren aangepast worden:\n\n[…]\n\n-   Het `inline-positioning` attribuut: schakelt terug naar de klassieke flatpickr-positionering, waarbij de\n    kalender inline in de shadow DOM rendert in plaats van de top-layer.\n\n[…]\n\n<vl-datepicker inline-positioning></vl-datepicker>\n\n[…]\n\n> ⚠️ `inline-positioning` valt terug op het oude render-model (shadow DOM ipv top-layer) en kan opnieuw\n> afgekapt worden door ancestor `overflow` of `transform`. Gebruik dit enkel als je app afhankelijk is van\n> de huidige DOM-positie of stacking volgorde van de kalender."
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "In v2 is de anchor-positioning codepath (Popover API + CSS Anchor Positioning) de default geworden.\nWie het oude gedrag nodig heeft kan terugvallen via het `inline-positioning` attribuut. In v3 wordt\nde oude positionering én het `inline-positioning` attribuut volledig verwijderd. Apps moeten na de\nupgrade verifiëren dat hun datepicker correct rendert.\n\n[…]\n\n        <td>Popover API + CSS Anchor Positioning (opt-out verwijderd)</td>\n        <td><code>{`<vl-datepicker inline-positioning>`}</code></td>"
+          }
+        ]
+      }
+    }
+  ]
+}

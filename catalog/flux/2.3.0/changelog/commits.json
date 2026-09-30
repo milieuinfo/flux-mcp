@@ -1,0 +1,343 @@
+{
+  "schema": 2,
+  "version": "2.3.0",
+  "previous": "2.2.0",
+  "commits": {
+    "05b27293864f6fad99db0043daaaebc80a213b94": {
+      "sha": "05b27293864f6fad99db0043daaaebc80a213b94",
+      "body": "De declaratieve manier van meldingen tonen is veranderd; in de vorige Lit variant van de `vl-toaster` werden meldingen pas getoond als de bijhorende functie werd aangeroepen. Nu worden die onmiddellijk getoond, deze werking is nu dezelfde hoe de vroegere `is=\"vl-toaster\"` werkte. Daarnaast is ook ontbrekende witruimte toegevoegd en responsiveness op mobiel verbeterd.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/toaster/vl-toaster.component.ts",
+        "libs/components/src/block/toaster/vl-toaster.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-toaster--documentatie",
+          "title": "Components - Block/toaster",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-toaster--documentatie",
+          "added": "Gebruik de `toaster` component om meldingen af te beelden.<br/>\n\n[…]\n\n## Gebruik\n\n[…]\n\n### Declaratief\n\nJe kan de meldingen declaratief toevoegen in het default slot van de `vl-toaster`, typisch gebruiken we\n hiervoor de [vl-alert](/docs/components-block-alert--documentatie) component.\n Het element verschijnt dan automatisch op de gekozen positie.\n\n[…]\n\n### Dynamisch\n\nDe `showAlert()`-methode, is de eenvoudigste manier om een melding te tonen.\nAchterliggend maken we een [vl-alert](/docs/components-block-alert--documentatie) component aan met de\n opgegeven parameters.\n\n[…]\n\n```js\n\n[…]\n\n  fadeOut: true // optioneel, standaard is false\n\n[…]\n\nJe kan het meegegeven object uitbreiden met de properties van de [vl-alert](/docs/components-block-alert--documentatie)\ncomponent.\n\n[…]\n\nAls je meer controle wilt over de melding, kan je ook de `show()` methode gebruiken om een zelf samengesteld\n HTML-element te tonen als melding.\n\n[…]\n\n```js\n\n[…]\n\ntoaster.show(document.querySelector('#warning-123')); // deze methode toont het meegegeven HTML element als toast\n\n[…]\n\n### Fade out\n\nWe bieden de mogelijkheid aan om meldingen automatisch te laten verdwijnen na een bepaalde tijd met\n de `fade-out` property.\n\n{`\n   Echter raden we aan om dit te vermijden waar mogelijk gezien dit de toegankelijkheid van de\n   toaster negatief kan beïnvloeden. Gebruikers kunnen de melding mogelijk niet op tijd lezen of begrijpen,\n   vooral als ze gebruik maken van schermlezers of andere hulpmiddelen.\n`}"
+        }
+      ]
+    },
+    "1b65064b3fe424afba3851c0bf975c44d33ee171": {
+      "sha": "1b65064b3fe424afba3851c0bf975c44d33ee171",
+      "body": "De selector met > *:not(:first-child), werkt als er maar 1 kolom is. Echter, als er meerdere kolommen zijn in bijvoorbeeld een grid layout, dan zal dit de layout breken, met row-gap spreken we de native manier aan om witruimte in grid & flexbox layouts te wijzigen. Dit heeft wel als gevolg dat vl-stacked styling niet meer zal werken buiten flexbox & grid context.",
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "docs": 1,
+        "examples": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/stacked/vl-stacked.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "styles-layout-afnemers-stacked--documentatie",
+          "title": "Styles/Layout (afnemers)/stacked",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/styles-layout-afnemers-stacked--documentatie",
+          "added": "De 'stacked' style-classes beïnvloeden de ruimte tussen kind items binnen Flexbox of Grid containers"
+        }
+      ]
+    },
+    "4a81a07c60d58b5e38c0af184c88c9ad89eacfc5": {
+      "sha": "4a81a07c60d58b5e38c0af184c88c9ad89eacfc5",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/properties/vl-properties.builder.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-properties--documentatie",
+          "title": "Components - Block/properties",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-properties--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "f2ebc5f1b967b4c24180d55fed5cc3e2feb671fa": {
+      "sha": "f2ebc5f1b967b4c24180d55fed5cc3e2feb671fa",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 6,
+        "styles": 1,
+        "docs": 3,
+        "storybook": 8,
+        "tests": 6,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/index.ts",
+        "libs/components/src/compliance/next/footer/index.ts",
+        "libs/components/src/compliance/next/footer/vl-footer.component.ts",
+        "libs/components/src/compliance/next/header/index.ts",
+        "libs/components/src/compliance/next/header/vl-header.component.flux-css.ts",
+        "libs/components/src/compliance/next/header/vl-header.component.ts",
+        "libs/components/src/compliance/next/header/vl-header.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-compliance-footer-next--documentatie",
+          "title": "Components - Compliance/Next/footer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-footer-next--documentatie",
+          "added": "# Digitaal Vlaanderen Footer\n\n\nInjecteert de footer widget (v5) van Digitaal Vlaanderen.\nDefault wordt de footer geïnjecteerd in het native `<body>` element.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-footer-next></vl-footer-next>\n```\n\n\n\n## Configuratie\n\n\n\n## Referenties\n\n### Digitaal Vlaanderen\n\n[Documentatie Digitaal Vlaanderen - Footer](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)\n\n[Global Footer - interfaces](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-footer/modules.html)"
+        },
+        {
+          "id": "components-compliance-header--documentatie",
+          "title": "Components - Compliance/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-header-next--documentatie",
+          "title": "Components - Compliance/Next/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header-next--documentatie",
+          "added": "# Digitaal Vlaanderen Header\n\n\nInjecteert de global header widget (v5) van Digitaal Vlaanderen.\nDefault wordt de header geïnjecteerd in het native `<body>` element.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-header-next></vl-header-next>\n```\n\n\n\n## Configuratie\n\n\n\n## Sessies\n\n### Configuratie\n\nBij het aanpassen van volgende attributen wordt achterliggend de `window.globalHeaderClient.accessMenu.setProfile()` methode van DV opnieuw aangeroepen:\n\n-   `login-url`\n-   `logout-url`\n-   `switch-capacity-url`\n\nZie [global header interfaces | setProfile](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/AccessMenuMethods.html#setprofile) voor de technische informatie.\n\nZie [Digitaal Vlaanderen - De endpoints overschrijven](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-endpoints-overschrijven) voor meer informatie (v4 documentatie).\n\n## Applicatieve Links\n\nJe kan applicatieve links toevoegen aan de header door gebruik te maken van de `applicationLinks` property.<br/>\nDeze property verwacht een array met objecten van het volgende type:\n\n```js\ntype ApplicationMenuLink = {\n    label: string;\n    href: string;\n    icon?: string;\n    target?: string;\n};\n```\n\nDe `ApplicationMenuLink` TypeScript Type kan je zo importeren: `import { ApplicationMenuLink } from '@govflanders/vl-widget-global-header-types';`\n\nZie [global header interfaces | ApplicationMenuLink](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/ApplicationMenuLink.html) voor de technische informatie.\n\nZie [Digitaal Vlaanderen - Header applicatieve links](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6508874105/Aanmeldmenu#Applicatieve-links) voor meer informatie (v4 documentatie).\n\n### Logout request\n\nSinds global header v5 is het niet meer nodig om automatische logout requests te rejecten. Onderstaande informatie gaat over de v4 implementatie (voorlopig behouden in de documentatie als referentie).\n\n> Bij het gebruik maken van sessies kan het logout request afgehandeld worden.<br/>\n> Dit kan handig zijn als je wilt dat de gebruiker niet automatisch wordt uitgelogd bv. bij inactiviteit of als de sessie verlopen is.\n>\n> Door gebruik te maken van het `reject-logout` attribuut worden alle logout requests afgewezen, behalve een logout request door de gebruiker.\n>\n> Met de `logoutCallback` property kan je een callback functie meegeven die wordt aangeroepen bij een logout request.<br/>\n> De logout reason wordt meegegeven aan de callback, door een boolean promise terug te geven kan je de logout accepteren of afwijzen.<br/>\n> De mogelijke reasons zijn: `inactivity` en `expired`.<br/>\n> Een logout request door de gebruiker wordt nooit afgewezen.\n>\n>\n> Zie [De aanvragen voor applicatie logout afhandelen via JavaScript](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-aanvragen-voor-applicatie-logout-afhandelen-via-JavaScript) voor meer informatie (v4 documentatie).\n\n\n## Referenties\n\n### Digitaal Vlaanderen\n\n[Documentatie Digitaal Vlaanderen - Header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)\n\n[Global Header - interfaces](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/modules.html)"
+        },
+        {
+          "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "title": "Planning/Van v2 naar v3 - beschikbaar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "added": "# Van v2 naar v3 - beschikbaar\n\n## Inhoudstafel\n\n- [Aanpak](#aanpak)\n- [Geïmpacteerde Web Componenten](#geïmpacteerde-web-componenten)\n\n\n## Aanpak\n\nOp deze pagina vind je een overzicht van de web componenten die geïmpacteerd zijn door de migratie van\nv2 naar v3 en die reeds beschikbaar zijn.\n\nHieronder vind je alfabetisch, per component, een tabel met daarin een overzicht van wat er in v2 en v3\nbeschikbaar is (zal zijn), je kan doorklikken op de naam om naar de documentatie van die component te gaan.\n\n- elke component is ontdubbeld, de legacy variant staat in een donkere rij, de next variant in de erop volgende\nwitte rij\n- voor de next variant staat gespecifieerd sinds welke release hij beschikbaar is\n- typisch hebben de legacy en de next variant dezelfde naam, maar niet altijd\n- momenteel zijn er enkel v1 en v2 releases, wat er zal gebeuren in v3 is informatief; er is nog geen v3 beschikbaar\n\n\n## Geïmpacteerde Web Componenten\n\n### Footer\n\n`Footer [legacy]` wordt vervangen door `Footer [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Footer [legacy]](/docs/components-compliance-footer--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Footer [next]](/docs/components-compliance-footer-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-footer-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n    </tr>\n</table>\n\n### Header\n\n`Header [legacy]` wordt vervangen door `Header [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Header [legacy]](/docs/components-compliance-header--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Header [next]](/docs/components-compliance-header-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-header-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n    </tr>\n</table>"
+        }
+      ]
+    },
+    "1b8b8ca587da392a97165cf9322c6b5b0184ac39": {
+      "sha": "1b8b8ca587da392a97165cf9322c6b5b0184ac39",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 4,
+        "storybook": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+        "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": "Hiermee krijgt de info tile een hoogte van 100%. Dit werkt enkel indien de container ook een vaste hoogte heeft."
+        },
+        {
+          "id": "ontwerp-functional-header-voorbeeld-met-back-en-tabs--documentatie",
+          "title": "Ontwerp/Functional Header/Voorbeeld Met Back En Tabs",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-back-en-tabs--documentatie",
+          "added": "# Functional Header - Voorbeeld Met Back En Tabs\n\nIn dit voorbeeld tonen we hoe een [vl-tabs](/docs/components-block-tabs-tabs--documentatie) component kan toegevoegd worden aan de [vl-functional-header](/docs/components-block-functional-header--documentatie) in combinatie met de back button.\n\nIn dit geval wordt custom CSS meegegeven om deze layout mogelijk te maken.\n\n## Componenten\n\n- [vl-functional-header](/docs/components-block-functional-header--documentatie)\n- [vl-tabs](/docs/components-block-tabs-tabs--documentatie)\n\n## Demo\n\n\n<details open>\n<summary>Code</summary>\n</details>"
+        }
+      ]
+    },
+    "0f19ee21ba9fde08840f4f2bab48b1b3f5fbe749": {
+      "sha": "0f19ee21ba9fde08840f4f2bab48b1b3f5fbe749",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+        "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts",
+        "libs/components/src/block/info-tile/vl-info-tile.model.ts",
+        "libs/styles/src/base/var/vl-color.raw.css"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": "### Alt\n\n\n### Success\n\n\n### Warning\n\n\n### Error\n\n[…]\n\n### Verticaal vullend\n\nHiermee krijgt de info-tile een hoogte van 100%. Dit werkt enkel indien de container ook een vaste hoogte heeft.\n\nDit werkt best in combinatie met een `.vl-grid`, met verschillende `vl-info-tile` componenten als directe kinderen, die elk de CSS-klassen `.vl-column` en `.vl-column--align-self-stretch` hebben (met daarbij klassen voor de kolom breedte en eventuele responsieve klassen)."
+        }
+      ]
+    },
+    "40c2fe303cb0414d81e07166c09f455ad96d1361": {
+      "sha": "40c2fe303cb0414d81e07166c09f455ad96d1361",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 5,
+        "docs": 1,
+        "storybook": 4,
+        "examples": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/link/vl-link.component.ts",
+        "libs/components/src/compliance/accessibility/child/content.component.ts",
+        "libs/components/src/compliance/accessibility/child/side-navigation.component.ts",
+        "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+        "libs/components/src/compliance/privacy/child/content.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-steps-steps--documentatie",
+          "title": "Components - Block/steps/steps",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-footer--documentatie",
+          "title": "Components - Compliance/footer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-header--documentatie",
+          "title": "Components - Compliance/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header--documentatie",
+          "added": "Default wordt de header geïnjecteerd in het native `<body>` element."
+        }
+      ]
+    },
+    "faad388d48d0d41ea49bef6e4b0bf701ebffcf20": {
+      "sha": "faad388d48d0d41ea49bef6e4b0bf701ebffcf20",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "72bd94ebb529522a60c64c9d12579ef6efbc70a3": {
+      "sha": "72bd94ebb529522a60c64c9d12579ef6efbc70a3",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/table/vl-table.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-table--documentatie",
+          "title": "Components - Block/table",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-table--documentatie",
+          "added": "## Styling\n\nDe tabel ondersteunt verschillende stijlen voor de rijen, om de status van gegevens aan te geven:\n\n### Rij styling\n\nJe kunt de volgende CSS-klassen gebruiken om specifieke stijlen toe te passen op hele rijen of individuele cellen:\n\n- **Success**: Gebruik `vl-table--success` voor een groene achtergrond (met groene rand)\n- **Warning**: Gebruik `vl-table--warning` voor een oranje achtergrond (met oranje rand)\n- **Error**: Gebruik `vl-table--error` voor een rode achtergrond (met rode rand)\n- **Disabled**: Gebruik `vl-table--disabled` voor een grijze achtergrond\n\nDeze klassen kunnen zowel op een `<tr>` element worden toegepast om een hele rij te stylen, als op een `<td>` element om een individuele cel te stylen."
+        }
+      ]
+    },
+    "10d68d2248fbad238f5ce7bb25417cacd82aaa69": {
+      "sha": "10d68d2248fbad238f5ce7bb25417cacd82aaa69",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 2,
+        "examples": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-datepicker--documentatie",
+          "title": "Components - Form/datepicker",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "ddfb461227243638b4bd1219bfd0a62e2bcf99ba": {
+      "sha": "ddfb461227243638b4bd1219bfd0a62e2bcf99ba",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "docs": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/common/src/util/legacy-breakpoint.js",
+        "libs/components/src/block/side-navigation/vl-side-navigation.css.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation.scrollspy.lib.js"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-side-navigation--documentatie",
+          "title": "Components - Block/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+          "added": "### Initialisatie in een hidden parent\n\nAls de side-navigation gerenderd wordt in een parent component die `hidden` is, bijvoorbeeld bij verschillende stappen in een flow, dan gaat de initialisatie\nfout en zal de side-navigation niet sticky worden bij het scrollen. Dit komt omdat de side-navigation bij het initialiseren een aantal dimensies capteerd en,\nin het geval dat er een parent `hidden` is, één van de waardes op 0 komt te staan. Dit kan vermeden worden door het gebruik van `hidden` te vervangen door de\n`when()` directive van Lit.\n\n\n#### ❌ Voorbeeld met \"hidden\"\n\n<Source code={`\n<flow-met-stappen>\n    <stap-met-side-navigation ?hidden=\"\\${this.__stap !== 'stap-1'}\"></stap-met-side-navigation>\n</flow-met-stappen>\n`} language=\"ts\" dark={true} format={true} />\n\n#### ✅ Voorbeeld met \"when()\"\n\n<Source code={`\n<flow-met-stappen>\n    \\${\n        when(this.__stap === 'stap-1', () =>\n            html\\`<stap-met-side-navigation></stap-met-side-navigation>\\`\n        )\n    }\n</flow-met-stappen>\n`} language=\"ts\" dark={true} format={true} />"
+        }
+      ]
+    },
+    "80a854e48e8055e20312b334f3fa94507eb3959d": {
+      "sha": "80a854e48e8055e20312b334f3fa94507eb3959d",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/autocomplete/vl-autocomplete.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-autocomplete--documentatie",
+          "title": "Components - Block/autocomplete",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "7b42f0537ad4da7158b54c02dad77371df3eedbe": {
+      "sha": "7b42f0537ad4da7158b54c02dad77371df3eedbe",
+      "body": "Kleine WCAG & documentatie verbeteringen voor de toaster, modal, side-sheet, rich-data, alert, popover & search-filter",
+      "published": true,
+      "areas": {
+        "code": 5,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 4
+      },
+      "publishedFiles": [
+        "libs/components/src/block/alert/vl-alert.component.ts",
+        "libs/components/src/block/modal/vl-modal.component.ts",
+        "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+        "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+        "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-toaster--documentatie",
+          "title": "Components - Block/toaster",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-toaster--documentatie",
+          "added": "## Toegankelijkheid\n\n### fade-out\n\nWe bieden de mogelijkheid aan om meldingen automatisch te laten verdwijnen na een bepaalde tijd met\n de `fade-out` property.\n\n Echter raden we aan om dit te vermijden waar mogelijk gezien dit de toegankelijkheid van de\ntoaster negatief kan beïnvloeden. Gebruikers kunnen de melding mogelijk niet op tijd lezen of begrijpen, vooral als ze\ngebruik maken van schermlezers of andere hulpmiddelen."
+        }
+      ]
+    }
+  },
+  "unlisted": []
+}

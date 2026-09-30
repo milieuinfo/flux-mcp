@@ -1,0 +1,38 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "5c76e7d",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "domg_flux@groepen.vlaanderen.be is het nieuwe email-adres",
+      "text": "domg_flux@groepen.vlaanderen.be is het nieuwe email-adres",
+      "commits": [
+        {
+          "sha": "5c76e7df649b6246eda76af77575a10ceecfe28a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5c76e7df649b6246eda76af77575a10ceecfe28a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 5
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

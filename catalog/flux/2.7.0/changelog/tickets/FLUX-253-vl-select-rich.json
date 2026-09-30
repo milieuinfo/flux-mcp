@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-253",
+  "entries": [
+    {
+      "id": "cd4adcf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-253"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "werking events verbeterd",
+      "text": "FLUX-253 - vl-select-rich - werking events verbeterd",
+      "commits": [
+        {
+          "sha": "cd4adcf8abba41ab7e1deaab2ae5a5f45682e809",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cd4adcf8abba41ab7e1deaab2ae5a5f45682e809"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Vroeger werden events standaard geregistreerd op document niveau van de DOM tree, nu wordt dat op de shadowRoot van de component gedaan. Dit lost problemen op i.v.m. retargetting & het correct openen / sluiten van dropdowns.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

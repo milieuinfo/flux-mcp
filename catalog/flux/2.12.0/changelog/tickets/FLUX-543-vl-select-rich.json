@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-543",
+  "entries": [
+    {
+      "id": "a5b8720",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-543"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "background-color toegevoegd aan inner styling",
+      "text": "FLUX-543 - vl-select-rich - background-color toegevoegd aan inner styling",
+      "commits": [
+        {
+          "sha": "a5b8720683acf10e969ae2abae12a397d6b92c5a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a5b8720683acf10e969ae2abae12a397d6b92c5a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/styles/vl-select-rich.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

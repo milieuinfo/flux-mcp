@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-302",
+  "entries": [
+    {
+      "id": "a52bd46",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-302"
+      ],
+      "scope": "vl-toaster",
+      "components": [
+        "vl-toaster"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "stories verbeterd voor template gebruik",
+      "text": "FLUX-302 - vl-toaster - stories verbeterd voor template gebruik",
+      "commits": [
+        {
+          "sha": "a52bd46570399b4e2d2f21d851f512473b97cc01",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a52bd46570399b4e2d2f21d851f512473b97cc01"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Daarnaast ook ondersteuning toegevoegd in de VlToasterComponent om toasts te tonen, aan de hand van het id van een template. Cypress tests toegevoegd & storybook verbeterd",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/toaster/vl-toaster.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

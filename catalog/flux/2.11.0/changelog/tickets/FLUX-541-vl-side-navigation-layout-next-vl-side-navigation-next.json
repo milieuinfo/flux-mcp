@@ -1,0 +1,133 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-541",
+  "entries": [
+    {
+      "id": "b6b75e0",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-541"
+      ],
+      "scope": "vl-side-navigation-layout-next",
+      "components": [
+        "vl-side-navigation-layout-next"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-side-navigation-layout"
+      ],
+      "summary": "vl-side-navigation-layout hernoemd naar vl-side-navigation-layout-next",
+      "text": "FLUX-541 - vl-side-navigation-layout-next - vl-side-navigation-layout hernoemd naar vl-side-navigation-layout-next",
+      "commits": [
+        {
+          "sha": "b6b75e06cc719f279ce8fe89aee9eae9e01bef8c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b6b75e06cc719f279ce8fe89aee9eae9e01bef8c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Ook in sidebar next/side-navigation-next hernoemd naar next/side-navigation",
+        "published": true,
+        "areas": {
+          "code": 6,
+          "docs": 5,
+          "storybook": 4,
+          "examples": 2,
+          "tests": 6,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/compliance/accessibility/vl-accessibility.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation--documentatie",
+            "title": "Components - Block/next/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-next-side-navigation-layout--documentatie",
+            "title": "Components - Block/next/side-navigation-layout",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+            "added": "<vl-side-navigation-layout-next>\n\n[…]\n\n</vl-side-navigation-layout-next>"
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": null
+          },
+          {
+            "id": "patronen-pagina-opbouw-side-navigation-met-proza-message--documentatie",
+            "title": "Patronen/Pagina Opbouw/Side Navigation Met Proza Message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/patronen-pagina-opbouw-side-navigation-met-proza-message--documentatie",
+            "added": "In dit voorbeeld wordt `vl-side-navigation-layout-next` gecombineerd met `vl-proza-message`. De titels in de content worden\n\n[…]\n\n- [vl-side-navigation-layout-next](/docs/components-block-next-side-navigation-layout--documentatie)"
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "        <td><code>{`<vl-side-navigation-layout-next>`}</code></td>\n\n[…]\n\n        <td><code>{`<vl-side-navigation-layout-next>`}</code></td>"
+          }
+        ]
+      }
+    },
+    {
+      "id": "071ea59",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-541"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ondersteuning proza-message toegevoegd",
+      "text": "FLUX-541 - vl-side-navigation-next - ondersteuning proza-message toegevoegd",
+      "commits": [
+        {
+          "sha": "071ea59c77a901a44b3105ba0f7eb8c2949e82a4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/071ea59c77a901a44b3105ba0f7eb8c2949e82a4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-scanner.utils.ts"
+        ],
+        "storybook": [
+          {
+            "id": "patronen-pagina-opbouw-side-navigation-met-proza-message--documentatie",
+            "title": "Patronen/Pagina Opbouw/Side Navigation Met Proza Message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/patronen-pagina-opbouw-side-navigation-met-proza-message--documentatie",
+            "added": "# Side Navigation Layout Met Proza Message\n\nIn dit voorbeeld wordt `vl-side-navigation-layout` gecombineerd met `vl-proza-message`. De titels in de content worden\ngevuld via Proza berichten en verschijnen zo ook in de side navigation.\n\nDit voorbeeld toont ook:\n\n- titels gevuld via `vl-proza-message` binnen `vl-title`\n- automatische side navigation op basis van de standaard headingniveaus\n\n## Componenten\n\n- [vl-side-navigation-layout](/docs/components-block-next-side-navigation-layout--documentatie)\n- [vl-proza-message](/docs/components-block-proza-message--documentatie)\n- [vl-proza-message-preloader](/docs/components-block-proza-message-proza-message-preloader--documentatie)\n\n## Demo"
+          }
+        ]
+      }
+    }
+  ]
+}

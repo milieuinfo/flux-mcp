@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-631",
+  "entries": [
+    {
+      "id": "78d7071",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-631"
+      ],
+      "scope": "vl-textarea-rich",
+      "components": [
+        "vl-textarea-rich"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-input"
+      ],
+      "summary": "vl-input event dispatchen bij gebruikersinvoer",
+      "text": "FLUX-631 - vl-textarea-rich - vl-input event dispatchen bij gebruikersinvoer",
+      "commits": [
+        {
+          "sha": "78d707168f94c114928f0842f9d4e367ff33f495",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/78d707168f94c114928f0842f9d4e367ff33f495"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De `vl-input` event werd gedocumenteerd (via de geërfde args van `vl-textarea`) maar nooit afgevuurd in `vl-textarea-rich`. Oorzaak: de TinyMCE editor-listener zette wel `this.value`, maar niet `this.dispatchInput = true`, waardoor het dispatch-mechanisme in `VlTextareaComponent.updated()` de `vl-input` oversloeg.\n\nWijziging (Voorstel 1 uit refinement-rapport):\n- `vl-textarea-rich.component.ts`: `this.dispatchInput = true` toegevoegd vóór de `this.value`-toewijzing in de TinyMCE `input change redo undo` listener. Hergebruikt volledig het bestaande parent-dispatch-pad, garandeert de volgorde `vl-change` → `vl-input` in één updated()-cyclus en vermijdt duplicatie van het event-contract.\n\nTests:\n- Nieuw `describe('vl-textarea-rich - events', ...)` met twee Cypress component-tests:\n  - dispatcht `vl-input` + `vl-change` bij een TinyMCE input-event, en `detail.value` bevat de actuele HTML-inhoud;\n  - programmatisch wijzigen van `value` (via attribuut) dispatcht enkel `vl-change`, geen `vl-input` — dekt het risico af dat `editor.setContent()` onbedoeld `vl-input` zou triggeren.\n- Patroon spiegelt `vl-textarea.component.cy.ts` events-describe.\n\nGeen breaking changes: consumers die al op `vl-change` leunen blijven werken, `vl-input` begint nu óók te vuren conform de API-docs.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

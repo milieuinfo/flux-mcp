@@ -1,0 +1,14 @@
+{
+  "name": "@domg-wc/map",
+  "version": "2.7.0",
+  "dependencies": {
+    "@domg-wc/common": "2.7.0",
+    "@domg-wc/components": "2.7.0",
+    "@domg-wc/styles": "2.7.0",
+    "choices.js": "11.1.0",
+    "jsts": "2.11.0",
+    "lit": "3.1.0",
+    "ol": "8.2.0",
+    "proj4": "2.10.0"
+  }
+}

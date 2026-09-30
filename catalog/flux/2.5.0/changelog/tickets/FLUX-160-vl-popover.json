@@ -1,0 +1,63 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-160",
+  "entries": [
+    {
+      "id": "9ce319f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-160"
+      ],
+      "scope": "vl-popover",
+      "components": [
+        "vl-popover"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "toegankelijkheid verbeteringen",
+      "text": "FLUX-160 - vl-popover - toegankelijkheid verbeteringen",
+      "commits": [
+        {
+          "sha": "9ce319f33560f27cf6c64c4362c81520a02b9945",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9ce319f33560f27cf6c64c4362c81520a02b9945"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 2,
+          "docs": 1,
+          "storybook": 1,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover-action.component.ts",
+          "libs/components/src/block/popover/vl-popover-action.flux-css.ts",
+          "libs/components/src/block/popover/vl-popover.component.ts",
+          "libs/components/src/block/popover/vl-popover.defaults.ts",
+          "libs/components/src/block/popover/vl-popover.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": "<br/>\n{`\n    Sinds versie <strong>2.5.0</strong> wordt er automatisch een \"button\"- of \"a\"-element gerenderd in de vl-popover-action.<br/><br/>\n    Indien je reeds je eigen buttons of links renderde binnenin een action moet je:\n    <ul>\n        <li><strong>In het geval van een button:</strong> de \"click\" en andere handlers verplaatsen naar het vl-popover-action component.</li>\n        <li><strong>In het geval van een link:</strong> de \"href\", \"target\" en/of \"rel\" attributen verplaatsen naar het vl-popover-action component.</li>\n    </ul>\n`}"
+          }
+        ]
+      }
+    }
+  ]
+}

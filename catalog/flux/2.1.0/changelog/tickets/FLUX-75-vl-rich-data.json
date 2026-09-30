@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "ticket": "FLUX-75",
+  "entries": [
+    {
+      "id": "3cdd68d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-75"
+      ],
+      "scope": "vl-rich-data",
+      "components": [
+        "vl-rich-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "escape functionaliteit verbeterd",
+      "text": "FLUX-75 - vl-rich-data - escape functionaliteit verbeterd",
+      "commits": [
+        {
+          "sha": "3cdd68d01e456a151bb18b4bd623cc8d4fbabd67",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/3cdd68d01e456a151bb18b4bd623cc8d4fbabd67"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Vroeger verborg de escape knop de search-filter in alle gevallen en wanneer er geen filter toggle knop is, kon die niet meer terugkomen. Nu verbergt de escape knop enkel de search-filter als het filter-closable attribuut opstaat.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-585",
+  "entries": [
+    {
+      "id": "4f33961",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-585"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "flaky testen stabiel gemaakt",
+      "text": "FLUX-585 - flaky testen stabiel gemaakt",
+      "commits": [
+        {
+          "sha": "4f33961bd825dfee49307777379d32f271b43ddb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4f33961bd825dfee49307777379d32f271b43ddb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-map-legend.cy.ts:\n- cy.intercept() om externe WMS-verzoeken te stubben (zodat de test netwerk onafhankelijk is)\n\nvl-header.component.cy.ts:\n- stubbing van de widget-script's in beforeEach\n- ready event: listener geregistreerd voor de mount - race conditie fix",
+        "published": false,
+        "areas": {
+          "tests": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

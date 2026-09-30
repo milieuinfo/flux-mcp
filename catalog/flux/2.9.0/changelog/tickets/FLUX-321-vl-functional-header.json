@@ -1,0 +1,108 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-321",
+  "entries": [
+    {
+      "id": "6fc66a6",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-321"
+      ],
+      "scope": "vl-functional-header",
+      "components": [
+        "vl-functional-header"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "skip-to-content-id attribuut toegevoegd om een skip-link te renderen",
+      "text": "FLUX-321 - vl-functional-header - skip-to-content-id attribuut toegevoegd om een skip-link te renderen",
+      "commits": [
+        {
+          "sha": "6fc66a6c431606a6f24c72664268c7a620465380",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6fc66a6c431606a6f24c72664268c7a620465380"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "styles": 2,
+          "docs": 4,
+          "storybook": 9,
+          "examples": 1,
+          "tests": 9
+        },
+        "publishedFiles": [
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/compliance/accessibility/child/header.component.ts",
+          "libs/components/src/compliance/accessibility/child/title.component.ts",
+          "libs/components/src/compliance/cookie-statement/child/header.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/header.component.ts",
+          "libs/components/src/compliance/privacy/child/version.component.ts",
+          "libs/styles/src/base/var/vl-z-layer.raw.css",
+          "libs/styles/src/layout/accessibility/vl-accessibility-styles.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "## Toegankelijkheid\n\nVul steeds `skip-to-content-id` in. Kies hiervoor de ID van de eerste heading van de content.\nIndien er uitzonderlijk geen headings zijn, kies dan voor de ID van de content zelf.\nIndien deze ID's niet bestaan, moeten ze voorzien worden in de content.\n\nEen ingevulde `skip-to-content-id` zorgt ervoor dat er een skip-link gerenderd wordt. Dit laat gebruikers toe om meteen te skippen naar de\ncontent en de header over te slaan. Vooral voor screenreader-gebruikers vormt dit een grote tijdswinst bij het\nnavigeren. Ook voor andere gebruikers kan dit interessant zijn, daarom wordt deze link zichtbaar bij focus.\n\nMeer info vind je in de [documentatie over toegankelijke navigatie: \"Blokken omzeilen\"](/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie#blokken-omzeilen)."
+          },
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-accessibility--documentatie",
+            "title": "Components - Compliance/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-accessibility--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-cookie-statement--documentatie",
+            "title": "Components - Compliance/cookie-statement",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-cookie-statement--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-privacy--documentatie",
+            "title": "Components - Compliance/privacy",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-privacy--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/map-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-pagina-layout-voorbeeld--documentatie",
+            "title": "Ontwerp/Pagina Layout/Voorbeeld",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/ontwerp-pagina-layout-voorbeeld--documentatie",
+            "added": "                    <vl-functional-header title=\"Page Layout\" skip-to-content-id=\"#main-content\">...</vl-functional-header>\n\n[…]\n\n                        <div class=\"vl-content-block\">\n                            <vl-title type=\"h1\" id=\"main-content\">Content</vl-title>\n                        </div>\n\n[…]\n\n                    <vl-functional-header title=\"Page Layout\" full-width skip-to-content-id=\"#main-content\">...</vl-functional-header>\n\n[…]\n\n                        <div class=\"vl-content-block vl-content-block--full-width\">\n                            <vl-title type=\"h1\" id=\"main-content\">Content</vl-title>\n                        </div>"
+          },
+          {
+            "id": "styles-layout-accessibility--documentatie",
+            "title": "Styles/Layout (afnemers)/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-accessibility--documentatie",
+            "added": "## Skip link\n\nJe kan `.vl-skip-link` toevoegen aan een link (native a-element) om er een skip-link van te maken. De skip-link moet een\ninterne anchor-link zijn en dus als href de ID meekrijgen van de eerste heading van de content of van de content zelf.\n\n\nJe kan de skip-link op twee manieren activeren:\n\n- **Start een screenreader**, bv VoiceOver (command+F5), en navigeer naar het begin van de pagina.\n- **Gebruik Tab** om naar het begin van de pagina te navigeren. Zodra de skip-link focus krijgt zal hij verschijnen.\n\nKlikken op de skip-link brengt je meteen naar de inhoud. De header wordt niet voorgelezen.\n\nMeer info vind je in de [documentatie over toegankelijke navigatie: \"Blokken omzeilen\"](/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie#blokken-omzeilen)."
+          }
+        ]
+      }
+    }
+  ]
+}

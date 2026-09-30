@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "9ad5c2e",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": "vl-form-message",
+      "components": [
+        "vl-form-message"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "storybook verbeterd",
+      "text": "FLUX - vl-form-message - storybook verbeterd",
+      "commits": [
+        {
+          "sha": "9ad5c2e90a630d479a2964ca560c59f135cd9238",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9ad5c2e90a630d479a2964ca560c59f135cd9238"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": "### Foutmeldingen\n\nBij het instellen van een foutmelding is het belangrijk om suggesties mee te geven over hoe de foute invoer kan worden\nrechtgezet. Een goede foutmelding beschrijft niet enkel wat er fout is, maar geeft de gebruiker ook duidelijke aanwijzingen\nom het probleem op te lossen."
+          }
+        ]
+      }
+    }
+  ]
+}

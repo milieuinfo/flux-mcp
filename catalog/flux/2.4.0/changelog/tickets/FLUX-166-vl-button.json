@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-166",
+  "entries": [
+    {
+      "id": "4162cad",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-166"
+      ],
+      "scope": "vl-button",
+      "components": [
+        "vl-button"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "disabled ghost button blijft transparant",
+      "text": "FLUX-166 - vl-button - disabled ghost button blijft transparant",
+      "commits": [
+        {
+          "sha": "4162cad9af48d535283dbcacccc78f6d6512dd44",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4162cad9af48d535283dbcacccc78f6d6512dd44"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-369",
+  "entries": [
+    {
+      "id": "ae4a102",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-369"
+      ],
+      "scope": "vl-progress-bar",
+      "components": [
+        "vl-progress-bar"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie component",
+      "text": "FLUX-369 - vl-progress-bar - introductie component",
+      "commits": [
+        {
+          "sha": "ae4a102803889531e0db669a7c92c8e8300de88a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ae4a102803889531e0db669a7c92c8e8300de88a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/progress-bar/index.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.component.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.defaults.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-progress-bar--documentatie",
+            "title": "Components - Block/progress-bar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-progress-bar--documentatie",
+            "added": "# Progress Bar\n\n\n## Doel\n\nGebruik een `vl-progress-bar` om procentuele voortgang te tonen.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-progress-bar></vl-progress-bar>\n```\n\n\n## Configuratie\n\n\n## Varianten\n\n### Onbepaalde voortgang\n\nIndien de voortgang niet bepaald kan worden, kan je het attribuut `indeterminate` gebruiken.\n\n\n### Error\n\nIndien de voortgang faalde, kan je het attribuut `error` gebruiken.\n\n\n## Witruimte\n\nDeze component heeft geen eigen witruimte om zo flexibel mogelijk ingezet te kunnen worden. Extra padding of margin\nkan eenvoudig toegevoegd worden met de [vl-padding](/docs/styles-layout-afnemers-padding--documentatie) of\n[vl-margin](/docs/styles-layout-afnemers-margin--documentatie) styles:\n\n```html\n<vl-progress-bar class=\"vl-padding vl-padding--small\" value=\"50\" label=\"Progress bar met witruimte\"></vl-progress-bar>\n```\n\n## Toegankelijkheid\n\nDe progress bar wordt opgebouwd met `role=\"progressbar\"` en de bijhorende `aria-valuenow`. Het is noodzakelijk om een\nwaarde voor `label` of `labelledby` in te vullen, zodat een screenreader kan voorlezen over welke voortgang het gaat.\n\nIndien de gebruiker \"verminderde beweging\" heeft ingesteld in diens besturingssyteem, worden de bewegende animaties\nuitgeschakeld. In het geval van \"indeterminate\" blijft er enkel een fade-in/fade-out animatie zichtbaar."
+          }
+        ]
+      }
+    },
+    {
+      "id": "0aa04ac",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-369"
+      ],
+      "scope": "vl-upload-progress",
+      "components": [
+        "vl-upload-progress"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie component",
+      "text": "FLUX-369 - vl-upload-progress - introductie component",
+      "commits": [
+        {
+          "sha": "0aa04ac27e1c928a9b637848037bc202c7df44ba",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0aa04ac27e1c928a9b637848037bc202c7df44ba"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 5,
+          "styles": 3,
+          "docs": 1,
+          "storybook": 4,
+          "tests": 6,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link-style/vl-link-style.css.ts",
+          "libs/components/src/block/upload-progress/index.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.component.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.defaults.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.flux-css.ts",
+          "libs/components/src/form/upload/vl-upload.component.ts",
+          "libs/components/src/form/upload/vl-upload.defaults.ts",
+          "libs/components/src/form/upload/vl-upload.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-upload-progress--documentatie",
+            "title": "Components - Block/upload-progress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-upload-progress--documentatie",
+            "added": "# Upload progress\n\n\n## Doel\n\nGebruik `vl-upload-progress` om procentuele voortgang van een bestandsupload te tonen.\n\nDit component laadt toe om de upload te annuleren of te herstarten en heeft de mogelijkheid om een foutboodschap\nweer te geven.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-upload-progress></vl-upload-progress>\n```\n\n\n## Configuratie\n\n\n## Varianten\n\n### Onbepaalde voortgang\n\nIndien de voortgang niet bepaald kan worden, kan je het attribuut `indeterminate` gebruiken.\n\n\n### Error\n\nIndien de voortgang faalde, kan je het attribuut `error` gebruiken.\n\n\n## Witruimte\n\nDeze component heeft geen eigen witruimte om zo flexibel mogelijk ingezet te kunnen worden. Extra padding of margin\nkan eenvoudig toegevoegd worden met de [vl-padding](/docs/styles-layout-afnemers-padding--documentatie) of\n[vl-margin](/docs/styles-layout-afnemers-margin--documentatie) styles:\n\n```html\n<vl-upload-progress filename=\"document.pdf\" filesize=\"123 MB\" class=\"vl-padding vl-padding--small\" progress=\"50\"></vl-upload-progress>\n```"
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

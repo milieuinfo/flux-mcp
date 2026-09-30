@@ -1,0 +1,50 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-232",
+  "entries": [
+    {
+      "id": "b41c7e6",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-232"
+      ],
+      "scope": "vl-accessibility",
+      "components": [
+        "vl-accessibility"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "storybook documentatie uitgebreid",
+      "text": "FLUX-232 - vl-accessibility - storybook documentatie uitgebreid",
+      "commits": [
+        {
+          "sha": "b41c7e6256eb3c2e1f7d1e357c75a48ae31b8854",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b41c7e6256eb3c2e1f7d1e357c75a48ae31b8854"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-compliance-accessibility--documentatie",
+            "title": "Components - Compliance/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-compliance-accessibility--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

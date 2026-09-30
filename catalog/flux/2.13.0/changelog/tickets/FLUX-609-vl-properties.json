@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-609",
+  "entries": [
+    {
+      "id": "946f71a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-609"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "voorkom zichtbare Lit-markers in label/data",
+      "text": "FLUX-609 - vl-properties - voorkom zichtbare Lit-markers in label/data",
+      "commits": [
+        {
+          "sha": "946f71ad333c54912afd69e07413cea9b91bf58a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/946f71ad333c54912afd69e07413cea9b91bf58a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Vervang de conditionele innerHTML/childNodes-ternary in buildItems door onvoorwaardelijk moveChildNodes([...element.childNodes], clone). Hierdoor blijven Lit comment-markers (<!--?lit$…?-->) echte DOM Comment-nodes en worden niet meer via innerHTML als tekst geserialiseerd. Consumers hoeven hun Lit-expressies in <label>/<data> niet langer in een extra <span> te wrappen.\n\nInterne variabelen labels/data van buildItems zijn nu getypeerd als Node[][] (was any[]); het publieke Item-type in vl-properties.model.ts (string[] | Node[][]) blijft ongewijzigd — geen breaking change voor consumers die props via attribute doorgeven.\n\nTrade-off: plain-text assertions in vl-properties.builder.spec.ts gaan nu over Text-nodes i.p.v. strings; visueel resultaat in Lit is identiek. Aparte unit-test toegevoegd voor het Lit-marker scenario met Comment + Text + Comment childNodes.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.builder.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

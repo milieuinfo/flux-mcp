@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-152",
+  "entries": [
+    {
+      "id": "80e47a6",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-152"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen doorgevoerd",
+      "text": "FLUX-152 - vl-link - WCAG verbeteringen doorgevoerd",
+      "commits": [
+        {
+          "sha": "80e47a6bd29708b46c3b6318969aa39f9b6f6c6f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/80e47a6bd29708b46c3b6318969aa39f9b6f6c6f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-link.component.ts",
+          "libs/components/src/atom/link/vl-link.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

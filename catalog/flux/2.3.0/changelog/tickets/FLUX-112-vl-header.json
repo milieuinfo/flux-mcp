@@ -1,0 +1,73 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-112",
+  "entries": [
+    {
+      "id": "40c2fe3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-112"
+      ],
+      "scope": "vl-header",
+      "components": [
+        "vl-header"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-side-navigation"
+      ],
+      "summary": "documentatie uitgebreid, vl-side-navigation - column classes aangepast in voorbeelden",
+      "text": "FLUX-112 - vl-header - documentatie uitgebreid, vl-side-navigation - column classes aangepast in voorbeelden",
+      "commits": [
+        {
+          "sha": "40c2fe303cb0414d81e07166c09f455ad96d1361",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/40c2fe303cb0414d81e07166c09f455ad96d1361"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "storybook": 4,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-link.component.ts",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/accessibility/child/side-navigation.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-footer--documentatie",
+            "title": "Components - Compliance/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": "Default wordt de header geïnjecteerd in het native `<body>` element."
+          }
+        ]
+      }
+    }
+  ]
+}

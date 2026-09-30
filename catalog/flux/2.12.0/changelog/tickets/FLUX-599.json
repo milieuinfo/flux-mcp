@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-599",
+  "entries": [
+    {
+      "id": "74ac72a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-599"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "storybook theme volgens huisstijl domg",
+      "text": "FLUX-599 - storybook theme volgens huisstijl domg",
+      "commits": [
+        {
+          "sha": "74ac72a304aa09cea2a19c3f8fa4cb9be862ddd6",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/74ac72a304aa09cea2a19c3f8fa4cb9be862ddd6"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "docs": 2,
+          "storybook": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/pager/vl-pager.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

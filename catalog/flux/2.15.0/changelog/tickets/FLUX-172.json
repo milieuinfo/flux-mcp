@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-172",
+  "entries": [
+    {
+      "id": "efe406e",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-172"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "iconen via glyph-naam i.p.v. hard-coded codepoints",
+      "text": "FLUX-172 - iconen via glyph-naam i.p.v. hard-coded codepoints",
+      "commits": [
+        {
+          "sha": "efe406e3176b4ec1c48526309eb9a9aab9a975d8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/efe406e3176b4ec1c48526309eb9a9aab9a975d8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De iconen in vl-pill, vl-tabs, vl-side-navigation, vl-select(-rich), vl-checkbox en vl-datepicker komen nu uit het gedeelde vl-icon-mechanisme; bij een font-update volgen ze automatisch de juiste codepoint. Geen zichtbare wijziging voor consumers.",
+        "published": true,
+        "areas": {
+          "code": 8,
+          "styles": 7,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/pill/vl-pill.component.ts",
+          "libs/components/src/block/pill/vl-pill.flux-css.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.css.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.scrollspy.lib.js",
+          "libs/components/src/block/tabs/vl-tabs.component.ts",
+          "libs/components/src/block/tabs/vl-tabs.css.ts",
+          "libs/components/src/block/tabs/vl-tabs.lib.js",
+          "libs/components/src/form/checkbox/vl-checkbox.component.css.ts",
+          "libs/components/src/form/checkbox/vl-checkbox.component.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.css.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.css.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/select/vl-select.component.css.ts",
+          "libs/components/src/form/select/vl-select.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

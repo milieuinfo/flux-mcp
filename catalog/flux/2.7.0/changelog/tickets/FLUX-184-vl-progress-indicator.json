@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-184",
+  "entries": [
+    {
+      "id": "81765cf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-184"
+      ],
+      "scope": "vl-progress-indicator",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "component update",
+      "text": "FLUX-184 - vl-progress-indicator - component update",
+      "commits": [
+        {
+          "sha": "81765cf1441276890a5b013e1434e1a85499572e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/81765cf1441276890a5b013e1434e1a85499572e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts",
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.flux-css.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-progress-indicator--documentatie",
+            "title": "Components - Block/progress-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-progress-indicator--documentatie",
+            "added": "### Met labels\n\nLabels hebben een maximum breedte en krijgen een ellipsis indien ze langer zijn. De volledige tekst is dan beschikbaar\nvia de default `title` tooltip.\n\nDe laatste stap neemt de beschikbare breedte in, naar gelang de breedte van het\nlabel.\n\nDe labels worden verborgen op resoluties kleiner dan 768 pixels.\n\nKies je voor `showLabels: false` dan worden de labels vervangen door een tooltip.\n\n\n### Statische stappen\n\nIn sommige gevallen zijn de stappen louter indicatief en mogen ze niet aanklikbaar zijn. Gebruik in dat geval\nhet attribuut `static-steps`. Er zullen dan geen `<nav>` en `<button>` elementen gebruikt worden.\n\n[…]\n\n`focus-on-change` zorgt ervoor dat een stap focus krijgt bij het laden van deze stap.\n\n[…]\n\n### Toekomstige stappen aanklikbaar houden\n\nDoorgaans zijn de stappen na de huidige stap niet aanklikbaar omdat eerst de voorgaande stappen afgewerkt moeten worden.\nIndien dit niet gewenst is kan je dit uitschakelen met `enable-future-steps`."
+          }
+        ]
+      }
+    }
+  ]
+}

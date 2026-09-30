@@ -1,0 +1,338 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "date": "2026-07-27",
+  "previous": "2.16.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.16.0...v2.17.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 7,
+      "fix": 7,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 7,
+      "automatic": 2,
+      "none": 5
+    },
+    "a11y": 2
+  },
+  "components": [
+    {
+      "name": "vl-checkbox",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-checkbox--documentatie"
+    },
+    {
+      "name": "vl-cookie-consent-opt-in",
+      "category": "compliance",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-compliance-cookie-consent--documentatie"
+    },
+    {
+      "name": "vl-datepicker",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-datepicker--documentatie"
+    },
+    {
+      "name": "vl-error-message",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-header-next",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-input-field",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-input-field--documentatie"
+    },
+    {
+      "name": "vl-loader",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-loader--documentatie"
+    },
+    {
+      "name": "vl-privacy",
+      "category": "compliance",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-compliance-privacy--documentatie"
+    },
+    {
+      "name": "vl-search-filter",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-search-filter--documentatie"
+    },
+    {
+      "name": "vl-side-navigation-next",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-next-side-navigation-next--documentatie"
+    },
+    {
+      "name": "vl-video-player",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-video-player--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "199171c",
+      "ticket": null,
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "aanpassingen om flaky testen stabiel te krijgen",
+      "file": "tickets/199171c.json"
+    },
+    {
+      "id": "b0d3ae2",
+      "ticket": "FLUX-243",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-243 - vl-loader - beleefde laadstatus voor screenreaders",
+      "file": "tickets/FLUX-243-vl-loader.json"
+    },
+    {
+      "id": "4ecec39",
+      "ticket": "FLUX-645",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-645 - vl-checkbox - test gebruikt nu checked-attribuut i.p.v. private property",
+      "file": "tickets/FLUX-645-vl-checkbox.json"
+    },
+    {
+      "id": "4ba452d",
+      "ticket": "FLUX-766",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-766 - vl-search-filter - section in section",
+      "file": "tickets/FLUX-766-vl-search-filter.json"
+    },
+    {
+      "id": "91dea67",
+      "ticket": "FLUX-769",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-769 - phantom dependencies - ontbrekende imports expliciet declareren",
+      "file": "tickets/FLUX-769-phantom-dependencies.json"
+    },
+    {
+      "id": "91e7b64",
+      "ticket": "FLUX-775",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-775 - vl-cookie-consent-opt-in - dubbele attribute-binding in test opgelost",
+      "file": "tickets/FLUX-775-vl-cookie-consent-opt-in.json"
+    },
+    {
+      "id": "2932197",
+      "ticket": null,
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "testen waren soms flaky door gelekte state (scrollpositie en location.hash)",
+      "file": "tickets/2932197.json"
+    },
+    {
+      "id": "fff92c4",
+      "ticket": "FLUX-651",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-651 - vl-side-navigation-next - multi-sectie ondersteuning (auto + custom in 1 nav)",
+      "file": "tickets/FLUX-651-vl-side-navigation-next.json"
+    },
+    {
+      "id": "750dbf1",
+      "ticket": "FLUX-659",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-659 - vl-input-field - describedby attribuut",
+      "file": "tickets/FLUX-659-vl-input-field.json"
+    },
+    {
+      "id": "20ffd3c",
+      "ticket": "FLUX-701",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-701 - vl-header-next - PAPI profile token en idpData override toegevoegd",
+      "file": "tickets/FLUX-701-vl-header-next.json"
+    },
+    {
+      "id": "bf4eb67",
+      "ticket": "FLUX-742",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-742 - vl-datepicker - anchor-positioning standaard aan met inline-positioning opt-out",
+      "file": "tickets/FLUX-742-vl-datepicker.json"
+    },
+    {
+      "id": "cbadf65",
+      "ticket": "FLUX-743",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-743 - vl-datepicker - anchor-positioning cross-browser via Popover API + @floating-ui/dom",
+      "file": "tickets/FLUX-743-vl-datepicker.json"
+    },
+    {
+      "id": "637a88f",
+      "ticket": "FLUX-770",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-770 - vl-error-message, vl-privacy - aangepast naar correcte cdn url",
+      "file": "tickets/FLUX-770-vl-error-message-vl-privacy.json"
+    },
+    {
+      "id": "3985e2b",
+      "ticket": "FLUX-774",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-774 - vl-video-player - type attribuut voor expliciet mimetype",
+      "file": "tickets/FLUX-774-vl-video-player.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": null,
+      "file": "tickets/199171c.json",
+      "components": [],
+      "entries": [
+        "199171c"
+      ]
+    },
+    {
+      "ticket": "FLUX-243",
+      "file": "tickets/FLUX-243-vl-loader.json",
+      "components": [
+        "vl-loader"
+      ],
+      "entries": [
+        "b0d3ae2"
+      ]
+    },
+    {
+      "ticket": "FLUX-645",
+      "file": "tickets/FLUX-645-vl-checkbox.json",
+      "components": [
+        "vl-checkbox"
+      ],
+      "entries": [
+        "4ecec39"
+      ]
+    },
+    {
+      "ticket": "FLUX-766",
+      "file": "tickets/FLUX-766-vl-search-filter.json",
+      "components": [
+        "vl-search-filter"
+      ],
+      "entries": [
+        "4ba452d"
+      ]
+    },
+    {
+      "ticket": "FLUX-769",
+      "file": "tickets/FLUX-769-phantom-dependencies.json",
+      "components": [],
+      "entries": [
+        "91dea67"
+      ]
+    },
+    {
+      "ticket": "FLUX-775",
+      "file": "tickets/FLUX-775-vl-cookie-consent-opt-in.json",
+      "components": [
+        "vl-cookie-consent-opt-in"
+      ],
+      "entries": [
+        "91e7b64"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/2932197.json",
+      "components": [],
+      "entries": [
+        "2932197"
+      ]
+    },
+    {
+      "ticket": "FLUX-651",
+      "file": "tickets/FLUX-651-vl-side-navigation-next.json",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "entries": [
+        "fff92c4"
+      ]
+    },
+    {
+      "ticket": "FLUX-659",
+      "file": "tickets/FLUX-659-vl-input-field.json",
+      "components": [
+        "vl-input-field"
+      ],
+      "entries": [
+        "750dbf1"
+      ]
+    },
+    {
+      "ticket": "FLUX-701",
+      "file": "tickets/FLUX-701-vl-header-next.json",
+      "components": [
+        "vl-header-next"
+      ],
+      "entries": [
+        "20ffd3c"
+      ]
+    },
+    {
+      "ticket": "FLUX-742",
+      "file": "tickets/FLUX-742-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "bf4eb67"
+      ]
+    },
+    {
+      "ticket": "FLUX-743",
+      "file": "tickets/FLUX-743-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "cbadf65"
+      ]
+    },
+    {
+      "ticket": "FLUX-770",
+      "file": "tickets/FLUX-770-vl-error-message-vl-privacy.json",
+      "components": [
+        "vl-error-message",
+        "vl-privacy"
+      ],
+      "entries": [
+        "637a88f"
+      ]
+    },
+    {
+      "ticket": "FLUX-774",
+      "file": "tickets/FLUX-774-vl-video-player.json",
+      "components": [
+        "vl-video-player"
+      ],
+      "entries": [
+        "3985e2b"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

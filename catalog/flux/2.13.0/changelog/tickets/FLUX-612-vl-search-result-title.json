@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-612",
+  "entries": [
+    {
+      "id": "23b005f",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-612"
+      ],
+      "scope": "vl-search-result-title",
+      "components": [
+        "vl-search-result-title"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "height naar min-height voor multiline wrapping",
+      "text": "FLUX-612 - vl-search-result-title - height naar min-height voor multiline wrapping",
+      "commits": [
+        {
+          "sha": "23b005f3947a56f21fb6212755fe49a47c12791f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/23b005f3947a56f21fb6212755fe49a47c12791f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De titel-container had een vaste `height: 2.7rem`, waardoor lange titels die over meerdere regels wrapten visueel uit hun box liepen en sibling-elementen (bv. `vl-search-result-text`, `vl-button`) overlapten.\n\nFix: `height` vervangen door `min-height` in `vl-search-result.css.ts`. Het blok behoudt zijn minimale hoogte voor éénregelige titels (identieke rendering, `line-height` blijft 2.7rem) maar groeit mee bij multiline content.\n\nExtra Cypress-test toegevoegd die een `vl-search-result` met lange wrappende titel mount en controleert dat de volgende sibling niet overlapt met de titel-container.\n\nKeuze: Voorstel 1 uit het refinement gevolgd (minimale diff, geen impact op bestaande single-line layouts). Voorstel 2 (`height` verwijderen + `line-height` normaliseren) werd bewust niet gekozen om breaking-change-risico bij consumers te vermijden.",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/search-result/vl-search-result.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

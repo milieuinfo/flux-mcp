@@ -1,0 +1,51 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-209",
+  "entries": [
+    {
+      "id": "25e8c24",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-209"
+      ],
+      "scope": "vl-breadcrumb",
+      "components": [
+        "vl-breadcrumb"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "focus outline kleur correctie voor Edge",
+      "text": "FLUX-209 - vl-breadcrumb - focus outline kleur correctie voor Edge",
+      "commits": [
+        {
+          "sha": "25e8c2413ebcf3d93ad45b1b96abcbf9122eba2f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/25e8c2413ebcf3d93ad45b1b96abcbf9122eba2f"
+        }
+      ],
+      "closes": [
+        {
+          "ref": "#0055cca6",
+          "url": "https://github.com/milieuinfo/flux-web-components/issues/0055cca6"
+        }
+      ],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De kleur --vl-color--focus stond als 8-digit hex (#0055cca6) gedefinieerd. Edge verwerkt die notatie niet correct in outline-color-context, waardoor het focus-kader rond <vl-breadcrumb-item> (en alle andere componenten die vlFocusOutlineMixin() of --vl-color--focus gebruiken) zwart in plaats van blauw rendert.",
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/base/var/vl-color.raw.css"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

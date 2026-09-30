@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-509",
+  "entries": [
+    {
+      "id": "135d415",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-509"
+      ],
+      "scope": "vl-map-wmts-layer",
+      "components": [
+        "vl-map-wmts-layer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "TileMatrix uit de capabilities halen",
+      "text": "FLUX-509 - vl-map-wmts-layer - TileMatrix uit de capabilities halen",
+      "commits": [
+        {
+          "sha": "135d41595d998e5bffe5ba2153c41622e23718bd",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/135d41595d998e5bffe5ba2153c41622e23718bd"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "'from-capabilities' attribuut toegevoegd aan vl-map-wmts-layer. Wanneer gezet wordt de WMTS GetCapabilities via het endpoint opgehaald en via de OpenLayers optionsFromCapabilities de source opgebouwd. Dit geeft correcte TileMatrix resolutions en matrixIds voor lagen waarbij de synthetisch berekende waarden niet overeenkomen met de werkelijke serverconfiguratie. Zonder het attribuut gedraagt de component zich identiek als voorheen.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer/wmts-layer/vl-map-wmts-layer.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-layer-wmts-layer--documentatie",
+            "title": "map/layer/wmts-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

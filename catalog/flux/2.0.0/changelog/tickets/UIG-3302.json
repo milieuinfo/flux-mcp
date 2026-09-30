@@ -1,0 +1,85 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3302",
+  "entries": [
+    {
+      "id": "4b162d0",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "UIG-3302"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "resterende -next componenten & is-elementen weggewerkt in storybook",
+      "text": "UIG-3302 - resterende -next componenten & is-elementen weggewerkt in storybook",
+      "commits": [
+        {
+          "sha": "4b162d0ab5e35c5f02528ea6f8bd0aac378bab6d",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/4b162d0ab5e35c5f02528ea6f8bd0aac378bab6d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2,
+          "storybook": 6,
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-http-error-message--documentatie",
+            "title": "Components - Block/http-error-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-http-error-message--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-table--documentatie",
+            "title": "Components - Block/table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-table--documentatie",
+            "added": "    <table>\n\n[…]\n\n           <vl-button onclick=\"table.toggleDetails('details-row-1')\">click to toggle details</vl-button>"
+          },
+          {
+            "id": "recepten-debounce--documentatie",
+            "title": "Recepten/Debounce",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-debounce--documentatie",
+            "added": "    const inputField = document.getElementById('input-field'); // <vl-input-field id=\"input-field\"></vl-input-field>\n\n[…]\n\n            'vl-input',"
+          }
+        ]
+      }
+    }
+  ]
+}

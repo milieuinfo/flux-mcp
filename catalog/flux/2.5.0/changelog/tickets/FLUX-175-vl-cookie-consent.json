@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-175",
+  "entries": [
+    {
+      "id": "7b5220c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-175"
+      ],
+      "scope": "vl-cookie-consent",
+      "components": [
+        "vl-cookie-consent"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ongeldig \"owner\" attribuut deed screenreader stoppen",
+      "text": "FLUX-175 - vl-cookie-consent - ongeldig \"owner\" attribuut deed screenreader stoppen",
+      "commits": [
+        {
+          "sha": "7b5220c0d109f5702009168aefc432663e296c3a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7b5220c0d109f5702009168aefc432663e296c3a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

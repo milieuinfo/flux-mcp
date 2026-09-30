@@ -1,0 +1,67 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-223",
+  "entries": [
+    {
+      "id": "9da0864",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-223"
+      ],
+      "scope": "vl-form-message",
+      "components": [
+        "vl-form-message"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "success- en annotation-variant",
+      "text": "FLUX-223 - vl-form-message - success- en annotation-variant",
+      "commits": [
+        {
+          "sha": "9da08645b99aadd01e43f08595e8c1177136d4a8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9da08645b99aadd01e43f08595e8c1177136d4a8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-form-message ondersteunt naast error nu ook een success- en annotation-stijl via het variant-attribuut; de default blijft error, de bestaande werking verandert niet. Met state=\"valid\" op een form-message verschijnt een gekoppelde success-boodschap zodra het veld correct wordt ingevuld na een eerdere foutmelding.",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "styles": 1,
+          "docs": 2,
+          "storybook": 2,
+          "examples": 1,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-control/form-control.ts",
+          "libs/components/src/form/form-message/vl-form-message.component.css.ts",
+          "libs/components/src/form/form-message/vl-form-message.component.ts",
+          "libs/components/src/form/form-message/vl-form-message.defaults.ts",
+          "libs/components/src/form/radio-group/vl-radio-group.component.ts",
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-text--documentatie",
+            "title": "Components - Atom/text",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-atom-text--documentatie",
+            "added": "`vl-text` is puur stilistisch en heeft geen koppeling met form-controls of validatie. Wil je een boodschap tonen die\nhoort bij een form-control (bv. een fout-, success- of toelichtingsboodschap), gebruik dan\n[`vl-form-message`](/docs/components-form-form-message--documentatie): die werkt samen met de validatie-lifecycle en\nzorgt voor de juiste `aria`-koppeling.\n\n[…]\n\n> Hoort de boodschap bij een form-control? Gebruik dan\n> [`vl-form-message`](/docs/components-form-form-message--documentatie) met `variant=\"success\"` (of `state=\"valid\"` voor\n> een automatische success-boodschap). `vl-text` is enkel voor stijl, niet voor forms.\n\n[…]\n\n> Hoort de boodschap bij een form-control? Gebruik dan\n> [`vl-form-message`](/docs/components-form-form-message--documentatie) (default `variant=\"error\"`). `vl-text` is enkel\n> voor stijl, niet voor forms.\n\n[…]\n\n> Hoort de boodschap bij een form-control? Gebruik dan\n> [`vl-form-message`](/docs/components-form-form-message--documentatie) met `variant=\"annotation\"`. `vl-text` is enkel\n> voor stijl, niet voor forms."
+          },
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": "Gebruik `vl-form-message` zodra een boodschap aan een form-control gekoppeld is: de component werkt samen met de\nvalidatie-lifecycle van de control (tonen/verbergen en `aria-description`).\n\n[…]\n\n### Varianten\n\nMet het `variant` attribuut bepaal je de visuele stijl van de message: `error` (default, rood), `success` (groen) of\n`annotation` (grijs). Bestaande markup zonder `variant` blijft de error-stijl tonen. Een `variant=\"annotation\"` is een\naltijd zichtbare, informatieve tekst.\n\nDe success-stijl wordt daarnaast ook automatisch toegepast bij `state=\"valid\"`, zodat een auto-success boodschap geen\nexpliciete `variant` nodig heeft (zie [Success](#success)).\n\n[…]\n\nPlaats een `vl-form-message` met `state=\"valid\"` bij het veld om een success-boodschap automatisch te laten verschijnen\nzodra het veld valid is na een eerste validatie. De aanwezigheid van die boodschap is voldoende - er is geen extra\nattribuut op de form-control nodig, en de groene success-stijl wordt automatisch toegepast. De boodschap volgt dezelfde\nlifecycle als een foutmelding: ze verschijnt zodra het veld - na een eerdere foutmelding - correct wordt ingevuld, en\nverdwijnt opnieuw zodra het veld terug invalid is.\n\n```html\n<vl-input-field id=\"naam\" name=\"naam\" required></vl-input-field>\n<vl-form-message for=\"naam\" state=\"valueMissing\">Gelieve een naam in te vullen.</vl-form-message>\n<vl-form-message for=\"naam\" state=\"valid\">Dit veld is correct ingevuld.</vl-form-message>\n```\n\n> Wil je een boodschap los van de validatie-lifecycle manueel in de success-stijl tonen, gebruik dan\n> `variant=\"success\"`. Wil je de form-control zelf in een success-stijl tonen (zonder boodschap), gebruik dan het\n> `success` attribuut op de form-control."
+          }
+        ]
+      }
+    }
+  ]
+}

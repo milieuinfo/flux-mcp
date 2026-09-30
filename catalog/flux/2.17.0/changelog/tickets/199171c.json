@@ -1,0 +1,39 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "199171c",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "aanpassingen om flaky testen stabiel te krijgen",
+      "text": "aanpassingen om flaky testen stabiel te krijgen",
+      "commits": [
+        {
+          "sha": "199171c40cc387fd88fb24485291ca1912bba42f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/199171c40cc387fd88fb24485291ca1912bba42f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tests": 3,
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

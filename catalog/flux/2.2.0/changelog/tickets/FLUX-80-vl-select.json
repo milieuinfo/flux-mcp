@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-80",
+  "entries": [
+    {
+      "id": "f8314c4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-80"
+      ],
+      "scope": "vl-select",
+      "components": [
+        "vl-select"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "werking van initiële opties verbeterd",
+      "text": "FLUX-80 - vl-select - werking van initiële opties verbeterd",
+      "commits": [
+        {
+          "sha": "f8314c427a9c955cd9aebf21b13b993e919ab40a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f8314c427a9c955cd9aebf21b13b993e919ab40a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select/vl-select.component.ts",
+          "libs/components/src/form/select/vl-select.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": "## Events\n\n[…]\n\n### Change event\n\n[…]\n\n### Input event\n\n[…]\n\n### `options` property\n\n[…]\n\n### `initial-options` property\n\nDe `initial-options` property is een array van objecten die de opties van de select component bevatten.<br/>\nDeze zijn de standaard opties die worden getoond bij het laden van de pagina.<br/>\n\nAls de form reset, worden deze opties getoond in de select component.<br/>\n\nIndien je de `opties` direct in de template zet bij het laden van de `vl-select`, worden deze intern ingesteld als\nde `initial-options` property.<br/>"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-372",
+  "entries": [
+    {
+      "id": "2daddbe",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-372"
+      ],
+      "scope": "vl-modal",
+      "components": [
+        "vl-modal"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "genest in shadow-dom's opent de modal nu",
+      "text": "FLUX-372 - vl-modal - genest in shadow-dom's opent de modal nu",
+      "commits": [
+        {
+          "sha": "2daddbe05bf2a8f31243272f323e6dd01365e43f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2daddbe05bf2a8f31243272f323e6dd01365e43f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/modal/vl-modal.lib.js"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

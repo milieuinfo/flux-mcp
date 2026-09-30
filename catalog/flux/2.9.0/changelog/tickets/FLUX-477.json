@@ -1,0 +1,66 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-477",
+  "entries": [
+    {
+      "id": "6bd8b90",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-477"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-progress-bar"
+      ],
+      "summary": "vl-progress-bar: success state toegevoegd",
+      "text": "FLUX-477 - vl-progress-bar: success state toegevoegd",
+      "commits": [
+        {
+          "sha": "6bd8b9021ef785f3134186aea4dd9db9c75ea33a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6bd8b9021ef785f3134186aea4dd9db9c75ea33a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 2,
+          "docs": 2,
+          "storybook": 4,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/block/progress-bar/vl-progress-bar.component.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.defaults.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.flux-css.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.component.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.defaults.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-progress-bar--documentatie",
+            "title": "Components - Block/progress-bar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-progress-bar--documentatie",
+            "added": "### Succes\n\nIndien de voortgang succesvol afgerond is, kan je het attribuut `success` gebruiken."
+          },
+          {
+            "id": "components-block-upload-progress--documentatie",
+            "title": "Components - Block/upload-progress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-upload-progress--documentatie",
+            "added": "### Success\n\nIndien de voortgang succesvol was, kan je het attribuut `success` gebruiken."
+          }
+        ]
+      }
+    }
+  ]
+}

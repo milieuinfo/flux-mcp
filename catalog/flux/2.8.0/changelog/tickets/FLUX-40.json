@@ -1,0 +1,41 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-40",
+  "entries": [
+    {
+      "id": "d5b4c89",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-40"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "strict mode voor alles, behalve voor de map",
+      "text": "FLUX-40 - strict mode voor alles, behalve voor de map",
+      "commits": [
+        {
+          "sha": "d5b4c89bd65bf56a8820e789f972bbe2febc1d32",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d5b4c89bd65bf56a8820e789f972bbe2febc1d32"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "strict mode voor de niet-map folders van libs/integrations",
+        "published": false,
+        "areas": {
+          "examples": 9,
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

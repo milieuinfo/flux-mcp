@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-162",
+  "entries": [
+    {
+      "id": "16eb1c3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-162"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "formattering helpers",
+      "text": "FLUX-162 - formattering helpers",
+      "commits": [
+        {
+          "sha": "16eb1c3f9c377097a283f8e38a1f621b49bfee9d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/16eb1c3f9c377097a283f8e38a1f621b49bfee9d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/format/format.ts",
+          "libs/common/src/index.ts",
+          "libs/components/src/block/infotext/vl-infotext.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

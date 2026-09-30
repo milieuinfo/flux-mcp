@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-583",
+  "entries": [
+    {
+      "id": "d1ff564",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-583"
+      ],
+      "scope": "vl-select",
+      "components": [
+        "vl-select"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-583 - vl-select - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "d1ff5641a4ffed0e78e7756e646d3f798668d0a9",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d1ff5641a4ffed0e78e7756e646d3f798668d0a9"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - resetStyle, baseStyle, selectStyle (dv-css), iconStyle en vlSelectFluxStyles (govflanders-style) vervangen door vlResetStyles en vlSelectComponentStyles\n - vl-select.component.raw.css aangemaakt met :host variabelen (font-size base, dimensies, clear button kleuren, nav-icon kleur)\n - vl-select.component.css.ts aangemaakt met volledige select styles (dv-css + flux-css samengevoegd)\n - styles/vl-select.dv-css.ts en styles/vl-select.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--*)\n - focus en hover states via --vl-color--focus, --vl-focus--shadow, --vl-focus--outline\n - error, success en disabled states uitgewerkt met section comments\n - clear button en nav-down icon kleuren via component-specifieke CSS variabelen\n - icon font definities (.vl-vi-nav-down, .vl-vi-close) inline toegevoegd\n\nCypress component testen:\n - geherstructureerd in 4 logische describe-blokken: properties & states, events, options, in form, declarative options\n - image snapshots toegevoegd voor visuele regressie testing (mount, disabled, error, success, block)\n - computed style assertions toegevoegd voor disabled, error (border-color, background-color) en success (border-color)",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 3,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select/styles/vl-select.dv-css.ts",
+          "libs/components/src/form/select/styles/vl-select.flux-css.ts",
+          "libs/components/src/form/select/vl-select.component.css.ts",
+          "libs/components/src/form/select/vl-select.component.raw.css",
+          "libs/components/src/form/select/vl-select.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-552",
+  "entries": [
+    {
+      "id": "64e0056",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-552"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "styling gestroomlijnd",
+      "text": "FLUX-552 - vl-side-navigation-next - styling gestroomlijnd",
+      "commits": [
+        {
+          "sha": "64e0056f4808d3878a630f3d693072bc0f77e346",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/64e0056f4808d3878a630f3d693072bc0f77e346"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- CSS voor custom table of contents gestroomlijnd\n- font-size aangepast naar 1.6rem",
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation-layout--documentatie",
+            "title": "Components - Block/next/side-navigation-layout",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

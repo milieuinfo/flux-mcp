@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-190",
+  "entries": [
+    {
+      "id": "4e2317b",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-190"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "component lifecycle verbeterd",
+      "text": "FLUX-190 - vl-select-rich - component lifecycle verbeterd",
+      "commits": [
+        {
+          "sha": "4e2317b1fad32ee5707c9b26ac7ddf1697cc141d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4e2317b1fad32ee5707c9b26ac7ddf1697cc141d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "(cherry picked from commit a2b7675ac3c59022c62afd993efed84bc67a8d06)",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

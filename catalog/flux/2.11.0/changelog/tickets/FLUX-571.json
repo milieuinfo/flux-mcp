@@ -1,0 +1,43 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-571",
+  "entries": [
+    {
+      "id": "1d487e6",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-571"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "z-index aangepast voor info-tile menu",
+      "text": "FLUX-571 - z-index aangepast voor info-tile menu",
+      "commits": [
+        {
+          "sha": "1d487e677480f36398038088a3277f5aae400624",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1d487e677480f36398038088a3277f5aae400624"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts",
+          "libs/styles/src/base/var/vl-z-layer.raw.css"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

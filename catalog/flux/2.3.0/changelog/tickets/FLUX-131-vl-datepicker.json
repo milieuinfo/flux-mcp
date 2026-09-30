@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-131",
+  "entries": [
+    {
+      "id": "10d68d2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-131"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "initial value werd genegeerd bij type \"range\"",
+      "text": "FLUX-131 - vl-datepicker - initial value werd genegeerd bij type \"range\"",
+      "commits": [
+        {
+          "sha": "10d68d2248fbad238f5ce7bb25417cacd82aaa69",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/10d68d2248fbad238f5ce7bb25417cacd82aaa69"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "examples": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

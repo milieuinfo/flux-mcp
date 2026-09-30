@@ -1,0 +1,265 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-106",
+  "entries": [
+    {
+      "id": "d114239",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-106"
+      ],
+      "scope": "vl-map",
+      "components": [
+        "vl-map"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "lambert-2008 opt-in",
+      "text": "FLUX-106 - vl-map - lambert-2008 opt-in",
+      "commits": [
+        {
+          "sha": "d114239c192d2d28830364e9953e91e4c81ec1f7",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d114239c192d2d28830364e9953e91e4c81ec1f7"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 13,
+          "docs": 2,
+          "storybook": 48,
+          "examples": 2,
+          "tests": 35
+        },
+        "publishedFiles": [
+          "libs/map/src/actions/map/custom-map.ts",
+          "libs/map/src/components/baselayer/vl-map-base-layer.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-vector-layer.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-wfs-layer/vl-map-wfs-layer.ts",
+          "libs/map/src/components/layer/vl-map-layer.ts",
+          "libs/map/src/components/layer/wmts-layer/vl-map-wmts-layer.ts",
+          "libs/map/src/components/search/vl-map-search.ts",
+          "libs/map/src/components/select-location/vl-select-location.model.ts",
+          "libs/map/src/components/select-location/vl-select-location.ts",
+          "libs/map/src/utils/capabilities-response.ts",
+          "libs/map/src/utils/capabilities.ts",
+          "libs/map/src/vl-map.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-action-click-action--documentatie",
+            "title": "map/action/click-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-click-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-action-style--documentatie",
+            "title": "map/action/draw-action/draw-action-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-action-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-line-action--documentatie",
+            "title": "map/action/draw-action/draw-line-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-line-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-point-action--documentatie",
+            "title": "map/action/draw-action/draw-point-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-point-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-polygon-action--documentatie",
+            "title": "map/action/draw-action/draw-polygon-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-measure-action--documentatie",
+            "title": "map/action/draw-action/measure-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-measure-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-delete-action--documentatie",
+            "title": "map/action/layer-action/delete-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-delete-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-modify-action--documentatie",
+            "title": "map/action/layer-action/modify-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-modify-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action--documentatie",
+            "title": "map/action/layer-action/select-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-select-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer--documentatie",
+            "title": "map/baselayer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb--documentatie",
+            "title": "map/baselayer/baselayer-grb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer-baselayer-grb--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-gray--documentatie",
+            "title": "map/baselayer/baselayer-grb-gray",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer-baselayer-grb-gray--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-ortho--documentatie",
+            "title": "map/baselayer/baselayer-grb-ortho",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer-baselayer-grb-ortho--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-control--documentatie",
+            "title": "map/controls/action-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-controls-action-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-controls--documentatie",
+            "title": "map/controls/action-controls",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-controls-action-controls--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-measure-control--documentatie",
+            "title": "map/controls/measure-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-current-location--documentatie",
+            "title": "map/current-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-current-location--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-style--documentatie",
+            "title": "map/layer-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-style-layer-circle-style--documentatie",
+            "title": "map/layer-style/layer-circle-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-switcher--documentatie",
+            "title": "map/layer-switcher",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-vector-layer-features-layer--documentatie",
+            "title": "map/layer/vector-layer/features-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-vector-layer-wfs-layer--documentatie",
+            "title": "map/layer/vector-layer/wfs-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-image-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/image-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-image-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/tiled-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-wms-style--documentatie",
+            "title": "map/layer/wms-layer/wms-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-wms-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/xyz-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wmts-layer--documentatie",
+            "title": "map/layer/wmts-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-legend-item--documentatie",
+            "title": "Map/legend-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-legend-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-loading-indicator--documentatie",
+            "title": "map/loading-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-loading-indicator--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-map--documentatie",
+            "added": "## Lambert 2008\n\nIn het kader van de transitie naar het Lambert 2008 coördinatenstelsel, hebben we ervoor gekozen om te starten met een\nopt-in voor Lambert 2008. In een volgende versie wordt dit de default. Om kaarten en kaartlagen weer te geven als\nLambert 2008 kan je het attribuut `lambert2008` toevoegen:\n\n```html\n<vl-map lambert2008></vl-map>\n```\n\n### Lambert 72 data op een Lambert 2008 kaart\n\nIndien je vector kaartlagen (features en WFS) gebruikt met Lambert 72 coördinaten op een Lambert 2008 kaart, moet je de\nprojectie code `EPSG:31370` meegeven als attribuut op de kaartlaag. Geef je geen projectie code mee, dan zal de\nkaartlaag de projectie code van de kaart overnemen.\n\n```html\n<vl-map lambert2008>\n    <vl-map-features-layer projection-code=\"EPSG:31370\" ...></vl-map-features-layer>\n    <vl-map-wfs-layer projection-code=\"EPSG:31370\" ...></vl-map-wfs-layer>\n</vl-map>\n```\n\n{`\n    De client-side transformatie van Lambert 72 naar Lambert 2008 heeft een begrensde nauwkeurigheid van ~1m. Is cm\n    nauwkeurigheid vereist, dan is het belangrijk dat de kaart en de kaartlagen hetzelfde coördinatenstelsel gebruiken.\n`}\n\n### Intekenen op een Lambert 2008 kaart\n\nOm in te tekenen op een Lambert 2008 kaart moet een Lambert 2008 kaartlaag gebruikt worden, omwille van de\nbeschikbare nauwkeurigheid van ~1m van de Lambert 72 naar Lambert 2008 transformatie.\n\nVereist je project Lambert 72 coordinaten bij het intekenen, dan wordt het upgraden naar de Lambert 2008 kaart\nbeter uitgesteld tot wanneer het project ook Lambert 2008 data ondersteunt. De regel hierbij is dat het\ncoördinatenstelsel van intekenen hetzelfde moet zijn als dat van de kaart."
+          },
+          {
+            "id": "map-overview-map--documentatie",
+            "title": "map/overview-map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-overview-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-search--documentatie",
+            "title": "map/search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-search--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-side-sheet-side-sheet--documentatie",
+            "title": "map/side-sheet/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-side-sheet-side-sheet--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-side-sheet-side-sheet-menu-item--documentatie",
+            "title": "map/side-sheet/side-sheet-menu-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-side-sheet-side-sheet-menu-item--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

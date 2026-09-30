@@ -1,0 +1,71 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3286",
+  "entries": [
+    {
+      "id": "0e48dcf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3286"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-progress-indicator",
+        "vl-progress-bar"
+      ],
+      "summary": "vl-progress-indicator ipv vl-progress-bar",
+      "text": "UIG-3286 - vl-progress-indicator ipv vl-progress-bar",
+      "commits": [
+        {
+          "sha": "0e48dcfb9803970b8ea2a817ebd447be98418cf9",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/0e48dcfb9803970b8ea2a817ebd447be98418cf9"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "styles": 2,
+          "docs": 4,
+          "storybook": 4,
+          "tests": 7,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/block/index.ts",
+          "libs/components/src/block/progress-bar/index.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.component.ts",
+          "libs/components/src/block/progress-bar/vl-progress-bar.flux-css.ts",
+          "libs/components/src/block/progress-indicator/index.ts",
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts",
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.flux-css.ts",
+          "libs/components/src/block/wizard/vl-wizard.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "bijdragen-storybook--documentatie",
+            "title": "Bijdragen/Storybook",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-storybook--documentatie",
+            "added": "**VlProgressIndicator**, **VlFunctionalHeader**, **VlAccessibility** of **VlHeader**.\n\n[…]\n\n    progressIndicatorArgs,\n\n[…]\n\n        <vl-progress-indicator\n\n[…]\n\n        </vl-progress-indicator>\n\n[…]\n\n- de naamgeving volgt de conventie: **`[Component]+[Variant]`**, bv. `ProgressIndicatorDefault`\n\n[…]\n\nexport const ProgressIndicatorDefault = Template.bind({}); // template om te gebruiken voor deze story\nProgressIndicatorDefault.storyName = 'vl-progress-indicator - default';\nProgressIndicatorDefault.args = {\n\n[…]\n\n            export const progressBarArgTypes: ArgTypes<typeof progressIndicatorArgs> = {\n\n[…]\n\n                        defaultValue: { summary: progressIndicatorArgs.activeStep },\n\n[…]\n\n                        defaultValue: { summary: progressIndicatorArgs.focusOnChange },\n\n[…]\n\n                        defaultValue: { summary: progressIndicatorArgs.numeric },\n\n[…]\n\n                        defaultValue: { summary: progressIndicatorArgs.steps },\n\n[…]\n\n                        defaultValue: { summary: progressIndicatorArgs.onClickStep },"
+          },
+          {
+            "id": "components-block-progress-indicator--documentatie",
+            "title": "Components - Block/progress-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-progress-indicator--documentatie",
+            "added": "# Progress Indicator\n\n\nGebruik een `progress-indicator` om de vooruitgang te tonen van een proces dat uit verschillende stappen bestaat.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-progress-indicator></vl-progress-indicator>\n```\n\n\n\n## Configuratie\n\n\n\n## Varianten\n\n### Numerieke indicators\n\n\n### Focus op de actieve stap\n\n\n\n## Referenties\n\n### Digitaal Vlaanderen\n\n[Documentatie Digitaal Vlaanderen - Progress Bar](https://overheid.vlaanderen.be/webuniversum/v3/documentation/components/vl-ui-progress-bar)\n\n### Legacy Documentatie\n\n[Legacy Storybook - Progress Bar](https://webcomponenten.omgeving.vlaanderen.be/storybook/?path=/docs/custom-elements-vl-progress-indicator--default)\n\n[Legacy Documentatie - Progress Bar](https://webcomponenten.omgeving.vlaanderen.be/doc/VlProgressBar.html)\n\n[Legacy Demo - Progress Bar](https://webcomponenten.omgeving.vlaanderen.be/demo/vl-progress-indicator.html)"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-580",
+  "entries": [
+    {
+      "id": "d66177b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-580"
+      ],
+      "scope": "vl-form-label",
+      "components": [
+        "vl-form-label"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-580 - vl-form-label - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "d66177b7166bdac9e56a2ec2f7fef84f20355ce1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d66177b7166bdac9e56a2ec2f7fef84f20355ce1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - resetStyle en formLabelStyles (govflanders-style) vervangen door vlResetStyles en vlFormLabelComponentStyles\n - vl-form-label.component.raw.css aangemaakt met :host variabelen (font-size base, margin-right, margin-bottom)\n - vl-form-label.component.css.ts aangemaakt met volledige label styles\n - vl-form-label.css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-form-label--color, --vl-color--text-alt)\n - marges via component-specifieke CSS variabelen (--vl-form-label--margin-*)\n - block en light varianten uitgewerkt met section comments\n\nAPI aanpassingen (gevolg van rename):\n - formLabelStyles hernoemd naar vlFormLabelComponentStyles\n - import/export updates in: form-label/index.ts, libs/components/src/form/index.ts, vl-fieldset.component.ts en libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, in form\n - image snapshots toegevoegd voor visuele regressie testing (mount, block, light)\n - computed style assertions toegevoegd voor block (display) en light (color)",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "styles": 3,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/fieldset/vl-fieldset.component.ts",
+          "libs/components/src/form/form-label/index.ts",
+          "libs/components/src/form/form-label/vl-form-label.component.css.ts",
+          "libs/components/src/form/form-label/vl-form-label.component.raw.css",
+          "libs/components/src/form/form-label/vl-form-label.component.ts",
+          "libs/components/src/form/form-label/vl-form-label.css.ts",
+          "libs/components/src/form/index.ts",
+          "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

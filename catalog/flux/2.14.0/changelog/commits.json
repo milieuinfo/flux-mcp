@@ -1,0 +1,604 @@
+{
+  "schema": 2,
+  "version": "2.14.0",
+  "previous": "2.13.0",
+  "commits": {
+    "25e8c2413ebcf3d93ad45b1b96abcbf9122eba2f": {
+      "sha": "25e8c2413ebcf3d93ad45b1b96abcbf9122eba2f",
+      "body": "De kleur --vl-color--focus stond als 8-digit hex (#0055cca6) gedefinieerd. Edge verwerkt die notatie niet correct in outline-color-context, waardoor het focus-kader rond <vl-breadcrumb-item> (en alle andere componenten die vlFocusOutlineMixin() of --vl-color--focus gebruiken) zwart in plaats van blauw rendert.",
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/base/var/vl-color.raw.css"
+      ],
+      "storybook": []
+    },
+    "b740b03be7136b5779da898f94dd898643fd3379": {
+      "sha": "b740b03be7136b5779da898f94dd898643fd3379",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 1,
+        "examples": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/form-label/vl-form-label.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-form-label--documentatie",
+          "title": "Components - Form/form-label",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-form-label--documentatie",
+          "added": "## Witruimte naast annotatie corrigeren\n\nWanneer een `vl-form-label` met een `annotation` onmiddellijk gevolgd wordt door een `vl-text[annotation]`-sibling in de light DOM,\nkan er een ongewenste witruimte verschijnen tussen de twee elementen.\nDit is een light-DOM compositieprobleem: de marge van het label kan niet via de shadow DOM worden aangepast op basis van een sibling-relatie.\n\nVoeg deze CSS-regel toe in de styles van de host component:\n\n```css\nvl-form-label:has(+ vl-text[annotation])::part(label) {\n    margin-right: 0;\n}\n```"
+        }
+      ]
+    },
+    "ff79fffa5179fb154a727058a188f5f13e1ba0c1": {
+      "sha": "ff79fffa5179fb154a727058a188f5f13e1ba0c1",
+      "body": "- helpers.ts: 'today' correct verwerkt in getDatepickerBoundary zodat rangeOverflow/rangeUnderflow validators werken met min-date/max-date=\"today\"\n- masks.ts: dateMin/dateMax uit Cleave.js verwijderd — mask beperkt zich tot formaatvalidatie, geen clamping\n- vl-datepicker.component.ts: createDateMask-aanroep vereenvoudigd\n- vl-datepicker.component.cy.ts: validatietests voor rangeOverflow/rangeUnderflow (date + today), kalender-disable tests toegevoegd\n- stories-doc.mdx: sectie 'Min-date en Max-date' toegevoegd met uitleg over formaat en 'today', heading gecorrigeerd",
+      "published": true,
+      "areas": {
+        "code": 3,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/datepicker/helpers.ts",
+        "libs/components/src/form/datepicker/masks.ts",
+        "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-datepicker--documentatie",
+          "title": "Components - Form/datepicker",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+          "added": "## Varianten\n\n### Static\n\n\n### Range\n\n\n### Time\n\n\n### Min-date en Max-date\n\nJe kan de selecteerbare datumrange beperken via de `min-date` en `max-date` attributen.\nDe waarde moet conform het ingestelde `format` zijn (standaard `d.m.Y`), of de speciale waarde `'today'` voor de huidige datum.\n\n> Met `format=\"d.m.Y\"` (standaard): `min-date=\"01.01.2019\"` en `max-date=\"31.12.2019\"`\n```html\n<vl-datepicker min-date=\"01.01.2019\" max-date=\"31.12.2019\"></vl-datepicker>\n```\n\n> Gebruik `'today'` om de huidige datum als grens in te stellen:\n```html\n<vl-datepicker min-date=\"today\"></vl-datepicker>\n```\n\n\n- Dagen buiten de opgegeven range worden uitgeschakeld in de kalender.\n- Ingetypte datums buiten de range worden gevalideerd via respectievelijk de `rangeUnderflow` en `rangeOverflow` ValidityState keys.\n\n### Date-time"
+        }
+      ]
+    },
+    "5b735a70493ae2c1a956d534c25992d02728dc8e": {
+      "sha": "5b735a70493ae2c1a956d534c25992d02728dc8e",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select/vl-select.component.ts"
+      ],
+      "storybook": []
+    },
+    "4e910c0f9f6761468c35fbd0836770cedfb0b76e": {
+      "sha": "4e910c0f9f6761468c35fbd0836770cedfb0b76e",
+      "body": "- Vroege return voor niet-hash hrefs in click handler zodat browser navigatie afhandelt (externe URLs, relatieve paden); enkel hrefs met '#' triggeren nog preventDefault + smooth scroll logica.\n- Cypress test: externe link produceert geen console.warn en preventDefault wordt niet aangeroepen door de component.\n- Cypress test next: bevestigt dat vl-side-navigation-next externe links in custom TOC al correct doorlaat via het a[href^=\"#\"]-filter in setupCustomTocLinkHandlers (design keuze, geen fix nodig).",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts"
+      ],
+      "storybook": []
+    },
+    "5d94a3a16e2cc321c13bdb79a41fb0af81deddf5": {
+      "sha": "5d94a3a16e2cc321c13bdb79a41fb0af81deddf5",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 4
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "f0b8e9b1c97fee761c6d5ea930b6e2b1114649bb": {
+      "sha": "f0b8e9b1c97fee761c6d5ea930b6e2b1114649bb",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tests": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "d8384d814739edb94b18311a1fbfce80d0555515": {
+      "sha": "d8384d814739edb94b18311a1fbfce80d0555515",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "richtlijnen-analytics-matomo-analytics--documentatie",
+          "title": "Richtlijnen/Analytics/Matomo Analytics",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/richtlijnen-analytics-matomo-analytics--documentatie",
+          "added": "# Matomo Analytics\n\n## Inleiding\n\n[Matomo](https://matomo.org/) is een open source web-analytics platform en het privacy-vriendelijke alternatief\nvoor Google Analytics. In tegenstelling tot veel andere oplossingen blijven de gegevens onder eigen beheer: bij\nDepartement Omgeving wordt Matomo zelf gehost, waardoor bezoekersgegevens binnen de eigen infrastructuur blijven.\n\nMatomo verzamelt onder andere pageviews, sessies, gebruikte browsers/toestellen en navigatiepatronen. Het laat\ntoe om via *custom dimensions* en *events* extra context mee te sturen.\n\nMeer info op de [Matomo website](https://matomo.org/).\n\n\n## Omgevingen\n\nVoor de Storybook-logging maken we gebruik van drie Matomo-omgevingen van Departement Omgeving:\n\n- [https://stats-ontwikkel.omgeving.vlaanderen.be](https://stats-ontwikkel.omgeving.vlaanderen.be) - ontwikkelomgeving,\n  ook gebruikt vanaf lokale hosts (`localhost`, `127.0.0.1`, `192.168.*`)\n- [https://stats-oefen.omgeving.vlaanderen.be](https://stats-oefen.omgeving.vlaanderen.be) - oefenomgeving\n- [https://stats.omgeving.vlaanderen.be](https://stats.omgeving.vlaanderen.be) - productieomgeving\n\nDe productieomgeving is degene die je best raadpleegt.\n\n\n## Matomo logging in Storybook\n\nVoor Storybook hebben we een eigen, lichte Matomo-integratie voorzien. Die bestaat uit twee bestanden met een\nbewust verschillende plaatsing:\n\n- `apps/storybook/resources/public/matomo-loader.js` - zit in de `staticDirs` van Storybook en wordt dus per\n  build mee uitgeleverd in de root van elke gepubliceerde versie.\n- `apps/storybook/matomo-tracking.js` - staat bewust **niet** in `staticDirs`. Dit bestand wordt na het builden\n  één keer hoger in de boom geplaatst (typisch in `release-vX/` of `flux-builds/`), zodat alle gepubliceerde\n  versies datzelfde centrale bestand gebruiken.\n\nDe loader probeert het trackingscript in een aantal stappen op te halen: `./matomo-tracking.js`,\n`../matomo-tracking.js`, `../../matomo-tracking.js` en `../../../matomo-tracking.js`. Op die manier vindt elke\nversie het centrale bestand, ongeacht hoe diep ze in de mappenboom zit.\n\n**Waarom deze opzet?** Wijzigingen aan de tracking-logica vereisen zo geen rebuild en redeploy van elke\ngepubliceerde versie. Eén centraal `matomo-tracking.js` vervangen volstaat - alle versies pikken de nieuwe\nversie op via de loader-fallback.\n\n### Wat wordt er gelogd?\n\nHet trackingscript voorziet onder meer:\n\n- een initiële pageview bij het laden van Storybook\n- pageviews bij SPA-navigatie (Storybook wisselt van story zonder volledige page-reload); hiervoor worden\n  `pushState` en `replaceState` gepatcht zodat een `locationchange` event afgevuurd wordt\n- een **custom dimension** (`dimension 1`) met de Storybook-versie, afgeleid uit het URL-pad\n  (`/release-vX/<versie>/storybook/`); voor lokale builds is dat `local`\n- het forceren van een *new visit* wanneer een gebruiker tussen versies navigeert, zodat gebruik per versie\n  zuiver geteld wordt"
+        }
+      ]
+    },
+    "6a996d2ad24ec1cd4475c7b9671f1d51710be8e0": {
+      "sha": "6a996d2ad24ec1cd4475c7b9671f1d51710be8e0",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/accordion/vl-accordion.component.ts",
+        "libs/components/src/block/accordion/vl-accordion.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-accordion--documentatie",
+          "title": "Components - Block/accordion",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-accordion--documentatie",
+          "added": "### Alternatieve achtergrond"
+        }
+      ]
+    },
+    "3902ea66f6572a2257f3f92e931cb12939e1eae1": {
+      "sha": "3902ea66f6572a2257f3f92e931cb12939e1eae1",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/group/vl-group.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "styles-layout-group--documentatie",
+          "title": "Styles/Layout (afnemers)/group",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/styles-layout-group--documentatie",
+          "added": "Zowel `vl-group--separator-row` als `vl-group--separator-column` plaatsen standaard enkel scheidingslijnen tússen items.\nBuitenste lijnen kunnen optioneel toegevoegd worden met:\n- `vl-group--separator-row-before` / `vl-group--separator-row-after` - voegt uiterst links of rechts een verticale lijn\ntoe. Enkel in combinatie met `vl-group--separator-row`.\n- `vl-group--separator-column-before` / `vl-group--separator-column-after` - voegt boven het eerste of onder het laatste\nitem een horizontale lijn toe. Enkel in combinatie met `vl-group--separator-column`."
+        }
+      ]
+    },
+    "9a8ae95628048d5db7dac1c5305351bf008cf609": {
+      "sha": "9a8ae95628048d5db7dac1c5305351bf008cf609",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/form-label/vl-form-label.component.css.ts",
+        "libs/components/src/form/form-label/vl-form-label.component.ts",
+        "libs/components/src/form/form-label/vl-form-label.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-form-label--documentatie",
+          "title": "Components - Form/form-label",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-form-label--documentatie",
+          "added": "## Annotatie\n\nGebruik het `annotation` attribuut om extra uitleg of een voorbeeld inline naast de label tekst weer te geven.\nDe annotatie wordt kleiner en in een subtielere kleur weergegeven."
+        }
+      ]
+    },
+    "acc01b9e009cf04146652eb4e133c7e52358648a": {
+      "sha": "acc01b9e009cf04146652eb4e133c7e52358648a",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 55,
+        "storybook": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-accordion--documentatie",
+          "title": "Components - Block/accordion",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-accordion--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-alert--documentatie",
+          "title": "Components - Block/alert",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-alert--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-autocomplete--documentatie",
+          "title": "Components - Block/autocomplete",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-breadcrumb--documentatie",
+          "title": "Components - Block/breadcrumb/breadcrumb",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-content-header--documentatie",
+          "title": "Components - Block/content-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-content-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-document--documentatie",
+          "title": "Components - Block/document",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-document--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-functional-header--documentatie",
+          "title": "Components - Block/functional-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-http-error-message--documentatie",
+          "title": "Components - Block/http-error-message",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-http-error-message--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-progress-indicator--documentatie",
+          "title": "Components - Block/progress-indicator",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-progress-indicator--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-proza-message-proza-message--documentatie",
+          "title": "Components - Block/proza-message/proza-message",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-proza-message-proza-message--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-proza-message-proza-message-preloader--documentatie",
+          "title": "Components - Block/proza-message/proza-message-preloader",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-proza-message-proza-message-preloader--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-rich-data--documentatie",
+          "title": "Components - Block/rich-data",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-rich-data-table--documentatie",
+          "title": "Components - Block/rich-data-table",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-side-navigation--documentatie",
+          "title": "Components - Block/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-side-sheet--documentatie",
+          "title": "Components - Block/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-steps-steps--documentatie",
+          "title": "Components - Block/steps/steps",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-tabs-tabs--documentatie",
+          "title": "Components - Block/tabs/tabs",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-tabs-tabs--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-template--documentatie",
+          "title": "Components - Block/template",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-template--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-typography--documentatie",
+          "title": "Components - Block/typography",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-typography--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-wizard-wizard--documentatie",
+          "title": "Components - Block/wizard/wizard",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-wizard-wizard--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-wizard-wizard-pane--documentatie",
+          "title": "Components - Block/wizard/wizard-pane",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-wizard-wizard-pane--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-accessibility--documentatie",
+          "title": "Components - Compliance/accessibility",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-compliance-accessibility--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-cookie-consent--documentatie",
+          "title": "Components - Compliance/cookie-consent",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-compliance-cookie-consent--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-cookie-statement--documentatie",
+          "title": "Components - Compliance/cookie-statement",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-compliance-cookie-statement--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-footer--documentatie",
+          "title": "Components - Compliance/footer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-header--documentatie",
+          "title": "Components - Compliance/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-compliance-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-privacy--documentatie",
+          "title": "Components - Compliance/privacy",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-compliance-privacy--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-draw-action-draw-line-action--documentatie",
+          "title": "map/action/draw-action/draw-line-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-draw-action-draw-line-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-draw-action-draw-point-action--documentatie",
+          "title": "map/action/draw-action/draw-point-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-draw-action-draw-point-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-draw-action-draw-polygon-action--documentatie",
+          "title": "map/action/draw-action/draw-polygon-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-draw-action-measure-action--documentatie",
+          "title": "map/action/draw-action/measure-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-draw-action-measure-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-layer-action-delete-action--documentatie",
+          "title": "map/action/layer-action/delete-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-layer-action-delete-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-layer-action-modify-action--documentatie",
+          "title": "map/action/layer-action/modify-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-layer-action-modify-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-action-layer-action-select-action--documentatie",
+          "title": "map/action/layer-action/select-action",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-action-layer-action-select-action--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-baselayer--documentatie",
+          "title": "map/baselayer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-baselayer--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-baselayer-baselayer-grb--documentatie",
+          "title": "map/baselayer/baselayer-grb",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-baselayer-baselayer-grb--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-baselayer-baselayer-grb-gray--documentatie",
+          "title": "map/baselayer/baselayer-grb-gray",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-baselayer-baselayer-grb-gray--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-baselayer-baselayer-grb-ortho--documentatie",
+          "title": "map/baselayer/baselayer-grb-ortho",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-baselayer-baselayer-grb-ortho--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-controls-action-controls--documentatie",
+          "title": "map/controls/action-controls",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-controls-action-controls--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-controls-measure-control--documentatie",
+          "title": "map/controls/measure-control",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-current-location--documentatie",
+          "title": "map/current-location",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-current-location--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-style--documentatie",
+          "title": "map/layer-style",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-style--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-style-layer-circle-style--documentatie",
+          "title": "map/layer-style/layer-circle-style",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-switcher--documentatie",
+          "title": "map/layer-switcher",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-vector-layer-features-layer--documentatie",
+          "title": "map/layer/vector-layer/features-layer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-vector-layer-wfs-layer--documentatie",
+          "title": "map/layer/vector-layer/wfs-layer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-wms-layer-image-wms-layer--documentatie",
+          "title": "map/layer/wms-layer/image-wms-layer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-wms-layer-image-wms-layer--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-wms-layer-tiled-wms-layer--documentatie",
+          "title": "map/layer/wms-layer/tiled-wms-layer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-wms-layer-tiled-wms-layer--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-wms-layer-wms-style--documentatie",
+          "title": "map/layer/wms-layer/wms-style",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-wms-layer-wms-style--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-layer-wmts-layer--documentatie",
+          "title": "map/layer/wmts-layer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-legend--documentatie",
+          "title": "map/legend",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-legend--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-map--documentatie",
+          "title": "map/map",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-map--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-overview-map--documentatie",
+          "title": "map/overview-map",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-overview-map--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-search--documentatie",
+          "title": "map/search",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-search--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-side-sheet-side-sheet--documentatie",
+          "title": "map/side-sheet/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-side-sheet-side-sheet--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "d0f604b08e4c5587f493da70c473b18034d80cfa": {
+      "sha": "d0f604b08e4c5587f493da70c473b18034d80cfa",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 27
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "5ba20374543f2cf0833d8862f97f3bc383684998": {
+      "sha": "5ba20374543f2cf0833d8862f97f3bc383684998",
+      "body": "Een vl-doormat zonder text-slot rendert nu compact, zonder de overbodige witruimte onder de titel die ontstond door titel- en text-margins die stapelden boven een lege wrapper. Doormats mét text behouden hun bestaande spacing en de publieke API blijft ongewijzigd.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/doormat/vl-doormat.component.ts",
+        "libs/components/src/block/doormat/vl-doormat.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-doormat--documentatie",
+          "title": "Components - Block/doormat",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-doormat--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "e9c69d66f46fadbb8a7723b675d35eeb57493ad4": {
+      "sha": "e9c69d66f46fadbb8a7723b675d35eeb57493ad4",
+      "body": "Na evaluatie bleek dat de native variant verschillende problemen had. Er is geen indicatie dat deze functionaliteit gebruikt werd - ze werkt fundamenteel niet. Dit was ook de enige component die native ondersteuning aanbood. We schrappen dus de native ondersteuning volledig.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+        "libs/components/src/form/datepicker/vl-datepicker.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-datepicker--documentatie",
+          "title": "Components - Form/datepicker",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+          "added": null
+        }
+      ]
+    }
+  },
+  "unlisted": []
+}

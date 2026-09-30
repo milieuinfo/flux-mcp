@@ -1,0 +1,76 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "72a5194",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "de documentatie staat nu onder 'flux.omgeving.vlaanderen.be'",
+      "text": "de documentatie staat nu onder 'flux.omgeving.vlaanderen.be'",
+      "commits": [
+        {
+          "sha": "72a51945028d70f25595f7ec1fa322628d1859b6",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/72a51945028d70f25595f7ec1fa322628d1859b6"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 5,
+          "tooling": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/atom.web-types.json",
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/compliance/compliance.web-types.json",
+          "libs/components/src/form/form.web-types.json"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "[flux-builds](https://flux.omgeving.vlaanderen.be/release-v2/latest/storybook)"
+          },
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "export const v1StorybookLink = `https://flux.omgeving.vlaanderen.be/release-v1/${v1AfsplitsRelease}/storybook/?path=`;\n\n[…]\n\n- Componenten te registreren met \\`registerWebComponents()\\`\n\n[…]\n\n- Opletten bij het selecteren van elementen in code of in tests\n\n[…]\n\n    Zie [Migratie v2 - Impact](/docs/afnemen-migratie-v2-impact--documentatie) voor gedetaileerde informatie over welke elementen vervangen worden.\n\n[…]\n\n</vl-alert>\n\n[…]\n\nEen aantal elementen verdwijnen, bv:\n\n[…]\n\nEen aantal elementen worden vervangen door componenten, bv:\n\n[…]\n\nEen aantal elementen worden vervangen door classes, bv:\n\n[…]\n\n</vl-alert>\n\n[…]\n\n    Zie [Migratie v2 - Impact](/docs/afnemen-migratie-v2-impact--documentatie) voor gedetaileerde informatie over welke componeten vervangen worden.\n\n[…]\n\n</vl-alert>\n\n[…]\n\n</vl-alert>\n\n[…]\n\nBekijk de [Migratie v2 - FAQ](/docs/afnemen-migratie-v2-faq--documentatie) voor meer specifieke vragen."
+          },
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "export const v1StorybookLink = `https://flux.omgeving.vlaanderen.be/release-v1/${v1AfsplitsRelease}/storybook/?path=`;"
+          },
+          {
+            "id": "beheren-storybook-publicatie--documentatie",
+            "title": "Beheren/Storybook Publicatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/beheren-storybook-publicatie--documentatie",
+            "added": "Documentatie wordt geversioneerd gepubliceerd op https://flux.omgeving.vlaanderen.be, de structuur van die"
+          },
+          {
+            "id": "introductie--documentatie",
+            "title": "Introductie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/introductie--documentatie",
+            "added": "- voor de v1 versie: [https://flux.omgeving.vlaanderen.be/release-v1/latest/storybook](https://flux.omgeving.vlaanderen.be/release-v1/latest/storybook)\n- voor de v2 versie: [https://flux.omgeving.vlaanderen.be/release-v2/latest/storybook](https://flux.omgeving.vlaanderen.be/release-v2/latest/storybook)\n\n[…]\n\nSpecifieke release versies zijn te vinden via de release overzicht pagina's van [v1](https://flux.omgeving.vlaanderen.be/release-v1/)\nof [v2](https://flux.omgeving.vlaanderen.be/release-v2/)."
+          }
+        ]
+      }
+    }
+  ]
+}

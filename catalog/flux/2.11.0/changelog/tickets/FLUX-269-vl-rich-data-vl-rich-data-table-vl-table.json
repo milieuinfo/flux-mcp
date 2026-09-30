@@ -1,0 +1,140 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-269",
+  "entries": [
+    {
+      "id": "79fd238",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-269"
+      ],
+      "scope": "vl-rich-data",
+      "components": [
+        "vl-rich-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen",
+      "text": "FLUX-269 - vl-rich-data - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "79fd238dd56748f7876d388f35480044a6c65e4f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/79fd238dd56748f7876d388f35480044a6c65e4f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/block/table/vl-table.css.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "bf8f065",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-269"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen",
+      "text": "FLUX-269 - vl-rich-data-table - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "bf8f065dd7817cab76718104ad9993f9e23bde02",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bf8f065dd7817cab76718104ad9993f9e23bde02"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data-table/vl-rich-data-field.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-sorter.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "07647bb",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-269"
+      ],
+      "scope": "vl-table",
+      "components": [
+        "vl-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "expandable - WCAG verbeteringen",
+      "text": "FLUX-269 - vl-table - expandable - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "07647bb7c43953737c2c72b904ce092ab29a418e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/07647bb7c43953737c2c72b904ce092ab29a418e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/table/vl-table.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

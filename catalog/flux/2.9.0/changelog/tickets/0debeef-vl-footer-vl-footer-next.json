@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "0debeef",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": "vl-footer, vl-footer-next",
+      "components": [
+        "vl-footer",
+        "vl-footer-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "life cycle verbeterd",
+      "text": "FLUX - vl-footer, vl-footer-next - life cycle verbeterd",
+      "commits": [
+        {
+          "sha": "0debeef9c884514bf16aa5dca9d9d189137379af",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0debeef9c884514bf16aa5dca9d9d189137379af"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

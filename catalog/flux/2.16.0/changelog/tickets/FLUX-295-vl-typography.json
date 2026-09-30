@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-295",
+  "entries": [
+    {
+      "id": "ed87de8",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-295"
+      ],
+      "scope": "vl-typography",
+      "components": [
+        "vl-typography"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "observer heraangemaakt na verplaatsen in DOM",
+      "text": "FLUX-295 - vl-typography - observer heraangemaakt na verplaatsen in DOM",
+      "commits": [
+        {
+          "sha": "ed87de89c2f98d046c665a1fc7116933dd1d49bc",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ed87de89c2f98d046c665a1fc7116933dd1d49bc"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Wijzigingen aan de light-DOM-inhoud van vl-typography worden opnieuw gerenderd nadat de component verplaatst werd in de DOM. Inhoud die wijzigde terwijl de component losgekoppeld was, wordt bij het opnieuw toevoegen gesynchroniseerd; herhaald verplaatsen veroorzaakt geen dubbele verwerking.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/typography/vl-typography.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

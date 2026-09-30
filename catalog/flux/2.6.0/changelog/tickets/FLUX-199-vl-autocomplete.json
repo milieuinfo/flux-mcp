@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-199",
+  "entries": [
+    {
+      "id": "5e8a200",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-199"
+      ],
+      "scope": "vl-autocomplete",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "bij selectie-event wordt volledig item ontsloten",
+      "text": "FLUX-199 - vl-autocomplete - bij selectie-event wordt volledig item ontsloten",
+      "commits": [
+        {
+          "sha": "5e8a2007a650a5adf91ad3d7422f77ee50a7acb0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5e8a2007a650a5adf91ad3d7422f77ee50a7acb0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/autocomplete/vl-autocomplete.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

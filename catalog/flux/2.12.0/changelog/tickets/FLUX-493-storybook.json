@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-493",
+  "entries": [
+    {
+      "id": "a21f538",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-493"
+      ],
+      "scope": "storybook",
+      "components": [],
+      "topics": [
+        "storybook"
+      ],
+      "mentions": [],
+      "summary": "jiraMeta referenties toegevoegd",
+      "text": "FLUX-493 - storybook - jiraMeta referenties toegevoegd",
+      "commits": [
+        {
+          "sha": "a21f538d014e75830bc7ee85623861bbc2e991d2",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a21f538d014e75830bc7ee85623861bbc2e991d2"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 5
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

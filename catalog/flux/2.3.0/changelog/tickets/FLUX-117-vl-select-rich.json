@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-117",
+  "entries": [
+    {
+      "id": "faad388",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-117"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "warning over DEFAULT_CLASSNAMES weggewerkt",
+      "text": "FLUX-117 - vl-select-rich - warning over DEFAULT_CLASSNAMES weggewerkt",
+      "commits": [
+        {
+          "sha": "faad388d48d0d41ea49bef6e4b0bf701ebffcf20",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/faad388d48d0d41ea49bef6e4b0bf701ebffcf20"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

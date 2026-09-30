@@ -1,0 +1,254 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-733",
+  "entries": [
+    {
+      "id": "5377fa3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-733"
+      ],
+      "scope": "documentatie",
+      "components": [],
+      "topics": [
+        "documentatie"
+      ],
+      "mentions": [],
+      "summary": "spelling en grammatica",
+      "text": "FLUX-733 - documentatie - spelling en grammatica",
+      "commits": [
+        {
+          "sha": "5377fa3f65d30387d394013a56b60fdbcb204db8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5377fa3f65d30387d394013a56b60fdbcb204db8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 35,
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "    Zie [Migratie v2 - Impact](/docs/afnemen-migratie-v2-impact--documentatie) voor gedetailleerde informatie over welke elementen vervangen worden.\n\n[…]\n\n    Zie [Migratie v2 - Impact](/docs/afnemen-migratie-v2-impact--documentatie) voor gedetailleerde informatie over welke componenten vervangen worden."
+          },
+          {
+            "id": "beheren-ci-cd--documentatie",
+            "title": "Beheren/CI - CD",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+            "added": "    * __e2e-tests-storybook__ (Storybook e2e-testen)\n\n[…]\n\nIn die __release-and-publish__ stap gebeurt het volgende:"
+          },
+          {
+            "id": "bijdragen-git-branching-strategie--documentatie",
+            "title": "Bijdragen/Git Branching Strategie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/bijdragen-git-branching-strategie--documentatie",
+            "added": "__feature-v2/JIRA-123-sleutel-woorden__ (of __feature-v1/JIRA-123-sleutel-woorden__). Het versie-suffix geeft aan naar\nwelke integratie-branch de feature gaat: een __feature-v2/__-branch target __develop-v2__, een __feature-v1/__-branch\ntarget __develop-v1__. Als het Flux team bvb. ticket FLUX-2322 opneemt met als titel 'cdn-assets voorzien met tinyMCE\ntheming en publiceren op artifactory' en dit voor v2 is, dan gebeurt dat in een branch met bvb. de naam\n__feature-v2/FLUX-2322-tinymce-cdn__. De feature branch is tijdelijk en bij voorkeur / meestal enkel voor eigen\ngebruik. Het ticket nummer moet in de naam staan, de sleutelwoorden geven een indicatie van wat het inhoudt. Vermijd"
+          },
+          {
+            "id": "components-atom-button-style--documentatie",
+            "title": "Components - Atom/button-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-button-style--documentatie",
+            "added": "gebeurt m.b.v. de [vl-button](/docs/components-atom-button--documentatie) component."
+          },
+          {
+            "id": "components-atom-link-style--documentatie",
+            "title": "Components - Atom/link-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-link-style--documentatie",
+            "added": "gebeurt m.b.v. de [vl-link](/docs/components-atom-link--documentatie) component."
+          },
+          {
+            "id": "components-atom-paragraph-style--documentatie",
+            "title": "Components - Atom/paragraph-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-paragraph-style--documentatie",
+            "added": "paragraaf toevoegen gebeurt m.b.v. de [vl-paragraph](/docs/components-atom-paragraph--documentatie) component."
+          },
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "### With button"
+          },
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": "- Vermijd het gebruik van `history.back()`. De gebruiker kan op verschillende manieren op je pagina beland zijn."
+          },
+          {
+            "id": "components-block-infotext--documentatie",
+            "title": "Components - Block/infotext",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-infotext--documentatie",
+            "added": "Gebruik de `infotext` component om belangrijke nummers duidelijk weer te geven.<br/>"
+          },
+          {
+            "id": "components-block-proza-message-proza-message-preloader--documentatie",
+            "title": "Components - Block/proza-message/proza-message-preloader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-proza-message-proza-message-preloader--documentatie",
+            "added": "over de volgorde van de domeinen of het moment waarop de preload gebeurt."
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": "De code voorbeelden bij elke story zijn dezelfde code die gebruikt wordt om de stories te laten werken.\n\n[…]\n\nDigitaal Vlaanderen biedt geen component aan voor de Rich Data Table maar wel beperkte functionaliteit voor de Data"
+          },
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "omdat de side-navigation bij het initialiseren een aantal dimensies capteert en, in het geval dat er een parent"
+          },
+          {
+            "id": "components-block-table--documentatie",
+            "title": "Components - Block/table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-table--documentatie",
+            "added": "Om dit toe te passen maak je zelf gebruik van native html-attribuut `rowspan`.\n\n[…]\n\nOm een rij te laten uitklappen (\"expanden\") moet je het volgende doen:<br/>\n\n[…]\n\nAls je 2 rijen hebt, en je wil rij A altijd zichtbaar zetten en rij B verborgen tot die wordt opengeklapt:<br/>"
+          },
+          {
+            "id": "components-block-upload-progress--documentatie",
+            "title": "Components - Block/upload-progress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-upload-progress--documentatie",
+            "added": "Dit component laat toe om de upload te annuleren of te herstarten en heeft de mogelijkheid om een foutboodschap"
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": "Voor eenvoudige e-mailadres validatie kan je gebruik maken van het `pattern` attribuut."
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": "Hier vind je specifieke voorbeelden om de tools en bijhorende plugins te activeren in onze component voor [links](#link-plugin) en [lists](#lists-plugin)."
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "> Opgelet: je kan pas events registreren nadat de component geïnitialiseerd is met behulp van het `vl-initialised`-event\n\n[…]\n\nselecteren in het bestandsmenu. Tenslotte is het ook mogelijk bestanden programmatorisch toe te voegen via de `addFile()` methode."
+          },
+          {
+            "id": "map-controls-measure-control--documentatie",
+            "title": "map/controls/measure-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+            "added": "Gebruik de `map-measure-control` component om de meet-actie aan of uit te zetten met behulp van een"
+          },
+          {
+            "id": "map-layer-style-layer-circle-style--documentatie",
+            "title": "map/layer-style/layer-circle-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+            "added": "Per verhoogde machtsverheffing wordt die coëfficiënt verhoogd met 1.\n\n[…]\n\nHet is ook mogelijk te kiezen de verhouding van de coëfficiënt aan te passen door de `cluster-multiplier` in"
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-map--documentatie",
+            "added": "Vereist je project Lambert 72 coördinaten bij het intekenen, dan wordt het upgraden naar de Lambert 2008 kaart"
+          },
+          {
+            "id": "patronen-formulier-aangepaste-validatie--documentatie",
+            "title": "Patronen/Formulier/aangepaste validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-formulier-aangepaste-validatie--documentatie",
+            "added": "Om gebruik te maken van custom validatie moet je een nieuwe component maken die overerft van één van onze form"
+          },
+          {
+            "id": "patronen-formulier-form-data--documentatie",
+            "title": "Patronen/Formulier/form data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-formulier-form-data--documentatie",
+            "added": "Deze functie aanvaardt 2 parameters:\n\n[…]\n\nDeze functie aanvaardt 2 parameters:"
+          },
+          {
+            "id": "patronen-formulier-validatie--documentatie",
+            "title": "Patronen/Formulier/validatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-formulier-validatie--documentatie",
+            "added": "In onderstaand voorbeeld: druk op `enter` zonder iets in te vullen om de foutmelding te zien.\n\n[…]\n\nIn onderstaand voorbeeld: vul een cijfer of speciaal teken in en druk op `enter` om de foutmelding te zien."
+          },
+          {
+            "id": "patronen-typografie-titel-met-annotatie--documentatie",
+            "title": "Patronen/Typografie/Titel/met annotatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+            "added": "De combinatie van een titel met annotatie gebeurt best met een vl-group."
+          },
+          {
+            "id": "planning-historiek-toekomst--documentatie",
+            "title": "Planning/Historiek & Toekomst",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+            "added": "Voor documentatie werd de custom-website vervangen door [Storybook](https://storybook.js.org/)."
+          },
+          {
+            "id": "recepten-cdn-bundel-fat-lib--documentatie",
+            "title": "Recepten/CDN Bundel - fat-lib",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie",
+            "added": "tree-shaking plaatsvinden, om die reden bieden we het script enkel geversioneerd aan en niet onder een 'latest' variant."
+          },
+          {
+            "id": "recepten-imports--documentatie",
+            "title": "Recepten/Imports",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-imports--documentatie",
+            "added": "registratie gebeuren onafhankelijk van de manier van importeren, zolang de code maar niet"
+          },
+          {
+            "id": "recepten-lit-binnen-andere-frameworks--documentatie",
+            "title": "Recepten/Lit binnen andere frameworks",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-lit-binnen-andere-frameworks--documentatie",
+            "added": "[custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components#custom_elements_2) en framework interoperability testen wordt bijgehouden."
+          },
+          {
+            "id": "recepten-tree-shaking--documentatie",
+            "title": "Recepten/Tree Shaking",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-tree-shaking--documentatie",
+            "added": "worden. Om die reden worden in de `@domg-wc` artifacts de root-barrel files ge-exclude uit de sideEffects. Vroeger"
+          },
+          {
+            "id": "richtlijnen-content-security-policy-csp-problematieken--documentatie",
+            "title": "Richtlijnen/Content Security Policy/CSP Problematieken",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-content-security-policy-csp-problematieken--documentatie",
+            "added": "Om die reden was CSP activeren met die versie redelijk zinloos: in de volledige toepassing moest 'unsafe-eval' actief\n\n[…]\n\nom correct te werken, dezelfde CSP regel nodig: `\"Content-Security-Policy\": \"style-src-attr 'unsafe-inline';\"`. De reden"
+          },
+          {
+            "id": "richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Hoe CSP Activeren",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+            "added": "Hetzelfde geldt voor scripts. In plaats van ze dynamisch toe te voegen, en met een hash te werken, kan je er beter voor"
+          },
+          {
+            "id": "richtlijnen-testen-selenium-en-cypress--documentatie",
+            "title": "Richtlijnen/Testen/Selenium en Cypress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-testen-selenium-en-cypress--documentatie",
+            "added": "waardoor het historisch een breed scala van talen (om testen in te schrijven) en browsers ondersteunt. Typisch werden"
+          },
+          {
+            "id": "richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+            "title": "Richtlijnen/Testen/Test Piramide SSR vs SPA",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+            "added": "## SSR vs SPA"
+          },
+          {
+            "id": "styles-base-font--documentatie",
+            "title": "Styles/Base (intern)/font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/styles-base-font--documentatie",
+            "added": "In deze voorbeelden zie je de verschillende fonts in gebruik, er worden telkens specifieke wrappers voorzien via een"
+          },
+          {
+            "id": "styles-layout-section--documentatie",
+            "title": "Styles/Layout (afnemers)/section",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/styles-layout-section--documentatie",
+            "added": "De `vl-section` verdeelt de toepassing in delen en zorgt voor consistente witruimte.\n\n[…]\n\nkrijgt. Om minder (dan de standaard) witruimte te krijgen zijn er de optionele classes `vl-section--small`"
+          }
+        ]
+      }
+    }
+  ]
+}

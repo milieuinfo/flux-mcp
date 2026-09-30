@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-619",
+  "entries": [
+    {
+      "id": "8efb347",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-619"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-click"
+      ],
+      "summary": "vl-click event toevoegen",
+      "text": "FLUX-619 - vl-link - vl-click event toevoegen",
+      "commits": [
+        {
+          "sha": "8efb34761c9cbee2ff227a4eb855e92a41950cd5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8efb34761c9cbee2ff227a4eb855e92a41950cd5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Voegt een custom vl-click event toe aan vl-link, gelijktrekkend met de event-API van vl-button, zodat consumers niet hoeven te onthouden wanneer @click vs @vl-click gebruiken op interactieve flux-atoms.\n\n- vl-link.component.ts: handleClick handler aangesloten op het @click attribuut van zowel het <a>- als het <button>-renderpad. Dispatcht CustomEvent('vl-click', { bubbles: true, composed: true }) — exact dezelfde signatuur als vl-button (bubbelt door Shadow DOM heen).\n- Strikt additief: native click blijft ongestoord werken, geen preventDefault/stopPropagation, geen breaking change voor bestaande consumers van @click op vl-link.\n- Geen disabled/loading-guard zoals vl-button — vl-link heeft die states (nog) niet, dus geen speculative design (Voorstel 3 vermeden).\n- Cypress component tests toegevoegd voor beide renderpaden, conform het bestaande vl-button event-test patroon (createStubForEvent + should('have.been.calledOnce')).\n- Storybook docs uitgebreid met een Events-sectie die het contract documenteert, voorbeeldcode toont en de semantische asymmetrie met vl-button (waar vl-click bij disabled/loading wordt onderdrukt) expliciet uitlegt.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-link.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "## Events\n\n`vl-link` dispatcht bij elke klik een custom `vl-click` event (`bubbles: true, composed: true`), zodat het event de\nShadow DOM boundary overschrijdt en door parent-elementen kan worden opgevangen.\n\n```html\n<vl-link href=\"https://www.vlaanderen.be\">Vlaanderen</vl-link>\n<script>\n  document.querySelector('vl-link').addEventListener('vl-click', () => {\n    console.log('link geklikt');\n  });\n</script>\n```\n\nHet native `click` event blijft ook werken — beide zijn geldig. Kies één van beide en gebruik ze niet gelijktijdig op\nhetzelfde element om dubbele callbacks te vermijden.\n\n> **Relatie met `vl-button`:** `vl-button` dispatcht `vl-click` alleen als de knop niet disabled of in laadstatus is.\n `vl-link` heeft (nog) geen disabled-state, dus `vl-click` wordt altijd gedispatcht. De conventie is consistent: alle\n interactieve flux-atoms dispatchen `vl-<actie>`.\n\n[…]\n\nZorg er steeds voor dat de link een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd\nwordt bij het klikken op de link. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers\ngebruiken.\n\n[…]\n\nZorg er bij externe links voor dat gebruikers weten dat de link in een nieuw venster opent. Dit kan je doen adhv het\n`external` attribuut en door dit expliciet te vermelden in de linktekst of door het `label` attribuut te gebruiken om\neen beschrijvende `aria-label` toe te voegen aan de link. Indien `label` gebruikt wordt, is dit de enige linktekst die\ndoor schermlezers wordt voorgelezen. Dus neem ook de zichtbare linktekst hierin op.\n\n[…]\n\nIndien de link enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende\n`aria-label` wordt toegevoegd aan de link.\n\n[…]\n\nIndien de link een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde\n(`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt\nschermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven\naan de onderliggende link."
+          }
+        ]
+      }
+    }
+  ]
+}

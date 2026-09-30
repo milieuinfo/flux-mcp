@@ -1,0 +1,62 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-307",
+  "entries": [
+    {
+      "id": "b9942f2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-307"
+      ],
+      "scope": "vl-map",
+      "components": [
+        "vl-map"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "pattern attribuut op de laag en legende",
+      "text": "FLUX-307 - vl-map - pattern attribuut op de laag en legende",
+      "commits": [
+        {
+          "sha": "b9942f268b37a3d43edd52b2c294fb6ca76fa628",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b9942f268b37a3d43edd52b2c294fb6ca76fa628"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer-style/vl-map-layer-style.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-vector-layer.ts",
+          "libs/map/src/components/legend/vl-map-legend.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-layer-style--documentatie",
+            "title": "map/layer-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/map-layer-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-legend--documentatie",
+            "title": "map/legend",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/map-legend--documentatie",
+            "added": "### Pattern"
+          }
+        ]
+      }
+    }
+  ]
+}

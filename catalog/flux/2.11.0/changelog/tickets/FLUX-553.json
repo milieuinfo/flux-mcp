@@ -1,0 +1,73 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-553",
+  "entries": [
+    {
+      "id": "e961cfd",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-553"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "npm package versies verhoogd",
+      "text": "FLUX-553 - npm package versies verhoogd",
+      "commits": [
+        {
+          "sha": "e961cfd859624088f04cf479f9aa9c45634940f7",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e961cfd859624088f04cf479f9aa9c45634940f7"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "e81b13b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-553"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "ongebruikte npm dependencies verwijderd",
+      "text": "FLUX-553 - ongebruikte npm dependencies verwijderd",
+      "commits": [
+        {
+          "sha": "e81b13b552464c04f69d9a8a8f9899a52be6b7be",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e81b13b552464c04f69d9a8a8f9899a52be6b7be"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "cypress-vite, path, prop-types, nx/devkit verwijderd",
+        "published": false,
+        "areas": {
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

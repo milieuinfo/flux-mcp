@@ -1,0 +1,62 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-391",
+  "entries": [
+    {
+      "id": "c187f73",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-391"
+      ],
+      "scope": "vl-title",
+      "components": [
+        "vl-title"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-group"
+      ],
+      "summary": "extra vl-group modifiers om te combineren met een annotatie",
+      "text": "FLUX-391 - vl-title - extra vl-group modifiers om te combineren met een annotatie",
+      "commits": [
+        {
+          "sha": "c187f739697f196d3834bd6cad4612a3cedcf925",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/c187f739697f196d3834bd6cad4612a3cedcf925"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "docs": 3,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/group/vl-group.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "patronen-typografie-titel-met-annotatie--documentatie",
+            "title": "Patronen/Typografie/Titel/met annotatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+            "added": "Een annotatie kan naast of onder een titel geplaatst worden om extra context te bieden.\n\n\n## Aanbeveling\n\nDe combinatie van een titel met annotatie gebeurd best met een vl-group.\n\n[…]\n\nDit voorbeeld zet de annotatie standaard rechts van de titel, wanneer de plaats beperkter wordt wrapped de\nannotatie onder de titel. De `vl-group--baseline` lijnt de titel en annotatie onderaan uit, de\n`vl-group--no-row-gap` beperkt de verticale wit-ruimte bij wrapping.\n\n[…]\n\n        `<div class=\"vl-group vl-group--baseline vl-group--wrap vl-group--no-row-gap\">\n            <vl-title type=\"h2\" no-space-bottom>Een titel die wat langer is dan normaal</vl-title>\n            <vl-text annotation>Optioneel voeg je een annotatie toe.</vl-text>"
+          },
+          {
+            "id": "styles-layout-group--documentatie",
+            "title": "Styles/Layout (afnemers)/group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/styles-layout-group--documentatie",
+            "added": "### Witruimte\n\nWitruimte wordt voorzien door de default 'gap'. Er zijn 3 modifiers om die 'gap' te schrappen:\n`vl-group--no-gap` / `vl-group--no-row-gap` / `vl-group--no-column-gap`.\n\n[…]\n\n### Wrapping\n\nOm wrapping toe te voegen is er de modifier `vl-group--wrap`."
+          }
+        ]
+      }
+    }
+  ]
+}

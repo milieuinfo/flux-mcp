@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-720",
+  "entries": [
+    {
+      "id": "fd09613",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-720"
+      ],
+      "scope": "vl-select",
+      "components": [
+        "vl-select"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "reset value bij slot-mutatie zonder selectie",
+      "text": "FLUX-720 - vl-select - reset value bij slot-mutatie zonder selectie",
+      "commits": [
+        {
+          "sha": "fd0961311830b99ae2159f4d0757382b74b515f5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/fd0961311830b99ae2159f4d0757382b74b515f5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Slot-mutatie callbacks (onSlotChange + MutationObserver) gebruikten de FLUX-637 guard 'if (selected) this.value = selected.value', waardoor value op de vorige waarde bleef staan wanneer een nieuwe set opties geen selectie had (bv. aanmaak-popup na editeer-popup). Vervangen door syncValueWithOptions: reset naar '' wanneer opties aanwezig maar geen selectie, zonder value te wissen tijdens een tussentijdse lege render.\n\nDe MutationObserver negeert nu attribuut-mutaties op de host zelf (bv. het 'value'-attribuut dat setFormData zet); die reflecteert Lit al naar de properties. Zo wordt value niet ten onrechte gereset wanneer ze extern wordt gezet (voorkomt regressie in form-data-setter).",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select/vl-select.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

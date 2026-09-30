@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-523",
+  "entries": [
+    {
+      "id": "2ad5fe1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-523"
+      ],
+      "scope": "vl-grid",
+      "components": [
+        "vl-grid"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "vmax bij gap variabelen vervangen door rem waarde",
+      "text": "FLUX-523 - vl-grid - vmax bij gap variabelen vervangen door rem waarde",
+      "commits": [
+        {
+          "sha": "2ad5fe14c23a5e783d05793a1468acaaa476bcb7",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2ad5fe14c23a5e783d05793a1468acaaa476bcb7"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/grid/vl-grid.raw.css"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-743",
+  "entries": [
+    {
+      "id": "cbadf65",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-743"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "anchor-positioning cross-browser via Popover API + @floating-ui/dom",
+      "text": "FLUX-743 - vl-datepicker - anchor-positioning cross-browser via Popover API + @floating-ui/dom",
+      "commits": [
+        {
+          "sha": "cbadf65bd55e4ddc007744ba22243fa57016427a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/cbadf65bd55e4ddc007744ba22243fa57016427a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "tests": 3,
+          "tooling": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-anchor-positioning.controller.ts",
+          "libs/components/src/form/datepicker/vl-anchor-positioning.polyfill.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

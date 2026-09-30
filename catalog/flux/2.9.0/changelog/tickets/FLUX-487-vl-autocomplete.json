@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-487",
+  "entries": [
+    {
+      "id": "738009a",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-487"
+      ],
+      "scope": "vl-autocomplete",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "z-index verhoogd",
+      "text": "FLUX-487 - vl-autocomplete - z-index verhoogd",
+      "commits": [
+        {
+          "sha": "738009a9608c8be1a7beb698b54bb9ee2fc45514",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/738009a9608c8be1a7beb698b54bb9ee2fc45514"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/autocomplete/vl-autocomplete.flux-css.ts",
+          "libs/styles/src/base/var/vl-z-layer.raw.css"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-72",
+  "entries": [
+    {
+      "id": "292ee1c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-72"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG aanpak en documentatie",
+      "text": "FLUX-72 - WCAG aanpak en documentatie",
+      "commits": [
+        {
+          "sha": "292ee1ca3c9092937d886fb6583bb61bfb0e5ed7",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/292ee1ca3c9092937d886fb6583bb61bfb0e5ed7"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 39,
+          "storybook": 4,
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "design-system--documentatie",
+            "title": "Design System",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/design-system--documentatie",
+            "added": "# Design System\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Wat is een Design System](#wat-is-een-design-system)\n- [Wat doet Flux (niet)](#wat-doet-flux-niet)\n\n## Doel\n\nMet de 'flux-web-componenten' en deze bijhorende documentatie streven we er naar meer te zijn dan een verzameling\ncomponenten. Het doel is een design system aan te bieden.\n\n\n## Wat is een Design System\n\nEen uitgebreide uitleg over wat een design system is vind je in deze 2 artikels:\n[The Design System Ecosystem](https://bradfrost.com/blog/post/the-design-system-ecosystem/) en\n[Design Systems are for user interfaces](https://bradfrost.com/blog/post/design-systems-are-for-user-interfaces/).\n\nEen **design system** is een **structureel geheel** dat aangeboden wordt om web-toepassingen te bouwen met een\n**uniforme** en **gebruiksvriendelijke interface**. Het is een systeem dat uit sub-systemen bestaat, in ons geval:\n\n- de verschillende componenten - zitten in de [artifacts](/docs/afnemen-artifacts--documentatie) die we aanbieden\n- een font - voorzien door DV, wordt in de componenten gebruikt\n- iconen - zitten in het [Icon Font](/docs/beheren-icon-font--documentatie) van DV; afneembaar via\n  [`<vl-icon>`](/docs/components-atom-icon--documentatie)\n- een kleuren palet - wordt in de componenten gebruikt, wordt nog niet expliciet aangeboden\n- een layout / grid opzet - wordt via het styles artifact aangeboden\n- documentatie van het geheel - deze Storybook documentatie\n- een set van leidraden - de pagina's te vinden ander RICHTLIJNEN, RECEPTEN en ONTWERP\n- goede voorbeelden - de stories en code snippets (via de 'Show code'-knoppen)\n\n\n## Wat doet Flux (niet)\n\nDe focus van het Flux-team ligt op het **uitwerken** en **ondersteunen** van dit **design system**. Het doel is dat\nontwikkelteams m.b.v. de aangeboden bouwblokken frontend toepassingen kunnen bouwen. Het feitelijk bouwen van\ntoepassingen is de verantwoordelijkheid van de ontwikkelteams. Flux kan begeleiden en zal ondersteunen waar nodig."
+          },
+          {
+            "id": "planning-aanpak-v2-v3--documentatie",
+            "title": "Planning/Aanpak v2, v3, ...",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/planning-aanpak-v2-v3--documentatie",
+            "added": "# Aanpak v2, v3, ...\n## Inhoudstafel\n## Waarom v2\n### Element complicatie\n### JavaScript complicatie\n### SCSS complicatie\n## Waarom 'Next' Componenten\n## 'Next' Conventies\n## v2 vs. v3\n## v2 Release\n## v3 Release\n(172 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "planning-aanpak-verbeteringen-2025--documentatie",
+            "title": "Planning/Aanpak Verbeteringen 2025",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/planning-aanpak-verbeteringen-2025--documentatie",
+            "added": "# Aanpak Verbeteringen 2025\n\n## Algemeen: dichter bij de teams staan\n\n - UX-werk voor nieuwe onderdelen / toepassingen\n\n - 'pragmatische' code-reviews voordat toepassingen in productie gaan<br/>\n    → aanbevelingen en best practices geven<br/>\n    → aanduiden met niveau's: brons(+) / zilver(+) / goud(+)\n\n - introductie van een Frontend Guild met een frontend 'spoc' per team<br/>\n    → WCAG / testing / CSP\n\n\n## WCAG\n\n### Nieuwe WCAG Aanpak\n\n - documentatie in Storybook<br/>\n    → WCAG aanpak - Europees minimaal AA (ineens 2.2)<br/>\n    → vereisten documenteren - minimaal brons voor interne toepassingen / zilver+ voor publieke\n\n - presentatie (eventueel door Gijs) voor de ontwikkelaars rond WCAG\n    → niet weerhouden na met Gijs samen gezeten te hebben\n    → het is beter met een beperkte groep rond concrete acties samen te zitten\n\n - toepassen op de Flux-componenten waarbij we WCAG gaan behandelen conform andere feature en bug tickets\n\n - als eerste eigen Flux actie, de 'compliance'-componenten (privacy, cookie-consent, accessibility, ...)\n   verbeteren op WCAG vlak<br/>\n    → tickets uit de backlog wegwerken<br/>\n    → block- en atom-componenten die in de 'compliance'-componenten gebruikt worden ineens mee aanpakken\n\n - op basis van het voorgaande: bouwen wij (Flux) onze WCAG kennis op zodat we zelf (basis) reviews van nieuwe\n   (en bestaande) toepassingen kunnen doen<br/>\n    → we doen dan WCAG aanbevelingen, waaronder deels verplichte verbeteringen<br/>\n    → iteratief wordt de toepassing zo verbeterd alvorens ze in productie gaat<br/>\n    → een finale review voor eerste in productie stelling dient nog door Gijs te gebeuren, hij blijft de expert\n\n\n### WCAG Verleden: waar staan we\n\n - de toepassingen voldoen aan de wettelijke vereisten<br/>\n    → Gijs deed reviews en daar volgde een toegankelijkheidsverklaring uit die opgenomen werd in de toepassing<br/>\n    → Gijs maakte tickets aan om verbeteringen door te voeren\n\n - de tickets werden minimaal opgenomen<br/>\n    → geen prioriteit<br/>\n    → is een kost met niet persé een zichtbare verbetering\n\n - bij Flux is er een hele backlog van WCAG tickets (+130)<br/>\n    → we namen die in het verleden beperkt op<br/>\n    → een deel van de tickets overlapt of zijn out-dated (de component bestaat niet meer)\n\n\n### WCAG Referenties\n\n#### Specificaties\n\n[WCAG 2.2 Nederlandstalige Specificatie](https://www.w3.org/Translations/WCAG22-nl/).\n\n[EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf)\n\n#### Overheid\n\n[Inter - het Vlaams Expertisecentrum Toegankelijkheid](https://www.vlaanderen.be/inter/toolbox-toegankelijke-steden-en-gemeenten/algemeen-bestuur-dienstverlening-en-communicatie/digitale-toegankelijkheid/richtlijnen-voor-toegankelijkheid-van-webcontent-wcag).\n\n[GOV UK WCAG Understanding](https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag)\n\n#### Algemeen\n\n[Mozilla WCAG Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)\n\n[Mozilla WCAG Understanding](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG)\n\n[W3 WAI](https://www.w3.org/WAI/)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-1-tekstalternatieven--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.1 Tekstalternatieven",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-1-tekstalternatieven--documentatie",
+            "added": "(121 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-2-op-tijd-gebaseerde-media--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.2 Op tijd gebaseerde media",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-2-op-tijd-gebaseerde-media--documentatie",
+            "added": "    FluxWcagSuccesscriterium\n} from '../../../../.storybook/flux-wcag/flux-wcag-succescriterium';\n\n\n<FluxWcagRichtlijn\n    level=\"1.2\"\n    title=\"Op tijd gebaseerde media (beeld, geluid en video)\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#time-based-media\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#time-based-media\"\n    text={\n        <>\n            Dit is media met een bepaalde tijdsduur, zoals beelden, geluiden en video.\n            <div style={{marginTop: '6px'}}/>\n            Er zijn gebruikers die geen beelden zien of geluiden horen. Zorg ervoor dat zij op een andere manier de\n            inhoud van beelden, geluiden en video’s meekrijgen.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Louter-geluid en louter-videobeeld (vooraf opgenomen)\"\n    level=\"1.2.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#audio-only-and-video-only-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#audio-only-and-video-only-prerecorded\"\n    text={\n        <>\n            Bijvoorbeeld een MP3-bestand, podcast, video zonder geluid\n            <div style={{marginTop: '6px'}}/>\n            Voorzie <strong>inhoud met alleen geluid of alleen video</strong> van een audiobeschrijving of een\n            tekstversie. Zo krijgen gebruikers die moeilijk of niet zien of horen de informatie ook mee.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Ondertitels voor doven en slechthorenden (vooraf opgenomen)\"\n    level=\"1.2.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#captions-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#captions-prerecorded\"\n    text={\n        <>\n            Bijvoorbeeld een interview.\n            <div style={{marginTop: '6px'}}/>\n            Geef <strong>video’s die op voorhand zijn opgenomen ondertiteling</strong>. Zo krijgen gebruikers die\n            moeilijk of niet horen de informatie ook mee.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Audiodescriptie of media-alternatief (vooraf opgenomen)\"\n    level=\"1.2.3\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#audio-description-or-media-alternative-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#audio-description-or-media-alternative-prerecorded\"\n    text={\n        <>\n            Bijvoorbeeld een instructievideo.\n            <div style={{marginTop: '6px'}}/>\n            Geef <strong>vooraf opgenomen video een audiobeschrijving</strong>. Of zet wat er te horen en te zien is om\n            in een uitgeschreven tekst. Een ander woord daarvoor is een transcript. Zo krijgen gebruikers die moeilijk\n            of niet zien informatie die anders alleen met de ogen te zien is ook mee.\n        </>\n    }\n>\n\n<FluxWcagSilverPlus></FluxWcagSilverPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Ondertitels voor doven en slechthorenden (live)\"\n    level=\"1.2.4\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#captions-live\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#captions-live\"\n    text={\n        <>\n            Bijvoorbeeld een videoconferentie.\n            <div style={{marginTop: '6px'}}/>\n            Geef <strong>live video ondertiteling</strong>.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Audiodescriptie (vooraf opgenomen)\"\n    level=\"1.2.5\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#audio-description-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#audio-description-prerecorded\"\n    text={\n        <>\n            Geef <strong>op voorhand opgenomen video een audiobeschrijving</strong>. Zo krijgen gebruikers die moeilijk\n            of niet zien informatie die anders alleen met de ogen te zien is ook mee.\n            <div style={{marginTop: '6px'}}/>\n            Richtlijn 1.2.5 is strikter dan 1.2.3, onder 1.2.3 mag je kiezen: een audiodescriptie of een\n            media-alternatief. Als je kiest voor de audiodescriptie voldoe je ineens aan 1.2.5.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.3 Aanpasbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie",
+            "added": "(263 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-4-onderscheidbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.4 Onderscheidbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-4-onderscheidbaar--documentatie",
+            "added": "(205 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht--documentatie",
+            "added": "(113 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-1-toetsenbordtoegankelijk--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.1 Toetsenbordtoegankelijk",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-1-toetsenbordtoegankelijk--documentatie",
+            "added": "<FluxWcagRichtlijn\n    level=\"2.1\"\n    title=\"Toetsenbordtoegankelijk\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#keyboard-accessible\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#keyboard-accessible\"\n    text={\n        <>\n            Alles wat gebruikers op de website kunnen doen, moet ze ook kunnen als ze alleen een toetsenbord gebruiken.\n        </>\n    }\n>\n\n<FluxWcagBronsBase></FluxWcagBronsBase>\n\n<FluxWcagSuccesscriterium\n    title=\"Toetsenbord\"\n    level=\"2.1.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#keyboard\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#keyboard\"\n    text={\n        <>\n            Zorg dat alles wat gebruikers kunnen zien en gebruiken <strong>ook te bereiken en te bedienen met alleen een\n            toetsenbord</strong> is, bijvoorbeeld formulieren, menu’s of een winkelwagentje.\n            <div style={{marginTop: '6px'}}/>\n            Zo kunnen ook mensen zonder muis doen wat de bedoeling is. Sommige mensen hebben niet genoeg controle of\n            kracht in hun hand om een muis te gebruiken.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Geen toetsenbordval\"\n    level=\"2.1.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#no-keyboard-trap\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#no-keyboard-trap\"\n    text={\n        <>\n            Zorg er voor dat iedereen ook met een toetsenbord de logische opbouw van je website kan gebruiken.\n            <div style={{marginTop: '6px'}}/>\n            Is er een onderdeel waar gebruikers naartoe moeten kunnen? Dan moeten ze daar met het <strong>toetsenbord\n            kunnen geraken en ook weer weg kunnen</strong>.\n            <div style={{marginTop: '6px'}}/>\n            Voorkom dus dat mensen die alleen een toetsenbord gebruiken niet verder kunnen en vast komen te zitten. In\n            andere woorden: een valkuil door het toetsenbord.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Enkel teken sneltoetsen\"\n    level=\"2.1.4\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#character-key-shortcuts\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#character-key-shortcuts\"\n    text={\n        <>\n            Zorg dat gebruikers sneltoetsen zelf kunnen instellen als je website sneltoetsen heeft. Sommige sneltoetsen\n            zijn niet voor iedereen handig of makkelijk.\n            <div style={{marginTop: '6px'}}/>\n            Daarom moeten gebruikers ze kunnen <strong>uitzetten en opnieuw toewijzen</strong>. Verder mag een sneltoets\n            voor een onderdeel alleen actief zijn wanneer dat onderdeel de focus heeft.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-2-genoeg-tijd--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.2 Genoeg tijd",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-2-genoeg-tijd--documentatie",
+            "added": "<FluxWcagRichtlijn\n    level=\"2.2\"\n    title=\"Genoeg tijd\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#enough-time\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#enough-time\"\n    text={\n        <>\n            Geef gebruikers genoeg tijd om je inhoud te lezen, begrijpen en gebruiken.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Timing aanpasbaar\"\n    level=\"2.2.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#timing-adjustable\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#timing-adjustable\"\n    text={\n        <>\n            Heb je inhoud die alleen tijdelijk beschikbaar is? Bijvoorbeeld inhoud die verloopt of niet meer te\n            gebruiken is na een bepaalde tijd, zoals een formulier dat je binnen een bepaalde tijd moet invullen?\n            <div style={{marginTop: '6px'}}/>\n            Zorg er dan voor dat gebruikers kunnen <strong>aanpassen hoe lang de inhoud beschikbaar is</strong>. Zo\n            krijgt iedereen genoeg tijd om informatie te lezen en te begrijpen.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Pauzeren, stoppen, verbergen\"\n    level=\"2.2.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#pause-stop-hide\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#pause-stop-hide\"\n    text={\n        <>\n            Bijvoorbeeld animaties, video’s, knipperende tekst, fotocarrousel.\n            <div style={{marginTop: '6px'}}/>\n            Geef gebruikers de mogelijkheid om <strong>inhoud die langer dan vijf seconden automatisch\n            beweegt</strong> op pauze te zetten, te stoppen of te verbergen. Zo leid je mensen die zich moeilijker\n            kunnen focussen en concentreren niet af.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-3-toevallen-en-fysieke-reacties--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.3 Toevallen en fysieke reacties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-3-toevallen-en-fysieke-reacties--documentatie",
+            "added": "<FluxWcagRichtlijn\n    level=\"2.3\"\n    title=\"Toevallen en fysieke reacties\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#seizures-and-physical-reactions\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#seizures-and-physical-reactions\"\n    text={\n        <>\n            Maak geen inhoud die aanvallen van epilepsie of andere lichamelijke reacties kan uitlokken. Zorg voor een\n            veilig ontwerp.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Drie flitsen of beneden drempelwaarde\"\n    level=\"2.3.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#three-flashes-or-below-threshold\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#three-flashes-or-below-threshold\"\n    text={\n        <>\n            Zorg ervoor dat je inhoud <strong>niet meer dan drie keer per seconde flitst of knippert</strong>. Zo\n            bescherm je mensen met aandoeningen zoals lichtgevoelige epilepsie tegen aanvallen.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.4 Navigeerbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie",
+            "added": "(220 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.5 Input modaliteiten",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie",
+            "added": "(152 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht--documentatie",
+            "added": "(140 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/3.1 Leesbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie",
+            "added": "    FluxWcagExample,\n    FluxWcagExamplesTitle,\n    FluxWcagSuccesscriterium\n} from \"../../../../.storybook/flux-wcag/flux-wcag-succescriterium\";\n\n\n<FluxWcagRichtlijn\n    level=\"3.1\"\n    title=\"Leesbaar\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#readable\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#readable\"\n    text={\n        <>\n            Zorg ervoor dat iedereen de inhoud kan lezen en begrijpen. Of het nu gaat om inhoud die gebruikers zien,\n            horen of voelen.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Taal van de pagina\"\n    level=\"3.1.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#language-of-page\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#language-of-page\"\n    text={\n        <>\n            Geef in de code van elke pagina aan wat de <strong>hoofdtaal</strong> van de tekst is. Zo spreekt een\n            schermlezer alles uit met het juiste accent en de juiste uitspraak.\n        </>\n    }\n>\n\n<FluxWcagExamplesTitle></FluxWcagExamplesTitle>\n\n<FluxWcagExample\n    exampleNumber=\"1\"\n    title=\"Specifieer Frans als hoofdtaal.\"\n    link=\"https://www.w3.org/WAI/WCAG22/Techniques/html/H57\"\n>\n    ```html\n    <!doctype html>\n    <html lang=\"fr\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>document écrit en français</title>\n    </head>\n    <body>\n    ... document écrit en français ...\n    </body>\n    </html>\n    ```\n\n<div style={{marginTop: '4em'}} />\n\n<FluxWcagSilverPlus></FluxWcagSilverPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Taal van onderdelen\"\n    level=\"3.1.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#language-of-parts\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#language-of-parts\"\n    text={\n        <>\n            Geef aan wanneer de taal op een pagina <strong>verandert</strong> of wanneer een <strong>deel in een\n            andere</strong> taal is. Zo schakelen schermlezers daar over naar het juiste accent en de juiste uitspraak\n            voor die taal.\n        </>\n    }\n>\n\n<FluxWcagExamplesTitle></FluxWcagExamplesTitle>\n\n<FluxWcagExample\n    exampleNumber=\"1\"\n    title=\"Specifieer Duits als de taal van een quote.\"\n    link=\"https://www.w3.org/WAI/WCAG22/Techniques/html/H58\"\n>\n    ```html\n    <blockquote lang=\"de\">\n        <p>\n            Da dachte der Herr daran, ihn aus dem Futter zu schaffen,\n            aber der Esel merkte, daß kein guter Wind wehte, lief fort\n            und machte sich auf den Weg nach Bremen: dort, meinte er,\n            könnte er ja Stadtmusikant werden.\n        </p>\n    </blockquote>\n    ```\n\n<div style={{marginTop: '4em'}} />"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/3.2 Voorspelbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie",
+            "added": "(106 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/3.3 Assistentie bij invoer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie",
+            "added": "(172 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht--documentatie",
+            "added": "<FluxWcagPrincipe\n    level=\"3.\"\n    title=\"Begrijpelijk\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#understandable\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#principle3\"\n    text={\n        <>\n            Je vindt makkelijk je weg en je doet vlot wat de bedoeling is.\n        </>\n    }\n>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>3.1 Leesbaar <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td></td>\n        <td>\n            <div style={{color: 'brown'}}>Taal van de pagina</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Taal van onderdelen</div>\n        </td>\n    </tr>\n</table>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>3.2 Voorspelbaar <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td>\n            <div style={{color: 'brown'}}>Bij focus</div>\n            <div style={{color: 'brown'}}>Bij input</div>\n            <div>&nbsp;</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Consistente navigatie</div>\n            <div style={{color: 'black'}}>Consistente identificatie</div>\n        </td>\n        <td>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n            <div style={{color: 'brown'}}>Consistente hulp</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n        </td>\n    </tr>\n</table>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>3.3 Assistentie bij invoer <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td>\n            <div style={{color: 'brown'}}>Foutidentificatie</div>\n            <div style={{color: 'brown'}}>Labels of instructies</div>\n            <div>&nbsp;</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Foutsuggestie</div>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n        </td>\n        <td>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n            <div style={{color: 'brown'}}>Overbodige invoer</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div>&nbsp;</div>\n            <div style={{color: 'black'}}>Foutpreventie (wettelijk, financieel, gegevens)</div>\n            <div style={{color: 'black'}}>Toegankelijke authenticatie (minimum)</div>\n        </td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/4. Robuust/4.1 Compatibel",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie",
+            "added": "(120 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/4. Robuust/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht--documentatie",
+            "added": "<FluxWcagPrincipe\n    level=\"4.\"\n    title=\"Robuust\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#robust\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#principle4\"\n    text={\n        <>\n            De inhoud moet altijd juist weergegeven worden en alle gebruikers moeten kunnen doen wat de bedoeling is.\n            Daarvoor moet de ontwikkelaar de juiste code gebruiken.\n        </>\n    }\n>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>4.1 Compatibel <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td>\n            <div style={{color: 'brown'}}>Naam, rol, waarde</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div>&nbsp;</div>\n        </td>\n        <td>\n            <div>&nbsp;</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Statusberichten</div>\n        </td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/Toegankelijkheid en WCAG",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "added": "# Toegankelijkheid en WCAG\n## Inleiding\n## 4 Principes\n## 3 Niveaus\n### Documentatie\n## Evolutionaire Verbetering\n### Aanpak\n### Doel\n### Voorbeeld\n### Opmerkingen\n## Referenties\n(107 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+            "added": "# Gekende Beperkingen [WIP]\n\n## Focus op niet-tekstuele inputs\n\nOp Safari is het niet mogelijk om, met standaard instellingen, focus te leggen op een niet-tekstuele input zoals\nbuttons, checkboxes of radios. Dit is een [probleem gemeld bij Safari](https://bugs.webkit.org/show_bug.cgi?id=22261) -\nwaar het gemarkeerd is als WONTFIX.\n\nVolgens onze WCAG expert is dit een bewuste keuze van Apple en leidt dit al jaren tot verwarring.\n\nOm toch een focus te kunnen leggen op deze elementen kan je:\n- als gebruiker op Mac: `tab`+`option` drukken\n- of gebruik maken van de volgende instelling in Safari:\n    - ga naar `Safari > Settings > Advanced`\n    - zet de optie `Press Tab to highlight each item on a web page` aan; dan zal elke `tab` uitgevoerd worden als\n      `tab`+`option`"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Praktijk/Richtlijnen [WIP]",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.4.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip--documentatie",
+            "added": "# Richtlijnen [WIP]\n\n## Form\n\n- Geef elke form control een label met:\n    - een [`<vl-form-label>` component](/docs/components-form-form-label--documentatie) gelinkt aan de form control\n      met `for` attribuut\n    - of met het `label` attribuut van de form control.\n- Geef duidelijke, specifieke instructies hoe een validatie fout kan opgelost worden in de foutboodschap.\n    - **NIET**: \"E-mail adres is niet juist.\"\n    - **WEL**: \"Vul een geldig e-mailadres in. Bijvoorbeeld: omgeving@vlaanderen.be\"\n- Stel het `placeholder` attribuut correct in. Gebruik het `placeholder` attribuut enkel als het een voorbeeldwaarde\n  is. Gebruik het niet als label.\n- Stel het `autocomplete` attribuut correct in. Gebruik waarde `off` als er geen relevante autocomplete suggesties\n  zijn. Meer info op [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)."
+          }
+        ]
+      }
+    }
+  ]
+}

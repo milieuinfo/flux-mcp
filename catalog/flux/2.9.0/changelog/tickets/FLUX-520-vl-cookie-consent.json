@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-520",
+  "entries": [
+    {
+      "id": "e8af42d",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-520"
+      ],
+      "scope": "vl-cookie-consent",
+      "components": [
+        "vl-cookie-consent"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "de hard-gecodeerde (oude) Matomo id's en url's verwijderd",
+      "text": "FLUX-520 - vl-cookie-consent - de hard-gecodeerde (oude) Matomo id's en url's verwijderd",
+      "commits": [
+        {
+          "sha": "e8af42d147de31b2a3cd0007fa6d4089c06f7a52",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e8af42d147de31b2a3cd0007fa6d4089c06f7a52"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/cookie-consent/util/analytics.util.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

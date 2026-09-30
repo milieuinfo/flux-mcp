@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-701",
+  "entries": [
+    {
+      "id": "20ffd3c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-701"
+      ],
+      "scope": "vl-header-next",
+      "components": [
+        "vl-header-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "PAPI profile token en idpData override toegevoegd",
+      "text": "FLUX-701 - vl-header-next - PAPI profile token en idpData override toegevoegd",
+      "commits": [
+        {
+          "sha": "20ffd3c42438c2b5a6f6f72507807832886d063a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/20ffd3c42438c2b5a6f6f72507807832886d063a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/next/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": "### PAPI profile token\n\nSinds global header v5 kan een PAPI profile token meegegeven worden aan de header. Hiermee toont de header automatisch de gegevens van de gebruiker (naam, hoedanigheden, ...). Zie [Profile API Integration Guide](https://docs.digitaal.vlaanderen.be/global-header/documents/Profile_API_Integration_Guide.html) van Digitaal Vlaanderen voor de achtergrond.\n\n`vl-header-next` ondersteunt twee manieren om het token mee te geven:\n\n1. **`profile-token-url` attribuut** (declaratief) — de component fetcht het token op deze endpoint van jouw backend wanneer de sessie geconfigureerd wordt. Standaard staat dit op `/sso/papi_token`, de endpoint van de Cumuli security lib. Verwachte response is het token als plain text (`text/plain`).\n\n    ```html\n    <vl-header-next\n        identifier=\"...\"\n        profile-token-url=\"/api/papi-token\"\n    ></vl-header-next>\n    ```\n\n2. **`idpProfileToken` JavaScript-property** (imperatief) — set het token direct vanuit je SPA. Heeft voorrang op `profile-token-url`. Handig wanneer je het token al in je client-side state hebt.\n\n    ```js\n    document.querySelector('vl-header-next').idpProfileToken = papiToken;\n    ```\n\nHet token wordt enkel aan `setProfile()` doorgegeven wanneer de gebruiker is aangemeld (`active: true`), conform de [vereiste van Digitaal Vlaanderen](https://docs.digitaal.vlaanderen.be/global-header/documents/Profile_API_Integration_Guide.html#3-frontend-passing-the-profile-token) dat `idpProfileToken` en `active: true` in dezelfde call moeten zitten.\n\n> **Waarom geen `idp-profile-token` HTML-attribuut?**\n> Het token is een bearer credential met korte levensduur. Een HTML-attribuut zou het token zichtbaar maken in View Source, server-side rendered HTML, MutationObservers van 3rd-party scripts en screenshots van de elementen-tab. Daarom wordt het token enkel via een URL-fetch of JS-property aanvaard — beide houden het token uit de DOM.\n\n### IdpData\n\nWanneer er geen PAPI token beschikbaar is, kan IdpData manueel meegegeven worden (bijvoorbeeld bij mock users via een lokale Keycloak). Twee manieren, met dezelfde precedentie als bij het token:\n\n1. **`idp-data-url` attribuut** — de component fetcht een JSON-response op deze endpoint.\n\n    ```html\n    <vl-header-next\n        identifier=\"...\"\n        idp-data-url=\"/api/idp-data\"\n    ></vl-header-next>\n    ```\n\n2. **`idpData` JavaScript-property** — set het IDPData-object direct.\n\n    ```js\n    document.querySelector('vl-header-next').idpData = {\n        user: { firstName: 'John', name: 'Doe' },\n        loginHint: 'user-login-hint',\n        identities: [/* ... */],\n    };\n    ```\n\nZie [IDPData interface](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/IDPData.html) voor het volledige type."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "breaking-1",
+      "type": "breaking",
+      "section": "BREAKING CHANGES",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "start van v2",
+      "text": "start van v2",
+      "commits": [],
+      "closes": [],
+      "derivedImpact": "action",
+      "labels": [],
+      "wcag": [],
+      "source": null
+    }
+  ]
+}

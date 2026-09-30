@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-93",
+  "entries": [
+    {
+      "id": "80a854e",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-93"
+      ],
+      "scope": "vl-autocomplete",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "accessibility en documentatie verbeteringen",
+      "text": "FLUX-93 - vl-autocomplete - accessibility en documentatie verbeteringen",
+      "commits": [
+        {
+          "sha": "80a854e48e8055e20312b334f3fa94507eb3959d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/80a854e48e8055e20312b334f3fa94507eb3959d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/autocomplete/vl-autocomplete.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-autocomplete--documentatie",
+            "title": "Components - Block/autocomplete",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

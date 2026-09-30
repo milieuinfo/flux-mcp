@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-227",
+  "entries": [
+    {
+      "id": "f42127f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-227"
+      ],
+      "scope": "vl-functional-header",
+      "components": [
+        "vl-functional-header"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-link"
+      ],
+      "summary": "back link als vl-link",
+      "text": "FLUX-227 - vl-functional-header - back link als vl-link",
+      "commits": [
+        {
+          "sha": "f42127fd1cc864341e4c33bc32664fd0b5889690",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f42127fd1cc864341e4c33bc32664fd0b5889690"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "tests": 5
+        },
+        "publishedFiles": [
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

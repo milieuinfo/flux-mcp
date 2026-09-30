@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-606",
+  "entries": [
+    {
+      "id": "33f4fad",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-606"
+      ],
+      "scope": "vl-textarea-rich",
+      "components": [
+        "vl-textarea-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "height attribuut toegevoegd",
+      "text": "FLUX-606 - vl-textarea-rich - height attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "33f4fad77b04340702a9ac104bfc4a072006de62",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/33f4fad77b04340702a9ac104bfc4a072006de62"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De vl-textarea-rich heeft nu altijd een expliciete `height` door aan TinyMCE (standaard 250px). Hierdoor heeft het `rows` attribuut geen effect meer.\n\nTechnische achtergrond: zonder expliciete `height` configuratie leest TinyMCE de `offsetHeight` van de native `<textarea>` (die wél beïnvloed wordt door `rows`), maar zet die waarde intern naar minimaal 400px via `Math.max(offsetHeight, 400)`. Dit zorgde ervoor dat `rows` enkel zichtbaar effect had bij meer dan ~19 rijen. Nu de component altijd `height` doorgeeft aan `tinymce.init()`, wordt deze interne logica volledig bypassed en is `rows` niet langer van toepassing.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts",
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": "    {`"
+          }
+        ]
+      }
+    }
+  ]
+}

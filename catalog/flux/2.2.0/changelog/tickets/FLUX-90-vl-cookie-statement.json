@@ -1,0 +1,50 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-90",
+  "entries": [
+    {
+      "id": "a16461c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-90"
+      ],
+      "scope": "vl-cookie-statement",
+      "components": [
+        "vl-cookie-statement"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-accessibility",
+        "vl-content-block"
+      ],
+      "summary": "vl-accessibility - geneste vl-content-block verwijderd",
+      "text": "FLUX-90 - vl-cookie-statement - vl-accessibility - geneste vl-content-block verwijderd",
+      "commits": [
+        {
+          "sha": "a16461c1f4e352d0f82d862165163e212200f4c2",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a16461c1f4e352d0f82d862165163e212200f4c2"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/bottom.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-77",
+  "entries": [
+    {
+      "id": "b230ad3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-77"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "choices.js bijgewerkt",
+      "text": "FLUX-77 - vl-select-rich - choices.js bijgewerkt",
+      "commits": [
+        {
+          "sha": "b230ad36854bbcab2e2b2f367f1c986c3efd4e21",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b230ad36854bbcab2e2b2f367f1c986c3efd4e21"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De vl-select-rich gebruikt choices.js library om de select aan te sturen. Bij deze is versie bijgewerkt van 10.2 naar 11.1. Daarnaast zijn ook enkele verbeteringen doorgevoerd in de component.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 2,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/styles/vl-select.dv-css.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.defaults.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": "### selectByValue(value: string | string[]): void\n\nVinkt 1 of meerdere opties aan op basis van de value.\n\n### removeSelectionByValue(value: string | string[]): void\n\nVinkt 1 of meerdere opties uit op basis van de value.\n\n### removeAllSelections(): void\n\nVinkt alle opties uit.\n\n[…]\n\n## Events\n\n### Change event\n\n[…]\n\nBij het selecteren of verwijderen van een optie (zowel programmatorisch als door de gebruiker) wordt het `vl-change`\nevent afgevuurd, het detail object van dit event bevat de value van de geselecteerde opties.<br/>\nGelijkaardig aan de `getSelected()` methode, bevat de value bij de single select 1 string en bij de\nmulti select een array van strings.\n\n[…]\n\n### Input event\n\n[…]\n\nWanneer de gebruiker een optie verwijdert of selecteert, wordt het `vl-input` event afgevuurd, het detail object van\ndit event bevat de value van de geselecteerde opties.<br/>\nGelijkaardig aan de `getSelected()` methode, bevat de value bij de single select 1 string en bij de multi select\neen array van strings.\n\n[…]\n\n### Search Event\n\n[…]\n\nWanneer de gebruiker een zoekopdracht uitvoert, wordt het `vl-search` event afgevuurd,\nhet detail object van dit event bevat de zoekterm die de gebruiker heeft ingegeven.<br/>\n\n[…]\n\nDe `select-rich` component kan 1 of meerdere waardes bevatten. Die waardes worden weergegeven als opties in de select\ncomponent.<br/> Om die opties te beheren, zijn er verschillende mogelijkheden:\n\n### met methods\n\nDe `select-rich` component heeft een aantal methodes die je kan gebruiken om de opties te beheren:\n\n- `selectByValue(value: string | string[])`: vinkt 1 of meerdere optie(s) aan\n- `removeSelectionByValue(value: string | string[])`: vinkt 1 of meerdere optie(s) uit\n- `removeAllSelections()`: vinkt alle opties uit\n\n### `options` property\n\n[…]\n\nAls de referentie van deze array verandert, wordt de Lit lifecycle getriggerd en wordt de select opnieuw\nopgebouwd op basis van de nieuwe opties.<br/>\nHierdoor is het noodzakelijk om de opties door te geven aan de select component met behulp van een variabele,\nen de opties niet direct in de template te zetten.<br/>\nIndien je de opties direct in de template zet, zal bij elke render de select opnieuw opgebouwd worden en de\ngekozen opties verwijderd worden.\n\n[…]\n\nDit betekent ook dat als je programmatorisch een optie wil veranderen, toevoegen of verwijderen,\nje de referentie van de array moet aanpassen.<br/>\n\n[…]\n\n### `initial-options` property\n\nDe `initial-options` property is een array van objecten die de opties van de select component bevatten.<br/>\nDeze zijn de standaard opties die worden getoond bij het laden van de pagina.<br/>\n\nAls de form reset, worden deze opties getoond in de select component.<br/>\n\nIndien je de `opties` direct in de template zet bij het laden van de `vl-select-rich`, worden deze intern ingesteld als\nde `initial-options` property.<br/>\n\n[…]\n\nMeer info over validatie binnen onze form componenten vind je hier:\n[Form - Validatie](/docs/ontwerp-form-validation--documentatie)\n\n[…]\n\n[Documentatie Digitaal Vlaanderen -\n    Select](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-select)\n\n[…]\n\n[Documentatie Digitaal Vlaanderen -\n    Multiselect](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-multiselect)"
+          }
+        ]
+      }
+    }
+  ]
+}

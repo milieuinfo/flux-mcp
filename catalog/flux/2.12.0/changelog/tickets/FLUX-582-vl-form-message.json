@@ -1,0 +1,50 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-582",
+  "entries": [
+    {
+      "id": "8686168",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-582"
+      ],
+      "scope": "vl-form-message",
+      "components": [
+        "vl-form-message"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-582 - vl-form-message - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "8686168e3ad9206b6619de1e84098c597f3fc10e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8686168e3ad9206b6619de1e84098c597f3fc10e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - resetStyle, formMessageStyle en vFormMessageFluxStyles (govflanders-style) vervangen door vlResetStyles en vlFormMessageComponentStyles\n - vl-form-message.component.raw.css aangemaakt met :host variabelen (font-size base, margin-top, margin-bottom)\n - vl-form-message.component.css.ts aangemaakt met volledige form message styles\n - vl-form-message.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--error, --vl-color--success)\n - marges via component-specifieke CSS variabelen (--vl-form-message--margin-*)\n - error en success states uitgewerkt met section comments\n - .vl-pre-line variant en icon styles (.vl-vi) behouden\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, content & validation\n - image snapshots toegevoegd voor visuele regressie testing (mount, visible, pre-line)\n - computed style assertion toegevoegd voor error kleur (color: rgb(210, 55, 60))",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 3,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/form-message/vl-form-message.component.css.ts",
+          "libs/components/src/form/form-message/vl-form-message.component.raw.css",
+          "libs/components/src/form/form-message/vl-form-message.component.ts",
+          "libs/components/src/form/form-message/vl-form-message.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

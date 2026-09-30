@@ -1,0 +1,326 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "date": "2026-05-22",
+  "previous": "2.13.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.13.0...v2.14.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 8,
+      "fix": 7,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 5,
+      "automatic": 5,
+      "none": 5
+    },
+    "a11y": 1
+  },
+  "components": [
+    {
+      "name": "vl-accordion",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-accordion--documentatie"
+    },
+    {
+      "name": "vl-breadcrumb",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-breadcrumb--documentatie"
+    },
+    {
+      "name": "vl-datepicker",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-datepicker--documentatie"
+    },
+    {
+      "name": "vl-doormat",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-doormat--documentatie"
+    },
+    {
+      "name": "vl-form-label",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-form-label--documentatie"
+    },
+    {
+      "name": "vl-group",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-map-wmts-layer",
+      "category": "map",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie"
+    },
+    {
+      "name": "vl-select",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-select--documentatie"
+    },
+    {
+      "name": "vl-side-navigation",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-block-side-navigation--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "25e8c24",
+      "ticket": "FLUX-209",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-209 - vl-breadcrumb - focus outline kleur correctie voor Edge",
+      "file": "tickets/FLUX-209-vl-breadcrumb.json"
+    },
+    {
+      "id": "b740b03",
+      "ticket": "FLUX-586",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-586 - vl-form-label - witruimte tussen label en vl-text annotation verholpen",
+      "file": "tickets/FLUX-586-vl-form-label.json"
+    },
+    {
+      "id": "ff79fff",
+      "ticket": "FLUX-589",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-589 - vl-datepicker - min-date / max-date en 'today' ondersteuning",
+      "file": "tickets/FLUX-589-vl-datepicker.json"
+    },
+    {
+      "id": "5b735a7",
+      "ticket": "FLUX-637",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-637 - vl-select - synchroniseer value na slot-mutatie",
+      "file": "tickets/FLUX-637-vl-select.json"
+    },
+    {
+      "id": "4e910c0",
+      "ticket": "FLUX-640",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-640 - vl-side-navigation - externe links navigeren nu correct",
+      "file": "tickets/FLUX-640-vl-side-navigation.json"
+    },
+    {
+      "id": "5d94a3a",
+      "ticket": "FLUX-642",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-642 - verify-release en finalise-release tijdens de feitelijke release",
+      "file": "tickets/FLUX-642.json"
+    },
+    {
+      "id": "f0b8e9b",
+      "ticket": null,
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "vl-map-wmts-layer - aanpassing aan flaky test",
+      "file": "tickets/f0b8e9b-vl-map-wmts-layer.json"
+    },
+    {
+      "id": "d8384d8",
+      "ticket": "FLUX-174",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-174 - basis documentatie voor de Matomo analytics",
+      "file": "tickets/FLUX-174.json"
+    },
+    {
+      "id": "6a996d2",
+      "ticket": "FLUX-204",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-204 - vl-accordion - alternatieve achtergrond kleur",
+      "file": "tickets/FLUX-204-vl-accordion-vl-group.json"
+    },
+    {
+      "id": "3902ea6",
+      "ticket": "FLUX-204",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-204 - vl-group - optionele eerste en laatste border",
+      "file": "tickets/FLUX-204-vl-accordion-vl-group.json"
+    },
+    {
+      "id": "9a8ae95",
+      "ticket": "FLUX-586",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-586 - vl-form-label - annotation attribuut toegevoegd",
+      "file": "tickets/FLUX-586-vl-form-label.json"
+    },
+    {
+      "id": "acc01b9",
+      "ticket": "FLUX-633",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-633 - referenties naar legacy documentatie verwijderd",
+      "file": "tickets/FLUX-633.json"
+    },
+    {
+      "id": "d0f604b",
+      "ticket": "FLUX-634",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-634 - agents - ondersteuning van verschillende AI profiles",
+      "file": "tickets/FLUX-634-agents.json"
+    },
+    {
+      "id": "5ba2037",
+      "ticket": "FLUX-635",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-635 - vl-doormat - title-only rendering zonder witruimte",
+      "file": "tickets/FLUX-635-vl-doormat.json"
+    },
+    {
+      "id": "e9c69d6",
+      "ticket": "FLUX-638",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-638 - vl-datepicker - native ondersteuning geschrapt",
+      "file": "tickets/FLUX-638-vl-datepicker.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-209",
+      "file": "tickets/FLUX-209-vl-breadcrumb.json",
+      "components": [
+        "vl-breadcrumb"
+      ],
+      "entries": [
+        "25e8c24"
+      ]
+    },
+    {
+      "ticket": "FLUX-586",
+      "file": "tickets/FLUX-586-vl-form-label.json",
+      "components": [
+        "vl-form-label"
+      ],
+      "entries": [
+        "b740b03",
+        "9a8ae95"
+      ]
+    },
+    {
+      "ticket": "FLUX-589",
+      "file": "tickets/FLUX-589-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "ff79fff"
+      ]
+    },
+    {
+      "ticket": "FLUX-637",
+      "file": "tickets/FLUX-637-vl-select.json",
+      "components": [
+        "vl-select"
+      ],
+      "entries": [
+        "5b735a7"
+      ]
+    },
+    {
+      "ticket": "FLUX-640",
+      "file": "tickets/FLUX-640-vl-side-navigation.json",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "entries": [
+        "4e910c0"
+      ]
+    },
+    {
+      "ticket": "FLUX-642",
+      "file": "tickets/FLUX-642.json",
+      "components": [],
+      "entries": [
+        "5d94a3a"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/f0b8e9b-vl-map-wmts-layer.json",
+      "components": [
+        "vl-map-wmts-layer"
+      ],
+      "entries": [
+        "f0b8e9b"
+      ]
+    },
+    {
+      "ticket": "FLUX-174",
+      "file": "tickets/FLUX-174.json",
+      "components": [],
+      "entries": [
+        "d8384d8"
+      ]
+    },
+    {
+      "ticket": "FLUX-204",
+      "file": "tickets/FLUX-204-vl-accordion-vl-group.json",
+      "components": [
+        "vl-accordion",
+        "vl-group"
+      ],
+      "entries": [
+        "6a996d2",
+        "3902ea6"
+      ]
+    },
+    {
+      "ticket": "FLUX-633",
+      "file": "tickets/FLUX-633.json",
+      "components": [],
+      "entries": [
+        "acc01b9"
+      ]
+    },
+    {
+      "ticket": "FLUX-634",
+      "file": "tickets/FLUX-634-agents.json",
+      "components": [],
+      "entries": [
+        "d0f604b"
+      ]
+    },
+    {
+      "ticket": "FLUX-635",
+      "file": "tickets/FLUX-635-vl-doormat.json",
+      "components": [
+        "vl-doormat"
+      ],
+      "entries": [
+        "5ba2037"
+      ]
+    },
+    {
+      "ticket": "FLUX-638",
+      "file": "tickets/FLUX-638-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "e9c69d6"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

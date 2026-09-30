@@ -1,0 +1,48 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-592",
+  "entries": [
+    {
+      "id": "8510a7c",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-592"
+      ],
+      "scope": "vl-spotlight, vl-infotext, vl-doormat",
+      "components": [
+        "vl-spotlight",
+        "vl-infotext",
+        "vl-doormat"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "extern icoon inline na titel geplaatst",
+      "text": "FLUX-592 - vl-spotlight, vl-infotext, vl-doormat - extern icoon inline na titel geplaatst",
+      "commits": [
+        {
+          "sha": "8510a7ca41ad23b8c85499469abd0a2783de8a40",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8510a7ca41ad23b8c85499469abd0a2783de8a40"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/doormat/vl-doormat.component.ts",
+          "libs/components/src/block/infotext/vl-infotext.component.ts",
+          "libs/components/src/block/spotlight/vl-spotlight.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

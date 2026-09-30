@@ -1,0 +1,146 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-282",
+  "entries": [
+    {
+      "id": "224d89d",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-282"
+      ],
+      "scope": "vl-side-sheet",
+      "components": [
+        "vl-side-sheet"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "instelbare \"top\" voor combinatie met sticky elementen",
+      "text": "FLUX-282 - vl-side-sheet - instelbare \"top\" voor combinatie met sticky elementen",
+      "commits": [
+        {
+          "sha": "224d89dc3b830e17ada19fc2a8aed67f33258843",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/224d89dc3b830e17ada19fc2a8aed67f33258843"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "02d6127",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-282"
+      ],
+      "scope": "vl-side-sheet",
+      "components": [
+        "vl-side-sheet"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-modal"
+      ],
+      "summary": "voor WCAG zelfde box-shadow als de vl-modal",
+      "text": "FLUX-282 - vl-side-sheet - voor WCAG zelfde box-shadow als de vl-modal",
+      "commits": [
+        {
+          "sha": "02d61279f1fdac0eab1fd48d19c3c130c0e6e370",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/02d61279f1fdac0eab1fd48d19c3c130c0e6e370"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "11f7bca",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-282"
+      ],
+      "scope": "vl-side-sheet",
+      "components": [
+        "vl-side-sheet"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen",
+      "text": "FLUX-282 - vl-side-sheet - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "11f7bca5061052ed549964c4ac4bc59f4a4ed24d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/11f7bca5061052ed549964c4ac4bc59f4a4ed24d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

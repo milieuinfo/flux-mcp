@@ -1,0 +1,49 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-746",
+  "entries": [
+    {
+      "id": "010e1fb",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-746"
+      ],
+      "scope": "vl-upload",
+      "components": [
+        "vl-upload"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "documenteren MiB vs MB voor max-size",
+      "text": "FLUX-746 - vl-upload - documenteren MiB vs MB voor max-size",
+      "commits": [
+        {
+          "sha": "010e1fbceedb5dd0d36468b7097003d2154d4332",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/010e1fbceedb5dd0d36468b7097003d2154d4332"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De Storybook-doc legt nu uit dat max-size achterliggend in MiB (1024-basis) wordt gevalideerd in plaats van MB, waarom de UI bewust \"MB\" blijft tonen, en hoe consumers hun backend-limiet best instellen.",
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": "Om deze functionaliteit te bekomen wordt er een `dropzoneValidator` gebruikt die overeenkomt met de `customError`\n[ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) key.\n\n[…]\n\n### Bestandsgrootte: MiB vs MB\n\nDe `max-size`-waarde wordt achterliggend door Dropzone (`maxFilesize`) binair geïnterpreteerd, dus in **MiB**\n(1024-basis), niet in **MB** (1000-basis). De UI en de foutmelding spreken bewust over \"MB\" omdat Windows - de\nvoornaamste use-case van onze doelgroep - diezelfde binaire waarden in de verkenner ook als \"MB\" toont. Voor de\neindgebruiker op Windows klopt het getal in de UI dus visueel.\n\nOp macOS of Linux (die bestandsgroottes decimaal in MB tonen) en bij een MB-validerende backend kan dat verschil\nverwarren. Een `max-size` van bijvoorbeeld `900` laat een bestand tot 900 MiB = 943.718.400 bytes toe, wat decimaal\nneerkomt op ~943,7 MB.\n\n> **Advies voor afnemers:** valideer de bestandsgrootte ook aan de backend-zijde en reken die in MB (1000-basis),\n zet die backend-limiet dan iets hoger dan `max-size`. Zo wordt een bestand dat de gebruiker volgens het upload-veld\n mag uploaden, niet alsnog door de backend geweigerd.\n\n[…]\n\nBreid de `sub-title`-attribuut uit met een korte uitleg over maximaal aantal bestanden, maximale bestandsgrootte en de\ntoegestane bestandstypes indien relevant.\n\n[…]\n\nDe reden hiervoor is dat het belangrijk is om de gebruiker te informeren over de beperkingen van het upload-veld. Het\nis cruciaal om duidelijke instructies te geven aan de gebruiker, zodat het risico op validatiefouten wordt verkleind.\n\n[…]\n\nselecteren in het bestandsmenu. Tenslotte is het ook mogelijk bestanden programmatorisch toe te voegen via de\n`addFile()` methode.\n\n[…]\n\ngebruik van inline styles. Deze inline styles worden niet toegelaten in een strikte [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)\npolicy."
+          }
+        ]
+      }
+    }
+  ]
+}

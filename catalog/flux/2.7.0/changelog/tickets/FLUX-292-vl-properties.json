@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-292",
+  "entries": [
+    {
+      "id": "f86b00b",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-292"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "warning verwijderd",
+      "text": "FLUX-292 - vl-properties - warning verwijderd",
+      "commits": [
+        {
+          "sha": "f86b00b91d1dc4c8873fc8d2c0cfb261bf443c93",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f86b00b91d1dc4c8873fc8d2c0cfb261bf443c93"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Storybook verbeterd",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.builder.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

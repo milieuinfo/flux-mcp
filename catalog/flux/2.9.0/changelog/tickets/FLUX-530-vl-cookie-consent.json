@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-530",
+  "entries": [
+    {
+      "id": "0d7fd70",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-530"
+      ],
+      "scope": "vl-cookie-consent",
+      "components": [
+        "vl-cookie-consent"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "de Matomo integratie is nu CSP compliant",
+      "text": "FLUX-530 - vl-cookie-consent - de Matomo integratie is nu CSP compliant",
+      "commits": [
+        {
+          "sha": "0d7fd70a51b4409865504e186c7e6d5822729236",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0d7fd70a51b4409865504e186c7e6d5822729236"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/cookie-consent/util/analytics.util.ts",
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-cookie-consent--documentatie",
+            "title": "Components - Compliance/cookie-consent",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-cookie-consent--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

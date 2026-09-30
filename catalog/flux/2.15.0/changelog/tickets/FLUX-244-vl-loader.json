@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-244",
+  "entries": [
+    {
+      "id": "10df2d4",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-244"
+      ],
+      "scope": "vl-loader",
+      "components": [
+        "vl-loader"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "tekst wordt correct getoond onafhankelijk van de code formattering",
+      "text": "FLUX-244 - vl-loader - tekst wordt correct getoond onafhankelijk van de code formattering",
+      "commits": [
+        {
+          "sha": "10df2d47f2ca12ac371deaaf495f97862fe1eee5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/10df2d47f2ca12ac371deaaf495f97862fe1eee5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De loader toont nu zijn `text`-attribuut of de default tekst ook wanneer de open- en sluittag op verschillende regels staan.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/loader/vl-loader.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

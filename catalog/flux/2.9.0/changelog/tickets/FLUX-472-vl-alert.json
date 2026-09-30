@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-472",
+  "entries": [
+    {
+      "id": "a0158a3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-472"
+      ],
+      "scope": "vl-alert",
+      "components": [
+        "vl-alert"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "hyphens: auto toegevoegd",
+      "text": "FLUX-472 - vl-alert - hyphens: auto toegevoegd",
+      "commits": [
+        {
+          "sha": "a0158a3e33f22ff061bd7cafef0a21d5e1430fc8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a0158a3e33f22ff061bd7cafef0a21d5e1430fc8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/vl-alert.flux-css.ts",
+          "libs/styles/src/base/mixin/vl-hyphenate.css.ts",
+          "libs/styles/src/index.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

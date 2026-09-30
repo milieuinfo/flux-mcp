@@ -1,0 +1,48 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-661",
+  "entries": [
+    {
+      "id": "efa4f9b",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-661"
+      ],
+      "scope": "vl-side-sheet, vl-tab-panel-next",
+      "components": [
+        "vl-side-sheet",
+        "vl-tab-panel-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "focus-outline enkel bij toetsenbordnavigatie",
+      "text": "FLUX-661 - vl-side-sheet, vl-tab-panel-next - focus-outline enkel bij toetsenbordnavigatie",
+      "commits": [
+        {
+          "sha": "efa4f9b46722723be224ca74dd591bfd61c23152",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/efa4f9b46722723be224ca74dd591bfd61c23152"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "De blauwe focus-outline rond een side-sheet en een tab-panel-next verschijnt niet langer bij klik of programmatisch openen/activeren. Toetsenbord-gebruikers behouden een zichtbare focus-indicator en het gedrag komt terug overeen met Flux v1.",
+        "published": true,
+        "areas": {
+          "styles": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/tabs/vl-tab-panel.flux-css.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

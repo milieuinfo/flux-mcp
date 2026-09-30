@@ -1,0 +1,18 @@
+{
+  "schema": 2,
+  "version": "2.12.1",
+  "previous": "2.12.0",
+  "commits": {
+    "30973877764ec977640cffb80910188eb7a24dc7": {
+      "sha": "30973877764ec977640cffb80910188eb7a24dc7",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 2
+      },
+      "publishedFiles": [],
+      "storybook": []
+    }
+  },
+  "unlisted": []
+}

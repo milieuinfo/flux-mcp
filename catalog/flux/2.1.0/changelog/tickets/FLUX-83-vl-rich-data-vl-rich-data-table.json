@@ -1,0 +1,64 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "ticket": "FLUX-83",
+  "entries": [
+    {
+      "id": "b211c93",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-83"
+      ],
+      "scope": "vl-rich-data / vl-rich-data-table",
+      "components": [
+        "vl-rich-data",
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "\"filter-max-width\" attribuut toegevoegd",
+      "text": "FLUX-83 - vl-rich-data / vl-rich-data-table - \"filter-max-width\" attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "b211c934285b61fdd4cd68a629367d2a48ea3b89",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b211c934285b61fdd4cd68a629367d2a48ea3b89"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 2,
+          "storybook": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts",
+          "libs/components/src/block/search-filter/vl-search-filter.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

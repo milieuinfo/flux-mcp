@@ -1,0 +1,48 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-596",
+  "entries": [
+    {
+      "id": "4b40d70",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-596"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-link"
+      ],
+      "summary": "vl-link default font size verwijderd",
+      "text": "FLUX-596 - vl-link default font size verwijderd",
+      "commits": [
+        {
+          "sha": "4b40d709502432530f1aed657c337598e02b983a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4b40d709502432530f1aed657c337598e02b983a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link-style/vl-link-style.css.ts",
+          "libs/components/src/block/upload-progress/vl-upload-progress.component.ts",
+          "libs/components/src/form/upload/vl-upload.component.css.ts",
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

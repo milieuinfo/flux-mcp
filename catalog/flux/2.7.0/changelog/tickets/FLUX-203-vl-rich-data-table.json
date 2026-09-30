@@ -1,0 +1,63 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-203",
+  "entries": [
+    {
+      "id": "85fcb5c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-203"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "fixes aan responsive layout",
+      "text": "FLUX-203 - vl-rich-data-table - fixes aan responsive layout",
+      "commits": [
+        {
+          "sha": "85fcb5c56232d8936d70bed9a47d2ef16fff22aa",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/85fcb5c56232d8936d70bed9a47d2ef16fff22aa"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 4,
+          "storybook": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts",
+          "libs/components/src/block/search-filter/vl-search-filter.css.ts",
+          "libs/components/src/block/table/vl-table.component.ts",
+          "libs/components/src/block/table/vl-table.css.ts",
+          "libs/styles/src/base/var/vl-z-layer.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

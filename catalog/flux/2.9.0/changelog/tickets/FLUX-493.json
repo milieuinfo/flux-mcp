@@ -1,0 +1,41 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-493",
+  "entries": [
+    {
+      "id": "508f573",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-493"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "componenten overzicht enkel onder 'Bijdragen', fix voor de component links",
+      "text": "FLUX-493 - componenten overzicht enkel onder 'Bijdragen', fix voor de component links",
+      "commits": [
+        {
+          "sha": "508f573fab5d229a14d2b16572b762df28dfdf9b",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/508f573fab5d229a14d2b16572b762df28dfdf9b"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

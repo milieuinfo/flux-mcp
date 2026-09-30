@@ -1,0 +1,77 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "a283455",
+      "type": "feature",
+      "section": "Features",
+      "issues": [],
+      "scope": "FLUX",
+      "components": [],
+      "topics": [
+        "FLUX"
+      ],
+      "mentions": [
+        "vl-header-next",
+        "vl-footer-next"
+      ],
+      "summary": "vl-header-next & vl-footer-next imports aangepast",
+      "text": "FLUX - vl-header-next & vl-footer-next imports aangepast",
+      "commits": [
+        {
+          "sha": "a2834559f8db3f7eb352f30e89c8396df5fdadb0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a2834559f8db3f7eb352f30e89c8396df5fdadb0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 10,
+          "docs": 2,
+          "storybook": 4,
+          "tests": 2,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation-toggle.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/compliance/index.ts",
+          "libs/components/src/compliance/next/footer/index.ts",
+          "libs/components/src/compliance/next/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/next/header/index.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-next-footer--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

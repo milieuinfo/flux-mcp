@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-696",
+  "entries": [
+    {
+      "id": "8180923",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-696"
+      ],
+      "scope": "vl-map-features-layer",
+      "components": [
+        "vl-map-features-layer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "OpenLayers features rechtstreeks toevoegen",
+      "text": "FLUX-696 - vl-map-features-layer - OpenLayers features rechtstreeks toevoegen",
+      "commits": [
+        {
+          "sha": "8180923d11c686e6191de3d4cc54919e2b063811",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8180923d11c686e6191de3d4cc54919e2b063811"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Consumers kunnen OpenLayers Feature-objecten nu rechtstreeks op een vl-map-features-layer zetten met addFeatures() en setFeatures(), zonder GeoJSON-roundtrip. Object-referenties (via feature.set(...)) en id's (via feature.setId(...)) blijven daardoor behouden; de workaround via de private __featuresSource is niet langer nodig. Werkt met en zonder cluster en triggert auto-extent/rerender zoals de bestaande GeoJSON-flows.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-layer-vector-layer-features-layer--documentatie",
+            "title": "map/layer/vector-layer/features-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+            "added": "## OpenLayers Feature-objecten rechtstreeks toevoegen\n\nNaast de GeoJSON-flows (`features`-attribuut, `addFeature`, `addFeatureCollection`) kan je ook OpenLayers\n`Feature`-objecten rechtstreeks op de laag zetten met `addFeatures(features)` (toevoegen) en `setFeatures(features)`\n(alles vervangen). Properties gezet via `feature.set(...)` en `feature.setId(...)` blijven daarbij behouden - er\ngebeurt geen GeoJSON-serialisatie.\n\nLet op: anders dan de GeoJSON-flows transformeren deze methodes de geometrie niet. De features moeten dus al in de\nkaartprojectie staan. Net als `addFeature` falen ze stil wanneer ze vóór `connectedCallback` worden aangeroepen.\n\n```js\n\nconst feature = new Feature({ geometry: new Point([x, y]) });\nfeature.setId(1);\nfeature.set('emissiebron', emissiebron);\n\nlayer.setFeatures([feature]);\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

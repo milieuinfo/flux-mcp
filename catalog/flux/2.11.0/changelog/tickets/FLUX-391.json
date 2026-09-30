@@ -1,0 +1,48 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-391",
+  "entries": [
+    {
+      "id": "d94d9de",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-391"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "titel met annotatie als patroon",
+      "text": "FLUX-391 - titel met annotatie als patroon",
+      "commits": [
+        {
+          "sha": "d94d9de190457e3577e13919e42f5823d1fb76ac",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d94d9de190457e3577e13919e42f5823d1fb76ac"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2,
+          "tests": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "patronen-typografie-titel-met-annotatie--documentatie",
+            "title": "Patronen/Typografie/Titel/met annotatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+            "added": "# Titel - met Annotatie\n\nEen annotatie kan naast een titel geplaatst worden om extra context te bieden.\n\n## Voorbeeld\n\n\n<details open>\n    <summary>Code</summary>\n    <Source code={\n        `<div class=\"vl-group vl-group--baseline\">\n            <vl-title type=\"h2\" no-space-bottom>Mijn sectie</vl-title>\n            <vl-text annotation>Optioneel</vl-text>\n        </div>`\n    } language=\"html\" dark={true}/>\n</details>"
+          }
+        ]
+      }
+    }
+  ]
+}

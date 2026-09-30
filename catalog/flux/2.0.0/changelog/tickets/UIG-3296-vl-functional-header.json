@@ -1,0 +1,92 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3296",
+  "entries": [
+    {
+      "id": "cbc5bb9",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "UIG-3296"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "ontbrekende reset styles toegevoegd",
+      "text": "UIG-3296 - ontbrekende reset styles toegevoegd",
+      "commits": [
+        {
+          "sha": "cbc5bb9bc7b5a547c97271a1dde780c698e90d9e",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/cbc5bb9bc7b5a547c97271a1dde780c698e90d9e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-spotlight storybook verbeteringen",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/spotlight/vl-spotlight.component.ts",
+          "libs/components/src/compliance/accessibility/vl-accessibility.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/vl-privacy.component.ts",
+          "libs/components/src/form/radio-group/vl-radio-group.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-spotlight--documentatie",
+            "title": "Components - Block/spotlight",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-block-spotlight--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "17f09bf",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "UIG-3296"
+      ],
+      "scope": "vl-functional-header",
+      "components": [
+        "vl-functional-header"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "reset styles toegevoegd",
+      "text": "UIG-3296 - vl-functional-header - reset styles toegevoegd",
+      "commits": [
+        {
+          "sha": "17f09bfc2894d0b10bcd43552097bb58b5ca6bb8",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/17f09bfc2894d0b10bcd43552097bb58b5ca6bb8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

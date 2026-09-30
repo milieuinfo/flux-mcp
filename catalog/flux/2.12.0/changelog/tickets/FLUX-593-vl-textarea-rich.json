@@ -1,0 +1,52 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-593",
+  "entries": [
+    {
+      "id": "bfb79f3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-593"
+      ],
+      "scope": "vl-textarea-rich",
+      "components": [
+        "vl-textarea-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-593 - vl-textarea-rich - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "bfb79f39c76330b4dff5e6166830fe897ee106f3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bfb79f39c76330b4dff5e6166830fe897ee106f3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - vlTextareaRichComponentFluxStyles (flux-css) vervangen door vlTextareaRichComponentStyles\n - vl-textarea-rich.component.raw.css aangemaakt met :host variabelen (font-size base, tbtn hover/enabled achtergrond, dialog label kleur, dialog schaduw)\n - vl-textarea-rich.component.css.ts aangemaakt met volledige textarea-rich styles\n - vl-textarea-rich.component.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--border-alt, --vl-color--text-alt, --vl-color--action, --vl-color--action-hover, --vl-color--white, --vl-focus--shadow, --vl-border--radius)\n - component-specifieke CSS variabelen voor kleuren zonder design system match (tbtn hover/enabled achtergrond, dialog label kleur, dialog schaduw)\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, events\n - beforeEach met viewport toegevoegd\n - image snapshots toegevoegd voor visuele regressie testing (mount, toolbar, plugins, preview)",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 3,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.css.ts",
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.flux-css.ts",
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.raw.css",
+          "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

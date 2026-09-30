@@ -1,0 +1,41 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-171",
+  "entries": [
+    {
+      "id": "9e267f4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-171"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "opkuis package dependencies mbt tinymce",
+      "text": "FLUX-171 - opkuis package dependencies mbt tinymce",
+      "commits": [
+        {
+          "sha": "9e267f492cf40a0441cf1455b85d0b4ab03270c1",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9e267f492cf40a0441cf1455b85d0b4ab03270c1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "examples": 1,
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

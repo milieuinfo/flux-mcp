@@ -1,0 +1,80 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-622",
+  "entries": [
+    {
+      "id": "e953c9a",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-622"
+      ],
+      "scope": "vl-rich-data",
+      "components": [
+        "vl-rich-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "verberg mobiele filterknop als er geen filter aanwezig is",
+      "text": "FLUX-622 - vl-rich-data - verberg mobiele filterknop als er geen filter aanwezig is",
+      "commits": [
+        {
+          "sha": "e953c9a47540ee4bafb5be23b1be3b9fe2089206",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e953c9a47540ee4bafb5be23b1be3b9fe2089206"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De mobiele filterknop (#open-filter) was altijd aanwezig in de DOM en werd enkel verborgen via een CSS media query op grotere schermen. Bij het verkleinen van het venster verscheen de knop daardoor ook wanneer er helemaal geen filter aanwezig was, en klikken deed niets.\n\nOpgelost door in __processSearchFilter() de #open-filter container expliciet te verbergen (hidden) als er geen filter geslot is, en zichtbaar te maken als er wel een filter aanwezig is.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "613d096",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-622"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "cypress componenttesten gemigreerd vanuit storybook E2E",
+      "text": "FLUX-622 - vl-rich-data-table - cypress componenttesten gemigreerd vanuit storybook E2E",
+      "commits": [
+        {
+          "sha": "613d096ab509fe9d458de1633a0a90752657581c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/613d096ab509fe9d458de1633a0a90752657581c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tests": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

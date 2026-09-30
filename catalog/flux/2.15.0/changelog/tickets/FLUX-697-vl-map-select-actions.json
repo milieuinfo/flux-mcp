@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-697",
+  "entries": [
+    {
+      "id": "63eef49",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-697"
+      ],
+      "scope": "vl-map-select-actions",
+      "components": [
+        "vl-map-select-actions"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "actief zolang één layer zichtbaar",
+      "text": "FLUX-697 - vl-map-select-actions - actief zolang één layer zichtbaar",
+      "commits": [
+        {
+          "sha": "63eef490e0872a05bb2fc35f8b06aafaa5b9892a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/63eef490e0872a05bb2fc35f8b06aafaa5b9892a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Een select-actions die aan meerdere layers gekoppeld is, blijft nu bruikbaar zolang minstens één gekoppelde layer zichtbaar is en deactiveert pas wanneer alle gekoppelde layers verborgen zijn. Voorheen verloor een multi-layer selectie-actie zijn werking zodra één layer werd verborgen of getoond.",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 5
+        },
+        "publishedFiles": [
+          "libs/map/src/actions/map/map-with-actions.ts",
+          "libs/map/src/actions/mapaction.ts",
+          "libs/map/src/actions/select/select-actions.ts",
+          "libs/map/src/components/action/vl-map-action.ts",
+          "libs/map/src/vl-map.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "title": "map/action/layer-action/select-action/multiselect-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "added": "## Zichtbaarheid bij meerdere kaartlagen\n\nEen `map-multiselect-actions` die aan meerdere kaartlagen gekoppeld is, blijft bruikbaar zolang minstens één\ngekoppelde kaartlaag zichtbaar is. De actie deactiveert pas wanneer álle gekoppelde kaartlagen verborgen zijn.<br/>\nGebruik de layer-switcher in de side-sheet om `layer-1` en `layer-2` te tonen of te verbergen en het gedrag te testen:\n\n- Verberg één kaartlaag → de selectie-actie blijft actief (selecteren in de zichtbare laag werkt nog).\n- Verberg beide kaartlagen → de selectie-actie deactiveert.\n- Maak opnieuw één kaartlaag zichtbaar → de selectie-actie wordt terug actief.\n\n\n\n<details>\n    <summary>Toon code</summary>\n</details>"
+          }
+        ]
+      }
+    }
+  ]
+}

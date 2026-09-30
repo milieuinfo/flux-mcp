@@ -1,0 +1,93 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-482",
+  "entries": [
+    {
+      "id": "bbbacb8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-482"
+      ],
+      "scope": "vl-privacy",
+      "components": [
+        "vl-privacy"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-stacked"
+      ],
+      "summary": "genest grid omgezet naar vl-stacked",
+      "text": "FLUX-482 - vl-privacy - genest grid omgezet naar vl-stacked",
+      "commits": [
+        {
+          "sha": "bbbacb8b19211ac1ddb8fb63ebc27079f1099b6f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/bbbacb8b19211ac1ddb8fb63ebc27079f1099b6f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "6ff59e3",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-482"
+      ],
+      "scope": "vl-stacked",
+      "components": [
+        "vl-stacked"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie van losstaande 'vl-stacked'",
+      "text": "FLUX-482 - vl-stacked - introductie van losstaande 'vl-stacked'",
+      "commits": [
+        {
+          "sha": "6ff59e3dcc5bdf55bea154f9c60fe6720984b4e9",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6ff59e3dcc5bdf55bea154f9c60fe6720984b4e9"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/styles/src/layout/stacked/vl-stacked.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "styles-layout-stacked--documentatie",
+            "title": "Styles/Layout (afnemers)/stacked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/styles-layout-stacked--documentatie",
+            "added": " voegt witruimte toe tussen de kinderen. Indien je niet in een Grid of Flexbox container zit, dien je\n `vl-stacked` toe te voegen, deze voorziet een Flexbox in kolom layout."
+          }
+        ]
+      }
+    }
+  ]
+}

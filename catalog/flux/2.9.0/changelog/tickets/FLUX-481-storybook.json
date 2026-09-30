@@ -1,0 +1,63 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-481",
+  "entries": [
+    {
+      "id": "45317b1",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-481"
+      ],
+      "scope": "storybook",
+      "components": [],
+      "topics": [
+        "storybook"
+      ],
+      "mentions": [],
+      "summary": "flux-sidebar verbeteringen",
+      "text": "FLUX-481 - storybook - flux-sidebar verbeteringen",
+      "commits": [
+        {
+          "sha": "45317b138de1b76cf2beb8488c699e011d3f1e80",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/45317b138de1b76cf2beb8488c699e011d3f1e80"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 3,
+          "storybook": 5,
+          "tests": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-compliance-next-footer--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-next-header--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "        <td>[Footer [next]](/docs/components-compliance-next-footer--documentatie)</td>\n\n[…]\n\n        <td>[Header [next]](/docs/components-compliance-next-header--documentatie)</td>"
+          }
+        ]
+      }
+    }
+  ]
+}

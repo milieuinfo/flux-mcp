@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "ticket": "FLUX-73",
+  "entries": [
+    {
+      "id": "ed87be7",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-73"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "oplossing voor keydown broncode in html",
+      "text": "FLUX-73 - vl-select-rich - oplossing voor keydown broncode in html",
+      "commits": [
+        {
+          "sha": "ed87be7bc987fce2e7b9bc137c9b1caaea133fdf",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ed87be7bc987fce2e7b9bc137c9b1caaea133fdf"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

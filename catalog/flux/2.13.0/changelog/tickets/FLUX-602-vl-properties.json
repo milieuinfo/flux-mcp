@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-602",
+  "entries": [
+    {
+      "id": "60cd5de",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-602"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "no-padding-bottom attribuut toegevoegd, woorden splitsen waar mogelijk, label en data elementen uitfaseren",
+      "text": "FLUX-602 - vl-properties - no-padding-bottom attribuut toegevoegd, woorden splitsen waar mogelijk, label en data elementen uitfaseren",
+      "commits": [
+        {
+          "sha": "60cd5debbbf6642cfc79eef49042ca91de7fd16e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/60cd5debbbf6642cfc79eef49042ca91de7fd16e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "storybook": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.builder.ts",
+          "libs/components/src/block/properties/vl-properties.css.ts",
+          "libs/components/src/block/properties/vl-properties.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,492 @@
+{
+  "schema": 2,
+  "version": "2.13.0",
+  "previous": "2.12.1",
+  "commits": {
+    "a993629cda8b9f621acfd3fa67489b0aea963a5c": {
+      "sha": "a993629cda8b9f621acfd3fa67489b0aea963a5c",
+      "body": "(cherry picked from commit 79b2a9bc59b8dd6823a085e72b8dad8bccf52245)",
+      "published": false,
+      "areas": {
+        "tooling": 2
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "78c7c52e37483006c86bc6859cedd45f724093a5": {
+      "sha": "78c7c52e37483006c86bc6859cedd45f724093a5",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+      ],
+      "storybook": []
+    },
+    "23b005f3947a56f21fb6212755fe49a47c12791f": {
+      "sha": "23b005f3947a56f21fb6212755fe49a47c12791f",
+      "body": "De titel-container had een vaste `height: 2.7rem`, waardoor lange titels die over meerdere regels wrapten visueel uit hun box liepen en sibling-elementen (bv. `vl-search-result-text`, `vl-button`) overlapten.\n\nFix: `height` vervangen door `min-height` in `vl-search-result.css.ts`. Het blok behoudt zijn minimale hoogte voor éénregelige titels (identieke rendering, `line-height` blijft 2.7rem) maar groeit mee bij multiline content.\n\nExtra Cypress-test toegevoegd die een `vl-search-result` met lange wrappende titel mount en controleert dat de volgende sibling niet overlapt met de titel-container.\n\nKeuze: Voorstel 1 uit het refinement gevolgd (minimale diff, geen impact op bestaande single-line layouts). Voorstel 2 (`height` verwijderen + `line-height` normaliseren) werd bewust niet gekozen om breaking-change-risico bij consumers te vermijden.",
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/search-result/vl-search-result.css.ts"
+      ],
+      "storybook": []
+    },
+    "e953c9a47540ee4bafb5be23b1be3b9fe2089206": {
+      "sha": "e953c9a47540ee4bafb5be23b1be3b9fe2089206",
+      "body": "De mobiele filterknop (#open-filter) was altijd aanwezig in de DOM en werd enkel verborgen via een CSS media query op grotere schermen. Bij het verkleinen van het venster verscheen de knop daardoor ook wanneer er helemaal geen filter aanwezig was, en klikken deed niets.\n\nOpgelost door in __processSearchFilter() de #open-filter container expliciet te verbergen (hidden) als er geen filter geslot is, en zichtbaar te maken als er wel een filter aanwezig is.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+      ],
+      "storybook": []
+    },
+    "78d707168f94c114928f0842f9d4e367ff33f495": {
+      "sha": "78d707168f94c114928f0842f9d4e367ff33f495",
+      "body": "De `vl-input` event werd gedocumenteerd (via de geërfde args van `vl-textarea`) maar nooit afgevuurd in `vl-textarea-rich`. Oorzaak: de TinyMCE editor-listener zette wel `this.value`, maar niet `this.dispatchInput = true`, waardoor het dispatch-mechanisme in `VlTextareaComponent.updated()` de `vl-input` oversloeg.\n\nWijziging (Voorstel 1 uit refinement-rapport):\n- `vl-textarea-rich.component.ts`: `this.dispatchInput = true` toegevoegd vóór de `this.value`-toewijzing in de TinyMCE `input change redo undo` listener. Hergebruikt volledig het bestaande parent-dispatch-pad, garandeert de volgorde `vl-change` → `vl-input` in één updated()-cyclus en vermijdt duplicatie van het event-contract.\n\nTests:\n- Nieuw `describe('vl-textarea-rich - events', ...)` met twee Cypress component-tests:\n  - dispatcht `vl-input` + `vl-change` bij een TinyMCE input-event, en `detail.value` bevat de actuele HTML-inhoud;\n  - programmatisch wijzigen van `value` (via attribuut) dispatcht enkel `vl-change`, geen `vl-input` — dekt het risico af dat `editor.setContent()` onbedoeld `vl-input` zou triggeren.\n- Patroon spiegelt `vl-textarea.component.cy.ts` events-describe.\n\nGeen breaking changes: consumers die al op `vl-change` leunen blijven werken, `vl-input` begint nu óók te vuren conform de API-docs.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "440d5ceeb60b51b19c91249ddb24ddbc93b1be2f": {
+      "sha": "440d5ceeb60b51b19c91249ddb24ddbc93b1be2f",
+      "body": null,
+      "published": false,
+      "areas": {
+        "storybook": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "5a76a786a0cf28392429723d89afb1fcc90cb7cd": {
+      "sha": "5a76a786a0cf28392429723d89afb1fcc90cb7cd",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 7,
+        "styles": 3,
+        "docs": 1,
+        "storybook": 3,
+        "tests": 5
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/index.ts",
+        "libs/components/src/block/next/tabs/index.ts",
+        "libs/components/src/block/next/tabs/vl-tab-link.component.ts",
+        "libs/components/src/block/next/tabs/vl-tab-panel.component.ts",
+        "libs/components/src/block/next/tabs/vl-tab-panel.flux-css.ts",
+        "libs/components/src/block/next/tabs/vl-tab.component.ts",
+        "libs/components/src/block/next/tabs/vl-tab.flux-css.ts",
+        "libs/components/src/block/next/tabs/vl-tabs.component.ts",
+        "libs/components/src/block/next/tabs/vl-tabs.defaults.ts",
+        "libs/components/src/block/next/tabs/vl-tabs.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-next-tabs--documentatie",
+          "title": "Components - Block/next/tabs",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie",
+          "added": "# Tabs Next\n\n\n## Doel\n\nGebruik deze component om content op te delen in verschillende tabbladen.\n\nDit component heeft twee varianten:\n\n- **Standaard tabs patroon**:\n    - Deze variant wordt best gebruikt als **widget op een pagina** en niet als navigatie element.\n    - Deze implementatie volgt de [ARIA tab patroon richtlijnen](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) voor `role=\"tablist\"`.\n    - De tabs zijn bedienbaar met de pijltjestoetsen.\n    - De tabpanelen worden allemaal gerenderd, maar enkel het selecteerde tabpaneel wordt getoond.\n    - Bij deze variant gebruik je de `<vl-tab-next>` als tab elementen en de `<vl-tab-panel-next>` als tabpanelen.\n- **Horizontale navigatie**:\n    - Deze variant implementeert geen `role=\"tablist\"` maar doet dienst als **navigatie element**.\n    - Bij deze variant gebruik je de `<vl-tab-link-next>` als tab elementen.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-tabs-next label=\"Mijn tabs widget\">\n    <vl-tab-next id=\"tab1\" panel=\"tabpanel1\">Trein</vl-tab-next>\n    <vl-tab-next id=\"tab2\" panel=\"tabpanel2\">Metro, tram en bus</vl-tab-next>\n    <vl-tab-next id=\"tab2\" panel=\"tabpanel2\">Fiets</vl-tab-next>\n    <div id=\"tabpanel1\" role=\"tabpanel\" slot=\"panel\" aria-labelledby=\"tab1\" tabindex=\"0\">Tab 1</div>\n    <div id=\"tabpanel2\" role=\"tabpanel\" slot=\"panel\" aria-labelledby=\"tab2\" tabindex=\"0\">Tab 2</div>\n</vl-tabs-next>\n```\n\n\n## Configuratie\n\n\n## Varianten\n\n### Horizontale navigatie\n\n```js\n```\n\n```html\n<vl-tabs-next label=\"Mijn navigatie\">\n    <vl-tab-link-next href=\"#tab1\">Trein</vl-tab-link-next>\n    <vl-tab-link-next href=\"#tab2\">Metro, tram en bus</vl-tab-link-next>\n    <vl-tab-link-next href=\"https://www.vlaanderen.be/intern/werkplek/dienstreizen-en-woon-werkverkeer/vervoersmiddelen/fietsen\" external>Fiets</vl-tab-link-next>\n</vl-tabs-next>\n```"
+        }
+      ]
+    },
+    "e11c696057b927a2da6e496116c75789298b4810": {
+      "sha": "e11c696057b927a2da6e496116c75789298b4810",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 7,
+        "styles": 2,
+        "docs": 4,
+        "storybook": 4,
+        "tests": 4,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/index.ts",
+        "libs/components/src/block/next/tabs/index.ts",
+        "libs/components/src/block/next/tabs/vl-tab-link.component.ts",
+        "libs/components/src/block/next/tabs/vl-tab-panel.component.ts",
+        "libs/components/src/block/next/tabs/vl-tab.component.ts",
+        "libs/components/src/block/next/tabs/vl-tab.flux-css.ts",
+        "libs/components/src/block/next/tabs/vl-tabs.component.ts",
+        "libs/components/src/block/next/tabs/vl-tabs.defaults.ts",
+        "libs/components/src/block/next/tabs/vl-tabs.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-functional-header--documentatie",
+          "title": "Components - Block/functional-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-next-tabs--documentatie",
+          "title": "Components - Block/next/tabs",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie",
+          "added": "- **Standaard tabs patroon**:\n\n[…]\n\n    - Deze implementatie volgt de [ARIA tab patroon richtlijnen](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) voor `role=\"tablist\"`.\n    - De tabs zijn bedienbaar met de pijltjestoetsen.\n    - De tabpanelen worden allemaal gerenderd, maar enkel het selecteerde tabpaneel wordt getoond.\n\n[…]\n\n- **Horizontale navigatie**:\n\n[…]\n\n<vl-tabs-next label=\"Mijn tab widget\">\n\n[…]\n\n    <vl-tab-next id=\"tab3\" panel=\"tabpanel3\">Fiets</vl-tab-next>\n\n    <vl-tab-panel-next id=\"tabpanel1\" slot=\"panel\" aria-labelledby=\"tab1heading\">\n        <vl-title type=\"h2\" id=\"tab1heading\">Trein</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n    <vl-tab-panel-next id=\"tabpanel2\" slot=\"panel\" aria-labelledby=\"tab2heading\">\n        <vl-title type=\"h2\" id=\"tab2heading\">Metro, tram en bus</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n    <vl-tab-panel-next id=\"tabpanel3\" slot=\"panel\" aria-labelledby=\"tab3heading\">\n        <vl-title type=\"h2\" id=\"tab3heading\">Fiets</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n\n[…]\n\n    <vl-tab-link-next\n        href=\"https://www.vlaanderen.be/intern/werkplek/dienstreizen-en-woon-werkverkeer/vervoersmiddelen/fietsen\"\n        external\n        >Fiets</vl-tab-link-next\n    >"
+        },
+        {
+          "id": "patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+          "title": "Patronen/Navigatie/Functionele Header/met back en tabs",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+          "added": null
+        },
+        {
+          "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "title": "Planning/Van v2 naar v3 - beschikbaar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "added": "### Tabs\n\n`Tabs [legacy]` wordt vervangen door `Tabs [next]`. Deze component is herschreven om naast een standaard Tab-widget ook een standaard horizontale navigatie mogelijk te maken. Daarnaast zijn er ook verbeteringen aangebracht om de ARIA standaarden voor de Tab-widget en Listbox-widget beter te implementeren.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Tabs [legacy]](/docs/components-block-tabs-tabs--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-tabs>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Tabs [next]](/docs/components-block-next-tabs--documentatie)</td>\n        <td>release v2.13.0</td>\n        <td>components/block/next</td>\n        <td><code>{`<vl-tabs-next>`}</code></td>\n        <td>components/block</td>\n        <td><code>{`<vl-tabs>`}</code></td>\n    </tr>\n</table>"
+        }
+      ]
+    },
+    "51b392cb3aded9300bd2cadab63612ad165183c5": {
+      "sha": "51b392cb3aded9300bd2cadab63612ad165183c5",
+      "body": null,
+      "published": false,
+      "areas": {
+        "examples": 5,
+        "tests": 5,
+        "tooling": 6
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "5c3536424bdda6c9cd183bc8f7d03218a6f20e01": {
+      "sha": "5c3536424bdda6c9cd183bc8f7d03218a6f20e01",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 7,
+        "styles": 3,
+        "docs": 1,
+        "storybook": 5,
+        "tests": 3,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/contact-card/vl-contact-card.flux-css.ts",
+        "libs/components/src/block/properties/vl-properties.component.ts",
+        "libs/components/src/block/properties/vl-properties.css.ts",
+        "libs/components/src/block/properties/vl-properties.model.ts",
+        "libs/components/src/block/search-result/vl-search-result-properties.css.ts",
+        "libs/components/src/compliance/accessibility/child/content.component.ts",
+        "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts",
+        "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+        "libs/components/src/compliance/privacy/child/bottom.component.ts",
+        "libs/components/src/compliance/privacy/child/content.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-contact-card--documentatie",
+          "title": "Components - Block/contact-card",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-contact-card--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-properties--documentatie",
+          "title": "Components - Block/properties",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-properties--documentatie",
+          "added": "    class?: string; // column / column--full-width / stacked (collapsed)\n\n[…]\n\n### Stacked\n\n[…]\n\nafgedwongen worden via de `stacked` class (`stacked` vervangt de deprecated class `collapsed`)."
+        },
+        {
+          "id": "components-block-search-result--documentatie",
+          "title": "Components - Block/search-result",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-search-result--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "f0e6ad083a2f6f998bb3be2ede6aa4df4c44c409": {
+      "sha": "f0e6ad083a2f6f998bb3be2ede6aa4df4c44c409",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/title/vl-title.component.ts",
+        "libs/components/src/atom/title/vl-title.css.ts",
+        "libs/components/src/atom/title/vl-title.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-title--documentatie",
+          "title": "Components - Atom/title",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-atom-title--documentatie",
+          "added": "## Varianten\n\n### Underline\n\n\n### No space bottom\n\n\n### Alt\n\n\n### Appearance\n\nGebruik `appearance` alleen wanneer visuele hiërarchie afwijkt van semantische hiërarchie.\n\nDe heading‑rangorde moet altijd logisch blijven voor screenreaders en SEO."
+        }
+      ]
+    },
+    "64173178412f7691a99b3df73985967f2d6d7e99": {
+      "sha": "64173178412f7691a99b3df73985967f2d6d7e99",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 3,
+        "styles": 2,
+        "docs": 1,
+        "storybook": 4,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/steps/vl-duration-step.component.ts",
+        "libs/components/src/block/steps/vl-duration-step.flux-css.ts",
+        "libs/components/src/block/steps/vl-step.component.ts",
+        "libs/components/src/block/steps/vl-step.flux-css.ts",
+        "libs/components/src/block/steps/vl-steps.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-steps-step--documentatie",
+          "title": "Components - Block/steps/step",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-steps-steps--documentatie",
+          "title": "Components - Block/steps/steps",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+          "added": "#### vl-duration-step\n\nEen `<vl-duration-step>` moet je zien als een onderdeel van een `<vl-step>` en hoort dus in een eigen `<ul>` lijst\nelement te staan. Plaats hem daarvoor in de `<vl-step>` met het slot \"duration\".\n\n```html\n<vl-step>\n    ...\n    <vl-duration-step slot=\"duration\">...</vl-duration-step>\n</vl-step>\n```\n\n[…]\n\n## Toegankelijkheid\n\n### icon-aria-label en timeline-aria-label\n\nBij het gebruik van de \"iconen\" of \"tijdlijn\" varianten is het aangeraden om respectievelijk de attributen\n`icon-aria-label` en `timeline-aria-label` in te vullen op het `<vl-step>`-component. Dit kan een label voor het icoon\nof de volledige datum bevatten.\n\n### heading-level\n\nOm de logische volgorde van de pagina headings te respecteren kan je een `heading-level` meegeven. Hiermee kan je ipv\nde standaard `<h3>`-heading, `<h1>` tot `<h6>` laten renderen."
+        }
+      ]
+    },
+    "1834b2f37c07c1c3b3b0447c9f1c3e199cbf1763": {
+      "sha": "1834b2f37c07c1c3b3b0447c9f1c3e199cbf1763",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "6b50faa7a6987a8b8898838b2824b702ac6418af": {
+      "sha": "6b50faa7a6987a8b8898838b2824b702ac6418af",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1,
+        "storybook": 2,
+        "tooling": 3
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "aa8cfa9537fbc9ceec6f5dfa3f2d0bbdfdaff3cd": {
+      "sha": "aa8cfa9537fbc9ceec6f5dfa3f2d0bbdfdaff3cd",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/doormat/vl-doormat.component.ts",
+        "libs/components/src/block/doormat/vl-doormat.css.ts",
+        "libs/components/src/block/doormat/vl-doormat.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-doormat--documentatie",
+          "title": "Components - Block/doormat",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-doormat--documentatie",
+          "added": "### Verticaal vullend\n\nDe doormat krijgt een hoogte van 100%. Dit werkt enkel wanneer de container een vaste hoogte heeft.\n\nDit kan je doen door bv. met een `vl-grid` layout werken, met meerdere doormat components als directe kinderen.\nVervolgens op elke doormat de CSS-classes `vl-column`, `vl-column--align-self-stretch` en de gewenste breedteclasses\nplaatsen."
+        }
+      ]
+    },
+    "7fe388037b88d3838beec2c4981c273bffd9044d": {
+      "sha": "7fe388037b88d3838beec2c4981c273bffd9044d",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/pill/vl-pill.component.ts",
+        "libs/components/src/block/pill/vl-pill.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-pill--documentatie",
+          "title": "Components - Block/pill",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-pill--documentatie",
+          "added": "# Pill\n\n\n## Doel\n\nGebruik de `pill` component voor het tonen van statussen, toegepaste filters, badges, etc.<br/>\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-pill></vl-pill>\n```\n\n\n\n## Configuratie\n\n\n\n## Varianten\n\n### Alle varianten\n\n\n### Aangepaste kleuren\n\nDe kleuren van vl-pill zijn aanpasbaar met de volgende CSS variabelen:\n\n```css\n/* Default */\n--vl-pill--border-color: var(--vl-color--border-alt);\n--vl-pill--text-color: var(--vl-color--text-alt);\n--vl-pill--background-color: #fff;\n/* Hover */\n--vl-pill--border-color-action: var(--vl-color--action);\n--vl-pill--text-color-action: var(--vl-color--action);\n--vl-pill--background-color-action: var(--vl-color--background-action-subtle);\n```\n\n**Tip**: maak globale klassen om aangepaste pills te definiëren: `<vl-pill class=\"paarse-pil\">paarse pil</vl-pill>`\n\n\n## Toegankelijkheid\n\nKleur mag nooit het enige middel zijn om informatie over te brengen. Gebruik altijd een combinatie van kleur, tekst\nen iconografie voor maximale toegankelijkheid.\n\nControleer aangepaste kleuren op contrast en pas de verschillende kleurenblindheid emulaties toe.\n\n### Kleurencontrast\n\nOpen Chrome Developer Tools, inspecteer het element. Er wordt een tooltip getoond met een groen vinkje indien\nhet kleurencontrast voldoende is.\n\n### Kleurenblindheid emulatie\n\nIndien je verschillende pills met aangepaste kleuren gemaakt hebt, plaats deze dan samen op een pagina.\nOpen Chrome Developer Tools, open het \"Rendering\" paneel. Hieronder vind je [Emulate vision deficiencies](https://dev.to/josefine/accessibility-testing-with-chrome-devtools-2bl4#emulate-vision-deficiencies). Ga door de\nverschillende opties en controleer of je steeds alle verschillende kleuren kan onderscheiden. Soms is het beter om 1\ntint te kiezen met verschillende helderheden. Op de [kleurenpalet-pagina](/docs/styles-kleurenpalet--documentatie) vind\nje voorbeelden van kleuren die op deze manier getest zijn."
+        }
+      ]
+    },
+    "60cd5debbbf6642cfc79eef49042ca91de7fd16e": {
+      "sha": "60cd5debbbf6642cfc79eef49042ca91de7fd16e",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "storybook": 4
+      },
+      "publishedFiles": [
+        "libs/components/src/block/properties/vl-properties.builder.ts",
+        "libs/components/src/block/properties/vl-properties.css.ts",
+        "libs/components/src/block/properties/vl-properties.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-properties--documentatie",
+          "title": "Components - Block/properties",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-properties--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "33f4fad77b04340702a9ac104bfc4a072006de62": {
+      "sha": "33f4fad77b04340702a9ac104bfc4a072006de62",
+      "body": "De vl-textarea-rich heeft nu altijd een expliciete `height` door aan TinyMCE (standaard 250px). Hierdoor heeft het `rows` attribuut geen effect meer.\n\nTechnische achtergrond: zonder expliciete `height` configuratie leest TinyMCE de `offsetHeight` van de native `<textarea>` (die wél beïnvloed wordt door `rows`), maar zet die waarde intern naar minimaal 400px via `Math.max(offsetHeight, 400)`. Dit zorgde ervoor dat `rows` enkel zichtbaar effect had bij meer dan ~19 rijen. Nu de component altijd `height` doorgeeft aan `tinymce.init()`, wordt deze interne logica volledig bypassed en is `rows` niet langer van toepassing.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts",
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-textarea-rich--documentatie",
+          "title": "Components - Form/textarea-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+          "added": "    {`"
+        }
+      ]
+    },
+    "946f71ad333c54912afd69e07413cea9b91bf58a": {
+      "sha": "946f71ad333c54912afd69e07413cea9b91bf58a",
+      "body": "Vervang de conditionele innerHTML/childNodes-ternary in buildItems door onvoorwaardelijk moveChildNodes([...element.childNodes], clone). Hierdoor blijven Lit comment-markers (<!--?lit$…?-->) echte DOM Comment-nodes en worden niet meer via innerHTML als tekst geserialiseerd. Consumers hoeven hun Lit-expressies in <label>/<data> niet langer in een extra <span> te wrappen.\n\nInterne variabelen labels/data van buildItems zijn nu getypeerd als Node[][] (was any[]); het publieke Item-type in vl-properties.model.ts (string[] | Node[][]) blijft ongewijzigd — geen breaking change voor consumers die props via attribute doorgeven.\n\nTrade-off: plain-text assertions in vl-properties.builder.spec.ts gaan nu over Text-nodes i.p.v. strings; visueel resultaat in Lit is identiek. Aparte unit-test toegevoegd voor het Lit-marker scenario met Comment + Text + Comment childNodes.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/properties/vl-properties.builder.ts"
+      ],
+      "storybook": []
+    },
+    "66cc1f9fb1a72277e29b16c5219f23fc68eee58f": {
+      "sha": "66cc1f9fb1a72277e29b16c5219f23fc68eee58f",
+      "body": "Spiegelt het dispatchInput-patroon uit VlTextareaComponent in beide rich-varianten zodat vl-input strikt alleen op user-interactie vuurt.\n\nvl-textarea-rich:\n- TinyMCE listener gesplitst: alleen het `input`-event zet dispatchInput = true; `change redo undo` updaten wel de waarde maar zonder flag.\n- Parent's updated() dispatcht vl-input op basis van de flag.\n\nvl-select-rich:\n- Fragiele onInput() (op native select @change) verwijderd, inclusief @change-binding in de template.\n- dispatchInput wordt nu alleen gezet in onChange() (de addItem/removeItem-handler) bij echte user-interactie via Choices.js.\n- Guard: expliciete dispatchInput = false in resetFormControl, selectByValue, removeSelectionByValue, removeAllSelections én in de options-tak van updated(), zodat programmatische mutaties (async load, initiële selectie, pre-selected options) nooit vl-input triggeren.\n- JSDoc op onChange bijgewerkt om de user-interactie-only semantiek vast te leggen.\n\nTests:\n- vl-select-rich: nieuwe Cypress tests voor (a) user-selectie na (synchrone) async options-load, (b) pre-selected opties via programmatische options-set die geen vl-input triggeren, (c) user-selectie na écht asynchrone options-load (setTimeout/Promise), (d) selectByValue / removeSelectionByValue / removeAllSelections triggeren wel vl-change maar geen vl-input.\n- vl-textarea-rich: nieuwe Cypress tests voor (a) vl-input bij user-typen, (b) vl-change bij user-typen, (c) geen vl-input bij programmatische value-set.\n\nvl-change gedrag blijft ongewijzigd; additieve, non-breaking fix.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "eb5793f43eafd27184ae753a882991e590fe0fcf": {
+      "sha": "eb5793f43eafd27184ae753a882991e590fe0fcf",
+      "body": "De dialog-polyfill in vl-modal.lib.js was expliciet bedoeld voor \"IE10 and lower only\" en is al lang no-op runtime, maar bundelt wel ~880 regels code onnodig mee. Native <dialog> is ondersteund in alle evergreen browsers (Safari sinds 15.4 / maart 2022).\n\nWijzigingen (minimale ingreep, Voorstel 1 uit refinement):\n- dialogPolyfill IIFE verwijderd uit vl-modal.lib.js (-911 regels).\n- Aanroep dialogPolyfill.registerDialog(element) in Modal.dress verwijderd, inclusief bijhorende comment.\n- Hulpfuncties die uitsluitend door de polyfill werden gebruikt mee verwijderd: _typeof, createCommonjsModule, activeElement. _classCallCheck / _defineProperties / _createClass blijven staan omdat de Modal-klasse ze nog gebruikt.\n\nBewust niet aangepakt (scope + ticket-aandachtspunt): de mFallbackBackdropClass-constante en het gebruik ervan in de closable-handler zijn dode logica in moderne browsers zonder polyfill, maar niet schadelijk - opruim is stof voor een follow-up ticket samen met de UMD-wrapper en de vl.util.* helpers.\n\nPublieke API (vl.modal.dress / toggle / dressAll, attributes, slots, events, CSS custom properties) ongewijzigd. Alle 15 bestaande Cypress component-tests groen.",
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/modal/vl-modal.lib.js"
+      ],
+      "storybook": []
+    },
+    "8efb34761c9cbee2ff227a4eb855e92a41950cd5": {
+      "sha": "8efb34761c9cbee2ff227a4eb855e92a41950cd5",
+      "body": "Voegt een custom vl-click event toe aan vl-link, gelijktrekkend met de event-API van vl-button, zodat consumers niet hoeven te onthouden wanneer @click vs @vl-click gebruiken op interactieve flux-atoms.\n\n- vl-link.component.ts: handleClick handler aangesloten op het @click attribuut van zowel het <a>- als het <button>-renderpad. Dispatcht CustomEvent('vl-click', { bubbles: true, composed: true }) — exact dezelfde signatuur als vl-button (bubbelt door Shadow DOM heen).\n- Strikt additief: native click blijft ongestoord werken, geen preventDefault/stopPropagation, geen breaking change voor bestaande consumers van @click op vl-link.\n- Geen disabled/loading-guard zoals vl-button — vl-link heeft die states (nog) niet, dus geen speculative design (Voorstel 3 vermeden).\n- Cypress component tests toegevoegd voor beide renderpaden, conform het bestaande vl-button event-test patroon (createStubForEvent + should('have.been.calledOnce')).\n- Storybook docs uitgebreid met een Events-sectie die het contract documenteert, voorbeeldcode toont en de semantische asymmetrie met vl-button (waar vl-click bij disabled/loading wordt onderdrukt) expliciet uitlegt.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/link/vl-link.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-link--documentatie",
+          "title": "Components - Atom/link",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-atom-link--documentatie",
+          "added": "## Events\n\n`vl-link` dispatcht bij elke klik een custom `vl-click` event (`bubbles: true, composed: true`), zodat het event de\nShadow DOM boundary overschrijdt en door parent-elementen kan worden opgevangen.\n\n```html\n<vl-link href=\"https://www.vlaanderen.be\">Vlaanderen</vl-link>\n<script>\n  document.querySelector('vl-link').addEventListener('vl-click', () => {\n    console.log('link geklikt');\n  });\n</script>\n```\n\nHet native `click` event blijft ook werken — beide zijn geldig. Kies één van beide en gebruik ze niet gelijktijdig op\nhetzelfde element om dubbele callbacks te vermijden.\n\n> **Relatie met `vl-button`:** `vl-button` dispatcht `vl-click` alleen als de knop niet disabled of in laadstatus is.\n `vl-link` heeft (nog) geen disabled-state, dus `vl-click` wordt altijd gedispatcht. De conventie is consistent: alle\n interactieve flux-atoms dispatchen `vl-<actie>`.\n\n[…]\n\nZorg er steeds voor dat de link een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd\nwordt bij het klikken op de link. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers\ngebruiken.\n\n[…]\n\nZorg er bij externe links voor dat gebruikers weten dat de link in een nieuw venster opent. Dit kan je doen adhv het\n`external` attribuut en door dit expliciet te vermelden in de linktekst of door het `label` attribuut te gebruiken om\neen beschrijvende `aria-label` toe te voegen aan de link. Indien `label` gebruikt wordt, is dit de enige linktekst die\ndoor schermlezers wordt voorgelezen. Dus neem ook de zichtbare linktekst hierin op.\n\n[…]\n\nIndien de link enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende\n`aria-label` wordt toegevoegd aan de link.\n\n[…]\n\nIndien de link een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde\n(`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt\nschermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven\naan de onderliggende link."
+        }
+      ]
+    },
+    "613d096ab509fe9d458de1633a0a90752657581c": {
+      "sha": "613d096ab509fe9d458de1633a0a90752657581c",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tests": 2
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "394dbacada9ec9798fc817094b539cd8048e9314": {
+      "sha": "394dbacada9ec9798fc817094b539cd8048e9314",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "examples": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+        "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": "### Highlight\n\n\n### Highlight left"
+        }
+      ]
+    }
+  },
+  "unlisted": []
+}

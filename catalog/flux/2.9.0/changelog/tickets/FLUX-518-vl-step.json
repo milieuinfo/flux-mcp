@@ -1,0 +1,95 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-518",
+  "entries": [
+    {
+      "id": "f9232cc",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-518"
+      ],
+      "scope": "vl-step",
+      "components": [
+        "vl-step"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "contentRenderer voor dynamische content",
+      "text": "FLUX-518 - vl-step - contentRenderer voor dynamische content",
+      "commits": [
+        {
+          "sha": "f9232cc9a221e4972d12df0e951a9f46667bee36",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f9232cc9a221e4972d12df0e951a9f46667bee36"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/steps/vl-step.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "1e7e85a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-518"
+      ],
+      "scope": "vl-step",
+      "components": [
+        "vl-step"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie van de slots",
+      "text": "FLUX-518 - vl-step - documentatie van de slots",
+      "commits": [
+        {
+          "sha": "1e7e85adcf38a89d445c76bdfb5008f64bde8323",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1e7e85adcf38a89d445c76bdfb5008f64bde8323"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

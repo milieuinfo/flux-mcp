@@ -1,0 +1,62 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-169",
+  "entries": [
+    {
+      "id": "e25ca64",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-169"
+      ],
+      "scope": "vl-toaster",
+      "components": [
+        "vl-toaster"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "CSS verbeteringen",
+      "text": "FLUX-169 - vl-toaster - CSS verbeteringen",
+      "commits": [
+        {
+          "sha": "e25ca64b845c54bc47ce5b8722e53cb7839d77d8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e25ca64b845c54bc47ce5b8722e53cb7839d77d8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 4,
+          "docs": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/toaster/vl-toaster.css.ts",
+          "libs/styles/src/theming/var/vl-components.css.ts",
+          "libs/styles/src/theming/var/vl-components.raw.css",
+          "libs/styles/src/vl-styles.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": "## Custom CSS Properties\n\n<table>\n    <tr>\n        <td>Naam</td>\n        <td>Beschrijving</td>\n        <td>Default</td>\n    </tr>\n    <tr>\n        <td>`--vl-side-sheet-width`</td>\n        <td>breedte van het element</td>\n        <td>33%</td>\n    </tr>\n    <tr>\n        <td>`--vl-side-sheet-width-mobile`</td>\n        <td>breedte van het element bij scherm kleiner dan 767px</td>\n        <td>calc(100vw - 56px)</td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "hiervoor de [vl-alert](/docs/components-block-alert--documentatie) component.\nHet element verschijnt dan automatisch op de gekozen positie.\n\n[…]\n\nopgegeven parameters.\n\n[…]\n\n  message: 'Dit is een foutmelding',\n\n[…]\n\nHTML-element te tonen als melding.\n\n[…]\n\n### Layout\n\nWe volgen de stijl van Digitaal Vlaanderen, waarbij standaard de breedte op `30rem` wordt ingesteld.\nEen alert heeft standaard geen breedte en neemt de volledige breedte over van zijn container (de `vl-toaster`),\nnamelijk `30rem`.\n\nAls er nood is hier van af te wijken, kan je de `width` van de `vl-toaster` zelf aanpassen.\nVermijd hierbij het gebruik van inline styles.\n\nJe kan hiervoor de `--vl-toaster-width` custom variabele aanpassen, bv.:\n\n```css\n.pagina {\n       --vl-toaster-width: 50rem;\n      }\n```\n\n[…]\n\nde `fade-out` property.\n\n[…]\n\n    {`\n\n[…]\n\nDe `fade-out` property doet meldingen automatisch verdwijnen na 5 seconden.\n\nVermijd het gebruik waar mogelijk gezien dit de toegankelijkheid van de toaster negatief beïnvloedt. Gebruikers kunnen\nde melding mogelijk niet op tijd lezen of begrijpen, dit is problematisch bij het gebruik van schermlezers.\n\n## Custom CSS Properties\n\n<table>\n    <tr>\n        <td>Naam</td>\n        <td>Beschrijving</td>\n        <td>Default</td>\n    </tr>\n    <tr>\n        <td>`--vl-toaster-width`</td>\n        <td>breedte van de toaster</td>\n        <td>30rem</td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-134",
+  "entries": [
+    {
+      "id": "05113c7",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-134"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "data-prefix hersteld op native HTML-elementen",
+      "text": "FLUX-134 - data-prefix hersteld op native HTML-elementen",
+      "commits": [
+        {
+          "sha": "05113c7a3ac15db54b60ebd701216b2c3ac31f88",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/05113c7a3ac15db54b60ebd701216b2c3ac31f88"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Attributen op native HTML-elementen (dialog, slot, button, li, div, section, th) in de shadow-DOM-templates krijgen opnieuw een data-prefix, zodat de gerenderde HTML valid is.",
+        "published": true,
+        "areas": {
+          "code": 10,
+          "styles": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/accordion/vl-accordion.component.ts",
+          "libs/components/src/block/accordion/vl-accordion.lib.js",
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.component.ts",
+          "libs/components/src/block/modal/vl-modal.component.ts",
+          "libs/components/src/block/modal/vl-modal.lib.js",
+          "libs/components/src/block/pager/vl-pager.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-field.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.flux-css.ts",
+          "libs/components/src/block/wizard/vl-wizard.component.ts"
+        ],
+        "storybook": []
+      }
+    },
+    {
+      "id": "b5c8f83",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-134"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-alert",
+        "vl-autocomplete"
+      ],
+      "summary": "dode code zonder effect verwijderd (vl-alert, vl-autocomplete)",
+      "text": "FLUX-134 - dode code zonder effect verwijderd (vl-alert, vl-autocomplete)",
+      "commits": [
+        {
+          "sha": "b5c8f83222d1c3c43d28346bb180c4b0f89cca3c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b5c8f83222d1c3c43d28346bb180c4b0f89cca3c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- vl-alert: processButtons/updated verwijderd; data-narrow had geen CSS implementatie\n- vl-autocomplete: data-groupindex op de li-elementen verwijderd; werd gezet maar nergens uitgelezen.",
+        "published": true,
+        "areas": {
+          "code": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/autocomplete/vl-autocomplete.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

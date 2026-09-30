@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-144",
+  "entries": [
+    {
+      "id": "811e494",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-144"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "klik wordt niet langer onderdrukt",
+      "text": "FLUX-144 - vl-select-rich - klik wordt niet langer onderdrukt",
+      "commits": [
+        {
+          "sha": "811e4947f8e196cd7b523267481c6f66000d8519",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/811e4947f8e196cd7b523267481c6f66000d8519"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-634",
+  "entries": [
+    {
+      "id": "d0f604b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-634"
+      ],
+      "scope": "agents",
+      "components": [],
+      "topics": [
+        "agents"
+      ],
+      "mentions": [],
+      "summary": "ondersteuning van verschillende AI profiles",
+      "text": "FLUX-634 - agents - ondersteuning van verschillende AI profiles",
+      "commits": [
+        {
+          "sha": "d0f604b08e4c5587f493da70c473b18034d80cfa",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/d0f604b08e4c5587f493da70c473b18034d80cfa"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 27
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

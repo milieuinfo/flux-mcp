@@ -1,0 +1,62 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-533",
+  "entries": [
+    {
+      "id": "a14517c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-533"
+      ],
+      "scope": "vl-modal / vl-side-sheet",
+      "components": [
+        "vl-modal",
+        "vl-side-sheet"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "keuzewijzer wanneer welke overlay",
+      "text": "FLUX-533 - vl-modal / vl-side-sheet - keuzewijzer wanneer welke overlay",
+      "commits": [
+        {
+          "sha": "a14517cdce5320694cfadbbe6cd82f7922db096e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a14517cdce5320694cfadbbe6cd82f7922db096e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Afnemers krijgen een keuzewijzer die uitlegt wanneer ze een modal en wanneer een side-sheet gebruiken. Een nieuwe Storybook-patroonpagina bundelt het volledige beslissingskader met een beslistabel, en de modal- en side-sheet-documentatie linken er allebei naar door.",
+        "published": false,
+        "areas": {
+          "docs": 3
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-modal--documentatie",
+            "title": "Components - Block/modal",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-modal--documentatie",
+            "added": "## Wanneer gebruik je een modal?\n\nTwijfel je tussen een modal en een side-sheet? Een modal schermt de pagina af voor een geïsoleerde taak (en is\naltijd de keuze bij verwijderen); een side-sheet laat de pagina-context bruikbaar. Zie\n[Patronen/Overlays/Modal vs Side sheet](/docs/patronen-overlays-modal-vs-side-sheet--documentatie) voor het\nvolledige keuzekader."
+          },
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": "## Wanneer gebruik je een side-sheet?\n\nTwijfel je tussen een side-sheet en een modal? Een side-sheet laat de pagina-context zichtbaar en bruikbaar terwijl\nde gebruiker een taak uitvoert; een modal schermt de pagina net af voor een geïsoleerde taak. Let op: een links of\nrechts uitgelijnde modal lijkt op een side-sheet, maar legt wél een overlay over de pagina. Zie\n[Patronen/Overlays/Modal vs Side sheet](/docs/patronen-overlays-modal-vs-side-sheet--documentatie) voor het\nvolledige keuzekader."
+          },
+          {
+            "id": "patronen-overlays-modal-vs-side-sheet--documentatie",
+            "title": "Patronen/Overlays/Modal vs Side sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-overlays-modal-vs-side-sheet--documentatie",
+            "added": "# Modal vs Side sheet\n\nWanneer kies je een [modal](/docs/components-block-modal--documentatie) en wanneer een\n[side-sheet](/docs/components-block-side-sheet--documentatie)? Beide tonen inhoud over de pagina heen, maar ze\ndienen een ander doel. De vuistregel:\n\n- **Modal** voor een **geïsoleerde taak** die de volledige aandacht vraagt en de pagina-context tijdelijk afschermt.\n- **Side-sheet** wanneer de **pagina-context zichtbaar en bruikbaar** moet blijven naast de taak.\n\n## Wanneer gebruik je wat\n\n<table>\n    <thead>\n        <tr>\n            <th scope=\"col\">Scenario</th>\n            <th scope=\"col\">Component</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Een geïsoleerde taak waarbij de gebruiker zich volledig op die taak moet richten</td>\n            <td>Gecentreerde modal</td>\n        </tr>\n        <tr>\n            <td>Verwijderen of een andere onomkeerbare bevestiging</td>\n            <td>Altijd een modal</td>\n        </tr>\n        <tr>\n            <td>Een formulier of taak waarbij de pagina-context zichtbaar en bruikbaar moet blijven</td>\n            <td>Side-sheet</td>\n        </tr>\n        <tr>\n            <td>Een zeer uitgebreide taak die geen pagina-context nodig heeft</td>\n            <td>Full-screen modal of een nieuwe pagina</td>\n        </tr>\n        <tr>\n            <td>Een taak die visueel aan een rand van de pagina hoort, maar de pagina afschermt</td>\n            <td>Links of rechts uitgelijnde modal</td>\n        </tr>\n    </tbody>\n</table>\n\n### Modal\n\nGebruik een **modal** wanneer de gebruiker een geïsoleerde taak moet afwerken en de onderliggende pagina daarbij\nniet nodig of zelfs afleidend is. De modal schermt de pagina af met een overlay; de gebruiker moet de taak\nafronden of annuleren voor hij verder kan.\n\n- **Gecentreerde modal** - de standaard voor korte, op zichzelf staande taken en bevestigingen.\n- **Verwijderen** - gebruik **altijd** een modal. Een onomkeerbare actie vraagt een expliciete, afgeschermde\n  bevestiging.\n- **Full-screen modal** - voor een zeer uitgebreide taak die alle ruimte vraagt maar geen pagina-context nodig\n  heeft. Weeg af of een **nieuwe pagina** hier niet gepaster is: bij diepe, navigeerbare flows - die ook een eigen\n  URL, terug-navigatie of deelbaarheid nodig hebben - is een eigen pagina vaak duidelijker dan een overlay.\n- **Links of rechts uitgelijnde modal** - visueel aan een rand verankerd, maar nog steeds een overlay: de pagina\n  eronder is afgeschermd en niet bruikbaar.\n\n### Side-sheet\n\nGebruik een **side-sheet** wanneer de gebruiker een taak uitvoert terwijl de pagina-context zichtbaar en bruikbaar\nmoet blijven - bijvoorbeeld een formulier waarbij hij gegevens op de achterliggende pagina blijft raadplegen of\naanpassen. De side-sheet schuift in vanaf een rand zonder de pagina af te schermen.\n\n## Links/rechts uitgelijnde modal vs side-sheet\n\nEen links of rechts uitgelijnde modal lijkt visueel op een side-sheet - beide hangen aan een schermrand - maar\ngedraagt zich fundamenteel anders:\n\n- De **uitgelijnde modal** legt een overlay over de pagina. De achterliggende inhoud is afgeschermd en niet\n  bruikbaar zolang de modal open is.\n- De **side-sheet** laat de pagina bruikbaar: de gebruiker kan blijven scrollen, lezen en interageren met de\n  context terwijl de side-sheet open is.\n\nKies dus op basis van 'of de pagina-context bruikbaar moet blijven', niet op basis van de positie op het scherm.\n\n## Overlays stapelen\n\n- **Side-sheet → modal openen** kan. Het is niet ideaal - je stapelt twee niveaus van onderbreking - maar soms\n  onvermijdbaar, bijvoorbeeld een verwijder-bevestiging die vanuit een formulier in de side-sheet vertrekt.\n- **Modal → modal openen** is altijd te vermijden. Een tweede modal bovenop een eerste maakt onduidelijk waar de\n  gebruiker zit en hoe hij terugkeert. Herstructureer de taak zodat één modal volstaat, of gebruik een\n  full-screen modal of een nieuwe pagina."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 4,
+  "version": "2.8.1",
+  "date": "2026-01-08",
+  "previous": "2.8.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.8.0...v2.8.1",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 0,
+      "fix": 1,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 0,
+      "automatic": 1,
+      "none": 0
+    },
+    "a11y": 0
+  },
+  "components": [
+    {
+      "name": "vl-popover",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.1/storybook/?path=/docs/components-block-popover--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "d943d1b",
+      "ticket": "FLUX-396",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-396 - vl-popover - click outside handler verbeterd",
+      "file": "tickets/FLUX-396-vl-popover.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-396",
+      "file": "tickets/FLUX-396-vl-popover.json",
+      "components": [
+        "vl-popover"
+      ],
+      "entries": [
+        "d943d1b"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

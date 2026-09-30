@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "00ffff5",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": "finalise-release",
+      "components": [],
+      "topics": [
+        "finalise-release"
+      ],
+      "mentions": [],
+      "summary": "enkel hoofd-release branches rebasen naar develop",
+      "text": "finalise-release - enkel hoofd-release branches rebasen naar develop",
+      "commits": [
+        {
+          "sha": "00ffff527f0a801318e9102ce340a1248f3ea020",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/00ffff527f0a801318e9102ce340a1248f3ea020"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Een fix-release branch zoals release-v2-2.15 matchte de release-v* glob en probeerde te rebasen naar develop-v2-2.15 (bestaat niet). Nu enkel exact release-v<major>; andere branches worden overgeslagen met exit 0.",
+        "published": false,
+        "areas": {
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

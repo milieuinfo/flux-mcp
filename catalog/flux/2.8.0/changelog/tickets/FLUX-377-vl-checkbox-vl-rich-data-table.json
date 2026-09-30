@@ -1,0 +1,103 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-377",
+  "entries": [
+    {
+      "id": "f489cf0",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-377"
+      ],
+      "scope": "vl-checkbox",
+      "components": [
+        "vl-checkbox"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "indeterminate state",
+      "text": "FLUX-377 - vl-checkbox - indeterminate state",
+      "commits": [
+        {
+          "sha": "f489cf0e34571af9bcbffe34324d236614eeb19f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f489cf0e34571af9bcbffe34324d236614eeb19f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/checkbox/vl-checkbox.component.flux-css.ts",
+          "libs/components/src/form/checkbox/vl-checkbox.component.ts",
+          "libs/components/src/form/checkbox/vl-checkbox.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "4a8e5f5",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-377"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "selectable rich data table story",
+      "text": "FLUX-377 - vl-rich-data-table - selectable rich data table story",
+      "commits": [
+        {
+          "sha": "4a8e5f57b52c48ab5d17fb69e3fa3184a5ec8d1c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4a8e5f57b52c48ab5d17fb69e3fa3184a5ec8d1c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": "    <summary>Code voorbeeld hoe sorting toe te passen</summary>\n\n[…]\n\nEen template voorbeeld vind je hieronder. Klik op `Show code` om de html te zien.\n\n[…]\n\n    <summary>Gebruikte mock data in onderstaande voorbeeld</summary>\n\n[…]\n\n    <summary>Code voorbeeld hoe filtering toe te passen</summary>\n\n[…]\n\nTemplate voorbeeld vind je hieronder. Klik op `Show code` om de html te zien.\n\n[…]\n\n    <summary>Gebruikte mock data in onderstaande voorbeeld</summary>\n\n[…]\n\n    <summary>Code voorbeeld hoe paginatie toe te passen</summary>\n\n[…]\n\nTemplate voorbeeld vind je hieronder. Klik op `Show code` om de html te zien.\n\n[…]\n\n## Selecteerbare rijen\n\nHieronder vind je een voorbeeld van hoe je rijen selecteerbaar kan maken, met een custom header voor de selectie acties.\n\n<details>\n    <summary>Code voorbeeld van een implementatie met selecteerbare rijen</summary>\n</details>\n\nTemplate voorbeeld van een implementatie met selecteerbare rijen. Klik op `Show code` om de html te zien."
+          }
+        ]
+      }
+    }
+  ]
+}

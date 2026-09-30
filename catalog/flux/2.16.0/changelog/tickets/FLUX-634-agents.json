@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-634",
+  "entries": [
+    {
+      "id": "b51f57b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-634"
+      ],
+      "scope": "agents",
+      "components": [],
+      "topics": [
+        "agents"
+      ],
+      "mentions": [],
+      "summary": "profiles aangepast",
+      "text": "FLUX-634 - agents - profiles aangepast",
+      "commits": [
+        {
+          "sha": "b51f57b0c93437e1359b7dbcabcaf6c78120301d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b51f57b0c93437e1359b7dbcabcaf6c78120301d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 13
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

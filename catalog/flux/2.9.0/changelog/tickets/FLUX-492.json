@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-492",
+  "entries": [
+    {
+      "id": "b9b784f",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-492"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "in de gegenereerde web-types ontbrak de omschrijving op component niveau",
+      "text": "FLUX-492 - in de gegenereerde web-types ontbrak de omschrijving op component niveau",
+      "commits": [
+        {
+          "sha": "b9b784f83ec84e631b20f7a3227d641e5ef1c044",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b9b784f83ec84e631b20f7a3227d641e5ef1c044"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/atom.web-types.json",
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/compliance/compliance.web-types.json",
+          "libs/components/src/form/form.web-types.json"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

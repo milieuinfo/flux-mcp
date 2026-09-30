@@ -1,0 +1,321 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "date": "2025-07-30",
+  "previous": "2.2.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.2.0...v2.3.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 10,
+      "fix": 3,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 10,
+      "automatic": 3,
+      "none": 0
+    },
+    "a11y": 1
+  },
+  "components": [
+    {
+      "name": "vl-autocomplete",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-autocomplete--documentatie"
+    },
+    {
+      "name": "vl-datepicker",
+      "category": "form",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-form-datepicker--documentatie"
+    },
+    {
+      "name": "vl-footer",
+      "category": "compliance",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-compliance-footer--documentatie"
+    },
+    {
+      "name": "vl-functional-header",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-functional-header--documentatie"
+    },
+    {
+      "name": "vl-header",
+      "category": "compliance",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header--documentatie"
+    },
+    {
+      "name": "vl-info-tile",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-info-tile--documentatie"
+    },
+    {
+      "name": "vl-properties",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-properties--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-side-navigation",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-side-navigation--documentatie"
+    },
+    {
+      "name": "vl-stacked",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-table",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-table--documentatie"
+    },
+    {
+      "name": "vl-toaster",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/flux-builds/release-v2/2.3.0/storybook/?path=/docs/components-block-toaster--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "05b2729",
+      "ticket": "FLUX-122",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-122 - vl-toaster - werking verbeterd",
+      "file": "tickets/FLUX-122-vl-toaster.json"
+    },
+    {
+      "id": "1b65064",
+      "ticket": "FLUX-125",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-125 - vl-stacked - margin-top door row-gap vervangen",
+      "file": "tickets/FLUX-125-vl-stacked.json"
+    },
+    {
+      "id": "4a81a07",
+      "ticket": "FLUX-130",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-130 - vl-properties - mix van text & element nodes wordt nu wel ondersteund",
+      "file": "tickets/FLUX-130-vl-properties.json"
+    },
+    {
+      "id": "f2ebc5f",
+      "ticket": "FLUX-100",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-100 - vl-header, vl-footer - v5 versie geïmplementeerd",
+      "file": "tickets/FLUX-100-vl-header-vl-footer.json"
+    },
+    {
+      "id": "1b8b8ca",
+      "ticket": "FLUX-107",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-107 - vl-functional-header - voorbeeld met tabs en back button",
+      "file": "tickets/FLUX-107-vl-functional-header-vl-info-tile.json"
+    },
+    {
+      "id": "0f19ee2",
+      "ticket": "FLUX-107",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-107 - vl-info-tile - types toegevoegd: error, success, warning, alt - attribuut toegevoegd: vertical-stretch",
+      "file": "tickets/FLUX-107-vl-functional-header-vl-info-tile.json"
+    },
+    {
+      "id": "40c2fe3",
+      "ticket": "FLUX-112",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-112 - vl-header - documentatie uitgebreid, vl-side-navigation - column classes aangepast in voorbeelden",
+      "file": "tickets/FLUX-112-vl-header.json"
+    },
+    {
+      "id": "faad388",
+      "ticket": "FLUX-117",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-117 - vl-select-rich - warning over DEFAULT_CLASSNAMES weggewerkt",
+      "file": "tickets/FLUX-117-vl-select-rich.json"
+    },
+    {
+      "id": "72bd94e",
+      "ticket": "FLUX-124",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-124 - vl-table - documentatie verbeterd van de styling mogelijkheden",
+      "file": "tickets/FLUX-124-vl-table.json"
+    },
+    {
+      "id": "10d68d2",
+      "ticket": "FLUX-131",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-131 - vl-datepicker - initial value werd genegeerd bij type \"range\"",
+      "file": "tickets/FLUX-131-vl-datepicker.json"
+    },
+    {
+      "id": "ddfb461",
+      "ticket": "FLUX-92",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-92 - vl-side-navigation - verbeteringen mobiele versie",
+      "file": "tickets/FLUX-92-vl-side-navigation.json"
+    },
+    {
+      "id": "80a854e",
+      "ticket": "FLUX-93",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-93 - vl-autocomplete - accessibility en documentatie verbeteringen",
+      "file": "tickets/FLUX-93-vl-autocomplete.json"
+    },
+    {
+      "id": "7b42f05",
+      "ticket": "FLUX-94",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-94 - WCAG verbeteringen",
+      "file": "tickets/FLUX-94.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-122",
+      "file": "tickets/FLUX-122-vl-toaster.json",
+      "components": [
+        "vl-toaster"
+      ],
+      "entries": [
+        "05b2729"
+      ]
+    },
+    {
+      "ticket": "FLUX-125",
+      "file": "tickets/FLUX-125-vl-stacked.json",
+      "components": [
+        "vl-stacked"
+      ],
+      "entries": [
+        "1b65064"
+      ]
+    },
+    {
+      "ticket": "FLUX-130",
+      "file": "tickets/FLUX-130-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "4a81a07"
+      ]
+    },
+    {
+      "ticket": "FLUX-100",
+      "file": "tickets/FLUX-100-vl-header-vl-footer.json",
+      "components": [
+        "vl-header",
+        "vl-footer"
+      ],
+      "entries": [
+        "f2ebc5f"
+      ]
+    },
+    {
+      "ticket": "FLUX-107",
+      "file": "tickets/FLUX-107-vl-functional-header-vl-info-tile.json",
+      "components": [
+        "vl-functional-header",
+        "vl-info-tile"
+      ],
+      "entries": [
+        "1b8b8ca",
+        "0f19ee2"
+      ]
+    },
+    {
+      "ticket": "FLUX-112",
+      "file": "tickets/FLUX-112-vl-header.json",
+      "components": [
+        "vl-header"
+      ],
+      "entries": [
+        "40c2fe3"
+      ]
+    },
+    {
+      "ticket": "FLUX-117",
+      "file": "tickets/FLUX-117-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "faad388"
+      ]
+    },
+    {
+      "ticket": "FLUX-124",
+      "file": "tickets/FLUX-124-vl-table.json",
+      "components": [
+        "vl-table"
+      ],
+      "entries": [
+        "72bd94e"
+      ]
+    },
+    {
+      "ticket": "FLUX-131",
+      "file": "tickets/FLUX-131-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "10d68d2"
+      ]
+    },
+    {
+      "ticket": "FLUX-92",
+      "file": "tickets/FLUX-92-vl-side-navigation.json",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "entries": [
+        "ddfb461"
+      ]
+    },
+    {
+      "ticket": "FLUX-93",
+      "file": "tickets/FLUX-93-vl-autocomplete.json",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "entries": [
+        "80a854e"
+      ]
+    },
+    {
+      "ticket": "FLUX-94",
+      "file": "tickets/FLUX-94.json",
+      "components": [],
+      "entries": [
+        "7b42f05"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-248",
+  "entries": [
+    {
+      "id": "f78d592",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-248"
+      ],
+      "scope": "vl-modal",
+      "components": [
+        "vl-modal"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "layout verbeterd",
+      "text": "FLUX-248 - vl-modal - layout verbeterd",
+      "commits": [
+        {
+          "sha": "f78d5921f70ae71030197af61306a19f74da4ffb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f78d5921f70ae71030197af61306a19f74da4ffb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/modal/vl-modal.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

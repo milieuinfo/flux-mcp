@@ -1,0 +1,136 @@
+{
+  "base": "2.18.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "alert-role",
+            "description": "ARIA rol van de waarschuwing.<br>`alert` voor dynamisch verschijnende beknopte meldingen, `alertdialog` voor meldingen die een actie vereisen, `no-role` voor meldingen die al bij het laden van de pagina zichtbaar zijn.<br>Onbekende waarden vallen terug op `alert`.",
+            "type": "'alert' | 'alertdialog' | 'no-role'",
+            "default": "alert"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-autocomplete",
+      "category": "block",
+      "inChangelog": true,
+      "properties": {
+        "added": [
+          {
+            "name": "itemTemplate",
+            "description": "Gebruik deze property om zelf te bepalen hoe de inhoud van een suggestie gerenderd wordt. De functie krijgt het volledige item mee en geeft een lit `TemplateResult` terug. Wordt deze property ingesteld, dan valt `caption-format` weg voor de suggesties.\n\nKan niet aangepast worden in Storybook.",
+            "type": "function",
+            "default": "undefined"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-header",
+      "category": "compliance",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "skip-to-content-id",
+            "description": "De id van het content-element waarnaar de skip-link de focus verplaatst (WCAG 2.4.1). Zonder waarde wordt er geen skip-link gerenderd. Gebruik de id van de eerste heading van de pagina-inhoud.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "value-bold",
+            "description": "Toont de data in bold zodat deze visueel meer opvalt.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "properties": {
+        "added": [
+          {
+            "name": "itemTemplate",
+            "description": "Bepaalt zelf de inhoud van een optie in de dropdown.<br>Niet reactief en niet aanpasbaar in Storybook.<br>Zie de [documentatie](/docs/components-form-select-rich--documentatie#itemtemplate) voor meer info.",
+            "type": "function",
+            "default": "undefined"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": true,
+      "properties": {
+        "added": [
+          {
+            "name": "itemTemplate",
+            "description": "Bepaalt zelf de inhoud van een optie in de dropdown.<br>Niet reactief en niet aanpasbaar in Storybook.<br>Zie de [documentatie](/docs/components-form-select-rich--documentatie#itemtemplate) voor meer info.",
+            "type": "function",
+            "default": "undefined"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-description-data",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Gebruik de `description-data` component om label / waarde-paren als een samenhangende lijst weer te geven, bijvoorbeeld\nde metadata van een publicatie. De paren worden als een `<dl>` met `<dt>` en `<dd>` gerenderd, zodat een schermlezer\nelk paar als term en definitie aankondigt."
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Vult het aria-label attribuut van de link in en vervangt zo de volledige voorgelezen linktekst. Geef een duidelijke omschrijving mee van waar de link naartoe leidt.<br/>Bij een externe link wordt de automatische melding \"(opent in een nieuw venster)\" dan niet toegevoegd; neem die vermelding zelf op in het label, bv. \"Ga naar Vlaanderen.be (opent in een nieuw venster)\"."
+        },
+        {
+          "name": "external",
+          "description": "Opent de link in een nieuw tabblad.<br/>Voegt voor schermlezers automatisch de visueel verborgen tekst \"(opent in een nieuw venster)\" toe, tenzij het `label`-attribuut gezet is.<br/>Werkt niet in combinatie met `button-as-link`-attribuut."
+        }
+      ]
+    },
+    {
+      "element": "vl-select-rich",
+      "category": "form",
+      "inChangelog": true,
+      "description": "- [Doel](#doel)\n - [Voorbeeld](#voorbeeld)\n - [Configuratie](#configuratie)\n - [Publieke methodes](#publieke-methodes)\n - [Styles](#styles)\n - [Events](#events)\n - [Select opties](#select-opties)\n - [Accessibility](#accessibility)\n - [Varianten](#varianten)\n - [Eigen inhoud per optie](#eigen-inhoud-per-optie)\n - [Zoek strategieën](#zoek-strategieën)\n - [Validatie](#validatie)\n - [Referenties](#referenties)"
+    }
+  ]
+}

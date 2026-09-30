@@ -1,0 +1,21 @@
+{
+  "base": "2.6.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "package": "@domg-wc/components",
+      "dependencies": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "tinymce",
+            "before": "npm:tinymce@6.8.3",
+            "after": "6.8.3"
+          }
+        ]
+      }
+    }
+  ]
+}

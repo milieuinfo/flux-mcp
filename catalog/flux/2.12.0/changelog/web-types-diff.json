@@ -1,0 +1,322 @@
+{
+  "base": "2.11.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "multiline",
+            "description": "Behoudt nieuwe regels in de boodschap van de waarschuwing.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-infoblock",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "type",
+            "description": "Er kan een vast icoon gekozen worden (contact, publications, faq, news, timeline, question).",
+            "type": "'contact' | 'publications' | 'faq' | 'news' | 'timeline' | 'question'",
+            "default": ""
+          },
+          {
+            "name": "title",
+            "description": "Attribuut dat wordt gebruikt om de titel van de infoblock te zetten.",
+            "default": ""
+          },
+          {
+            "name": "icon",
+            "description": "Attribuut dat wordt gebruikt om een icoon vooraan aan de titel toe te voegen. Het icoon kan gekozen worden uit de lijst op https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-icon.",
+            "type": "'calendar' | 'programming-bug' | 'key'",
+            "default": ""
+          },
+          {
+            "name": "content (for demo purposes)"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "type",
+            "description": "Het type van de button.<br/>Werkt enkel in combinatie met het `button-as-link`-attribuut.",
+            "type": "'string: 'button'' | ''submit'' | ''reset''",
+            "default": "button"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-share-button",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "medium",
+            "description": "This attribute is used to pass the medium.",
+            "type": "'facebook' | 'twitter' | 'linkedin' | 'googleplus' | 'mail'"
+          },
+          {
+            "name": "href",
+            "description": "The href attribute specifies the link's destination."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-side-navigation",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "child-spacing",
+            "description": "Bepaalt de verticale ruimte tussen child-links. `medium` geeft extra ruimte (1.3rem marge boven en onder), vergelijkbaar met de stijl van de klassieke vl-side-navigation. `small` is de standaard compacte weergave.",
+            "default": "small"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-side-navigation-layout-next",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "child-spacing",
+            "description": "Bepaalt de verticale ruimte tussen child-links. `medium` geeft extra ruimte (1.3rem marge boven en onder). `small` is de standaard compacte weergave. Wordt doorgegeven aan vl-side-navigation-next.",
+            "default": "small"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-side-sheet",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "enable-swipe",
+            "description": "Attribute wordt gebruikt om aan te duiden dat swipe functie toegelaten is.",
+            "default": "false"
+          },
+          {
+            "name": "left",
+            "description": "Attribute om de side-sheet aan de linkerrand te positioneren.",
+            "default": "false"
+          },
+          {
+            "name": "right",
+            "description": "Attribute om de side-sheet aan de rechterrand te positioneren. Dit is de standaard instelling.",
+            "default": "false"
+          },
+          {
+            "name": "absolute",
+            "description": "Attribute wordt gebruikt om aan te duiden dat de side-sheet absoluut gepositioneerd wordt.",
+            "default": "false"
+          },
+          {
+            "name": "open",
+            "description": "Duidt aan dat de side-sheet open is.",
+            "default": "false"
+          },
+          {
+            "name": "top",
+            "description": "Attribute wordt gebruikt om de padding-top van de side-sheet aan te passen. Dit staat standaard op 43px ingesteld om de hoogte van de sticky vl-header te compenseren. Indien er extra sticky elementen op de pagina voorkomen, kan je deze waarde aanpassen.",
+            "default": "43px"
+          },
+          {
+            "name": "toggle-text",
+            "description": "Attribute wordt gebruikt om de toggle knop tekst te wijzigen.",
+            "default": ""
+          },
+          {
+            "name": "tooltip-text",
+            "description": "Attribute wordt gebruikt om de native tooltip te bepalen.",
+            "default": ""
+          },
+          {
+            "name": "custom-icon",
+            "description": "Dit vervangt zowel open & close icon door 1 custom icon. \n Standaard wordt afhankelijk van de positie van de side-sheet een pijltje getoond dat aanduidt of de side-sheet open of dicht is.",
+            "default": ""
+          },
+          {
+            "name": "icon-placement",
+            "description": "Positie van icon bepalen. Standaard bevindt die zich voor de tekst.",
+            "type": "'before' | 'after'",
+            "default": "before"
+          },
+          {
+            "name": "hide-toggle-button",
+            "description": "Toggle knop verbergen.",
+            "default": "false"
+          },
+          {
+            "name": "shadow",
+            "description": "Schaduw van de side sheet. Gebruik \"large\" voor side sheets die een hoger contrast nodig hebben met de onderliggende pagina.",
+            "type": "'default' | 'large'",
+            "default": "default"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-template",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "v-center",
+            "description": "Attribuut wordt gebruikt om ervoor te zorgen dat de content verticaal gecentreerd wordt.",
+            "default": "false"
+          },
+          {
+            "name": "v-stretch",
+            "description": "Attribuut wordt gebruikt om ervoor te zorgen dat de content 100% zal innemen.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-typography",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "parameters",
+            "description": "De key/value parameters die verwerkt en getoond zullen worden in het content element."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-alert",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "message",
+          "description": "De message van de waarschuwing.<br>Bij de naked variant mag de message alleen met dit attribuut meegegeven worden.<br>Werkt niet in combinatie met het default slot."
+        }
+      ]
+    },
+    {
+      "element": "vl-checkbox",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `checkbox` component om de gebruiker de mogelijkheid te geven om 1 of meerdere dingen te selecteren in een\nlijst.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `datepicker` component om de gebruiker op een gebruiksvriendelijke manier een datum of tijd te laten selecteren.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-fieldset",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `vl-fieldset` component om een fieldset af te beelden.\n\nFieldsets worden gebruikt om gerelateerde formulierelementen te groeperen binnen een formulier.\n\nIn uitzonderlijke gevallen kan dit gebruikt worden om verschillende input fields te groeperen onder één label. Gebruik\ndit enkel wanneer andere layoutmogelijkheden niet mogelijk zijn.\n\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-form-label",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `form-label` component om een form label af te beelden.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-form-message",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `form-message` component om een boodschap af te beelden voor een input veld.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-input-field",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `input-field` component om een input veld toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": false,
+      "description": "Gebruik de `input-field-masked` component om een input veld met een mask toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-popover",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "trigger",
+          "description": "Gebruikersacties die de popover triggeren. Je kan verschillende acties combineren met spaties. Bv. met `focus hover` zal de popover zowel verschijnen bij focus als bij hover.<br />Tip: `hover` en `focus` zijn bij de popover meestal te vermijden. Gebruik hiervoor eerder [vl-tooltip](/?path=/docs/components-block-tooltip--documentatie)."
+        }
+      ]
+    },
+    {
+      "element": "vl-radio-group",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `radio-group` component om de gebruiker de mogelijkheid te geven om 1 keuze te selecteren in een lijst.<br/>\nWanneer mogelijk, selecteer geen `radio` van vooraf zodat de gebruiker een bewuste keuze kan maken.<br/>\nDe `radio` component is een onderdeel van de `radio-group` component.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-select",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `select` component om een select veld toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    },
+    {
+      "element": "vl-textarea",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `textarea` component om een textarea veld toe te voegen aan een pagina.<br/>\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\nDeze component bevat geen rich-text modus: gebruik daarvoor\n[vl-textarea-rich](/docs/components-form--text-area-rich--documentatie)."
+    },
+    {
+      "element": "vl-upload",
+      "category": "form",
+      "inChangelog": true,
+      "description": "Gebruik de `upload` component om één of meerdere bestanden te selecteren of te slepen naar het upload-veld.\n\nZie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+    }
+  ]
+}

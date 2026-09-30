@@ -1,0 +1,61 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3275",
+  "entries": [
+    {
+      "id": "9a479bf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3275"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "legacy en next global-styles samengevoegd",
+      "text": "UIG-3275 - legacy en next global-styles samengevoegd",
+      "commits": [
+        {
+          "sha": "9a479bfbdb5f1705bca271263e21a4226ddfa758",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/9a479bfbdb5f1705bca271263e21a4226ddfa758"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 6,
+          "docs": 1,
+          "tests": 9
+        },
+        "publishedFiles": [
+          "libs/common/src/config/uig-config.ts",
+          "libs/components/src/accordion/vl-accordion.uig-css.ts",
+          "libs/components/src/properties/vl-properties.css.ts",
+          "libs/components/src/search-result/vl-search-result.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/side-navigation/vl-side-navigation.css.ts",
+          "libs/styles/src/base/link/vl-link-icon.css.ts",
+          "libs/styles/src/global-styles-legacy.ts",
+          "libs/styles/src/global-styles.ts",
+          "libs/styles/src/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "recepten-configuratie--documentatie",
+            "title": "Recepten/Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+            "added": "- logTreeshakeRegistration: false\n\n[…]\n\n    auto-register-styles=\"false\"\n    log-web-component-registration=\"true\"\n    log-treeshake-registration=\"true\"\n    src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/1.20.1/domg-wc-1.20.1.min.js\">"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-260",
+  "entries": [
+    {
+      "id": "c5f2727",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-260"
+      ],
+      "scope": "vl-progress-indicator",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "screenreader verbetering",
+      "text": "FLUX-260 - vl-progress-indicator - screenreader verbetering",
+      "commits": [
+        {
+          "sha": "c5f2727a26031a2786b76d5d72ef73cea7403552",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/c5f2727a26031a2786b76d5d72ef73cea7403552"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/popover/vl-popover.component.ts",
+          "libs/components/src/block/popover/vl-popover.model.ts",
+          "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.component.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.defaults.ts",
+          "libs/components/src/block/tooltip/vl-tooltip.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-popover--documentatie",
+            "title": "Components - Block/popover",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-popover--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-tooltip--documentatie",
+            "title": "Components - Block/tooltip",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-tooltip--documentatie",
+            "added": "Om te vermijden dat de tooltip gepositioneerd wordt tegenover het verkeerde element, kan je best de eerste parent van\nde tooltip instellen op `position: relative` zodat de tooltip steeds gepositioneerd wordt zoals verwacht.\n\n## Varianten\n\n### Tooltip als label\n\nEen tooltip kan dienst doen als \"label\" van de trigger knop of als extra \"description\" voor de trigger. Dit bepaalt of\nde trigger een `aria-labelledby` of `aria-describedby` attribuut krijgt. Standaard gaan we uit van \"description\".\nIndien de trigger al een `aria-label` heeft wordt \"label\" genegeerd. Voor een patroon waarbij een\nbutton enkel een icoon bevat, raden we de default variant aan met `<vl-button label=\"Mijn aria label\">`."
+          }
+        ]
+      }
+    }
+  ]
+}

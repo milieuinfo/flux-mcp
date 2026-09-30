@@ -1,0 +1,508 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "date": "2025-06-06",
+  "previous": "1.48.2",
+  "compareUrl": "https://github.com/milieuinfo/uigov-web-components/compare/v1.48.2...v2.0.0",
+  "counts": {
+    "type": {
+      "breaking": 1,
+      "feature": 26,
+      "fix": 3,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 1,
+      "opt-in": 19,
+      "automatic": 2,
+      "none": 8
+    },
+    "a11y": 0
+  },
+  "components": [
+    {
+      "name": "vl-functional-header",
+      "category": "block",
+      "docUrl": "https://milieuinfo.github.io/uigov-builds/release/2.0.0/storybook/?path=/docs/components-block-functional-header--documentatie"
+    },
+    {
+      "name": "vl-grid",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-section",
+      "category": null,
+      "docUrl": null
+    }
+  ],
+  "entries": [
+    {
+      "id": "cbc5bb9",
+      "ticket": "UIG-3296",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "UIG-3296 - ontbrekende reset styles toegevoegd",
+      "file": "tickets/UIG-3296-vl-functional-header.json"
+    },
+    {
+      "id": "17f09bf",
+      "ticket": "UIG-3296",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "UIG-3296 - vl-functional-header - reset styles toegevoegd",
+      "file": "tickets/UIG-3296-vl-functional-header.json"
+    },
+    {
+      "id": "4b162d0",
+      "ticket": "UIG-3302",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "UIG-3302 - resterende -next componenten & is-elementen weggewerkt in storybook",
+      "file": "tickets/UIG-3302.json"
+    },
+    {
+      "id": "bda3598",
+      "ticket": "UIG-2811",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-2811 - @ts-ignore toegevoegd om fouten bij het opstarten van de component testen te vermijden",
+      "file": "tickets/UIG-2811.json"
+    },
+    {
+      "id": "ad96917",
+      "ticket": "UIG-2811",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-2811 - BaseElementOfType(HTMLElement) vervangen door BaseHTMLElement",
+      "file": "tickets/UIG-2811.json"
+    },
+    {
+      "id": "3e38a30",
+      "ticket": "UIG-2811",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-2811 - define functie is verwijderd",
+      "file": "tickets/UIG-2811.json"
+    },
+    {
+      "id": "e714edf",
+      "ticket": "UIG-3056",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3056 - aanpassingen aan de module structuur",
+      "file": "tickets/UIG-3056.json"
+    },
+    {
+      "id": "4359877",
+      "ticket": "UIG-3185",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3185 - componenten geschrapt",
+      "file": "tickets/UIG-3185.json"
+    },
+    {
+      "id": "004d59c",
+      "ticket": "UIG-3230",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3230 - data-vl-prefix geschrapt",
+      "file": "tickets/UIG-3230.json"
+    },
+    {
+      "id": "65572f9",
+      "ticket": "UIG-3231",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-3231 - vl-grid, vl-section - documentatie verbeterd",
+      "file": "tickets/UIG-3231-vl-grid-vl-section.json"
+    },
+    {
+      "id": "39643f4",
+      "ticket": "UIG-3232",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3232 - elementen geschrapt",
+      "file": "tickets/UIG-3232.json"
+    },
+    {
+      "id": "7740b19",
+      "ticket": "UIG-3233",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3233 - -next suffix verwijderd",
+      "file": "tickets/UIG-3233.json"
+    },
+    {
+      "id": "2b4d4e5",
+      "ticket": "UIG-3257",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-3257 - v2 storybook documentatie aangepast",
+      "file": "tickets/UIG-3257.json"
+    },
+    {
+      "id": "4e00a17",
+      "ticket": "UIG-3260",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-3260 - styles verwijderd uit vl-elements.uig-css.ts",
+      "file": "tickets/UIG-3260.json"
+    },
+    {
+      "id": "c97731f",
+      "ticket": "UIG-3269",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-3269 - module verbeteringen",
+      "file": "tickets/UIG-3269.json"
+    },
+    {
+      "id": "c9af8f4",
+      "ticket": "UIG-3270",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3270 - circulaire dependencies verbeterd",
+      "file": "tickets/UIG-3270.json"
+    },
+    {
+      "id": "23398db",
+      "ticket": "UIG-3271",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3271 - DV libraries weggewerkt",
+      "file": "tickets/UIG-3271.json"
+    },
+    {
+      "id": "c00a70b",
+      "ticket": "UIG-3273",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3273 - code formattering uitgevoerd op alle .ts, .js, .css en .json bestanden",
+      "file": "tickets/UIG-3273.json"
+    },
+    {
+      "id": "84769f1",
+      "ticket": "UIG-3274",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3274 - ongebruikte npm dependencies verwijderd",
+      "file": "tickets/UIG-3274.json"
+    },
+    {
+      "id": "9a479bf",
+      "ticket": "UIG-3275",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3275 - legacy en next global-styles samengevoegd",
+      "file": "tickets/UIG-3275.json"
+    },
+    {
+      "id": "748e83e",
+      "ticket": "UIG-3280",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3280 - flux ipv uig of vlux",
+      "file": "tickets/UIG-3280.json"
+    },
+    {
+      "id": "b4da90d",
+      "ticket": "UIG-3281",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3281 - nieuwe module en package structuur",
+      "file": "tickets/UIG-3281.json"
+    },
+    {
+      "id": "de95121",
+      "ticket": "UIG-3283",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3283 - vl-form-message ipv vl-error-message",
+      "file": "tickets/UIG-3283.json"
+    },
+    {
+      "id": "5a0ff75",
+      "ticket": "UIG-3285",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3285 - correcties om de npm packages en fat-lib af te nemen",
+      "file": "tickets/UIG-3285.json"
+    },
+    {
+      "id": "c5ebad8",
+      "ticket": "UIG-3285",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-3285 - package afname via de consumer-app",
+      "file": "tickets/UIG-3285.json"
+    },
+    {
+      "id": "0e48dcf",
+      "ticket": "UIG-3286",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3286 - vl-progress-indicator ipv vl-progress-bar",
+      "file": "tickets/UIG-3286.json"
+    },
+    {
+      "id": "a14a6a0",
+      "ticket": "UIG-3297",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "UIG-3297 - correctie Storybook documentatie",
+      "file": "tickets/UIG-3297.json"
+    },
+    {
+      "id": "edd176f",
+      "ticket": "UIG-3299",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3299 - layoutStyles ontsloten",
+      "file": "tickets/UIG-3299.json"
+    },
+    {
+      "id": "2ddf057",
+      "ticket": "UIG-3304",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "UIG-3304 - storybook verbeteringen, button-pill verwijderd",
+      "file": "tickets/UIG-3304.json"
+    },
+    {
+      "id": "breaking-1",
+      "ticket": null,
+      "type": "breaking",
+      "derivedImpact": "action",
+      "text": "start van v2",
+      "file": "tickets/breaking-1.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "UIG-3296",
+      "file": "tickets/UIG-3296-vl-functional-header.json",
+      "components": [
+        "vl-functional-header"
+      ],
+      "entries": [
+        "cbc5bb9",
+        "17f09bf"
+      ]
+    },
+    {
+      "ticket": "UIG-3302",
+      "file": "tickets/UIG-3302.json",
+      "components": [],
+      "entries": [
+        "4b162d0"
+      ]
+    },
+    {
+      "ticket": "UIG-2811",
+      "file": "tickets/UIG-2811.json",
+      "components": [],
+      "entries": [
+        "bda3598",
+        "ad96917",
+        "3e38a30"
+      ]
+    },
+    {
+      "ticket": "UIG-3056",
+      "file": "tickets/UIG-3056.json",
+      "components": [],
+      "entries": [
+        "e714edf"
+      ]
+    },
+    {
+      "ticket": "UIG-3185",
+      "file": "tickets/UIG-3185.json",
+      "components": [],
+      "entries": [
+        "4359877"
+      ]
+    },
+    {
+      "ticket": "UIG-3230",
+      "file": "tickets/UIG-3230.json",
+      "components": [],
+      "entries": [
+        "004d59c"
+      ]
+    },
+    {
+      "ticket": "UIG-3231",
+      "file": "tickets/UIG-3231-vl-grid-vl-section.json",
+      "components": [
+        "vl-grid",
+        "vl-section"
+      ],
+      "entries": [
+        "65572f9"
+      ]
+    },
+    {
+      "ticket": "UIG-3232",
+      "file": "tickets/UIG-3232.json",
+      "components": [],
+      "entries": [
+        "39643f4"
+      ]
+    },
+    {
+      "ticket": "UIG-3233",
+      "file": "tickets/UIG-3233.json",
+      "components": [],
+      "entries": [
+        "7740b19"
+      ]
+    },
+    {
+      "ticket": "UIG-3257",
+      "file": "tickets/UIG-3257.json",
+      "components": [],
+      "entries": [
+        "2b4d4e5"
+      ]
+    },
+    {
+      "ticket": "UIG-3260",
+      "file": "tickets/UIG-3260.json",
+      "components": [],
+      "entries": [
+        "4e00a17"
+      ]
+    },
+    {
+      "ticket": "UIG-3269",
+      "file": "tickets/UIG-3269.json",
+      "components": [],
+      "entries": [
+        "c97731f"
+      ]
+    },
+    {
+      "ticket": "UIG-3270",
+      "file": "tickets/UIG-3270.json",
+      "components": [],
+      "entries": [
+        "c9af8f4"
+      ]
+    },
+    {
+      "ticket": "UIG-3271",
+      "file": "tickets/UIG-3271.json",
+      "components": [],
+      "entries": [
+        "23398db"
+      ]
+    },
+    {
+      "ticket": "UIG-3273",
+      "file": "tickets/UIG-3273.json",
+      "components": [],
+      "entries": [
+        "c00a70b"
+      ]
+    },
+    {
+      "ticket": "UIG-3274",
+      "file": "tickets/UIG-3274.json",
+      "components": [],
+      "entries": [
+        "84769f1"
+      ]
+    },
+    {
+      "ticket": "UIG-3275",
+      "file": "tickets/UIG-3275.json",
+      "components": [],
+      "entries": [
+        "9a479bf"
+      ]
+    },
+    {
+      "ticket": "UIG-3280",
+      "file": "tickets/UIG-3280.json",
+      "components": [],
+      "entries": [
+        "748e83e"
+      ]
+    },
+    {
+      "ticket": "UIG-3281",
+      "file": "tickets/UIG-3281.json",
+      "components": [],
+      "entries": [
+        "b4da90d"
+      ]
+    },
+    {
+      "ticket": "UIG-3283",
+      "file": "tickets/UIG-3283.json",
+      "components": [],
+      "entries": [
+        "de95121"
+      ]
+    },
+    {
+      "ticket": "UIG-3285",
+      "file": "tickets/UIG-3285.json",
+      "components": [],
+      "entries": [
+        "5a0ff75",
+        "c5ebad8"
+      ]
+    },
+    {
+      "ticket": "UIG-3286",
+      "file": "tickets/UIG-3286.json",
+      "components": [],
+      "entries": [
+        "0e48dcf"
+      ]
+    },
+    {
+      "ticket": "UIG-3297",
+      "file": "tickets/UIG-3297.json",
+      "components": [],
+      "entries": [
+        "a14a6a0"
+      ]
+    },
+    {
+      "ticket": "UIG-3299",
+      "file": "tickets/UIG-3299.json",
+      "components": [],
+      "entries": [
+        "edd176f"
+      ]
+    },
+    {
+      "ticket": "UIG-3304",
+      "file": "tickets/UIG-3304.json",
+      "components": [],
+      "entries": [
+        "2ddf057"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/breaking-1.json",
+      "components": [],
+      "entries": [
+        "breaking-1"
+      ]
+    }
+  ],
+  "webTypesDiff": null,
+  "webTypesDiffUnavailable": "Geen web-types voor 1.48.2 in de catalogus.",
+  "dependenciesDiff": null,
+  "dependenciesDiffUnavailable": "Geen packages voor 1.48.2 in de catalogus.",
+  "unlistedCommits": []
+}

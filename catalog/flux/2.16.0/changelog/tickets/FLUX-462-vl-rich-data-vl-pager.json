@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-462",
+  "entries": [
+    {
+      "id": "704a220",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-462"
+      ],
+      "scope": "vl-rich-data / vl-pager",
+      "components": [
+        "vl-rich-data",
+        "vl-pager"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "actieve pagina state",
+      "text": "FLUX-462 - vl-rich-data / vl-pager - actieve pagina state",
+      "commits": [
+        {
+          "sha": "704a220aacfb20a7b2075e7a0e89ce34530a990c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/704a220aacfb20a7b2075e7a0e89ce34530a990c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De data-property van vl-rich-data geeft na een pagina-wissel het actuele pagina-nummer terug. vl-pager vuurt geen overbodig change-event meer wanneer de effectieve pagina niet wijzigt en levert altijd de correcte currentPage via de event-data.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/pager/vl-pager.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

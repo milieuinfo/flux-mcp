@@ -1,0 +1,86 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3283",
+  "entries": [
+    {
+      "id": "de95121",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3283"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-form-message",
+        "vl-error-message"
+      ],
+      "summary": "vl-form-message ipv vl-error-message",
+      "text": "UIG-3283 - vl-form-message ipv vl-error-message",
+      "commits": [
+        {
+          "sha": "de9512178b0dda4092e6bcc026b88bbbdd15d7f1",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/de9512178b0dda4092e6bcc026b88bbbdd15d7f1"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 14,
+          "styles": 3,
+          "docs": 6,
+          "storybook": 5,
+          "examples": 4,
+          "tests": 9,
+          "tooling": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/atom.web-types.json",
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/block/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.flux-css.ts",
+          "libs/components/src/compliance/compliance.web-types.json",
+          "libs/components/src/form/error-message/index.ts",
+          "libs/components/src/form/error-message/vl-error-message.component.ts",
+          "libs/components/src/form/error-message/vl-error-message.defaults.ts",
+          "libs/components/src/form/error-message/vl-error-message.flux-css.ts",
+          "libs/components/src/form/form-control/form-control.ts",
+          "libs/components/src/form/form-message/index.ts",
+          "libs/components/src/form/form-message/vl-form-message.component.ts",
+          "libs/components/src/form/form-message/vl-form-message.defaults.ts",
+          "libs/components/src/form/form-message/vl-form-message.flux-css.ts",
+          "libs/components/src/form/form.web-types.json",
+          "libs/components/src/form/index.ts",
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-form-message--documentatie",
+            "title": "Components - Form/form-message",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-form-form-message--documentatie",
+            "added": "# Form Message\n\n\nGebruik de `form-message` component om een boodschap af te beelden voor een input veld.<br/>\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-form-message></vl-form-message>\n```\n\n\n\n## Configuratie\n\n\n\n## Gebruik\n\n### Volgorde\n\nWe raden aan 1 form message per validatie te tonen. Als er meerdere validaties zijn, toon de belangrijkste eerst.\nDe volgorde waarin de form messages getoond worden volgt dezelfde volgorde van `vl-form-message` componenten in\nde DOM. Een voorbeeld hiervan kan je vinden in onze [form demo](/docs/ontwerp-form-demo--documentatie).\n\n### Success\n\nAls je expliciet wil aantonen dat de form-control correct is ingevuld, kan je het `success` attribuut gebruiken op de\ngerelateerde form-control.\n\n\n## Validatie\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/ontwerp-form-validation--documentatie)\n\nDe `vl-form-message` componenten worden getoond afhankelijk van de validatie status van de form controls. De\nvalidatie status wordt bepaald door de `validity` property die afhangt van gebruikersinteractie.\n\n## validationMessage\n\nHet `validation-message` attribuut komt overeen met de `validationMessage` property van de `ValidityState` interface.\nDit attribuut wordt automatisch ingevuld door de form control op basis van de validatie status.\n\nAls er geen boodschap in het default slot wordt ingesteld, wordt de `validation-message` als inhoud van de\n`vl-form-message` weergegeven.\n\n## Referenties\n\n### Digitaal Vlaanderen\n\n[Documentatie Digitaal Vlaanderen - Form Message](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-form-message)"
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": "- [vl-form-message](/docs/form-form-message--documentatie)"
+          },
+          {
+            "id": "ontwerp-form-validation--documentatie",
+            "title": "Ontwerp/Form/Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-validation--documentatie",
+            "added": "Die foutmeldingen worden getoond door de [`vl-form-message` component](/docs/form-form-message--documentatie) die de `ValidityState` van de form control controleert.\n\n[…]\n\n- een `for` attribuut toevoegen aan de `vl-form-message` component. Dit attribuut moet overeenkomen met de `id` van de form control.\n- het attribuut `state` instellen op de `vl-form-message` component. Dit attribuut moet overeenkomen met de naam van de eigenschap van de `ValidityState` die je wil controleren.\n\n[…]\n\nVervolgens zal de `vl-form-message` component de foutmelding tonen die is ingesteld voor de `ValidityState` van de form control wanneer gevalideerd wordt.\n\n[…]\n\nEen veld met een ontbrekende waarde zal een foutmelding tonen die is ingesteld met de `vl-form-message` component waarvan de `for` eigenschap overeenkomt met de `id` van de form control."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-637",
+  "entries": [
+    {
+      "id": "5b735a7",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-637"
+      ],
+      "scope": "vl-select",
+      "components": [
+        "vl-select"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "synchroniseer value na slot-mutatie",
+      "text": "FLUX-637 - vl-select - synchroniseer value na slot-mutatie",
+      "commits": [
+        {
+          "sha": "5b735a70493ae2c1a956d534c25992d02728dc8e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5b735a70493ae2c1a956d534c25992d02728dc8e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select/vl-select.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

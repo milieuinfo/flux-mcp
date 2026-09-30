@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3274",
+  "entries": [
+    {
+      "id": "84769f1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3274"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "ongebruikte npm dependencies verwijderd",
+      "text": "UIG-3274 - ongebruikte npm dependencies verwijderd",
+      "commits": [
+        {
+          "sha": "84769f1f744a6b8305732fda7a7388afabaeb5f5",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/84769f1f744a6b8305732fda7a7388afabaeb5f5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "tooling": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/declare-module.d.ts",
+          "libs/components/src/side-sheet/swipe-detect.d.ts",
+          "libs/components/src/side-sheet/vl-side-sheet.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

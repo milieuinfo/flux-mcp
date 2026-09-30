@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.17.0",
+  "ticket": "FLUX-775",
+  "entries": [
+    {
+      "id": "91e7b64",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-775"
+      ],
+      "scope": "vl-cookie-consent-opt-in",
+      "components": [
+        "vl-cookie-consent-opt-in"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "dubbele attribute-binding in test opgelost",
+      "text": "FLUX-775 - vl-cookie-consent-opt-in - dubbele attribute-binding in test opgelost",
+      "commits": [
+        {
+          "sha": "91e7b64690543867e67b8e34aa69eb45aa5f3c31",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/91e7b64690543867e67b8e34aa69eb45aa5f3c31"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "In mountDefault stond een tweede checked-binding op hetzelfde element (copy-paste typo). Die regel is geschrapt.\n\nWaarom pas onder pnpm zichtbaar: lit's dev-build meldt dubbele attribute-bindings als fout (\"Detected duplicate attribute bindings\"). Onder pnpm's strikte module-resolutie werd die check getriggerd, onder npm bleef ze verborgen.",
+        "published": false,
+        "areas": {
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

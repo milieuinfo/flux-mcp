@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-542",
+  "entries": [
+    {
+      "id": "6b50faa",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-542"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "Storybook consultatie tracken via Matomo",
+      "text": "FLUX-542 - Storybook consultatie tracken via Matomo",
+      "commits": [
+        {
+          "sha": "6b50faa7a6987a8b8898838b2824b702ac6418af",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6b50faa7a6987a8b8898838b2824b702ac6418af"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1,
+          "storybook": 2,
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

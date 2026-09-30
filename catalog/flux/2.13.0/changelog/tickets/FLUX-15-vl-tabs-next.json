@@ -1,0 +1,139 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-15",
+  "entries": [
+    {
+      "id": "5a76a78",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-15"
+      ],
+      "scope": "vl-tabs-next",
+      "components": [
+        "vl-tabs-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie nieuw component",
+      "text": "FLUX-15 - vl-tabs-next - introductie nieuw component",
+      "commits": [
+        {
+          "sha": "5a76a786a0cf28392429723d89afb1fcc90cb7cd",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5a76a786a0cf28392429723d89afb1fcc90cb7cd"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "styles": 3,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 5
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/index.ts",
+          "libs/components/src/block/next/tabs/index.ts",
+          "libs/components/src/block/next/tabs/vl-tab-link.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab-panel.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab-panel.flux-css.ts",
+          "libs/components/src/block/next/tabs/vl-tab.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab.flux-css.ts",
+          "libs/components/src/block/next/tabs/vl-tabs.component.ts",
+          "libs/components/src/block/next/tabs/vl-tabs.defaults.ts",
+          "libs/components/src/block/next/tabs/vl-tabs.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-tabs--documentatie",
+            "title": "Components - Block/next/tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie",
+            "added": "# Tabs Next\n\n\n## Doel\n\nGebruik deze component om content op te delen in verschillende tabbladen.\n\nDit component heeft twee varianten:\n\n- **Standaard tabs patroon**:\n    - Deze variant wordt best gebruikt als **widget op een pagina** en niet als navigatie element.\n    - Deze implementatie volgt de [ARIA tab patroon richtlijnen](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) voor `role=\"tablist\"`.\n    - De tabs zijn bedienbaar met de pijltjestoetsen.\n    - De tabpanelen worden allemaal gerenderd, maar enkel het selecteerde tabpaneel wordt getoond.\n    - Bij deze variant gebruik je de `<vl-tab-next>` als tab elementen en de `<vl-tab-panel-next>` als tabpanelen.\n- **Horizontale navigatie**:\n    - Deze variant implementeert geen `role=\"tablist\"` maar doet dienst als **navigatie element**.\n    - Bij deze variant gebruik je de `<vl-tab-link-next>` als tab elementen.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-tabs-next label=\"Mijn tabs widget\">\n    <vl-tab-next id=\"tab1\" panel=\"tabpanel1\">Trein</vl-tab-next>\n    <vl-tab-next id=\"tab2\" panel=\"tabpanel2\">Metro, tram en bus</vl-tab-next>\n    <vl-tab-next id=\"tab2\" panel=\"tabpanel2\">Fiets</vl-tab-next>\n    <div id=\"tabpanel1\" role=\"tabpanel\" slot=\"panel\" aria-labelledby=\"tab1\" tabindex=\"0\">Tab 1</div>\n    <div id=\"tabpanel2\" role=\"tabpanel\" slot=\"panel\" aria-labelledby=\"tab2\" tabindex=\"0\">Tab 2</div>\n</vl-tabs-next>\n```\n\n\n## Configuratie\n\n\n## Varianten\n\n### Horizontale navigatie\n\n```js\n```\n\n```html\n<vl-tabs-next label=\"Mijn navigatie\">\n    <vl-tab-link-next href=\"#tab1\">Trein</vl-tab-link-next>\n    <vl-tab-link-next href=\"#tab2\">Metro, tram en bus</vl-tab-link-next>\n    <vl-tab-link-next href=\"https://www.vlaanderen.be/intern/werkplek/dienstreizen-en-woon-werkverkeer/vervoersmiddelen/fietsen\" external>Fiets</vl-tab-link-next>\n</vl-tabs-next>\n```"
+          }
+        ]
+      }
+    },
+    {
+      "id": "e11c696",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-15"
+      ],
+      "scope": "vl-tabs-next",
+      "components": [
+        "vl-tabs-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "mobiele layout",
+      "text": "FLUX-15 - vl-tabs-next - mobiele layout",
+      "commits": [
+        {
+          "sha": "e11c696057b927a2da6e496116c75789298b4810",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e11c696057b927a2da6e496116c75789298b4810"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7,
+          "styles": 2,
+          "docs": 4,
+          "storybook": 4,
+          "tests": 4,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/index.ts",
+          "libs/components/src/block/next/tabs/index.ts",
+          "libs/components/src/block/next/tabs/vl-tab-link.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab-panel.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab.component.ts",
+          "libs/components/src/block/next/tabs/vl-tab.flux-css.ts",
+          "libs/components/src/block/next/tabs/vl-tabs.component.ts",
+          "libs/components/src/block/next/tabs/vl-tabs.defaults.ts",
+          "libs/components/src/block/next/tabs/vl-tabs.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-next-tabs--documentatie",
+            "title": "Components - Block/next/tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-next-tabs--documentatie",
+            "added": "- **Standaard tabs patroon**:\n\n[…]\n\n    - Deze implementatie volgt de [ARIA tab patroon richtlijnen](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) voor `role=\"tablist\"`.\n    - De tabs zijn bedienbaar met de pijltjestoetsen.\n    - De tabpanelen worden allemaal gerenderd, maar enkel het selecteerde tabpaneel wordt getoond.\n\n[…]\n\n- **Horizontale navigatie**:\n\n[…]\n\n<vl-tabs-next label=\"Mijn tab widget\">\n\n[…]\n\n    <vl-tab-next id=\"tab3\" panel=\"tabpanel3\">Fiets</vl-tab-next>\n\n    <vl-tab-panel-next id=\"tabpanel1\" slot=\"panel\" aria-labelledby=\"tab1heading\">\n        <vl-title type=\"h2\" id=\"tab1heading\">Trein</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n    <vl-tab-panel-next id=\"tabpanel2\" slot=\"panel\" aria-labelledby=\"tab2heading\">\n        <vl-title type=\"h2\" id=\"tab2heading\">Metro, tram en bus</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n    <vl-tab-panel-next id=\"tabpanel3\" slot=\"panel\" aria-labelledby=\"tab3heading\">\n        <vl-title type=\"h2\" id=\"tab3heading\">Fiets</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n\n[…]\n\n    <vl-tab-link-next\n        href=\"https://www.vlaanderen.be/intern/werkplek/dienstreizen-en-woon-werkverkeer/vervoersmiddelen/fietsen\"\n        external\n        >Fiets</vl-tab-link-next\n    >"
+          },
+          {
+            "id": "patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+            "title": "Patronen/Navigatie/Functionele Header/met back en tabs",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+            "added": null
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "### Tabs\n\n`Tabs [legacy]` wordt vervangen door `Tabs [next]`. Deze component is herschreven om naast een standaard Tab-widget ook een standaard horizontale navigatie mogelijk te maken. Daarnaast zijn er ook verbeteringen aangebracht om de ARIA standaarden voor de Tab-widget en Listbox-widget beter te implementeren.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Tabs [legacy]](/docs/components-block-tabs-tabs--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-tabs>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Tabs [next]](/docs/components-block-next-tabs--documentatie)</td>\n        <td>release v2.13.0</td>\n        <td>components/block/next</td>\n        <td><code>{`<vl-tabs-next>`}</code></td>\n        <td>components/block</td>\n        <td><code>{`<vl-tabs>`}</code></td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

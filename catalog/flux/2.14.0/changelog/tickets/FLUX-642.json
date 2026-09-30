@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-642",
+  "entries": [
+    {
+      "id": "5d94a3a",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-642"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "verify-release en finalise-release tijdens de feitelijke release",
+      "text": "FLUX-642 - verify-release en finalise-release tijdens de feitelijke release",
+      "commits": [
+        {
+          "sha": "5d94a3a16e2cc321c13bdb79a41fb0af81deddf5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5d94a3a16e2cc321c13bdb79a41fb0af81deddf5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 4
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

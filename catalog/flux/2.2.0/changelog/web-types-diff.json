@@ -1,0 +1,37 @@
+{
+  "base": "2.1.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "properties": {
+        "added": [
+          {
+            "name": "initial-options",
+            "description": "De standaard opties die geselecteerd kunnen worden. Bij een reset van de form worden deze opties getoond.<br>Niet dynamisch.<br>Zie de documentatie pagina voor meer info.",
+            "type": "SelectRichOption",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-select-location",
+      "category": "map",
+      "inChangelog": false,
+      "properties": [
+        {
+          "name": "options",
+          "description": "De opties die geselecteerd kunnen worden.<br>Zal de opties van de select-rich dynamisch bijwerken.<br>Zie de documentatie pagina voor meer info."
+        }
+      ]
+    }
+  ]
+}

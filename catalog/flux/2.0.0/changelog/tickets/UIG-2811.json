@@ -1,0 +1,164 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-2811",
+  "entries": [
+    {
+      "id": "bda3598",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-2811"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "@ts-ignore toegevoegd om fouten bij het opstarten van de component testen te vermijden",
+      "text": "UIG-2811 - @ts-ignore toegevoegd om fouten bij het opstarten van de component testen te vermijden",
+      "commits": [
+        {
+          "sha": "bda359853c42a4fb631a78abf142049926baa036",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/bda359853c42a4fb631a78abf142049926baa036"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tests": 10,
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "ad96917",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-2811"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "BaseElementOfType(HTMLElement) vervangen door BaseHTMLElement",
+      "text": "UIG-2811 - BaseElementOfType(HTMLElement) vervangen door BaseHTMLElement",
+      "commits": [
+        {
+          "sha": "ad9691792839ded3a78b35f5c886f39c3b67b102",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/ad9691792839ded3a78b35f5c886f39c3b67b102"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 43,
+          "docs": 1,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.element.ts",
+          "libs/common/src/base/base.html.element.ts",
+          "libs/common/src/index.ts",
+          "libs/components/src/block/accordion/vl-accordion.component.ts",
+          "libs/components/src/block/contact-card/vl-contact-card.component.ts",
+          "libs/components/src/block/content-header/vl-content-header.component.ts",
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/block/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/block/loader/vl-loader.component.ts",
+          "libs/components/src/block/modal/vl-modal.component.ts",
+          "libs/components/src/block/pager/vl-pager.component.ts",
+          "libs/components/src/block/proza-message/vl-proza-message-preloader.component.ts",
+          "libs/components/src/block/proza-message/vl-proza-message.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-field.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-sorter.component.ts",
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/block/search/vl-search.component.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+          "libs/components/src/block/template/vl-template.component.ts",
+          "libs/components/src/block/typography/vl-typography.component.ts",
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent-opt-in.component.ts",
+          "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts",
+          "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/map/src/actions/map/custom-map.ts",
+          "libs/map/src/actions/map/map-with-actions.ts",
+          "libs/map/src/actions/measure/measure-action.ts",
+          "libs/map/src/components/action/draw-action/draw-action-style/vl-map-draw-action-style.ts",
+          "libs/map/src/components/action/layer-action/select-action/select-actions/vl-map-select-actions.ts",
+          "libs/map/src/components/action/layer-action/vl-map-layer-action.ts",
+          "libs/map/src/components/baselayer/vl-map-base-layer.ts",
+          "libs/map/src/components/layer-style/vl-map-layer-style.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-vector-layer.ts",
+          "libs/map/src/components/layer/vl-map-layer.ts",
+          "libs/map/src/components/layer/wms-layer/vl-map-wms-style/vl-map-wms-style.ts",
+          "libs/map/src/components/legend/vl-map-legend.ts",
+          "libs/map/src/components/overview-map/vl-map-overview-map.ts",
+          "libs/map/src/components/search/vl-map-search.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet-menu-item.ts",
+          "libs/map/src/components/side-sheet/vl-map-side-sheet-menu.ts",
+          "libs/map/src/vl-map.ts"
+        ],
+        "storybook": [
+          {
+            "id": "recepten-imports--documentatie",
+            "title": "Recepten/Imports",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/recepten-imports--documentatie",
+            "added": "let VlAccordionComponent = class VlAccordionComponent extends BaseHTMLElement {"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3e38a30",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-2811"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "define functie is verwijderd",
+      "text": "UIG-2811 - define functie is verwijderd",
+      "commits": [
+        {
+          "sha": "3e38a3030bbb9ac3b9f8b1a1ca75ed3dab1e058d",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/3e38a3030bbb9ac3b9f8b1a1ca75ed3dab1e058d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/type/types.ts",
+          "libs/common/src/util/utils.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

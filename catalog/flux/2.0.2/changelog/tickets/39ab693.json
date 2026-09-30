@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.0.2",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "39ab693",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "'next' zat nog op verschillende plaatsen in variabele namen en zo",
+      "text": "'next' zat nog op verschillende plaatsen in variabele namen en zo",
+      "commits": [
+        {
+          "sha": "39ab693d6264cda897569a411cb718b425d2ac3c",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/39ab693d6264cda897569a411cb718b425d2ac3c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "examples": 5,
+          "tests": 42
+        },
+        "publishedFiles": [
+          "libs/common/src/models/vl.model.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.lib.js",
+          "libs/components/src/block/tabs/vl-tabs.component.ts",
+          "libs/components/src/block/tabs/vl-tabs.lib.js"
+        ],
+        "storybook": [
+          {
+            "id": "recepten-imports--documentatie",
+            "title": "Recepten/Imports",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.2/storybook/?path=/docs/recepten-imports--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

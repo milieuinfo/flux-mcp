@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-296",
+  "entries": [
+    {
+      "id": "8375722",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-296"
+      ],
+      "scope": "vl-typography",
+      "components": [
+        "vl-typography"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "anchor-links op dezelfde pagina werken",
+      "text": "FLUX-296 - vl-typography - anchor-links op dezelfde pagina werken",
+      "commits": [
+        {
+          "sha": "8375722f8b37835dad7eb3787e9d59b61f04d36f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8375722f8b37835dad7eb3787e9d59b61f04d36f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Same-page anchor-links (#id) binnen vl-typography scrollen nu naar het doel, ook als dat elders op de pagina staat (light DOM of andere shadow root). De URL-hash wordt bijgewerkt, deep-links en back/forward scrollen mee, en een element buiten de component kan via dispatchNavigateToAnchor naar een doel binnen de component navigeren.",
+        "published": true,
+        "areas": {
+          "code": 3,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/index.ts",
+          "libs/common/src/util/anchor-navigation.ts",
+          "libs/components/src/block/typography/vl-typography.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-typography--documentatie",
+            "title": "Components - Block/typography",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-typography--documentatie",
+            "added": "## Anchor-navigatie (same-page links)\n\nSame-page anchor-links (bv. `<a href=\"#mijn-sectie\">`) werken binnen `vl-typography`. Omdat de component zijn\ncontent naar een shadow root kopieert, vindt de native fragment-navigatie het doel-`id` niet meer; daarom neemt\n`vl-typography` deze navigatie zelf over. Je hoeft hiervoor niets te configureren - het volstaat dat het doel een\n`id` heeft. Een klik op zo'n link:\n\n- scrollt naar het element met het overeenkomstige `id` - ook als dat doel elders op de pagina staat (in de light\n  DOM of in een andere shadow root)\n- verplaatst de focus mee naar het doel (WCAG 2.4.3 Focus Order)\n\n\n### URL-hash bijwerken (opt-in)\n\nStandaard wordt de URL-hash **niet** aangepast bij een anchor-klik. Dat is bewust: automatisch een\n`history.pushState` doen kan botsen met bv. een SPA-router. Wil je dat een klik de URL-hash wél bijwerkt\n(deelbaar/bookmarkbaar, zonder dubbele history-entry), zet dan het `update-url-hash`-attribuut:\n\n```html\n<vl-typography update-url-hash>\n    <p><a href=\"#mijn-sectie\">Ga naar de sectie</a></p>\n    ...\n</vl-typography>\n```\n\n\n### Navigeren vanuit een element buiten vl-typography\n\nWil je vanuit een willekeurig element (bv. een knop) buiten de component naar een doel binnen `vl-typography`\nnavigeren - dwars doorheen shadow DOM-grenzen - gebruik dan de `dispatchNavigateToAnchor`-utility uit\n`@domg-wc/common`:\n\n```js\n```\n\n```html\n<button @click=${(event) => dispatchNavigateToAnchor(event.currentTarget, '#mijn-sectie')}>\n    Ga naar de sectie\n</button>\n```\n\n`dispatchNavigateToAnchor(source, hash)` stuurt het `vl-navigate-to-anchor`-event vanaf het bron-element;\nde centrale listener zoekt het doel pagina-breed op (door alle open shadow roots en de light DOM) en navigeert\nernaartoe. De functie geeft `true` terug wanneer er effectief een doel gevonden en aangedaan werd, zodat je de\nnative navigatie enkel hoeft te onderdrukken wanneer er genavigeerd is.\n\n\n### Utilities in `@domg-wc/common`\n\nDe onderliggende logica is herbruikbaar en niet aan `vl-typography` gebonden. Wie zelf een component bouwt die\ncontent in een shadow root rendert, kan dezelfde same-page navigatie activeren met:\n\n- **`enableAnchorNavigation()`** - Installeert (idempotent, pagina-breed en voor de paginalevensduur) de centrale\n  `vl-navigate-to-anchor`- en `hashchange`-listeners plus een initiële deep-link-check. Meerdere aanroepen\n  installeren slechts één keer.\n- **`handleAnchorClick(event, { updateHash })`** - Herbruikbare click-guard die een echte klik op een same-page\n  `<a href=\"#...\">` vertaalt naar het navigatie-event. Hang hem aan een shadow root (voor één component) óf aan\n  `document` (voor álle anchors op de pagina). Modifier-/middenklikken en links naar een ander pad blijven\n  ongemoeid. `updateHash` is opt-in (default `false`).\n- **`dispatchNavigateToAnchor(source, hash, { updateHash })`** - Laat eender welke link/component (ook diep in\n  shadow DOM) naar een anchor navigeren via het composed custom event. Geeft `true` terug bij een treffer.\n  `updateHash` is default `false`.\n- **`navigateToAnchor(hash, { updateHash })`** - Lager niveau: zoekt het doel pagina-breed op, scrollt ernaartoe en\n  verplaatst de focus. Werkt de URL-hash enkel bij als `updateHash` `true` is (default `false`).\n\n`vl-typography` gebruikt dit zelf door `handleAnchorClick` aan zijn shadow root te hangen en `enableAnchorNavigation()`\nte activeren - er zit geen navigatielogica meer in de component zelf."
+          }
+        ]
+      }
+    }
+  ]
+}

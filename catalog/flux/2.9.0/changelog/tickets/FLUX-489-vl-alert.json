@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-489",
+  "entries": [
+    {
+      "id": "684b782",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-489"
+      ],
+      "scope": "vl-alert",
+      "components": [
+        "vl-alert"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "message-attribuut werking uitgebreid met newline character ondersteuning",
+      "text": "FLUX-489 - vl-alert - message-attribuut werking uitgebreid met newline character ondersteuning",
+      "commits": [
+        {
+          "sha": "684b78207f634191aa9a2c78c37aad330da9ccd4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/684b78207f634191aa9a2c78c37aad330da9ccd4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/vl-alert.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

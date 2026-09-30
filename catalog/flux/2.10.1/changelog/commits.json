@@ -1,0 +1,41 @@
+{
+  "schema": 2,
+  "version": "2.10.1",
+  "previous": "2.10.0",
+  "commits": {
+    "2c3d907cf4d8a7f1c0eae4a07557eacf8952f1af": {
+      "sha": "2c3d907cf4d8a7f1c0eae4a07557eacf8952f1af",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 2
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-next-side-navigation-layout--documentatie",
+          "title": "Components - Block/next/side-navigation-layout",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.1/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-next-side-navigation-next--documentatie",
+          "title": "Components - Block/next/side-navigation-next",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.10.1/storybook/?path=/docs/components-block-next-side-navigation-next--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "4069f661a0858866207f8224a63e5036e1ac4eda": {
+      "sha": "4069f661a0858866207f8224a63e5036e1ac4eda",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 2
+      },
+      "publishedFiles": [],
+      "storybook": []
+    }
+  },
+  "unlisted": []
+}

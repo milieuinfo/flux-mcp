@@ -1,0 +1,305 @@
+{
+  "schema": 4,
+  "version": "2.18.0",
+  "ticket": "FLUX-643",
+  "entries": [
+    {
+      "id": "77edaf7",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "ci-bamboo naar ci-jenkins, Bamboo build verwijderd",
+      "text": "FLUX-643 - Jenkins build - ci-bamboo naar ci-jenkins, Bamboo build verwijderd",
+      "commits": [
+        {
+          "sha": "77edaf74ac2b5df02e6e18da6b3326b06370477b",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/77edaf74ac2b5df02e6e18da6b3326b06370477b"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De Bamboo build wordt niet meer ondersteund, enkel nog Jenkins.\n\n- resources/ci-bamboo/{bash,release} verplaatst naar resources/ci-jenkins\n- bamboo-specs/, compose.yaml en de 6 *-docker.sh wrappers verwijderd: die docker-compose laag was Bamboo-only, Jenkins draait de scripts rechtstreeks in de cypress container\n- BAMBOO_BRANCH_NAME fallback en het SECRET_GITHUB_TOKEN blok uit de scripts: de branchnaam komt uit BRANCH_NAME/GIT_BRANCH en GITHUB_TOKEN wordt gezet via withCredentials\n- ACD_REPOSITORY_BAMBOO_PASSWORD hernoemd naar ACD_REPOSITORY_PASSWORD (de secretKeyRef jenkins-secrets/artifactory_password blijft ongewijzigd)\n- CI/CD documentatie herschreven naar de Jenkins pijplijn",
+        "published": false,
+        "areas": {
+          "docs": 2,
+          "tooling": 25
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "beheren-ci-cd--documentatie",
+            "title": "Beheren/CI - CD",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.18.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+            "added": "- [Jenkins Configuratie](#jenkins-configuratie)\n- [Jenkins Release](#jenkins-release)\n\n[…]\n\nDe build loopt via Jenkins. De Bamboo build wordt niet meer ondersteund.\n\n[…]\n\n## Jenkins Configuratie\n\n[…]\n\nDe build configuratie zit in het `Jenkinsfile.groovy` bestand in de root van de repository. De bijhorende bash-scripts\nstaan in `resources/ci-jenkins/bash`, de semantic-release configuratie in `resources/ci-jenkins/release`.\n\n[…]\n\nHet is een declaratieve multibranch pipeline die op Kubernetes draait: elke stage die een eigen `agent` declareert\nkrijgt een eigen pod met een eigen workspace. De volledige pijplijn wordt overgeslagen als de commit een `[skip ci]`\nbevat. Volgende stages zijn gedefinieerd:\n\n1. __Trivy scan__ - security scan van `package-lock.json`\n2. __build-en-tests__ - met de volgende stages die parallel lopen, elk in een eigen pod:\n    * __build-apps-and-libs__ (de build) - stasht de gebouwde libs en fat-lib voor de release stage\n\n[…]\n\n3. __release-and-publish__ - loopt enkel voor develop-, bugfix- en release-branches; er is een licht verschillende\n   flow voor release en pre-release branches\n4. __verify-release__ - verifieert dat de ge-releaste artifacts afneembaar zijn\n5. __finalise-release__ - rebaset een hoofd-release branch (`release-v<major>`) naar zijn develop branch\n   (`develop-v<major>`), zodat de `chore(release)` commit mee terug in develop komt\n\nDe drie release stages draaien sequentieel op de top-level agent en delen dus één workspace en checkout:\n__verify-release__ heeft de `build/dist` output van __release-and-publish__ nodig, en __finalise-release__ werkt op\ndezelfde git checkout verder. De scripts beslissen zelf op basis van de branchnaam of ze effectief iets doen.\n\n[…]\n\n## Jenkins Release\n\n[…]\n\nEen release vindt plaats in de __release-and-publish__ stage en wordt gestuurd door\n[semantic-release](https://github.com/semantic-release/semantic-release). De configuratie van die plugin zit in 2\nbestanden onder `resources/ci-jenkins/release`: `.releaserc-develop` en `.releaserc-release`. Het script kopieert de\njuiste variant naar `.releaserc` in de root: de develop variant voor de pre-release branches (branchnaam bevat\n'develop' of 'bugfix'), de release variant voor de release branches (branchnaam bevat 'release').\n\n[…]\n\n- de fat-lib wordt als tgz naar Artifactory ge-upload (om op de CDN te geraken)\n- Storybook wordt opnieuw gebouwd - pas dan is de `CHANGELOG.md` up-to-date - en als\n  `storybook-<versie>.tgz` build-artifact gearchiveerd"
+          },
+          {
+            "id": "bijdragen-git-branching-strategie--documentatie",
+            "title": "Bijdragen/Git Branching Strategie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.18.0/storybook/?path=/docs/bijdragen-git-branching-strategie--documentatie",
+            "added": "een correcte commit boodschap te voorzien alvorens we approven, ook de build op Jenkins moet gelukt zijn. Omdat\nintegratie tussen Jenkins en GitHub op dit vlak niet mogelijk is vragen we dat de indiener in de PR de Jenkins-build-link"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8f5edd2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "doorlooptijd versneld door parallellisatie",
+      "text": "FLUX-643 - Jenkins build - doorlooptijd versneld door parallellisatie",
+      "commits": [
+        {
+          "sha": "8f5edd2bebd063538c35ceb59a994d3db89bab3c",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8f5edd2bebd063538c35ceb59a994d3db89bab3c"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- component tests over 3 parallelle shards\n- storybook-e2e tests over 2 parallelle shards",
+        "published": false,
+        "areas": {
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "17bbac2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "initiële opzet",
+      "text": "FLUX-643 - Jenkins build - initiële opzet",
+      "commits": [
+        {
+          "sha": "17bbac24eca533a880c3ea10afabb219ca013c1e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/17bbac24eca533a880c3ea10afabb219ca013c1e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- algemene aanpassingen aan de scripts\n- docs commits geven nu een patch release",
+        "published": false,
+        "areas": {
+          "tooling": 20
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "2d45277",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "Jenkinsfile.groovy verbeteringen",
+      "text": "FLUX-643 - Jenkins build - Jenkinsfile.groovy verbeteringen",
+      "commits": [
+        {
+          "sha": "2d4527781adcdaeb26dffe3a699900135aaefbbb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2d4527781adcdaeb26dffe3a699900135aaefbbb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "2ecd23f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "publicatie van de Cypress testresultaten in Jenkins",
+      "text": "FLUX-643 - Jenkins build - publicatie van de Cypress testresultaten in Jenkins",
+      "commits": [
+        {
+          "sha": "2ecd23fa8e9bbc1c0f3b55325deb9f02c40cfaa6",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2ecd23fa8e9bbc1c0f3b55325deb9f02c40cfaa6"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Bij CI=true schrijven de vier cypress-configs (component, integrator-e2e, storybook-e2e, consumer-e2e) JUnit XML naar test-results/ op de repo-root via de in de Cypress binary gebundelde junit reporter. De stages e2e-tests-storybook en verify-release krijgen dezelfde junit-step als unit-component-integrator-tests. De firefox-anchor run krijgt via JUNIT_VARIANT=firefox een eigen label, anders staan die specs dubbel en zijn ze niet-herleidbaar in het testrapport.",
+        "published": false,
+        "areas": {
+          "tests": 3,
+          "tooling": 6
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "6ebf1fc",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "testrapport verbeteringen",
+      "text": "FLUX-643 - Jenkins build - testrapport verbeteringen",
+      "commits": [
+        {
+          "sha": "6ebf1fc30b08a24ebb2a7236b6e7a7f30a605d52",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6ebf1fc30b08a24ebb2a7236b6e7a7f30a605d52"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- consistente naamgeving in de testen\n- testrapport groepeert op categorie i.p.v. (root)",
+        "published": false,
+        "areas": {
+          "tests": 36,
+          "tooling": 6
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "a85a953",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "verbeteringen",
+      "text": "FLUX-643 - Jenkins build - verbeteringen",
+      "commits": [
+        {
+          "sha": "a85a9534e8e9979c7d4f653202df96e9393c5870",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a85a9534e8e9979c7d4f653202df96e9393c5870"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- de herhaalde 'set +e / buffer-stdout.txt / buffer-stderr.txt' blokken in de CI-scripts vervangen door de gedeelde helper lib/quiet-step.sh: die toont de output van een stap enkel als ze faalt, met stdout en stderr in 1 stroom zodat de volgorde klopt\n- lang lopende stappen (builds, cypress, serve-and-e2e) lopen bewust niet via de quiet_step maar streamen live naar de console: bij een hang, crash of OOM zie je nu waar hij bleef steken\n- de artifactory-upload van de fat-lib tgz uit het inline 'node -e' script gehaald naar lib/upload-to-artifactory.mjs, met een aparte foutmelding per faal pad (ontbrekende env var, onleesbaar bestand, geen antwoord, HTTP-fout inclusief response body)\n- storybook-<versie>.tgz wordt gearchiveerd op de release-and-publish stage en is zo downloadbaar vanaf de build pagina\n- de tijdelijk uitgeschakelde stages unit-component-integrator-tests en e2e-tests-storybook draaien weer mee\n- de GitHub publish PoC stage en github-publish-poc.releaserc.cjs zijn verwijderd\n- verify-release doet nog één cd naar apps/consumer voor de drie serve-and-e2e runs in plaats van per run heen en weer\n- libs-add-dependencies.sh werkt nu zonder jq",
+        "published": false,
+        "areas": {
+          "tooling": 12
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "3bef0d8",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-643"
+      ],
+      "scope": "Jenkins build",
+      "components": [],
+      "topics": [
+        "Jenkins build"
+      ],
+      "mentions": [],
+      "summary": "verify-release isoleren in een eigen pod",
+      "text": "FLUX-643 - Jenkins build - verify-release isoleren in een eigen pod",
+      "commits": [
+        {
+          "sha": "3bef0d8c5d7bd287e56eaff2453680d50fb91e2f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/3bef0d8c5d7bd287e56eaff2453680d50fb91e2f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "verify-release is een controlestap: ze moet aantonen dat de zonet gepubliceerde packages werken zoals een externe consumer ze krijgt. Tot nu toe deelde die stage de workspace met release-and-publish, dus stond er een volledige monorepo-install op de root. Node resolutie klimt vanuit apps/consumer omhoog naar die node_modules, waardoor de consumer-app dependencies oppikte die de gepubliceerde packages zelf niet declareren (phantom dependencies). De stage slaagde daardoor ook als een package gebroken gepubliceerd werd.",
+        "published": false,
+        "areas": {
+          "examples": 2,
+          "tests": 3,
+          "tooling": 3
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

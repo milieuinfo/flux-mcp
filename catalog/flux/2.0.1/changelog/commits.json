@@ -1,0 +1,20 @@
+{
+  "schema": 2,
+  "version": "2.0.1",
+  "previous": "2.0.0",
+  "commits": {
+    "d62a4330280f66e143b11b454c782ab43eb7c833": {
+      "sha": "d62a4330280f66e143b11b454c782ab43eb7c833",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/common/src/base/base.html.element.ts"
+      ],
+      "storybook": []
+    }
+  },
+  "unlisted": []
+}

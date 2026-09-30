@@ -1,0 +1,54 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-251",
+  "entries": [
+    {
+      "id": "5a9a5d4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-251"
+      ],
+      "scope": "vl-modal",
+      "components": [
+        "vl-modal"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "reactief open-attribuut en open/close events",
+      "text": "FLUX-251 - vl-modal - reactief open-attribuut en open/close events",
+      "commits": [
+        {
+          "sha": "5a9a5d4144031168e3af33b8624e6ce754374fd3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5a9a5d4144031168e3af33b8624e6ce754374fd3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Het open-attribuut weerspiegelt nu de werkelijke staat: toevoegen opent de modal, verwijderen sluit ze, en na sluiten via knop, escape of backdrop verdwijnt het attribuut vanzelf. De modal vuurt voortaan vl-open- en vl-close-events af zodat consumers declaratief op statuswijzigingen kunnen reageren zonder de component te queryen.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/modal/vl-modal.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-modal--documentatie",
+            "title": "Components - Block/modal",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-modal--documentatie",
+            "added": "## Reactief open-attribuut\n\nHet `open` attribuut is reactief en weerspiegelt de werkelijke open-staat van de modal. Het attribuut toevoegen opent\nde modal, het verwijderen sluit ze:\n\n```html\n<vl-modal open></vl-modal>\n```\n\nWanneer de modal sluit via de annuleer-knop, de sluit-knop, de escape-toets of de backdrop, wordt het `open` attribuut\nautomatisch van de host verwijderd.\n\n> **Let op met toegankelijkheid:** openen via het `open` attribuut (of via de `open()` methode) ontslaat de afnemer niet\n> van de regel dat een modal idealiter via een knop of link getriggerd wordt. Wie de modal opent zonder zo'n trigger\n> is zelf verantwoordelijk om de focus correct te beheren - in het bijzonder om de focus bij het sluiten terug te\n> plaatsen op een logisch element (typisch het element dat de modal opende). Doe je dat niet, dan blijft de focus achter\n> op een onvoorspelbare plaats, wat de toegankelijkheid voor toetsenbord- en schermlezer-gebruikers schaadt. Zie\n> [Toegankelijkheid](#toegankelijkheid) voor de aanbevolen werkwijze.\n\n\n## Events\n\n<table>\n    <tr>\n        <td>Event</td>\n        <td>Beschrijving</td>\n    </tr>\n    <tr>\n        <td>`vl-open`</td>\n        <td>Wordt afgevuurd wanneer de modal opent, ongeacht of dat via het `open` attribuut, de `open()` methode of een trigger gebeurde.</td>\n    </tr>\n    <tr>\n        <td>`vl-close`</td>\n        <td>Wordt afgevuurd wanneer de modal sluit, ongeacht of dat via het `open` attribuut, de `close()` methode, de annuleer-/sluit-knop, escape of de backdrop gebeurde.</td>\n    </tr>\n</table>\n\nBeide events bubbelen en gaan door de shadow-DOM (`bubbles: true, composed: true`), zodat ze ook buiten de component\nopgevangen kunnen worden:\n\n```js\ndocument.querySelector('vl-modal').addEventListener('vl-close', () => {\n    // reageer op het sluiten van de modal\n});\n```\n\n[…]\n\nHet triggeren van de modal moet altijd gebeuren via een knop of link. Voor screen readers is het belangrijk dat deze\nknop of link de juiste aria-attributen bevat. Het gebruik van `aria-haspopup=\"dialog\"` is in dit geval verplicht.\nOptioneel kan je `aria-controls` toevoegen met als value de ID van de modal (dit is echter overbodig wanneer de knop\nbinnen een shadow DOM zit (bv vl-button), omdat de koppeling met de ID niet werkt doorheen de shadow DOM). **Deze\naria-attributen moet de afnemer zelf implementeren!**.\n\nEen belangrijke reden voor deze regel is het focusbeheer: wanneer de modal sluit, moet de focus terugkeren naar de\ntrigger (de knop of link die de modal opende). Door de modal via zo'n trigger te openen, gebeurt dit op een\nnatuurlijke en voorspelbare manier. Het [reactief openen via het `open` attribuut](#reactief-open-attribuut) of de\n`open()` methode blijft mogelijk en is soms nodig (bv. om de open-staat declaratief te sturen), maar wie deze weg\nkiest in plaats van een trigger, moet het terugplaatsen van de focus bij het sluiten zelf afhandelen. De\n`vl-close`-event is hiervoor een geschikt aangrijpingspunt.\n\nDe vl-modal zal standaard de focus leggen op het eerste focusbare element binnenin de modal wanneer deze geopend wordt.\nDit kan aangepast worden door het `focus-on-modal` attribuut toe te voegen aan de modal,\n\n[…]\n\nhet automatisch focussen op het eerste focusbare element problemen veroorzaakt, bijvoorbeeld wanneer dit meteen een\npopover triggert.\n\n[…]\n\n- Indien het design geen titel toelaat, moet het `label` attribuut gebruikt worden zodat een beschrijvende `aria-label`"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "base": "2.4.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "package": "@domg-wc/components",
+      "dependencies": {
+        "added": [],
+        "removed": [
+          {
+            "name": "raw-loader",
+            "version": "4.0.2"
+          }
+        ],
+        "changed": []
+      }
+    },
+    {
+      "package": "@domg-wc/styles",
+      "dependencies": {
+        "added": [],
+        "removed": [
+          {
+            "name": "raw-loader",
+            "version": "4.0.2"
+          }
+        ],
+        "changed": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-85",
+  "entries": [
+    {
+      "id": "5b1724f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-85"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "v2 migratie documentatie en FAQs toegevoegd",
+      "text": "FLUX-85 - v2 migratie documentatie en FAQs toegevoegd",
+      "commits": [
+        {
+          "sha": "5b1724f9aa55fadde1702580407060015c0bc853",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/5b1724f9aa55fadde1702580407060015c0bc853"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "### 2. Legacy componenten vervangen door hun \"next\"-variant\n#### **2.1 Elementen wegwerken**\n#### **2.2 \"next\"-varianten implementeren**\n#### **2.3 \"vl-u-...\" utility classes**\n#### **3.1 Wijzigingen in v2**\n#### **3.2 Migratie acties**\n#### **3.3 Imports**\n#### **3.4 Optimalisaties**\n(148 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "<br/>\n## Wat is de impact op vl-grid?\n\n**Antwoord:** De grid is grondig gewijzigd en heeft een aantal specifieke aanpassingen nodig.\n\n- `vl-column` heeft een default waarde nodig zoals `vl-column--12` (bij `is=\"vl-grid\"` was dat niet het geval).\n- Kolommen worden op een nieuwe manier aangeboden:\n\n<table style={{width: 100 + '%'}}>\n  <tr>\n    <th>Oude attribuut</th>\n    <th>Nieuwe aanpak / vervanging</th>\n  </tr>\n  <tr>\n    <td>data-vl-size=\"n\"</td>\n    <td>class=\"vl-column--n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-extra-small-size=\"n\"</td>\n    <td>class=\"vl-column--xs-n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-small-size=\"n\"</td>\n    <td>class=\"vl-column--s-n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-medium-size=\"n\"</td>\n    <td>class=\"vl-column--m-n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-medium-max-size=\"12\"</td>\n    <td>mag weg (bij andere waarden dan \"12\" moeten de kolombreedtes herberekend worden naar een 12 kolommen grid)</td>\n  </tr>\n</table>\n\nVerifieer na de wijzigingen de grid layout zeker ook op verschillende resoluties.\n\nDe `data-vl-is-stacked...` attributen op `vl-grid` kunnen vervangen worden door de stacked classes: `vl-stacked-...`. Zie [Stacked](/docs/styles-layout-afnemers-stacked--documentatie).\n\nCheck voor meer informatie de [vl-grid documentatie](/docs/styles-layout-afnemers-grid--documentatie).\n\n\n<br/>\n## data-vl-no-space-top op een section werkt niet meer\n\n**Antwoord:** Klopt, in het geval van `<section is=\"vl-region\">` zouden we aanraden dit te vervangen door `<section class=\"vl-section\">`, waar we echter geen alternatief aanbieden voor `data-vl-no-space-top`.\nEen mogelijke oplossing is om hier de class `vl-section` te laten vallen en puur het semantische `<section>` element over te houden.\n\n\n<br/>\n## De form validation error message verschijnt niet. Wat kan de oorzaak zijn?\n\n**Antwoord**: Dit zijn de stappen om `is=\"vl-form-validation-message data-vl-error\"` te migreren:\n- Eerst migreren naar de v1 \"next\"-variant: `<vl-error-message-next>`\n- Vervolgens migreren naar de v2 variant: `<vl-form-message>`\n- Indien de message niet verschijnt kan dit komen omdat het component niet gekoppeld is aan een form element met het `for`-attribuut.\n- Indien de message niet kan gekoppeld worden aan een form element, moet het attribuut `show` toegevoegd worden.\n\n\n<br/>\n## Na het verwijderen van de `data-vl-` prefix zijn er zaken gebroken. Hoe kan dit?\n\n**Antwoord**: Dit kan komen door het gebruik van `data-vl-` in selectors of via het dataset object.\n\n- Selectors als `component-naam[data-vl-...]`, `[data-vl-...]` zullen breken. Hier moet ook de `data-vl-` prefix gewist worden.\n- Referenties via het dataset object zullen ook breken. Gebruik hiervoor `getAttribute` in de plaats.\n  bv: `data-vl-max-resolution` → `element.dataset.vlMaxResolution` wordt:\n  `max-resolution` → `element.getAttribute('max-resolution')`"
+          }
+        ]
+      }
+    }
+  ]
+}

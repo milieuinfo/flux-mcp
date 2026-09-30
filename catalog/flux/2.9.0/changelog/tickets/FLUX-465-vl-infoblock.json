@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-465",
+  "entries": [
+    {
+      "id": "c174309",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-465"
+      ],
+      "scope": "vl-infoblock",
+      "components": [
+        "vl-infoblock"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "onnodige tekst verwijderd",
+      "text": "FLUX-465 - vl-infoblock - onnodige tekst verwijderd",
+      "commits": [
+        {
+          "sha": "c17430949c088e70f46edf4a913234181d573e8a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/c17430949c088e70f46edf4a913234181d573e8a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

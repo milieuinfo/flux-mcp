@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-483",
+  "entries": [
+    {
+      "id": "1457f5a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-483"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "type-attribuut toegevoegd aan button-as-link",
+      "text": "FLUX-483 - vl-link - type-attribuut toegevoegd aan button-as-link",
+      "commits": [
+        {
+          "sha": "1457f5a9657e9ad2a74a6781cbd7c98b29a669ad",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1457f5a9657e9ad2a74a6781cbd7c98b29a669ad"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-link.component.ts",
+          "libs/components/src/atom/link/vl-link.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "Via het `type`-attribuut kan je het type van de onderliggende `<button>` instellen. De standaardwaarde is `button`."
+          }
+        ]
+      }
+    }
+  ]
+}

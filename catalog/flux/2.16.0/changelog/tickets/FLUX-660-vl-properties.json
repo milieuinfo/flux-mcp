@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-660",
+  "entries": [
+    {
+      "id": "02abeb7",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-660"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "shadow DOM synchroon + no-clone deprecaten",
+      "text": "FLUX-660 - vl-properties - shadow DOM synchroon + no-clone deprecaten",
+      "commits": [
+        {
+          "sha": "02abeb7e6c11766134fc453de032be8eb7c60c2a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/02abeb7e6c11766134fc453de032be8eb7c60c2a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "vl-properties (en de overervende vl-search-result-properties) houden hun shadow DOM nu synchroon met wijzigingen in de light DOM (zowel tekst- als attribuut wijzigingen op bestaande nodes). Daardoor is de no-clone workaround niet langer nodig en wordt het attribuut deprecated (verwijderd in v3): bij gebruik volgt een eenmalige console-waarschuwing.",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "storybook": 1,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/common/src/util/mutation-utils.ts",
+          "libs/components/src/block/properties/vl-properties.builder.ts",
+          "libs/components/src/block/properties/vl-properties.component.ts",
+          "libs/components/src/block/properties/vl-properties.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-properties--documentatie",
+            "title": "Components - Block/properties",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-properties--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

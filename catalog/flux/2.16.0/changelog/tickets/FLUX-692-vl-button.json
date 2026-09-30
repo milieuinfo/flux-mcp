@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-692",
+  "entries": [
+    {
+      "id": "320046b",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-692"
+      ],
+      "scope": "vl-button",
+      "components": [
+        "vl-button"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "noopener,noreferrer toegevoegd bij externe cta-link",
+      "text": "FLUX-692 - vl-button - noopener,noreferrer toegevoegd bij externe cta-link",
+      "commits": [
+        {
+          "sha": "320046b8c98287f335a59b99ce410cb9f273b9cf",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/320046b8c98287f335a59b99ce410cb9f273b9cf"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

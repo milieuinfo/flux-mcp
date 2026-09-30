@@ -1,0 +1,49 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-149",
+  "entries": [
+    {
+      "id": "487d000",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-149"
+      ],
+      "scope": "vl-pill",
+      "components": [
+        "vl-pill"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie verbeterd",
+      "text": "FLUX-149 - vl-pill - documentatie verbeterd",
+      "commits": [
+        {
+          "sha": "487d000a70e8653c6e127087209cb7d40192b827",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/487d000a70e8653c6e127087209cb7d40192b827"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-pill-pill--documentatie",
+            "title": "Components - Block/pill/pill",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-pill-pill--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-673",
+  "entries": [
+    {
+      "id": "a2811d4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-673"
+      ],
+      "scope": "vl-map-wfs-layer",
+      "components": [
+        "vl-map-wfs-layer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "cql-filter met hybride geometry-name",
+      "text": "FLUX-673 - vl-map-wfs-layer - cql-filter met hybride geometry-name",
+      "commits": [
+        {
+          "sha": "a2811d44b01d8f03399469e316058bf468ae5917",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a2811d44b01d8f03399469e316058bf468ae5917"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Voegt een reactief `cql-filter` attribuut toe aan vl-map-wfs-layer. De waarde wordt server-side toegepast als `cql_filter=BBOX(geometry,extent) AND (filter)`. De geometry-property komt uit een optioneel `geometry-name` attribuut, of wordt best-effort gedetecteerd via DescribeFeatureType (namespace-gebaseerd, met parse-foutafhandeling). Faalt de detectie, dan valt de laag veilig terug op een gewone bbox-request met een console.warn.\n\nDe source wordt pas aangemaakt nadat de geometry-property opgelost is, om te vermijden dat de eerste tiles ongefilterd geladen worden.\n\nLet op (gedragswijziging): vl-map-draw-point-action selecteert zijn snapping layers nu via `instanceof VlMapVectorLayer` i.p.v. een vl-map-wfs-layer tag-check, zodat ook subclasses opgepikt worden. Gevolg: alle VlMapVectorLayers binnen een draw-action worden voortaan een snapping target, niet enkel vl-map-wfs-layer.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/map/src/components/action/draw-action/vl-map-draw-action.ts",
+          "libs/map/src/components/layer/vector-layer/vl-map-wfs-layer/vl-map-wfs-layer.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-layer-vector-layer-wfs-layer--documentatie",
+            "title": "map/layer/vector-layer/wfs-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.15.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie",
+            "added": "## Filteren met de cql-filter\n\nMet het `cql-filter` attribuut filter je de features van de laag server-side. De waarde wordt als `cql_filter` query\nparameter naar de WFS server gestuurd, gecombineerd met een ruimtelijke `BBOX`-clausule:\n`cql_filter=BBOX(geometry,extent) AND (filter)`. Zonder `cql-filter` blijft het gedrag ongewijzigd (een gewone\n`bbox`-parameter).\n\nDe `BBOX`-clausule heeft de naam van de geometry-property nodig. Geef die expliciet mee via `geometry-name`, of laat ze\nweg: dan wordt ze best-effort gedetecteerd via een `DescribeFeatureType` call. Faalt die detectie (bv. een\nniet-standaard WFS-server), dan valt de laag veilig terug op een gewone `bbox`-request en verschijnt er een\n`console.warn` - geef in dat geval `geometry-name` expliciet mee.\n\n> **Let op:** `cql_filter` is een GeoServer-specifieke extensie en wordt niet door elke WFS-implementatie ondersteund."
+          }
+        ]
+      }
+    }
+  ]
+}

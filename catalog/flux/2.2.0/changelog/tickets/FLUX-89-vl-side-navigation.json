@@ -1,0 +1,74 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-89",
+  "entries": [
+    {
+      "id": "008e28e",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-89"
+      ],
+      "scope": "vl-side-navigation",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "link tussen content en links hersteld",
+      "text": "FLUX-89 - vl-side-navigation - link tussen content en links hersteld",
+      "commits": [
+        {
+          "sha": "008e28eea17124f6d2064701bdf4f1aa5a2af81a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/008e28eea17124f6d2064701bdf4f1aa5a2af81a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "fix: FLUX-89",
+        "published": true,
+        "areas": {
+          "code": 12,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "examples": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.lit.element.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation-group.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation-toggle.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.css.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.defaults.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.scrollspy.lib.js",
+          "libs/components/src/compliance/accessibility/child/content.component.ts",
+          "libs/components/src/compliance/accessibility/child/inaccessible-content.component.ts",
+          "libs/components/src/compliance/accessibility/child/side-navigation.component.ts",
+          "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+          "libs/components/src/compliance/privacy/child/content.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "1. Plaats op het parent `VlSideNavigationItem` component het attribuut `parent=\"content-1\"`\n2. Plaats op het `VlSideNavigationToggle` component het attribuut `child=\"content-1\"`\n\n[…]\n\nPlaats naast het `VlSideNavigationToggle` component een lijst element (`<ul>`) met daaronder `VlSideNavigationItem` componenten als items.\n\nGebruik geen `VlSideNavigationToggle` component indien er geen subnavigatie is. Een gewone link (`<a href=\"#\">`) onder het `VlSideNavigationItem` component volstaat dan."
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

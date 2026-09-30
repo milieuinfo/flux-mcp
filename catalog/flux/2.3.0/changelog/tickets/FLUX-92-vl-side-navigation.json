@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-92",
+  "entries": [
+    {
+      "id": "ddfb461",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-92"
+      ],
+      "scope": "vl-side-navigation",
+      "components": [
+        "vl-side-navigation"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "verbeteringen mobiele versie",
+      "text": "FLUX-92 - vl-side-navigation - verbeteringen mobiele versie",
+      "commits": [
+        {
+          "sha": "ddfb461227243638b4bd1219bfd0a62e2bcf99ba",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ddfb461227243638b4bd1219bfd0a62e2bcf99ba"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/common/src/util/legacy-breakpoint.js",
+          "libs/components/src/block/side-navigation/vl-side-navigation.css.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.scrollspy.lib.js"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": "### Initialisatie in een hidden parent\n\nAls de side-navigation gerenderd wordt in een parent component die `hidden` is, bijvoorbeeld bij verschillende stappen in een flow, dan gaat de initialisatie\nfout en zal de side-navigation niet sticky worden bij het scrollen. Dit komt omdat de side-navigation bij het initialiseren een aantal dimensies capteerd en,\nin het geval dat er een parent `hidden` is, één van de waardes op 0 komt te staan. Dit kan vermeden worden door het gebruik van `hidden` te vervangen door de\n`when()` directive van Lit.\n\n\n#### ❌ Voorbeeld met \"hidden\"\n\n<Source code={`\n<flow-met-stappen>\n    <stap-met-side-navigation ?hidden=\"\\${this.__stap !== 'stap-1'}\"></stap-met-side-navigation>\n</flow-met-stappen>\n`} language=\"ts\" dark={true} format={true} />\n\n#### ✅ Voorbeeld met \"when()\"\n\n<Source code={`\n<flow-met-stappen>\n    \\${\n        when(this.__stap === 'stap-1', () =>\n            html\\`<stap-met-side-navigation></stap-met-side-navigation>\\`\n        )\n    }\n</flow-met-stappen>\n`} language=\"ts\" dark={true} format={true} />"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3269",
+  "entries": [
+    {
+      "id": "c97731f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3269"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "module verbeteringen",
+      "text": "UIG-3269 - module verbeteringen",
+      "commits": [
+        {
+          "sha": "c97731f6b9e200cc8a5684107be5f285b670c5f8",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/c97731f6b9e200cc8a5684107be5f285b670c5f8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- barrel-file toegevoegd in utils-storybook\n- path \"@domg-wc/integration/*\" weggewerkt, is nu \"@domg-wc/integration/form\" en \"@domg-wc/integration/popover\"\n- \"@domg-wc/common/constants\" weggewerkt uit tsconfig.base.json",
+        "published": false,
+        "areas": {
+          "docs": 13,
+          "storybook": 5,
+          "examples": 2,
+          "tooling": 5
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "ontwerp-form-custom-validation--documentatie",
+            "title": "Ontwerp/Form/Custom Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-custom-validation--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-form-form-data--documentatie",
+            "title": "Ontwerp/Form/Form Data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-form-form-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-map-niet-lambert-72-lagen--documentatie",
+            "title": "Ontwerp/Map/Niet-Lambert-72-lagen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-map-niet-lambert-72-lagen--documentatie",
+            "added": null
+          },
+          {
+            "id": "ontwerp-popover-menu--documentatie",
+            "title": "Ontwerp/Popover/Menu",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-popover-menu--documentatie",
+            "added": "</details>"
+          },
+          {
+            "id": "ontwerp-popover-menu-accordion--documentatie",
+            "title": "Ontwerp/Popover/Menu Accordion",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-popover-menu-accordion--documentatie",
+            "added": "</details>"
+          },
+          {
+            "id": "ontwerp-popover-menu-info-tile--documentatie",
+            "title": "Ontwerp/Popover/Menu Info Tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/ontwerp-popover-menu-info-tile--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

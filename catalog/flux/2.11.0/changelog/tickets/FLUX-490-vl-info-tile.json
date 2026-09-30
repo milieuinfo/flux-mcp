@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-490",
+  "entries": [
+    {
+      "id": "a3cdd08",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-490"
+      ],
+      "scope": "vl-info-tile",
+      "components": [
+        "vl-info-tile"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "aanpasbare background-color van het icon",
+      "text": "FLUX-490 - vl-info-tile - aanpasbare background-color van het icon",
+      "commits": [
+        {
+          "sha": "a3cdd08bb761cc0164612b655933666e3b518cd8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/a3cdd08bb761cc0164612b655933666e3b518cd8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 2,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts",
+          "libs/styles/src/theming/var/vl-components.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-info-tile--documentatie",
+            "title": "Components - Block/info-tile",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+            "added": "> **Let op:** Gebruik het `subtitle` slot niet wanneer de info tile `toggleable` is. De subtitle hoort bij de content,\nmaar is geen onderdeel van het getogglede gedeelte.\n\n[…]\n\n## CSS variabelen\n\nDe achtergrondkleur, randkleur en iconkleur van het icon badge zijn aanpasbaar via CSS variabelen.\n\n- **`--vl-info-tile-icon-background-color`** (standaard: `var(--vl-color--background-subtle)`): de achtergrondkleur van het icon badge.\n- **`--vl-info-tile-icon-border-color`** (standaard: `var(--vl-color--border-default)`): de randkleur van het icon badge.\n- **`--vl-info-tile-icon-color`** (standaard: `inherit`): de kleur van het icon zelf.\n\n```css\nvl-info-tile {\n    --vl-info-tile-icon-background-color: var(--vl-color--icon-success);\n    --vl-info-tile-icon-border-color: var(--vl-color--border-success-subtle);\n    --vl-info-tile-icon-color: var(--vl-color--border-inverse);\n}\n```"
+          }
+        ]
+      }
+    }
+  ]
+}

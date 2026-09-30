@@ -1,0 +1,59 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-507",
+  "entries": [
+    {
+      "id": "06b8def",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-507"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "header uitlijning verbeterd",
+      "text": "FLUX-507 - vl-rich-data-table - header uitlijning verbeterd",
+      "commits": [
+        {
+          "sha": "06b8def4e6b945a4caa98e07be229c1f924b63bb",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/06b8def4e6b945a4caa98e07be229c1f924b63bb"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 2,
+          "storybook": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts",
+          "libs/components/src/block/search-filter/vl-search-filter.global.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

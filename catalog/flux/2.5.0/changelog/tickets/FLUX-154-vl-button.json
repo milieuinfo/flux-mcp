@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-154",
+  "entries": [
+    {
+      "id": "dc94a7e",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-154"
+      ],
+      "scope": "vl-button",
+      "components": [
+        "vl-button"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "toegankelijkheid verbeteringen",
+      "text": "FLUX-154 - vl-button - toegankelijkheid verbeteringen",
+      "commits": [
+        {
+          "sha": "dc94a7e82e53a91a8eebb574a9990b151257a133",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/dc94a7e82e53a91a8eebb574a9990b151257a133"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 2,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.component.ts",
+          "libs/components/src/atom/button/vl-button.css.ts",
+          "libs/components/src/atom/button/vl-link-button.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

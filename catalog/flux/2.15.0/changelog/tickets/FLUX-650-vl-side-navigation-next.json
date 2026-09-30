@@ -1,0 +1,48 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-650",
+  "entries": [
+    {
+      "id": "eb340ba",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-650"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "custom TOC scrollt naar headings in shadow DOM",
+      "text": "FLUX-650 - vl-side-navigation-next - custom TOC scrollt naar headings in shadow DOM",
+      "commits": [
+        {
+          "sha": "eb340ba0ea7bf3f6eec908e5cc8a7b1c7849e8f0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/eb340ba0ea7bf3f6eec908e5cc8a7b1c7849e8f0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- ScrollRoot type verwijderd, inline DOM-unie hersteld\n- custom TOC click-listeners opgeruimd via AbortController\n- maxDepth doorgegeven aan custom-TOC paden\n- CSS.escape voor heading-id selector in findHeadingElementById",
+        "published": true,
+        "areas": {
+          "code": 4,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-custom-toc.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-scanner.utils.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

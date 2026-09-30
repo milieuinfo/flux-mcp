@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-358",
+  "entries": [
+    {
+      "id": "b5b78c1",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-358"
+      ],
+      "scope": "vl-properties",
+      "components": [
+        "vl-properties"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "columns layout brak uit zijn parent container",
+      "text": "FLUX-358 - vl-properties - columns layout brak uit zijn parent container",
+      "commits": [
+        {
+          "sha": "b5b78c1e2e5bbfe024c85f61b3a2b04e25e3f560",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/b5b78c1e2e5bbfe024c85f61b3a2b04e25e3f560"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/properties/vl-properties.css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

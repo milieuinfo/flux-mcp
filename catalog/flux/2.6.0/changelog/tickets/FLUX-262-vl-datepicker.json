@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-262",
+  "entries": [
+    {
+      "id": "4fff915",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-262"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "validatie werking verbeterd",
+      "text": "FLUX-262 - vl-datepicker - validatie werking verbeterd",
+      "commits": [
+        {
+          "sha": "4fff9151c94c8cbae1d71b28404e719bd70c05b4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4fff9151c94c8cbae1d71b28404e719bd70c05b4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

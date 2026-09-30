@@ -1,0 +1,63 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-666",
+  "entries": [
+    {
+      "id": "10da246",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-666"
+      ],
+      "scope": "vl-search-filter, vl-rich-data, vl-rich-data-table",
+      "components": [
+        "vl-search-filter",
+        "vl-rich-data",
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "footer-knoppen layout verbetering",
+      "text": "FLUX-666 - vl-search-filter, vl-rich-data, vl-rich-data-table - footer-knoppen layout verbetering",
+      "commits": [
+        {
+          "sha": "10da24638c94bb4f4351cd9c26825b39064833b9",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/10da24638c94bb4f4351cd9c26825b39064833b9"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "footer-knoppen in vl-group--wrap zodat ze niet langer tegen elkaar plakken",
+        "published": false,
+        "areas": {
+          "storybook": 3
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-rich-data--documentatie",
+            "title": "Components - Block/rich-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-rich-data-table--documentatie",
+            "title": "Components - Block/rich-data-table",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-search-filter--documentatie",
+            "title": "Components - Block/search-filter",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-search-filter--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

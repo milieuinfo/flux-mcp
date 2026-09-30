@@ -1,0 +1,145 @@
+{
+  "base": "2.6.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-icon",
+      "category": "atom",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "label",
+            "description": "Een beschrijvende tekst voor het icoon, wordt gebruikt door screenreaders. \n        <br><br><strong>Opgelet</strong>: indien `label` niet meegegeven wordt, wordt het icoon als \n        'decoratief' beschouwd en zal het genegeerd worden door screenreaders, door middel van `aria-hidden`.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map",
+      "category": "map",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "allow-invalid-geometry",
+            "description": "Standaard worden ongeldige geometrieën gemarkeerd met een rode \"invalid\" stijl. Je kan dit attribuut gebruiken om dit gedrag uit te zetten.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-layer-circle-style",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "invalid",
+            "description": "Geeft aan of de \"invalid\" stijl toegepast moet worden. Je kan dit gebruiken om de kaartlaag manueel als \"invalid\" te renderen.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-map-layer-style",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "invalid",
+            "description": "Geeft aan of de \"invalid\" stijl toegepast moet worden. Je kan dit gebruiken om de kaartlaag manueel als \"invalid\" te renderen.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-modal",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "size",
+            "description": "Attribuut om de grootte van de modal te bepalen.",
+            "default": "default"
+          },
+          {
+            "name": "position",
+            "description": "Attribuut om de positie van de modal op het scherm te bepalen.",
+            "default": "center"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-popover",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "content-padding",
+            "default": {
+              "before": "2rem",
+              "after": "medium"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-icon",
+      "category": "atom",
+      "inChangelog": false,
+      "attributes": [
+        {
+          "name": "clickable",
+          "description": "**Deprecated**: De `clickable` property is deprecated wegens niet WCAG-compliant. \n            Gebruik in de plaats een `vl-button` of `vl-link` met een icon."
+        }
+      ]
+    },
+    {
+      "element": "vl-map-features-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": [
+        {
+          "name": "projection-code",
+          "description": "Indien je Lambert 72 coördinaten gebruikt op een Lambert 2008 kaart, moet je de projectie code EPSG:31370 meegeven als projection-code. Geef je dit niet mee, dan zal de kaartlaag de projectie code van de kaart overnemen.<br>Dit attribuut is niet reactief."
+        }
+      ]
+    },
+    {
+      "element": "vl-map-wfs-layer",
+      "category": "map",
+      "inChangelog": false,
+      "attributes": [
+        {
+          "name": "projection-code",
+          "description": "Indien je Lambert 72 coördinaten gebruikt op een Lambert 2008 kaart, moet je de projectie code EPSG:31370 meegeven als projection-code. Geef je dit niet mee, dan zal de kaartlaag de projectie code van de kaart overnemen.<br>Dit attribuut is niet reactief."
+        }
+      ]
+    }
+  ]
+}

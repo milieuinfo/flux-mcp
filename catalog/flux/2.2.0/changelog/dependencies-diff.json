@@ -1,0 +1,35 @@
+{
+  "base": "2.1.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "package": "@domg-wc/components",
+      "dependencies": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "choices.js",
+            "before": "10.2.0",
+            "after": "11.1.0"
+          }
+        ]
+      }
+    },
+    {
+      "package": "@domg-wc/map",
+      "dependencies": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "name": "choices.js",
+            "before": "10.2.0",
+            "after": "11.1.0"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": 2,
+  "version": "2.8.1",
+  "previous": "2.8.0",
+  "commits": {
+    "d943d1b20c2ac5c1715535ece64968d824346309": {
+      "sha": "d943d1b20c2ac5c1715535ece64968d824346309",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/popover/vl-floating-ui.controller.ts"
+      ],
+      "storybook": []
+    }
+  },
+  "unlisted": []
+}

@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-373",
+  "entries": [
+    {
+      "id": "ed327d1",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-373"
+      ],
+      "scope": "vl-step",
+      "components": [
+        "vl-step"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "default-open toegevoegd",
+      "text": "FLUX-373 - vl-step - default-open toegevoegd",
+      "commits": [
+        {
+          "sha": "ed327d1f9d5698e78f6c593f703125efae4582bc",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ed327d1f9d5698e78f6c593f703125efae4582bc"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/steps/vl-step.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.8.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

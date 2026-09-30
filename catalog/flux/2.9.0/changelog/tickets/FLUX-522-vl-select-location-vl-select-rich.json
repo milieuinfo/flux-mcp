@@ -1,0 +1,103 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-522",
+  "entries": [
+    {
+      "id": "4f6fe55",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-522"
+      ],
+      "scope": "vl-select-location",
+      "components": [
+        "vl-select-location"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "het searchStrategy attribuut wordt expliciet niet ondersteund",
+      "text": "FLUX-522 - vl-select-location - het searchStrategy attribuut wordt expliciet niet ondersteund",
+      "commits": [
+        {
+          "sha": "4f6fe5524337f46452bc310e8c551b84e74283f0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4f6fe5524337f46452bc310e8c551b84e74283f0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De VlSelectLocationComponent haalt dynamisch de opties (waardes) op via een API die al filtering doet. Expliciete filtering toevoegen zal die zoekresultaten dan nogmaals filteren, dat is niet gewenst.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/select-location/vl-select-location.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-select-location--documentatie",
+            "title": "map/select-location",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/map-select-location--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "93cbbdf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-522"
+      ],
+      "scope": "vl-select-rich",
+      "components": [
+        "vl-select-rich"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "search strategies (default / exact-and / exact-or)",
+      "text": "FLUX-522 - vl-select-rich - search strategies (default / exact-and / exact-or)",
+      "commits": [
+        {
+          "sha": "93cbbdfd92a4c77ec2b874b4a402f9824b4552ec",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/93cbbdfd92a4c77ec2b874b4a402f9824b4552ec"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Een configureerbaar searchStrategy attribuut toegevoegd:\n - 'default': native Fuse.js (fuzzy search)\n - 'exact-and': alle woorden moeten voorkomen (AND-logica)\n - 'exact-or': minstens 1 woord moet voorkomen (OR-logica)\n\nDe implementatie gebruikt een dynamische wrapper die schakelt tussen native en custom matchers. Hij filtert altijd op alle opties (niet incrementeel) voor correcte resultaten bij het toevoegen/verwijderen van characters.\n\nTests: 18 Jest unit tests + 7 Cypress e2e tests",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/form/select-rich/index.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.defaults.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.model.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.search-matchers.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-select-rich--documentatie",
+            "title": "Components - Form/select-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+            "added": "## Inhoudstafel\n\n - [Doel](#doel)\n - [Voorbeeld](#voorbeeld)\n - [Configuratie](#configuratie)\n - [Publieke methodes](#publieke-methodes)\n - [Styles](#styles)\n - [Events](#events)\n - [Select opties](#select-opties)\n - [Accessibility](#accessibility)\n - [Varianten](#varianten)\n - [Zoek strategieën](#zoek-strategieën)\n - [Validatie](#validatie)\n - [Referenties](#referenties)\n\n[…]\n\n## Zoek strategieën\n\nHet `search-strategy` attribuut (reactief) bepaalt hoe de zoekfunctie werkt bij het filteren van opties.<br/>\nEr zijn drie zoek strategieën beschikbaar: `default`, `exact-and` en `exact-or`.<br/>\n\n### default\n\nDe standaard zoek strategie gebruikt de native Choices.js fuzzy matching van [Fuse.js](https://www.fusejs.io/).<br/>\nDit betekent dat de zoekterm niet exact hoeft voor te komen in de optie.\n\n### exact-and\n\nBij de `exact-and` strategie moeten **alle** zoekwoorden exact voorkomen in het label of value van een optie\n(substring match). Bij invoer van meerdere woorden, worden alleen de opties getoond die alle woorden bevatten\n(AND-logica).\n\n**Voorbeeld:** Als je zoekt op \"standaard gent\", wordt alleen \"De Standaard van Gent\" getoond, omdat dit de enige optie\nis die zowel \"standaard\" als \"gent\" bevat.\n\nDeze strategie is geschikt wanneer je precies wil kunnen filteren op meerdere criteria tegelijk.\n\n### exact-or\n\nBij de `exact-or` strategie moet **minstens één** zoekwoord exact voorkomen in het label of value van een optie\n(substring match). Wanneer je meerdere woorden invoert, worden alle opties getoond die één of meer woorden bevatten\n(OR-logica).\n\n**Voorbeeld:** Als je zoekt op \"standaard gent\", worden alle opties getoond die \"standaard\" **of** \"gent\" bevatten,\nzoals \"De Standaard van gisteren\", \"De Standaard van morgen\", \"De Standaard van Berchem\", \"De Standaard van Gent\"\nen \"Brussel Antwerpen Gent\".\n\nDeze strategie is geschikt wanneer je breed wil kunnen zoeken op meerdere termen tegelijk."
+          }
+        ]
+      }
+    }
+  ]
+}

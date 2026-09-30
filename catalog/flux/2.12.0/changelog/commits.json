@@ -1,0 +1,898 @@
+{
+  "schema": 2,
+  "version": "2.12.0",
+  "previous": "2.11.0",
+  "commits": {
+    "a5b8720683acf10e969ae2abae12a397d6b92c5a": {
+      "sha": "a5b8720683acf10e969ae2abae12a397d6b92c5a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/styles/vl-select-rich.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "be2b78d2c3ffa5b1c2435e66b1cb5e2b9d3a2f4e": {
+      "sha": "be2b78d2c3ffa5b1c2435e66b1cb5e2b9d3a2f4e",
+      "body": "Ontbrekende `category: CATEGORIES.ATTRIBUTES` toegevoegd aan stories-arg bestanden waardoor attributen niet in de web-types JSON werden opgenomen.\n\nAangepaste componenten:\n- vl-side-sheet (10 attributen)\n- vl-infoblock (4 attributen)\n- vl-share-button (2 attributen)\n- vl-template (2 attributen)\n- vl-typography (1 attribuut)",
+      "published": false,
+      "areas": {
+        "storybook": 5
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-infoblock--documentatie",
+          "title": "Components - Block/infoblock",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-infoblock--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-share-buttons-share-button--documentatie",
+          "title": "Components - Block/share-buttons/share-button",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-share-buttons-share-button--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-side-sheet--documentatie",
+          "title": "Components - Block/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-template--documentatie",
+          "title": "Components - Block/template",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-template--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-typography--documentatie",
+          "title": "Components - Block/typography",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-typography--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "eb8dae5d89114da978cbbe3c3e1eeb3f76d26b4c": {
+      "sha": "eb8dae5d89114da978cbbe3c3e1eeb3f76d26b4c",
+      "body": "setChoicesInputAttributes() werd nooit uitgevoerd omdat callbackOnInit als arrow function draait tijdens de new Choices() constructor, vóór de toekenning van this.choices.\n\nHierdoor bleef this.choices null en werd de input type niet gewijzigd van 'search' naar 'text'. Input met type search zorgt voor een native `x`\n\nOpgelost door als fallback het input element via een shadow DOM query op te halen wanneer this.choices nog niet beschikbaar is.",
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "51ff7b1c48791ac094e026398d2ea83119dcc445": {
+      "sha": "51ff7b1c48791ac094e026398d2ea83119dcc445",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 4,
+        "tests": 2
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "patronen-navigatie-side-navigation-met-proza-message--documentatie",
+          "title": "Patronen/Navigatie/Side Navigation/met proza message",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-side-navigation-met-proza-message--documentatie",
+          "added": "# Side Navigation - met Proza Message\n\nIn dit voorbeeld wordt `vl-side-navigation-layout-next` gecombineerd met `vl-proza-message`. De titels in de content worden\ngevuld via Proza berichten en verschijnen zo ook in de side navigation.\n\nDit voorbeeld toont ook:\n\n- titels gevuld via `vl-proza-message` binnen `vl-title`\n- automatische side navigation op basis van de standaard headingniveaus\n\n## Componenten\n\n- [vl-side-navigation-layout-next](/docs/components-block-next-side-navigation-layout--documentatie)\n- [vl-proza-message](/docs/components-block-proza-message--documentatie)\n- [vl-proza-message-preloader](/docs/components-block-proza-message-proza-message-preloader--documentatie)\n\n## Demo"
+        }
+      ]
+    },
+    "bdf0ff824f86396f211d7b4644091f83fa451132": {
+      "sha": "bdf0ff824f86396f211d7b4644091f83fa451132",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 19
+      },
+      "publishedFiles": [
+        "libs/components/src/form/form.web-types.json"
+      ],
+      "storybook": [
+        {
+          "id": "afnemen-migratie-v2-impact--documentatie",
+          "title": "Afnemen/Migratie v2 - Impact",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+          "added": "        <td>[Form](/docs/patronen-formulier-demo--documentatie)</td>"
+        },
+        {
+          "id": "components-block-functional-header--documentatie",
+          "title": "Components - Block/functional-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+          "added": "demo van deze opzet vind je hier: [Voorbeeld Met Sticky En Side Navigation](/docs/patronen-navigatie-functionele-header-sticky-met-side-navigation--documentatie).\n\n[…]\n\nZie [Patronen/Navigatie/Functionele Header](/docs/patronen-navigatie-functionele-header-met-button--documentatie) voor voorbeelden\nvan functional headers met een extra button of search component, of met de combinatie van \"Terug\"-link en tabs.\n\n[…]\n\nVul steeds `skip-to-content-id` in. Kies hiervoor de ID van de eerste heading van de content.\nIndien er uitzonderlijk geen headings zijn, kies dan voor de ID van de content zelf.\n\n[…]\n\nEen ingevulde `skip-to-content-id` zorgt ervoor dat er een skip-link gerenderd wordt. Dit laat gebruikers toe om meteen\nte skippen naar de content en de header over te slaan. Vooral voor screenreader-gebruikers vormt dit een grote\ntijdswinst bij het navigeren. Ook voor andere gebruikers kan dit interessant zijn, daarom wordt deze link zichtbaar\nbij focus."
+        },
+        {
+          "id": "components-form-checkbox--documentatie",
+          "title": "Components - Form/checkbox",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-datepicker--documentatie",
+          "title": "Components - Form/datepicker",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-fieldset--documentatie",
+          "title": "Components - Form/fieldset",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-fieldset--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nGebruik steeds gelabelde formulierelementen binnen de fieldset om de toegankelijkheid te garanderen."
+        },
+        {
+          "id": "components-form-form-label--documentatie",
+          "title": "Components - Form/form-label",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-form-label--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form."
+        },
+        {
+          "id": "components-form-form-message--documentatie",
+          "title": "Components - Form/form-message",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-form-message--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nde DOM. Een voorbeeld hiervan kan je vinden in onze [form demo](/docs/patronen-formulier-demo--documentatie).\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-input-field--documentatie",
+          "title": "Components - Form/input-field",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-input-field--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-input-field-masked--documentatie",
+          "title": "Components - Form/input-field-masked",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-input-field-masked--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-radio-group--documentatie",
+          "title": "Components - Form/radio-group",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-radio-group--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n> Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-select--documentatie",
+          "title": "Components - Form/select",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-select--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nMeer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-select-rich--documentatie",
+          "title": "Components - Form/select-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n[Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-textarea--documentatie",
+          "title": "Components - Form/textarea",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-textarea--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\nMeer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-textarea-rich--documentatie",
+          "title": "Components - Form/textarea-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+          "added": "Meer info over validatie binnen onze form componenten vind je hier: [Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "components-form-upload--documentatie",
+          "title": "Components - Form/upload",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-form-upload--documentatie",
+          "added": "Zie het [form demo](/docs/patronen-formulier-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n[…]\n\n[Form - Validatie](/docs/patronen-formulier-validatie--documentatie)"
+        },
+        {
+          "id": "design-system--documentatie",
+          "title": "Design System",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/design-system--documentatie",
+          "added": "- een set van leidraden - de pagina's te vinden ander RICHTLIJNEN, PATRONEN en RECEPTEN"
+        },
+        {
+          "id": "patronen-navigatie-popover-accordion-met-menu--documentatie",
+          "title": "Patronen/Navigatie/Popover/accordion met menu",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-popover-accordion-met-menu--documentatie",
+          "added": "## Patroon"
+        },
+        {
+          "id": "patronen-navigatie-popover-info-tile-met-menu--documentatie",
+          "title": "Patronen/Navigatie/Popover/info tile met menu",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-popover-info-tile-met-menu--documentatie",
+          "added": "## Patroon"
+        },
+        {
+          "id": "patronen-navigatie-popover-menu--documentatie",
+          "title": "Patronen/Navigatie/Popover/menu",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-navigatie-popover-menu--documentatie",
+          "added": "## Patroon\n\n[…]\n\n  van het patroon en de context."
+        }
+      ]
+    },
+    "a204e537a6e2fc8bf135e70152e316b4b9d3e713": {
+      "sha": "a204e537a6e2fc8bf135e70152e316b4b9d3e713",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/map/src/components/legend/vl-map-legend.ts"
+      ],
+      "storybook": []
+    },
+    "199805569233aa84eb6c6d4c620c1cf88e9dca65": {
+      "sha": "199805569233aa84eb6c6d4c620c1cf88e9dca65",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+      ],
+      "storybook": []
+    },
+    "4f33961bd825dfee49307777379d32f271b43ddb": {
+      "sha": "4f33961bd825dfee49307777379d32f271b43ddb",
+      "body": "vl-map-legend.cy.ts:\n- cy.intercept() om externe WMS-verzoeken te stubben (zodat de test netwerk onafhankelijk is)\n\nvl-header.component.cy.ts:\n- stubbing van de widget-script's in beforeEach\n- ready event: listener geregistreerd voor de mount - race conditie fix",
+      "published": false,
+      "areas": {
+        "tests": 2
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "bf4b91522ed59536763526b339bae11cb4df4630": {
+      "sha": "bf4b91522ed59536763526b339bae11cb4df4630",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/textarea/vl-textarea.component.ts"
+      ],
+      "storybook": []
+    },
+    "8510a7ca41ad23b8c85499469abd0a2783de8a40": {
+      "sha": "8510a7ca41ad23b8c85499469abd0a2783de8a40",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/doormat/vl-doormat.component.ts",
+        "libs/components/src/block/infotext/vl-infotext.component.ts",
+        "libs/components/src/block/spotlight/vl-spotlight.component.ts"
+      ],
+      "storybook": []
+    },
+    "97431ab24e804b46523438f70327990b91efd8b0": {
+      "sha": "97431ab24e804b46523438f70327990b91efd8b0",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+        "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "bbe7471b01f497e2f9fe3eadfcee86c0494a4e78": {
+      "sha": "bbe7471b01f497e2f9fe3eadfcee86c0494a4e78",
+      "body": "Bij het laden van de pagina werd focus onterecht op het eerste navigatie-item gezet. De MutationObserver voor focus-recovery trackt nu welk element focus had via een focusin listener en herstelt focus alleen als dat specifieke element uit de DOM van de side-navigation verwijderd wordt",
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+      ],
+      "storybook": []
+    },
+    "f8bf848f05c5fa6f4062ee4bed0154ef71b6cd1e": {
+      "sha": "f8bf848f05c5fa6f4062ee4bed0154ef71b6cd1e",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "bijdragen-storybook--documentatie",
+          "title": "Bijdragen/Storybook",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/bijdragen-storybook--documentatie",
+          "added": "- **[component].stories-arg.ts**: de [Args](#args) en [ArgTypes](#argtypes) gebruikt in de stories - die de"
+        }
+      ]
+    },
+    "a86e5c288a61b94984f411961cbd495cd2231ac0": {
+      "sha": "a86e5c288a61b94984f411961cbd495cd2231ac0",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "8ef7f426fbca411048cdc3d92bbba109ffd0fc07": {
+      "sha": "8ef7f426fbca411048cdc3d92bbba109ffd0fc07",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 4,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/pager/vl-pager.component.ts",
+        "libs/components/src/block/pager/vl-pager.flux-css.ts",
+        "libs/styles/src/base/mixin/vl-accessibility.css.ts",
+        "libs/styles/src/index.ts",
+        "libs/styles/src/layout/accessibility/vl-accessibility-styles.css.ts"
+      ],
+      "storybook": []
+    },
+    "224d89dc3b830e17ada19fc2a8aed67f33258843": {
+      "sha": "224d89dc3b830e17ada19fc2a8aed67f33258843",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "storybook": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+        "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-side-sheet--documentatie",
+          "title": "Components - Block/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "02d61279f1fdac0eab1fd48d19c3c130c0e6e370": {
+      "sha": "02d61279f1fdac0eab1fd48d19c3c130c0e6e370",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "11f7bca5061052ed549964c4ac4bc59f4a4ed24d": {
+      "sha": "11f7bca5061052ed549964c4ac4bc59f4a4ed24d",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/side-sheet/vl-side-sheet.component.ts",
+        "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-side-sheet--documentatie",
+          "title": "Components - Block/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "c187f739697f196d3834bd6cad4612a3cedcf925": {
+      "sha": "c187f739697f196d3834bd6cad4612a3cedcf925",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "docs": 3,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/group/vl-group.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "patronen-typografie-titel-met-annotatie--documentatie",
+          "title": "Patronen/Typografie/Titel/met annotatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+          "added": "Een annotatie kan naast of onder een titel geplaatst worden om extra context te bieden.\n\n\n## Aanbeveling\n\nDe combinatie van een titel met annotatie gebeurd best met een vl-group.\n\n[…]\n\nDit voorbeeld zet de annotatie standaard rechts van de titel, wanneer de plaats beperkter wordt wrapped de\nannotatie onder de titel. De `vl-group--baseline` lijnt de titel en annotatie onderaan uit, de\n`vl-group--no-row-gap` beperkt de verticale wit-ruimte bij wrapping.\n\n[…]\n\n        `<div class=\"vl-group vl-group--baseline vl-group--wrap vl-group--no-row-gap\">\n            <vl-title type=\"h2\" no-space-bottom>Een titel die wat langer is dan normaal</vl-title>\n            <vl-text annotation>Optioneel voeg je een annotatie toe.</vl-text>"
+        },
+        {
+          "id": "styles-layout-group--documentatie",
+          "title": "Styles/Layout (afnemers)/group",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/styles-layout-group--documentatie",
+          "added": "### Witruimte\n\nWitruimte wordt voorzien door de default 'gap'. Er zijn 3 modifiers om die 'gap' te schrappen:\n`vl-group--no-gap` / `vl-group--no-row-gap` / `vl-group--no-column-gap`.\n\n[…]\n\n### Wrapping\n\nOm wrapping toe te voegen is er de modifier `vl-group--wrap`."
+        }
+      ]
+    },
+    "6995b96c3159efd962ce0b09ad0b22272f06ee45": {
+      "sha": "6995b96c3159efd962ce0b09ad0b22272f06ee45",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts"
+      ],
+      "storybook": []
+    },
+    "1457f5a9657e9ad2a74a6781cbd7c98b29a669ad": {
+      "sha": "1457f5a9657e9ad2a74a6781cbd7c98b29a669ad",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/link/vl-link.component.ts",
+        "libs/components/src/atom/link/vl-link.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-link--documentatie",
+          "title": "Components - Atom/link",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-atom-link--documentatie",
+          "added": "Via het `type`-attribuut kan je het type van de onderliggende `<button>` instellen. De standaardwaarde is `button`."
+        }
+      ]
+    },
+    "a21f538d014e75830bc7ee85623861bbc2e991d2": {
+      "sha": "a21f538d014e75830bc7ee85623861bbc2e991d2",
+      "body": null,
+      "published": false,
+      "areas": {
+        "storybook": 5
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "991e9cbad3bfe9983163d5f7930a6ec26f1a8ab4": {
+      "sha": "991e9cbad3bfe9983163d5f7930a6ec26f1a8ab4",
+      "body": "CSS modernisering:\n - resetStyle en vlCheckboxFluxStyles (govflanders-style) vervangen door vlResetStyles en vlCheckboxComponentFluxStyles\n - vl-checkbox.component.raw.css aangemaakt met :host variabelen (font-size base, box-size, icon-size, switch dimensies)\n - vl-checkbox.component.css.ts aangemaakt met volledige checkbox en switch styles\n - vl-checkbox.component.flux-css.ts verwijderd\n - auto-generated id toegevoegd via instanceCounter voor accessibility\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--*)\n - alle states uitgewerkt: focus, checked, indeterminate, disabled, error, success\n - switch variant styles geïntegreerd met section comments\n - component-specifieke CSS variabelen voor box-size, icon-size en switch dimensies\n\nGlobale CSS variabelen uitgebreid (vl-general.raw.css):\n - --vl-border--width toegevoegd\n - transitie-variabelen toegevoegd: --vl-transition--fast, --vl-transition, --vl-transition--slow\n - focus state variabelen toegevoegd\n\nCypress image snapshot infrastructuur opgezet (eerste component die dit gebruikt):\n - @simonsmith/cypress-image-snapshot package toegevoegd\n - plugin geconfigureerd in cypress.config.ts met addMatchImageSnapshotPlugin\n - matchImageSnapshot command geregistreerd in support/component.ts met drempelwaarden (0.001%)\n - TypeScript types uitgebreid in support/cypress-chainable.d.ts\n\nCypress component testen:\n - geherstructureerd in 3 logische describe-blokken: properties & states, events, form integration\n - image snapshots toegevoegd voor visuele regressie testing (mount, checked, indeterminate, disabled, error, error-checked, success, block)\n - computed style assertions toegevoegd voor error en success states\n - nieuwe test toegevoegd: form reset herstelt initiële waarde",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 4,
+        "storybook": 1,
+        "tests": 1,
+        "tooling": 7
+      },
+      "publishedFiles": [
+        "libs/components/src/form/checkbox/vl-checkbox.component.css.ts",
+        "libs/components/src/form/checkbox/vl-checkbox.component.flux-css.ts",
+        "libs/components/src/form/checkbox/vl-checkbox.component.raw.css",
+        "libs/components/src/form/checkbox/vl-checkbox.component.ts",
+        "libs/styles/src/base/var/vl-general.raw.css"
+      ],
+      "storybook": []
+    },
+    "7b9696a0f273963c9fee9c4be5990bd26956feda": {
+      "sha": "7b9696a0f273963c9fee9c4be5990bd26956feda",
+      "body": "CSS modernisering:\n - @domg/govflanders-style dependencies volledig verwijderd\n - vl-datepicker.component.raw.css aangemaakt met variabelen\n - vl-datepicker.component.css.ts aangemaakt met component styles\n - icon font definities toegevoegd (.vl-vi-calendar, .vl-vi-clock)\n - vl-datepicker.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - duplicate :root en .vl-vi blokken verwijderd\n - :host block toegevoegd met datepicker-specifieke CSS variabelen\n - hardcoded kleuren vervangen door shared design system variabelen (--vl-color-*)\n - verbeterde organisatie met section comments\n\n Cypress component testen:\n  - geherstructureerd en uitgebreid\n  - georganiseerd in 9 logische blokken (basic, properties, dates, constraints, calendar, events, form, accessibility, keyboard, edge cases, interaction, mobile)\n  - image snapshots toegevoegd voor visuele regressie testing\n  - mobiele test duplicatie verwijderd",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/datepicker/vl-datepicker.component.css.ts",
+        "libs/components/src/form/datepicker/vl-datepicker.component.raw.css",
+        "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+        "libs/components/src/form/datepicker/vl-datepicker.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "21a542f27b520ca0d57c2c20e1746045b833781f": {
+      "sha": "21a542f27b520ca0d57c2c20e1746045b833781f",
+      "body": "- Nieuwe `vlProza` directive voor gebruik van Proza berichten als attribuut waarden in Lit templates\n- Documentatie en voorbeelden toegevoegd inclusief configuratie via `FluxConfig`\n- Cypress tests toegevoegd voor validatie van gedrag en foutafhandeling",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 2,
+        "storybook": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/proza-message/vl-proza.directive.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-proza-message-proza-directive--documentatie",
+          "title": "Components - Block/proza-message/proza-directive",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-proza-message-proza-directive--documentatie",
+          "added": "# Proza Directive (`vlProza`)\n## Doel\n## Import\n## Setup\n## Gebruik\n### Basis\n### Met parameters\n### Met domain override\n## API\n### `vlProza(code, options?)`\n### Default domein via `FluxConfig`\n## Verschil met `vl-proza-message`\n## Referenties\n(157 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+        },
+        {
+          "id": "recepten-proza-inline-gebruik--documentatie",
+          "title": "Recepten/Proza inline gebruik",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/recepten-proza-inline-gebruik--documentatie",
+          "added": "# Proza inline gebruik (`vlProza`)\n## Setup\n### 1. Default domein instellen\n### 2. Import\n## Voorbeelden\n### Alert met proza titel\n### Alert met proza titel en parameters\n### Ander domein voor een specifieke aanroep\n### Fallback tekst tijdens laden\n### Combinatie met preloader\n## Verschil met de `vl-proza-message` component\n## Migratie van eigen implementatie\n(156 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+        }
+      ]
+    },
+    "ade70111ca13b8f105720299e243799e3502832a": {
+      "sha": "ade70111ca13b8f105720299e243799e3502832a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/upload/vl-upload.component.ts"
+      ],
+      "storybook": []
+    },
+    "9947ea12ca7417da098375fcf7ca3790900eb608": {
+      "sha": "9947ea12ca7417da098375fcf7ca3790900eb608",
+      "body": "- `vlProza.setDefaultDomain` vervangen door `FluxConfig.setPreferences` voor het instellen van het Proza domein\n- Ondersteuning voor gedeelde domeinconfiguratie toegevoegd via `FluxConfig` voor `vl-proza-message` en `vl-proza-message-preloader`\n- Documentatie en tests bijgewerkt om configuratie-aanpak toe te lichten",
+      "published": true,
+      "areas": {
+        "code": 5,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/common/src/config/flux-config.ts",
+        "libs/components/src/block/index.ts",
+        "libs/components/src/block/proza-message/index.ts",
+        "libs/components/src/block/proza-message/vl-proza-message-preloader.component.ts",
+        "libs/components/src/block/proza-message/vl-proza-message.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "recepten-configuratie--documentatie",
+          "title": "Recepten/Configuratie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+          "added": "- prozaDomain: undefined\n\n\n## Proza domein\n\nDoor `prozaDomain` in te stellen hoef je het domein niet meer op elke `vl-proza-message`,\n`vl-proza-message-preloader` of `vlProza` directive aanroep mee te geven.\nIndien er geen expliciet domein wordt meegegeven, wordt het `prozaDomain` uit de `FluxConfig` gebruikt.\n\n```\nFluxConfig.setPreferences({ prozaDomain: 'mijn-domein' });\n```"
+        }
+      ]
+    },
+    "150566d4870e0f7e7d3df0f6e6ea3bc2fb2534b2": {
+      "sha": "150566d4870e0f7e7d3df0f6e6ea3bc2fb2534b2",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 2
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "3767d73fbe602c30a1fdde64635fa20ebaa43dab": {
+      "sha": "3767d73fbe602c30a1fdde64635fa20ebaa43dab",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "examples": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/button-style/vl-button-style.util.ts",
+        "libs/components/src/block/popover/vl-floating-ui.controller.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-popover--documentatie",
+          "title": "Components - Block/popover",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-popover--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-tooltip--documentatie",
+          "title": "Components - Block/tooltip",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-tooltip--documentatie",
+          "added": "## Toegankelijkheid\n\nEen tooltip moet altijd verschijnen op hover én focus. Hier wordt in de achtergrond voor gezorgd in vl-tooltip.\n\nEen tooltip mag geen interactieve elementen bevatten. Indien dat toch vereist is moet het\n[vl-popover](/docs/components-block-popover--documentatie) component gebruikt worden, dat eigen\ntoegankelijkheidsaanpassingen heeft voor deze situatie."
+        }
+      ]
+    },
+    "1f34af240f2808934066b557e2d885f010572c47": {
+      "sha": "1f34af240f2808934066b557e2d885f010572c47",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 4,
+        "styles": 2,
+        "storybook": 4,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.defaults.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.defaults.ts",
+        "libs/styles/src/theming/var/vl-components.raw.css"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-next-side-navigation--documentatie",
+          "title": "Components - Block/next/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-next-side-navigation-layout--documentatie",
+          "title": "Components - Block/next/side-navigation-layout",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "5a184423ceb1e0108c5bd07acd5ed14897a7567f": {
+      "sha": "5a184423ceb1e0108c5bd07acd5ed14897a7567f",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/icon/vl-icon.component.ts"
+      ],
+      "storybook": []
+    },
+    "9a14ce4ecec1739a994bcbc83d6c29ab4988eb3a": {
+      "sha": "9a14ce4ecec1739a994bcbc83d6c29ab4988eb3a",
+      "body": "- message-attribuut werkt niet meer in combinatie met default slot werking\n- vl-toaster documentatie verbeterd",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 1,
+        "docs": 2,
+        "storybook": 3,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/alert/vl-alert.component.ts",
+        "libs/components/src/block/alert/vl-alert.flux-css.ts",
+        "libs/components/src/block/alert/vl-alert.model.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-alert--documentatie",
+          "title": "Components - Block/alert",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-alert--documentatie",
+          "added": "### Multiline\n\nStelt `white-space: pre-line;` in voor de boodschap zodat nieuwe regels (newline karakters) in rekening worden gebracht.\n\n{`\nLet op: bij het gebruik van slot content moet de tekst direct na de opening-tag starten, zonder newline.\nEen newline na de opening-tag wordt door \\`pre-line\\` als witruimte weergegeven.\n`}\n\n```html\n<!-- Correct -->\n<vl-alert multiline\n    ><span>Eerste regel.</span>\n    <span>Tweede regel.</span>\n</vl-alert>\n\n<!-- Fout: newline na opening-tag geeft extra witruimte -->\n<vl-alert multiline>\n    <span>Eerste regel.</span>\n    <span>Tweede regel.</span>\n</vl-alert>\n```"
+        },
+        {
+          "id": "components-block-toaster--documentatie",
+          "title": "Components - Block/toaster",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-toaster--documentatie",
+          "added": "  type: 'warning',\n  title: 'Technische storing',\n  message: 'Uw aanvraag is niet verwerkt.\\nFout code: 36981',\n  closable: true,\n  multiline: true,\n\n[…]\n\nHet meegegeven object ondersteunt alle attributen van de [vl-alert](/docs/components-block-alert--documentatie)\ncomponent, zoals `multiline` om regeleinden (`\\n`) in de `message` te bewaren."
+        }
+      ]
+    },
+    "96ff7ce4ffb2da10a5af7373a4e59e888bfb6d7a": {
+      "sha": "96ff7ce4ffb2da10a5af7373a4e59e888bfb6d7a",
+      "body": "CSS modernisering:\n - vlLegacyStyles, baseStyle, resetStyle en radioStyle (govflanders-style) vervangen door vlResetStyles en vlRadioComponentStyles\n - vl-radio.component.raw.css aangemaakt met :host variabelen (font-size base, circle-size, dot-size, label-padding-left)\n - vl-radio.component.css.ts aangemaakt met volledige radio styles\n - vl-radio-group.component.css.ts aangemaakt met .vl-u-visually-hidden utility\n - vl-radio.component.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color-*)\n - readonly fix en alle states (disabled, error, success) uitgewerkt met section comments\n - component-specifieke CSS variabelen voor circle-size, dot-size en label-padding-left\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, events\n - image snapshots toegevoegd voor visuele regressie testing (mount, checked, disabled, error, success, block)",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 4,
+        "storybook": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/form/radio-group/vl-radio-group.component.css.ts",
+        "libs/components/src/form/radio-group/vl-radio-group.component.ts",
+        "libs/components/src/form/radio-group/vl-radio.component.css.ts",
+        "libs/components/src/form/radio-group/vl-radio.component.flux-css.ts",
+        "libs/components/src/form/radio-group/vl-radio.component.raw.css",
+        "libs/components/src/form/radio-group/vl-radio.component.ts"
+      ],
+      "storybook": []
+    },
+    "a88b7330c8f09a72ffda680d122bba07f08b3866": {
+      "sha": "a88b7330c8f09a72ffda680d122bba07f08b3866",
+      "body": "CSS modernisering:\n - baseStyle, resetStyle en textareaStyle (govflanders-style) vervangen door vlResetStyles en vlTextareaComponentStyles\n - vl-textarea.component.raw.css aangemaakt met :host variabelen (padding, margin, font-size base)\n - vl-textarea.component.css.ts aangemaakt met volledige textarea styles\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--*)\n - alle states uitgewerkt: hover, focus, disabled, error, success, placeholder\n - .vl-textarea--block variant toegevoegd\n - hover/focus combinaties met error/success states correct afgehandeld\n - disabled hover-fix zodat border en padding niet verschuiven\n\nCypress component testen:\n - geherstructureerd in 3 logische describe-blokken: properties & states, events, form integration\n - image snapshots toegevoegd voor visuele regressie testing (mount, block, disabled, error, success)\n - computed style assertions toegevoegd voor error (border-color, background-color) en success (border-color)\n - nieuwe test toegevoegd: form reset herstelt initiële waarde",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 2,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/textarea/vl-textarea.component.css.ts",
+        "libs/components/src/form/textarea/vl-textarea.component.raw.css",
+        "libs/components/src/form/textarea/vl-textarea.component.ts"
+      ],
+      "storybook": []
+    },
+    "d66177b7166bdac9e56a2ec2f7fef84f20355ce1": {
+      "sha": "d66177b7166bdac9e56a2ec2f7fef84f20355ce1",
+      "body": "CSS modernisering:\n - resetStyle en formLabelStyles (govflanders-style) vervangen door vlResetStyles en vlFormLabelComponentStyles\n - vl-form-label.component.raw.css aangemaakt met :host variabelen (font-size base, margin-right, margin-bottom)\n - vl-form-label.component.css.ts aangemaakt met volledige label styles\n - vl-form-label.css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-form-label--color, --vl-color--text-alt)\n - marges via component-specifieke CSS variabelen (--vl-form-label--margin-*)\n - block en light varianten uitgewerkt met section comments\n\nAPI aanpassingen (gevolg van rename):\n - formLabelStyles hernoemd naar vlFormLabelComponentStyles\n - import/export updates in: form-label/index.ts, libs/components/src/form/index.ts, vl-fieldset.component.ts en libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, in form\n - image snapshots toegevoegd voor visuele regressie testing (mount, block, light)\n - computed style assertions toegevoegd voor block (display) en light (color)",
+      "published": true,
+      "areas": {
+        "code": 5,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/fieldset/vl-fieldset.component.ts",
+        "libs/components/src/form/form-label/index.ts",
+        "libs/components/src/form/form-label/vl-form-label.component.css.ts",
+        "libs/components/src/form/form-label/vl-form-label.component.raw.css",
+        "libs/components/src/form/form-label/vl-form-label.component.ts",
+        "libs/components/src/form/form-label/vl-form-label.css.ts",
+        "libs/components/src/form/index.ts",
+        "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+      ],
+      "storybook": []
+    },
+    "8686168e3ad9206b6619de1e84098c597f3fc10e": {
+      "sha": "8686168e3ad9206b6619de1e84098c597f3fc10e",
+      "body": "CSS modernisering:\n - resetStyle, formMessageStyle en vFormMessageFluxStyles (govflanders-style) vervangen door vlResetStyles en vlFormMessageComponentStyles\n - vl-form-message.component.raw.css aangemaakt met :host variabelen (font-size base, margin-top, margin-bottom)\n - vl-form-message.component.css.ts aangemaakt met volledige form message styles\n - vl-form-message.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--error, --vl-color--success)\n - marges via component-specifieke CSS variabelen (--vl-form-message--margin-*)\n - error en success states uitgewerkt met section comments\n - .vl-pre-line variant en icon styles (.vl-vi) behouden\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, content & validation\n - image snapshots toegevoegd voor visuele regressie testing (mount, visible, pre-line)\n - computed style assertion toegevoegd voor error kleur (color: rgb(210, 55, 60))",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/form-message/vl-form-message.component.css.ts",
+        "libs/components/src/form/form-message/vl-form-message.component.raw.css",
+        "libs/components/src/form/form-message/vl-form-message.component.ts",
+        "libs/components/src/form/form-message/vl-form-message.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "d1ff5641a4ffed0e78e7756e646d3f798668d0a9": {
+      "sha": "d1ff5641a4ffed0e78e7756e646d3f798668d0a9",
+      "body": "CSS modernisering:\n - resetStyle, baseStyle, selectStyle (dv-css), iconStyle en vlSelectFluxStyles (govflanders-style) vervangen door vlResetStyles en vlSelectComponentStyles\n - vl-select.component.raw.css aangemaakt met :host variabelen (font-size base, dimensies, clear button kleuren, nav-icon kleur)\n - vl-select.component.css.ts aangemaakt met volledige select styles (dv-css + flux-css samengevoegd)\n - styles/vl-select.dv-css.ts en styles/vl-select.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--*)\n - focus en hover states via --vl-color--focus, --vl-focus--shadow, --vl-focus--outline\n - error, success en disabled states uitgewerkt met section comments\n - clear button en nav-down icon kleuren via component-specifieke CSS variabelen\n - icon font definities (.vl-vi-nav-down, .vl-vi-close) inline toegevoegd\n\nCypress component testen:\n - geherstructureerd in 4 logische describe-blokken: properties & states, events, options, in form, declarative options\n - image snapshots toegevoegd voor visuele regressie testing (mount, disabled, error, success, block)\n - computed style assertions toegevoegd voor disabled, error (border-color, background-color) en success (border-color)",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select/styles/vl-select.dv-css.ts",
+        "libs/components/src/form/select/styles/vl-select.flux-css.ts",
+        "libs/components/src/form/select/vl-select.component.css.ts",
+        "libs/components/src/form/select/vl-select.component.raw.css",
+        "libs/components/src/form/select/vl-select.component.ts"
+      ],
+      "storybook": []
+    },
+    "b26e0dfca966fa2bd998a20ee0d983ff235cdf2b": {
+      "sha": "b26e0dfca966fa2bd998a20ee0d983ff235cdf2b",
+      "body": "CSS modernisering:\n - resetStyle, baseStyle, selectStyle (dv-css), multiselectStyle (dv-css), iconStyle, inputFieldStyles en vlSelectRichFluxStyles (flux-css) vervangen door vlResetStyles en vlSelectRichComponentStyles\n - vl-select-rich.component.raw.css aangemaakt met :host variabelen (button kleuren, nav-icon kleur, placeholder kleur, item-highlight achtergrond, group-heading kleur)\n - vl-select-rich.component.css.ts aangemaakt met volledige select-rich styles (7 legacy stylesheets samengevoegd)\n - styles/vl-select.dv-css.ts, styles/vl-multiselect.dv-css.ts en styles/vl-select-rich.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - component-specifieke CSS variabelen voor button kleuren, nav-icon, placeholder, item-highlight en group-heading\n - font-size, font-family en border-radius expliciet gezet op inner container, dropdown search input en multiple input\n - focus outline op dropdown search input correct afgehandeld (was browser-default oranje)\n - icon font definities (.vl-vi-nav-down, .vl-vi-close) inline toegevoegd\n - alle states uitgewerkt: hover, focus, open, disabled, error, success\n - pill styles (multiselect tags) volledig opgenomen met hover, focus en disabled states\n\nCypress component testen:\n - image snapshots toegevoegd voor visuele regressie testing (mount, disabled, error, success, dropdown open, groups open, selected option open, search open, multiple mount, multiple search open, multiple selected)\n - snapshot testen uitgebreid voor exact-or search strategy (open en search results)\n - describe.only en it.only verwijderd",
+      "published": true,
+      "areas": {
+        "code": 3,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/styles/vl-multiselect.dv-css.ts",
+        "libs/components/src/form/select-rich/styles/vl-select-rich.flux-css.ts",
+        "libs/components/src/form/select-rich/styles/vl-select.dv-css.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.component.css.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.component.raw.css",
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "1f3cf208e556993c106b43fb710916cf733232e1": {
+      "sha": "1f3cf208e556993c106b43fb710916cf733232e1",
+      "body": "- AGENTS.md toegevoegd met projectcontext, conventies en patronen voor alle AI agents\n- CLAUDE.md toegevoegd als Claude Code-specifiek entrypoint\n- SKILLS.md toegevoegd met agent-agnostische playbooks (new-component, run-tests, test-coverage)\n- .claude/ directory ingericht met gedeelde team-permissies (settings.json), README en skill stubs\n- .gitignore uitgebreid voor AI agent lokale bestanden (.cursor/, .cline/, .windsurf/, .claude/plans/)",
+      "published": false,
+      "areas": {
+        "tooling": 9
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "bfb79f39c76330b4dff5e6166830fe897ee106f3": {
+      "sha": "bfb79f39c76330b4dff5e6166830fe897ee106f3",
+      "body": "CSS modernisering:\n - vlTextareaRichComponentFluxStyles (flux-css) vervangen door vlTextareaRichComponentStyles\n - vl-textarea-rich.component.raw.css aangemaakt met :host variabelen (font-size base, tbtn hover/enabled achtergrond, dialog label kleur, dialog schaduw)\n - vl-textarea-rich.component.css.ts aangemaakt met volledige textarea-rich styles\n - vl-textarea-rich.component.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded kleuren vervangen door design system variabelen (--vl-color--border-alt, --vl-color--text-alt, --vl-color--action, --vl-color--action-hover, --vl-color--white, --vl-focus--shadow, --vl-border--radius)\n - component-specifieke CSS variabelen voor kleuren zonder design system match (tbtn hover/enabled achtergrond, dialog label kleur, dialog schaduw)\n\nCypress component testen:\n - geherstructureerd in 2 logische describe-blokken: properties & states, events\n - beforeEach met viewport toegevoegd\n - image snapshots toegevoegd voor visuele regressie testing (mount, toolbar, plugins, preview)",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.css.ts",
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.flux-css.ts",
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.raw.css",
+        "libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts"
+      ],
+      "storybook": []
+    },
+    "2fde0921e066ebbc377bae30440c6ec6f9fc8628": {
+      "sha": "2fde0921e066ebbc377bae30440c6ec6f9fc8628",
+      "body": "CSS modernisering:\n - vlUploadFluxStyles (flux-css) vervangen door vlUploadComponentStyles\n - vl-upload.component.raw.css aangemaakt met :host variabelen (font-size base, transition)\n - vl-upload.component.css.ts aangemaakt met volledige upload styles\n - vl-upload.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded #fff vervangen door var(--vl-color--white)\n - hardcoded 0.3rem border-radius vervangen door var(--vl-border--radius)\n - hardcoded 0.3s ease-out transitie vervangen door var(--vl-upload--transition)\n - overige kleuren en spacing waren reeds design system variabelen\n\nCypress component testen:\n - geherstructureerd in 4 logische describe-blokken: properties & states, dropzone options, file operations, events, upload\n - beforeEach met viewport toegevoegd aan properties & states describe-blok\n - image snapshots toegevoegd voor visuele regressie testing (mount, disabled, error, success)\n - computed style assertions behouden voor disabled, error en success states",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 3,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/upload/vl-upload.component.css.ts",
+        "libs/components/src/form/upload/vl-upload.component.raw.css",
+        "libs/components/src/form/upload/vl-upload.component.ts",
+        "libs/components/src/form/upload/vl-upload.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "4b40d709502432530f1aed657c337598e02b983a": {
+      "sha": "4b40d709502432530f1aed657c337598e02b983a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/link-style/vl-link-style.css.ts",
+        "libs/components/src/block/upload-progress/vl-upload-progress.component.ts",
+        "libs/components/src/form/upload/vl-upload.component.css.ts",
+        "libs/components/src/form/upload/vl-upload.component.ts"
+      ],
+      "storybook": []
+    },
+    "74ac72a304aa09cea2a19c3f8fa4cb9be862ddd6": {
+      "sha": "74ac72a304aa09cea2a19c3f8fa4cb9be862ddd6",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "docs": 2,
+        "storybook": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/pager/vl-pager.flux-css.ts"
+      ],
+      "storybook": []
+    }
+  },
+  "unlisted": []
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.15.0",
+  "ticket": "FLUX-672",
+  "entries": [
+    {
+      "id": "61eefcd",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-672"
+      ],
+      "scope": "vl-input-field-masked",
+      "components": [
+        "vl-input-field-masked"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ontbrekende Cleave numeral-opties toegevoegd aan MaskOptions",
+      "text": "FLUX-672 - vl-input-field-masked - ontbrekende Cleave numeral-opties toegevoegd aan MaskOptions",
+      "commits": [
+        {
+          "sha": "61eefcdaeb98c575724f7b2f022cd721a755d8bc",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/61eefcdaeb98c575724f7b2f022cd721a755d8bc"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Voegt numeralDecimalScale, numeralIntegerScale, numeralThousandsGroupStyle, signBeforePrefix, tailPrefix en noImmediatePrefix toe als optionele properties zodat consumers setMasks() kunnen aanroepen zonder as MaskOptions cast.",
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/models/cleave.model.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

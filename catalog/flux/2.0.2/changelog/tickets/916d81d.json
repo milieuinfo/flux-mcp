@@ -1,0 +1,46 @@
+{
+  "schema": 4,
+  "version": "2.0.2",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "916d81d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "legacyCore en legacyBreakpoint enkel registreren op legacy componenten",
+      "text": "legacyCore en legacyBreakpoint enkel registreren op legacy componenten",
+      "commits": [
+        {
+          "sha": "916d81da46c012673b83ce979b027b16d9fc7333",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/916d81da46c012673b83ce979b027b16d9fc7333"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 7
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.html.element.ts",
+          "libs/components/src/block/accordion/vl-accordion.component.ts",
+          "libs/components/src/block/modal/vl-modal.component.ts",
+          "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/tabs/vl-tabs.component.ts",
+          "libs/components/src/compliance/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/header/vl-header.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

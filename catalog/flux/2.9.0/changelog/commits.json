@@ -1,0 +1,678 @@
+{
+  "schema": 2,
+  "version": "2.9.0",
+  "previous": "2.8.1",
+  "commits": {
+    "0debeef9c884514bf16aa5dca9d9d189137379af": {
+      "sha": "0debeef9c884514bf16aa5dca9d9d189137379af",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/footer/vl-footer.component.ts",
+        "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+      ],
+      "storybook": []
+    },
+    "2daddbe05bf2a8f31243272f323e6dd01365e43f": {
+      "sha": "2daddbe05bf2a8f31243272f323e6dd01365e43f",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/modal/vl-modal.lib.js"
+      ],
+      "storybook": []
+    },
+    "c17430949c088e70f46edf4a913234181d573e8a": {
+      "sha": "c17430949c088e70f46edf4a913234181d573e8a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+      ],
+      "storybook": []
+    },
+    "45317b138de1b76cf2beb8488c699e011d3f1e80": {
+      "sha": "45317b138de1b76cf2beb8488c699e011d3f1e80",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 3,
+        "storybook": 5,
+        "tests": 2
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-compliance-next-footer--documentatie",
+          "title": "Components - Compliance/next/footer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-next-header--documentatie",
+          "title": "Components - Compliance/next/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "title": "Planning/Van v2 naar v3 - beschikbaar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "added": "        <td>[Footer [next]](/docs/components-compliance-next-footer--documentatie)</td>\n\n[…]\n\n        <td>[Header [next]](/docs/components-compliance-next-header--documentatie)</td>"
+        }
+      ]
+    },
+    "738009a9608c8be1a7beb698b54bb9ee2fc45514": {
+      "sha": "738009a9608c8be1a7beb698b54bb9ee2fc45514",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/autocomplete/vl-autocomplete.flux-css.ts",
+        "libs/styles/src/base/var/vl-z-layer.raw.css"
+      ],
+      "storybook": []
+    },
+    "684b78207f634191aa9a2c78c37aad330da9ccd4": {
+      "sha": "684b78207f634191aa9a2c78c37aad330da9ccd4",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/alert/vl-alert.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "b9b784f83ec84e631b20f7a3227d641e5ef1c044": {
+      "sha": "b9b784f83ec84e631b20f7a3227d641e5ef1c044",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 4,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/atom.web-types.json",
+        "libs/components/src/block/block.web-types.json",
+        "libs/components/src/compliance/compliance.web-types.json",
+        "libs/components/src/form/form.web-types.json"
+      ],
+      "storybook": []
+    },
+    "508f573fab5d229a14d2b16572b762df28dfdf9b": {
+      "sha": "508f573fab5d229a14d2b16572b762df28dfdf9b",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "a2834559f8db3f7eb352f30e89c8396df5fdadb0": {
+      "sha": "a2834559f8db3f7eb352f30e89c8396df5fdadb0",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 10,
+        "docs": 2,
+        "storybook": 4,
+        "tests": 2,
+        "tooling": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation-toggle.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+        "libs/components/src/compliance/index.ts",
+        "libs/components/src/compliance/next/footer/index.ts",
+        "libs/components/src/compliance/next/footer/vl-footer.component.ts",
+        "libs/components/src/compliance/next/header/index.ts",
+        "libs/components/src/compliance/next/header/vl-header.component.ts",
+        "libs/components/src/compliance/next/index.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-compliance-header--documentatie",
+          "title": "Components - Compliance/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-header--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-next-footer--documentatie",
+          "title": "Components - Compliance/next/footer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-next-header--documentatie",
+          "title": "Components - Compliance/next/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "6fc66a6c431606a6f24c72664268c7a620465380": {
+      "sha": "6fc66a6c431606a6f24c72664268c7a620465380",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 7,
+        "styles": 2,
+        "docs": 4,
+        "storybook": 9,
+        "examples": 1,
+        "tests": 9
+      },
+      "publishedFiles": [
+        "libs/components/src/block/functional-header/vl-functional-header.component.ts",
+        "libs/components/src/compliance/accessibility/child/header.component.ts",
+        "libs/components/src/compliance/accessibility/child/title.component.ts",
+        "libs/components/src/compliance/cookie-statement/child/header.component.ts",
+        "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+        "libs/components/src/compliance/privacy/child/header.component.ts",
+        "libs/components/src/compliance/privacy/child/version.component.ts",
+        "libs/styles/src/base/var/vl-z-layer.raw.css",
+        "libs/styles/src/layout/accessibility/vl-accessibility-styles.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-functional-header--documentatie",
+          "title": "Components - Block/functional-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+          "added": "## Toegankelijkheid\n\nVul steeds `skip-to-content-id` in. Kies hiervoor de ID van de eerste heading van de content.\nIndien er uitzonderlijk geen headings zijn, kies dan voor de ID van de content zelf.\nIndien deze ID's niet bestaan, moeten ze voorzien worden in de content.\n\nEen ingevulde `skip-to-content-id` zorgt ervoor dat er een skip-link gerenderd wordt. Dit laat gebruikers toe om meteen te skippen naar de\ncontent en de header over te slaan. Vooral voor screenreader-gebruikers vormt dit een grote tijdswinst bij het\nnavigeren. Ook voor andere gebruikers kan dit interessant zijn, daarom wordt deze link zichtbaar bij focus.\n\nMeer info vind je in de [documentatie over toegankelijke navigatie: \"Blokken omzeilen\"](/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie#blokken-omzeilen)."
+        },
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-accessibility--documentatie",
+          "title": "Components - Compliance/accessibility",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-accessibility--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-cookie-statement--documentatie",
+          "title": "Components - Compliance/cookie-statement",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-cookie-statement--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-compliance-privacy--documentatie",
+          "title": "Components - Compliance/privacy",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-privacy--documentatie",
+          "added": null
+        },
+        {
+          "id": "map-map--documentatie",
+          "title": "map/map",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/map-map--documentatie",
+          "added": null
+        },
+        {
+          "id": "ontwerp-pagina-layout-voorbeeld--documentatie",
+          "title": "Ontwerp/Pagina Layout/Voorbeeld",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/ontwerp-pagina-layout-voorbeeld--documentatie",
+          "added": "                    <vl-functional-header title=\"Page Layout\" skip-to-content-id=\"#main-content\">...</vl-functional-header>\n\n[…]\n\n                        <div class=\"vl-content-block\">\n                            <vl-title type=\"h1\" id=\"main-content\">Content</vl-title>\n                        </div>\n\n[…]\n\n                    <vl-functional-header title=\"Page Layout\" full-width skip-to-content-id=\"#main-content\">...</vl-functional-header>\n\n[…]\n\n                        <div class=\"vl-content-block vl-content-block--full-width\">\n                            <vl-title type=\"h1\" id=\"main-content\">Content</vl-title>\n                        </div>"
+        },
+        {
+          "id": "styles-layout-accessibility--documentatie",
+          "title": "Styles/Layout (afnemers)/accessibility",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-accessibility--documentatie",
+          "added": "## Skip link\n\nJe kan `.vl-skip-link` toevoegen aan een link (native a-element) om er een skip-link van te maken. De skip-link moet een\ninterne anchor-link zijn en dus als href de ID meekrijgen van de eerste heading van de content of van de content zelf.\n\n\nJe kan de skip-link op twee manieren activeren:\n\n- **Start een screenreader**, bv VoiceOver (command+F5), en navigeer naar het begin van de pagina.\n- **Gebruik Tab** om naar het begin van de pagina te navigeren. Zodra de skip-link focus krijgt zal hij verschijnen.\n\nKlikken op de skip-link brengt je meteen naar de inhoud. De header wordt niet voorgelezen.\n\nMeer info vind je in de [documentatie over toegankelijke navigatie: \"Blokken omzeilen\"](/docs/richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar--documentatie#blokken-omzeilen)."
+        }
+      ]
+    },
+    "e107720b860faad4d131cfa45bda51901730f2ba": {
+      "sha": "e107720b860faad4d131cfa45bda51901730f2ba",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 3,
+        "examples": 1,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/accordion/vl-accordion.component.ts",
+        "libs/components/src/block/accordion/vl-accordion.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-accordion--documentatie",
+          "title": "Components - Block/accordion",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-accordion--documentatie",
+          "added": "### Heading\n\nJe kan een heading (h1-h6) laten renderen in de accordion toggle door gebruik te maken van de `heading-level` attribute."
+        },
+        {
+          "id": "styles-layout-group--documentatie",
+          "title": "Styles/Layout (afnemers)/group",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-group--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "64cc19734c39eeee87b1a75b8d6a935725cad31c": {
+      "sha": "64cc19734c39eeee87b1a75b8d6a935725cad31c",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 4,
+        "styles": 1,
+        "docs": 2,
+        "storybook": 3,
+        "examples": 1,
+        "tests": 4,
+        "tooling": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/fieldset/index.ts",
+        "libs/components/src/form/fieldset/vl-fieldset.component.ts",
+        "libs/components/src/form/fieldset/vl-fieldset.css.ts",
+        "libs/components/src/form/fieldset/vl-fieldset.defaults.ts",
+        "libs/components/src/form/index.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-fieldset--documentatie",
+          "title": "Components - Form/fieldset",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-form-fieldset--documentatie",
+          "added": "# Form Fieldset\n\n\n\n## Doel\n\nGebruik de `vl-fieldset` component om een fieldset af te beelden.\n\nFieldsets worden gebruikt om gerelateerde formulierelementen te groeperen binnen een formulier.\n\nIn uitzonderlijke gevallen kan dit gebruikt worden om verschillende input fields te groeperen onder één label. Gebruik\ndit enkel wanneer andere layoutmogelijkheden niet mogelijk zijn.\n\nZie het [form demo](/docs/ontwerp-form-demo--documentatie) voorbeeld voor het gebruik binnen een form.\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-fieldset legend=\"Fieldset legend\"></vl-fieldset>\n```\n\n\n\n## Configuratie\n\n\n## Varianten\n\n### Horizontale fieldset\nWanneer je een horizontale layout wenst, kan je het `horizontal` attribuut toevoegen aan de `vl-fieldset` component.\nIn dit geval krijgt de legend ook een vaste breedte van `vl-column--4`, dit is aanpasbaar adhv het `legend-classes`\nattribuut (een space-separated list van classes).\n\nDe breedte van de inhoud dien je zelf te bepalen door de juiste column classes toe te voegen aan de directe child van de\n`vl-fieldset` component (bv. `vl-column vl-column--8 vl-column--s-12`).\n\n### Met rand\n\n## Toegankelijkheid\n\nHet `legend` attribuut is verplicht en wordt gebruikt om de groep van formulierelementen te beschrijven.\n\nGebruik steeds gelabelde formulierelementen binnen de fieldset om de toegankelijkheid te garanderen."
+        },
+        {
+          "id": "ontwerp-form-demo--documentatie",
+          "title": "Ontwerp/Form/Demo",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+          "added": "- [vl-fieldset](/docs/components-form-fieldset--documentatie)"
+        }
+      ]
+    },
+    "d281e641678dc7a3c95aec601c5e04e227da8f82": {
+      "sha": "d281e641678dc7a3c95aec601c5e04e227da8f82",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/button/vl-button.component.ts"
+      ],
+      "storybook": []
+    },
+    "a0158a3e33f22ff061bd7cafef0a21d5e1430fc8": {
+      "sha": "a0158a3e33f22ff061bd7cafef0a21d5e1430fc8",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/block/alert/vl-alert.flux-css.ts",
+        "libs/styles/src/base/mixin/vl-hyphenate.css.ts",
+        "libs/styles/src/index.ts"
+      ],
+      "storybook": []
+    },
+    "6bd8b9021ef785f3134186aea4dd9db9c75ea33a": {
+      "sha": "6bd8b9021ef785f3134186aea4dd9db9c75ea33a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 4,
+        "styles": 2,
+        "docs": 2,
+        "storybook": 4,
+        "tests": 4
+      },
+      "publishedFiles": [
+        "libs/components/src/block/progress-bar/vl-progress-bar.component.ts",
+        "libs/components/src/block/progress-bar/vl-progress-bar.defaults.ts",
+        "libs/components/src/block/progress-bar/vl-progress-bar.flux-css.ts",
+        "libs/components/src/block/upload-progress/vl-upload-progress.component.ts",
+        "libs/components/src/block/upload-progress/vl-upload-progress.defaults.ts",
+        "libs/components/src/block/upload-progress/vl-upload-progress.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-progress-bar--documentatie",
+          "title": "Components - Block/progress-bar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-progress-bar--documentatie",
+          "added": "### Succes\n\nIndien de voortgang succesvol afgerond is, kan je het attribuut `success` gebruiken."
+        },
+        {
+          "id": "components-block-upload-progress--documentatie",
+          "title": "Components - Block/upload-progress",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-upload-progress--documentatie",
+          "added": "### Success\n\nIndien de voortgang succesvol was, kan je het attribuut `success` gebruiken."
+        }
+      ]
+    },
+    "0d093bc10fa5819c353e8519079b48c02445749f": {
+      "sha": "0d093bc10fa5819c353e8519079b48c02445749f",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/input-field/vl-input-field.component.ts"
+      ],
+      "storybook": []
+    },
+    "c7353210ccecd2490761af5c0857bdfb8706aa2d": {
+      "sha": "c7353210ccecd2490761af5c0857bdfb8706aa2d",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "styles-layout-grid--documentatie",
+          "title": "Styles/Layout (afnemers)/grid",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-grid--documentatie",
+          "added": "- [Niet: vl-grid in vl-grid](#niet-vl-grid-in-vl-grid)\n\n[…]\n\n## Niet: vl-grid in vl-grid\n\nEen 12-kolom grid systeem is bedoeld als layout framework voor je pagina, vaak om responsiviteit te ondersteunen.\nAls je binnen één grid-cel opnieuw een volledig 12-kolom grid nodig hebt, suggereert dat meestal één van deze zaken:\n\n- **je cel is te complex** - misschien moet die content een eigen component zijn met interne layout-logica die niet\n  via het grid-systeem werkt\n- **je design is inconsistent** - als verschillende niveaus andere grid-opdeling nodig hebben, heb je misschien geen\n  echt grid-systeem maar ad-hoc layouts\n- **je hebt geen vl-grid nodig maar vl-group** - binnen een kolom wil je vaak gewoon items naast elkaar, daarvoor is\n  een vol grid overkill\n\n> Opmerking: Technisch is er niets mis met een (css) grid in een (css) grid te steken. Conceptueel is de vl-grid\n  component echter een concrete technische implementatie van een 12-kolom layout, door die te nesten krijg je een\n  144-kolom layout, dat is nooit de bedoeling!"
+        }
+      ]
+    },
+    "9d60dd8a0f428b3e07ab36aaa7a6698f39ab78b1": {
+      "sha": "9d60dd8a0f428b3e07ab36aaa7a6698f39ab78b1",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "1c396b0bc79a284a75d2f749ebd154ea76bb223f": {
+      "sha": "1c396b0bc79a284a75d2f749ebd154ea76bb223f",
+      "body": "de vroegere default `align-items: center` werd geschrapt waardoor de default nu eigenlijk `align-items: flex-start` werd",
+      "published": true,
+      "areas": {
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/group/vl-group.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "styles-layout-group--documentatie",
+          "title": "Styles/Layout (afnemers)/group",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-group--documentatie",
+          "added": "De uitlijning volgt de opzet van flex-box:\n - op de **hoofdas uitlijnen** doe je met `vl-group--justify-start`, `vl-group--justify-center` en\n   `vl-group--justify-end`\n - op de **dwarsas uitlijnen** doe je met `vl-group--align-start`, `vl-group--align-center` en\n   `vl-group--align-end`\n\n[…]\n\nMet `vl-group--space-between` wordt het eerste item in het begin gezet, het laatste op het einde en de overige\nertussen - gelijkmatig verdeeld.\n\n[…]\n\nDe container waarin uitgelijnd wordt dient voldoende ruimte te hebben om uit te lijnen!"
+        }
+      ]
+    },
+    "06b8def4e6b945a4caa98e07be229c1f924b63bb": {
+      "sha": "06b8def4e6b945a4caa98e07be229c1f924b63bb",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 2,
+        "storybook": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/rich-data/vl-rich-data.flux-css.ts",
+        "libs/components/src/block/search-filter/vl-search-filter.global.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-rich-data--documentatie",
+          "title": "Components - Block/rich-data",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-rich-data-table--documentatie",
+          "title": "Components - Block/rich-data-table",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "ee82d833967df38331081d0b4262769df2c70064": {
+      "sha": "ee82d833967df38331081d0b4262769df2c70064",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 4,
+        "styles": 1,
+        "docs": 3,
+        "storybook": 3,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/button/vl-button.component.ts",
+        "libs/components/src/atom/link/vl-link.component.ts",
+        "libs/components/src/block/modal/vl-modal.component.ts",
+        "libs/components/src/block/modal/vl-modal.flux-css.ts",
+        "libs/components/src/block/modal/vl-modal.lib.js"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-button--documentatie",
+          "title": "Components - Atom/button",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-atom-button--documentatie",
+          "added": "## Toegankelijkheid\n\nZorg er steeds voor dat de button een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd wordt bij het klikken op de button. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers gebruiken.\n\nIndien de button enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende `aria-label` wordt toegevoegd aan de button.\n\nIndien de button een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde (`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt schermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven aan de onderliggende button."
+        },
+        {
+          "id": "components-atom-link--documentatie",
+          "title": "Components - Atom/link",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-atom-link--documentatie",
+          "added": "## Toegankelijkheid\n\nZorg er steeds voor dat de link een duidelijke en beknopte tekstuele beschrijving heeft van de actie die uitgevoerd wordt bij het klikken op de link. Dit is belangrijk voor alle gebruikers, maar vooral voor gebruikers die schermlezers gebruiken.\n\nZorg er bij externe links voor dat gebruikers weten dat de link in een nieuw venster opent. Dit kan je doen adhv het `external` attribuut en door dit expliciet te vermelden in de linktekst of door het `label` attribuut te gebruiken om een beschrijvende `aria-label` toe te voegen aan de link. Indien `label` gebruikt wordt, is dit de enige linktekst die door schermlezers wordt voorgelezen. Dus neem ook de zichtbare linktekst hierin op.\n\nIndien de link enkel een icoon bevat, is het verplicht om het `label` attribuut te gebruiken zodat een beschrijvende `aria-label` wordt toegevoegd aan de link.\n\nIndien de link een dropdown menu of dialog opent, gebruik dan het `aria-haspopup` attribuut met de juiste waarde (`true`, `menu`, `listbox`, `tree`, `grid`, `dialog`) om aan te geven dat er een popup aanwezig is. Dit helpt schermlezers om de gebruiker correct te informeren over de aanwezigheid van een popup. `aria-haspopup` wordt doorgegeven aan de onderliggende link."
+        },
+        {
+          "id": "components-block-modal--documentatie",
+          "title": "Components - Block/modal",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-modal--documentatie",
+          "added": "# Modal\n\n\n## Doel\n\nGebruik de `modal` component om een modal te tonen.<br/>\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-modal></vl-modal>\n```\n\n\n\n## Configuratie\n\n\n\n## Varianten\n\n### Met andere actie\n\n\n### Medium\n\n\n### Large\n\n\n### Full Screen\n\n\n### Left\n\n\n### Right\n\n\n### Focus op modal\n\n\n## Toegankelijkheid\n\nHet triggeren van de modal moet altijd gebeuren via een knop of link. Voor screen readers is het belangrijk dat deze knop of link de juiste aria-attributen bevat. Het gebruik van `aria-haspopup=\"dialog\"` is in dit geval verplicht. Optioneel kan je `aria-controls` toevoegen met als value de ID van de modal (dit is echter overbodig wanneer de knop binnen een shadow DOM zit (bv vl-button), omdat de koppeling met de ID niet werkt doorheen de shadow DOM). **Deze aria-attributen moet de afnemer zelf implementeren!**.\n\nDe vl-modal zal standaard de focus leggen op het eerste focusbare element binnenin de modal wanneer deze geopend wordt.\nDit kan aangepast worden door het `focus-on-modal` attribuut toe te voegen aan de modal,\nin dat geval zal de focus op de modal zelf gelegd worden bij het openen. Gebruik dit enkel indien\nhet automatisch focussen op het eerste focusbare element problemen veroorzaakt, bijvoorbeeld wanneer dit meteen een popover triggert.\n\nHet is essentieel dat de modal goed gelabeld is voor gebruikers van schermlezers.\nDit kan op twee manieren bereikt worden:\n- Door het `title` attribuut te gebruiken. Onderliggend wordt dit gekoppeld adhv `aria-labelledby`.\n- Indien het design geen titel toelaat, moet het `label` attribuut gebruikt worden zodat een beschrijvende `aria-label`\n  kan toegevoegd worden aan de modal."
+        }
+      ]
+    },
+    "e79d5b264e958a6c287ec59a0633525101915249": {
+      "sha": "e79d5b264e958a6c287ec59a0633525101915249",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/steps/vl-step.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-steps-step--documentatie",
+          "title": "Components - Block/steps/step",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "f9232cc9a221e4972d12df0e951a9f46667bee36": {
+      "sha": "f9232cc9a221e4972d12df0e951a9f46667bee36",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/steps/vl-step.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-steps-step--documentatie",
+          "title": "Components - Block/steps/step",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "1e7e85adcf38a89d445c76bdfb5008f64bde8323": {
+      "sha": "1e7e85adcf38a89d445c76bdfb5008f64bde8323",
+      "body": null,
+      "published": false,
+      "areas": {
+        "storybook": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-steps-step--documentatie",
+          "title": "Components - Block/steps/step",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "8f28ff185a3da4a3e2d269d363f8a8af9f27a6db": {
+      "sha": "8f28ff185a3da4a3e2d269d363f8a8af9f27a6db",
+      "body": "Momenteel zijn er geen klasse om bij onze `vl-grid`, `grid-column-start: auto` in te stellen, terwijl dit wel moet kunnen als je op verschillende media queries andere `grid-column-start` op `auto` / `initial` wil instellen.",
+      "published": true,
+      "areas": {
+        "styles": 4,
+        "docs": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/grid/column/vl-column-l.css.ts",
+        "libs/styles/src/layout/grid/column/vl-column-m.css.ts",
+        "libs/styles/src/layout/grid/column/vl-column-s.css.ts",
+        "libs/styles/src/layout/grid/column/vl-column-xs.css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "styles-layout-grid--documentatie",
+          "title": "Styles/Layout (afnemers)/grid",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-grid--documentatie",
+          "added": "Om een kolom start positie te resetten naar de automatische flow is er `vl-column--start-auto` met de\nresponsieve varianten `vl-column--X-start-auto` waarbij X [m, s, xs] kan zijn. Dit is nuttig wanneer je een\nexpliciete start positie hebt op grotere schermen maar wil terugkeren naar de natuurlijke flow op kleinere\nschermen (zie laatste rij in onderstaand voorbeeld)."
+        }
+      ]
+    },
+    "e8af42d147de31b2a3cd0007fa6d4089c06f7a52": {
+      "sha": "e8af42d147de31b2a3cd0007fa6d4089c06f7a52",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/cookie-consent/util/analytics.util.ts"
+      ],
+      "storybook": []
+    },
+    "4f6fe5524337f46452bc310e8c551b84e74283f0": {
+      "sha": "4f6fe5524337f46452bc310e8c551b84e74283f0",
+      "body": "De VlSelectLocationComponent haalt dynamisch de opties (waardes) op via een API die al filtering doet. Expliciete filtering toevoegen zal die zoekresultaten dan nogmaals filteren, dat is niet gewenst.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [
+        "libs/map/src/components/select-location/vl-select-location.ts"
+      ],
+      "storybook": [
+        {
+          "id": "map-select-location--documentatie",
+          "title": "map/select-location",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/map-select-location--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "93cbbdfd92a4c77ec2b874b4a402f9824b4552ec": {
+      "sha": "93cbbdfd92a4c77ec2b874b4a402f9824b4552ec",
+      "body": "Een configureerbaar searchStrategy attribuut toegevoegd:\n - 'default': native Fuse.js (fuzzy search)\n - 'exact-and': alle woorden moeten voorkomen (AND-logica)\n - 'exact-or': minstens 1 woord moet voorkomen (OR-logica)\n\nDe implementatie gebruikt een dynamische wrapper die schakelt tussen native en custom matchers. Hij filtert altijd op alle opties (niet incrementeel) voor correcte resultaten bij het toevoegen/verwijderen van characters.\n\nTests: 18 Jest unit tests + 7 Cypress e2e tests",
+      "published": true,
+      "areas": {
+        "code": 5,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/index.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.defaults.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.model.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.search-matchers.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-select-rich--documentatie",
+          "title": "Components - Form/select-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+          "added": "## Inhoudstafel\n\n - [Doel](#doel)\n - [Voorbeeld](#voorbeeld)\n - [Configuratie](#configuratie)\n - [Publieke methodes](#publieke-methodes)\n - [Styles](#styles)\n - [Events](#events)\n - [Select opties](#select-opties)\n - [Accessibility](#accessibility)\n - [Varianten](#varianten)\n - [Zoek strategieën](#zoek-strategieën)\n - [Validatie](#validatie)\n - [Referenties](#referenties)\n\n[…]\n\n## Zoek strategieën\n\nHet `search-strategy` attribuut (reactief) bepaalt hoe de zoekfunctie werkt bij het filteren van opties.<br/>\nEr zijn drie zoek strategieën beschikbaar: `default`, `exact-and` en `exact-or`.<br/>\n\n### default\n\nDe standaard zoek strategie gebruikt de native Choices.js fuzzy matching van [Fuse.js](https://www.fusejs.io/).<br/>\nDit betekent dat de zoekterm niet exact hoeft voor te komen in de optie.\n\n### exact-and\n\nBij de `exact-and` strategie moeten **alle** zoekwoorden exact voorkomen in het label of value van een optie\n(substring match). Bij invoer van meerdere woorden, worden alleen de opties getoond die alle woorden bevatten\n(AND-logica).\n\n**Voorbeeld:** Als je zoekt op \"standaard gent\", wordt alleen \"De Standaard van Gent\" getoond, omdat dit de enige optie\nis die zowel \"standaard\" als \"gent\" bevat.\n\nDeze strategie is geschikt wanneer je precies wil kunnen filteren op meerdere criteria tegelijk.\n\n### exact-or\n\nBij de `exact-or` strategie moet **minstens één** zoekwoord exact voorkomen in het label of value van een optie\n(substring match). Wanneer je meerdere woorden invoert, worden alle opties getoond die één of meer woorden bevatten\n(OR-logica).\n\n**Voorbeeld:** Als je zoekt op \"standaard gent\", worden alle opties getoond die \"standaard\" **of** \"gent\" bevatten,\nzoals \"De Standaard van gisteren\", \"De Standaard van morgen\", \"De Standaard van Berchem\", \"De Standaard van Gent\"\nen \"Brussel Antwerpen Gent\".\n\nDeze strategie is geschikt wanneer je breed wil kunnen zoeken op meerdere termen tegelijk."
+        }
+      ]
+    },
+    "2ad5fe14c23a5e783d05793a1468acaaa476bcb7": {
+      "sha": "2ad5fe14c23a5e783d05793a1468acaaa476bcb7",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/grid/vl-grid.raw.css"
+      ],
+      "storybook": []
+    },
+    "0d7fd70a51b4409865504e186c7e6d5822729236": {
+      "sha": "0d7fd70a51b4409865504e186c7e6d5822729236",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/cookie-consent/util/analytics.util.ts",
+        "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-compliance-cookie-consent--documentatie",
+          "title": "Components - Compliance/cookie-consent",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/components-compliance-cookie-consent--documentatie",
+          "added": null
+        }
+      ]
+    }
+  },
+  "unlisted": []
+}

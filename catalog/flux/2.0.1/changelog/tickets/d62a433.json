@@ -1,0 +1,40 @@
+{
+  "schema": 4,
+  "version": "2.0.1",
+  "ticket": null,
+  "entries": [
+    {
+      "id": "d62a433",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "vl.util.each ontbrak at run-time",
+      "text": "vl.util.each ontbrak at run-time",
+      "commits": [
+        {
+          "sha": "d62a4330280f66e143b11b454c782ab43eb7c833",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/d62a4330280f66e143b11b454c782ab43eb7c833"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.html.element.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

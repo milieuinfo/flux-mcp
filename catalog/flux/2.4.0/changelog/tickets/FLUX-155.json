@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.4.0",
+  "ticket": "FLUX-155",
+  "entries": [
+    {
+      "id": "231680b",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-155"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "string literals verbeterd",
+      "text": "FLUX-155 - string literals verbeterd",
+      "commits": [
+        {
+          "sha": "231680b7c1cacda5c3c261a7fd669817cbfe07a0",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/231680b7c1cacda5c3c261a7fd669817cbfe07a0"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3
+        },
+        "publishedFiles": [
+          "libs/common/src/constants/constants.ts",
+          "libs/components/src/block/accordion/vl-accordion.component.ts",
+          "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

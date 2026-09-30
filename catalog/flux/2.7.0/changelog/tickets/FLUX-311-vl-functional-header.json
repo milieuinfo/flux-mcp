@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.7.0",
+  "ticket": "FLUX-311",
+  "entries": [
+    {
+      "id": "0c6a638",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-311"
+      ],
+      "scope": "vl-functional-header",
+      "components": [
+        "vl-functional-header"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "documentatie opgekuist",
+      "text": "FLUX-311 - vl-functional-header - documentatie opgekuist",
+      "commits": [
+        {
+          "sha": "0c6a638803013575d18ccb00163fd74f5d03073d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0c6a638803013575d18ccb00163fd74f5d03073d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 2
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-functional-header--documentatie",
+            "title": "Components - Block/functional-header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-side-navigation--documentatie",
+            "title": "Components - Block/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.7.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

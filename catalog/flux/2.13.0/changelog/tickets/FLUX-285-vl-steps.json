@@ -1,0 +1,67 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-285",
+  "entries": [
+    {
+      "id": "6417317",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-285"
+      ],
+      "scope": "vl-steps",
+      "components": [
+        "vl-steps"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen",
+      "text": "FLUX-285 - vl-steps - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "64173178412f7691a99b3df73985967f2d6d7e99",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/64173178412f7691a99b3df73985967f2d6d7e99"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 3,
+          "styles": 2,
+          "docs": 1,
+          "storybook": 4,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/steps/vl-duration-step.component.ts",
+          "libs/components/src/block/steps/vl-duration-step.flux-css.ts",
+          "libs/components/src/block/steps/vl-step.component.ts",
+          "libs/components/src/block/steps/vl-step.flux-css.ts",
+          "libs/components/src/block/steps/vl-steps.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-steps-step--documentatie",
+            "title": "Components - Block/steps/step",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-steps-steps--documentatie",
+            "title": "Components - Block/steps/steps",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+            "added": "#### vl-duration-step\n\nEen `<vl-duration-step>` moet je zien als een onderdeel van een `<vl-step>` en hoort dus in een eigen `<ul>` lijst\nelement te staan. Plaats hem daarvoor in de `<vl-step>` met het slot \"duration\".\n\n```html\n<vl-step>\n    ...\n    <vl-duration-step slot=\"duration\">...</vl-duration-step>\n</vl-step>\n```\n\n[…]\n\n## Toegankelijkheid\n\n### icon-aria-label en timeline-aria-label\n\nBij het gebruik van de \"iconen\" of \"tijdlijn\" varianten is het aangeraden om respectievelijk de attributen\n`icon-aria-label` en `timeline-aria-label` in te vullen op het `<vl-step>`-component. Dit kan een label voor het icoon\nof de volledige datum bevatten.\n\n### heading-level\n\nOm de logische volgorde van de pagina headings te respecteren kan je een `heading-level` meegeven. Hiermee kan je ipv\nde standaard `<h3>`-heading, `<h1>` tot `<h6>` laten renderen."
+          }
+        ]
+      }
+    }
+  ]
+}

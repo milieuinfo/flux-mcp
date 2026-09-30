@@ -1,0 +1,60 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-335",
+  "entries": [
+    {
+      "id": "991d46a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-335"
+      ],
+      "scope": "vl-description-data",
+      "components": [
+        "vl-description-data"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "size's op het item krijgen voorrang",
+      "text": "FLUX-335 - vl-description-data - size's op het item krijgen voorrang",
+      "commits": [
+        {
+          "sha": "991d46a712c62f20991c0e52b3de779aa228ac47",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/991d46a712c62f20991c0e52b3de779aa228ac47"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/description-data/vl-description-data-item.component.ts",
+          "libs/components/src/block/description-data/vl-description-data.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-description-data-description-data--documentatie",
+            "title": "Components - Block/description-data/description-data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-description-data-description-data-item--documentatie",
+            "title": "Components - Block/description-data/description-data-item",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-description-data-description-data-item--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

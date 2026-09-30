@@ -1,0 +1,63 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-576",
+  "entries": [
+    {
+      "id": "9a14ce4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-576"
+      ],
+      "scope": "vl-alert",
+      "components": [
+        "vl-alert"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "multiline attribuut toegevoegd",
+      "text": "FLUX-576 - vl-alert - multiline attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "9a14ce4ecec1739a994bcbc83d6c29ab4988eb3a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9a14ce4ecec1739a994bcbc83d6c29ab4988eb3a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- message-attribuut werkt niet meer in combinatie met default slot werking\n- vl-toaster documentatie verbeterd",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 1,
+          "docs": 2,
+          "storybook": 3,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/alert/vl-alert.flux-css.ts",
+          "libs/components/src/block/alert/vl-alert.model.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-alert--documentatie",
+            "title": "Components - Block/alert",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-alert--documentatie",
+            "added": "### Multiline\n\nStelt `white-space: pre-line;` in voor de boodschap zodat nieuwe regels (newline karakters) in rekening worden gebracht.\n\n{`\nLet op: bij het gebruik van slot content moet de tekst direct na de opening-tag starten, zonder newline.\nEen newline na de opening-tag wordt door \\`pre-line\\` als witruimte weergegeven.\n`}\n\n```html\n<!-- Correct -->\n<vl-alert multiline\n    ><span>Eerste regel.</span>\n    <span>Tweede regel.</span>\n</vl-alert>\n\n<!-- Fout: newline na opening-tag geeft extra witruimte -->\n<vl-alert multiline>\n    <span>Eerste regel.</span>\n    <span>Tweede regel.</span>\n</vl-alert>\n```"
+          },
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "  type: 'warning',\n  title: 'Technische storing',\n  message: 'Uw aanvraag is niet verwerkt.\\nFout code: 36981',\n  closable: true,\n  multiline: true,\n\n[…]\n\nHet meegegeven object ondersteunt alle attributen van de [vl-alert](/docs/components-block-alert--documentatie)\ncomponent, zoals `multiline` om regeleinden (`\\n`) in de `message` te bewaren."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-476",
+  "entries": [
+    {
+      "id": "2f02b6c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-476"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "gedrag van \"select all\" verbeterd",
+      "text": "FLUX-476 - vl-rich-data-table - gedrag van \"select all\" verbeterd",
+      "commits": [
+        {
+          "sha": "2f02b6cd828ad80b7d4311e21fa9c0cf9b326e4d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2f02b6cd828ad80b7d4311e21fa9c0cf9b326e4d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "storybook": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

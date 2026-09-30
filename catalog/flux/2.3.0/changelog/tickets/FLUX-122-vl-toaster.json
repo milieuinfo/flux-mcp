@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-122",
+  "entries": [
+    {
+      "id": "05b2729",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-122"
+      ],
+      "scope": "vl-toaster",
+      "components": [
+        "vl-toaster"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "werking verbeterd",
+      "text": "FLUX-122 - vl-toaster - werking verbeterd",
+      "commits": [
+        {
+          "sha": "05b27293864f6fad99db0043daaaebc80a213b94",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/05b27293864f6fad99db0043daaaebc80a213b94"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De declaratieve manier van meldingen tonen is veranderd; in de vorige Lit variant van de `vl-toaster` werden meldingen pas getoond als de bijhorende functie werd aangeroepen. Nu worden die onmiddellijk getoond, deze werking is nu dezelfde hoe de vroegere `is=\"vl-toaster\"` werkte. Daarnaast is ook ontbrekende witruimte toegevoegd en responsiveness op mobiel verbeterd.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/toaster/vl-toaster.component.ts",
+          "libs/components/src/block/toaster/vl-toaster.css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "Gebruik de `toaster` component om meldingen af te beelden.<br/>\n\n[…]\n\n## Gebruik\n\n[…]\n\n### Declaratief\n\nJe kan de meldingen declaratief toevoegen in het default slot van de `vl-toaster`, typisch gebruiken we\n hiervoor de [vl-alert](/docs/components-block-alert--documentatie) component.\n Het element verschijnt dan automatisch op de gekozen positie.\n\n[…]\n\n### Dynamisch\n\nDe `showAlert()`-methode, is de eenvoudigste manier om een melding te tonen.\nAchterliggend maken we een [vl-alert](/docs/components-block-alert--documentatie) component aan met de\n opgegeven parameters.\n\n[…]\n\n```js\n\n[…]\n\n  fadeOut: true // optioneel, standaard is false\n\n[…]\n\nJe kan het meegegeven object uitbreiden met de properties van de [vl-alert](/docs/components-block-alert--documentatie)\ncomponent.\n\n[…]\n\nAls je meer controle wilt over de melding, kan je ook de `show()` methode gebruiken om een zelf samengesteld\n HTML-element te tonen als melding.\n\n[…]\n\n```js\n\n[…]\n\ntoaster.show(document.querySelector('#warning-123')); // deze methode toont het meegegeven HTML element als toast\n\n[…]\n\n### Fade out\n\nWe bieden de mogelijkheid aan om meldingen automatisch te laten verdwijnen na een bepaalde tijd met\n de `fade-out` property.\n\n{`\n   Echter raden we aan om dit te vermijden waar mogelijk gezien dit de toegankelijkheid van de\n   toaster negatief kan beïnvloeden. Gebruikers kunnen de melding mogelijk niet op tijd lezen of begrijpen,\n   vooral als ze gebruik maken van schermlezers of andere hulpmiddelen.\n`}"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-290",
+  "entries": [
+    {
+      "id": "9a62eb2",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-290"
+      ],
+      "scope": "vl-map-wfs-layer",
+      "components": [
+        "vl-map-wfs-layer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "url opbouw aangepast",
+      "text": "FLUX-290 - vl-map-wfs-layer - url opbouw aangepast",
+      "commits": [
+        {
+          "sha": "9a62eb285e4f1dc5631724e77e3ea71a61296527",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9a62eb285e4f1dc5631724e77e3ea71a61296527"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De url bevat parameter `bbox` en als de afnemer vroeger geen coordinaten meegaf om aan te geven binnen welke extent data opgehaald moet worden, dan stond er in de resulterende url `bbox=` (dus stond het leeg). In de context van Lambert2008-optin feature werd dit gewijzigd naar `bbox=NaN%2CNaN%2CNaN%2CNaN`, dit is nu terug rechtgezet zoals voorheen was.",
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer/vector-layer/vl-map-wfs-layer/vl-map-wfs-layer.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

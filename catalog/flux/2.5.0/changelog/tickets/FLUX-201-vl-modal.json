@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-201",
+  "entries": [
+    {
+      "id": "e498315",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-201"
+      ],
+      "scope": "vl-modal",
+      "components": [
+        "vl-modal"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "size en position attributes toegevoegd",
+      "text": "FLUX-201 - vl-modal - size en position attributes toegevoegd",
+      "commits": [
+        {
+          "sha": "e498315c9956c5ce47d90afc562f65169ebcb81a",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e498315c9956c5ce47d90afc562f65169ebcb81a"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/modal/vl-modal.component.ts",
+          "libs/components/src/block/modal/vl-modal.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-modal--documentatie",
+            "title": "Components - Block/modal",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/components-block-modal--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

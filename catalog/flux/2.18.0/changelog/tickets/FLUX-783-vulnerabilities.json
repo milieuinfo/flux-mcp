@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "version": "2.18.0",
+  "ticket": "FLUX-783",
+  "entries": [
+    {
+      "id": "3eeace4",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-783"
+      ],
+      "scope": "vulnerabilities",
+      "components": [],
+      "topics": [
+        "vulnerabilities"
+      ],
+      "mentions": [],
+      "summary": "package verhoging via overrides",
+      "text": "FLUX-783 - vulnerabilities - package verhoging via overrides",
+      "commits": [
+        {
+          "sha": "3eeace4fca3fcdc77712251150211c594c006993",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/3eeace4fca3fcdc77712251150211c594c006993"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Trivy meldde vulnerabilities op twee transitieve dependencies uit de package-lock.json:\n- validator 13.11.0 -> 13.15.35 (via z-schema)\n- @babel/runtime 7.23.8 -> 7.26.10 (via i18next, @testing-library/dom, fetch-mock)\n\nBeide zijn geen directe dependencies, dus ze worden afgedwongen via overrides in de package.json - dezelfde aanpak als de bestaande color-parse/color-name override.",
+        "published": false,
+        "areas": {
+          "tooling": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

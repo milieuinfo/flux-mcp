@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-94",
+  "entries": [
+    {
+      "id": "7b42f05",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-94"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "WCAG verbeteringen",
+      "text": "FLUX-94 - WCAG verbeteringen",
+      "commits": [
+        {
+          "sha": "7b42f0537ad4da7158b54c02dad77371df3eedbe",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7b42f0537ad4da7158b54c02dad77371df3eedbe"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Kleine WCAG & documentatie verbeteringen voor de toaster, modal, side-sheet, rich-data, alert, popover & search-filter",
+        "published": true,
+        "areas": {
+          "code": 5,
+          "docs": 1,
+          "storybook": 1,
+          "tests": 4
+        },
+        "publishedFiles": [
+          "libs/components/src/block/alert/vl-alert.component.ts",
+          "libs/components/src/block/modal/vl-modal.component.ts",
+          "libs/components/src/block/popover/vl-floating-ui.controller.ts",
+          "libs/components/src/block/rich-data/vl-rich-data.component.ts",
+          "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-toaster--documentatie",
+            "title": "Components - Block/toaster",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-block-toaster--documentatie",
+            "added": "## Toegankelijkheid\n\n### fade-out\n\nWe bieden de mogelijkheid aan om meldingen automatisch te laten verdwijnen na een bepaalde tijd met\n de `fade-out` property.\n\n Echter raden we aan om dit te vermijden waar mogelijk gezien dit de toegankelijkheid van de\ntoaster negatief kan beïnvloeden. Gebruikers kunnen de melding mogelijk niet op tijd lezen of begrijpen, vooral als ze\ngebruik maken van schermlezers of andere hulpmiddelen."
+          }
+        ]
+      }
+    }
+  ]
+}

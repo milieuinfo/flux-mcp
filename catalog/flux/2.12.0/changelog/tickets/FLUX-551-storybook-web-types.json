@@ -1,0 +1,108 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-551",
+  "entries": [
+    {
+      "id": "be2b78d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-551"
+      ],
+      "scope": "storybook",
+      "components": [],
+      "topics": [
+        "storybook"
+      ],
+      "mentions": [],
+      "summary": "arg-files  verbeterd",
+      "text": "FLUX-551 - storybook - arg-files  verbeterd",
+      "commits": [
+        {
+          "sha": "be2b78d2c3ffa5b1c2435e66b1cb5e2b9d3a2f4e",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/be2b78d2c3ffa5b1c2435e66b1cb5e2b9d3a2f4e"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Ontbrekende `category: CATEGORIES.ATTRIBUTES` toegevoegd aan stories-arg bestanden waardoor attributen niet in de web-types JSON werden opgenomen.\n\nAangepaste componenten:\n- vl-side-sheet (10 attributen)\n- vl-infoblock (4 attributen)\n- vl-share-button (2 attributen)\n- vl-template (2 attributen)\n- vl-typography (1 attribuut)",
+        "published": false,
+        "areas": {
+          "storybook": 5
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "components-block-infoblock--documentatie",
+            "title": "Components - Block/infoblock",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-infoblock--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-share-buttons-share-button--documentatie",
+            "title": "Components - Block/share-buttons/share-button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-share-buttons-share-button--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-side-sheet--documentatie",
+            "title": "Components - Block/side-sheet",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-template--documentatie",
+            "title": "Components - Block/template",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-template--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-typography--documentatie",
+            "title": "Components - Block/typography",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-typography--documentatie",
+            "added": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "150566d",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-551"
+      ],
+      "scope": "web-types",
+      "components": [],
+      "topics": [
+        "web-types"
+      ],
+      "mentions": [],
+      "summary": "een category is verplicht in de stories-arg",
+      "text": "FLUX-551 - web-types - een category is verplicht in de stories-arg",
+      "commits": [
+        {
+          "sha": "150566d4870e0f7e7d3df0f6e6ea3bc2fb2534b2",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/150566d4870e0f7e7d3df0f6e6ea3bc2fb2534b2"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "tooling": 2
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    }
+  ]
+}

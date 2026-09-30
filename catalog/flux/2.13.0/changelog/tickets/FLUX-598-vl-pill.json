@@ -1,0 +1,56 @@
+{
+  "schema": 4,
+  "version": "2.13.0",
+  "ticket": "FLUX-598",
+  "entries": [
+    {
+      "id": "7fe3880",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-598"
+      ],
+      "scope": "vl-pill",
+      "components": [
+        "vl-pill"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "aangepaste kleuren",
+      "text": "FLUX-598 - vl-pill - aangepaste kleuren",
+      "commits": [
+        {
+          "sha": "7fe388037b88d3838beec2c4981c273bffd9044d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7fe388037b88d3838beec2c4981c273bffd9044d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 1,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/pill/vl-pill.component.ts",
+          "libs/components/src/block/pill/vl-pill.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-pill--documentatie",
+            "title": "Components - Block/pill",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.13.0/storybook/?path=/docs/components-block-pill--documentatie",
+            "added": "# Pill\n\n\n## Doel\n\nGebruik de `pill` component voor het tonen van statussen, toegepaste filters, badges, etc.<br/>\n\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-pill></vl-pill>\n```\n\n\n\n## Configuratie\n\n\n\n## Varianten\n\n### Alle varianten\n\n\n### Aangepaste kleuren\n\nDe kleuren van vl-pill zijn aanpasbaar met de volgende CSS variabelen:\n\n```css\n/* Default */\n--vl-pill--border-color: var(--vl-color--border-alt);\n--vl-pill--text-color: var(--vl-color--text-alt);\n--vl-pill--background-color: #fff;\n/* Hover */\n--vl-pill--border-color-action: var(--vl-color--action);\n--vl-pill--text-color-action: var(--vl-color--action);\n--vl-pill--background-color-action: var(--vl-color--background-action-subtle);\n```\n\n**Tip**: maak globale klassen om aangepaste pills te definiëren: `<vl-pill class=\"paarse-pil\">paarse pil</vl-pill>`\n\n\n## Toegankelijkheid\n\nKleur mag nooit het enige middel zijn om informatie over te brengen. Gebruik altijd een combinatie van kleur, tekst\nen iconografie voor maximale toegankelijkheid.\n\nControleer aangepaste kleuren op contrast en pas de verschillende kleurenblindheid emulaties toe.\n\n### Kleurencontrast\n\nOpen Chrome Developer Tools, inspecteer het element. Er wordt een tooltip getoond met een groen vinkje indien\nhet kleurencontrast voldoende is.\n\n### Kleurenblindheid emulatie\n\nIndien je verschillende pills met aangepaste kleuren gemaakt hebt, plaats deze dan samen op een pagina.\nOpen Chrome Developer Tools, open het \"Rendering\" paneel. Hieronder vind je [Emulate vision deficiencies](https://dev.to/josefine/accessibility-testing-with-chrome-devtools-2bl4#emulate-vision-deficiencies). Ga door de\nverschillende opties en controleer of je steeds alle verschillende kleuren kan onderscheiden. Soms is het beter om 1\ntint te kiezen met verschillende helderheden. Op de [kleurenpalet-pagina](/docs/styles-kleurenpalet--documentatie) vind\nje voorbeelden van kleuren die op deze manier getest zijn."
+          }
+        ]
+      }
+    }
+  ]
+}

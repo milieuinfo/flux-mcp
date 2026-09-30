@@ -1,0 +1,61 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3270",
+  "entries": [
+    {
+      "id": "c9af8f4",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3270"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "circulaire dependencies verbeterd",
+      "text": "UIG-3270 - circulaire dependencies verbeterd",
+      "commits": [
+        {
+          "sha": "c9af8f4fade90fcfdcf2dfe4a183c29ae6c136d4",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/c9af8f4fade90fcfdcf2dfe4a183c29ae6c136d4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- GlobalStyles logica naar common verplaatst\n- in lib/components geen '@domg-wc/components' imports, maar ze relatief importeren\n- test utilities onder resources/utils-test om dependencies, die als neveneffect via barrel-file imports binnen komen, te vermijden\n- swipeDetect probleem van de side-sheet opgelost",
+        "published": true,
+        "areas": {
+          "code": 10,
+          "styles": 5,
+          "storybook": 10,
+          "examples": 1,
+          "tests": 24,
+          "tooling": 10
+        },
+        "publishedFiles": [
+          "libs/common/src/base/base.lit.element.ts",
+          "libs/common/src/index.ts",
+          "libs/common/src/styles/global-styles.ts",
+          "libs/common/src/util/html-element.builder.ts",
+          "libs/components/src/declare-module.d.ts",
+          "libs/components/src/functional-header/vl-functional-header.component.ts",
+          "libs/components/src/http-error-message/vl-http-error-message.component.ts",
+          "libs/components/src/proza-message/vl-proza-message.component.ts",
+          "libs/components/src/side-sheet/swipe-detect.d.ts",
+          "libs/components/src/side-sheet/vl-side-sheet.component.ts",
+          "libs/styles/src/global-styles-legacy.ts",
+          "libs/styles/src/global-styles.ts",
+          "libs/styles/src/index.ts",
+          "libs/styles/src/vl-global-styles-legacy.ts",
+          "libs/styles/src/vl-global-styles.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

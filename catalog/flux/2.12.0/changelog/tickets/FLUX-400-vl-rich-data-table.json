@@ -1,0 +1,44 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-400",
+  "entries": [
+    {
+      "id": "6995b96",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-400"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "gebruik van no-content slot verbeterd",
+      "text": "FLUX-400 - vl-rich-data-table - gebruik van no-content slot verbeterd",
+      "commits": [
+        {
+          "sha": "6995b96c3159efd962ce0b09ad0b22272f06ee45",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/6995b96c3159efd962ce0b09ad0b22272f06ee45"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/rich-data-table/vl-rich-data-table.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

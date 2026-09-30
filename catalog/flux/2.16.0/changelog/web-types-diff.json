@@ -1,0 +1,307 @@
+{
+  "base": "2.15.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-button",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "download",
+            "description": "Duidt aan dat de cta-link een download is in plaats van een navigatie.<br>Optioneel kan een bestandsnaam als waarde meegegeven worden, zonder waarde kiest de browser de bestandsnaam.<br>Werkt enkel voor same-origin URLs (browser-beperking).<br>Dit attribuut wordt enkel gebruikt als de `cta-link` is ingesteld.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-link",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "download",
+            "description": "Duidt aan dat de link een download is in plaats van een navigatie.<br>Optioneel kan een bestandsnaam als waarde meegegeven worden, zonder waarde kiest de browser de bestandsnaam.<br>Werkt enkel voor same-origin URLs (browser-beperking).<br>Werkt niet in combinatie met `button-as-link`-attribuut.",
+            "default": "null"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-modal",
+      "category": "block",
+      "inChangelog": true,
+      "events": {
+        "added": [
+          {
+            "name": "vl-open",
+            "description": "Event dat afgevuurd wordt wanneer de modal opent, ongeacht of dat via het `open`-attribuut, de `open()`-methode, een knop of escape gebeurt."
+          },
+          {
+            "name": "vl-close",
+            "description": "Event dat afgevuurd wordt wanneer de modal sluit, ongeacht of dat via het `open`-attribuut, de `close()`-methode, een knop of escape gebeurt."
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-properties",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [],
+        "removed": [
+          {
+            "name": "no-clone",
+            "description": "Default wordt de inhoud van label en data ge-cloned: van de Light DOM naar de shadow DOM, met no-clone actief wordt de inhoud verplaatst.",
+            "default": "false"
+          }
+        ],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-search",
+      "category": "block",
+      "inChangelog": true,
+      "deprecated": {
+        "before": null,
+        "after": "Deprecated en wordt verwijderd in v3. Bouw een zoekformulier met de input-group (vl-input-field + vl-button met loading)."
+      }
+    },
+    {
+      "element": "vl-share-button",
+      "category": "block",
+      "inChangelog": false,
+      "deprecated": {
+        "before": null,
+        "after": "Deprecated en wordt verwijderd in v3. Gebruik een vl-button met cta-link, icon en label."
+      }
+    },
+    {
+      "element": "vl-share-buttons",
+      "category": "block",
+      "inChangelog": true,
+      "deprecated": {
+        "before": null,
+        "after": "Deprecated en wordt verwijderd in v3. Gebruik een vl-button met cta-link, icon en label."
+      }
+    },
+    {
+      "element": "vl-side-navigation",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "multi-active",
+            "description": "Wanneer aanwezig worden alle items waarvan content zichtbaar is als actief gemarkeerd, in plaats van enkel het bovenste. De actieve items worden aangeduid met een doorlopende lijn uiterst links. Zonder dit attribuut kan het zijn dat de onderste items onderaan nooit aangeduid worden.<br>Dit attribuut is niet reactief.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-side-navigation-layout-next",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "multi-active",
+            "description": "Wanneer aanwezig worden alle items waarvan content zichtbaar is als actief gemarkeerd, in plaats van enkel het bovenste. De actieve items worden aangeduid met een doorlopende lijn uiterst links. Zonder dit attribuut kan het zijn dat de onderste items onderaan nooit aangeduid worden. Wordt doorgegeven aan vl-side-navigation-next.<br>Dit attribuut is niet reactief.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-step",
+      "category": "block",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "line",
+            "description": "Toont een lijn naast de step.",
+            "default": "false"
+          },
+          {
+            "name": "timeline",
+            "description": "Toont de step als een timeline item.",
+            "default": "false"
+          },
+          {
+            "name": "simple-timeline",
+            "description": "Toont een vereenvoudigde timeline versie.",
+            "default": "false"
+          },
+          {
+            "name": "last-step-no-line",
+            "description": "Verbergt de lijn bij het laatste step item.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "name": "type",
+            "default": {
+              "before": "null",
+              "after": ""
+            }
+          },
+          {
+            "name": "heading-level",
+            "type": {
+              "before": null,
+              "after": "'1' | '2' | '3' | '4' | '5' | '6'"
+            }
+          },
+          {
+            "name": "icon-aria-label",
+            "default": {
+              "before": "null",
+              "after": ""
+            }
+          },
+          {
+            "name": "timeline-aria-label",
+            "default": {
+              "before": "null",
+              "after": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "element": "vl-textarea",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "character-count",
+            "description": "Toont onder de textarea een teller `{huidig}/{max}` van het aantal getypte tekens t.o.v. `max-length`. Een (visueel verborgen) `aria-live` regio kondigt het aantal resterende tekens aan vanaf de laatste 10. Vereist een gezette `max-length`.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-textarea-rich",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "character-count",
+            "description": "Toont onder de textarea een teller `{huidig}/{max}` van het aantal getypte tekens t.o.v. `max-length`. Een (visueel verborgen) `aria-live` regio kondigt het aantal resterende tekens aan vanaf de laatste 10. Vereist een gezette `max-length`.",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-typography",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "update-url-hash",
+            "description": "Werkt bij een klik op een same-page anchor de URL-hash bij via history.pushState. Default wordt de hash niet aangepast (kan botsen met bv. een SPA-router).",
+            "default": "false"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": [
+    {
+      "element": "vl-button",
+      "category": "atom",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Stelt het aria-label attribuut van de button in. Gebruik je een `cta-link` met `external`, geef dan een duidelijke omschrijving mee van waar de link naartoe leidt, bv. \"Ga naar Vlaanderen.be (opent in een nieuw venster)\"."
+        }
+      ]
+    },
+    {
+      "element": "vl-infotext",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik de `infotext` component om belangrijke nummers duidelijk weer te geven.<br/>"
+    },
+    {
+      "element": "vl-map-measure-control",
+      "category": "map",
+      "inChangelog": false,
+      "description": "Gebruik de `map-measure-control` component om de meet-actie aan of uit te zetten met behulp van een\n[button met toggle](/docs/components-atom-button--documentatie#toggle)."
+    },
+    {
+      "element": "vl-modal",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Reactief attribuut dat de open-staat van de modal stuurt: toevoegen opent de modal, verwijderen sluit hem. Het attribuut blijft in sync met de werkelijke staat (na sluiten via knop, escape of backdrop is het weg)."
+        }
+      ]
+    },
+    {
+      "element": "vl-rich-data-table",
+      "category": "block",
+      "inChangelog": true,
+      "description": "Een tabel op basis van een dynamische lijst van data die uitgebreid kan worden met functionaliteiten om het consumeren\nvan data door de gebruiker te verbeteren.\n\nDe code voorbeelden bij elke story zijn dezelfde code die gebruikt wordt om de stories te laten werken.\n- combineert de functionaliteiten van het [rich-data](?path=/docs/components-block-rich-data--rich-data-default)-component en [data-table](?path=/docs/elements-data-table--data-table-default)-component.\n- om de velden te configureren kan je gebruik maken van `rich-data-field`"
+    },
+    {
+      "element": "vl-search",
+      "category": "block",
+      "inChangelog": true,
+      "description": "De `search` component toont een zoekveld met een zoekknop."
+    },
+    {
+      "element": "vl-share-button",
+      "category": "block",
+      "inChangelog": false,
+      "description": "De `share-button` component is één enkele deelknop binnen een `share-buttons` rij."
+    },
+    {
+      "element": "vl-share-buttons",
+      "category": "block",
+      "inChangelog": true,
+      "description": "De `share-buttons` component toont een rij knoppen om een pagina te delen op sociale media."
+    },
+    {
+      "element": "vl-upload-progress",
+      "category": "block",
+      "inChangelog": false,
+      "description": "Gebruik `vl-upload-progress` om procentuele voortgang van een bestandsupload te tonen.\n\nDit component laat toe om de upload te annuleren of te herstarten en heeft de mogelijkheid om een foutboodschap\nweer te geven."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "ticket": "FLUX-195",
+  "entries": [
+    {
+      "id": "efbb982",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-195"
+      ],
+      "scope": "vl-upload",
+      "components": [
+        "vl-upload"
+      ],
+      "topics": [],
+      "mentions": [
+        "vl-input"
+      ],
+      "summary": "drag & drop triggert het vl-input event",
+      "text": "FLUX-195 - vl-upload - drag & drop triggert het vl-input event",
+      "commits": [
+        {
+          "sha": "efbb982d07e0a4fe862207244f103a3d126aebdf",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/efbb982d07e0a4fe862207244f103a3d126aebdf"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/upload/vl-upload.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-70",
+  "entries": [
+    {
+      "id": "7435b4d",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-70"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "flux ipv uig",
+      "text": "FLUX-70 - flux ipv uig",
+      "commits": [
+        {
+          "sha": "7435b4d02a3838af4fffe9f327b885814eadb635",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7435b4d02a3838af4fffe9f327b885814eadb635"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 13,
+          "tooling": 6
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "De Code Preview component werd geschrapt in v2, die werd enkel in de legacy documentatie (van voor 2021) gebruikt."
+          },
+          {
+            "id": "afnemen-starter-app--documentatie",
+            "title": "Afnemen/Starter App",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+            "added": "Onder [https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app](https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app)\n\n[…]\n\nHieronder is een overzicht van welke bibliotheken gebruikt worden in de flux-starter-app, de concrete versies\nvind je terug in de package.json.\n\n- [Node](https://nodejs.org/en) - een recentelijke LTS versie\n\n[…]\n\n- [Webpack](https://webpack.js.org/)\n- [TypeScript](https://www.typescriptlang.org/)\n- [Lit](https://lit.dev/)\n- [Prettier](https://prettier.io/)\n- [ESLint](https://eslint.org/)\n- [Jest](https://jestjs.io/)\n- [Cypress](https://www.cypress.io/)\n\n[…]\n\nmet Html, Javascript en Css - gebruikmakend van web-standaarden - waarbij het bouwen van\n\n[…]\n\nWebpack. Het is aanbevolen een linter te gebruiken en optioneel (maar aanbevolen) kan code in TypeScript geschreven\nworden. Om kwalitatieve code te behouden is het de bedoeling 3 types van testen te schrijven: unit testen (met Jest) en\n\n[…]\n\ndie tool zorgt ervoor dat er een expliciete Node versie gespecifieerd, geïnstalleerd en gebruikt wordt. Bij\nontwikkeling voor meerdere toepassingen zal je daardoor telkens met de juiste Node versie werken.\n\n[…]\n\nBabel en tsc - [SWC](https://swc.rs/) geconfigureerd. Babel is complex (er zijn verschillende plugins nodig), om de\nverschillende tools correct te configureren. SWC heeft 1 eenduidig configuratie bestand. Voornamelijk om van Lit\n\n[…]\n\nHet kan makkelijk om met de shadow-dom, je kan eigen commando's voorzien en Cypress gaat transparant om met reactieve"
+          },
+          {
+            "id": "beheren-git-release-branching--documentatie",
+            "title": "Beheren/Git Release Branching",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/beheren-git-release-branching--documentatie",
+            "added": "<img src={fluxBranching} alt=\"Flux Branching Strategie\" />"
+          },
+          {
+            "id": "planning-historiek-toekomst--documentatie",
+            "title": "Planning/Historiek & Toekomst",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+            "added": "Met vertraging is begin juni 2025 v2 gereleased, dit geeft een opkuis van 3 jaar evolutie. Nog niet alles is"
+          },
+          {
+            "id": "recepten-cdn-bundel-fat-lib--documentatie",
+            "title": "Recepten/CDN Bundel - fat-lib",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie",
+            "added": "  <title>Flux Demo</title>"
+          },
+          {
+            "id": "recepten-configuratie--documentatie",
+            "title": "Recepten/Configuratie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+            "added": "M.b.v. de statische klasse `FluxConfig` kunnen voorkeuren gewijzigd worden.\n\n[…]\n\nFluxConfig.setPreferences({ logWebComponentRegistration: true });"
+          },
+          {
+            "id": "recepten-css-styling--documentatie",
+            "title": "Recepten/CSS Styling",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-css-styling--documentatie",
+            "added": "## Globale CSS\n\n[…]\n\nAlle Flux web-componenten, zijnde de web-componenten die zich in de package `@domg-wc/components` bevinden, zorgen\nervoor dat eenmalig alle css op document niveau geregistreerd wordt. Technisch gebeurt dat door de basis klasse\n`BaseLitElement` die de onderstaande `GlobalStyles.getInstance().register()` methode uitvoert:\n\n[…]\n\npublic register() {\n    if (!this.registered) {\n        if (FluxConfig.getPreferences().autoRegisterStyles) {\n\n[…]\n\n                ...(this.defaultStyles.map((style) => style.styleSheet) as CSSStyleSheet[]),\n\n[…]\n\n            console.info('GlobalStyles: global styling toegevoegd aan het document');\n        } else {\n            console.info(\n                'GlobalStyles: geen global styling toegevoegd aan het document - autoRegisterStyles is uitgeschakeld'\n            );\n\n[…]\n\n        this.registered = true;\n        this.registerCustomCSS();"
+          },
+          {
+            "id": "recepten-events--documentatie",
+            "title": "Recepten/Events",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-events--documentatie",
+            "added": "De Flux-componenten bieden eigen - custom -\nevents aan, deze hebben de prefix `vl-`. De prefix maakt duidelijk dat het Flux-events zijn en vermijden conflicten\n\n[…]\n\nLit, waar de nieuwere Flux-componenten gebruik van maken, heeft zelf een documentatie pagina over\n\n[…]\n\nDe Flux-componenten ontsluiten typisch native componenten die op hun beurt native events hebben. Web-componenten"
+          },
+          {
+            "id": "richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+            "title": "Richtlijnen/Testen/Test Piramide Component Bibliotheek",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+            "added": "Het Flux-team bouwt een component bibliotheek, dit is verschillend van een eindtoepassing. Om die componenten afgebakend"
+          },
+          {
+            "id": "styles-concept--documentatie",
+            "title": "Styles/Concept",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/styles-concept--documentatie",
+            "added": "Afnemers dienen niets specifiek te doen. Vanaf dat er 1 Flux-component gebruikt wordt registreert deze alle"
+          }
+        ]
+      }
+    }
+  ]
+}

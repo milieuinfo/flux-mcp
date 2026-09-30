@@ -1,0 +1,8 @@
+{
+  "name": "@domg-wc/common",
+  "version": "2.13.0",
+  "dependencies": {
+    "@domg-wc/styles": "2.13.0",
+    "lit": "3.1.0"
+  }
+}

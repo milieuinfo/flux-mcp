@@ -1,0 +1,810 @@
+{
+  "schema": 2,
+  "version": "2.16.0",
+  "previous": "2.15.0",
+  "commits": {
+    "00ffff527f0a801318e9102ce340a1248f3ea020": {
+      "sha": "00ffff527f0a801318e9102ce340a1248f3ea020",
+      "body": "Een fix-release branch zoals release-v2-2.15 matchte de release-v* glob en probeerde te rebasen naar develop-v2-2.15 (bestaat niet). Nu enkel exact release-v<major>; andere branches worden overgeslagen met exit 0.",
+      "published": false,
+      "areas": {
+        "tooling": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "35dd1e457daaef8e26be7d1ed65217860e9e26e5": {
+      "sha": "35dd1e457daaef8e26be7d1ed65217860e9e26e5",
+      "body": "De 'selecteer alles'-checkbox toonde geen streepje meer wanneer slechts een deel van de rijen geselecteerd was. De code zette indeterminate rechtstreeks op de interne input in de shadow-DOM; nu het streepje via het indeterminate attribuut van vl-checkbox gerenderd wordt, had dat geen effect meer.",
+      "published": false,
+      "areas": {
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "7713e98995c21b7730eabdac18d44ca30a4599c8": {
+      "sha": "7713e98995c21b7730eabdac18d44ca30a4599c8",
+      "body": "De basis-class 'vl-icon' op de toggle-button zorgde ervoor dat de govflanders .vl-icon { display: inline } regel (via vlLegacyStyles, de laatste in de styles-array) won van .vl-tabs__toggle { display: none }. Daardoor was de mobiele toggle ook op desktop zichtbaar, zonder te werken.\n\nEnkel de modifier 'vl-icon--arrow' behouden zodat de glyph-by-name aanpak intact blijft zonder het display probleem.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/tabs/vl-tabs.component.ts"
+      ],
+      "storybook": []
+    },
+    "ed87de89c2f98d046c665a1fc7116933dd1d49bc": {
+      "sha": "ed87de89c2f98d046c665a1fc7116933dd1d49bc",
+      "body": "Wijzigingen aan de light-DOM-inhoud van vl-typography worden opnieuw gerenderd nadat de component verplaatst werd in de DOM. Inhoud die wijzigde terwijl de component losgekoppeld was, wordt bij het opnieuw toevoegen gesynchroniseerd; herhaald verplaatsen veroorzaakt geen dubbele verwerking.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/typography/vl-typography.component.ts"
+      ],
+      "storybook": []
+    },
+    "8375722f8b37835dad7eb3787e9d59b61f04d36f": {
+      "sha": "8375722f8b37835dad7eb3787e9d59b61f04d36f",
+      "body": "Same-page anchor-links (#id) binnen vl-typography scrollen nu naar het doel, ook als dat elders op de pagina staat (light DOM of andere shadow root). De URL-hash wordt bijgewerkt, deep-links en back/forward scrollen mee, en een element buiten de component kan via dispatchNavigateToAnchor naar een doel binnen de component navigeren.",
+      "published": true,
+      "areas": {
+        "code": 3,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/common/src/index.ts",
+        "libs/common/src/util/anchor-navigation.ts",
+        "libs/components/src/block/typography/vl-typography.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-typography--documentatie",
+          "title": "Components - Block/typography",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-typography--documentatie",
+          "added": "## Anchor-navigatie (same-page links)\n\nSame-page anchor-links (bv. `<a href=\"#mijn-sectie\">`) werken binnen `vl-typography`. Omdat de component zijn\ncontent naar een shadow root kopieert, vindt de native fragment-navigatie het doel-`id` niet meer; daarom neemt\n`vl-typography` deze navigatie zelf over. Je hoeft hiervoor niets te configureren - het volstaat dat het doel een\n`id` heeft. Een klik op zo'n link:\n\n- scrollt naar het element met het overeenkomstige `id` - ook als dat doel elders op de pagina staat (in de light\n  DOM of in een andere shadow root)\n- verplaatst de focus mee naar het doel (WCAG 2.4.3 Focus Order)\n\n\n### URL-hash bijwerken (opt-in)\n\nStandaard wordt de URL-hash **niet** aangepast bij een anchor-klik. Dat is bewust: automatisch een\n`history.pushState` doen kan botsen met bv. een SPA-router. Wil je dat een klik de URL-hash wél bijwerkt\n(deelbaar/bookmarkbaar, zonder dubbele history-entry), zet dan het `update-url-hash`-attribuut:\n\n```html\n<vl-typography update-url-hash>\n    <p><a href=\"#mijn-sectie\">Ga naar de sectie</a></p>\n    ...\n</vl-typography>\n```\n\n\n### Navigeren vanuit een element buiten vl-typography\n\nWil je vanuit een willekeurig element (bv. een knop) buiten de component naar een doel binnen `vl-typography`\nnavigeren - dwars doorheen shadow DOM-grenzen - gebruik dan de `dispatchNavigateToAnchor`-utility uit\n`@domg-wc/common`:\n\n```js\n```\n\n```html\n<button @click=${(event) => dispatchNavigateToAnchor(event.currentTarget, '#mijn-sectie')}>\n    Ga naar de sectie\n</button>\n```\n\n`dispatchNavigateToAnchor(source, hash)` stuurt het `vl-navigate-to-anchor`-event vanaf het bron-element;\nde centrale listener zoekt het doel pagina-breed op (door alle open shadow roots en de light DOM) en navigeert\nernaartoe. De functie geeft `true` terug wanneer er effectief een doel gevonden en aangedaan werd, zodat je de\nnative navigatie enkel hoeft te onderdrukken wanneer er genavigeerd is.\n\n\n### Utilities in `@domg-wc/common`\n\nDe onderliggende logica is herbruikbaar en niet aan `vl-typography` gebonden. Wie zelf een component bouwt die\ncontent in een shadow root rendert, kan dezelfde same-page navigatie activeren met:\n\n- **`enableAnchorNavigation()`** - Installeert (idempotent, pagina-breed en voor de paginalevensduur) de centrale\n  `vl-navigate-to-anchor`- en `hashchange`-listeners plus een initiële deep-link-check. Meerdere aanroepen\n  installeren slechts één keer.\n- **`handleAnchorClick(event, { updateHash })`** - Herbruikbare click-guard die een echte klik op een same-page\n  `<a href=\"#...\">` vertaalt naar het navigatie-event. Hang hem aan een shadow root (voor één component) óf aan\n  `document` (voor álle anchors op de pagina). Modifier-/middenklikken en links naar een ander pad blijven\n  ongemoeid. `updateHash` is opt-in (default `false`).\n- **`dispatchNavigateToAnchor(source, hash, { updateHash })`** - Laat eender welke link/component (ook diep in\n  shadow DOM) naar een anchor navigeren via het composed custom event. Geeft `true` terug bij een treffer.\n  `updateHash` is default `false`.\n- **`navigateToAnchor(hash, { updateHash })`** - Lager niveau: zoekt het doel pagina-breed op, scrollt ernaartoe en\n  verplaatst de focus. Werkt de URL-hash enkel bij als `updateHash` `true` is (default `false`).\n\n`vl-typography` gebruikt dit zelf door `handleAnchorClick` aan zijn shadow root te hangen en `enableAnchorNavigation()`\nte activeren - er zit geen navigatielogica meer in de component zelf."
+        }
+      ]
+    },
+    "704a220aacfb20a7b2075e7a0e89ce34530a990c": {
+      "sha": "704a220aacfb20a7b2075e7a0e89ce34530a990c",
+      "body": "De data-property van vl-rich-data geeft na een pagina-wissel het actuele pagina-nummer terug. vl-pager vuurt geen overbodig change-event meer wanneer de effectieve pagina niet wijzigt en levert altijd de correcte currentPage via de event-data.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/pager/vl-pager.component.ts",
+        "libs/components/src/block/rich-data/vl-rich-data.component.ts"
+      ],
+      "storybook": []
+    },
+    "0c86d6fdc7737c8132a3ca025fa03f374f78bc6a": {
+      "sha": "0c86d6fdc7737c8132a3ca025fa03f374f78bc6a",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 1,
+        "storybook": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-pill--documentatie",
+          "title": "Components - Block/pill",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-pill--documentatie",
+          "added": "Voor bijkomende informatie zie [kleurenpalet](/docs/styles-kleurenpalet--documentatie) (met WCAG getestte kleuren).\n\n[…]\n\nKleur mag nooit het enige middel zijn om informatie over te brengen. Gebruik altijd een combinatie van kleur, tekst\n\n[…]\n\nOpen Chrome Developer Tools, inspecteer het element. Er wordt een tooltip getoond met een groen vinkje indien\nhet kleurencontrast voldoende is.\n\n[…]\n\nverschillende opties en controleer of je steeds alle verschillende kleuren kan onderscheiden. Soms is het beter om 1"
+        }
+      ]
+    },
+    "efa4f9b46722723be224ca74dd591bfd61c23152": {
+      "sha": "efa4f9b46722723be224ca74dd591bfd61c23152",
+      "body": "De blauwe focus-outline rond een side-sheet en een tab-panel-next verschijnt niet langer bij klik of programmatisch openen/activeren. Toetsenbord-gebruikers behouden een zichtbare focus-indicator en het gedrag komt terug overeen met Flux v1.",
+      "published": true,
+      "areas": {
+        "styles": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/tabs/vl-tab-panel.flux-css.ts",
+        "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+      ],
+      "storybook": []
+    },
+    "10da24638c94bb4f4351cd9c26825b39064833b9": {
+      "sha": "10da24638c94bb4f4351cd9c26825b39064833b9",
+      "body": "footer-knoppen in vl-group--wrap zodat ze niet langer tegen elkaar plakken",
+      "published": false,
+      "areas": {
+        "storybook": 3
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-rich-data--documentatie",
+          "title": "Components - Block/rich-data",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-rich-data--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-rich-data-table--documentatie",
+          "title": "Components - Block/rich-data-table",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-search-filter--documentatie",
+          "title": "Components - Block/search-filter",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-search-filter--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "320046b8c98287f335a59b99ce410cb9f273b9cf": {
+      "sha": "320046b8c98287f335a59b99ce410cb9f273b9cf",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/button/vl-button.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-button--documentatie",
+          "title": "Components - Atom/button",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-button--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "5a9a5d4144031168e3af33b8624e6ce754374fd3": {
+      "sha": "5a9a5d4144031168e3af33b8624e6ce754374fd3",
+      "body": "Het open-attribuut weerspiegelt nu de werkelijke staat: toevoegen opent de modal, verwijderen sluit ze, en na sluiten via knop, escape of backdrop verdwijnt het attribuut vanzelf. De modal vuurt voortaan vl-open- en vl-close-events af zodat consumers declaratief op statuswijzigingen kunnen reageren zonder de component te queryen.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/modal/vl-modal.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-modal--documentatie",
+          "title": "Components - Block/modal",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-modal--documentatie",
+          "added": "## Reactief open-attribuut\n\nHet `open` attribuut is reactief en weerspiegelt de werkelijke open-staat van de modal. Het attribuut toevoegen opent\nde modal, het verwijderen sluit ze:\n\n```html\n<vl-modal open></vl-modal>\n```\n\nWanneer de modal sluit via de annuleer-knop, de sluit-knop, de escape-toets of de backdrop, wordt het `open` attribuut\nautomatisch van de host verwijderd.\n\n> **Let op met toegankelijkheid:** openen via het `open` attribuut (of via de `open()` methode) ontslaat de afnemer niet\n> van de regel dat een modal idealiter via een knop of link getriggerd wordt. Wie de modal opent zonder zo'n trigger\n> is zelf verantwoordelijk om de focus correct te beheren - in het bijzonder om de focus bij het sluiten terug te\n> plaatsen op een logisch element (typisch het element dat de modal opende). Doe je dat niet, dan blijft de focus achter\n> op een onvoorspelbare plaats, wat de toegankelijkheid voor toetsenbord- en schermlezer-gebruikers schaadt. Zie\n> [Toegankelijkheid](#toegankelijkheid) voor de aanbevolen werkwijze.\n\n\n## Events\n\n<table>\n    <tr>\n        <td>Event</td>\n        <td>Beschrijving</td>\n    </tr>\n    <tr>\n        <td>`vl-open`</td>\n        <td>Wordt afgevuurd wanneer de modal opent, ongeacht of dat via het `open` attribuut, de `open()` methode of een trigger gebeurde.</td>\n    </tr>\n    <tr>\n        <td>`vl-close`</td>\n        <td>Wordt afgevuurd wanneer de modal sluit, ongeacht of dat via het `open` attribuut, de `close()` methode, de annuleer-/sluit-knop, escape of de backdrop gebeurde.</td>\n    </tr>\n</table>\n\nBeide events bubbelen en gaan door de shadow-DOM (`bubbles: true, composed: true`), zodat ze ook buiten de component\nopgevangen kunnen worden:\n\n```js\ndocument.querySelector('vl-modal').addEventListener('vl-close', () => {\n    // reageer op het sluiten van de modal\n});\n```\n\n[…]\n\nHet triggeren van de modal moet altijd gebeuren via een knop of link. Voor screen readers is het belangrijk dat deze\nknop of link de juiste aria-attributen bevat. Het gebruik van `aria-haspopup=\"dialog\"` is in dit geval verplicht.\nOptioneel kan je `aria-controls` toevoegen met als value de ID van de modal (dit is echter overbodig wanneer de knop\nbinnen een shadow DOM zit (bv vl-button), omdat de koppeling met de ID niet werkt doorheen de shadow DOM). **Deze\naria-attributen moet de afnemer zelf implementeren!**.\n\nEen belangrijke reden voor deze regel is het focusbeheer: wanneer de modal sluit, moet de focus terugkeren naar de\ntrigger (de knop of link die de modal opende). Door de modal via zo'n trigger te openen, gebeurt dit op een\nnatuurlijke en voorspelbare manier. Het [reactief openen via het `open` attribuut](#reactief-open-attribuut) of de\n`open()` methode blijft mogelijk en is soms nodig (bv. om de open-staat declaratief te sturen), maar wie deze weg\nkiest in plaats van een trigger, moet het terugplaatsen van de focus bij het sluiten zelf afhandelen. De\n`vl-close`-event is hiervoor een geschikt aangrijpingspunt.\n\nDe vl-modal zal standaard de focus leggen op het eerste focusbare element binnenin de modal wanneer deze geopend wordt.\nDit kan aangepast worden door het `focus-on-modal` attribuut toe te voegen aan de modal,\n\n[…]\n\nhet automatisch focussen op het eerste focusbare element problemen veroorzaakt, bijvoorbeeld wanneer dit meteen een\npopover triggert.\n\n[…]\n\n- Indien het design geen titel toelaat, moet het `label` attribuut gebruikt worden zodat een beschrijvende `aria-label`"
+        }
+      ]
+    },
+    "586d5981d49fd17cbff0be712a8e5615a85270fb": {
+      "sha": "586d5981d49fd17cbff0be712a8e5615a85270fb",
+      "body": "vl-search wordt gemarkeerd als deprecated (wordt verwijderd in v3) maar blijft functioneel werken. Als alternatief toont een nieuw Storybook-patroon onder Patronen/Zoeken hoe je met de input-group een zoekformulier bouwt dat feedback geeft terwijl de zoekopdracht loopt, zodat gebruikers niet meermaals op de zoekknop kunnen klikken.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 8,
+        "storybook": 1,
+        "tests": 1,
+        "tooling": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/search/vl-search.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-search--documentatie",
+          "title": "Components - Block/search",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-search--documentatie",
+          "added": "# Search\n\n\n{`\n Deze component is <strong>deprecated</strong> en wordt verwijderd in <strong>v3</strong>. Bouw voortaan een\n zoekformulier met een <code>input-group</code> (<code>vl-input-field</code> + <code>vl-button</code> met\n <code>loading</code>) zoals beschreven onder het [zoek-patroon](/docs/patronen-zoeken-loading-state--documentatie).\n`}\n\n\n## Doel\n\nDe `search` component toont een zoekveld met een zoekknop.\n\n\n## Voorbeeld\n\n\n\n## Configuratie"
+        },
+        {
+          "id": "patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+          "title": "Patronen/Navigatie/Functionele Header/met back en tabs",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-navigatie-functionele-header-met-back-en-tabs--documentatie",
+          "added": null
+        },
+        {
+          "id": "patronen-navigatie-functionele-header-met-search--documentatie",
+          "title": "Patronen/Navigatie/Functionele Header/met search",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-navigatie-functionele-header-met-search--documentatie",
+          "added": "In dit voorbeeld tonen we hoe een zoekformulier kan toegevoegd worden aan de\n[vl-functional-header](/docs/components-block-functional-header--documentatie).\n\n[…]\n\nWe bouwen het zoekformulier met de [Input Group](/docs/components-form-input-group--documentatie)\n(een [vl-input-field](/docs/components-form-input-field--documentatie) en een\n[vl-button](/docs/components-atom-button--documentatie) in een `<form role=\"search\">`), gecombineerd met de\n[vl-group](/docs/styles-layout-group--documentatie) stijl om het zoekveld rechts uit te lijnen naast een\nbreadcrumb of andere variant. Zie ook het [zoek-patroon](/docs/patronen-zoeken-loading-state--documentatie)\nvoor een uitwerking met loading state.\n\n[…]\n\n- [vl-input-field](/docs/components-form-input-field--documentatie)\n- [vl-button](/docs/components-atom-button--documentatie)"
+        },
+        {
+          "id": "patronen-zoeken-loading-state--documentatie",
+          "title": "Patronen/Zoeken/loading state",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-zoeken-loading-state--documentatie",
+          "added": "# Zoeken - loading state\n\nEen zoekformulier wordt opgebouwd met de [Input Group](/docs/components-form-input-group--documentatie):\neen [vl-input-field](/docs/components-form-input-field--documentatie) en een\n[vl-button](/docs/components-atom-button--documentatie) in de juiste toestand, gewrapt in een\n`<form>`. Zo is er geen aparte zoek-component nodig.\n\nBij trage backends (bv. een MAGDA-call) is het belangrijk om aan te geven dat de zoekopdracht loopt,\nzodat gebruikers niet meermaals klikken. De `loading`-toestand van `vl-button` blokkeert het klikken\nen zet `aria-busy`; zodra het resultaat binnen is zet je `loading` terug op `false`.\n\n\n## Opbouw\n\n```html\n<form role=\"search\" aria-label=\"Zoeken op deze site\">\n    <div class=\"vl-group vl-group--input-group\">\n        <vl-input-field input-group block type=\"search\" name=\"zoekterm\" label=\"Zoekterm\"></vl-input-field>\n        <vl-button input-group icon=\"search\" type=\"submit\" label=\"Zoeken\" tertiary></vl-button>\n    </div>\n    <p role=\"status\" aria-live=\"polite\"></p>\n</form>\n```\n\nDe loading-state stuur je aan op de `vl-button`: zet `loading` zodra je de zoekopdracht start en\nhaal het er weer af zodra het resultaat binnen is.\n\n```ts\nbutton.toggleAttribute('loading', true); // zoekopdracht gestart: knop geblokkeerd, aria-busy actief\n// ... resultaat binnen ...\nbutton.toggleAttribute('loading', false); // terug naar de normale toestand\nstatus.textContent = '8 resultaten geladen.'; // aankondiging via aria-live\n```\n\n## Toegankelijkheid (WCAG 2.2 AA)\n\n- **`role=\"search\"` landmark** - gebruik dit enkel voor de globale site-search, zodat hulptechnologie\n  het zoekblok als landmark herkent. Staan er meerdere zoekvelden op één pagina (bv. een filter binnen\n  een lijst), geef dan elke `role=\"search\"` een eigen `aria-label`, of laat de role weg voor secundaire\n  zoekvelden.\n- **`aria-busy` tijdens het zoeken** - `vl-button` zet `aria-busy=\"true\"` en `aria-disabled=\"true\"`\n  zolang `loading` aanstaat en blokkeert herhaald klikken. Dat is voldoende om de knop-toestand te\n  communiceren, maar niet om het resultaat aan te kondigen.\n- **Resultaten aankondigen via `aria-live`** - `aria-busy` alleen meldt een screenreader niet dat de\n  zoekopdracht klaar is. Voorzie een `aria-live=\"polite\"`-regio (`role=\"status\"`) en vul die met een\n  korte samenvatting zodra het resultaat binnen is (bv. \"8 resultaten geladen\"). Zo voldoe je aan\n  [WCAG 4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html).\n- **Label** - het `label`-attribuut op `vl-input-field` is verplicht voor een toegankelijke naam; de\n  `vl-button` ontleent zijn naam aan het label \"Zoeken\" en is visueel gelabeld door het \"search\" icoon."
+        },
+        {
+          "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "title": "Planning/Van v2 naar v3 - beschikbaar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "added": "### Search\n\n`Search` is deprecated in v2 en wordt verwijderd in v3. Bouw voortaan een zoekformulier\nmet de [`input-group`](/docs/components-form-input-group--documentatie) (`vl-input-field` + `vl-button` met\n`loading`) - zie het [zoek-patroon](/docs/patronen-zoeken-loading-state--documentatie).\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Search [legacy]](/docs/components-block-search--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-search>`}</code></td>\n        <td>-</td>\n        <td><code>-</code></td>\n    </tr>\n</table>"
+        }
+      ]
+    },
+    "616cc1c210bc569f9d9a6860728130864d0cef54": {
+      "sha": "616cc1c210bc569f9d9a6860728130864d0cef54",
+      "body": "vl-share-buttons en vl-share-button zijn deprecated in v2 en worden verwijderd in v3. Gebruikers krijgen een console-waarschuwing en worden via Storybook, de migratietabel en de IDE web-types naar het alternatief geleid: een vl-button per kanaal met cta-link, icon en label in de standaard action-stijl. De componenten blijven functioneel werken in v2.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 3,
+        "storybook": 2,
+        "tests": 1,
+        "tooling": 4
+      },
+      "publishedFiles": [
+        "libs/components/src/block/share-buttons/vl-share-button.component.ts",
+        "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-share-buttons-share-button--documentatie",
+          "title": "Components - Block/share-buttons/share-button",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-share-buttons-share-button--documentatie",
+          "added": "# Share Button\n\n\n{`\n Deze component is <strong>deprecated</strong> en wordt verwijderd in <strong>v3</strong>. Gebruik in plaats daarvan\n een <code>vl-button</code> met <code>cta-link</code> en <code>icon</code> in de standaard action-stijl. Zie de\n <a href=\"/docs/components-block-share-buttons-share-buttons--documentatie#ontwerp\">Share Buttons documentatie</a>\n voor het alternatief.\n`}\n\n\n## Doel\n\nDe `share-button` component is één enkele deelknop binnen een `share-buttons` rij.\n\n\n## Voorbeeld\n\n\n\n## Configuratie"
+        },
+        {
+          "id": "components-block-share-buttons-share-buttons--documentatie",
+          "title": "Components - Block/share-buttons/share-buttons",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-share-buttons-share-buttons--documentatie",
+          "added": "# Share Buttons\n\n\n{`\n Deze component is <strong>deprecated</strong> en wordt verwijderd in <strong>v3</strong>. Gebruik in plaats daarvan\n een <code>vl-button</code> met <code>cta-link</code> en <code>icon</code> in de standaard action-stijl (zie\n <a href=\"#ontwerp\">Ontwerp</a>).\n`}\n\n\n## Doel\n\nDe `share-buttons` component toont een rij knoppen om een pagina te delen op sociale media.\n\n\n## Voorbeeld\n\n\n\n## Configuratie\n\n\n\n## Ontwerp\n\nVervang elke share-knop door een gewone [`vl-button`](/docs/components-atom-button--documentatie) in de standaard action-stijl met `cta-link`, `icon` en een\nverplicht `label` voor toegankelijkheid (WCAG 2.1 AA). Geef per kanaal een eigen knop met de bijhorende share-URL:\n\n```html\n<vl-button cta-link=\"https://www.facebook.com/sharer/sharer.php?u=…\" icon=\"facebook\" label=\"Delen op Facebook\"></vl-button>\n<vl-button cta-link=\"https://www.linkedin.com/sharing/share-offsite/?url=…\" icon=\"linkedin\" label=\"Delen op LinkedIn\"></vl-button>\n```"
+        },
+        {
+          "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "title": "Planning/Van v2 naar v3 - beschikbaar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "added": "### Share Buttons\n\n`Share Buttons` is deprecated in v2 en wordt verwijderd in v3. Er komt geen `next`-variant: gebruik een\n`vl-button` met `cta-link`, `icon` en een verplicht `label` (standaard action-blauw).\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Share Buttons [legacy]](/docs/components-block-share-buttons-share-buttons--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/block</td>\n        <td><code>{`<vl-share-buttons>`}</code></td>\n        <td>-</td>\n        <td><code>-</code></td>\n    </tr>\n</table>"
+        }
+      ]
+    },
+    "8ab471855c30e19a55f3e7a99f59375556132880": {
+      "sha": "8ab471855c30e19a55f3e7a99f59375556132880",
+      "body": "Nieuw multi-active attribuut markeert alle items waarvan content zichtbaar is als actief, niet enkel het bovenste. De actieve items worden samen aangeduid met een doorlopende lijn uiterst links.",
+      "published": true,
+      "areas": {
+        "code": 6,
+        "styles": 1,
+        "storybook": 4,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-custom-toc.utils.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.defaults.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-next-side-navigation--documentatie",
+          "title": "Components - Block/next/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-next-side-navigation-layout--documentatie",
+          "title": "Components - Block/next/side-navigation-layout",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "a14517cdce5320694cfadbbe6cd82f7922db096e": {
+      "sha": "a14517cdce5320694cfadbbe6cd82f7922db096e",
+      "body": "Afnemers krijgen een keuzewijzer die uitlegt wanneer ze een modal en wanneer een side-sheet gebruiken. Een nieuwe Storybook-patroonpagina bundelt het volledige beslissingskader met een beslistabel, en de modal- en side-sheet-documentatie linken er allebei naar door.",
+      "published": false,
+      "areas": {
+        "docs": 3
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-modal--documentatie",
+          "title": "Components - Block/modal",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-modal--documentatie",
+          "added": "## Wanneer gebruik je een modal?\n\nTwijfel je tussen een modal en een side-sheet? Een modal schermt de pagina af voor een geïsoleerde taak (en is\naltijd de keuze bij verwijderen); een side-sheet laat de pagina-context bruikbaar. Zie\n[Patronen/Overlays/Modal vs Side sheet](/docs/patronen-overlays-modal-vs-side-sheet--documentatie) voor het\nvolledige keuzekader."
+        },
+        {
+          "id": "components-block-side-sheet--documentatie",
+          "title": "Components - Block/side-sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-side-sheet--documentatie",
+          "added": "## Wanneer gebruik je een side-sheet?\n\nTwijfel je tussen een side-sheet en een modal? Een side-sheet laat de pagina-context zichtbaar en bruikbaar terwijl\nde gebruiker een taak uitvoert; een modal schermt de pagina net af voor een geïsoleerde taak. Let op: een links of\nrechts uitgelijnde modal lijkt op een side-sheet, maar legt wél een overlay over de pagina. Zie\n[Patronen/Overlays/Modal vs Side sheet](/docs/patronen-overlays-modal-vs-side-sheet--documentatie) voor het\nvolledige keuzekader."
+        },
+        {
+          "id": "patronen-overlays-modal-vs-side-sheet--documentatie",
+          "title": "Patronen/Overlays/Modal vs Side sheet",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-overlays-modal-vs-side-sheet--documentatie",
+          "added": "# Modal vs Side sheet\n\nWanneer kies je een [modal](/docs/components-block-modal--documentatie) en wanneer een\n[side-sheet](/docs/components-block-side-sheet--documentatie)? Beide tonen inhoud over de pagina heen, maar ze\ndienen een ander doel. De vuistregel:\n\n- **Modal** voor een **geïsoleerde taak** die de volledige aandacht vraagt en de pagina-context tijdelijk afschermt.\n- **Side-sheet** wanneer de **pagina-context zichtbaar en bruikbaar** moet blijven naast de taak.\n\n## Wanneer gebruik je wat\n\n<table>\n    <thead>\n        <tr>\n            <th scope=\"col\">Scenario</th>\n            <th scope=\"col\">Component</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Een geïsoleerde taak waarbij de gebruiker zich volledig op die taak moet richten</td>\n            <td>Gecentreerde modal</td>\n        </tr>\n        <tr>\n            <td>Verwijderen of een andere onomkeerbare bevestiging</td>\n            <td>Altijd een modal</td>\n        </tr>\n        <tr>\n            <td>Een formulier of taak waarbij de pagina-context zichtbaar en bruikbaar moet blijven</td>\n            <td>Side-sheet</td>\n        </tr>\n        <tr>\n            <td>Een zeer uitgebreide taak die geen pagina-context nodig heeft</td>\n            <td>Full-screen modal of een nieuwe pagina</td>\n        </tr>\n        <tr>\n            <td>Een taak die visueel aan een rand van de pagina hoort, maar de pagina afschermt</td>\n            <td>Links of rechts uitgelijnde modal</td>\n        </tr>\n    </tbody>\n</table>\n\n### Modal\n\nGebruik een **modal** wanneer de gebruiker een geïsoleerde taak moet afwerken en de onderliggende pagina daarbij\nniet nodig of zelfs afleidend is. De modal schermt de pagina af met een overlay; de gebruiker moet de taak\nafronden of annuleren voor hij verder kan.\n\n- **Gecentreerde modal** - de standaard voor korte, op zichzelf staande taken en bevestigingen.\n- **Verwijderen** - gebruik **altijd** een modal. Een onomkeerbare actie vraagt een expliciete, afgeschermde\n  bevestiging.\n- **Full-screen modal** - voor een zeer uitgebreide taak die alle ruimte vraagt maar geen pagina-context nodig\n  heeft. Weeg af of een **nieuwe pagina** hier niet gepaster is: bij diepe, navigeerbare flows - die ook een eigen\n  URL, terug-navigatie of deelbaarheid nodig hebben - is een eigen pagina vaak duidelijker dan een overlay.\n- **Links of rechts uitgelijnde modal** - visueel aan een rand verankerd, maar nog steeds een overlay: de pagina\n  eronder is afgeschermd en niet bruikbaar.\n\n### Side-sheet\n\nGebruik een **side-sheet** wanneer de gebruiker een taak uitvoert terwijl de pagina-context zichtbaar en bruikbaar\nmoet blijven - bijvoorbeeld een formulier waarbij hij gegevens op de achterliggende pagina blijft raadplegen of\naanpassen. De side-sheet schuift in vanaf een rand zonder de pagina af te schermen.\n\n## Links/rechts uitgelijnde modal vs side-sheet\n\nEen links of rechts uitgelijnde modal lijkt visueel op een side-sheet - beide hangen aan een schermrand - maar\ngedraagt zich fundamenteel anders:\n\n- De **uitgelijnde modal** legt een overlay over de pagina. De achterliggende inhoud is afgeschermd en niet\n  bruikbaar zolang de modal open is.\n- De **side-sheet** laat de pagina bruikbaar: de gebruiker kan blijven scrollen, lezen en interageren met de\n  context terwijl de side-sheet open is.\n\nKies dus op basis van 'of de pagina-context bruikbaar moet blijven', niet op basis van de positie op het scherm.\n\n## Overlays stapelen\n\n- **Side-sheet → modal openen** kan. Het is niet ideaal - je stapelt twee niveaus van onderbreking - maar soms\n  onvermijdbaar, bijvoorbeeld een verwijder-bevestiging die vanuit een formulier in de side-sheet vertrekt.\n- **Modal → modal openen** is altijd te vermijden. Een tweede modal bovenop een eerste maakt onduidelijk waar de\n  gebruiker zit en hoe hij terugkeert. Herstructureer de taak zodat één modal volstaat, of gebruik een\n  full-screen modal of een nieuwe pagina."
+        }
+      ]
+    },
+    "b51f57b0c93437e1359b7dbcabcaf6c78120301d": {
+      "sha": "b51f57b0c93437e1359b7dbcabcaf6c78120301d",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tooling": 13
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "ab40cf5a50d9922c56e57f86733cc19265193874": {
+      "sha": "ab40cf5a50d9922c56e57f86733cc19265193874",
+      "body": "Met het nieuwe attribuut character-count toont vl-textarea onder het veld een teller {huidig}/{max} die live meetelt zodra max-length gezet is. Screenreader-gebruikers horen vanaf de laatste 10 resterende tekens een toegankelijkheids-aankondiging van het aantal beschikbare tekens.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 2,
+        "docs": 1,
+        "storybook": 3,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/textarea/vl-textarea.component.css.ts",
+        "libs/components/src/form/textarea/vl-textarea.component.raw.css",
+        "libs/components/src/form/textarea/vl-textarea.component.ts",
+        "libs/components/src/form/textarea/vl-textarea.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-textarea--documentatie",
+          "title": "Components - Form/textarea",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-textarea--documentatie",
+          "added": "## Karakterteller\n\nZet het `character-count` attribute samen met `max-length` om onder de textarea een teller `{huidig}/{max}` te tonen\ndie live meetelt terwijl je typt. Vanaf de laatste 10 resterende tekens wordt het aantal beschikbare tekens\ntoegankelijk aangekondigd voor screenreader-gebruikers."
+        },
+        {
+          "id": "components-form-textarea-rich--documentatie",
+          "title": "Components - Form/textarea-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "1413ae59481fe136ed5a0503bc922944b3e15156": {
+      "sha": "1413ae59481fe136ed5a0503bc922944b3e15156",
+      "body": "+ consumer-fat-lib - vl-accessibility in main wrappen tegen dubbele banner landmark",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 4,
+        "examples": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/header/vl-header.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-cascader-cascader--documentatie",
+          "title": "Components - Block/cascader/cascader",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie",
+          "added": "## Toegankelijkheid\n\n{`\n    Plaats deze component binnen een \\`<main>\\`, \\`<section>\\`, \\`<article>\\` of \\`<aside>\\`, zodat\n    de interne \\`<header>\\` geen impliciete banner-role krijgt. De banner-role is voorbehouden voor\n    de globale \\`<vl-header>\\` en moet uniek zijn per pagina.\n`}"
+        },
+        {
+          "id": "components-block-content-header--documentatie",
+          "title": "Components - Block/content-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-content-header--documentatie",
+          "added": "## Toegankelijkheid\n\n{`\n    Plaats deze component binnen een \\`<main>\\`, \\`<section>\\`, \\`<article>\\` of \\`<aside>\\`, zodat\n    de interne \\`<header>\\` geen impliciete banner-role krijgt. De banner-role is voorbehouden voor\n    de globale \\`<vl-header>\\` en moet uniek zijn per pagina.\n`}"
+        },
+        {
+          "id": "components-block-functional-header--documentatie",
+          "title": "Components - Block/functional-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+          "added": "{`\n    Plaats deze component binnen een \\`<main>\\`, \\`<section>\\`, \\`<article>\\` of \\`<aside>\\`, zodat\n    de interne \\`<header>\\` geen impliciete banner-role krijgt. De banner-role is voorbehouden voor\n    de globale \\`<vl-header>\\` en moet uniek zijn per pagina.\n`}"
+        },
+        {
+          "id": "components-block-wizard-wizard--documentatie",
+          "title": "Components - Block/wizard/wizard",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-wizard-wizard--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "02abeb7e6c11766134fc453de032be8eb7c60c2a": {
+      "sha": "02abeb7e6c11766134fc453de032be8eb7c60c2a",
+      "body": "vl-properties (en de overervende vl-search-result-properties) houden hun shadow DOM nu synchroon met wijzigingen in de light DOM (zowel tekst- als attribuut wijzigingen op bestaande nodes). Daardoor is de no-clone workaround niet langer nodig en wordt het attribuut deprecated (verwijderd in v3): bij gebruik volgt een eenmalige console-waarschuwing.",
+      "published": true,
+      "areas": {
+        "code": 4,
+        "storybook": 1,
+        "tests": 4
+      },
+      "publishedFiles": [
+        "libs/common/src/util/mutation-utils.ts",
+        "libs/components/src/block/properties/vl-properties.builder.ts",
+        "libs/components/src/block/properties/vl-properties.component.ts",
+        "libs/components/src/block/properties/vl-properties.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-properties--documentatie",
+          "title": "Components - Block/properties",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-properties--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "016ea0076689ec1702602da4682103cf3749c744": {
+      "sha": "016ea0076689ec1702602da4682103cf3749c744",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 1,
+        "examples": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-compliance-next-footer--documentatie",
+          "title": "Components - Compliance/next/footer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-compliance-next-footer--documentatie",
+          "added": "## Sticky footer bar\n\nIn collapsible modus toont de widget een `position: fixed` bar onderaan de pagina. Zonder\ngereserveerde ruimte bedekt die bar de onderste content. De component reserveert daarom\nstandaard `48px`: dat is de hoogte van de bar op een smal scherm, op een breed scherm is\nde bar `35px`.\n\nAfnemers kunnen die hoogte overschrijven of de reservering volledig uitzetten via de\nCSS-variabele `--vl-footer--bar-reserved-height`, gezet op `:root`, `body` of een ander\nelement boven de footer container:\n\n```css\n/* Eigen hoogte reserveren */\n:root {\n    --vl-footer--bar-reserved-height: 60px;\n}\n\n/* Reservering uitzetten (bv. wanneer de pagina de ruimte zelf al voorziet) */\n:root {\n    --vl-footer--bar-reserved-height: 0px;\n}\n```"
+        }
+      ]
+    },
+    "8180923d11c686e6191de3d4cc54919e2b063811": {
+      "sha": "8180923d11c686e6191de3d4cc54919e2b063811",
+      "body": "Consumers kunnen OpenLayers Feature-objecten nu rechtstreeks op een vl-map-features-layer zetten met addFeatures() en setFeatures(), zonder GeoJSON-roundtrip. Object-referenties (via feature.set(...)) en id's (via feature.setId(...)) blijven daardoor behouden; de workaround via de private __featuresSource is niet langer nodig. Werkt met en zonder cluster en triggert auto-extent/rerender zoals de bestaande GeoJSON-flows.",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+      ],
+      "storybook": [
+        {
+          "id": "map-layer-vector-layer-features-layer--documentatie",
+          "title": "map/layer/vector-layer/features-layer",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+          "added": "## OpenLayers Feature-objecten rechtstreeks toevoegen\n\nNaast de GeoJSON-flows (`features`-attribuut, `addFeature`, `addFeatureCollection`) kan je ook OpenLayers\n`Feature`-objecten rechtstreeks op de laag zetten met `addFeatures(features)` (toevoegen) en `setFeatures(features)`\n(alles vervangen). Properties gezet via `feature.set(...)` en `feature.setId(...)` blijven daarbij behouden - er\ngebeurt geen GeoJSON-serialisatie.\n\nLet op: anders dan de GeoJSON-flows transformeren deze methodes de geometrie niet. De features moeten dus al in de\nkaartprojectie staan. Net als `addFeature` falen ze stil wanneer ze vóór `connectedCallback` worden aangeroepen.\n\n```js\n\nconst feature = new Feature({ geometry: new Point([x, y]) });\nfeature.setId(1);\nfeature.set('emissiebron', emissiebron);\n\nlayer.setFeatures([feature]);\n```"
+        }
+      ]
+    },
+    "8ea8084d08f0322b1144a365b5933e266bf90258": {
+      "sha": "8ea8084d08f0322b1144a365b5933e266bf90258",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "examples": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/button/vl-button.component.ts",
+        "libs/components/src/atom/button/vl-button.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-button--documentatie",
+          "title": "Components - Atom/button",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-button--documentatie",
+          "added": "### CTA link als download\n\nWijst de `cta-link` naar een bestand, gebruik dan het `download` attribuut om aan te geven dat de browser het bestand\nmoet downloaden in plaats van ernaar te navigeren. Geef je een waarde mee, dan wordt die gebruikt als suggestie voor de\nbestandsnaam; zonder waarde kiest de browser zelf een bestandsnaam.\n\nBeperkingen:\n\n-   het `download` attribuut werkt enkel voor same-origin URLs (en `data:` of `blob:` URLs), dit is een\nbrowser-beperking van het [native anchor `download` attribuut](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download)\n-   het attribuut wordt enkel gebruikt als de `cta-link` is ingesteld\n\nTip: maak in de zichtbare tekst of het `label` attribuut duidelijk dat het om een download gaat, zodat ook\nscreen-reader gebruikers dit weten (bv. \"Download verslag.pdf\" i.p.v. \"Verslag\"). Een anchor met het `download`\nattribuut wordt nog steeds aangekondigd als een gewone link."
+        }
+      ]
+    },
+    "4e71c7a289568cf0dc9cb6e32caf7843288980af": {
+      "sha": "4e71c7a289568cf0dc9cb6e32caf7843288980af",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/atom/link/vl-link.component.ts",
+        "libs/components/src/atom/link/vl-link.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-atom-link--documentatie",
+          "title": "Components - Atom/link",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-link--documentatie",
+          "added": "### Download\n\nWijst de link naar een bestand, gebruik dan het `download` attribuut om aan te geven dat de browser het bestand\nmoet downloaden in plaats van ernaar te navigeren. Geef je een waarde mee, dan wordt die gebruikt als suggestie voor de\nbestandsnaam; zonder waarde kiest de browser zelf een bestandsnaam.\n\nBeperkingen:\n\n-   het `download` attribuut werkt enkel voor same-origin URLs (en `data:` of `blob:` URLs), dit is een\nbrowser-beperking van het [native anchor `download` attribuut](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download)\n-   het attribuut werkt niet in combinatie met `button-as-link`\n\nTip: maak in de zichtbare tekst of het `label` attribuut duidelijk dat het om een download gaat, zodat ook\nscreen-reader gebruikers dit weten (bv. \"Download verslag.pdf\" i.p.v. \"Verslag\"). Een anchor met het `download`\nattribuut wordt nog steeds aangekondigd als een gewone link."
+        }
+      ]
+    },
+    "5377fa3f65d30387d394013a56b60fdbcb204db8": {
+      "sha": "5377fa3f65d30387d394013a56b60fdbcb204db8",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 35,
+        "tooling": 3
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "afnemen-migratie-v2-aanpak--documentatie",
+          "title": "Afnemen/Migratie v2 - Aanpak",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+          "added": "    Zie [Migratie v2 - Impact](/docs/afnemen-migratie-v2-impact--documentatie) voor gedetailleerde informatie over welke elementen vervangen worden.\n\n[…]\n\n    Zie [Migratie v2 - Impact](/docs/afnemen-migratie-v2-impact--documentatie) voor gedetailleerde informatie over welke componenten vervangen worden."
+        },
+        {
+          "id": "beheren-ci-cd--documentatie",
+          "title": "Beheren/CI - CD",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+          "added": "    * __e2e-tests-storybook__ (Storybook e2e-testen)\n\n[…]\n\nIn die __release-and-publish__ stap gebeurt het volgende:"
+        },
+        {
+          "id": "bijdragen-git-branching-strategie--documentatie",
+          "title": "Bijdragen/Git Branching Strategie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/bijdragen-git-branching-strategie--documentatie",
+          "added": "__feature-v2/JIRA-123-sleutel-woorden__ (of __feature-v1/JIRA-123-sleutel-woorden__). Het versie-suffix geeft aan naar\nwelke integratie-branch de feature gaat: een __feature-v2/__-branch target __develop-v2__, een __feature-v1/__-branch\ntarget __develop-v1__. Als het Flux team bvb. ticket FLUX-2322 opneemt met als titel 'cdn-assets voorzien met tinyMCE\ntheming en publiceren op artifactory' en dit voor v2 is, dan gebeurt dat in een branch met bvb. de naam\n__feature-v2/FLUX-2322-tinymce-cdn__. De feature branch is tijdelijk en bij voorkeur / meestal enkel voor eigen\ngebruik. Het ticket nummer moet in de naam staan, de sleutelwoorden geven een indicatie van wat het inhoudt. Vermijd"
+        },
+        {
+          "id": "components-atom-button-style--documentatie",
+          "title": "Components - Atom/button-style (intern)",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-button-style--documentatie",
+          "added": "gebeurt m.b.v. de [vl-button](/docs/components-atom-button--documentatie) component."
+        },
+        {
+          "id": "components-atom-link-style--documentatie",
+          "title": "Components - Atom/link-style (intern)",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-link-style--documentatie",
+          "added": "gebeurt m.b.v. de [vl-link](/docs/components-atom-link--documentatie) component."
+        },
+        {
+          "id": "components-atom-paragraph-style--documentatie",
+          "title": "Components - Atom/paragraph-style (intern)",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-paragraph-style--documentatie",
+          "added": "paragraaf toevoegen gebeurt m.b.v. de [vl-paragraph](/docs/components-atom-paragraph--documentatie) component."
+        },
+        {
+          "id": "components-block-alert--documentatie",
+          "title": "Components - Block/alert",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-alert--documentatie",
+          "added": "### With button"
+        },
+        {
+          "id": "components-block-functional-header--documentatie",
+          "title": "Components - Block/functional-header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-functional-header--documentatie",
+          "added": "- Vermijd het gebruik van `history.back()`. De gebruiker kan op verschillende manieren op je pagina beland zijn."
+        },
+        {
+          "id": "components-block-infotext--documentatie",
+          "title": "Components - Block/infotext",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-infotext--documentatie",
+          "added": "Gebruik de `infotext` component om belangrijke nummers duidelijk weer te geven.<br/>"
+        },
+        {
+          "id": "components-block-proza-message-proza-message-preloader--documentatie",
+          "title": "Components - Block/proza-message/proza-message-preloader",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-proza-message-proza-message-preloader--documentatie",
+          "added": "over de volgorde van de domeinen of het moment waarop de preload gebeurt."
+        },
+        {
+          "id": "components-block-rich-data-table--documentatie",
+          "title": "Components - Block/rich-data-table",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-rich-data-table--documentatie",
+          "added": "De code voorbeelden bij elke story zijn dezelfde code die gebruikt wordt om de stories te laten werken.\n\n[…]\n\nDigitaal Vlaanderen biedt geen component aan voor de Rich Data Table maar wel beperkte functionaliteit voor de Data"
+        },
+        {
+          "id": "components-block-side-navigation--documentatie",
+          "title": "Components - Block/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+          "added": "omdat de side-navigation bij het initialiseren een aantal dimensies capteert en, in het geval dat er een parent"
+        },
+        {
+          "id": "components-block-table--documentatie",
+          "title": "Components - Block/table",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-table--documentatie",
+          "added": "Om dit toe te passen maak je zelf gebruik van native html-attribuut `rowspan`.\n\n[…]\n\nOm een rij te laten uitklappen (\"expanden\") moet je het volgende doen:<br/>\n\n[…]\n\nAls je 2 rijen hebt, en je wil rij A altijd zichtbaar zetten en rij B verborgen tot die wordt opengeklapt:<br/>"
+        },
+        {
+          "id": "components-block-upload-progress--documentatie",
+          "title": "Components - Block/upload-progress",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-upload-progress--documentatie",
+          "added": "Dit component laat toe om de upload te annuleren of te herstarten en heeft de mogelijkheid om een foutboodschap"
+        },
+        {
+          "id": "components-form-input-field--documentatie",
+          "title": "Components - Form/input-field",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-input-field--documentatie",
+          "added": "Voor eenvoudige e-mailadres validatie kan je gebruik maken van het `pattern` attribuut."
+        },
+        {
+          "id": "components-form-textarea-rich--documentatie",
+          "title": "Components - Form/textarea-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+          "added": "Hier vind je specifieke voorbeelden om de tools en bijhorende plugins te activeren in onze component voor [links](#link-plugin) en [lists](#lists-plugin)."
+        },
+        {
+          "id": "components-form-upload--documentatie",
+          "title": "Components - Form/upload",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-upload--documentatie",
+          "added": "> Opgelet: je kan pas events registreren nadat de component geïnitialiseerd is met behulp van het `vl-initialised`-event\n\n[…]\n\nselecteren in het bestandsmenu. Tenslotte is het ook mogelijk bestanden programmatorisch toe te voegen via de `addFile()` methode."
+        },
+        {
+          "id": "map-controls-measure-control--documentatie",
+          "title": "map/controls/measure-control",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-controls-measure-control--documentatie",
+          "added": "Gebruik de `map-measure-control` component om de meet-actie aan of uit te zetten met behulp van een"
+        },
+        {
+          "id": "map-layer-style-layer-circle-style--documentatie",
+          "title": "map/layer-style/layer-circle-style",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-layer-style-layer-circle-style--documentatie",
+          "added": "Per verhoogde machtsverheffing wordt die coëfficiënt verhoogd met 1.\n\n[…]\n\nHet is ook mogelijk te kiezen de verhouding van de coëfficiënt aan te passen door de `cluster-multiplier` in"
+        },
+        {
+          "id": "map-map--documentatie",
+          "title": "map/map",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/map-map--documentatie",
+          "added": "Vereist je project Lambert 72 coördinaten bij het intekenen, dan wordt het upgraden naar de Lambert 2008 kaart"
+        },
+        {
+          "id": "patronen-formulier-aangepaste-validatie--documentatie",
+          "title": "Patronen/Formulier/aangepaste validatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-formulier-aangepaste-validatie--documentatie",
+          "added": "Om gebruik te maken van custom validatie moet je een nieuwe component maken die overerft van één van onze form"
+        },
+        {
+          "id": "patronen-formulier-form-data--documentatie",
+          "title": "Patronen/Formulier/form data",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-formulier-form-data--documentatie",
+          "added": "Deze functie aanvaardt 2 parameters:\n\n[…]\n\nDeze functie aanvaardt 2 parameters:"
+        },
+        {
+          "id": "patronen-formulier-validatie--documentatie",
+          "title": "Patronen/Formulier/validatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-formulier-validatie--documentatie",
+          "added": "In onderstaand voorbeeld: druk op `enter` zonder iets in te vullen om de foutmelding te zien.\n\n[…]\n\nIn onderstaand voorbeeld: vul een cijfer of speciaal teken in en druk op `enter` om de foutmelding te zien."
+        },
+        {
+          "id": "patronen-typografie-titel-met-annotatie--documentatie",
+          "title": "Patronen/Typografie/Titel/met annotatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+          "added": "De combinatie van een titel met annotatie gebeurt best met een vl-group."
+        },
+        {
+          "id": "planning-historiek-toekomst--documentatie",
+          "title": "Planning/Historiek & Toekomst",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+          "added": "Voor documentatie werd de custom-website vervangen door [Storybook](https://storybook.js.org/)."
+        },
+        {
+          "id": "recepten-cdn-bundel-fat-lib--documentatie",
+          "title": "Recepten/CDN Bundel - fat-lib",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie",
+          "added": "tree-shaking plaatsvinden, om die reden bieden we het script enkel geversioneerd aan en niet onder een 'latest' variant."
+        },
+        {
+          "id": "recepten-imports--documentatie",
+          "title": "Recepten/Imports",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-imports--documentatie",
+          "added": "registratie gebeuren onafhankelijk van de manier van importeren, zolang de code maar niet"
+        },
+        {
+          "id": "recepten-lit-binnen-andere-frameworks--documentatie",
+          "title": "Recepten/Lit binnen andere frameworks",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-lit-binnen-andere-frameworks--documentatie",
+          "added": "[custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components#custom_elements_2) en framework interoperability testen wordt bijgehouden."
+        },
+        {
+          "id": "recepten-tree-shaking--documentatie",
+          "title": "Recepten/Tree Shaking",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/recepten-tree-shaking--documentatie",
+          "added": "worden. Om die reden worden in de `@domg-wc` artifacts de root-barrel files ge-exclude uit de sideEffects. Vroeger"
+        },
+        {
+          "id": "richtlijnen-content-security-policy-csp-problematieken--documentatie",
+          "title": "Richtlijnen/Content Security Policy/CSP Problematieken",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-content-security-policy-csp-problematieken--documentatie",
+          "added": "Om die reden was CSP activeren met die versie redelijk zinloos: in de volledige toepassing moest 'unsafe-eval' actief\n\n[…]\n\nom correct te werken, dezelfde CSP regel nodig: `\"Content-Security-Policy\": \"style-src-attr 'unsafe-inline';\"`. De reden"
+        },
+        {
+          "id": "richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+          "title": "Richtlijnen/Content Security Policy/Hoe CSP Activeren",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-content-security-policy-hoe-csp-activeren--documentatie",
+          "added": "Hetzelfde geldt voor scripts. In plaats van ze dynamisch toe te voegen, en met een hash te werken, kan je er beter voor"
+        },
+        {
+          "id": "richtlijnen-testen-selenium-en-cypress--documentatie",
+          "title": "Richtlijnen/Testen/Selenium en Cypress",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-testen-selenium-en-cypress--documentatie",
+          "added": "waardoor het historisch een breed scala van talen (om testen in te schrijven) en browsers ondersteunt. Typisch werden"
+        },
+        {
+          "id": "richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+          "title": "Richtlijnen/Testen/Test Piramide SSR vs SPA",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-ssr-vs-spa--documentatie",
+          "added": "## SSR vs SPA"
+        },
+        {
+          "id": "styles-base-font--documentatie",
+          "title": "Styles/Base (intern)/font",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/styles-base-font--documentatie",
+          "added": "In deze voorbeelden zie je de verschillende fonts in gebruik, er worden telkens specifieke wrappers voorzien via een"
+        },
+        {
+          "id": "styles-layout-section--documentatie",
+          "title": "Styles/Layout (afnemers)/section",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/styles-layout-section--documentatie",
+          "added": "De `vl-section` verdeelt de toepassing in delen en zorgt voor consistente witruimte.\n\n[…]\n\nkrijgt. Om minder (dan de standaard) witruimte te krijgen zijn er de optionele classes `vl-section--small`"
+        }
+      ]
+    },
+    "6f4ca4423485a0c1ec2353f031aad777fdd99896": {
+      "sha": "6f4ca4423485a0c1ec2353f031aad777fdd99896",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 3,
+        "styles": 3,
+        "storybook": 3,
+        "tests": 5
+      },
+      "publishedFiles": [
+        "libs/components/src/block/steps/vl-duration-step.component.ts",
+        "libs/components/src/block/steps/vl-duration-step.flux-css.ts",
+        "libs/components/src/block/steps/vl-step.component.ts",
+        "libs/components/src/block/steps/vl-step.flux-css.ts",
+        "libs/components/src/block/steps/vl-steps.component.ts",
+        "libs/components/src/block/steps/vl-steps.flux-css.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-steps-step--documentatie",
+          "title": "Components - Block/steps/step",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-steps-step--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-block-steps-steps--documentatie",
+          "title": "Components - Block/steps/steps",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "010e1fbceedb5dd0d36468b7097003d2154d4332": {
+      "sha": "010e1fbceedb5dd0d36468b7097003d2154d4332",
+      "body": "De Storybook-doc legt nu uit dat max-size achterliggend in MiB (1024-basis) wordt gevalideerd in plaats van MB, waarom de UI bewust \"MB\" blijft tonen, en hoe consumers hun backend-limiet best instellen.",
+      "published": false,
+      "areas": {
+        "docs": 1
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-form-upload--documentatie",
+          "title": "Components - Form/upload",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-upload--documentatie",
+          "added": "Om deze functionaliteit te bekomen wordt er een `dropzoneValidator` gebruikt die overeenkomt met de `customError`\n[ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) key.\n\n[…]\n\n### Bestandsgrootte: MiB vs MB\n\nDe `max-size`-waarde wordt achterliggend door Dropzone (`maxFilesize`) binair geïnterpreteerd, dus in **MiB**\n(1024-basis), niet in **MB** (1000-basis). De UI en de foutmelding spreken bewust over \"MB\" omdat Windows - de\nvoornaamste use-case van onze doelgroep - diezelfde binaire waarden in de verkenner ook als \"MB\" toont. Voor de\neindgebruiker op Windows klopt het getal in de UI dus visueel.\n\nOp macOS of Linux (die bestandsgroottes decimaal in MB tonen) en bij een MB-validerende backend kan dat verschil\nverwarren. Een `max-size` van bijvoorbeeld `900` laat een bestand tot 900 MiB = 943.718.400 bytes toe, wat decimaal\nneerkomt op ~943,7 MB.\n\n> **Advies voor afnemers:** valideer de bestandsgrootte ook aan de backend-zijde en reken die in MB (1000-basis),\n zet die backend-limiet dan iets hoger dan `max-size`. Zo wordt een bestand dat de gebruiker volgens het upload-veld\n mag uploaden, niet alsnog door de backend geweigerd.\n\n[…]\n\nBreid de `sub-title`-attribuut uit met een korte uitleg over maximaal aantal bestanden, maximale bestandsgrootte en de\ntoegestane bestandstypes indien relevant.\n\n[…]\n\nDe reden hiervoor is dat het belangrijk is om de gebruiker te informeren over de beperkingen van het upload-veld. Het\nis cruciaal om duidelijke instructies te geven aan de gebruiker, zodat het risico op validatiefouten wordt verkleind.\n\n[…]\n\nselecteren in het bestandsmenu. Tenslotte is het ook mogelijk bestanden programmatorisch toe te voegen via de\n`addFile()` methode.\n\n[…]\n\ngebruik van inline styles. Deze inline styles worden niet toegelaten in een strikte [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)\npolicy."
+        }
+      ]
+    }
+  },
+  "unlisted": []
+}

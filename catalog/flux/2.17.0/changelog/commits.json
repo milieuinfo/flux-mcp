@@ -1,0 +1,301 @@
+{
+  "schema": 2,
+  "version": "2.17.0",
+  "previous": "2.16.0",
+  "commits": {
+    "199171c40cc387fd88fb24485291ca1912bba42f": {
+      "sha": "199171c40cc387fd88fb24485291ca1912bba42f",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tests": 3,
+        "tooling": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "b0d3ae2680c3e1190e7a1abc98d2e4086a58b737": {
+      "sha": "b0d3ae2680c3e1190e7a1abc98d2e4086a58b737",
+      "body": "- role=\"status\" op het tekst-element zodat de laadtekst beleefd (aria-live=\"polite\") wordt aangekondigd\n- Cypress-test op de ARIA-rol\n- Storybook MDX-docs met toegankelijkheids-gebruikspatroon",
+      "published": true,
+      "areas": {
+        "code": 1,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/loader/vl-loader.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-loader--documentatie",
+          "title": "Components - Block/loader",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-loader--documentatie",
+          "added": "# Loader\n\n\n## Doel\n\nGebruik `vl-loader` om aan te geven dat er iets aan het laden is. De component toont een animerende\nlaadindicator met daaronder een informatieve tekst.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-loader></vl-loader>\n```\n\n\n## Configuratie\n\n\n## Varianten\n\n### Light\n\nGebruik het attribuut `light` voor een alternatieve weergave op een donkere achtergrond.\n\n\n### Aangepaste inhoud\n\nGebruik de slot om de standaardtekst te vervangen door eigen (opgemaakte) inhoud.\n\n\n## Toegankelijkheid\n\nDe tekst van de loader staat in een `role=\"status\"` live region. Daardoor kondigt een screenreader de\nlaadstatus **beleefd** (`aria-live=\"polite\"`) aan: de melding onderbreekt andere aankondigingen niet, maar\nwordt voorgelezen zodra de gebruiker even pauzeert.\n\nEen live region wordt echter enkel voorgelezen wanneer de screenreader een **wijziging** in de inhoud\ndetecteert. Een `vl-loader` die je op het moment van laden in de DOM injecteert, wordt door de meeste\nscreenreaders niet betrouwbaar aangekondigd — de inhoud was er immers \"altijd al\".\n\nOm de laadstatus wél betrouwbaar te laten voorlezen, hou je je aan dit patroon:\n\n1. Plaats de `vl-loader` **van bij het laden van de pagina** in de DOM, maar verborgen en zonder tekst.\n2. Zodra het laden begint, maak je de loader zichtbaar en vul je de tekst in (bv. `Pagina is aan het laden`).\n\nHet is de overgang van lege tekst naar tekst die de screenreader triggert om voor te lezen.\n\n```html\n<!-- Bij paginalaad: aanwezig, verborgen en zonder tekst -->\n<vl-loader hidden text=\"\"></vl-loader>\n```\n\n```js\n// Zodra het laden start: zichtbaar maken en tekst invullen\nconst loader = document.querySelector('vl-loader');\nloader.hidden = false;\nloader.setAttribute('text', 'Pagina is aan het laden');\n```"
+        }
+      ]
+    },
+    "4ecec395646bfbb2f693686c1e20955bd9d33f87": {
+      "sha": "4ecec395646bfbb2f693686c1e20955bd9d33f87",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tests": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "4ba452d35de6f03d1713d2e3ec6e76eedf2dacd7": {
+      "sha": "4ba452d35de6f03d1713d2e3ec6e76eedf2dacd7",
+      "body": "De section in een section css is enkel geldig voor geneste secties binnen de vl-search-filter",
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/search-filter/vl-search-filter.global.css.ts"
+      ],
+      "storybook": []
+    },
+    "91dea6774937e08c887cd64c13c6e9a09f2b8c1e": {
+      "sha": "91dea6774937e08c887cd64c13c6e9a09f2b8c1e",
+      "body": "apps/consumer: html-webpack-plugin en terser-webpack-plugin als devDependency, @domg-wc/common als dependency toegevoegd. apps/consumer-e2e: cypress, cypress-axe en @types/node als devDependency toegevoegd. Storybook-stories importeren html en ifDefined nu uit lit i.p.v. lit-html. eslint-plugin-storybook als devDependency toegevoegd (import in eslint.config.mjs).",
+      "published": false,
+      "areas": {
+        "docs": 2,
+        "storybook": 1,
+        "examples": 1,
+        "tests": 1,
+        "tooling": 2
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": null
+        },
+        {
+          "id": "patronen-navigatie-side-navigation-met-proza-message--documentatie",
+          "title": "Patronen/Navigatie/Side Navigation/met proza message",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/patronen-navigatie-side-navigation-met-proza-message--documentatie",
+          "added": null
+        },
+        {
+          "id": "patronen-typografie-titel-met-annotatie--documentatie",
+          "title": "Patronen/Typografie/Titel/met annotatie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/patronen-typografie-titel-met-annotatie--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "91e7b64690543867e67b8e34aa69eb45aa5f3c31": {
+      "sha": "91e7b64690543867e67b8e34aa69eb45aa5f3c31",
+      "body": "In mountDefault stond een tweede checked-binding op hetzelfde element (copy-paste typo). Die regel is geschrapt.\n\nWaarom pas onder pnpm zichtbaar: lit's dev-build meldt dubbele attribute-bindings als fout (\"Detected duplicate attribute bindings\"). Onder pnpm's strikte module-resolutie werd die check getriggerd, onder npm bleef ze verborgen.",
+      "published": false,
+      "areas": {
+        "tests": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "29321971a0200ccc3b69f32940075c7a2c27910f": {
+      "sha": "29321971a0200ccc3b69f32940075c7a2c27910f",
+      "body": null,
+      "published": false,
+      "areas": {
+        "tests": 1
+      },
+      "publishedFiles": [],
+      "storybook": []
+    },
+    "fff92c4515107fe1e66c53a27ef60c8ec7602162": {
+      "sha": "fff92c4515107fe1e66c53a27ef60c8ec7602162",
+      "body": "Nieuw sub-component vl-side-navigation-section-next laat een enkele vl-side-navigation-next meerdere secties combineren in een nav: een auto-gegenereerde inhoudstafel, custom-TOC-secties naar andere headings, en actie-secties (links/knoppen). De DOM-volgorde is de render-volgorde. De sectie-titel is de eerste vl-title of h1-h6 child; de component genereert waar nodig een id en wired aria-labelledby van de sectie-ul naar dat titel-element. Een nav-landmark en een drawer op mobile/compact.\n\nBackwards compatibel: lege slot blijft de bestaande auto-TOC, een kale ul blijft de bestaande custom-TOC, en zodra er minstens een vl-side-navigation-section-next child staat schakelt de component naar sections-mode.\n\nmulti-active werkt in sections-mode: de actief-indicator tekent een segment per nav-sectie (gegroepeerd per sectie-container) in plaats van een doorlopende lijn over de sectietitels. Afgestemd op de FLUX-526 Set-API (activeHeadingIds).",
+      "published": true,
+      "areas": {
+        "code": 6,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 3,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/block/next/index.ts",
+        "libs/components/src/block/next/side-navigation/index.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-renderer.utils.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-section.component.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation-sections.utils.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+        "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-next-side-navigation--documentatie",
+          "title": "Components - Block/next/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+          "added": "### Multi-sectie (auto + custom in één nav)\n\nPlaats meerdere `vl-side-navigation-section-next` in één `vl-side-navigation-next`: combineer een\n**auto-gegenereerde** sectie (gescoped op een gekozen container-id) met een **custom-TOC** sectie, in één nav en\néén drawer op mobile.\n\n```html\n<vl-side-navigation-next>\n  <vl-side-navigation-section-next type=\"auto\" heading-root-selector=\"#hoofdstukken\" section-title=\"Op deze pagina\">\n  </vl-side-navigation-section-next>\n\n  <vl-side-navigation-section-next section-title=\"Bijlagen\">\n    <ul>\n      <li><vl-link href=\"#bijlage-a\">Bijlage A</vl-link></li>\n      <li><vl-link href=\"#bijlage-b\">Bijlage B</vl-link></li>\n    </ul>\n  </vl-side-navigation-section-next>\n</vl-side-navigation-next>\n```\n\n- **Auto-sectie**: `type=\"auto\"` scant de headings binnen `heading-root-selector` (hier `#hoofdstukken`). Scan-props\n  (`min-level`, `max-level`, `max-depth`, `exclude-selectors`) mogen op de parent of per sectie als override.\n- **Custom-sectie** (zonder `type=\"auto\"`): lever zelf een `<ul>` met `vl-link`s naar bestaande heading-id's."
+        }
+      ]
+    },
+    "750dbf1cc97f472c2760c64b05cf8fcd9447bc5e": {
+      "sha": "750dbf1cc97f472c2760c64b05cf8fcd9447bc5e",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 3,
+        "docs": 1,
+        "storybook": 2,
+        "examples": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/fieldset/vl-fieldset.component.ts",
+        "libs/components/src/form/input-field/vl-input-field.component.ts",
+        "libs/components/src/form/input-field/vl-input-field.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-input-field--documentatie",
+          "title": "Components - Form/input-field",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-input-field--documentatie",
+          "added": "### Describedby\n\nMet het `describedby` attribuut koppel je een extra beschrijving aan het veld voor gebruikers van een screenreader.\nVerwijs naar het `id` van een element in de light DOM; de tekst wordt overgenomen en via `aria-describedby`\ngekoppeld aan het veld. Handig wanneer visuele context (bv. een eenheid naast het veld) ook hoorbaar moet zijn. De\nkoppeling volgt latere tekstwijzigingen van het aangeduide element. Het bron-element krijgt automatisch\n`aria-hidden` (tenzij je het zelf al zette) zodat de beschrijving niet twee keer wordt voorgelezen.\n\n```html\n<vl-input-field label=\"Lengte\" describedby=\"eenheid\"></vl-input-field>\n<span aria-hidden=\"true\">m</span>\n<span class=\"vl-visually-hidden\" id=\"eenheid\">meter</span>\n```"
+        }
+      ]
+    },
+    "20ffd3c42438c2b5a6f6f72507807832886d063a": {
+      "sha": "20ffd3c42438c2b5a6f6f72507807832886d063a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/next/header/vl-header.component.ts",
+        "libs/components/src/compliance/next/header/vl-header.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-compliance-next-header--documentatie",
+          "title": "Components - Compliance/next/header",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-compliance-next-header--documentatie",
+          "added": "### PAPI profile token\n\nSinds global header v5 kan een PAPI profile token meegegeven worden aan de header. Hiermee toont de header automatisch de gegevens van de gebruiker (naam, hoedanigheden, ...). Zie [Profile API Integration Guide](https://docs.digitaal.vlaanderen.be/global-header/documents/Profile_API_Integration_Guide.html) van Digitaal Vlaanderen voor de achtergrond.\n\n`vl-header-next` ondersteunt twee manieren om het token mee te geven:\n\n1. **`profile-token-url` attribuut** (declaratief) — de component fetcht het token op deze endpoint van jouw backend wanneer de sessie geconfigureerd wordt. Standaard staat dit op `/sso/papi_token`, de endpoint van de Cumuli security lib. Verwachte response is het token als plain text (`text/plain`).\n\n    ```html\n    <vl-header-next\n        identifier=\"...\"\n        profile-token-url=\"/api/papi-token\"\n    ></vl-header-next>\n    ```\n\n2. **`idpProfileToken` JavaScript-property** (imperatief) — set het token direct vanuit je SPA. Heeft voorrang op `profile-token-url`. Handig wanneer je het token al in je client-side state hebt.\n\n    ```js\n    document.querySelector('vl-header-next').idpProfileToken = papiToken;\n    ```\n\nHet token wordt enkel aan `setProfile()` doorgegeven wanneer de gebruiker is aangemeld (`active: true`), conform de [vereiste van Digitaal Vlaanderen](https://docs.digitaal.vlaanderen.be/global-header/documents/Profile_API_Integration_Guide.html#3-frontend-passing-the-profile-token) dat `idpProfileToken` en `active: true` in dezelfde call moeten zitten.\n\n> **Waarom geen `idp-profile-token` HTML-attribuut?**\n> Het token is een bearer credential met korte levensduur. Een HTML-attribuut zou het token zichtbaar maken in View Source, server-side rendered HTML, MutationObservers van 3rd-party scripts en screenshots van de elementen-tab. Daarom wordt het token enkel via een URL-fetch of JS-property aanvaard — beide houden het token uit de DOM.\n\n### IdpData\n\nWanneer er geen PAPI token beschikbaar is, kan IdpData manueel meegegeven worden (bijvoorbeeld bij mock users via een lokale Keycloak). Twee manieren, met dezelfde precedentie als bij het token:\n\n1. **`idp-data-url` attribuut** — de component fetcht een JSON-response op deze endpoint.\n\n    ```html\n    <vl-header-next\n        identifier=\"...\"\n        idp-data-url=\"/api/idp-data\"\n    ></vl-header-next>\n    ```\n\n2. **`idpData` JavaScript-property** — set het IDPData-object direct.\n\n    ```js\n    document.querySelector('vl-header-next').idpData = {\n        user: { firstName: 'John', name: 'Doe' },\n        loginHint: 'user-login-hint',\n        identities: [/* ... */],\n    };\n    ```\n\nZie [IDPData interface](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/IDPData.html) voor het volledige type."
+        }
+      ]
+    },
+    "bf4eb67b153947eec5d64ea56dc45f8155995d61": {
+      "sha": "bf4eb67b153947eec5d64ea56dc45f8155995d61",
+      "body": "Anchor-positioning (Popover API + CSS Anchor Positioning) is nu de default kalenderpositionering, zowel op native browsers als via de floating-ui fallback. Het oude flatpickr-in-DOM-gedrag blijft beschikbaar via het nieuwe inline-positioning attribuut; de CSS-regels en JS-gates zijn omgekeerd zodat de anchor-modus geldt tenzij inline-positioning gezet is.",
+      "published": true,
+      "areas": {
+        "code": 3,
+        "docs": 2,
+        "storybook": 3,
+        "examples": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+        "libs/components/src/form/datepicker/vl-datepicker.positioning-css.ts",
+        "libs/components/src/form/form.web-types.json"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-modal--documentatie",
+          "title": "Components - Block/modal",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-modal--documentatie",
+          "added": null
+        },
+        {
+          "id": "components-form-datepicker--documentatie",
+          "title": "Components - Form/datepicker",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+          "added": "De datepicker kalender positioneert zichzelf automatisch. Standaard rendert de kalender in de browser top-layer\n(via CSS Anchor Positioning + Popover API), zodat ancestor `transform`, `overflow` of `sticky` de positionering\nniet kan breken. Indien de automatische positionering niet het gewenste resultaat oplevert, kan dit op drie\nmanieren aangepast worden:\n\n[…]\n\n-   Het `inline-positioning` attribuut: schakelt terug naar de klassieke flatpickr-positionering, waarbij de\n    kalender inline in de shadow DOM rendert in plaats van de top-layer.\n\n[…]\n\n<vl-datepicker inline-positioning></vl-datepicker>\n\n[…]\n\n> ⚠️ `inline-positioning` valt terug op het oude render-model (shadow DOM ipv top-layer) en kan opnieuw\n> afgekapt worden door ancestor `overflow` of `transform`. Gebruik dit enkel als je app afhankelijk is van\n> de huidige DOM-positie of stacking volgorde van de kalender."
+        },
+        {
+          "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "title": "Planning/Van v2 naar v3 - beschikbaar",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+          "added": "In v2 is de anchor-positioning codepath (Popover API + CSS Anchor Positioning) de default geworden.\nWie het oude gedrag nodig heeft kan terugvallen via het `inline-positioning` attribuut. In v3 wordt\nde oude positionering én het `inline-positioning` attribuut volledig verwijderd. Apps moeten na de\nupgrade verifiëren dat hun datepicker correct rendert.\n\n[…]\n\n        <td>Popover API + CSS Anchor Positioning (opt-out verwijderd)</td>\n        <td><code>{`<vl-datepicker inline-positioning>`}</code></td>"
+        }
+      ]
+    },
+    "cbadf65bd55e4ddc007744ba22243fa57016427a": {
+      "sha": "cbadf65bd55e4ddc007744ba22243fa57016427a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 3,
+        "docs": 1,
+        "tests": 3,
+        "tooling": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/form/datepicker/vl-anchor-positioning.controller.ts",
+        "libs/components/src/form/datepicker/vl-anchor-positioning.polyfill.ts",
+        "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-datepicker--documentatie",
+          "title": "Components - Form/datepicker",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "637a88f8be8815bc85ecce410037b71bf7fc7246": {
+      "sha": "637a88f8be8815bc85ecce410037b71bf7fc7246",
+      "body": "milieuinfo is de oude cdn url, deze zal op termijn niet meer beschikbaar zijn. Bij deze zijn al de referenties naar de https://cdn.omgeving.vlaanderen.be veranderd.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/http-error-message/error-codes.ts",
+        "libs/components/src/compliance/privacy/child/content.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-http-error-message--documentatie",
+          "title": "Components - Block/http-error-message",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-http-error-message--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "3985e2b12bdd7c46bfb5e619e37af84b81db2abb": {
+      "sha": "3985e2b12bdd7c46bfb5e619e37af84b81db2abb",
+      "body": "Voegt een optioneel 'type'-attribuut toe zodat een bron-URL zonder bestandsextensie (bv. een download-/API-link) toch afgespeeld kan worden. Bij gezet type geeft de component src als { src, type } aan vidstack, dat een <source>-element rendert i.p.v. het src-attribuut. Zonder type blijft het bestaande gedrag (extensie-inferentie) ongewijzigd.",
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 2,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/video-player/vl-video-player.component.ts",
+        "libs/components/src/block/video-player/vl-video-player.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-video-player--documentatie",
+          "title": "Components - Block/video-player",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-video-player--documentatie",
+          "added": "## Mediatype instellen\n\nStandaard leidt de speler het mediatype af uit de bestandsextensie in de `source`-URL (bv. `.mp4`).\nWanneer de bron-URL geen extensie bevat - bijvoorbeeld een download- of API-link zoals\n`https://.../stukken/123/download` - kan het type niet afgeleid worden. Zet het `type`-attribuut in dat geval\nexpliciet:\n\n```html\n<vl-video-player source=\"https://.../stukken/123/download\" type=\"video/mp4\"></vl-video-player>\n```\n\nOndersteunde waarden zijn de video-mimetypes van de speler, o.a. `video/mp4`, `video/webm`, `video/ogg`."
+        }
+      ]
+    }
+  },
+  "unlisted": []
+}

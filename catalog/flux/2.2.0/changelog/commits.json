@@ -1,0 +1,312 @@
+{
+  "schema": 2,
+  "version": "2.2.0",
+  "previous": "2.1.0",
+  "commits": {
+    "7435b4d02a3838af4fffe9f327b885814eadb635": {
+      "sha": "7435b4d02a3838af4fffe9f327b885814eadb635",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 13,
+        "tooling": 6
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "afnemen-migratie-v2-impact--documentatie",
+          "title": "Afnemen/Migratie v2 - Impact",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+          "added": "De Code Preview component werd geschrapt in v2, die werd enkel in de legacy documentatie (van voor 2021) gebruikt."
+        },
+        {
+          "id": "afnemen-starter-app--documentatie",
+          "title": "Afnemen/Starter App",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+          "added": "Onder [https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app](https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app)\n\n[…]\n\nHieronder is een overzicht van welke bibliotheken gebruikt worden in de flux-starter-app, de concrete versies\nvind je terug in de package.json.\n\n- [Node](https://nodejs.org/en) - een recentelijke LTS versie\n\n[…]\n\n- [Webpack](https://webpack.js.org/)\n- [TypeScript](https://www.typescriptlang.org/)\n- [Lit](https://lit.dev/)\n- [Prettier](https://prettier.io/)\n- [ESLint](https://eslint.org/)\n- [Jest](https://jestjs.io/)\n- [Cypress](https://www.cypress.io/)\n\n[…]\n\nmet Html, Javascript en Css - gebruikmakend van web-standaarden - waarbij het bouwen van\n\n[…]\n\nWebpack. Het is aanbevolen een linter te gebruiken en optioneel (maar aanbevolen) kan code in TypeScript geschreven\nworden. Om kwalitatieve code te behouden is het de bedoeling 3 types van testen te schrijven: unit testen (met Jest) en\n\n[…]\n\ndie tool zorgt ervoor dat er een expliciete Node versie gespecifieerd, geïnstalleerd en gebruikt wordt. Bij\nontwikkeling voor meerdere toepassingen zal je daardoor telkens met de juiste Node versie werken.\n\n[…]\n\nBabel en tsc - [SWC](https://swc.rs/) geconfigureerd. Babel is complex (er zijn verschillende plugins nodig), om de\nverschillende tools correct te configureren. SWC heeft 1 eenduidig configuratie bestand. Voornamelijk om van Lit\n\n[…]\n\nHet kan makkelijk om met de shadow-dom, je kan eigen commando's voorzien en Cypress gaat transparant om met reactieve"
+        },
+        {
+          "id": "beheren-git-release-branching--documentatie",
+          "title": "Beheren/Git Release Branching",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/beheren-git-release-branching--documentatie",
+          "added": "<img src={fluxBranching} alt=\"Flux Branching Strategie\" />"
+        },
+        {
+          "id": "planning-historiek-toekomst--documentatie",
+          "title": "Planning/Historiek & Toekomst",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+          "added": "Met vertraging is begin juni 2025 v2 gereleased, dit geeft een opkuis van 3 jaar evolutie. Nog niet alles is"
+        },
+        {
+          "id": "recepten-cdn-bundel-fat-lib--documentatie",
+          "title": "Recepten/CDN Bundel - fat-lib",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-cdn-bundel-fat-lib--documentatie",
+          "added": "  <title>Flux Demo</title>"
+        },
+        {
+          "id": "recepten-configuratie--documentatie",
+          "title": "Recepten/Configuratie",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-configuratie--documentatie",
+          "added": "M.b.v. de statische klasse `FluxConfig` kunnen voorkeuren gewijzigd worden.\n\n[…]\n\nFluxConfig.setPreferences({ logWebComponentRegistration: true });"
+        },
+        {
+          "id": "recepten-css-styling--documentatie",
+          "title": "Recepten/CSS Styling",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-css-styling--documentatie",
+          "added": "## Globale CSS\n\n[…]\n\nAlle Flux web-componenten, zijnde de web-componenten die zich in de package `@domg-wc/components` bevinden, zorgen\nervoor dat eenmalig alle css op document niveau geregistreerd wordt. Technisch gebeurt dat door de basis klasse\n`BaseLitElement` die de onderstaande `GlobalStyles.getInstance().register()` methode uitvoert:\n\n[…]\n\npublic register() {\n    if (!this.registered) {\n        if (FluxConfig.getPreferences().autoRegisterStyles) {\n\n[…]\n\n                ...(this.defaultStyles.map((style) => style.styleSheet) as CSSStyleSheet[]),\n\n[…]\n\n            console.info('GlobalStyles: global styling toegevoegd aan het document');\n        } else {\n            console.info(\n                'GlobalStyles: geen global styling toegevoegd aan het document - autoRegisterStyles is uitgeschakeld'\n            );\n\n[…]\n\n        this.registered = true;\n        this.registerCustomCSS();"
+        },
+        {
+          "id": "recepten-events--documentatie",
+          "title": "Recepten/Events",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/recepten-events--documentatie",
+          "added": "De Flux-componenten bieden eigen - custom -\nevents aan, deze hebben de prefix `vl-`. De prefix maakt duidelijk dat het Flux-events zijn en vermijden conflicten\n\n[…]\n\nLit, waar de nieuwere Flux-componenten gebruik van maken, heeft zelf een documentatie pagina over\n\n[…]\n\nDe Flux-componenten ontsluiten typisch native componenten die op hun beurt native events hebben. Web-componenten"
+        },
+        {
+          "id": "richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+          "title": "Richtlijnen/Testen/Test Piramide Component Bibliotheek",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/richtlijnen-testen-test-piramide-component-bibliotheek--documentatie",
+          "added": "Het Flux-team bouwt een component bibliotheek, dit is verschillend van een eindtoepassing. Om die componenten afgebakend"
+        },
+        {
+          "id": "styles-concept--documentatie",
+          "title": "Styles/Concept",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/styles-concept--documentatie",
+          "added": "Afnemers dienen niets specifiek te doen. Vanaf dat er 1 Flux-component gebruikt wordt registreert deze alle"
+        }
+      ]
+    },
+    "008e28eea17124f6d2064701bdf4f1aa5a2af81a": {
+      "sha": "008e28eea17124f6d2064701bdf4f1aa5a2af81a",
+      "body": "fix: FLUX-89",
+      "published": true,
+      "areas": {
+        "code": 12,
+        "styles": 1,
+        "docs": 1,
+        "storybook": 2,
+        "examples": 1,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/common/src/base/base.lit.element.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation-group.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation-item.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation-toggle.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation.component.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation.css.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation.defaults.ts",
+        "libs/components/src/block/side-navigation/vl-side-navigation.scrollspy.lib.js",
+        "libs/components/src/compliance/accessibility/child/content.component.ts",
+        "libs/components/src/compliance/accessibility/child/inaccessible-content.component.ts",
+        "libs/components/src/compliance/accessibility/child/side-navigation.component.ts",
+        "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+        "libs/components/src/compliance/privacy/child/content.component.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-side-navigation--documentatie",
+          "title": "Components - Block/side-navigation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-block-side-navigation--documentatie",
+          "added": "1. Plaats op het parent `VlSideNavigationItem` component het attribuut `parent=\"content-1\"`\n2. Plaats op het `VlSideNavigationToggle` component het attribuut `child=\"content-1\"`\n\n[…]\n\nPlaats naast het `VlSideNavigationToggle` component een lijst element (`<ul>`) met daaronder `VlSideNavigationItem` componenten als items.\n\nGebruik geen `VlSideNavigationToggle` component indien er geen subnavigatie is. Een gewone link (`<a href=\"#\">`) onder het `VlSideNavigationItem` component volstaat dan."
+        },
+        {
+          "id": "components-block-steps-steps--documentatie",
+          "title": "Components - Block/steps/steps",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-block-steps-steps--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "b86e28f82f0040e04492f2339dbcf86fcb112058": {
+      "sha": "b86e28f82f0040e04492f2339dbcf86fcb112058",
+      "body": null,
+      "published": true,
+      "areas": {
+        "styles": 1
+      },
+      "publishedFiles": [
+        "libs/styles/src/layout/content-block/vl-content-block.css.ts"
+      ],
+      "storybook": []
+    },
+    "a29f5a21ebd628d7b39150efbdb2ff600e7fcce5": {
+      "sha": "a29f5a21ebd628d7b39150efbdb2ff600e7fcce5",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 1,
+        "examples": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/block/side-navigation/vl-side-navigation.component.ts"
+      ],
+      "storybook": []
+    },
+    "d38faec33f1d8bb761deb5d6791f34baedd82e87": {
+      "sha": "d38faec33f1d8bb761deb5d6791f34baedd82e87",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "styles": 2,
+        "storybook": 2,
+        "tests": 2
+      },
+      "publishedFiles": [
+        "libs/common/src/base/base.html.element.ts",
+        "libs/components/src/block/info-tile/vl-info-tile.component.ts",
+        "libs/components/src/block/info-tile/vl-info-tile.flux-css.ts",
+        "libs/styles/src/base/var/vl-color.raw.css"
+      ],
+      "storybook": [
+        {
+          "id": "components-block-info-tile--documentatie",
+          "title": "Components - Block/info-tile",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-block-info-tile--documentatie",
+          "added": null
+        }
+      ]
+    },
+    "b230ad36854bbcab2e2b2f367f1c986c3efd4e21": {
+      "sha": "b230ad36854bbcab2e2b2f367f1c986c3efd4e21",
+      "body": "De vl-select-rich gebruikt choices.js library om de select aan te sturen. Bij deze is versie bijgewerkt van 10.2 naar 11.1. Daarnaast zijn ook enkele verbeteringen doorgevoerd in de component.",
+      "published": true,
+      "areas": {
+        "code": 4,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 2,
+        "tooling": 2
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select-rich/styles/vl-select.dv-css.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.defaults.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.model.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-select-rich--documentatie",
+          "title": "Components - Form/select-rich",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-select-rich--documentatie",
+          "added": "### selectByValue(value: string | string[]): void\n\nVinkt 1 of meerdere opties aan op basis van de value.\n\n### removeSelectionByValue(value: string | string[]): void\n\nVinkt 1 of meerdere opties uit op basis van de value.\n\n### removeAllSelections(): void\n\nVinkt alle opties uit.\n\n[…]\n\n## Events\n\n### Change event\n\n[…]\n\nBij het selecteren of verwijderen van een optie (zowel programmatorisch als door de gebruiker) wordt het `vl-change`\nevent afgevuurd, het detail object van dit event bevat de value van de geselecteerde opties.<br/>\nGelijkaardig aan de `getSelected()` methode, bevat de value bij de single select 1 string en bij de\nmulti select een array van strings.\n\n[…]\n\n### Input event\n\n[…]\n\nWanneer de gebruiker een optie verwijdert of selecteert, wordt het `vl-input` event afgevuurd, het detail object van\ndit event bevat de value van de geselecteerde opties.<br/>\nGelijkaardig aan de `getSelected()` methode, bevat de value bij de single select 1 string en bij de multi select\neen array van strings.\n\n[…]\n\n### Search Event\n\n[…]\n\nWanneer de gebruiker een zoekopdracht uitvoert, wordt het `vl-search` event afgevuurd,\nhet detail object van dit event bevat de zoekterm die de gebruiker heeft ingegeven.<br/>\n\n[…]\n\nDe `select-rich` component kan 1 of meerdere waardes bevatten. Die waardes worden weergegeven als opties in de select\ncomponent.<br/> Om die opties te beheren, zijn er verschillende mogelijkheden:\n\n### met methods\n\nDe `select-rich` component heeft een aantal methodes die je kan gebruiken om de opties te beheren:\n\n- `selectByValue(value: string | string[])`: vinkt 1 of meerdere optie(s) aan\n- `removeSelectionByValue(value: string | string[])`: vinkt 1 of meerdere optie(s) uit\n- `removeAllSelections()`: vinkt alle opties uit\n\n### `options` property\n\n[…]\n\nAls de referentie van deze array verandert, wordt de Lit lifecycle getriggerd en wordt de select opnieuw\nopgebouwd op basis van de nieuwe opties.<br/>\nHierdoor is het noodzakelijk om de opties door te geven aan de select component met behulp van een variabele,\nen de opties niet direct in de template te zetten.<br/>\nIndien je de opties direct in de template zet, zal bij elke render de select opnieuw opgebouwd worden en de\ngekozen opties verwijderd worden.\n\n[…]\n\nDit betekent ook dat als je programmatorisch een optie wil veranderen, toevoegen of verwijderen,\nje de referentie van de array moet aanpassen.<br/>\n\n[…]\n\n### `initial-options` property\n\nDe `initial-options` property is een array van objecten die de opties van de select component bevatten.<br/>\nDeze zijn de standaard opties die worden getoond bij het laden van de pagina.<br/>\n\nAls de form reset, worden deze opties getoond in de select component.<br/>\n\nIndien je de `opties` direct in de template zet bij het laden van de `vl-select-rich`, worden deze intern ingesteld als\nde `initial-options` property.<br/>\n\n[…]\n\nMeer info over validatie binnen onze form componenten vind je hier:\n[Form - Validatie](/docs/ontwerp-form-validation--documentatie)\n\n[…]\n\n[Documentatie Digitaal Vlaanderen -\n    Select](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-select)\n\n[…]\n\n[Documentatie Digitaal Vlaanderen -\n    Multiselect](https://overheid.vlaanderen.be/webuniversum/v3/documentation/forms/vl-ui-multiselect)"
+        }
+      ]
+    },
+    "f8314c427a9c955cd9aebf21b13b993e919ab40a": {
+      "sha": "f8314c427a9c955cd9aebf21b13b993e919ab40a",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 2,
+        "docs": 1,
+        "storybook": 1,
+        "tests": 1
+      },
+      "publishedFiles": [
+        "libs/components/src/form/select/vl-select.component.ts",
+        "libs/components/src/form/select/vl-select.defaults.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-select--documentatie",
+          "title": "Components - Form/select",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-select--documentatie",
+          "added": "## Events\n\n[…]\n\n### Change event\n\n[…]\n\n### Input event\n\n[…]\n\n### `options` property\n\n[…]\n\n### `initial-options` property\n\nDe `initial-options` property is een array van objecten die de opties van de select component bevatten.<br/>\nDeze zijn de standaard opties die worden getoond bij het laden van de pagina.<br/>\n\nAls de form reset, worden deze opties getoond in de select component.<br/>\n\nIndien je de `opties` direct in de template zet bij het laden van de `vl-select`, worden deze intern ingesteld als\nde `initial-options` property.<br/>"
+        }
+      ]
+    },
+    "c7405bf020fe6c2f12af47b6e504d167c299ba13": {
+      "sha": "c7405bf020fe6c2f12af47b6e504d167c299ba13",
+      "body": "Storybook documentatie verbeterd voor form-data en de vl-checkbox component. Cypress tests toegevoegd. tsconfig.json in apps/storybook aangepast. Verbeteringen in de vl-select & vl-select-rich. JSON.parse(JSON.stringify(...)) vervangen door structuredClone. In de vl-select-rich, wordt nu ook setValue aangeroepen bij het verwijderen en toevoegen van selected options. In de vl-select, is `value` nu ook aanpasbaar van buitenaf.",
+      "published": true,
+      "areas": {
+        "code": 7,
+        "docs": 5,
+        "storybook": 1,
+        "examples": 1,
+        "tests": 3
+      },
+      "publishedFiles": [
+        "libs/components/src/form/index.ts",
+        "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+        "libs/components/src/form/select/vl-select.component.ts",
+        "libs/components/src/form/utils/form-data-getter.ts",
+        "libs/components/src/form/utils/form-data-setter.ts",
+        "libs/components/src/form/utils/form.util.ts",
+        "libs/components/src/form/utils/index.ts"
+      ],
+      "storybook": [
+        {
+          "id": "components-form-checkbox--documentatie",
+          "title": "Components - Form/checkbox",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+          "added": "### FormData\n\nDe value van een checkbox werkt op een andere manier dan de value van een input.\n- Als een checkbox gecheckt is, dan pas komt de value van de checkbox mee in de data.\n- Als een checkbox niet gecheckt is, dan is er geen value voor de checkbox in de FormData, ook al is de value van de checkbox ingesteld.\n- Als er geen value is ingesteld, dan krijgt de checkbox de value `on` mee in de FormData als de checkbox gecheckt is.\n\nDe werking volgt het native gedrag (en gebruikt ook een native checkbox input).\n\nMeer info hier: [Checkbox - Value op MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value)"
+        },
+        {
+          "id": "components-form-select--documentatie",
+          "title": "Components - Form/select",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-select--documentatie",
+          "added": "### `value` attribuut\n\nJe kan ook de geselecteerde optie(s) van de select component instellen door het `value` attribuut te gebruiken.<br/>"
+        },
+        {
+          "id": "ontwerp-form-demo--documentatie",
+          "title": "Ontwerp/Form/Demo",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+          "added": "> Uitgebreid voorbeeld hoe je form data eenvoudiger kan parsen en instellen vind je op de [Form Data pagina](/docs/ontwerp-form-form-data--documentatie)."
+        },
+        {
+          "id": "ontwerp-form-form-data--documentatie",
+          "title": "Ontwerp/Form/Form Data",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/ontwerp-form-form-data--documentatie",
+          "added": " Wanneer je `FormData.getAll()` gebruikt, krijg je dan weer altijd een array van waardes terug, ook voor inputs die maar 1 waarde kunnen bevatten.\n\n[…]\n\nHet gebruik is niet intuïtief en kan leiden tot verwarring, vooral wanneer je werkt met form controls die meerdere\nwaardes kunnen bevatten, zoals een multiselect.\n\n[…]\n\n## formaat\n\n[…]\n\nDaarom leek het ons aangewezen dat je altijd met een consistent object werkt voor de form data:\n- voor form controls met 1 waarde, krijg je altijd een enkele waarde\n- voor form controls met meerdere waardes (bv. multiselect), krijg je altijd een array van waardes\n\nDan kun je op een vereenvoudigde manier de form data verwerken,\nzonder dat je rekening moet houden met het type van de form control.\n\nbv.\n```js\n{\n          \"naam\": \"Dehbi\",\n          \"startDate\": \"2025-07-11\"\n}\n```\n\n## parseFormData(formElement)\n\nWe hebben een helper functie voorzien om de data uit de form te parsen naar een object met de waardes van de velden,\nin het voorgestelde formaat zoals hierboven beschreven. Intern gebruikt deze functie\nde [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API en werkt die ook met native form controls.\n\n[…]\n\n- `multiFormControlNames?: string[]`: (optioneel) een array van form control namen die meerdere waardes kunnen bevatten.\nAls deze parameter niet wordt meegegeven, dan zoekt de functie zelf naar form controls die meerdere waardes kunnen\nbevatten (bv. vl-select-rich met `multiple` attribuut...). Deze parameter is in de meeste gevallen niet nodig.\n\n[…]\n\n### Voorbeeld resultaat\n\n```js\n{\n          \"naam\": \"Dehbi\",\n          \"startDate\": \"2025-07-11\"\n}\n```\n\n## setFormData(formElement, data)\n\nWe hebben een helper functie voorzien om de data in te stellen op een form element, zodat je op een eenvoudiger manier\n de waardes van de form controls kan aanpassen. Deze functie is compatibel met al onze vl-form componenten maar ook met\nnative HTML form controls.\n\nDeze functie aanvaard 2 parameters:\n- `formElement: Form`: het Form element waarvan je de data wil zetten\n- `data: { [p: string]: FormDataEntryValue[] | File | string }`: een object met de waardes van de velden\n\n### Gebruik\n\n```js\n```\n\n```html\n<form id=\"example-form\">\n    <input type=\"text\" name=\"naam\" />\n    <select name=\"hobbies\" multiple>\n        <option value=\"value1\">Value 1</option>\n        <option value=\"value2\">Value 2</option>\n        <option value=\"value3\">Value 3</option>\n    </select>\n    <input type=\"checkbox\" name=\"waarheidsgetrouw\" value=\"spreekt-de-waarheid\">\n</form>\n```\n\n```typescript\nconst formElement = document.getElementById('example-form') as HTMLFormElement;\n// stel de form data in\nsetFormData(formElement, {\n    naam: 'Dehbi',\n    hobbies: ['Drummen', 'Zwemmen']\n    });\n```\n\n<vl-alert type=\"info\" title=\"Ter info\" icon=\"info-circle\" size=\"small\" custom-css=\".vl-alert{margin-bottom: 3rem;}\">\n {`\n De parameter om form data in te stellen bij setFormData() is hetzelfde formaat als de data die parseFormData()\n  functie retourneert.\n `}\n</vl-alert>\n\n### Checkbox\n\nDe checkbox werkt op een andere manier dan de andere form controls.\nDe value die meegegeven wordt gaat het `checked` attribuut van de checkbox bepalen maar gaat nooit de `value` van de checkbox wijzigen.\n\n- Om een checkbox aan te vinken, dien je de value mee te geven die op de checkbox ingesteld staat. Als je de verkeerde string meegeeft wordt niets veranderd.\n- Om een checkbox uit te vinken kan je de value `null` of `undefined` meegeven.\n- Je kan tevens ook ofwel een boolean meegeven, waarbij `true` de checkbox aanvinkt en `false` de checkbox uitvinkt.\n\nMeer info vind je bij de [Checkbox Documentatie - FormData](?path=/docs/components-form-checkbox--documentatie#formdata).\n\n## Voorbeeld\n\nDit component toont een formulier met verschillende types van form controls. Het formulier kan worden ingevuld met\n[setFormData()](#setformdataformelement-data) en de data kan worden opgehaald met\n [parseFormData()](#parseformdataformelement) (die wordt dan onderaan de form geprint).\n\n- De data kan worden ingesteld met de `Stel in` knop. ([setFormData()](#setformdataformelement-data))\n- De data kan worden opgehaald met de `Verstuur` knop. ([parseFormData()](#parseformdataformelement))"
+        },
+        {
+          "id": "ontwerp-form-validation--documentatie",
+          "title": "Ontwerp/Form/Validation",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/ontwerp-form-validation--documentatie",
+          "added": "> Voorbeeld om custom validatie te schrijven vind je op de [Form Custom Validation pagina](/docs/ontwerp-form-custom-validation--documentatie)."
+        }
+      ]
+    },
+    "5b1724f9aa55fadde1702580407060015c0bc853": {
+      "sha": "5b1724f9aa55fadde1702580407060015c0bc853",
+      "body": null,
+      "published": false,
+      "areas": {
+        "docs": 2
+      },
+      "publishedFiles": [],
+      "storybook": [
+        {
+          "id": "afnemen-migratie-v2-aanpak--documentatie",
+          "title": "Afnemen/Migratie v2 - Aanpak",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+          "added": "### 2. Legacy componenten vervangen door hun \"next\"-variant\n#### **2.1 Elementen wegwerken**\n#### **2.2 \"next\"-varianten implementeren**\n#### **2.3 \"vl-u-...\" utility classes**\n#### **3.1 Wijzigingen in v2**\n#### **3.2 Migratie acties**\n#### **3.3 Imports**\n#### **3.4 Optimalisaties**\n(148 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+        },
+        {
+          "id": "afnemen-migratie-v2-faq--documentatie",
+          "title": "Afnemen/Migratie v2 - FAQ",
+          "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+          "added": "<br/>\n## Wat is de impact op vl-grid?\n\n**Antwoord:** De grid is grondig gewijzigd en heeft een aantal specifieke aanpassingen nodig.\n\n- `vl-column` heeft een default waarde nodig zoals `vl-column--12` (bij `is=\"vl-grid\"` was dat niet het geval).\n- Kolommen worden op een nieuwe manier aangeboden:\n\n<table style={{width: 100 + '%'}}>\n  <tr>\n    <th>Oude attribuut</th>\n    <th>Nieuwe aanpak / vervanging</th>\n  </tr>\n  <tr>\n    <td>data-vl-size=\"n\"</td>\n    <td>class=\"vl-column--n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-extra-small-size=\"n\"</td>\n    <td>class=\"vl-column--xs-n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-small-size=\"n\"</td>\n    <td>class=\"vl-column--s-n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-medium-size=\"n\"</td>\n    <td>class=\"vl-column--m-n\"</td>\n  </tr>\n  <tr>\n    <td>data-vl-medium-max-size=\"12\"</td>\n    <td>mag weg (bij andere waarden dan \"12\" moeten de kolombreedtes herberekend worden naar een 12 kolommen grid)</td>\n  </tr>\n</table>\n\nVerifieer na de wijzigingen de grid layout zeker ook op verschillende resoluties.\n\nDe `data-vl-is-stacked...` attributen op `vl-grid` kunnen vervangen worden door de stacked classes: `vl-stacked-...`. Zie [Stacked](/docs/styles-layout-afnemers-stacked--documentatie).\n\nCheck voor meer informatie de [vl-grid documentatie](/docs/styles-layout-afnemers-grid--documentatie).\n\n\n<br/>\n## data-vl-no-space-top op een section werkt niet meer\n\n**Antwoord:** Klopt, in het geval van `<section is=\"vl-region\">` zouden we aanraden dit te vervangen door `<section class=\"vl-section\">`, waar we echter geen alternatief aanbieden voor `data-vl-no-space-top`.\nEen mogelijke oplossing is om hier de class `vl-section` te laten vallen en puur het semantische `<section>` element over te houden.\n\n\n<br/>\n## De form validation error message verschijnt niet. Wat kan de oorzaak zijn?\n\n**Antwoord**: Dit zijn de stappen om `is=\"vl-form-validation-message data-vl-error\"` te migreren:\n- Eerst migreren naar de v1 \"next\"-variant: `<vl-error-message-next>`\n- Vervolgens migreren naar de v2 variant: `<vl-form-message>`\n- Indien de message niet verschijnt kan dit komen omdat het component niet gekoppeld is aan een form element met het `for`-attribuut.\n- Indien de message niet kan gekoppeld worden aan een form element, moet het attribuut `show` toegevoegd worden.\n\n\n<br/>\n## Na het verwijderen van de `data-vl-` prefix zijn er zaken gebroken. Hoe kan dit?\n\n**Antwoord**: Dit kan komen door het gebruik van `data-vl-` in selectors of via het dataset object.\n\n- Selectors als `component-naam[data-vl-...]`, `[data-vl-...]` zullen breken. Hier moet ook de `data-vl-` prefix gewist worden.\n- Referenties via het dataset object zullen ook breken. Gebruik hiervoor `getAttribute` in de plaats.\n  bv: `data-vl-max-resolution` → `element.dataset.vlMaxResolution` wordt:\n  `max-resolution` → `element.getAttribute('max-resolution')`"
+        }
+      ]
+    },
+    "a16461c1f4e352d0f82d862165163e212200f4c2": {
+      "sha": "a16461c1f4e352d0f82d862165163e212200f4c2",
+      "body": null,
+      "published": true,
+      "areas": {
+        "code": 4
+      },
+      "publishedFiles": [
+        "libs/components/src/compliance/accessibility/child/content.component.ts",
+        "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts",
+        "libs/components/src/compliance/privacy/child/bottom.component.ts",
+        "libs/components/src/compliance/privacy/child/content.component.ts"
+      ],
+      "storybook": []
+    }
+  },
+  "unlisted": []
+}

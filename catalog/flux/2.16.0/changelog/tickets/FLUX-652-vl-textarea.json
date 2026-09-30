@@ -1,0 +1,66 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-652",
+  "entries": [
+    {
+      "id": "ab40cf5",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-652"
+      ],
+      "scope": "vl-textarea",
+      "components": [
+        "vl-textarea"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "teller voor aantal tekens",
+      "text": "FLUX-652 - vl-textarea - teller voor aantal tekens",
+      "commits": [
+        {
+          "sha": "ab40cf5a50d9922c56e57f86733cc19265193874",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/ab40cf5a50d9922c56e57f86733cc19265193874"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [
+        "a11y"
+      ],
+      "wcag": [],
+      "source": {
+        "body": "Met het nieuwe attribuut character-count toont vl-textarea onder het veld een teller {huidig}/{max} die live meetelt zodra max-length gezet is. Screenreader-gebruikers horen vanaf de laatste 10 resterende tekens een toegankelijkheids-aankondiging van het aantal beschikbare tekens.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "styles": 2,
+          "docs": 1,
+          "storybook": 3,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/textarea/vl-textarea.component.css.ts",
+          "libs/components/src/form/textarea/vl-textarea.component.raw.css",
+          "libs/components/src/form/textarea/vl-textarea.component.ts",
+          "libs/components/src/form/textarea/vl-textarea.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-textarea--documentatie",
+            "title": "Components - Form/textarea",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-textarea--documentatie",
+            "added": "## Karakterteller\n\nZet het `character-count` attribute samen met `max-length` om onder de textarea een teller `{huidig}/{max}` te tonen\ndie live meetelt terwijl je typt. Vanaf de laatste 10 resterende tekens wordt het aantal beschikbare tekens\ntoegankelijk aangekondigd voor screenreader-gebruikers."
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

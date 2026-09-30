@@ -1,0 +1,24 @@
+{
+  "base": "2.2.0",
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "package": "@domg-wc/components",
+      "dependencies": {
+        "added": [
+          {
+            "name": "@govflanders/vl-widget-global-footer-types",
+            "version": "1.0.28"
+          },
+          {
+            "name": "@govflanders/vl-widget-global-header-types",
+            "version": "2.0.20"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ]
+}

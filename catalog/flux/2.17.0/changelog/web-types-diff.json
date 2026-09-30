@@ -1,0 +1,86 @@
+{
+  "base": "2.16.0",
+  "added": [
+    {
+      "element": "vl-side-navigation-section-next",
+      "category": "block",
+      "inChangelog": false,
+      "description": null,
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.17.0/storybook/?path=/docs/components-block-next-side-navigation-next--documentatie"
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "element": "vl-datepicker",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "inline-positioning",
+            "description": "Schakelt terug naar de klassieke flatpickr-positionering: de kalender rendert inline in de shadow DOM in plaats van de top-layer. Standaard (zonder dit attribuut) gebruikt de datepicker CSS Anchor Positioning + Popover API, zodat de kalender niet wordt afgekapt door overflow of transform op ancestor-elementen (bijv. in een modal).",
+            "default": "false"
+          }
+        ],
+        "removed": [
+          {
+            "name": "anchor-positioning",
+            "description": "Activeert CSS Anchor Positioning + Popover API voor de kalender positionering. Dit zorgt ervoor dat de kalender correct wordt gepositioneerd in scrollbare containers en niet wordt afgekapt door overflow of transform op ancestor-elementen (bijv. in een modal).",
+            "default": "false"
+          }
+        ],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-input-field",
+      "category": "form",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "describedby",
+            "description": "Het `id` van een element (in de light DOM) waarvan de tekst als toegankelijke beschrijving aan het veld wordt gekoppeld via `aria-describedby`.<br>De tekst wordt gespiegeld naar een verborgen element en volgt latere wijzigingen.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-input-field-masked",
+      "category": "form",
+      "inChangelog": false,
+      "attributes": {
+        "added": [
+          {
+            "name": "describedby",
+            "description": "Het `id` van een element (in de light DOM) waarvan de tekst als toegankelijke beschrijving aan het veld wordt gekoppeld via `aria-describedby`.<br>De tekst wordt gespiegeld naar een verborgen element en volgt latere wijzigingen.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "element": "vl-video-player",
+      "category": "block",
+      "inChangelog": true,
+      "attributes": {
+        "added": [
+          {
+            "name": "type",
+            "description": "Stelt het mediatype (mimetype) van de bron in, bv. \"video/mp4\". Nodig wanneer de source-URL geen bestandsextensie bevat; anders wordt het type uit de extensie afgeleid.",
+            "default": ""
+          }
+        ],
+        "removed": [],
+        "changed": []
+      }
+    }
+  ],
+  "descriptions": []
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-594",
+  "entries": [
+    {
+      "id": "2fde092",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-594"
+      ],
+      "scope": "vl-upload",
+      "components": [
+        "vl-upload"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "ai - legacy css weggewerkt en verbeterd",
+      "text": "FLUX-594 - vl-upload - ai - legacy css weggewerkt en verbeterd",
+      "commits": [
+        {
+          "sha": "2fde0921e066ebbc377bae30440c6ec6f9fc8628",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/2fde0921e066ebbc377bae30440c6ec6f9fc8628"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "CSS modernisering:\n - vlUploadFluxStyles (flux-css) vervangen door vlUploadComponentStyles\n - vl-upload.component.raw.css aangemaakt met :host variabelen (font-size base, transition)\n - vl-upload.component.css.ts aangemaakt met volledige upload styles\n - vl-upload.flux-css.ts verwijderd\n\nCSS optimalisatie:\n - hardcoded #fff vervangen door var(--vl-color--white)\n - hardcoded 0.3rem border-radius vervangen door var(--vl-border--radius)\n - hardcoded 0.3s ease-out transitie vervangen door var(--vl-upload--transition)\n - overige kleuren en spacing waren reeds design system variabelen\n\nCypress component testen:\n - geherstructureerd in 4 logische describe-blokken: properties & states, dropzone options, file operations, events, upload\n - beforeEach met viewport toegevoegd aan properties & states describe-blok\n - image snapshots toegevoegd voor visuele regressie testing (mount, disabled, error, success)\n - computed style assertions behouden voor disabled, error en success states",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "styles": 3,
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/upload/vl-upload.component.css.ts",
+          "libs/components/src/form/upload/vl-upload.component.raw.css",
+          "libs/components/src/form/upload/vl-upload.component.ts",
+          "libs/components/src/form/upload/vl-upload.flux-css.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

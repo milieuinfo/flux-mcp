@@ -1,0 +1,81 @@
+{
+  "schema": 4,
+  "version": "2.3.0",
+  "ticket": "FLUX-100",
+  "entries": [
+    {
+      "id": "f2ebc5f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-100"
+      ],
+      "scope": "vl-header, vl-footer",
+      "components": [
+        "vl-header",
+        "vl-footer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "v5 versie geïmplementeerd",
+      "text": "FLUX-100 - vl-header, vl-footer - v5 versie geïmplementeerd",
+      "commits": [
+        {
+          "sha": "f2ebc5f1b967b4c24180d55fed5cc3e2feb671fa",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f2ebc5f1b967b4c24180d55fed5cc3e2feb671fa"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 6,
+          "styles": 1,
+          "docs": 3,
+          "storybook": 8,
+          "tests": 6,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/index.ts",
+          "libs/components/src/compliance/next/footer/index.ts",
+          "libs/components/src/compliance/next/footer/vl-footer.component.ts",
+          "libs/components/src/compliance/next/header/index.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.flux-css.ts",
+          "libs/components/src/compliance/next/header/vl-header.component.ts",
+          "libs/components/src/compliance/next/header/vl-header.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-compliance-footer-next--documentatie",
+            "title": "Components - Compliance/Next/footer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-footer-next--documentatie",
+            "added": "# Digitaal Vlaanderen Footer\n\n\nInjecteert de footer widget (v5) van Digitaal Vlaanderen.\nDefault wordt de footer geïnjecteerd in het native `<body>` element.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-footer-next></vl-footer-next>\n```\n\n\n\n## Configuratie\n\n\n\n## Referenties\n\n### Digitaal Vlaanderen\n\n[Documentatie Digitaal Vlaanderen - Footer](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)\n\n[Global Footer - interfaces](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-footer/modules.html)"
+          },
+          {
+            "id": "components-compliance-header--documentatie",
+            "title": "Components - Compliance/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-compliance-header-next--documentatie",
+            "title": "Components - Compliance/Next/header",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/components-compliance-header-next--documentatie",
+            "added": "# Digitaal Vlaanderen Header\n\n\nInjecteert de global header widget (v5) van Digitaal Vlaanderen.\nDefault wordt de header geïnjecteerd in het native `<body>` element.\n\n## Voorbeeld\n\n```js\n```\n\n```html\n<vl-header-next></vl-header-next>\n```\n\n\n\n## Configuratie\n\n\n\n## Sessies\n\n### Configuratie\n\nBij het aanpassen van volgende attributen wordt achterliggend de `window.globalHeaderClient.accessMenu.setProfile()` methode van DV opnieuw aangeroepen:\n\n-   `login-url`\n-   `logout-url`\n-   `switch-capacity-url`\n\nZie [global header interfaces | setProfile](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/AccessMenuMethods.html#setprofile) voor de technische informatie.\n\nZie [Digitaal Vlaanderen - De endpoints overschrijven](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-endpoints-overschrijven) voor meer informatie (v4 documentatie).\n\n## Applicatieve Links\n\nJe kan applicatieve links toevoegen aan de header door gebruik te maken van de `applicationLinks` property.<br/>\nDeze property verwacht een array met objecten van het volgende type:\n\n```js\ntype ApplicationMenuLink = {\n    label: string;\n    href: string;\n    icon?: string;\n    target?: string;\n};\n```\n\nDe `ApplicationMenuLink` TypeScript Type kan je zo importeren: `import { ApplicationMenuLink } from '@govflanders/vl-widget-global-header-types';`\n\nZie [global header interfaces | ApplicationMenuLink](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/interfaces/ApplicationMenuLink.html) voor de technische informatie.\n\nZie [Digitaal Vlaanderen - Header applicatieve links](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6508874105/Aanmeldmenu#Applicatieve-links) voor meer informatie (v4 documentatie).\n\n### Logout request\n\nSinds global header v5 is het niet meer nodig om automatische logout requests te rejecten. Onderstaande informatie gaat over de v4 implementatie (voorlopig behouden in de documentatie als referentie).\n\n> Bij het gebruik maken van sessies kan het logout request afgehandeld worden.<br/>\n> Dit kan handig zijn als je wilt dat de gebruiker niet automatisch wordt uitgelogd bv. bij inactiviteit of als de sessie verlopen is.\n>\n> Door gebruik te maken van het `reject-logout` attribuut worden alle logout requests afgewezen, behalve een logout request door de gebruiker.\n>\n> Met de `logoutCallback` property kan je een callback functie meegeven die wordt aangeroepen bij een logout request.<br/>\n> De logout reason wordt meegegeven aan de callback, door een boolean promise terug te geven kan je de logout accepteren of afwijzen.<br/>\n> De mogelijke reasons zijn: `inactivity` en `expired`.<br/>\n> Een logout request door de gebruiker wordt nooit afgewezen.\n>\n>\n> Zie [De aanvragen voor applicatie logout afhandelen via JavaScript](https://vlaamseoverheid.atlassian.net/wiki/spaces/IKPubliek/pages/6336119448/Aanmelden+met+eenvoudig+of+gekoppeld+toegangsbeheer#De-aanvragen-voor-applicatie-logout-afhandelen-via-JavaScript) voor meer informatie (v4 documentatie).\n\n\n## Referenties\n\n### Digitaal Vlaanderen\n\n[Documentatie Digitaal Vlaanderen - Header](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/mijn-burgerprofiel/koppelen-met-mijn-burgerprofiel-als-dienstenleverancier/technische-toolkit-voor-aansluitingen-door-dienstenleveranciers)\n\n[Global Header - interfaces](https://test.widgets.burgerprofiel.dev-vlaanderen.be/docs/global-header/modules.html)"
+          },
+          {
+            "id": "planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "title": "Planning/Van v2 naar v3 - beschikbaar",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.3.0/storybook/?path=/docs/planning-van-v2-naar-v3-beschikbaar--documentatie",
+            "added": "# Van v2 naar v3 - beschikbaar\n\n## Inhoudstafel\n\n- [Aanpak](#aanpak)\n- [Geïmpacteerde Web Componenten](#geïmpacteerde-web-componenten)\n\n\n## Aanpak\n\nOp deze pagina vind je een overzicht van de web componenten die geïmpacteerd zijn door de migratie van\nv2 naar v3 en die reeds beschikbaar zijn.\n\nHieronder vind je alfabetisch, per component, een tabel met daarin een overzicht van wat er in v2 en v3\nbeschikbaar is (zal zijn), je kan doorklikken op de naam om naar de documentatie van die component te gaan.\n\n- elke component is ontdubbeld, de legacy variant staat in een donkere rij, de next variant in de erop volgende\nwitte rij\n- voor de next variant staat gespecifieerd sinds welke release hij beschikbaar is\n- typisch hebben de legacy en de next variant dezelfde naam, maar niet altijd\n- momenteel zijn er enkel v1 en v2 releases, wat er zal gebeuren in v3 is informatief; er is nog geen v3 beschikbaar\n\n\n## Geïmpacteerde Web Componenten\n\n### Footer\n\n`Footer [legacy]` wordt vervangen door `Footer [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Footer [legacy]](/docs/components-compliance-footer--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Footer [next]](/docs/components-compliance-footer-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-footer-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-footer>`}</code></td>\n    </tr>\n</table>\n\n### Header\n\n`Header [legacy]` wordt vervangen door `Header [next]`.\n\n<table  style={{width: 100 + '%'}}>\n    <tr>\n        <th>Naam</th>\n        <th>Toestand</th>\n        <th>v2 - Artifact</th>\n        <th>v2 - Gebruik</th>\n        <th>v3 - Artifact</th>\n        <th>v3 - Gebruik</th>\n    </tr>\n    <tr>\n        <td>[Header [legacy]](/docs/components-compliance-header--documentatie)</td>\n        <td>deprecated</td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n        <td>-</td>\n        <td>-</td>\n    </tr>\n    <tr>\n        <td>[Header [next]](/docs/components-compliance-header-next--documentatie)</td>\n        <td>release v2.3.0</td>\n        <td>components/compliance/next</td>\n        <td><code>{`<vl-header-next>`}</code></td>\n        <td>components/compliance</td>\n        <td><code>{`<vl-header>`}</code></td>\n    </tr>\n</table>"
+          }
+        ]
+      }
+    }
+  ]
+}

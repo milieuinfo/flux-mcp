@@ -1,0 +1,346 @@
+{
+  "schema": 4,
+  "version": "2.20.0",
+  "date": "2026-09-18",
+  "previous": "2.19.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.19.0...v2.20.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 4,
+      "fix": 7,
+      "docs": 7,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 3,
+      "automatic": 6,
+      "none": 9
+    },
+    "a11y": 6
+  },
+  "components": [
+    {
+      "name": "vl-alert",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-alert--documentatie"
+    },
+    {
+      "name": "vl-breadcrumb",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie"
+    },
+    {
+      "name": "vl-breadcrumb-item",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie"
+    },
+    {
+      "name": "vl-cascader",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-cascader-cascader--documentatie"
+    },
+    {
+      "name": "vl-side-navigation-next",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-next-side-navigation-next--documentatie"
+    },
+    {
+      "name": "vl-side-sheet",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-side-sheet--documentatie"
+    },
+    {
+      "name": "vl-upload",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-form-upload--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "bbf991f",
+      "ticket": "FLUX-791",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-791 - form-control - submit op Enter werkt ook met het numerieke klavier",
+      "file": "tickets/FLUX-791-form-control.json"
+    },
+    {
+      "id": "2373023",
+      "ticket": "FLUX-794",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-794 - vl-upload - aria-invalid en gekende toegankelijkheidsbeperking",
+      "file": "tickets/FLUX-794-vl-upload.json"
+    },
+    {
+      "id": "b62fbe3",
+      "ticket": "FLUX-795",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-795 - Critical dependency waarschuwingen van cypress-axe onderdrukt",
+      "file": "tickets/FLUX-795.json"
+    },
+    {
+      "id": "5710cb7",
+      "ticket": "FLUX-796",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-796 - vl-side-navigation-next - auto-sectie rescan bij slotchange verbeterd",
+      "file": "tickets/FLUX-796-vl-side-navigation-next.json"
+    },
+    {
+      "id": "89c0f66",
+      "ticket": "FLUX-800",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-800 - vl-breadcrumb-item - focus outline enkel bij toetsenbordnavigatie",
+      "file": "tickets/FLUX-800-vl-breadcrumb-item-vl-breadcrumb-vl-cascader.json"
+    },
+    {
+      "id": "d68ff04",
+      "ticket": "FLUX-810",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-810 - vl-side-sheet, vl-cascader - focus management bij open side-sheet hersteld",
+      "file": "tickets/FLUX-810-vl-side-sheet-vl-cascader.json"
+    },
+    {
+      "id": "6854ffc",
+      "ticket": "FLUX-811",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-811 - vl-cascader - pijltje rechts bij link in label-slot",
+      "file": "tickets/FLUX-811-vl-cascader.json"
+    },
+    {
+      "id": "6899016",
+      "ticket": "FLUX-708",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-708 - migratie van npm naar pnpm",
+      "file": "tickets/FLUX-708.json"
+    },
+    {
+      "id": "9311ae6",
+      "ticket": "FLUX-800",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-800 - vl-breadcrumb - ellipsis attribuut voor lange breadcrumb items",
+      "file": "tickets/FLUX-800-vl-breadcrumb-item-vl-breadcrumb-vl-cascader.json"
+    },
+    {
+      "id": "c04a72c",
+      "ticket": "FLUX-800",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-800 - vl-cascader - breadcrumb opgebouwd met vl-breadcrumb en WCAG verbeteringen",
+      "file": "tickets/FLUX-800-vl-breadcrumb-item-vl-breadcrumb-vl-cascader.json"
+    },
+    {
+      "id": "f2a3414",
+      "ticket": "FLUX-809",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-809 - vl-alert - banner variant",
+      "file": "tickets/FLUX-809-vl-alert.json"
+    },
+    {
+      "id": "a6116b6",
+      "ticket": null,
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "documentatie van de lokale npm registry configuratie",
+      "file": "tickets/a6116b6.json"
+    },
+    {
+      "id": "4d555a6",
+      "ticket": "FLUX-708",
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "FLUX-708 - recept 'Van npm naar pnpm' voor afnemers",
+      "file": "tickets/FLUX-708.json"
+    },
+    {
+      "id": "b479b90",
+      "ticket": "FLUX-776",
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "FLUX-776 - Flux-AI - analyse herwerkt naar de nieuwe AI-strategie",
+      "file": "tickets/FLUX-776-Flux-AI.json"
+    },
+    {
+      "id": "f18485b",
+      "ticket": "FLUX-776",
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "FLUX-776 - Flux-AI - Frontend Uniformisering via AI",
+      "file": "tickets/FLUX-776-Flux-AI.json"
+    },
+    {
+      "id": "293c741",
+      "ticket": "FLUX-787",
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "FLUX-787 - blur-validatie - beschrijving ingekort en documentatiepagina rechtgezet",
+      "file": "tickets/FLUX-787-blur-validatie.json"
+    },
+    {
+      "id": "782a93c",
+      "ticket": "FLUX-802",
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "FLUX-802 - componenten overzicht - WCAG status",
+      "file": "tickets/FLUX-802-componenten-overzicht.json"
+    },
+    {
+      "id": "63a4c95",
+      "ticket": null,
+      "type": "docs",
+      "derivedImpact": "none",
+      "text": "planning 2026 toegevoegd aan historiek & toekomst",
+      "file": "tickets/63a4c95.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-791",
+      "file": "tickets/FLUX-791-form-control.json",
+      "components": [],
+      "entries": [
+        "bbf991f"
+      ]
+    },
+    {
+      "ticket": "FLUX-794",
+      "file": "tickets/FLUX-794-vl-upload.json",
+      "components": [
+        "vl-upload"
+      ],
+      "entries": [
+        "2373023"
+      ]
+    },
+    {
+      "ticket": "FLUX-795",
+      "file": "tickets/FLUX-795.json",
+      "components": [],
+      "entries": [
+        "b62fbe3"
+      ]
+    },
+    {
+      "ticket": "FLUX-796",
+      "file": "tickets/FLUX-796-vl-side-navigation-next.json",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "entries": [
+        "5710cb7"
+      ]
+    },
+    {
+      "ticket": "FLUX-800",
+      "file": "tickets/FLUX-800-vl-breadcrumb-item-vl-breadcrumb-vl-cascader.json",
+      "components": [
+        "vl-breadcrumb-item",
+        "vl-breadcrumb",
+        "vl-cascader"
+      ],
+      "entries": [
+        "89c0f66",
+        "9311ae6",
+        "c04a72c"
+      ]
+    },
+    {
+      "ticket": "FLUX-810",
+      "file": "tickets/FLUX-810-vl-side-sheet-vl-cascader.json",
+      "components": [
+        "vl-side-sheet",
+        "vl-cascader"
+      ],
+      "entries": [
+        "d68ff04"
+      ]
+    },
+    {
+      "ticket": "FLUX-811",
+      "file": "tickets/FLUX-811-vl-cascader.json",
+      "components": [
+        "vl-cascader"
+      ],
+      "entries": [
+        "6854ffc"
+      ]
+    },
+    {
+      "ticket": "FLUX-708",
+      "file": "tickets/FLUX-708.json",
+      "components": [],
+      "entries": [
+        "6899016",
+        "4d555a6"
+      ]
+    },
+    {
+      "ticket": "FLUX-809",
+      "file": "tickets/FLUX-809-vl-alert.json",
+      "components": [
+        "vl-alert"
+      ],
+      "entries": [
+        "f2a3414"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/a6116b6.json",
+      "components": [],
+      "entries": [
+        "a6116b6"
+      ]
+    },
+    {
+      "ticket": "FLUX-776",
+      "file": "tickets/FLUX-776-Flux-AI.json",
+      "components": [],
+      "entries": [
+        "b479b90",
+        "f18485b"
+      ]
+    },
+    {
+      "ticket": "FLUX-787",
+      "file": "tickets/FLUX-787-blur-validatie.json",
+      "components": [],
+      "entries": [
+        "293c741"
+      ]
+    },
+    {
+      "ticket": "FLUX-802",
+      "file": "tickets/FLUX-802-componenten-overzicht.json",
+      "components": [],
+      "entries": [
+        "782a93c"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/63a4c95.json",
+      "components": [],
+      "entries": [
+        "63a4c95"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

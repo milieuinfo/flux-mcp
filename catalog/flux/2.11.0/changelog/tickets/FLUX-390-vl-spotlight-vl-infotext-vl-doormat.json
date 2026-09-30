@@ -1,0 +1,76 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-390",
+  "entries": [
+    {
+      "id": "4709e78",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-390"
+      ],
+      "scope": "vl-spotlight, vl-infotext, vl-doormat",
+      "components": [
+        "vl-spotlight",
+        "vl-infotext",
+        "vl-doormat"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "link-label & external toegevoegd",
+      "text": "FLUX-390 - vl-spotlight, vl-infotext, vl-doormat - link-label & external toegevoegd",
+      "commits": [
+        {
+          "sha": "4709e780c3c90605a2abaf6213eca02a9ddad000",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4709e780c3c90605a2abaf6213eca02a9ddad000"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 5,
+          "styles": 3,
+          "docs": 2,
+          "storybook": 6,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/block/doormat/vl-doormat.component.ts",
+          "libs/components/src/block/doormat/vl-doormat.css.ts",
+          "libs/components/src/block/doormat/vl-doormat.defaults.ts",
+          "libs/components/src/block/infotext/vl-infotext.component.ts",
+          "libs/components/src/block/infotext/vl-infotext.css.ts",
+          "libs/components/src/block/infotext/vl-infotext.defaults.ts",
+          "libs/components/src/block/spotlight/vl-spotlight.component.ts",
+          "libs/components/src/block/spotlight/vl-spotlight.flux-css.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-doormat--documentatie",
+            "title": "Components - Block/doormat",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-doormat--documentatie",
+            "added": "### Externe link met aria-label"
+          },
+          {
+            "id": "components-block-infotext--documentatie",
+            "title": "Components - Block/infotext",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-infotext--documentatie",
+            "added": "### Externe link met aria-label"
+          },
+          {
+            "id": "components-block-spotlight--documentatie",
+            "title": "Components - Block/spotlight",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/components-block-spotlight--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

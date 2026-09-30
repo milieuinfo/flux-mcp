@@ -1,0 +1,51 @@
+{
+  "schema": 4,
+  "version": "2.11.0",
+  "ticket": "FLUX-306",
+  "entries": [
+    {
+      "id": "f9ecc3c",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-306"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "z-index attribuut toegevoegd aan VlMapLayer",
+      "text": "FLUX-306 - z-index attribuut toegevoegd aan VlMapLayer",
+      "commits": [
+        {
+          "sha": "f9ecc3ca461fba66dc0d3d38c3903b7fc8466392",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/f9ecc3ca461fba66dc0d3d38c3903b7fc8466392"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/map/src/components/layer/vl-map-layer.ts"
+        ],
+        "storybook": [
+          {
+            "id": "map-layer-vector-layer-features-layer--documentatie",
+            "title": "map/layer/vector-layer/features-layer",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.11.0/storybook/?path=/docs/map-layer-vector-layer-features-layer--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

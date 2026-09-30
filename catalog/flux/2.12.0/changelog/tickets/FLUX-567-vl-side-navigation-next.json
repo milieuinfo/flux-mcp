@@ -1,0 +1,65 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-567",
+  "entries": [
+    {
+      "id": "1f34af2",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-567"
+      ],
+      "scope": "vl-side-navigation-next",
+      "components": [
+        "vl-side-navigation-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "child-spacing attribuut toegevoegd",
+      "text": "FLUX-567 - vl-side-navigation-next - child-spacing attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "1f34af240f2808934066b557e2d885f010572c47",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/1f34af240f2808934066b557e2d885f010572c47"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 2,
+          "storybook": 4,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation-layout.defaults.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.css.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.component.ts",
+          "libs/components/src/block/next/side-navigation/vl-side-navigation.defaults.ts",
+          "libs/styles/src/theming/var/vl-components.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-next-side-navigation--documentatie",
+            "title": "Components - Block/next/side-navigation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-next-side-navigation--documentatie",
+            "added": null
+          },
+          {
+            "id": "components-block-next-side-navigation-layout--documentatie",
+            "title": "Components - Block/next/side-navigation-layout",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-next-side-navigation-layout--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

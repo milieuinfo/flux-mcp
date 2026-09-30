@@ -1,0 +1,85 @@
+{
+  "schema": 4,
+  "version": "2.2.0",
+  "ticket": "FLUX-81",
+  "entries": [
+    {
+      "id": "c7405bf",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-81"
+      ],
+      "scope": "vl-form-next",
+      "components": [
+        "vl-form-next"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "introductie setFormData() functie om form data in te stellen",
+      "text": "FLUX-81 - vl-form-next - introductie setFormData() functie om form data in te stellen",
+      "commits": [
+        {
+          "sha": "c7405bf020fe6c2f12af47b6e504d167c299ba13",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/c7405bf020fe6c2f12af47b6e504d167c299ba13"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Storybook documentatie verbeterd voor form-data en de vl-checkbox component. Cypress tests toegevoegd. tsconfig.json in apps/storybook aangepast. Verbeteringen in de vl-select & vl-select-rich. JSON.parse(JSON.stringify(...)) vervangen door structuredClone. In de vl-select-rich, wordt nu ook setValue aangeroepen bij het verwijderen en toevoegen van selected options. In de vl-select, is `value` nu ook aanpasbaar van buitenaf.",
+        "published": true,
+        "areas": {
+          "code": 7,
+          "docs": 5,
+          "storybook": 1,
+          "examples": 1,
+          "tests": 3
+        },
+        "publishedFiles": [
+          "libs/components/src/form/index.ts",
+          "libs/components/src/form/select-rich/vl-select-rich.component.ts",
+          "libs/components/src/form/select/vl-select.component.ts",
+          "libs/components/src/form/utils/form-data-getter.ts",
+          "libs/components/src/form/utils/form-data-setter.ts",
+          "libs/components/src/form/utils/form.util.ts",
+          "libs/components/src/form/utils/index.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-checkbox--documentatie",
+            "title": "Components - Form/checkbox",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-checkbox--documentatie",
+            "added": "### FormData\n\nDe value van een checkbox werkt op een andere manier dan de value van een input.\n- Als een checkbox gecheckt is, dan pas komt de value van de checkbox mee in de data.\n- Als een checkbox niet gecheckt is, dan is er geen value voor de checkbox in de FormData, ook al is de value van de checkbox ingesteld.\n- Als er geen value is ingesteld, dan krijgt de checkbox de value `on` mee in de FormData als de checkbox gecheckt is.\n\nDe werking volgt het native gedrag (en gebruikt ook een native checkbox input).\n\nMeer info hier: [Checkbox - Value op MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value)"
+          },
+          {
+            "id": "components-form-select--documentatie",
+            "title": "Components - Form/select",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/components-form-select--documentatie",
+            "added": "### `value` attribuut\n\nJe kan ook de geselecteerde optie(s) van de select component instellen door het `value` attribuut te gebruiken.<br/>"
+          },
+          {
+            "id": "ontwerp-form-demo--documentatie",
+            "title": "Ontwerp/Form/Demo",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/ontwerp-form-demo--documentatie",
+            "added": "> Uitgebreid voorbeeld hoe je form data eenvoudiger kan parsen en instellen vind je op de [Form Data pagina](/docs/ontwerp-form-form-data--documentatie)."
+          },
+          {
+            "id": "ontwerp-form-form-data--documentatie",
+            "title": "Ontwerp/Form/Form Data",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/ontwerp-form-form-data--documentatie",
+            "added": " Wanneer je `FormData.getAll()` gebruikt, krijg je dan weer altijd een array van waardes terug, ook voor inputs die maar 1 waarde kunnen bevatten.\n\n[…]\n\nHet gebruik is niet intuïtief en kan leiden tot verwarring, vooral wanneer je werkt met form controls die meerdere\nwaardes kunnen bevatten, zoals een multiselect.\n\n[…]\n\n## formaat\n\n[…]\n\nDaarom leek het ons aangewezen dat je altijd met een consistent object werkt voor de form data:\n- voor form controls met 1 waarde, krijg je altijd een enkele waarde\n- voor form controls met meerdere waardes (bv. multiselect), krijg je altijd een array van waardes\n\nDan kun je op een vereenvoudigde manier de form data verwerken,\nzonder dat je rekening moet houden met het type van de form control.\n\nbv.\n```js\n{\n          \"naam\": \"Dehbi\",\n          \"startDate\": \"2025-07-11\"\n}\n```\n\n## parseFormData(formElement)\n\nWe hebben een helper functie voorzien om de data uit de form te parsen naar een object met de waardes van de velden,\nin het voorgestelde formaat zoals hierboven beschreven. Intern gebruikt deze functie\nde [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API en werkt die ook met native form controls.\n\n[…]\n\n- `multiFormControlNames?: string[]`: (optioneel) een array van form control namen die meerdere waardes kunnen bevatten.\nAls deze parameter niet wordt meegegeven, dan zoekt de functie zelf naar form controls die meerdere waardes kunnen\nbevatten (bv. vl-select-rich met `multiple` attribuut...). Deze parameter is in de meeste gevallen niet nodig.\n\n[…]\n\n### Voorbeeld resultaat\n\n```js\n{\n          \"naam\": \"Dehbi\",\n          \"startDate\": \"2025-07-11\"\n}\n```\n\n## setFormData(formElement, data)\n\nWe hebben een helper functie voorzien om de data in te stellen op een form element, zodat je op een eenvoudiger manier\n de waardes van de form controls kan aanpassen. Deze functie is compatibel met al onze vl-form componenten maar ook met\nnative HTML form controls.\n\nDeze functie aanvaard 2 parameters:\n- `formElement: Form`: het Form element waarvan je de data wil zetten\n- `data: { [p: string]: FormDataEntryValue[] | File | string }`: een object met de waardes van de velden\n\n### Gebruik\n\n```js\n```\n\n```html\n<form id=\"example-form\">\n    <input type=\"text\" name=\"naam\" />\n    <select name=\"hobbies\" multiple>\n        <option value=\"value1\">Value 1</option>\n        <option value=\"value2\">Value 2</option>\n        <option value=\"value3\">Value 3</option>\n    </select>\n    <input type=\"checkbox\" name=\"waarheidsgetrouw\" value=\"spreekt-de-waarheid\">\n</form>\n```\n\n```typescript\nconst formElement = document.getElementById('example-form') as HTMLFormElement;\n// stel de form data in\nsetFormData(formElement, {\n    naam: 'Dehbi',\n    hobbies: ['Drummen', 'Zwemmen']\n    });\n```\n\n<vl-alert type=\"info\" title=\"Ter info\" icon=\"info-circle\" size=\"small\" custom-css=\".vl-alert{margin-bottom: 3rem;}\">\n {`\n De parameter om form data in te stellen bij setFormData() is hetzelfde formaat als de data die parseFormData()\n  functie retourneert.\n `}\n</vl-alert>\n\n### Checkbox\n\nDe checkbox werkt op een andere manier dan de andere form controls.\nDe value die meegegeven wordt gaat het `checked` attribuut van de checkbox bepalen maar gaat nooit de `value` van de checkbox wijzigen.\n\n- Om een checkbox aan te vinken, dien je de value mee te geven die op de checkbox ingesteld staat. Als je de verkeerde string meegeeft wordt niets veranderd.\n- Om een checkbox uit te vinken kan je de value `null` of `undefined` meegeven.\n- Je kan tevens ook ofwel een boolean meegeven, waarbij `true` de checkbox aanvinkt en `false` de checkbox uitvinkt.\n\nMeer info vind je bij de [Checkbox Documentatie - FormData](?path=/docs/components-form-checkbox--documentatie#formdata).\n\n## Voorbeeld\n\nDit component toont een formulier met verschillende types van form controls. Het formulier kan worden ingevuld met\n[setFormData()](#setformdataformelement-data) en de data kan worden opgehaald met\n [parseFormData()](#parseformdataformelement) (die wordt dan onderaan de form geprint).\n\n- De data kan worden ingesteld met de `Stel in` knop. ([setFormData()](#setformdataformelement-data))\n- De data kan worden opgehaald met de `Verstuur` knop. ([parseFormData()](#parseformdataformelement))"
+          },
+          {
+            "id": "ontwerp-form-validation--documentatie",
+            "title": "Ontwerp/Form/Validation",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.2.0/storybook/?path=/docs/ontwerp-form-validation--documentatie",
+            "added": "> Voorbeeld om custom validatie te schrijven vind je op de [Form Custom Validation pagina](/docs/ontwerp-form-custom-validation--documentatie)."
+          }
+        ]
+      }
+    }
+  ]
+}

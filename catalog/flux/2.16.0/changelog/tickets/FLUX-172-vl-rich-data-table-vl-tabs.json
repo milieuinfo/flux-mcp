@@ -1,0 +1,81 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-172",
+  "entries": [
+    {
+      "id": "35dd1e4",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-172"
+      ],
+      "scope": "vl-rich-data-table",
+      "components": [
+        "vl-rich-data-table"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "streepje (indeterminate status) in selectie-header terug zichtbaar",
+      "text": "FLUX-172 - vl-rich-data-table - streepje (indeterminate status) in selectie-header terug zichtbaar",
+      "commits": [
+        {
+          "sha": "35dd1e457daaef8e26be7d1ed65217860e9e26e5",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/35dd1e457daaef8e26be7d1ed65217860e9e26e5"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De 'selecteer alles'-checkbox toonde geen streepje meer wanneer slechts een deel van de rijen geselecteerd was. De code zette indeterminate rechtstreeks op de interne input in de shadow-DOM; nu het streepje via het indeterminate attribuut van vl-checkbox gerenderd wordt, had dat geen effect meer.",
+        "published": false,
+        "areas": {
+          "storybook": 1,
+          "tests": 1
+        },
+        "publishedFiles": [],
+        "storybook": []
+      }
+    },
+    {
+      "id": "7713e98",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-172"
+      ],
+      "scope": "vl-tabs",
+      "components": [
+        "vl-tabs"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "mobiele toggle niet langer zichtbaar op desktop",
+      "text": "FLUX-172 - vl-tabs - mobiele toggle niet langer zichtbaar op desktop",
+      "commits": [
+        {
+          "sha": "7713e98995c21b7730eabdac18d44ca30a4599c8",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/7713e98995c21b7730eabdac18d44ca30a4599c8"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De basis-class 'vl-icon' op de toggle-button zorgde ervoor dat de govflanders .vl-icon { display: inline } regel (via vlLegacyStyles, de laatste in de styles-array) won van .vl-tabs__toggle { display: none }. Daardoor was de mobiele toggle ook op desktop zichtbaar, zonder te werken.\n\nEnkel de modifier 'vl-icon--arrow' behouden zodat de glyph-by-name aanpak intact blijft zonder het display probleem.",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/block/tabs/vl-tabs.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

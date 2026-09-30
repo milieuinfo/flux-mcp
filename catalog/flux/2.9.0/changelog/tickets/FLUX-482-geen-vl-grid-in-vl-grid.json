@@ -1,0 +1,51 @@
+{
+  "schema": 4,
+  "version": "2.9.0",
+  "ticket": "FLUX-482",
+  "entries": [
+    {
+      "id": "c735321",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-482"
+      ],
+      "scope": "geen vl-grid in vl-grid",
+      "components": [],
+      "topics": [
+        "geen vl-grid in vl-grid"
+      ],
+      "mentions": [
+        "vl-grid"
+      ],
+      "summary": "documentatie",
+      "text": "FLUX-482 - geen vl-grid in vl-grid - documentatie",
+      "commits": [
+        {
+          "sha": "c7353210ccecd2490761af5c0857bdfb8706aa2d",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/c7353210ccecd2490761af5c0857bdfb8706aa2d"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 1
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "styles-layout-grid--documentatie",
+            "title": "Styles/Layout (afnemers)/grid",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.9.0/storybook/?path=/docs/styles-layout-grid--documentatie",
+            "added": "- [Niet: vl-grid in vl-grid](#niet-vl-grid-in-vl-grid)\n\n[…]\n\n## Niet: vl-grid in vl-grid\n\nEen 12-kolom grid systeem is bedoeld als layout framework voor je pagina, vaak om responsiviteit te ondersteunen.\nAls je binnen één grid-cel opnieuw een volledig 12-kolom grid nodig hebt, suggereert dat meestal één van deze zaken:\n\n- **je cel is te complex** - misschien moet die content een eigen component zijn met interne layout-logica die niet\n  via het grid-systeem werkt\n- **je design is inconsistent** - als verschillende niveaus andere grid-opdeling nodig hebben, heb je misschien geen\n  echt grid-systeem maar ad-hoc layouts\n- **je hebt geen vl-grid nodig maar vl-group** - binnen een kolom wil je vaak gewoon items naast elkaar, daarvoor is\n  een vol grid overkill\n\n> Opmerking: Technisch is er niets mis met een (css) grid in een (css) grid te steken. Conceptueel is de vl-grid\n  component echter een concrete technische implementatie van een 12-kolom layout, door die te nesten krijg je een\n  144-kolom layout, dat is nooit de bedoeling!"
+          }
+        ]
+      }
+    }
+  ]
+}

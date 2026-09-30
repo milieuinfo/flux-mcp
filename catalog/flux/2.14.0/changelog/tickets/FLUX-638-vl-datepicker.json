@@ -1,0 +1,55 @@
+{
+  "schema": 4,
+  "version": "2.14.0",
+  "ticket": "FLUX-638",
+  "entries": [
+    {
+      "id": "e9c69d6",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-638"
+      ],
+      "scope": "vl-datepicker",
+      "components": [
+        "vl-datepicker"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "native ondersteuning geschrapt",
+      "text": "FLUX-638 - vl-datepicker - native ondersteuning geschrapt",
+      "commits": [
+        {
+          "sha": "e9c69d66f46fadbb8a7723b675d35eeb57493ad4",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/e9c69d66f46fadbb8a7723b675d35eeb57493ad4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "Na evaluatie bleek dat de native variant verschillende problemen had. Er is geen indicatie dat deze functionaliteit gebruikt werd - ze werkt fundamenteel niet. Dit was ook de enige component die native ondersteuning aanbood. We schrappen dus de native ondersteuning volledig.",
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/form/datepicker/vl-datepicker.component.ts",
+          "libs/components/src/form/datepicker/vl-datepicker.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-form-datepicker--documentatie",
+            "title": "Components - Form/datepicker",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.14.0/storybook/?path=/docs/components-form-datepicker--documentatie",
+            "added": null
+          }
+        ]
+      }
+    }
+  ]
+}

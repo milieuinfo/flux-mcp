@@ -1,0 +1,58 @@
+{
+  "schema": 4,
+  "version": "2.12.0",
+  "ticket": "FLUX-546",
+  "entries": [
+    {
+      "id": "21a542f",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-546"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "vlProza directive toegevoegd",
+      "text": "FLUX-546 - vlProza directive toegevoegd",
+      "commits": [
+        {
+          "sha": "21a542f27b520ca0d57c2c20e1746045b833781f",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/21a542f27b520ca0d57c2c20e1746045b833781f"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "- Nieuwe `vlProza` directive voor gebruik van Proza berichten als attribuut waarden in Lit templates\n- Documentatie en voorbeelden toegevoegd inclusief configuratie via `FluxConfig`\n- Cypress tests toegevoegd voor validatie van gedrag en foutafhandeling",
+        "published": true,
+        "areas": {
+          "code": 1,
+          "docs": 2,
+          "storybook": 1,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/proza-message/vl-proza.directive.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-block-proza-message-proza-directive--documentatie",
+            "title": "Components - Block/proza-message/proza-directive",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/components-block-proza-message-proza-directive--documentatie",
+            "added": "# Proza Directive (`vlProza`)\n## Doel\n## Import\n## Setup\n## Gebruik\n### Basis\n### Met parameters\n### Met domain override\n## API\n### `vlProza(code, options?)`\n### Default domein via `FluxConfig`\n## Verschil met `vl-proza-message`\n## Referenties\n(157 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "recepten-proza-inline-gebruik--documentatie",
+            "title": "Recepten/Proza inline gebruik",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.12.0/storybook/?path=/docs/recepten-proza-inline-gebruik--documentatie",
+            "added": "# Proza inline gebruik (`vlProza`)\n## Setup\n### 1. Default domein instellen\n### 2. Import\n## Voorbeelden\n### Alert met proza titel\n### Alert met proza titel en parameters\n### Ander domein voor een specifieke aanroep\n### Fallback tekst tijdens laden\n### Combinatie met preloader\n## Verschil met de `vl-proza-message` component\n## Migratie van eigen implementatie\n(156 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          }
+        ]
+      }
+    }
+  ]
+}

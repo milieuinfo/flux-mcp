@@ -1,0 +1,132 @@
+{
+  "schema": 4,
+  "version": "2.0.0",
+  "ticket": "UIG-3297",
+  "entries": [
+    {
+      "id": "a14a6a0",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "UIG-3297"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "correctie Storybook documentatie",
+      "text": "UIG-3297 - correctie Storybook documentatie",
+      "commits": [
+        {
+          "sha": "a14a6a0429141d0beaacd933959f393b8eab35d4",
+          "url": "https://github.com/milieuinfo/uigov-web-components/commit/a14a6a0429141d0beaacd933959f393b8eab35d4"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "none",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": false,
+        "areas": {
+          "docs": 20,
+          "storybook": 6
+        },
+        "publishedFiles": [],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "        \"@domg-wc/components\": \"2.0.0\",\n        \"@domg-wc/map\": \"2.0.0\"\n\n[…]\n\n> De minimaal op te nemen package is: __'@domg-wc/components'__, de package __'@domg-wc/map'__ bevat de kaart\n  functionaliteit en is optioneel.\n\n[…]\n\nOm een web-component te gebruiken in je html dient hij geregistreerd te worden in de browser. Er zijn 2\n\n[…]\n\nshadow DOM. Daarnaast wordt er globale styling geïnjecteerd: algemene (font, body, ...) en layout (grid, group, ...)\nstyling.\n\n[…]\n\n[uigov-builds](https://milieuinfo.github.io/uigov-builds/release-v2/latest/storybook)"
+          },
+          {
+            "id": "afnemen-artifacts--documentatie",
+            "title": "Afnemen/Artifacts",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-artifacts--documentatie",
+            "added": "__components__ en __map__ bevatten de web-componenten. De web-componenten nodig voor legacy toepassingen zijn ook\nbeschikbaar via de CDN, zie ['fat-lib: domg-wc-compliance'](#fat-lib-domg-wc-compliance).\n\n[…]\n\n## @domg-wc/styles\n\n__styles__ bevat basis css: zowel de css die globaal op het document gezet wordt als de layout specifiek css\n\n[…]\n\n## @domg-wc/components\n\n[…]\n\n[LitElement](https://lit.dev/docs/api/LitElement/); het doel op (lange) termijn is van alles (ook van de compliance\n en map) LitElementen te maken.\n\n[…]\n\n- steeds te gebruiken als custom tag; bvb. `<vl-breadcrumb></vl-breadcrumb>`\n\n[…]\n\nDe componenten zijn onderverdeeld in 4 soorten:\n\n[…]\n\n- __atom__ : kleine, native componenten, o.a. button, icon, link, ...\n- __block__ : de typische bouwstenen met middelmatige complexiteit,  o.a. accordion, alert, ...\n- __compliance__ : bevat de Departement Omgeving specifieke componenten; o.a. header, footer, privacy, ...\n- __form__ : de input componenten; typisch in een formulier te gebruiken"
+          },
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "export const v1AfsplitsRelease = \"1.48.0\";\nexport const v1StorybookLink = `https://milieuinfo.github.io/uigov-builds/release/${v1AfsplitsRelease}/storybook/?path=`;\nexport const v1AfsplitsReleaseVersie = `v${v1AfsplitsRelease}`;\n\n\n# Migratie v2 - Aanpak\n\n## Inhoudstafel\n\n- [Aanpak Overzicht](#aanpak-overzicht)\n- [Aanpak Detail](#aanpak-detail)\n\n\n## Aanpak Overzicht\n\nDe makkelijkste manier om te migreren naar v2 is als volgt:\n\n1. migreer minstens naar de v1 release waarvan v2 afgesplitst is: {v1AfsplitsReleaseVersie} - hoger mag ook\n2. vervang de legacy componenten door hun next variant\n3. migreer naar de v2 release (best ineens naar de nieuwste v2 versie)\n\nOp deze manier kan je tijdens de migratie de legacy componenten blijven gebruiken en ze geleidelijk vervangen door\nhun `next`-variant. Nadat alle legacy componenten vervangen zijn door hun `next`-variant kan je de migratie naar\nv2 uitvoeren. Die stap bestaat dan grotendeels uit het verwijderen van de `-next` suffix en het aanpassen van de\n imports.\n\n\n## Aanpak Detail\n\n### 1. Migratie naar de nieuwste v1 release\n\nDe v2 versie is gestart op basis van {v1AfsplitsReleaseVersie} - deze bevat de laatste bugfixes en verbeteringen van\nde legacy componenten.\n\nHet heeft de voorkeur om {v1AfsplitsReleaseVersie} te gebruiken als basis voor de migratie naar v2, deze release bevat\n(voor de componenten die behouden bleven) dezelfde functionaliteit als de eerste v2 release. Op die manier zullen de\nverdere stappen in de migratie eenvoudiger zijn.\n\n### 2. Legacy componenten vervangen door hun next variant\n\nDe legacy componenten zijn componenten die geschrapt worden, ze moeten vervangen worden door de equivalente\n[next-component](/docs/afnemen-migratie-v2-impact--documentatie) of\n[next-layout](/docs/styles-concept--documentatie#layout-afnemers).\n\n### 3. Migratie naar de v2 release\n\nFunctioneel (voor de behouden componenten) loopt v2.0.0 gelijk met v1 release {v1AfsplitsReleaseVersie}.\n\nVolgende wijzigingen werden doorgevoerd in v2 tov v1:\n\n- alle legacy componenten uit v1 werden verwijderd\n- alle `-next` componenten zijn gepromoveerd: deze hebben geen `-next` suffix meer en overal werd de `data-vl-`-prefix\n verwijderd (bij alle attributen).\n- de [package structuur](/docs/bijdragen-opzet-structuur--documentatie) wijzigde, dit heeft impact op de imports\n\nDe te ondernemen acties om te migreren zijn dus:\n\n- verwijder de `-next` suffix van de componenten\n- pas de imports aan\n- verwijder de `data-vl-` prefix van de attributen"
+          },
+          {
+            "id": "afnemen-migratie-v2-faq--documentatie",
+            "title": "Afnemen/Migratie v2 - FAQ",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie",
+            "added": "# Migratie v2 - FAQ\n\n<br/>\n## Kan ik direct importeren of moet ik de registerWebComponents functie gebruiken?\n\n**Antwoord:** Beide methoden worden ondersteund:\n\n- Directe import (auto-registratie):\n    ```js\n    ```\n- Expliciete registratie:\n  ```js\n  registerWebComponents([VlButtonComponent]);\n  ```\n\nDe expliciete registratie wordt aangeraden om tree-shaking te optimaliseren en alleen de benodigde componenten te laden.\n\n\n<br/>\n## Blijft de fat-js bundel beschikbaar?\n\n**Antwoord:** De fat-js bundel blijft beschikbaar voor legacy toepassingen. In v2 is deze aangepast om de nieuwe componentimplementaties te gebruiken, maar de API blijft grotendeels hetzelfde. Je kunt deze gebruiken via de CDN:\n\n```html\n<script src=\"https://cdn.omgeving.vlaanderen.be/domg/domg-wc/2.0.0/domg-wc-2.0.0.min.js\"></script>\n```\n\nEchter, voor nieuwe projecten wordt het aangeraden om de npm-packages te gebruiken in plaats van de fat-js bundel.\n\n\n<br/>\n## De event listeners werken niet meer.\n\n**Probleem:** Event listeners die luisteren naar v1 events zoals `vl-checked`, `vl-input` of `vl-select` werken niet meer.\n\n**Oplossing:** Update de event namen naar de nieuwe v2 namen (zie desbetreffende documentatie).\nMet name voor de form-gerelateerde componenten zijn de meeste events nu gestandaardiseerd naar `vl-change` en `vl-input`\n\nVroeger was er geen mogelijkheid om op basis van events te weten, of de gebruiker de value veranderde,\nof als het programmatorisch gebeurde, in beide gevallen werd hetzelfde event gedispatcht.\n\nNu voorzien we aparte `vl-input` en `vl-change` events. Gelijkaardig aan de HTML-standaard,\nrepresenteert `vl-input` event gebruikersinteractie terwijl `vl-change` event voor eender welke wijziging wordt\nvoorzien (zowel gebruikersinteractie als programmatorische wijziging).\n\n```javascript\n// V1\nradio.addEventListener('vl-checked', (event) => { ... });\n\n// V2\nradio.addEventListener('vl-change', (event) => { console.log('bij elke wijziging') });\nradio.addEventListener('vl-input', (event) => { console.log('enkel bij gebruikersinteractie') });\n```\n\n\n<br/>\n## Attributen-wijzigingen\n\n**Probleem:** Sommige attributen zijn gewijzigd van naam of format.\n\n**Oplossing:** Raadpleeg de component-specifieke documentatie voor een gedetailleerd overzicht van wijzigingen per\ncomponent.\n\nAlgemene wijzigingen:\n\n- `data-vl-*`-attributen verliezen de `data-vl-`-prefix; bv. `data-vl-size=\"4\"` → `size=\"4\"`\n- alle componenten met `is=\"\"` attributen zijn geschrapt; bv. `is=\"vl-button-pill\"` → `<vl-pill clickable>`"
+          },
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "# Migratie v2 - Impact\n## Geïmpacteerde Web Componenten\n### Accordion List\n### Action Group\n### Annotation\n### Body\n### Button\n### Button Pill\n### Checkbox\n### Code Preview\n### Content block\n### Datepicker\n### Data Table\n### Doormat\n### Form\n### Form Annotation\n### Form Grid\n### Form Label\n### Form Validation\n### Form Validation Message / Form Message\n### Grid\n### Group\n### Http Error Message\n### Icon\n### Image\n### Infotext\n### Input Field\n### Input Group\n### Link\n### Paragraph\n### Link List\n### Margin\n### Padding\n### Pattern\n### Progress Bar / Progress Indicator\n### Properties\n### Radio Group / Radio\n### Search Filter\n### Search Result\n### Section\n### Select / MultiSelect / Select Rich\n### Select Location\n### Separator\n### Spacer\n### Stacked\n### Side Navigation\n### Steps / Step\n### Tabs / Tabs Pane\n### Text\n### Textarea / Textarea Rich\n### Title\n### Toaster\n### Upload\n### Video Player\n(1987 regels toegevoegd of gewijzigd; lees de pagina zelf)"
+          },
+          {
+            "id": "beheren-repositories--documentatie",
+            "title": "Beheren/Repositories",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/beheren-repositories--documentatie",
+            "added": "Er zijn 3 repositories van Flux:\n\n[…]\n\ntoepassingen. Dit is een mono-repo.\n\n[…]\n\ngepubliceerd op de CDN van Departement Omgeving. Code zal dus gebruik maken van versies gepubliceerd op de CDN.\n\n[…]\n\nVolgende assets zitten in deze repo: __govflanders-font__, __govflanders-style__ en __tinymce__\n\n[…]\n\nverschillende packages die .scss bestanden bevatten. De Flux web-componenten hebben vaak een shadow-dom, dit heeft\n\n[…]\n\naangeboden op de CDN.<br/>\nOnder `tinymce` zit de theming voor v5.10.6, onder `tinymce-next` deze voor v6.8.3."
+          },
+          {
+            "id": "beheren-storybook-publicatie--documentatie",
+            "title": "Beheren/Storybook Publicatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/beheren-storybook-publicatie--documentatie",
+            "added": "# Storybook Publicatie\n\n## Inhoudstafel\n\n- [Beschrijving](#beschrijving)\n- [Structuur](#structuur)\n\n\n## Beschrijving\n\nDocumentatie wordt geversioneerd gepubliceerd op https://milieuinfo.github.io/uigov-builds, de structuur van die\n[repo](https://github.com/milieuinfo/uigov-builds) staat hier beschreven.\n\n\n## Structuur\n\n```\nuigov-builds/\n├─ develop/\n│  ├─ 2.0.0-beta.2/ [beta versies worden enkel op aanvraag toegevoegd]\n│  │  ├─ artifacts/ [beta artifacts]\n│  │  │  ├─ domg-wc-common-2.0.0.beta.2.tgz\n│  │  │  ├─ domg-wc-components-2.0.0.beta.2.tgz\n│  │  │  ...\n│  │  ├─ storybook/ [beta storybook]\n│  ├─ latest/\n│  │  ├─ storybook/\n│  │  │  ├─ index.html [redirects naar de recentste beta storybook]\n│  ├─ index.html [landingspagina met links naar de verschillende develop versies]\n├─ release/ [een sub-folder per ge-releasde versie]\n│  ├─ 1.0.0/\n│  │  ├─ storybook/\n│  │  ...\n│  ├─ 1.9.0/\n│  │  ├─ storybook/\n│  ├─ latest/\n│  │  ├─ storybook/\n│  │  │  ├─ index.html [redirects naar de recentste storybook]\n│  ├─ index.html [landingspagina met links naar de verschillende release versies]\n├─ index.html [landingspagina met links naar develop en release]\n```"
+          },
+          {
+            "id": "bijdragen-git-branching-strategie--documentatie",
+            "title": "Bijdragen/Git Branching Strategie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-git-branching-strategie--documentatie",
+            "added": "__feature/JIRA-123-sleutel-woorden__. Als het Flux team bvb. ticket FLUX-2322 opneemt met als titel\n'cdn-assets voorzien met tinyMCE theming en publiceren op artifactory' dan gebeurt dat in een branch met bvb. de\nnaam __feature/FLUX-2322-tinymce-cdn__. De feature branch is tijdelijk en bij voorkeur / meestal enkel voor eigen\ngebruik. Het ticket nummer moet in de naam staan, de sleutelwoorden geven een indicatie van wat het inhoud. Vermijdt\n\n[…]\n\nCommits dienen volgende structuur te hebben, waarbij __type__ typisch 'fix' of 'feat' is.\n\n[…]\n\nfeat: FLUX-2322 - op de CDN de TinyMCE theming publiceren\n\n[…]\n\nNadat de PR is ingediend wordt de code ge-reviewed door iemand van het Flux-team, na integratie wordt de feature-branch\n\n[…]\n\napprovals te zijn van het Flux-team. Wij (Kris Speltincx, Koen Buckinx en Karim Dehbi) zijn in de verschillende repo's\n\n[…]\n\nIn GitHub staat de vlag op dat approvals vervallen bij een nieuwe commit. Je dient dus ge-squashed te hebben en\n\n[…]\n\nvan de branch vermeld, approvers kunnen dan snel verifiëren dat de build in orde is.\n\n[…]\n\nArtifacts worden enkel gebouwd voor develop en release branches."
+          },
+          {
+            "id": "bijdragen-opzet-structuur--documentatie",
+            "title": "Bijdragen/Opzet & Structuur",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+            "added": "De code van de web-componenten bibliotheek zit in GitHub onder de\n\n[…]\n\ncustom scripts, wel wordt de [Nx](https://nx.dev/) structuur gevolgd (vroeger was het Nx).\n\n[…]\n\nWe gebruiken Node en npm om dependencies te beheren en scripts uit te voeren. De Node versie is vastgelegd in de\n package.json.<br/>\nWe gebruiken [Volta](https://get.volta.sh) om de juiste Node versie te installeren:\n\n[…]\n\nIndien de versie niet klopt moet je de `PATH` variabele aanpassen en de Volta bin vooraan zetten. In `~/.zprofile` kan\n je daarvoor deze lijn toevoegen:\n\n[…]\n\nframeworks te testen.\n\n[…]\n\nConsumer is de toepassing om te verifiëren dat de gereleasete artifacts afneembaar zijn. Er zitten afnames in"
+          },
+          {
+            "id": "bijdragen-richtlijnen--documentatie",
+            "title": "Bijdragen/Richtlijnen",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/bijdragen-richtlijnen--documentatie",
+            "added": "In <ins>IntelliJ</ins> kan je Prettier configureren onder `Preferences > Languages & Frameworks > Prettier` <br/>\n\n[…]\n\n- major releases worden gestuurd door ontwikkeling van het Flux-team, andere teams die bijdragen moeten steeds backwards\n\n[…]\n\nVoor de feitelijke code van de web-componenten zijn richtlijnen en conventies, deze zijn echter niet in steen\ngebeiteld! Momenteel zijn er 2 basis klasses: BaseElement en BaseLitElement. Op termijn zal alles extenden van\nBaseLitElement, BaseElement wordt weggewerkt.\n\n[…]\n\nDe best practices zijn gedocumenteerd onder [Afnemen / Artifacts](/docs/afnemen-artifacts--documentatie), nieuwe\ncomponenten moeten ineens als BaseLitElement geïmplementeerd worden.\n\n[…]\n\nDe componenten bibliotheek wordt zo goed als mogelijk getypeerd om bugs te vermijden en met meer vertrouwen\n\n[…]\n\ntoevoegingen. Dit wordt stelselmatig verbeterd - extra typing toevoegen mag dus!\n\n[…]\n\ngeen code wijzigingen doorvoeren om te kunnen typen!"
+          },
+          {
+            "id": "components-form-textarea-rich--documentatie",
+            "title": "Components - Form/textarea-rich",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/components-form-textarea-rich--documentatie",
+            "added": null
+          },
+          {
+            "id": "design-system--documentatie",
+            "title": "Design System",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/design-system--documentatie",
+            "added": "Met de 'flux-web-componenten' en deze bijhorende documentatie streven we er naar meer te zijn dan een verzameling\n\n[…]\n\n- een layout / grid opzet - wordt via het styles artifact aangeboden"
+          },
+          {
+            "id": "introductie--documentatie",
+            "title": "Introductie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/introductie--documentatie",
+            "added": "Dit is de [Storybook](https://storybook.js.org/) documentatie van het __Flux-team__ (UI & UX) van\n\n[…]\n\nbibliotheek ontwikkeld en onderhouden door het __Flux-team__. Deze web-componenten bouwen verder op het\n\n[…]\n\n  ['-next' componenten](/docs/planning-aanpak-v2-2024-v3-2025--documentatie#waarom-componenten)\n\n[…]\n\n- het **'flux-development' kanaal** (in Rocket.Chat) te volgen, dit is een must, daarin worden o.a. nieuwe releases\n  aangekondigd\n- de [changelog](/docs/changelog--documentatie) pagina te bekijken - door onze release opzet m.b.v\n  [semantic-release](https://github.com/semantic-release/semantic-release) is deze altijd in-sync met de feitelijke\n  releases\n\n[…]\n\n- ons [Flux Jira-bord](https://www.milieuinfo.be/jira/secure/RapidBoard.jspa?rapidView=980&view=planning&issueLimit=100#)\n  te volgen, daarin zie je wat er op korte termijn (3 weken sprints) aankomt\n\n[…]\n\nVoor verduidelijkingen of toelichtingen kan je ons contacteren via Rocket.Chat.\n\n[…]\n\nsprints van 3 weken gewerkt wordt. Ruwweg na elke sprint is er een\n\n[…]\n\nDe [backlog](https://www.milieuinfo.be/jira/secure/RapidBoard.jspa?rapidView=980&view=planning&issueLimit=100#) wordt\nstelselmatig weggewerkt. Gelieve problemen eerst te melden in het `flux-development kanaal` van\n\n[…]\n\nbookmarken via de url:\n- voor de v1 versie: [https://milieuinfo.github.io/uigov-builds/release/latest/storybook](https://milieuinfo.github.io/uigov-builds/release/latest/storybook)\n- voor de v2 versie: [https://milieuinfo.github.io/uigov-builds/release-v2/latest/storybook](https://milieuinfo.github.io/uigov-builds/release-v2/latest/storybook)\n\nSpecifieke release versies zijn te vinden via de release overzicht pagina's van [v1](https://milieuinfo.github.io/uigov-builds/release/)\nof [v2](https://milieuinfo.github.io/uigov-builds/release-v2/)."
+          },
+          {
+            "id": "planning-aanpak-v2-v3--documentatie",
+            "title": "Planning/Aanpak v2, v3, ...",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/planning-aanpak-v2-v3--documentatie",
+            "added": "# Aanpak v2, v3, ...\n\n[…]\n\n- [v3 Release](#v3-release)\n\n[…]\n\nmoeten als een uitbreiding op een native button geïmplementeerd worden. De Flux web-component moet dus extenden van\n\n[…]\n\n- bestaande web-component frameworks: bvb. [Lit](https://lit.dev/) en [Stencil](https://stenciljs.com/docs/introduction)\n\n[…]\n\n  [web-components lifecycle](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)\n\n[…]\n\n  Web-componenten zijn echter self contained, elke component bevat alles wat hij nodig heeft, het gevolg is dat we\n\n[…]\n\nFlux-componenten zo backwards compatibel als mogelijk te laten evolueren. Echter, om alles eenduidig te maken,\n\n[…]\n\neen nieuwe tag door deze te suffixen met '-next'.\n\n[…]\n\n- een component heeft een custom tag die begint met 'vl-'\n\n[…]\n\n  css die je via het `class=` attribuut moet gebruiken\n\n[…]\n\n- is de map nog niet conform de nieuwe conventies\n- is er nog legacy code\n\n[…]\n\nIn versie 3 (hopelijk) zal de volledige codebase consistent zijn en wordt alle legacy code geschrapt .\n\n[…]\n\nZolang we in v1 zaten kwamen er nieuwe 'next' componenten bij (zie\n[Migratie v2 - Impact](http://localhost:8080/?path=/docs/afnemen-migratie-v2-impact--documentatie)). De bestaande\ncomponenten bleven zoals ze geschreven waren, hun API wijzigde niet.\n\n[…]\n\nBij de v2 release deden we het volgende:\n\n[…]\n\n- als er een oude en een nieuwe variant was van dezelfde component werd de oude geschrapt en bij de nieuwe werd\n  de `-next` suffix verwijderd - de nieuwe vervangt dus de oude; hierdoor is de component niet backwards\n\n[…]\n\n- bij de componenten die behouden bleven schrappen we de `data-` prefix, zodat er in v2 nergens nog attributen zijn\n\n[…]\n\n**opmerking 1**: alle componenten die in release v2 zitten zitten ook in de laatste v1 release, er zullen\n\n[…]\n\n## v3 Release\n\nNet zoals we via minor en patch releases v1 hebben uitgebreid en laten evolueren zullen we dat met v2 doen. Op een\nbepaald moment zullen we terug een opkuis actie willen doen die dan zal resulteren in een v3 release. Een concrete\ndatum of feature-set voor v3 is er nog niet."
+          },
+          {
+            "id": "planning-historiek-toekomst--documentatie",
+            "title": "Planning/Historiek & Toekomst",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.0.0/storybook/?path=/docs/planning-historiek-toekomst--documentatie",
+            "added": "- [Planning 2025](#planning-2024)\n- [Verleden](#verleden)\n- [Historisch](#historisch)\n\n[…]\n\nHet Flux-team (vroegere UIG-team) heeft altijd als doel gehad de drempel tot frontend ontwikkeling te verlagen.\nEnerzijds gebeurt softwareontwikkeling bij Departement Omgeving typisch door fullstack-ontwikkelaars die praktisch meer\naffiniteit hebben met backend- dan met frontend-ontwikkeling. Anderzijds is het de bedoeling dat designs de\n\n[…]\n\nVan in het begin (2020) was het doel - en de aanpak - van Flux om de componenten van het Webuniversum aan te bieden als\n\n[…]\n\neen 'focus' deel waarin we thematisch te werk gaan. Beknopt wordt er ook aangehaald wat er in de toekomst op de\n\n[…]\n\n## Planning 2025\n\n[…]\n\nMet vertraging is eind mei 2025 v2 gereleased, dit geeft een opkuis van 3 jaar evolutie. Nog niet alles is\nconsistent maar het is een grote stap in de juiste richting.\n\n[…]\n\nOp de planning van 2025 staat voor de rest verdere evolutie en verbeteringen waaronder:\n- een CSP POC die de praktische CSP knelpunten aanpakt: de vl-header, tinyMCE, de map, ...\n- de map verbeteren om Lambert-2008 te ondersteunen en een aanzet geven tot een grondige herwerking, de map is\n  historisch gegroeid en wordt veel gebruikt maar is niet meer consistent met de rest van de codebase\n- de legacy 'BaseElementOfType' basis klasse wegwerken, hiervoor zijn er nog componenten om te zetten naar Lit\n\n[…]\n\n- een aantal componenten herschrijven: waaronder vl-table, vl-side-navigation en vl-tabs\n\n[…]\n\n## Verleden\n\n### Q2 2024 tem Q1 2025\n\nDe focus lag op:\n\n- het volledig wegwerken van de 'elementen', wat in een v2 release resulteerde\n- de introductie van [web-types](https://github.com/JetBrains/web-types) zodat afnemers code completion en documentatie\n  in hun IDE hebben\n- de monorepo versimpelen - Nx gaf flexibiliteit, maar is nu eerder een nadeel nu de monorepo stabiel is\n- de OpenWC testen van de map vervangen door Cypress component-testen, ter voorbereiding van de grondige map\n  herwerking in 2025\n\n<br/><img src={planning2024} alt=\"planning-2024\"/>\n\n\n### Q4 2023 en Q1 2024\n\n[…]\n\n## Historisch"
+          }
+        ]
+      }
+    }
+  ]
+}

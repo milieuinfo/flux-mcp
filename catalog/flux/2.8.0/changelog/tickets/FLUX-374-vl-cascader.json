@@ -1,0 +1,45 @@
+{
+  "schema": 4,
+  "version": "2.8.0",
+  "ticket": "FLUX-374",
+  "entries": [
+    {
+      "id": "0b6c0cd",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-374"
+      ],
+      "scope": "vl-cascader",
+      "components": [
+        "vl-cascader"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "vlLayoutStyles toegevoegd in shadow DOM",
+      "text": "FLUX-374 - vl-cascader - vlLayoutStyles toegevoegd in shadow DOM",
+      "commits": [
+        {
+          "sha": "0b6c0cd96a3be419ddfc5187115841bbef6e5b65",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/0b6c0cd96a3be419ddfc5187115841bbef6e5b65"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": "De `vl-cascader` component rendert de templates van de afnemer binnen de shadow DOM, daarom is het belangrijk dat de layout styles ook toegevoegd zijn aan de shadow DOM van de component Daarnaast ook cascader item styles verwijderd uit de `vl-cascader` component, die enkel in de `vl-cascader-item` component horen te staan.",
+        "published": true,
+        "areas": {
+          "code": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/block/cascader/vl-cascader-item.component.ts",
+          "libs/components/src/block/cascader/vl-cascader.component.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

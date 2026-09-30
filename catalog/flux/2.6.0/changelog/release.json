@@ -1,0 +1,398 @@
+{
+  "schema": 4,
+  "version": "2.6.0",
+  "date": "2025-10-22",
+  "previous": "2.5.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.5.0...v2.6.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 9,
+      "fix": 9,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 7,
+      "automatic": 7,
+      "none": 4
+    },
+    "a11y": 0
+  },
+  "components": [
+    {
+      "name": "vl-accessibility",
+      "category": "compliance",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-compliance-accessibility--documentatie"
+    },
+    {
+      "name": "vl-autocomplete",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-autocomplete--documentatie"
+    },
+    {
+      "name": "vl-button",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-atom-button--documentatie"
+    },
+    {
+      "name": "vl-datepicker",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-form-datepicker--documentatie"
+    },
+    {
+      "name": "vl-functional-header",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-functional-header--documentatie"
+    },
+    {
+      "name": "vl-map-wfs-layer",
+      "category": "map",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/map-layer-vector-layer-wfs-layer--documentatie"
+    },
+    {
+      "name": "vl-modal",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-modal--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-toaster",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-block-toaster--documentatie"
+    },
+    {
+      "name": "vl-upload",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.6.0/storybook/?path=/docs/components-form-upload--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "4e2317b",
+      "ticket": "FLUX-190",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-190 - vl-select-rich - component lifecycle verbeterd",
+      "file": "tickets/FLUX-190-vl-select-rich.json"
+    },
+    {
+      "id": "efbb982",
+      "ticket": "FLUX-195",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-195 - vl-upload - drag & drop triggert het vl-input event",
+      "file": "tickets/FLUX-195-vl-upload.json"
+    },
+    {
+      "id": "5e8a200",
+      "ticket": "FLUX-199",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-199 - vl-autocomplete - bij selectie-event wordt volledig item ontsloten",
+      "file": "tickets/FLUX-199-vl-autocomplete.json"
+    },
+    {
+      "id": "f78d592",
+      "ticket": "FLUX-248",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-248 - vl-modal - layout verbeterd",
+      "file": "tickets/FLUX-248-vl-modal.json"
+    },
+    {
+      "id": "4fff915",
+      "ticket": "FLUX-262",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-262 - vl-datepicker - validatie werking verbeterd",
+      "file": "tickets/FLUX-262-vl-datepicker.json"
+    },
+    {
+      "id": "ba3113c",
+      "ticket": "FLUX-266",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-266 - vl-proza-message mocking werkt nu onafhankelijk van het domein waar Storybook staat",
+      "file": "tickets/FLUX-266.json"
+    },
+    {
+      "id": "9a62eb2",
+      "ticket": "FLUX-290",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-290 - vl-map-wfs-layer - url opbouw aangepast",
+      "file": "tickets/FLUX-290-vl-map-wfs-layer.json"
+    },
+    {
+      "id": "a52bd46",
+      "ticket": "FLUX-302",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-302 - vl-toaster - stories verbeterd voor template gebruik",
+      "file": "tickets/FLUX-302-vl-toaster.json"
+    },
+    {
+      "id": "6ac44eb",
+      "ticket": "FLUX-41",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-41 - documentatie voor stories zonder .mdx werken terug",
+      "file": "tickets/FLUX-41.json"
+    },
+    {
+      "id": "10c51b8",
+      "ticket": "FLUX-116",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-116 - vlButtonStyles mixin + button layout fixes",
+      "file": "tickets/FLUX-116.json"
+    },
+    {
+      "id": "5776139",
+      "ticket": "FLUX-165",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-165 - documentatie kleurenpalet",
+      "file": "tickets/FLUX-165.json"
+    },
+    {
+      "id": "0ef37cd",
+      "ticket": "FLUX-173",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-173 - prefers-reduced-motion respecteren waar mogelijk",
+      "file": "tickets/FLUX-173.json"
+    },
+    {
+      "id": "309e646",
+      "ticket": "FLUX-180",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-180 - vl-datepicker - min-max validatie na manuele invoer",
+      "file": "tickets/FLUX-180-vl-datepicker.json"
+    },
+    {
+      "id": "f42127f",
+      "ticket": "FLUX-227",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-227 - vl-functional-header - back link als vl-link",
+      "file": "tickets/FLUX-227-vl-functional-header.json"
+    },
+    {
+      "id": "b41c7e6",
+      "ticket": "FLUX-232",
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "FLUX-232 - vl-accessibility - storybook documentatie uitgebreid",
+      "file": "tickets/FLUX-232-vl-accessibility.json"
+    },
+    {
+      "id": "9fa28a2",
+      "ticket": "FLUX-275",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-275 - vl-button - combinatie ghost, error, disabled, hover blijft nu disabled stijl",
+      "file": "tickets/FLUX-275-vl-button.json"
+    },
+    {
+      "id": "527aa44",
+      "ticket": "FLUX-291",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-291 - vl-functional-header - sticky optie",
+      "file": "tickets/FLUX-291-vl-functional-header.json"
+    },
+    {
+      "id": "bf9ca9e",
+      "ticket": null,
+      "type": "feature",
+      "derivedImpact": "none",
+      "text": "upgrade van node en semantic-release, checkout-install-and-cache stage geschrapt",
+      "file": "tickets/bf9ca9e.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-190",
+      "file": "tickets/FLUX-190-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "4e2317b"
+      ]
+    },
+    {
+      "ticket": "FLUX-195",
+      "file": "tickets/FLUX-195-vl-upload.json",
+      "components": [
+        "vl-upload"
+      ],
+      "entries": [
+        "efbb982"
+      ]
+    },
+    {
+      "ticket": "FLUX-199",
+      "file": "tickets/FLUX-199-vl-autocomplete.json",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "entries": [
+        "5e8a200"
+      ]
+    },
+    {
+      "ticket": "FLUX-248",
+      "file": "tickets/FLUX-248-vl-modal.json",
+      "components": [
+        "vl-modal"
+      ],
+      "entries": [
+        "f78d592"
+      ]
+    },
+    {
+      "ticket": "FLUX-262",
+      "file": "tickets/FLUX-262-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "4fff915"
+      ]
+    },
+    {
+      "ticket": "FLUX-266",
+      "file": "tickets/FLUX-266.json",
+      "components": [],
+      "entries": [
+        "ba3113c"
+      ]
+    },
+    {
+      "ticket": "FLUX-290",
+      "file": "tickets/FLUX-290-vl-map-wfs-layer.json",
+      "components": [
+        "vl-map-wfs-layer"
+      ],
+      "entries": [
+        "9a62eb2"
+      ]
+    },
+    {
+      "ticket": "FLUX-302",
+      "file": "tickets/FLUX-302-vl-toaster.json",
+      "components": [
+        "vl-toaster"
+      ],
+      "entries": [
+        "a52bd46"
+      ]
+    },
+    {
+      "ticket": "FLUX-41",
+      "file": "tickets/FLUX-41.json",
+      "components": [],
+      "entries": [
+        "6ac44eb"
+      ]
+    },
+    {
+      "ticket": "FLUX-116",
+      "file": "tickets/FLUX-116.json",
+      "components": [],
+      "entries": [
+        "10c51b8"
+      ]
+    },
+    {
+      "ticket": "FLUX-165",
+      "file": "tickets/FLUX-165.json",
+      "components": [],
+      "entries": [
+        "5776139"
+      ]
+    },
+    {
+      "ticket": "FLUX-173",
+      "file": "tickets/FLUX-173.json",
+      "components": [],
+      "entries": [
+        "0ef37cd"
+      ]
+    },
+    {
+      "ticket": "FLUX-180",
+      "file": "tickets/FLUX-180-vl-datepicker.json",
+      "components": [
+        "vl-datepicker"
+      ],
+      "entries": [
+        "309e646"
+      ]
+    },
+    {
+      "ticket": "FLUX-227",
+      "file": "tickets/FLUX-227-vl-functional-header.json",
+      "components": [
+        "vl-functional-header"
+      ],
+      "entries": [
+        "f42127f"
+      ]
+    },
+    {
+      "ticket": "FLUX-232",
+      "file": "tickets/FLUX-232-vl-accessibility.json",
+      "components": [
+        "vl-accessibility"
+      ],
+      "entries": [
+        "b41c7e6"
+      ]
+    },
+    {
+      "ticket": "FLUX-275",
+      "file": "tickets/FLUX-275-vl-button.json",
+      "components": [
+        "vl-button"
+      ],
+      "entries": [
+        "9fa28a2"
+      ]
+    },
+    {
+      "ticket": "FLUX-291",
+      "file": "tickets/FLUX-291-vl-functional-header.json",
+      "components": [
+        "vl-functional-header"
+      ],
+      "entries": [
+        "527aa44"
+      ]
+    },
+    {
+      "ticket": null,
+      "file": "tickets/bf9ca9e.json",
+      "components": [],
+      "entries": [
+        "bf9ca9e"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

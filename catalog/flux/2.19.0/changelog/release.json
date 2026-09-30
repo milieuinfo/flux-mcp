@@ -1,0 +1,381 @@
+{
+  "schema": 4,
+  "version": "2.19.0",
+  "date": "2026-08-25",
+  "previous": "2.18.0",
+  "compareUrl": "https://github.com/milieuinfo/flux-web-components/compare/v2.18.0...v2.19.0",
+  "counts": {
+    "type": {
+      "breaking": 0,
+      "feature": 7,
+      "fix": 10,
+      "docs": 0,
+      "perf": 0,
+      "revert": 0,
+      "other": 0
+    },
+    "impact": {
+      "action": 0,
+      "opt-in": 7,
+      "automatic": 9,
+      "none": 1
+    },
+    "a11y": 7
+  },
+  "components": [
+    {
+      "name": "vl-alert",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-alert--documentatie"
+    },
+    {
+      "name": "vl-autocomplete",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-autocomplete--documentatie"
+    },
+    {
+      "name": "vl-description-data",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-description-data-description-data--documentatie"
+    },
+    {
+      "name": "vl-footer-next",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-header",
+      "category": "compliance",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-compliance-header--documentatie"
+    },
+    {
+      "name": "vl-header-next",
+      "category": null,
+      "docUrl": null
+    },
+    {
+      "name": "vl-http-error-message",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-http-error-message--documentatie"
+    },
+    {
+      "name": "vl-link",
+      "category": "atom",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-atom-link--documentatie"
+    },
+    {
+      "name": "vl-progress-indicator",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-progress-indicator--documentatie"
+    },
+    {
+      "name": "vl-properties",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-properties--documentatie"
+    },
+    {
+      "name": "vl-select-rich",
+      "category": "form",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-form-select-rich--documentatie"
+    },
+    {
+      "name": "vl-toaster",
+      "category": "block",
+      "docUrl": "https://flux.omgeving.vlaanderen.be/release-v2/2.19.0/storybook/?path=/docs/components-block-toaster--documentatie"
+    }
+  ],
+  "entries": [
+    {
+      "id": "ca607d5",
+      "ticket": "FLUX-207",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-207 - vl-toaster - showAlert verwacht de attribuutnamen",
+      "file": "tickets/FLUX-207-vl-toaster-vl-alert.json"
+    },
+    {
+      "id": "6139351",
+      "ticket": "FLUX-213",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-213 - vl-link - screenreader melding bij externe links",
+      "file": "tickets/FLUX-213-vl-link.json"
+    },
+    {
+      "id": "0ee6e57",
+      "ticket": "FLUX-219",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-219 - vl-description-data - label/waarde als description list",
+      "file": "tickets/FLUX-219-vl-description-data.json"
+    },
+    {
+      "id": "53040a9",
+      "ticket": "FLUX-236",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-236 - vl-http-error-message - debug-info als definitielijst en verwijzing naar adresbalk",
+      "file": "tickets/FLUX-236-vl-http-error-message.json"
+    },
+    {
+      "id": "19f3b89",
+      "ticket": "FLUX-471",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-471 - skip-link - ver genoeg scrollen bij sticky header",
+      "file": "tickets/FLUX-471-skip-link-vl-header-vl-header-next.json"
+    },
+    {
+      "id": "9d28af3",
+      "ticket": "FLUX-760",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-760 - vl-properties - whitespace tussen properties binnen een column",
+      "file": "tickets/FLUX-760-vl-properties.json"
+    },
+    {
+      "id": "e1b195c",
+      "ticket": "FLUX-780",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-780 - vl-progress-indicator - laatste stap valt niet meer buiten de rand",
+      "file": "tickets/FLUX-780-vl-progress-indicator.json"
+    },
+    {
+      "id": "cfe65f3",
+      "ticket": "FLUX-784",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-784 - vl-progress-indicator - verbindingslijnen tussen de stappen hersteld",
+      "file": "tickets/FLUX-784-vl-progress-indicator.json"
+    },
+    {
+      "id": "778158e",
+      "ticket": "FLUX-788",
+      "type": "fix",
+      "derivedImpact": "automatic",
+      "text": "FLUX-788 - vl-header-next / vl-footer-next - flaky testen en ready-event",
+      "file": "tickets/FLUX-788-vl-header-next-vl-footer-next.json"
+    },
+    {
+      "id": "7bbb00d",
+      "ticket": "FLUX-790",
+      "type": "fix",
+      "derivedImpact": "none",
+      "text": "FLUX-790 - storybook - de changelog feats hadden de fixes style",
+      "file": "tickets/FLUX-790-storybook.json"
+    },
+    {
+      "id": "8ec5138",
+      "ticket": "FLUX-207",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-207 - vl-alert - instelbare ARIA-rol per context",
+      "file": "tickets/FLUX-207-vl-toaster-vl-alert.json"
+    },
+    {
+      "id": "03eff7a",
+      "ticket": "FLUX-471",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-471 - vl-header, vl-header-next - skip-to-content link (WCAG 2.4.1)",
+      "file": "tickets/FLUX-471-skip-link-vl-header-vl-header-next.json"
+    },
+    {
+      "id": "2f7dc51",
+      "ticket": "FLUX-610",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-610 - cross-validatie - dependencySelectors via CrossValidationMixin met voorbeelden en docs",
+      "file": "tickets/FLUX-610-cross-validatie.json"
+    },
+    {
+      "id": "8a0bb40",
+      "ticket": "FLUX-658",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-658 - CompositeFormControl - basisklasse voor samengestelde velden",
+      "file": "tickets/FLUX-658-CompositeFormControl.json"
+    },
+    {
+      "id": "d45b5e1",
+      "ticket": "FLUX-757",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-757 - vl-properties - value-bold attribuut toegevoegd",
+      "file": "tickets/FLUX-757-vl-properties.json"
+    },
+    {
+      "id": "995a202",
+      "ticket": "FLUX-773",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-773 - vl-select-rich - itemTemplate voor eigen optie-inhoud",
+      "file": "tickets/FLUX-773-vl-select-rich.json"
+    },
+    {
+      "id": "cfd208b",
+      "ticket": "FLUX-782",
+      "type": "feature",
+      "derivedImpact": "opt-in",
+      "text": "FLUX-782 - vl-autocomplete - itemTemplate property toegevoegd",
+      "file": "tickets/FLUX-782-vl-autocomplete.json"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket": "FLUX-207",
+      "file": "tickets/FLUX-207-vl-toaster-vl-alert.json",
+      "components": [
+        "vl-toaster",
+        "vl-alert"
+      ],
+      "entries": [
+        "ca607d5",
+        "8ec5138"
+      ]
+    },
+    {
+      "ticket": "FLUX-213",
+      "file": "tickets/FLUX-213-vl-link.json",
+      "components": [
+        "vl-link"
+      ],
+      "entries": [
+        "6139351"
+      ]
+    },
+    {
+      "ticket": "FLUX-219",
+      "file": "tickets/FLUX-219-vl-description-data.json",
+      "components": [
+        "vl-description-data"
+      ],
+      "entries": [
+        "0ee6e57"
+      ]
+    },
+    {
+      "ticket": "FLUX-236",
+      "file": "tickets/FLUX-236-vl-http-error-message.json",
+      "components": [
+        "vl-http-error-message"
+      ],
+      "entries": [
+        "53040a9"
+      ]
+    },
+    {
+      "ticket": "FLUX-471",
+      "file": "tickets/FLUX-471-skip-link-vl-header-vl-header-next.json",
+      "components": [
+        "vl-header",
+        "vl-header-next"
+      ],
+      "entries": [
+        "19f3b89",
+        "03eff7a"
+      ]
+    },
+    {
+      "ticket": "FLUX-760",
+      "file": "tickets/FLUX-760-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "9d28af3"
+      ]
+    },
+    {
+      "ticket": "FLUX-780",
+      "file": "tickets/FLUX-780-vl-progress-indicator.json",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "entries": [
+        "e1b195c"
+      ]
+    },
+    {
+      "ticket": "FLUX-784",
+      "file": "tickets/FLUX-784-vl-progress-indicator.json",
+      "components": [
+        "vl-progress-indicator"
+      ],
+      "entries": [
+        "cfe65f3"
+      ]
+    },
+    {
+      "ticket": "FLUX-788",
+      "file": "tickets/FLUX-788-vl-header-next-vl-footer-next.json",
+      "components": [
+        "vl-header-next",
+        "vl-footer-next"
+      ],
+      "entries": [
+        "778158e"
+      ]
+    },
+    {
+      "ticket": "FLUX-790",
+      "file": "tickets/FLUX-790-storybook.json",
+      "components": [],
+      "entries": [
+        "7bbb00d"
+      ]
+    },
+    {
+      "ticket": "FLUX-610",
+      "file": "tickets/FLUX-610-cross-validatie.json",
+      "components": [],
+      "entries": [
+        "2f7dc51"
+      ]
+    },
+    {
+      "ticket": "FLUX-658",
+      "file": "tickets/FLUX-658-CompositeFormControl.json",
+      "components": [],
+      "entries": [
+        "8a0bb40"
+      ]
+    },
+    {
+      "ticket": "FLUX-757",
+      "file": "tickets/FLUX-757-vl-properties.json",
+      "components": [
+        "vl-properties"
+      ],
+      "entries": [
+        "d45b5e1"
+      ]
+    },
+    {
+      "ticket": "FLUX-773",
+      "file": "tickets/FLUX-773-vl-select-rich.json",
+      "components": [
+        "vl-select-rich"
+      ],
+      "entries": [
+        "995a202"
+      ]
+    },
+    {
+      "ticket": "FLUX-782",
+      "file": "tickets/FLUX-782-vl-autocomplete.json",
+      "components": [
+        "vl-autocomplete"
+      ],
+      "entries": [
+        "cfd208b"
+      ]
+    }
+  ],
+  "webTypesDiff": "web-types-diff.json",
+  "webTypesDiffUnavailable": null,
+  "dependenciesDiff": "dependencies-diff.json",
+  "dependenciesDiffUnavailable": null,
+  "unlistedCommits": []
+}

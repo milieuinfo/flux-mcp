@@ -1,0 +1,57 @@
+{
+  "schema": 4,
+  "version": "2.5.0",
+  "ticket": "FLUX-118",
+  "entries": [
+    {
+      "id": "9798075",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-118"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [
+        "vl-visually-hidden"
+      ],
+      "summary": "vl-visually-hidden documentatie toegevoegd aan Styles/Layout",
+      "text": "FLUX-118 - vl-visually-hidden documentatie toegevoegd aan Styles/Layout",
+      "commits": [
+        {
+          "sha": "9798075c75c37749ba856f1505e27a435f5c4ddf",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/9798075c75c37749ba856f1505e27a435f5c4ddf"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "styles": 4,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 2
+        },
+        "publishedFiles": [
+          "libs/styles/src/base/accessibility/vl-accessibility.css.ts",
+          "libs/styles/src/index.ts",
+          "libs/styles/src/layout/accessibility/vl-accessibility-styles.css.ts",
+          "libs/styles/src/vl-styles.ts"
+        ],
+        "storybook": [
+          {
+            "id": "styles-layout-afnemers-accessibility--documentatie",
+            "title": "Styles/Layout (afnemers)/accessibility",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.5.0/storybook/?path=/docs/styles-layout-afnemers-accessibility--documentatie",
+            "added": "# Accessibility styles\n\n<br/>\n\n\n## Inhoudstafel\n\n- [Doel](#doel)\n- [Visually hidden](#visually-hidden)\n\n\n## Doel\n\nOnder accessibility styles groeperen we stijlen die de layout beïnvloeden om de toegankelijkheid van een applicatie\nte verbeteren.\n\n## Visually hidden\n\n`.vl-visually-hidden` verbergt content visueel, maar houdt ze toegankelijk voor screenreaders.\nZe wordt gebruikt wanneer informatie niet zichtbaar hoeft te zijn voor ziende gebruikers, maar wel nog betekenisvol\nis voor assistieve technologie.\n\nHet helpt extra context of labels beschikbaar te maken voor screenreader-gebruikers en wordt typisch toegepast op:\n  - Beschrijvende teksten die visueel overbodig zijn\n  - Formulierlabels of instructies die enkel auditief nodig zijn\n  - Skip-links of navigatiehulpmiddelen"
+          }
+        ]
+      }
+    }
+  ]
+}

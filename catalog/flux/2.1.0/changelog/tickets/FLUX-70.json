@@ -1,0 +1,128 @@
+{
+  "schema": 4,
+  "version": "2.1.0",
+  "ticket": "FLUX-70",
+  "entries": [
+    {
+      "id": "da09c25",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-70"
+      ],
+      "scope": null,
+      "components": [],
+      "topics": [],
+      "mentions": [],
+      "summary": "flux ipv uigov",
+      "text": "FLUX-70 - flux ipv uigov",
+      "commits": [
+        {
+          "sha": "da09c25de18b849e6a82eceffef07b03b6775ed9",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/da09c25de18b849e6a82eceffef07b03b6775ed9"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 4,
+          "styles": 1,
+          "docs": 13,
+          "tooling": 21
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/atom.web-types.json",
+          "libs/components/src/block/block.web-types.json",
+          "libs/components/src/compliance/compliance.web-types.json",
+          "libs/components/src/form/form.web-types.json",
+          "libs/styles/src/base/var/vl-z-layer.raw.css"
+        ],
+        "storybook": [
+          {
+            "id": "afnemen-aan-de-slag--documentatie",
+            "title": "Afnemen/Aan De Slag",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie",
+            "added": "[flux-builds](https://milieuinfo.github.io/flux-builds/release-v2/latest/storybook)"
+          },
+          {
+            "id": "afnemen-migratie-v2-aanpak--documentatie",
+            "title": "Afnemen/Migratie v2 - Aanpak",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie",
+            "added": "export const v1AfsplitsRelease = \"1.48.2\";\nexport const v1StorybookLink = `https://milieuinfo.github.io/flux-builds/release-v1/${v1AfsplitsRelease}/storybook/?path=`;"
+          },
+          {
+            "id": "afnemen-migratie-v2-impact--documentatie",
+            "title": "Afnemen/Migratie v2 - Impact",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/afnemen-migratie-v2-impact--documentatie",
+            "added": "export const v1StorybookLink = `https://milieuinfo.github.io/flux-builds/release-v1/${v1AfsplitsRelease}/storybook/?path=`;"
+          },
+          {
+            "id": "afnemen-starter-app--documentatie",
+            "title": "Afnemen/Starter App",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/afnemen-starter-app--documentatie",
+            "added": "Onder [https://git.omgeving.vlaanderen.be/git/uig/flux-starter-app](https://git.omgeving.vlaanderen.be/git/uig/flux-starter-app)"
+          },
+          {
+            "id": "beheren-ci-cd--documentatie",
+            "title": "Beheren/CI - CD",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/beheren-ci-cd--documentatie",
+            "added": "De build loopt via [Bamboo](https://www.milieuinfo.be/bamboo/chain/viewChain.action?planKey=flux-CUWC).\n\n[…]\n\n[release pagina](https://github.com/milieuinfo/flux-web-components/releases) van de GitHub repository.\n\n[…]\n\n[GitHub release](https://github.com/milieuinfo/flux-web-components/releases) uitgevoerd"
+          },
+          {
+            "id": "beheren-icon-font--documentatie",
+            "title": "Beheren/Icon Font",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/beheren-icon-font--documentatie",
+            "added": "Het icon-font is deel van de flux-assets repository en wordt geversioneerd gepubliceerd op de CDN van Departement\n\n[…]\n\nDe flux-web-components refereren intern naar dit font via CSS-classes die een mapping voorzien tussen de icoon-naam\n\n[…]\n\nEr is een centrale plaats in de flux-web-components repository waar de icon-mapping CSS-classes gedefinieerd worden\n\n[…]\n\n- plaats de nieuwe versie van het font in de flux-assets repository\n\n[…]\n\n- refereer in de flux-web-components repository naar de nieuwe versie van het font\n- voer het `generate-icon-files.ts` script uit in de flux-web-components repository (`npm run libs:icons:generate`)"
+          },
+          {
+            "id": "beheren-repositories--documentatie",
+            "title": "Beheren/Repositories",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/beheren-repositories--documentatie",
+            "added": "- [flux-web-components](#flux-web-components)\n- [flux-assets](#flux-assets)\n- [flux-builds](#flux-builds)\n\n[…]\n\n- flux-web-components - [https://github.com/milieuinfo/flux-web-components](https://github.com/milieuinfo/flux-web-components)\n- flux-assets - [https://github.com/milieuinfo/flux-assets](https://github.com/milieuinfo/flux-assets)\n- flux-builds - [https://github.com/milieuinfo/flux-builds](https://github.com/milieuinfo/flux-builds)\n\n[…]\n\n## flux-web-components\n\n[…]\n\nDe belangrijkste repo die de broncode van de flux-web-components bevat, de Storybook documentatie en de Playground\n\n[…]\n\n## flux-assets\n\n[…]\n\nDe flux-web-components hebben externe afhankelijkheden.  Die externe assets worden onder dit project opgenomen en\n\n[…]\n\nDe flux-web-components refereren intern (geversioneerd) naar deze fonts. Voornamelijk voor het icon-font is de\n\n[…]\n\nresultaat wordt als geversioneerd artifact aangeboden waarop de flux-web-components dan dependen.\n\n[…]\n\n## flux-builds"
+          },
+          {
+            "id": "beheren-storybook-publicatie--documentatie",
+            "title": "Beheren/Storybook Publicatie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/beheren-storybook-publicatie--documentatie",
+            "added": "Documentatie wordt geversioneerd gepubliceerd op https://milieuinfo.github.io/flux-builds, de structuur van die\n[repo](https://github.com/milieuinfo/flux-builds) staat hier beschreven.\n\n[…]\n\nflux-builds/\n\n[…]\n\n├─ release-v1/ [een sub-folder per ge-releasde versie]"
+          },
+          {
+            "id": "bijdragen-git-branching-strategie--documentatie",
+            "title": "Bijdragen/Git Branching Strategie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/bijdragen-git-branching-strategie--documentatie",
+            "added": "De ontwikkeling gebeurt in [git](https://git-scm.com/) op [GitHub](https://github.com/milieuinfo/flux-web-components)."
+          },
+          {
+            "id": "bijdragen-opzet-structuur--documentatie",
+            "title": "Bijdragen/Opzet & Structuur",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/bijdragen-opzet-structuur--documentatie",
+            "added": "[flux-web-components](https://github.com/milieuinfo/flux-web-components) repository. Het is een monorepo, opgezet met\n\n[…]\n\nHieronder staat de projectstructuur van de [flux-web-components](https://github.com/milieuinfo/flux-web-components)\n\n[…]\n\n─ flux-web-components/"
+          },
+          {
+            "id": "introductie--documentatie",
+            "title": "Introductie",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/introductie--documentatie",
+            "added": "[flux-web-components](https://github.com/milieuinfo/flux-web-components) de belangrijkste is; die bevat de\n\n[…]\n\n[release](https://github.com/milieuinfo/flux-web-components/releases). De [changelog](/docs/changelog--documentatie) bevat\n\n[…]\n\n- voor de v1 versie: [https://milieuinfo.github.io/flux-builds/release-v1/latest/storybook](https://milieuinfo.github.io/flux-builds/release-v1/latest/storybook)\n- voor de v2 versie: [https://milieuinfo.github.io/flux-builds/release-v2/latest/storybook](https://milieuinfo.github.io/flux-builds/release-v2/latest/storybook)\n\n[…]\n\nSpecifieke release versies zijn te vinden via de release overzicht pagina's van [v1](https://milieuinfo.github.io/flux-builds/release-v1/)\nof [v2](https://milieuinfo.github.io/flux-builds/release-v2/)."
+          },
+          {
+            "id": "recepten-debugging--documentatie",
+            "title": "Recepten/Debugging",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/recepten-debugging--documentatie",
+            "added": "In de npm packages van de flux-web-components zitten .js.map bestanden. De gewone .js bestanden hebben een referentie\n\n[…]\n\ndaarmee de broncode van de flux-web-components debuggen."
+          },
+          {
+            "id": "recepten-typing-bestanden--documentatie",
+            "title": "Recepten/Typing Bestanden",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.1.0/storybook/?path=/docs/recepten-typing-bestanden--documentatie",
+            "added": "De broncode van de flux-web-components wordt in TypeScript geschreven. In de npm packages wordt die code naar"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 4,
+  "version": "2.18.0",
+  "ticket": "FLUX-778",
+  "entries": [
+    {
+      "id": "1476372",
+      "type": "fix",
+      "section": "Bug Fixes",
+      "issues": [
+        "FLUX-778"
+      ],
+      "scope": "vl-header / vl-footer",
+      "components": [
+        "vl-header",
+        "vl-footer"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "test stabiliteit verbeterd via uit-mocken van de widget call naar DV",
+      "text": "FLUX-778 - vl-header / vl-footer - test stabiliteit verbeterd via uit-mocken van de widget call naar DV",
+      "commits": [
+        {
+          "sha": "147637256d8827bde66e6ac83d0003f8eb3c0cc3",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/147637256d8827bde66e6ac83d0003f8eb3c0cc3"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "automatic",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 1,
+          "tests": 7,
+          "tooling": 2
+        },
+        "publishedFiles": [
+          "libs/components/src/compliance/burgerprofiel-widget.mock.ts"
+        ],
+        "storybook": []
+      }
+    }
+  ]
+}

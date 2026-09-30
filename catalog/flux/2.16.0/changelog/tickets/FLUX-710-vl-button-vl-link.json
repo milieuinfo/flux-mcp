@@ -1,0 +1,104 @@
+{
+  "schema": 4,
+  "version": "2.16.0",
+  "ticket": "FLUX-710",
+  "entries": [
+    {
+      "id": "8ea8084",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-710"
+      ],
+      "scope": "vl-button",
+      "components": [
+        "vl-button"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "download attribuut toegevoegd",
+      "text": "FLUX-710 - vl-button - download attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "8ea8084d08f0322b1144a365b5933e266bf90258",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/8ea8084d08f0322b1144a365b5933e266bf90258"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "examples": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/button/vl-button.component.ts",
+          "libs/components/src/atom/button/vl-button.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-button--documentatie",
+            "title": "Components - Atom/button",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-button--documentatie",
+            "added": "### CTA link als download\n\nWijst de `cta-link` naar een bestand, gebruik dan het `download` attribuut om aan te geven dat de browser het bestand\nmoet downloaden in plaats van ernaar te navigeren. Geef je een waarde mee, dan wordt die gebruikt als suggestie voor de\nbestandsnaam; zonder waarde kiest de browser zelf een bestandsnaam.\n\nBeperkingen:\n\n-   het `download` attribuut werkt enkel voor same-origin URLs (en `data:` of `blob:` URLs), dit is een\nbrowser-beperking van het [native anchor `download` attribuut](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download)\n-   het attribuut wordt enkel gebruikt als de `cta-link` is ingesteld\n\nTip: maak in de zichtbare tekst of het `label` attribuut duidelijk dat het om een download gaat, zodat ook\nscreen-reader gebruikers dit weten (bv. \"Download verslag.pdf\" i.p.v. \"Verslag\"). Een anchor met het `download`\nattribuut wordt nog steeds aangekondigd als een gewone link."
+          }
+        ]
+      }
+    },
+    {
+      "id": "4e71c7a",
+      "type": "feature",
+      "section": "Features",
+      "issues": [
+        "FLUX-710"
+      ],
+      "scope": "vl-link",
+      "components": [
+        "vl-link"
+      ],
+      "topics": [],
+      "mentions": [],
+      "summary": "download attribuut toegevoegd",
+      "text": "FLUX-710 - vl-link - download attribuut toegevoegd",
+      "commits": [
+        {
+          "sha": "4e71c7a289568cf0dc9cb6e32caf7843288980af",
+          "url": "https://github.com/milieuinfo/flux-web-components/commit/4e71c7a289568cf0dc9cb6e32caf7843288980af"
+        }
+      ],
+      "closes": [],
+      "derivedImpact": "opt-in",
+      "labels": [],
+      "wcag": [],
+      "source": {
+        "body": null,
+        "published": true,
+        "areas": {
+          "code": 2,
+          "docs": 1,
+          "storybook": 2,
+          "tests": 1
+        },
+        "publishedFiles": [
+          "libs/components/src/atom/link/vl-link.component.ts",
+          "libs/components/src/atom/link/vl-link.defaults.ts"
+        ],
+        "storybook": [
+          {
+            "id": "components-atom-link--documentatie",
+            "title": "Components - Atom/link",
+            "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.16.0/storybook/?path=/docs/components-atom-link--documentatie",
+            "added": "### Download\n\nWijst de link naar een bestand, gebruik dan het `download` attribuut om aan te geven dat de browser het bestand\nmoet downloaden in plaats van ernaar te navigeren. Geef je een waarde mee, dan wordt die gebruikt als suggestie voor de\nbestandsnaam; zonder waarde kiest de browser zelf een bestandsnaam.\n\nBeperkingen:\n\n-   het `download` attribuut werkt enkel voor same-origin URLs (en `data:` of `blob:` URLs), dit is een\nbrowser-beperking van het [native anchor `download` attribuut](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download)\n-   het attribuut werkt niet in combinatie met `button-as-link`\n\nTip: maak in de zichtbare tekst of het `label` attribuut duidelijk dat het om een download gaat, zodat ook\nscreen-reader gebruikers dit weten (bv. \"Download verslag.pdf\" i.p.v. \"Verslag\"). Een anchor met het `download`\nattribuut wordt nog steeds aangekondigd als een gewone link."
+          }
+        ]
+      }
+    }
+  ]
+}
