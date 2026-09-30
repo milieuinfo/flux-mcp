@@ -37,7 +37,8 @@ Namen in de code (functies, variabelen, JSON-sleutels) blijven Engels, zoals nu.
   - commentaar in het Nederlands, dat uitlegt waarom, bovenaan elk bestand met het gebruik;
   - foutmeldingen die zeggen wat je moet doen, bv. welk script eerst moet draaien.
 - **Tests** gebruiken inline fragmenten voor randgevallen en een kopie van de echte catalogus voor de rest.
-  Wijzig je gedrag, pas dan de tests mee aan.
+  Wijzig je gedrag, pas dan de tests mee aan. De runs van de scripts staan in `test/runs/`: elk script draait daar
+  tegen een nagemaakte flux-web-components, in een kopie van de repo. Een nieuw script krijgt er een test bij.
 - **Documentatie mee bijwerken.** Wijzigt een script of een formaat, werk dan de pagina over dat thema in
   `docs/technisch/` bij; de README in de root blijft beknopt.
 

@@ -16,6 +16,7 @@
         "figma:descriptions:write": "node ./resources/figma/descriptions/write.mjs",
         "flux:catalog:update": "./resources/flux/catalog/update.sh",
         "flux:catalog:backfill": "node ./resources/flux/catalog/backfill.mjs",
+        "flux:catalog:check": "node ./resources/flux/catalog/check.mjs",
         "flux:web-types:copy": "./resources/flux/web-types/copy.sh",
         "flux:packages:copy": "node ./resources/flux/packages/copy.mjs",
         "flux:changelog:copy": "./resources/flux/changelog/copy.sh",

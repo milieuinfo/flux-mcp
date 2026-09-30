@@ -79,3 +79,13 @@ en daarna `storybook:analyse` per versie, van oud naar nieuw.
 - **`storybook:check`**, offline: de pagina's en de analyses van Storybook, in alle versies.
 - **`storybook:copy --check [versie]`** bouwt de pagina's opnieuw uit de bronrepo en `index.json` van Storybook, en
   vergelijkt; het schrijft niets.
+- **`catalog:check <versie>`** controleert de hele versie tegen de echte bron.
+
+`catalog:check` haalt de bronnen van die versie opnieuw op en bouwt ze, in een kopie van de repo, en vergelijkt
+`web-types/`, `packages/`, `changelog/` en `storybook/` met wat in git staat. De analyses vergelijkt het niet: die
+schrijft een LLM. Omdat het de bronrepo, de registry en Storybook nodig heeft, hoort het niet bij `pnpm test`. Met een
+lokale clone duurt het een tiental seconden:
+
+```bash
+FLUX_REPO=~/repos/flux-web-components pnpm run flux:catalog:check 2.20.0
+```

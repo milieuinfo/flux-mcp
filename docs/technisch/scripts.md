@@ -37,3 +37,6 @@ FLUX_REPO=~/repos/flux-web-components pnpm run figma:code-connect:copy 2.20.0
 | Variabele            | Bron                                   | Standaard                                                          |
 |----------------------|----------------------------------------|--------------------------------------------------------------------|
 | `FLUX_REGISTRY`      | de registry van de packages            | `https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm` |
+| `FLUX_STORYBOOK_URL` | de site met de Storybooks              | `https://flux.omgeving.vlaanderen.be`                              |
+
+De tests van de runs wijzen beide naar een lokale server (zie [Tests](tests.md)).

@@ -33,7 +33,7 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 | `server/`            | de queries op de catalogus en hun tests; later de MCP-server                                 |
 | `resources/`         | de scripts, per spoor: `flux` en `figma`                                                     |
 | `prompts/`           | de prompts voor agents: de analyse en de review van de catalogus, de Figma-descriptions      |
-| `test/`              | de tests van wat buiten de server valt, zoals de modules van de scripts                      |
+| `test/`              | de tests van de scripts, ook hun runs tegen een nagemaakte flux-web-components               |
 | `docs/technisch/`    | de technische documentatie                                                                   |
 | `docs/beslissingen/` | de ADR's: wat we beslisten en waarom; `ADR-000-template.md` is het sjabloon                  |
 | `tsconfig.json`      | enkel om de templates in de catalogus te laten typechecken; er wordt niets gecompileerd      |
@@ -49,6 +49,7 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 | [Claude Code](docs/technisch/claude-code.md)          | hoe de analyses draaien: abonnement, rechten en model               |
 | [De server](docs/technisch/server.md)                 | de queries op de catalogus                                          |
 | [Figma](docs/technisch/figma.md)                      | Code Connect en de component descriptions                           |
+| [Tests](docs/technisch/tests.md)                      | wat `pnpm test` draait                                              |
 
 De beslissingen en het waarom staan in de ADR's onder [`docs/beslissingen/`](docs/beslissingen/):
 
