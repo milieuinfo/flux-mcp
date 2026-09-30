@@ -12,7 +12,8 @@
     "scripts": {
         "figma:code-connect:publish": "./resources/figma/code-connect/publish.sh",
         "figma:code-connect:unpublish": "./resources/figma/code-connect/unpublish.sh",
-        "figma:web-components:copy-figma": "./resources/figma/web-components/copy-figma.sh"
+        "figma:web-components:copy-figma": "./resources/figma/web-components/copy-figma.sh",
+        "figma:descriptions:write": "node ./resources/figma/descriptions/write.mjs"
     },
     "devDependencies": {
         "@figma/code-connect": "2.0.0"
