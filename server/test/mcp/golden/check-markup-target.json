@@ -1,0 +1,63 @@
+{
+    "structuredContent": {
+        "version": "2.12.0",
+        "catalog": "0.0.0-test",
+        "warnings": [],
+        "targetVersion": "2.20.0",
+        "syntax": "html",
+        "elements": 2,
+        "counts": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+        },
+        "findings": [
+            {
+                "attribute": "disable-mobile-native-input",
+                "suggestion": null,
+                "source": "changelog",
+                "code": "breaks-in-target",
+                "severity": "error",
+                "message": "In 2.20.0: <vl-datepicker> heeft geen attribuut 'disable-mobile-native-input' in de web-types. Zie FLUX-638 in 2.14.0.",
+                "element": "vl-datepicker",
+                "line": 1,
+                "column": 16,
+                "entry": {
+                    "version": "2.14.0",
+                    "id": "e9c69d6",
+                    "ticket": "FLUX-638",
+                    "impact": "automatic",
+                    "summary": "native ondersteuning geschrapt",
+                    "action": null
+                }
+            }
+        ],
+        "sources": [
+            {
+                "kind": "web-types",
+                "path": "2.12.0/web-types/"
+            },
+            {
+                "kind": "web-types",
+                "path": "2.20.0/web-types/"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.12.0/storybook/index.json"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.20.0/storybook/index.json"
+            },
+            {
+                "kind": "changelog",
+                "path": "*/changelog/"
+            },
+            {
+                "kind": "changelog-analysis",
+                "path": "*/changelog-analysis/"
+            }
+        ]
+    },
+    "otherContent": []
+}

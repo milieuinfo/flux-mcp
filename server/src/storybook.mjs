@@ -12,6 +12,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { checkMarkup } from './markup.mjs';
 import {
     arrowFunction,
     attributeSource,
@@ -839,26 +840,6 @@ export const NOTE_TYPES = ['not-in-web-types', 'mismatch'];
 const ANALYSIS_KEYS = ['schema', 'page', 'inputHash', 'analysedFor', 'summary', 'keywords', 'examples', 'notes'];
 const EXAMPLE_KEYS = ['html', 'js'];
 const NOTE_KEYS = ['type', 'element', 'name', 'text', 'source'];
-// Attributen die op elk HTML-element mogen.
-const GLOBAL_ATTRIBUTES = new Set([
-    'id', 'class', 'style', 'slot', 'title', 'lang', 'dir', 'hidden', 'tabindex', 'role', 'part', 'is', 'name',
-    'autofocus', 'inert', 'draggable', 'translate', 'spellcheck', 'contenteditable', 'accesskey', 'popover',
-]);
-
-const isGlobal = (attribute) => GLOBAL_ATTRIBUTES.has(attribute) || /^(aria|data)-|^on/.test(attribute);
-
-// De vl-elementen en hun attributen in HTML.
-export function elementsInHtml(html) {
-    const result = [];
-    const attribute = String.raw`\s+([^\s=>/]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+))?`;
-    const tag = new RegExp(String.raw`<(vl-[a-z0-9-]+)((?:${attribute})*)\s*\/?>`, 'g');
-    for (const match of String(html).matchAll(tag)) {
-        const attributes = [...match[2].matchAll(new RegExp(attribute, 'g'))].map((m) => m[1]);
-        result.push({ element: match[1], attributes });
-    }
-    return result;
-}
-
 // Wat niet klopt aan een analyse, voor een pagina van een versie. Een lege lijst betekent dat ze klopt.
 export function validateAnalysis(analysis, page, webTypes) {
     const problems = [];
@@ -891,11 +872,6 @@ export function validateAnalysis(analysis, page, webTypes) {
     }
     const storyIds = new Set(page.stories.map((story) => story.id));
     for (const story of page.stories) if (!(story.id in examples)) problem(`geen voorbeeld voor story ${story.id}.`);
-    const allowed = (element, name) =>
-        notes.some(
-            (note) =>
-                note.type === 'not-in-web-types' && note.element === element && (note.name ?? null) === (name ?? null),
-        );
     for (const [storyId, example] of Object.entries(examples)) {
         if (!storyIds.has(storyId)) problem(`voorbeeld voor ${storyId}, maar die story hoort niet bij de pagina.`);
         for (const key of Object.keys(example ?? {})) {
@@ -904,22 +880,9 @@ export function validateAnalysis(analysis, page, webTypes) {
         const html = typeof example?.html === 'string' ? example.html : '';
         const js = typeof example?.js === 'string' ? example.js : '';
         if (!html.trim() && !js.trim()) problem(`${storyId}: een voorbeeld zonder html en js.`);
-        for (const { element, attributes } of elementsInHtml(html)) {
-            const known = webTypes?.get(element)?.element;
-            if (!known) {
-                if (!allowed(element, null)) {
-                    problem(`${storyId}: <${element}> staat niet in de web-types van deze versie.`);
-                }
-                continue;
-            }
-            const names = new Set((known.attributes ?? []).map((a) => a.name));
-            for (const attribute of attributes) {
-                if (/^[?.@]/.test(attribute)) {
-                    problem(`${storyId}: '${attribute}' op <${element}> is lit-syntax; schrijf gewone HTML.`);
-                } else if (!names.has(attribute) && !isGlobal(attribute) && !allowed(element, attribute)) {
-                    problem(`${storyId}: attribuut '${attribute}' staat niet in de web-types van <${element}>.`);
-                }
-            }
+        // De voorbeelden zijn gewone HTML; een element of attribuut buiten de web-types mag enkel met een note.
+        for (const finding of checkMarkup(html, { syntax: 'html', webTypes, notes, strict: true })) {
+            if (finding.severity === 'error') problem(`${storyId}: ${finding.message}`);
         }
     }
     return problems;

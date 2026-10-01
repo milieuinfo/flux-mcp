@@ -3,8 +3,8 @@
 `flux-mcp` is een MCP-server over stdio: hij geeft een LLM-agent kennis over de Flux web-componenten, per versie, uit
 de catalogus in `catalog/flux/`. Wat de server aanbiedt en waarom, staat in
 [ADR-004](../beslissingen/ADR-004-functionaliteit-mcp-server.md); deze pagina beschrijft hoe hij werkt, hoe je hem
-start, koppelt en test. Hij kent increment 1 van de ADR: de tools en resources op wat de catalogus heeft, nog zonder
-`flux_check_markup` en zonder prompts.
+start, koppelt en test. Hij kent increment 1 en 2 van de ADR: de tools en resources op wat de catalogus heeft, en
+`flux_check_markup`; nog zonder prompts.
 
 ## Starten en koppelen
 
@@ -48,6 +48,7 @@ Node 22 of hoger; de server heeft geen dependencies.
 | `flux_get_guidance`  | welke gidsen, richtlijnen, patronen en recepten zijn er, en wat zeggen ze?              |
 | `flux_get_upgrade`   | wat verandert er van X naar Y, voor de componenten die ik gebruik?                      |
 | `flux_find_changes`  | in welke versie zit `FLUX-800`, of een wijziging over …?                                |
+| `flux_check_markup`  | klopt deze markup met de API van versie X, en wat breekt er in versie Y?                |
 
 | Resource                                  | Inhoud                                                  |
 |-------------------------------------------|---------------------------------------------------------|
@@ -79,6 +80,37 @@ Node 22 of hoger; de server heeft geen dependencies.
   het model verder kan, bv. "Bedoelde je vl-button?". Ongeldige argumenten ook. Een onbekende tool of methode is een
   fout in het protocol.
 
+### `flux_check_markup`
+
+De tool toetst markup aan de web-types van één versie, met `server/src/markup.mjs`. `storybook:check` gebruikt
+dezelfde module voor de voorbeelden van de analyses (zie [Storybook](storybook.md)).
+
+- **De invoer** is HTML (`syntax: "html"`) of lit (standaard): een template of een heel `.ts`- of `.js`-bestand. De
+  module neemt er de templates `` html`…` `` uit, ook die in een `${…}` van een andere template, en slaat strings en
+  commentaar over. Een `${…}` is een placeholder: een dynamische waarde controleert ze niet. `.prop`, `@event` en
+  `?attr` zijn een property, een event en een boolean attribuut.
+- **De codes:**
+
+  | Code | Ernst | Wanneer |
+  |---|---|---|
+  | `unknown-element` | error | een `vl-*`-element buiten de web-types; met de namen die erop lijken, of de versies waarin het bestaat |
+  | `unknown-attribute` | error | een attribuut buiten de web-types dat geen globaal HTML-attribuut is |
+  | `lit-syntax` | error | enkel voor `storybook:check`: `.prop`, `@event` of `?attr` in een voorbeeld, dat gewone HTML is |
+  | `breaks-in-target` | error of warning | met `targetVersion`: wat in die versie een bevinding geeft en nu niet, met de entry uit de changelog of `unexplained` |
+  | `invalid-attribute-value` | warning | een waarde buiten de lijst die de web-types geven |
+  | `unknown-slot` | warning | `slot="x"` op een direct kind van een `vl-*`-element zonder slot `x` |
+  | `deprecated-element`, `deprecated-attribute` | warning | `deprecated` in de web-types, met de tekst ervan |
+  | `boolean-attribute-false` | warning | `disabled="false"`, dat het attribuut net aanzet |
+  | `unknown-property`, `unknown-event` | warning | `.prop` of `@event` buiten de web-types en buiten wat elk HTML-element kent |
+  | `next-element` | info | generatie `v3-next`: een voorloper van v3 |
+  | `dynamic-tag` | info | een tag die pas bij het uitvoeren gekend is |
+
+- **Onvolledige web-types.** Een element of attribuut dat een analyse van Storybook in die versie als
+  `not-in-web-types` noteert, is een warning in plaats van een error. Waarden en slots zijn altijd een warning: daar
+  zijn de web-types vaak onvolledig. In de catalogus vond de controle 586 zulke bevindingen in 67 analyses, en geen
+  enkele was een fout in een voorbeeld, bv. `placement="bottom-end"` van `vl-popover`, of de slots `title-link` en
+  `context-link` van `vl-content-header`.
+
 ## De code
 
 | Bestand                         | Wat                                                                                   |
@@ -91,6 +123,7 @@ Node 22 of hoger; de server heeft geen dependencies.
 | `server/src/mcp/render.mjs`     | de antwoorden als Markdown                                                            |
 | `server/src/mcp/paging.mjs`     | de delen en de cursor                                                                 |
 | `server/src/mcp/schema.mjs`     | een kleine validator voor JSON Schema: de argumenten, en in de tests de antwoorden    |
+| `server/src/markup.mjs`         | de tokenizer voor HTML en lit, en de controle van `flux_check_markup` en `storybook:check` |
 | `server/package.json`           | het manifest van het pakket: naam, versie, `bin` en `engines`                          |
 | `server/CHANGELOG.md`           | wat er per versie van flux-mcp veranderde                                             |
 
@@ -184,3 +217,16 @@ claude -p "Welke status heeft vl-alert in Flux 2.20.0?" --mcp-config <config> --
 
 Draai de Inspector buiten deze repo: `devEngines` weigert npx hier. Met `--output-format stream-json` zie je in het
 transcript wat het model van een tool kreeg.
+
+### De kennisvragen
+
+```bash
+pnpm run flux:server:eval                          # Sonnet 5.5, effort medium
+pnpm run flux:server:eval --model claude-opus-5-5 --effort high
+```
+
+toetst of een model met de beschrijvingen van de tools de juiste tool kiest. Per vraag in
+`resources/flux/server/kennisvragen.json` draait Claude Code headless, met enkel deze server (`--tools ""`) en in een
+lege map, en het script vergelijkt de eerste tool van flux-mcp met de tools die goed zijn. Het faalt als een vraag een
+andere tool kiest. De runs lopen op het abonnement van Claude Code en horen niet bij `pnpm test`. Wijzig je de
+beschrijving van een tool of de instructies, draai het dan opnieuw.

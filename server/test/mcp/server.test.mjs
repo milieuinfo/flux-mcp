@@ -111,6 +111,31 @@ describe('tools/list', () => {
     });
 });
 
+// Een lit-component met wat flux_check_markup vindt: een onbekend element en attribuut, een waarde en een slot buiten
+// de web-types, een deprecated element, en een attribuut dat een analyse als niet in de web-types noteert.
+const LIT = `import { html, LitElement } from 'lit';
+
+export class Melding extends LitElement {
+    render() {
+        return html\`
+            <vl-alert type="oops" closable="false" @vl-alert-closed=\${this.gesloten}>
+                <span slot="title">Opgelet</span>
+                <span slot="ondertitel">Extra</span>
+            </vl-alert>
+            <vl-breadcrumb ellipsis>
+                \${this.items.map(
+                    (item) => html\`<vl-breadcrumb-item href=\${item.url}>\${item.titel}</vl-breadcrumb-item>\`,
+                )}
+            </vl-breadcrumb>
+            <vl-share-buttons></vl-share-buttons>
+            <vl-buton>Klik</vl-buton>
+        \`;
+    }
+}
+`;
+// Een migratie van 2.12.0 naar 2.20.0: disable-mobile-native-input van vl-datepicker verdwijnt (FLUX-638).
+const MIGRATION = '<vl-datepicker disable-mobile-native-input></vl-datepicker>\n<vl-alert type="info"></vl-alert>';
+
 describe('tools/call', () => {
     const CASES = [
         ['search-datumkiezer', 'flux_search_docs', { version: '2.20.0', query: 'datumkiezer' }],
@@ -124,6 +149,12 @@ describe('tools/call', () => {
         ['upgrade-alert', 'flux_get_upgrade', { from: '2.19.0', to: '2.20.0', components: ['vl-alert'] }],
         ['upgrade-patch', 'flux_get_upgrade', { from: '2.17.3', to: '2.18.0' }],
         ['find-flux-800', 'flux_find_changes', { query: 'FLUX-800' }],
+        ['check-markup-lit', 'flux_check_markup', { version: '2.20.0', markup: LIT }],
+        [
+            'check-markup-target',
+            'flux_check_markup',
+            { version: '2.12.0', syntax: 'html', targetVersion: '2.20.0', markup: MIGRATION },
+        ],
     ];
 
     for (const [name, tool, args] of CASES) {
@@ -185,6 +216,17 @@ describe('tools/call', () => {
         assert.equal(result.apiDelta, null);
         assert.match(result.apiDeltaUnavailable, /Geen web-types voor 1\.48\.2/);
         assert.match(result.docsUnavailable, /1\.48\.2/);
+    });
+
+    test('flux_check_markup: targetVersion moet nieuwer zijn, en de markup hoogstens 50.000 tekens', async () => {
+        const older = await call('flux_check_markup', {
+            version: '2.20.0',
+            markup: '<vl-alert></vl-alert>',
+            targetVersion: '2.19.0',
+        });
+        assert.match(older.content[0].text, /targetVersion \(2\.19\.0\) moet nieuwer zijn dan version \(2\.20\.0\)/);
+        const large = await call('flux_check_markup', { version: '2.20.0', markup: 'x'.repeat(50001) });
+        assert.match(large.content[0].text, /mag hoogstens 50000 tekens lang zijn/);
     });
 
     test('flux_list_versions: elke versie van de catalogus, de nieuwste eerst', async () => {

@@ -371,6 +371,20 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
         };
     }
 
+    // Wat checkMarkup voor een versie nodig heeft: de web-types, de notes 'not-in-web-types' uit alle analyses van
+    // die versie, en de elementen van de pagina's met generatie v3-next.
+    const markupContext = cached((version) => {
+        const pages = storybook(version)?.pages ?? [];
+        return {
+            webTypes: webTypes(version),
+            notes: pages
+                .flatMap((page) => analysis(page)?.notes ?? [])
+                .filter((note) => note.type === 'not-in-web-types'),
+            next: new Set(pages.filter((page) => statusOf({ page }) === 'next').flatMap((page) => page.elements)),
+        };
+    });
+    const markupContextOf = (version) => markupContext(requireVersion(version));
+
     // Een element uit de web-types van een versie, { category, element }, of null; en de namen van alle elementen.
     const elementOf = (version, name) => webTypes(requireVersion(version))?.get(name) ?? null;
     const elementNames = (version) => [...(webTypes(requireVersion(version))?.keys() ?? [])].sort();
@@ -386,5 +400,6 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
         pageOf,
         elementOf,
         elementNames,
+        markupContextOf,
     };
 }

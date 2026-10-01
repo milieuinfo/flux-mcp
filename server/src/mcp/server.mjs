@@ -24,14 +24,15 @@ import { createTools } from './tools.mjs';
 export const PROTOCOL_VERSIONS = ['2025-11-25', '2025-06-18'];
 
 // De instructies voor het model, zoals in sectie 7 van ADR-004, beperkt tot wat er in dit increment is: nog zonder
-// flux_check_markup en zonder prompts (sectie 10).
+// prompts (sectie 10).
 export const INSTRUCTIONS =
     'Flux-MCP levert kennis over de Flux web-componenten (@domg-wc/*) per versie. Neem de versie van ' +
     '@domg-wc/components uit de package.json van het project en geef ze mee aan elke tool; latest is de nieuwste ' +
     'versie in deze catalogus. Zoek met flux_search_docs, haal een component op met flux_get_component, en gidsen, ' +
     'richtlijnen, patronen en recepten met flux_get_guidance. Voor een upgrade: flux_get_upgrade, met de componenten ' +
-    'die het project gebruikt; in welke versie een ticket zit: flux_find_changes. De API komt uit de web-types; ' +
-    'tekst uit een bron *-analysis schreef een LLM. De server leest of wijzigt geen code; dat doe jij in het project.';
+    'die het project gebruikt; in welke versie een ticket zit: flux_find_changes. Controleer gegenereerde of ' +
+    'gewijzigde markup met flux_check_markup. De API komt uit de web-types; tekst uit een bron *-analysis schreef ' +
+    'een LLM. De server leest of wijzigt geen code; dat doe jij in het project.';
 
 const MANIFEST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../package.json');
 

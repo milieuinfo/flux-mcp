@@ -22,6 +22,7 @@ import {
 } from '../catalog.mjs';
 import { IMPACTS } from '../changelog.mjs';
 import { statusOf } from '../docs.mjs';
+import { checkMarkup, closest, parseMarkup, SEVERITIES, SYNTAXES } from '../markup.mjs';
 import { paginate } from './paging.mjs';
 
 export const SOURCE_KINDS = [
@@ -114,32 +115,6 @@ const dedupe = (sources) => [...new Map(sources.map((item) => [`${item.kind} ${i
 // ---------------------------------------------------------------------------------------------------------------
 // Hulp bij fouten.
 
-// De bewerkingsafstand tussen twee namen (Levenshtein).
-function distance(a, b) {
-    let row = Array.from({ length: b.length + 1 }, (_, index) => index);
-    for (let i = 1; i <= a.length; i++) {
-        const next = [i];
-        for (let j = 1; j <= b.length; j++) {
-            next[j] = Math.min(row[j] + 1, next[j - 1] + 1, row[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-        }
-        row = next;
-    }
-    return row[b.length];
-}
-
-// De drie namen die het dichtst bij een naam liggen, bij een gelijke afstand alfabetisch. De afstand telt zonder
-// 'vl-', en enkel tot een derde van de naam: 'vl-buton' geeft vl-button, niet vl-icon.
-export function closest(name, candidates, count = 3) {
-    const core = (value) => value.replace(/^vl-/, '');
-    const limit = Math.max(1, Math.floor(core(name).length / 3));
-    return candidates
-        .map((candidate) => ({ candidate, distance: distance(core(name), core(candidate)) }))
-        .filter((item) => item.distance <= limit)
-        .sort((a, b) => a.distance - b.distance || a.candidate.localeCompare(b.candidate))
-        .slice(0, count)
-        .map((item) => item.candidate);
-}
-
 const TOOL_HINTS = {
     search: 'Zoek met flux_search_docs.',
     guidance: 'Gidsen, richtlijnen, patronen en recepten haal je op met flux_get_guidance.',
@@ -153,17 +128,25 @@ export function createTools({ catalog, docs, catalogVersion }) {
     const resolve = (version) => catalog.resolve(version);
 
     // Een onbekend element: de namen die erop lijken, en de versies waarin het wel bestaat.
+    // In welke versies een element wel bestaat, als zin, of null als het in geen enkele versie staat.
+    function existsIn(element, version) {
+        const versions = catalog.elementVersions(element);
+        if (versions.length === 0) return null;
+        const [first, last] = [versions[0], versions.at(-1)];
+        if (compareVersions(version, first) < 0) return `${element} bestaat vanaf ${first}.`;
+        if (compareVersions(version, last) > 0) {
+            return `${element} staat laatst in ${last}; wat er veranderde, toont flux_get_upgrade.`;
+        }
+        return `${element} staat in ${versions.join(', ')}.`;
+    }
+
     function unknownElement(error) {
         const { element, version } = error.details;
         const parts = [error.message];
         const known = version ? docs.elementNames(version) : [];
-        const versions = catalog.elementVersions(element);
-        if (versions.length > 0 && version) {
-            const [first, last] = [versions[0], versions.at(-1)];
-            if (compareVersions(version, first) < 0) parts.push(`${element} bestaat vanaf ${first}.`);
-            else if (compareVersions(version, last) > 0) {
-                parts.push(`${element} staat laatst in ${last}; wat er veranderde, toont flux_get_upgrade.`);
-            } else parts.push(`${element} staat in ${versions.join(', ')}.`);
+        const exists = version ? existsIn(element, version) : null;
+        if (exists) {
+            parts.push(exists);
         } else {
             const similar = closest(element, known);
             if (similar.length > 0) parts.push(`Bedoelde je ${similar.join(', ')}?`);
@@ -361,7 +344,8 @@ export function createTools({ catalog, docs, catalogVersion }) {
             "('components-atom-button', zoals in de Figma-description) of een link naar Storybook. Standaard de " +
             "secties 'api' en 'examples'; 'docs' geeft de hele pagina, 'history' de wijzigingen met impact. Status " +
             "'deprecated' komt uit de web-types, 'next' is een voorloper van v3; generatie 'legacy' in de metadata " +
-            'is de technische basis, geen uitfasering. Zoek je nog welke component past, gebruik flux_search_docs.',
+            'is de technische basis, geen uitfasering. Zoek je nog welke component past, gebruik flux_search_docs; ' +
+            'markup die je schreef, controleer je met flux_check_markup.',
         inputSchema: input(
             {
                 version: VERSION,
@@ -679,7 +663,8 @@ export function createTools({ catalog, docs, catalogVersion }) {
             'uit de web-types, wat zonder changelog-entry veranderde, de documentatie en de dependencies. Geef in ' +
             "'components' de elementen die het project gebruikt: dan komen ook de algemene wijzigingen ('general') " +
             "die elk project raken. Zonder 'from' enkel wat er in 'to' nieuw is. Een groot antwoord komt in delen: " +
-            "haal ze allemaal op met 'cursor'. Voor één ticket of één onderwerp, gebruik flux_find_changes.",
+            "haal ze allemaal op met 'cursor'. Wat er in de code van het project breekt, toont flux_check_markup met " +
+            "'targetVersion'. Voor één ticket of één onderwerp, gebruik flux_find_changes.",
         inputSchema: input(
             {
                 to: VERSION,
@@ -983,7 +968,185 @@ export function createTools({ catalog, docs, catalogVersion }) {
         },
     };
 
-    const tools = [listVersions, searchDocs, getComponent, getGuidance, getUpgrade, findChanges];
+    // -----------------------------------------------------------------------------------------------------------
+
+    // Waarom iets in de doelversie breekt: de entry van de changelog over dat element, bij voorkeur een die het
+    // attribuut noemt, en anders de eerste met de meeste impact. null als de changelog niets over het element zegt.
+    function entryFor(changes, finding) {
+        const all = UPGRADE_IMPACTS.flatMap((impact) => changes.changes[impact] ?? []);
+        const bare = finding.attribute?.replace(/^[.@?]/, '');
+        const names = (entry) => [entry.text, entry.explanation, entry.action].filter(Boolean).join(' ');
+        const found = (bare && all.find((entry) => names(entry).includes(bare))) ?? all[0] ?? null;
+        if (!found) return null;
+        const { version, id, ticket, impact, summary, action } = found;
+        return { version, id, ticket: ticket ?? null, impact, summary, action: action ?? null };
+    }
+
+    const FINDING = object(
+        {
+            code: { type: 'string' },
+            severity: { type: 'string', enum: SEVERITIES },
+            message: { type: 'string' },
+            element: nullable('string'),
+            attribute: nullable('string'),
+            line: { type: 'integer' },
+            column: { type: 'integer' },
+            suggestion: nullable('string'),
+            source: { type: 'string' },
+            entry: nullable('object'),
+        },
+        ['code', 'severity', 'message', 'element', 'attribute', 'line', 'column', 'suggestion', 'source'],
+    );
+
+    const checkMarkupTool = {
+        name: 'flux_check_markup',
+        title: 'Controleer markup met Flux-componenten',
+        description:
+            'Controleert markup met Flux web-componenten tegen de API in de web-types van één versie van Flux: ' +
+            'onbekende elementen en attributen, ongeldige waarden, deprecated onderdelen, slots, properties en ' +
+            "events, met regel en kolom. 'markup' is HTML, een lit-template of een heel .ts- of .js-bestand " +
+            "(syntax 'lit', standaard): de tool neemt er de templates html`…` uit en controleert geen dynamische " +
+            "waarden. Met 'targetVersion' ook wat er in die versie breekt (breaks-in-target), met de entry uit de " +
+            'changelog: gebruik dat voor een migratie. Los elke error op. Een warning over een waarde of een slot ' +
+            'kan een gat in de web-types zijn: kijk dan de documentatie na met flux_get_component. De tool toetst ' +
+            'enkel de API; patronen en toegankelijkheid beoordeel je met flux_get_guidance.',
+        inputSchema: input(
+            {
+                version: VERSION,
+                markup: string(
+                    'De markup: HTML, een lit-template of een heel .ts- of .js-bestand. Tot 50.000 tekens.',
+                    50000,
+                ),
+                syntax: {
+                    type: 'string',
+                    enum: SYNTAXES,
+                    default: 'lit',
+                    description:
+                        "'lit' (standaard): templates html`…`, met .prop, @event en ?attr; 'html': gewone HTML.",
+                },
+                targetVersion: string('Een nieuwere versie: wat breekt er in de markup bij een upgrade daarheen?', 40),
+                cursor: CURSOR,
+            },
+            ['version', 'markup'],
+        ),
+        outputSchema: output(
+            {
+                targetVersion: nullable('string'),
+                syntax: { type: 'string', enum: SYNTAXES },
+                elements: { type: 'integer' },
+                counts: object({ error: { type: 'integer' }, warning: { type: 'integer' }, info: { type: 'integer' } }),
+                findings: list(FINDING),
+            },
+            ['targetVersion', 'syntax', 'elements', 'counts', 'findings'],
+        ),
+        build({ version, markup, syntax = 'lit', targetVersion }) {
+            const at = resolve(version);
+            const warnings = [at.warning].filter(Boolean);
+            const findings = checkMarkup(markup, { syntax, ...docs.markupContextOf(at.version) }).map((finding) =>
+                enrich(finding, at.version),
+            );
+            let target = null;
+            if (targetVersion != null) {
+                target = resolve(targetVersion);
+                if (target.warning) warnings.push(target.warning);
+                if (compareVersions(target.version, at.version) <= 0) {
+                    throw new CatalogError(
+                        `targetVersion (${target.version}) moet nieuwer zijn dan version (${at.version}).`,
+                    );
+                }
+                // Wat in de doelversie een bevinding geeft en in de versie zelf niet, breekt bij de upgrade.
+                const key = (finding) =>
+                    [finding.code, finding.element, finding.attribute, finding.line, finding.column].join('|');
+                const present = new Set(findings.map(key));
+                const after = checkMarkup(markup, { syntax, ...docs.markupContextOf(target.version) });
+                const changes = new Map();
+                for (const finding of after) {
+                    if (present.has(key(finding)) || finding.severity === 'info') continue;
+                    if (!changes.has(finding.element)) {
+                        const component = finding.element ? [finding.element] : undefined;
+                        changes.set(
+                            finding.element,
+                            catalog.getChangesBetween(at.version, target.version, { component }),
+                        );
+                    }
+                    const entry = finding.element ? entryFor(changes.get(finding.element), finding) : null;
+                    const enriched = enrich(finding, target.version);
+                    const why = entry
+                        ? ` Zie ${entry.ticket ?? entry.id} in ${entry.version}.`
+                        : ' De changelog zegt er niets over (unexplained).';
+                    // Verklaart de changelog het, dan is het geen gat in de web-types.
+                    const gap = / De web-types kunnen onvolledig zijn;[^.]*\./;
+                    const message = entry ? enriched.message.replace(gap, '') : enriched.message;
+                    findings.push({
+                        ...enriched,
+                        code: 'breaks-in-target',
+                        message: `In ${target.version}: ${message}${why}`,
+                        source: entry ? 'changelog' : 'unexplained',
+                        entry,
+                    });
+                }
+                findings.sort(
+                    (a, b) =>
+                        a.line - b.line ||
+                        a.column - b.column ||
+                        SEVERITIES.indexOf(a.severity) - SEVERITIES.indexOf(b.severity) ||
+                        a.code.localeCompare(b.code),
+                );
+            }
+            const counts = Object.fromEntries(
+                SEVERITIES.map((severity) => [severity, findings.filter((item) => item.severity === severity).length]),
+            );
+            const elements = parseMarkup(markup, { syntax }).filter((element) =>
+                element.name?.startsWith('vl-'),
+            ).length;
+            const versions = target ? [at.version, target.version] : [at.version];
+            return {
+                result: {
+                    ...fixed(at.version, warnings),
+                    targetVersion: target?.version ?? null,
+                    syntax,
+                    elements,
+                    counts,
+                    findings: findings.map((finding) => ({ ...finding, entry: finding.entry ?? null })),
+                    sources: dedupe([
+                        ...versions.map((item) => source('web-types', `${item}/web-types/`)),
+                        ...versions.map((item) => source('storybook', `${item}/storybook/index.json`)),
+                        ...(findings.some((item) => item.source === 'storybook-analysis')
+                            ? [source('storybook-analysis', 'storybook-analysis/')]
+                            : []),
+                        ...(target
+                            ? [
+                                  source('changelog', '*/changelog/'),
+                                  source('changelog-analysis', '*/changelog-analysis/'),
+                              ]
+                            : []),
+                    ]),
+                },
+                sections: [['findings']],
+            };
+        },
+    };
+
+    // Een bevinding met wat het model verder helpt: bij een onbekend element de versies waarin het wel bestaat, bij een
+    // onbekend attribuut de tool met de documentatie.
+    function enrich(finding, version) {
+        if (finding.code === 'unknown-element' && finding.element) {
+            const exists = existsIn(finding.element, version);
+            return exists ? { ...finding, message: `${finding.message} ${exists}` } : finding;
+        }
+        if (finding.code === 'unknown-attribute' && finding.severity === 'error') {
+            return {
+                ...finding,
+                message: finding.message.replace(
+                    /kijk de documentatie van de component na\.$/,
+                    'kijk de documentatie na met flux_get_component.',
+                ),
+            };
+        }
+        return finding;
+    }
+
+    const tools = [listVersions, searchDocs, getComponent, getGuidance, getUpgrade, findChanges, checkMarkupTool];
     for (const tool of tools) tool.annotations = { title: tool.title, ...ANNOTATIONS };
     return { tools, explain };
 }

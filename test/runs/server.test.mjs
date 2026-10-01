@@ -100,3 +100,29 @@ describe('flux:server:pack', () => {
         assert.match(fromPackage[4].result.contents[0].text, /^# /);
     });
 });
+
+describe('flux:server:eval', () => {
+    test('per vraag de eerste tool van flux-mcp, enkel met de server; faalt bij een verkeerde keuze', async () => {
+        const run = ws.copy();
+        run.write(
+            'vragen.json',
+            JSON.stringify([
+                { question: 'In welke versie zit FLUX-1?', expected: ['flux_find_changes'] },
+                { question: 'Welke attributen heeft vl-knop in 1.1.0?', expected: ['flux_get_component'] },
+            ]),
+        );
+        const { code, stdout } = await run.run('flux:server:eval', ['--questions', 'vragen.json']);
+        assert.equal(code, 1, stdout);
+        assert.match(stdout, /goed {2}In welke versie zit FLUX-1\?/);
+        assert.match(stdout, /FOUT {2}Welke attributen heeft vl-knop in 1\.1\.0\?/);
+        assert.match(stdout, /\n {7}verwacht flux_get_component, kreeg flux_list_versions/);
+        assert.match(stdout, /1 van 2 vragen kozen de juiste tool \(claude-sonnet-5-5, effort medium\)/);
+        const [first] = run.claudeRuns();
+        const tools = first.args.indexOf('--tools');
+        assert.equal(first.args[tools + 1], '', 'geen ingebouwde tools');
+        assert.ok(first.args.includes('--strict-mcp-config'));
+        assert.ok(first.args.includes('mcp__flux__*'));
+        assert.ok(!first.cwd.startsWith(run.dir), 'in een lege map, zonder de CLAUDE.md van de repo');
+        run.remove();
+    });
+});

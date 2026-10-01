@@ -415,8 +415,8 @@ Voor alle tools geldt:
   `` html`…` `` uit, en zonder zo'n template de hele tekst. `${…}` wordt een placeholder: een dynamische waarde
   controleert de tool niet. `attr=${…}` is een attribuut, `.prop=${…}` een property, `@event=${…}` een event en
   `?attr=${…}` een boolean attribuut. Een dynamische tag (`unsafeStatic`, `literal`) geeft een `info`.
-- **Output:** `findings` met `code`, `severity`, `message`, `element`, `attribute`, `line`, `column`, `suggestion` en
-  `source`, en een telling per ernst.
+- **Output:** `findings` met `code`, `severity`, `message`, `element`, `attribute`, `line`, `column`, `suggestion`,
+  `source` en, bij `breaks-in-target`, `entry`; daarnaast een telling per ernst en het aantal `vl-*`-elementen.
 - **Codes:**
 
   | Code | Ernst | Wanneer |
@@ -425,25 +425,34 @@ Voor alle tools geldt:
   | `deprecated-element` | warning | `deprecated` in de web-types, met de tekst ervan |
   | `next-element` | info | generatie `v3-next`: een voorloper van v3 |
   | `unknown-attribute` | error | niet in de web-types en geen globaal HTML-attribuut; warning als een analyse het als `not-in-web-types` kent |
-  | `invalid-attribute-value` | error | enkel waar de web-types een lijst van waarden geven: 52 van de 918 attributen in 2.20.0 |
+  | `invalid-attribute-value` | warning | enkel waar de web-types een lijst van waarden geven: 52 van de 918 attributen in 2.20.0 |
   | `deprecated-attribute` | warning | `deprecated` in de web-types |
   | `boolean-attribute-false` | warning | bv. `disabled="false"`, dat het attribuut net aanzet; voor attributen met default `"false"` of `"true"` |
   | `unknown-property` | warning | `.prop` die niet in de web-types staat en geen standaard property van een HTML-element is |
   | `unknown-event` | warning | `@event` die niet in de web-types staat en geen standaard DOM-event is |
-  | `unknown-slot` | error | `slot="x"` op een kind van een `vl-*`-element zonder slot `x` |
-  | `breaks-in-target` | error | met `targetVersion`: het element of onderdeel verdwijnt of wijzigt in die versie; met de entry uit de changelog, of anders `unexplained` |
+  | `unknown-slot` | warning | `slot="x"` op een direct kind van een `vl-*`-element zonder slot `x` |
+  | `breaks-in-target` | error of warning | met `targetVersion`: wat in die versie een bevinding geeft en nu niet, met de ernst van die bevinding; met de entry uit de changelog, of anders `unexplained` |
   | `dynamic-tag` | info | een tag die pas bij het uitvoeren gekend is |
+  | `lit-syntax` | error | enkel voor `storybook:check`: `.prop`, `@event` of `?attr` in een voorbeeld, dat gewone HTML is |
 
 - **Buiten scope:** elementen die niet met `vl-` beginnen, behalve als kind voor de controle van de slots.
 - **Grens:** de tool toetst enkel de API. Of patronen, toegankelijkheid en UX kloppen, beoordeelt het model met
   `flux_get_guidance`.
 - **Eén implementatie.** `server/src/markup.mjs` is een eigen tokenizer voor HTML en lit, zonder dependencies, zoals de
   parser voor MDX. Hij houdt regel en kolom bij, kent commentaar, `<script>`, `<style>` en `<template>`, en neemt als
-  ouder van een element het dichtstbijzijnde open `vl-*`-element. `storybook:check` gebruikt dezelfde module voor de
-  voorbeelden van de analyse, in plaats van `elementsInHtml`; daar weigert ze lit-syntax, zoals nu.
+  ouder van een element het element waarin het staat; in een geneste template het element waarin de `${…}` staat. Een
+  slot controleert hij enkel op een direct kind van een `vl-*`-element: het slot-attribuut werkt enkel daar, en het
+  dichtstbijzijnde `vl-*`-element zou valse meldingen geven. `storybook:check` gebruikt dezelfde module voor de
+  voorbeelden van de analyse, in plaats van `elementsInHtml`; daar weigert ze lit-syntax, zoals voorheen.
 - **Onvolledige web-types** geven valse fouten. Een attribuut dat wel in de code staat maar niet in de web-types, zoals
   `ellipsis`, is een error tot een analyse van Storybook het als `not-in-web-types` noteert. De boodschap zegt dat de
   web-types onvolledig kunnen zijn en verwijst naar `flux_get_component`.
+- **Waarden en slots zijn een warning** (beslist op 2026-10-01, bij de bouw van increment 2). De eerste versie gaf er
+  een error voor. Op de voorbeelden van alle analyses gaf dat 586 bevindingen in 67 analyses, en geen enkele was een
+  fout in een voorbeeld: de web-types waren onvolledig. `placement="bottom-end"` en `trigger="click hover"` van
+  `vl-popover` zijn geldig volgens de beschrijving van het attribuut, `vl-content-header` heeft de slots `title-link` en
+  `context-link` naast `image`, en `vl-wizard` geeft zijn slots zonder naam. Een error zou een agent geldige code laten
+  "herstellen". Als warning ziet het model ze nog, met de toegelaten waarden erbij.
 
 ### 5. Resources
 
@@ -748,7 +757,7 @@ productie-eis" (planning, sectie 9) af te dwingen is. Ze vallen grotendeels same
 |---|---|
 | 1. web-types en migratiebestand zijn geldig | `changelog:build --check` controleert de gebouwde bestanden en de analyse; `storybook:check` de pagina's en hun analyse |
 | 2. de structuur van de `.llm.md` | `llm-check`, wanneer de `.llm.md` er is |
-| 3. voorbeelden slagen voor `check_markup` | `storybook:check` controleert de voorbeelden van de analyse met `markup.mjs` |
+| 3. voorbeelden slagen voor `check_markup` | `storybook:check` controleert de voorbeelden van de analyse met `markup.mjs`, en faalt op elke error |
 | 4. elke verwijderde of hernoemde naam heeft een migratie-entry | `inChangelog` in de diff van de web-types; wat zonder entry is, toont `flux_get_upgrade` als `unexplained`, en de review van de analyse vermeldt het in de samenvatting (ADR-001, sectie 5). Geen harde fout: de changelog van Flux schrijven wij niet |
 | 5. recepten noemen bestaande tools en sjablonen | een nieuwe test, `server/test/prompts.test.mjs` |
 
@@ -769,7 +778,8 @@ Daarnaast:
 - **Evaluatie, op twee niveaus,** apart van `pnpm test`, want ze vraagt een model:
   - 15 à 20 kennisvragen via `claude -p --mcp-config`, zoals de analyse nu Claude Code headless gebruikt (ADR-001).
     Dat toetst of de beschrijvingen het model de juiste tool laten kiezen. Vanaf increment 2, als alle zeven tools er
-    zijn;
+    zijn: `pnpm run flux:server:eval`, met de vragen in `resources/flux/server/kennisvragen.json`. Bij increment 2
+    kozen 20 van de 20 vragen de juiste tool (Sonnet 5.5, effort medium);
   - de recepten van begin tot einde op een kleine toepassing op niveau 7.A, in `server/test/fixtures/app/`, met twee
     kleine, verzonnen versies in de catalogus met gekende verschillen. `migreren` moet eindigen met groene e2e-testen
     en een volledig ingevuld rapport (increment 3), en `valideren` moet de afwijkingen vinden die er bewust in zitten
@@ -849,8 +859,8 @@ Af als:
     increment 1;
   - de lijsten van globale HTML-attributen, standaard properties en DOM-events die de controle nodig heeft.
 - **`storybook:check`** controleert de voorbeelden van de analyses met `markup.mjs` in plaats van `elementsInHtml`
-  (controle 3 in sectie 9). Een bevinding met ernst `error` doet de controle falen. Wat dat in bestaande analyses
-  vindt, verbetert een review-run in `catalog/flux/storybook-analysis/` voor het increment af is.
+  (controle 3 in sectie 9). Een bevinding met ernst `error` doet de controle falen. Een review-run bleek niet nodig:
+  wat de strengere controle vond, waren gaten in de web-types, en die zijn een warning (sectie 4.7).
 - **De kennisvragen uit sectie 9**: 15 à 20 vragen via `claude -p`, nu alle zeven tools er zijn. Ze toetsen de
   beschrijvingen en draaien apart, niet in `pnpm test`.
 
@@ -993,9 +1003,9 @@ increment 1 hangt ervan af. 8 is nodig vóór de eerste release.
   zoektermen, en blijft zoeken op functie zwak. Elke versie is geanalyseerd; na een release van Flux volgt de
   analyse van wat nieuw is of wijzigde.
 - **De kwaliteit van de web-types bepaalt `flux_check_markup`.** 866 van de 918 attributen hebben geen type, dus
-  waarden kunnen we enkel voor 52 controleren. Een attribuut dat in de web-types ontbreekt, geeft een valse fout tot
-  een analyse het noteert. Die gevallen zijn voor het Flux-team om recht te zetten, zoals ADR-003 dat al zegt voor
-  verkeerde doc-urls.
+  waarden kunnen we enkel voor 52 controleren, en ook die lijsten en de slots zijn vaak onvolledig: daarom zijn het
+  warnings. Een attribuut dat in de web-types ontbreekt, geeft een valse fout tot een analyse het noteert. Die
+  gevallen zijn voor het Flux-team om recht te zetten, zoals ADR-003 dat al zegt voor verkeerde doc-urls.
 - **Wat een LLM schreef, blijft herkenbaar** in elk antwoord, via `sources[].kind`, `impactSource` en `analysis`.
 - **ADR-001 en ADR-003.** Hun voorlopige mapping naar MCP (sectie 8) vervalt; bij het aanvaarden van deze ADR krijgen
   ze een verwijzing hierheen.
