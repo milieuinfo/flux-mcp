@@ -1,0 +1,18 @@
+{
+    "name": "flux-mcp",
+    "version": "0.1.0",
+    "description": "MCP-server met kennis over de Flux web-componenten (@domg-wc/*), per versie.",
+    "private": true,
+    "type": "module",
+    "bin": {
+        "flux-mcp": "server/bin/flux-mcp.mjs"
+    },
+    "engines": {
+        "node": ">=22"
+    },
+    "files": [
+        "server/",
+        "catalog/",
+        "CHANGELOG.md"
+    ]
+}

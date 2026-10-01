@@ -3,8 +3,8 @@
 //
 // Leest per versie wat changelog:build in catalog/flux/<versie>/changelog/ zette, samengevoegd met de analyse uit
 // changelog-analysis/ (zie readRelease). Voor een bereik vergelijkt het de web-types en de packages van beide
-// kanten zelf. De MCP-koppeling hangt deze functies later aan tools en resources; zie
-// docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md.
+// kanten zelf. server/src/mcp/tools.mjs hangt deze functies aan tools en resources; zie
+// docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md en ADR-004-functionaliteit-mcp-server.md.
 //
 // Elke entry zegt met 'impact' wat ze voor het project van een afnemer betekent: action, opt-in, automatic of
 // none. Entries met impact 'none' (testen, tooling, de documentatie van Flux zelf) mag een afnemer weten, maar ze
@@ -28,13 +28,64 @@ export const CATALOG_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.u
 const VERSION = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$/;
 const ISSUE = /^[A-Z][A-Z0-9]*-\d+$/i;
 
-export class CatalogError extends Error {}
+// Een fout in de vraag. 'details' laat wie de fout opvangt ze aanvullen: de MCP-laag noemt bv. bij een onbekend
+// element de namen die erop lijken (details.code 'unknown-element'), of de tool waarmee je verder zoekt
+// (details.suggest 'search').
+export class CatalogError extends Error {
+    constructor(message, details = {}) {
+        super(message);
+        this.details = details;
+    }
+}
 
 // '2.20.0' en 'v2.20.0' mogen allebei.
 export function normalizeVersion(version) {
     const normalized = String(version ?? '').trim().replace(/^v/, '');
     if (!VERSION.test(normalized)) throw new CatalogError(`Ongeldige versie: '${version}'. Verwacht bv. 2.20.0.`);
     return normalized;
+}
+
+// De patches op een zijtak van develop-v2 staan niet in de catalogus (ADR-002). Een vraag naar zo'n versie krijgt
+// het antwoord van de hoogste versie van dezelfde minor, met een waarschuwing (ADR-004, sectie 3). Een vaste lijst
+// en geen regel: zo valt een tikfout, of een patch die nieuwer is dan de catalogus, niet stil terug.
+export const SIDE_BRANCH_PATCHES = ['2.4.1', '2.15.1', '2.17.1', '2.17.2', '2.17.3'];
+
+const minorOf = (version) => version.split('.').slice(0, 2).join('.');
+
+// De versie in de catalogus voor een patch op een zijtak, of null. 'versions' is oplopend.
+export function sideBranchBase(versions, version) {
+    if (!SIDE_BRANCH_PATCHES.includes(version)) return null;
+    const same = versions.filter((v) => minorOf(v) === minorOf(version) && compareVersions(v, version) < 0);
+    return same.at(-1) ?? null;
+}
+
+// Welke versie van de catalogus een gevraagde versie beantwoordt: 'latest' is de nieuwste, een versie uit de
+// catalogus zichzelf, en een patch op een zijtak de hoogste versie van haar minor, met een waarschuwing. Elke andere
+// versie geeft een CatalogError; is ze nieuwer dan de nieuwste, dan zegt die dat flux-mcp een update nodig heeft.
+// 'versions' is oplopend. Geeft { version, requested, warning }.
+export function resolveVersion(versions, requested) {
+    if (versions.length === 0) throw new CatalogError('De catalogus is leeg.');
+    const latest = versions.at(-1);
+    if (String(requested ?? '').trim().toLowerCase() === 'latest') {
+        return { version: latest, requested: 'latest', warning: null };
+    }
+    const version = normalizeVersion(requested);
+    if (versions.includes(version)) return { version, requested: version, warning: null };
+    const base = sideBranchBase(versions, version);
+    if (base) {
+        const warning =
+            `Flux ${version} is een patch op een zijtak en staat niet in de catalogus. Dit antwoord geldt voor ` +
+            `${base}: de API is die van ${base}, de fixes van ${version} ontbreken.`;
+        return { version: base, requested: version, warning };
+    }
+    if (compareVersions(version, latest) > 0) {
+        throw new CatalogError(
+            `Flux ${version} staat niet in de catalogus; de nieuwste is ${latest}. ` +
+                'Werk flux-mcp bij voor een nieuwere versie van Flux.',
+        );
+    }
+    const available = [...versions].reverse().join(', ');
+    throw new CatalogError(`Versie ${version} staat niet in de catalogus. Beschikbaar: ${available}.`);
 }
 
 // Semver-volgorde: een prerelease komt voor de release zelf.
@@ -65,15 +116,35 @@ function matchOf(entry, { name, raw }) {
     return null;
 }
 
-function filterWebTypesDiff(diff, name) {
+// De beste match met een van de gevraagde componenten: 'scope' gaat voor 'mention'.
+function bestMatch(entry, wanted) {
+    const matches = wanted.map((component) => matchOf(entry, component));
+    return matches.includes('scope') ? 'scope' : matches.includes('mention') ? 'mention' : null;
+}
+
+// Een entry die geen component, geen thema en geen element in de tekst noemt, bv. een wijziging aan de globale
+// styling of aan de build. Ze raakt elk project, maar valt anders weg uit een filter op componenten.
+export const isGeneral = (entry) =>
+    entry.components.length === 0 && entry.topics.length === 0 && entry.mentions.length === 0;
+
+function filterWebTypesDiff(diff, names) {
     if (!diff) return diff;
+    const keep = (item) => [].concat(names).includes(item.element);
     return {
         ...diff,
-        added: diff.added.filter((item) => item.element === name),
-        removed: diff.removed.filter((item) => item.element === name),
-        changed: diff.changed.filter((item) => item.element === name),
-        descriptions: diff.descriptions.filter((item) => item.element === name),
+        added: diff.added.filter(keep),
+        removed: diff.removed.filter(keep),
+        changed: diff.changed.filter(keep),
+        descriptions: diff.descriptions.filter(keep),
     };
+}
+
+// Of de analyse van de changelog van een versie er is: 'complete' met een samenvatting en een analyse voor elke
+// entry, 'missing' zonder beide, anders 'partial'.
+function analysisState(release) {
+    const analysed = release.entries.filter((entry) => entry.impactSource === 'analysis').length;
+    if (release.summary && analysed === release.entries.length) return 'complete';
+    return release.summary || analysed > 0 ? 'partial' : 'missing';
 }
 
 // De diff zonder de elementen waarvan enkel de beschrijving wijzigde, met hun aantal.
@@ -113,7 +184,27 @@ export function createCatalog(dir = CATALOG_DIR) {
         return release;
     }
 
+    // Welke versie van de catalogus een gevraagde versie beantwoordt; zie resolveVersion.
+    const resolve = (version) => resolveVersion(versions, version);
+
+    // In welke versies een element in de web-types staat, oplopend. De index komt er pas bij de eerste vraag: hij
+    // leest de web-types van elke versie.
+    let elementIndex = null;
+    function elementVersions(component) {
+        if (!elementIndex) {
+            elementIndex = new Map();
+            for (const version of versions) {
+                for (const name of webTypes(version)?.keys() ?? []) {
+                    if (!elementIndex.has(name)) elementIndex.set(name, []);
+                    elementIndex.get(name).push(version);
+                }
+            }
+        }
+        return elementIndex.get(normalizeComponent(component).name) ?? [];
+    }
+
     // Filtert entries; zonder includeNoImpact telt een entry met impact 'none' enkel mee in hiddenNoImpact.
+    // 'component' is één component of een lijst; een entry telt mee als ze bij een ervan hoort.
     function select(entries, { type, impact, component, label, includeNoImpact = true } = {}) {
         const types = type == null ? null : [].concat(type);
         for (const t of types ?? []) {
@@ -128,14 +219,14 @@ export function createCatalog(dir = CATALOG_DIR) {
         if (label != null && !LABELS.includes(label)) {
             throw new CatalogError(`Onbekend label '${label}'. Kies uit: ${LABELS.join(', ')}.`);
         }
-        const wanted = component == null ? null : normalizeComponent(component);
+        const wanted = component == null ? null : [].concat(component).map(normalizeComponent);
         let hiddenNoImpact = 0;
         const selected = [];
         for (const entry of entries) {
             if (types && !types.includes(entry.type)) continue;
             if (impacts && !impacts.includes(entry.impact)) continue;
             if (label != null && !entry.labels.includes(label)) continue;
-            const match = wanted ? matchOf(entry, wanted) : null;
+            const match = wanted ? bestMatch(entry, wanted) : null;
             if (wanted && !match) continue;
             if (!includeNoImpact && entry.impact === 'none' && !impacts?.includes('none')) {
                 hiddenNoImpact++;
@@ -170,6 +261,7 @@ export function createCatalog(dir = CATALOG_DIR) {
                 previousInCatalog: release.previous != null && releases.has(release.previous),
                 webTypes: fs.existsSync(path.join(dir, version, 'web-types')),
                 packages: fs.existsSync(path.join(dir, version, 'packages')),
+                changelogAnalysis: analysisState(release),
                 summary: release.summary,
                 counts: release.counts,
             };
@@ -186,12 +278,21 @@ export function createCatalog(dir = CATALOG_DIR) {
     }
 
     // Wat verandert er bij een upgrade van 'from' (exclusief, hoeft niet in de catalogus te staan) naar 'to'.
+    // 'component' is één component of een lijst. Met componenten geeft 'general' per impact ook de entries die geen
+    // component, thema of element noemen (isGeneral): die raken elk project.
+    //
+    // De diffs van de web-types en de dependencies vertrekken van 'base': 'from' zelf, of voor een patch op een
+    // zijtak de hoogste versie van haar minor (ADR-004, sectie 3). Zo heeft een upgrade vanaf 2.17.3 een diff tegen
+    // 2.17.0, met de fixes van 2.17.1–2.17.3 erin.
     function getChangesBetween(from, to, { component, includeNoImpact = false, includeDescriptions = false } = {}) {
         const target = requireRelease(to);
         const start = normalizeVersion(from);
         if (compareVersions(start, target.version) >= 0) {
             throw new CatalogError(`'from' (${start}) moet lager zijn dan 'to' (${target.version}).`);
         }
+        const base = sideBranchBase(versions, start) ?? start;
+        const wanted = component == null ? [] : [].concat(component);
+        const names = wanted.map((name) => normalizeComponent(name).name);
 
         // Volg de keten van vorige versies terug tot 'from'.
         const chain = [];
@@ -209,12 +310,19 @@ export function createCatalog(dir = CATALOG_DIR) {
 
         // Per impact, van meest naar minst dringend: wat een afnemer moet doen, eerst.
         const changes = Object.fromEntries(IMPACTS.map((impact) => [impact, []]));
+        const general = names.length > 0 ? Object.fromEntries(IMPACTS.map((impact) => [impact, []])) : null;
         const components = new Map();
         const targetTypes = webTypes(target.version);
         let hiddenNoImpact = 0;
         for (const release of chain) {
-            const selected = select(release.entries, { component, includeNoImpact });
+            const selected = select(release.entries, { component: names.length > 0 ? names : null, includeNoImpact });
             hiddenNoImpact += selected.hiddenNoImpact;
+            if (general) {
+                for (const entry of release.entries.filter(isGeneral)) {
+                    if (!includeNoImpact && entry.impact === 'none') hiddenNoImpact++;
+                    else general[entry.impact].push({ version: release.version, ...entry });
+                }
+            }
             for (const entry of selected.entries) {
                 changes[entry.impact].push({ version: release.version, ...entry });
                 for (const name of entry.components) {
@@ -241,17 +349,17 @@ export function createCatalog(dir = CATALOG_DIR) {
 
         // De netto diff van de web-types tussen beide versies; die klopt ook als er tussenliggende changelogs
         // ontbreken.
-        const startTypes = webTypes(start);
+        const startTypes = webTypes(base);
         let webTypesDiff = null;
         let webTypesDiffUnavailable = null;
         if (startTypes && targetTypes) {
             const mentioned = new Set(
                 chain.flatMap((release) => release.entries.flatMap((e) => [...e.components, ...e.mentions])),
             );
-            webTypesDiff = { base: start, ...diffWebTypes(startTypes, targetTypes, { mentioned }) };
-            if (component != null) webTypesDiff = filterWebTypesDiff(webTypesDiff, normalizeComponent(component).name);
+            webTypesDiff = { base, ...diffWebTypes(startTypes, targetTypes, { mentioned }) };
+            if (names.length > 0) webTypesDiff = filterWebTypesDiff(webTypesDiff, names);
         } else {
-            webTypesDiffUnavailable = `Geen web-types voor ${startTypes ? target.version : start} in de catalogus.`;
+            webTypesDiffUnavailable = `Geen web-types voor ${startTypes ? target.version : base} in de catalogus.`;
         }
         let hiddenDescriptions = 0;
         if (!includeDescriptions) {
@@ -259,12 +367,12 @@ export function createCatalog(dir = CATALOG_DIR) {
         }
 
         // Ook de dependencies netto, over het hele bereik.
-        const [startPackages, targetPackages] = [packages(start), packages(target.version)];
+        const [startPackages, targetPackages] = [packages(base), packages(target.version)];
         const dependenciesDiff =
-            startPackages && targetPackages ? { base: start, ...diffPackages(startPackages, targetPackages) } : null;
+            startPackages && targetPackages ? { base, ...diffPackages(startPackages, targetPackages) } : null;
         const dependenciesDiffUnavailable = dependenciesDiff
             ? null
-            : `Geen packages voor ${startPackages ? target.version : start} in de catalogus.`;
+            : `Geen packages voor ${startPackages ? target.version : base} in de catalogus.`;
 
         // Commits die de packages raken zonder in de changelog te staan, per versie. null als een versie in de
         // keten het niet weet (geen commits.json).
@@ -274,6 +382,7 @@ export function createCatalog(dir = CATALOG_DIR) {
 
         return {
             from: start,
+            base,
             to: target.version,
             complete: missing === null,
             missing,
@@ -283,6 +392,7 @@ export function createCatalog(dir = CATALOG_DIR) {
                 : null,
             versions: chain.map(({ version, date, previous, summary }) => ({ version, date, previous, summary })),
             changes,
+            general,
             components: [...components.values()].sort((a, b) => a.name.localeCompare(b.name)),
             hiddenNoImpact,
             webTypesDiff,
@@ -347,11 +457,14 @@ export function createCatalog(dir = CATALOG_DIR) {
     }
 
     // Een issue-key (FLUX-800) zoekt exact; anders moeten alle woorden in de tekst, de uitleg of de scope staan.
-    function findChanges(query, { includeNoImpact = true } = {}) {
+    // 'component' beperkt tot de entries van die component; 'limit' tot de eerste resultaten, de nieuwste eerst.
+    // 'total' telt alle resultaten.
+    function findChanges(query, { includeNoImpact = true, component, limit } = {}) {
         const text = String(query ?? '').trim();
         if (!text) throw new CatalogError('Geef een zoekterm of een issue-key op, bv. FLUX-800.');
         const issue = ISSUE.test(text) ? text.toUpperCase() : null;
         const terms = text.toLowerCase().split(/\s+/);
+        const wanted = component == null ? null : normalizeComponent(component);
         const results = [];
         let hiddenNoImpact = 0;
         for (const version of [...versions].reverse()) {
@@ -363,6 +476,7 @@ export function createCatalog(dir = CATALOG_DIR) {
                     .toLowerCase();
                 const found = issue ? entry.issues.includes(issue) : terms.every((term) => haystack.includes(term));
                 if (!found) continue;
+                if (wanted && !matchOf(entry, wanted)) continue;
                 if (!includeNoImpact && entry.impact === 'none') {
                     hiddenNoImpact++;
                     continue;
@@ -370,10 +484,26 @@ export function createCatalog(dir = CATALOG_DIR) {
                 results.push({ version, ...entry });
             }
         }
-        return { query: text, results, hiddenNoImpact, coverage: coverage() };
+        return {
+            query: text,
+            results: limit == null ? results : results.slice(0, limit),
+            total: results.length,
+            hiddenNoImpact,
+            coverage: coverage(),
+        };
     }
 
-    return { listVersions, getChangelog, getChangesBetween, getComponentHistory, findChanges, coverage };
+    return {
+        versions: () => [...versions],
+        resolve,
+        elementVersions,
+        listVersions,
+        getChangelog,
+        getChangesBetween,
+        getComponentHistory,
+        findChanges,
+        coverage,
+    };
 }
 
 // De catalogus van deze repo, pas geladen bij de eerste vraag.

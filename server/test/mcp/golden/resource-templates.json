@@ -1,0 +1,32 @@
+{
+    "resourceTemplates": [
+        {
+            "uriTemplate": "flux://{version}/changelog",
+            "name": "changelog",
+            "title": "De changelog van een versie van Flux",
+            "description": "Wat er in één versie veranderde, per impact, met de actie, de uitleg en een voorbeeld.",
+            "mimeType": "text/markdown"
+        },
+        {
+            "uriTemplate": "flux://{version}/docs",
+            "name": "docs",
+            "title": "De documentatie van een versie van Flux",
+            "description": "De index van de pagina's uit Storybook van één versie, per soort.",
+            "mimeType": "text/markdown"
+        },
+        {
+            "uriTemplate": "flux://{version}/docs/{page}",
+            "name": "docs-page",
+            "title": "Een pagina uit de documentatie van Flux",
+            "description": "Eén pagina uit Storybook, met haar voorbeelden, de API uit de web-types en absolute links.",
+            "mimeType": "text/markdown"
+        },
+        {
+            "uriTemplate": "flux://{version}/components/{component}",
+            "name": "component",
+            "title": "Een component van Flux",
+            "description": "Alles over één component in één versie: API, voorbeelden, documentatie en historiek.",
+            "mimeType": "text/markdown"
+        }
+    ]
+}

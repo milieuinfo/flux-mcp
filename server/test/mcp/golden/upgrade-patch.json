@@ -1,0 +1,81 @@
+{
+    "structuredContent": {
+        "version": "2.18.0",
+        "catalog": "0.0.0-test",
+        "warnings": [
+            "Flux 2.17.3 is een patch op een zijtak en staat niet in de catalogus. De diffs vertrekken van 2.17.0: fixes die al in de patches tot en met 2.17.3 zaten, kunnen als wijziging verschijnen."
+        ],
+        "resolved": {
+            "from": "2.17.3",
+            "base": "2.17.0",
+            "to": "2.18.0",
+            "versions": [
+                "2.18.0"
+            ],
+            "complete": true,
+            "missing": null,
+            "crossesMajor": false
+        },
+        "components": [],
+        "changes": {
+            "action": [],
+            "opt-in": [],
+            "automatic": []
+        },
+        "general": null,
+        "apiDelta": {
+            "added": [],
+            "removed": [],
+            "changed": []
+        },
+        "apiDeltaUnavailable": null,
+        "unexplained": [],
+        "docs": [],
+        "docsUnavailable": null,
+        "dependencies": {
+            "base": "2.17.0",
+            "added": [],
+            "removed": [],
+            "changed": []
+        },
+        "dependenciesUnavailable": null,
+        "unlistedCommits": [],
+        "hiddenNoImpact": 10,
+        "hiddenDescriptions": 0,
+        "sources": [
+            {
+                "kind": "changelog",
+                "path": "2.18.0/changelog/"
+            },
+            {
+                "kind": "changelog-analysis",
+                "path": "2.18.0/changelog-analysis/"
+            },
+            {
+                "kind": "web-types",
+                "path": "2.17.0/web-types/"
+            },
+            {
+                "kind": "web-types",
+                "path": "2.18.0/web-types/"
+            },
+            {
+                "kind": "packages",
+                "path": "2.17.0/packages/"
+            },
+            {
+                "kind": "packages",
+                "path": "2.18.0/packages/"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.17.0/storybook/index.json"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.18.0/storybook/index.json"
+            }
+        ]
+    },
+    "otherContent": []
+}

@@ -1,6 +1,6 @@
 // De vragen die de MCP-server over de documentatie uit Storybook beantwoordt, als gewone functies: per versie de
 // pagina's, één pagina of component met zijn voorbeelden en API, zoeken, en wat er tussen twee versies wijzigde. De
-// MCP-koppeling hangt ze later aan tools en resources; zie docs/beslissingen/ADR-003-storybook-per-versie.md.
+// MCP-laag (server/src/mcp/tools.mjs) hangt ze aan tools en resources; zie docs/beslissingen/ADR-003 en ADR-004.
 //
 // Leest per versie wat storybook:copy in catalog/flux/<versie>/storybook/ zette, met de analyse voor de inhoud van
 // elke pagina uit catalog/flux/storybook-analysis/ en de API uit de web-types van die versie. Zonder versie geldt de
@@ -22,6 +22,34 @@ const storyUrl = (version, id) => `${storybookBase(version)}?path=/story/${id}`;
 // De woorden van een zoekvraag: kleine letters, 'vl-button' blijft één woord.
 const words = (text) => String(text ?? '').toLowerCase().match(/[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
 const count = (text, word) => text.split(word).length - 1;
+const elementName = (raw) => (raw.startsWith('vl-') ? raw : `vl-${raw}`);
+// Een id uit een link naar Storybook ('…?path=/docs/components-atom-button--documentatie'), zonder story.
+const pageIdOf = (raw) => (/path=\/(?:docs|story)\/([a-z0-9-]+)/.exec(raw)?.[1] ?? raw).split('--')[0];
+
+// De status van een element (ADR-004, sectie 2): 'deprecated' volgens de web-types, 'next' voor generatie v3-next in
+// de metadata van Storybook, 'internal' voor een pagina "(intern)", en anders 'stable'. Generatie 'legacy' zegt dat
+// een component nog op de oude basis staat, niet dat ze verdwijnt: ook 'stable'. 'element' is het element uit de
+// web-types, 'page' de pagina uit index.json; elk van beide mag ontbreken.
+export function statusOf({ element = null, page = null } = {}) {
+    if (element?.deprecated) return 'deprecated';
+    if (page?.status?.condition?.generation === 'v3-next') return 'next';
+    if (page && /\(intern\)/i.test(page.title)) return 'internal';
+    return 'stable';
+}
+
+// Het element waarover een pagina gaat. Toont ze er meer, dan het element waarvan de naam, zonder 'vl-', 'map-' en
+// '-next', het langste einde van de id vormt: components-block-tabs-tabs → vl-tabs, components-block-next-tabs →
+// vl-tabs-next. null als geen enkel element past.
+export function mainElement(page) {
+    if (page.elements.length <= 1) return page.elements[0] ?? null;
+    const core = (name) => name.replace(/^vl-/, '').replace(/-next$/, '');
+    const ends = (part) => page.id === part || page.id.endsWith(`-${part}`);
+    const candidates = page.elements.filter((name) => ends(core(name)) || ends(core(name).replace(/^map-/, '')));
+    return candidates.sort((a, b) => core(b).length - core(a).length || a.localeCompare(b))[0] ?? null;
+}
+
+// Of een tekst een element noemt: de naam als heel woord, dus niet vl-tab in vl-tabs of vl-tab-next.
+const names = (text, element) => new RegExp(`(?<![a-z0-9-])${element}(?![a-z0-9-])`).test(text);
 
 export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
     const versions = storybookVersions(dir).sort(compareVersions);
@@ -68,10 +96,10 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
         const pages = storybook(version).pages;
         const raw = String(reference ?? '').trim().toLowerCase();
         if (!raw) throw new CatalogError('Geef een pagina of een component op, bv. vl-button of afnemen-aan-de-slag.');
-        const id = (/path=\/(?:docs|story)\/([a-z0-9-]+)/.exec(raw)?.[1] ?? raw).split('--')[0];
+        const id = pageIdOf(raw);
         const exact = pages.find((page) => page.id === id);
         if (exact) return exact;
-        const element = id.startsWith('vl-') ? id : `vl-${id}`;
+        const element = elementName(id);
         const byElement = pages.filter((page) => page.elements.includes(element));
         if (byElement.length === 1) return byElement[0];
         const bySuffix = pages.filter((page) => page.id.endsWith(`-${id}`));
@@ -81,9 +109,40 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
             const ids = candidates.map((page) => page.id).join(', ');
             throw new CatalogError(`'${reference}' past bij meerdere pagina's: ${ids}.`);
         }
-        throw new CatalogError(
-            `Geen pagina '${reference}' in de documentatie van Flux ${version}. Zoek met searchDocs.`,
-        );
+        throw new CatalogError(`Geen pagina '${reference}' in de documentatie van Flux ${version}.`, {
+            suggest: 'search',
+        });
+    }
+
+    // Het element voor een naam ('vl-button', 'button'), een Storybook-id of een link naar Storybook: de naam als
+    // die in de web-types staat, anders het hoofdelement van de pagina met die id (mainElement). Geeft
+    // { name, page, entry }, met entry het element uit de web-types.
+    function resolveElement(version, reference) {
+        const raw = String(reference ?? '').trim().toLowerCase();
+        if (!raw) throw new CatalogError('Geef een component op, bv. vl-button.');
+        const types = webTypes(version);
+        const pages = storybook(version)?.pages ?? [];
+        const id = pageIdOf(raw);
+        let name = elementName(id);
+        if (!types?.has(name)) {
+            const page = pages.find((candidate) => candidate.id === id);
+            if (!page) {
+                throw new CatalogError(`${name} staat niet in de web-types van Flux ${version}.`, {
+                    code: 'unknown-element',
+                    element: name,
+                    version,
+                });
+            }
+            name = mainElement(page);
+            if (!name || !types?.has(name)) {
+                const shown = page.elements.length > 0 ? `de elementen ${page.elements.join(', ')}` : 'geen element';
+                throw new CatalogError(`De pagina ${page.id} toont ${shown}; geef de naam van een element.`, {
+                    suggest: page.elements.length > 0 ? null : 'guidance',
+                });
+            }
+        }
+        const page = pages.find((candidate) => candidate.elements.includes(name)) ?? null;
+        return { name, page, entry: types.get(name) };
     }
 
     const summaryOf = (version, page) => ({
@@ -109,8 +168,17 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
         });
     }
 
-    // De pagina's van een versie, te filteren op soort en element.
-    function listPages(version, { kind, element, includeFluxTeam = false } = {}) {
+    // Of een pagina een element noemt, in haar tekst of in de voorbeelden van haar analyse. Enkel componentpagina's
+    // hebben 'elements'; een gids of patroon noemt de elementen die het gebruikt.
+    function mentions(version, page, element) {
+        if (names(markdown(`${version}/${page.id}`), element)) return true;
+        const examples = Object.values(analysis(page)?.examples ?? {});
+        return examples.some((example) => names(`${example.html ?? ''}\n${example.js ?? ''}`, element));
+    }
+
+    // De pagina's van een versie, te filteren op soort, op element ('element': de pagina toont het) en op wat ze
+    // noemen ('appliesTo': een element uit de web-types van die versie).
+    function listPages(version, { kind, element, appliesTo, includeFluxTeam = false } = {}) {
         const resolved = requireVersion(version);
         const kinds = kind == null ? null : [].concat(kind);
         for (const k of kinds ?? []) {
@@ -118,12 +186,21 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
                 throw new CatalogError(`Onbekende soort '${k}'. Kies uit: ${PAGE_KINDS.join(', ')}.`);
             }
         }
-        const wanted = element == null ? null : String(element).toLowerCase().replace(/^(?!vl-)/, 'vl-');
+        const wanted = element == null ? null : elementName(String(element).trim().toLowerCase());
+        const named = appliesTo == null ? null : elementName(String(appliesTo).trim().toLowerCase());
+        if (named && !webTypes(resolved)?.has(named)) {
+            throw new CatalogError(`${named} staat niet in de web-types van Flux ${resolved}.`, {
+                code: 'unknown-element',
+                element: named,
+                version: resolved,
+            });
+        }
         let hiddenFluxTeam = 0;
         const pages = [];
         for (const page of storybook(resolved).pages) {
             if (kinds && !kinds.includes(page.kind)) continue;
             if (wanted && !page.elements.includes(wanted)) continue;
+            if (named && !mentions(resolved, page, named)) continue;
             if (!includeFluxTeam && page.kind === FLUX_TEAM && !kinds?.includes(FLUX_TEAM)) {
                 hiddenFluxTeam++;
                 continue;
@@ -161,19 +238,11 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
     }
 
     // Alles over één component in één antwoord: de API uit de web-types, de pagina, de voorbeelden per story, de
-    // status en wat er de vorige versies aan veranderde.
+    // status en wat er de vorige versies aan veranderde. 'component' is een element, een Storybook-id of een link
+    // naar Storybook (resolveElement).
     function getComponent(version, component) {
         const resolved = requireVersion(version);
-        const raw = String(component ?? '').trim().toLowerCase();
-        if (!raw) throw new CatalogError('Geef een component op, bv. vl-button.');
-        const name = raw.startsWith('vl-') ? raw : `vl-${raw}`;
-        const known = webTypes(resolved)?.get(name);
-        if (!known) {
-            throw new CatalogError(
-                `${name} staat niet in de web-types van Flux ${resolved}. Zoek met searchDocs of listPages.`,
-            );
-        }
-        const page = storybook(resolved).pages.find((candidate) => candidate.elements.includes(name)) ?? null;
+        const { name, page, entry: known } = resolveElement(resolved, component);
         const found = page ? analysis(page) : null;
         let changes = null;
         try {
@@ -195,6 +264,7 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
                 events: known.element.js?.events ?? [],
             },
             page: page ? page.id : null,
+            title: page?.title ?? null,
             url: page ? docsUrl(resolved, page.id) : null,
             status: page?.status ?? null,
             summary: found?.summary ?? null,
@@ -207,8 +277,19 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
                 js: found?.examples?.[story.id]?.js ?? null,
             })),
             notes: (found?.notes ?? []).filter((note) => !note.element || note.element === name),
+            // De andere elementen van de pagina, en de pagina's waarnaar ze verwijst.
+            related: {
+                elements: (page?.elements ?? []).filter((other) => other !== name),
+                pages: page?.links ?? [],
+            },
             changes,
         };
+    }
+
+    // Een pagina uit index.json, zoals ze in de catalogus staat, of null. Voor wie meer nodig heeft dan getPage, zoals
+    // de status van een pagina (statusOf).
+    function pageOf(version, id) {
+        return storybook(requireVersion(version)).pages.find((page) => page.id === id) ?? null;
     }
 
     // Welke pagina's over een onderwerp gaan. Zoekt in de titel, de id, de elementen, de zoektermen en de
@@ -290,5 +371,20 @@ export function createDocs(dir = CATALOG_DIR, { catalog } = {}) {
         };
     }
 
-    return { listDocVersions, listPages, getPage, getComponent, searchDocs, getDocsChanges };
+    // Een element uit de web-types van een versie, { category, element }, of null; en de namen van alle elementen.
+    const elementOf = (version, name) => webTypes(requireVersion(version))?.get(name) ?? null;
+    const elementNames = (version) => [...(webTypes(requireVersion(version))?.keys() ?? [])].sort();
+
+    return {
+        versions: () => [...versions],
+        listDocVersions,
+        listPages,
+        getPage,
+        getComponent,
+        searchDocs,
+        getDocsChanges,
+        pageOf,
+        elementOf,
+        elementNames,
+    };
 }

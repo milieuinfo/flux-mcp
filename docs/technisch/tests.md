@@ -17,3 +17,23 @@ repo ongemoeid blijft. Hun bron is nagemaakt:
 
 Of de catalogus in git nog klopt met de echte bron, controleert `flux:catalog:check`. Dat vraagt de bronrepo, de
 registry en Storybook, en hoort daarom niet bij `pnpm test` (zie [De catalogus](catalogus.md#controleren)).
+
+## De server
+
+`server/test/mcp/` test de MCP-laag:
+
+- het protocol, de validator voor JSON Schema en de delen, met inline fragmenten;
+- de server op de echte catalogus (`server.test.mjs`): elk antwoord volgt het `outputSchema` van zijn tool, de
+  Markdown komt uit `structuredContent`, en de grootste antwoorden komen in delen onder de grens die samen het hele
+  antwoord geven;
+- golden tests: `tools/list`, `resources/templates/list` en een paar antwoorden per tool, byte voor byte, in
+  `server/test/mcp/golden/`. Ze vragen versies die volledig geanalyseerd zijn en nooit `latest`, zodat een nieuwe
+  release of de analyse van een oudere versie ze niet verandert. Wijzigt een antwoord bewust, maak de
+  bestanden dan opnieuw en lees het verschil na in git:
+
+  ```bash
+  FLUX_UPDATE_GOLDEN=1 pnpm test
+  ```
+
+`test/runs/server.test.mjs` bouwt het pakket met `flux:server:pack` en controleert dat de server eruit dezelfde
+antwoorden geeft als uit de repo.

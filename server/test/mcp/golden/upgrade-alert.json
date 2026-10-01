@@ -1,0 +1,188 @@
+{
+    "structuredContent": {
+        "version": "2.20.0",
+        "catalog": "0.0.0-test",
+        "warnings": [],
+        "resolved": {
+            "from": "2.19.0",
+            "base": "2.19.0",
+            "to": "2.20.0",
+            "versions": [
+                "2.20.0"
+            ],
+            "complete": true,
+            "missing": null,
+            "crossesMajor": false
+        },
+        "components": [
+            "vl-alert"
+        ],
+        "changes": {
+            "action": [],
+            "opt-in": [
+                {
+                    "version": "2.20.0",
+                    "id": "f2a3414",
+                    "ticket": "FLUX-809",
+                    "type": "feature",
+                    "impact": "opt-in",
+                    "impactSource": "analysis",
+                    "components": [
+                        "vl-alert"
+                    ],
+                    "summary": "banner variant",
+                    "action": null,
+                    "explanation": "`vl-alert` heeft een nieuw attribuut `banner` voor een melding over de volledige breedte van de pagina: zonder afgeronde hoeken, met de titel en de boodschap na elkaar op dezelfde regel. De component zet zelf een streepje tussen titel en boodschap wanneer er beide zijn (zet het dus niet in de content), gebruikt altijd de `small` opmaak en is niet bedoeld in combinatie met `naked`. Staat de banner al bij het laden op de pagina, geef hem dan `alert-role=\"no-role\"`, zodat een schermlezer de gebruiker er niet mee onderbreekt. Voor iedereen verandert wel dit: elke `vl-alert` met `closable` krijgt rechts 4rem binnenmarge, zodat de eerste tekstregel niet meer onder de sluitknop doorloopt.",
+                    "example": "```html\n<vl-alert banner closable alert-role=\"no-role\" size=\"small\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>\n```"
+                }
+            ],
+            "automatic": []
+        },
+        "general": {
+            "action": [],
+            "opt-in": [],
+            "automatic": []
+        },
+        "apiDelta": {
+            "added": [],
+            "removed": [],
+            "changed": [
+                {
+                    "element": "vl-alert",
+                    "category": "block",
+                    "inChangelog": true,
+                    "attributes": {
+                        "added": [
+                            {
+                                "name": "banner",
+                                "default": "false"
+                            }
+                        ],
+                        "removed": [],
+                        "changed": []
+                    }
+                }
+            ]
+        },
+        "apiDeltaUnavailable": null,
+        "unexplained": [],
+        "docs": [
+            {
+                "change": "added",
+                "id": "recepten-van-npm-naar-pnpm",
+                "title": "Recepten/Van npm naar pnpm",
+                "kind": "recipe",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/recepten-van-npm-naar-pnpm--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "afnemen-aan-de-slag",
+                "title": "Afnemen/Aan De Slag",
+                "kind": "guide",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-aan-de-slag--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "afnemen-artifacts",
+                "title": "Afnemen/Artifacts",
+                "kind": "guide",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-artifacts--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "afnemen-starter-app",
+                "title": "Afnemen/Starter App",
+                "kind": "guide",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-starter-app--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "afnemen-migratie-v2-aanpak",
+                "title": "Afnemen/Migratie v2 - Aanpak",
+                "kind": "guide",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-migratie-v2-aanpak--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "afnemen-migratie-v2-faq",
+                "title": "Afnemen/Migratie v2 - FAQ",
+                "kind": "guide",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/afnemen-migratie-v2-faq--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip",
+                "title": "Richtlijnen/Toegankelijkheid - Praktijk/Gekende Beperkingen [WIP]",
+                "kind": "guideline",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "patronen-formulier-blur-validatie",
+                "title": "Patronen/Formulier/blur validatie",
+                "kind": "pattern",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/patronen-formulier-blur-validatie--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "patronen-pagina-opbouw",
+                "title": "Patronen/Pagina Opbouw",
+                "kind": "pattern",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/patronen-pagina-opbouw--documentatie"
+            },
+            {
+                "change": "changed",
+                "id": "components-block-alert",
+                "title": "Components - Block/alert",
+                "kind": "component",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-alert--documentatie"
+            }
+        ],
+        "docsUnavailable": null,
+        "dependencies": {
+            "base": "2.19.0",
+            "added": [],
+            "removed": [],
+            "changed": []
+        },
+        "dependenciesUnavailable": null,
+        "unlistedCommits": [],
+        "hiddenNoImpact": 5,
+        "hiddenDescriptions": 0,
+        "sources": [
+            {
+                "kind": "changelog",
+                "path": "2.20.0/changelog/"
+            },
+            {
+                "kind": "changelog-analysis",
+                "path": "2.20.0/changelog-analysis/"
+            },
+            {
+                "kind": "web-types",
+                "path": "2.19.0/web-types/"
+            },
+            {
+                "kind": "web-types",
+                "path": "2.20.0/web-types/"
+            },
+            {
+                "kind": "packages",
+                "path": "2.19.0/packages/"
+            },
+            {
+                "kind": "packages",
+                "path": "2.20.0/packages/"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.19.0/storybook/index.json"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.20.0/storybook/index.json"
+            }
+        ]
+    },
+    "otherContent": []
+}
