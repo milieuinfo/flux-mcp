@@ -3,6 +3,18 @@
 Per versie van flux-mcp: wat er aan de server veranderde. Welke versies van Flux de catalogus bevat, zegt de tool
 `flux_list_versions`.
 
+## 0.3.0 (nog niet gepubliceerd)
+
+Increment 3 van ADR-004: de recepten.
+
+- De recepten `migreren` en `design-naar-code` als prompts, met hun rapportsjabloon als embedded resource; in Claude
+  Code `/mcp__flux__migreren` en `/mcp__flux__design-naar-code`.
+- Voor clients zonder prompts: `flux://prompts/{name}` en `flux://templates/{workflow}`.
+- Een voorwaarde van elk recept: de toepassing start standalone en de e2e-testen draaien zonder echte backend.
+- De instructies noemen de recepten.
+- `flux:server:eval-recipe migreren` voert het recept uit op een kleine toepassing met `@domg-wc` 2.12.1 en
+  controleert het resultaat: de migratie naar 2.20.0 slaagt met Opus 5.5, effort high, in een vijftal minuten.
+
 ## 0.2.0 (nog niet gepubliceerd)
 
 Increment 2 van ADR-004: `flux_check_markup`.

@@ -28,9 +28,9 @@ Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat e
   documentatie uit Storybook van die release;
 - de scripts die hem vullen;
 - `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries;
-- de MCP-server van increment 1 en 2 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zeven tools, waaronder
-  `flux_check_markup` (`server/src/markup.mjs`), en vijf resources op die queries, over stdio, nog zonder prompts. Zie
-  `docs/technisch/server.md`.
+- de MCP-server van increment 1 tot en met 3 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zeven tools, waaronder
+  `flux_check_markup` (`server/src/markup.mjs`), de resources op die queries, en de recepten `migreren` en
+  `design-naar-code` als prompts, over stdio. Zie `docs/technisch/server.md`.
 
 ## Structuur
 
@@ -40,7 +40,8 @@ Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat e
 | `server/src/mcp/`                           | de MCP-server: het protocol, de tools, de resources, de Markdown en de delen (`protocol.mjs`, `server.mjs`, `tools.mjs`, `resources.mjs`, `render.mjs`, `paging.mjs`, `schema.mjs`) |
 | `server/bin/flux-mcp.mjs`                   | het startpunt van de server, over stdio                                   |
 | `server/package.json`, `server/CHANGELOG.md` | het manifest van het npm-pakket en de changelog van flux-mcp; `flux:server:pack` bouwt het pakket in `dist/` |
-| `server/test/`                              | de tests van de server, met `node --test`; `mcp/golden/` de golden antwoorden |
+| `server/prompts/`, `server/templates/`      | de recepten (MCP-prompts) en hun rapportsjablonen; die draaien in een project, de prompts in `prompts/` in deze repo |
+| `server/test/`                              | de tests van de server, met `node --test`; `mcp/golden/` de golden antwoorden; `fixtures/` de toepassing voor de evaluatie van een recept |
 | `test/`                                     | de tests van de scripts en hun modules; `runs/` draait elk script tegen een nagemaakte flux-web-components (`helpers/`) |
 | `catalog/flux/<versie>/web-types/`          | de web-types van een release (script)                                     |
 | `catalog/flux/<versie>/packages/`           | de dependencies van de gepubliceerde packages, uit de registry (script)   |
@@ -66,6 +67,7 @@ FLUX_UPDATE_GOLDEN=1 pnpm test              # maakt de golden antwoorden van de 
 node server/bin/flux-mcp.mjs                # over stdio; een client start hem zelf (docs/technisch/server.md)
 pnpm run flux:server:pack                   # bouwt het npm-pakket in dist/flux-mcp, met de catalogus
 pnpm run flux:server:eval                   # Claude Code: kiest een model met de kennisvragen de juiste tool?
+pnpm run flux:server:eval-recipe migreren   # Claude Code en netwerk: een recept van begin tot einde op een toepassing
 
 # Na een Flux-release, voor versie X.Y.Z; catalog:update doet alles, ook de analyse en de review door Claude Code:
 pnpm run flux:catalog:update X.Y.Z

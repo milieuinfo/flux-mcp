@@ -1,0 +1,33 @@
+{
+    "prompts": [
+        {
+            "name": "design-naar-code",
+            "title": "Bouw een scherm uit een ontwerp in Figma met de Flux web-componenten",
+            "description": "Bouwt een basisimplementatie van een scherm uit een ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie van deze toepassing: voorwaarden, het ontwerp lezen met de Figma MCP, de componenten en patronen ophalen, een plan, een checkpoint, uitvoering, verificatie en een rapport. Vraagt de Figma MCP-server in deze client. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": [
+                {
+                    "name": "figma",
+                    "description": "De link naar het ontwerp in Figma, of de node-id van het frame.",
+                    "required": true
+                },
+                {
+                    "name": "doel",
+                    "description": "Waar de code komt, als pad of als naam van een scherm.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "migreren",
+            "title": "Migreer naar een nieuwere versie van de Flux web-componenten",
+            "description": "Brengt deze toepassing van de gepinde versie van de Flux web-componenten (@domg-wc/*) naar een doelversie: voorwaarden, analyse, plan, een checkpoint, uitvoering, verificatie en een migratierapport. Geen functionele of visuele wijzigingen buiten wat de migratie vraagt. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en een uitvoeringsmodel (Opus 5.5, effort high) daarna.",
+            "arguments": [
+                {
+                    "name": "doelversie",
+                    "description": "De doelversie, bv. 2.20.0, of latest voor de nieuwste versie in de catalogus van flux-mcp.",
+                    "required": false
+                }
+            ]
+        }
+    ]
+}

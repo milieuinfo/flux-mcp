@@ -31,7 +31,7 @@ Met een lokale clone van de bronrepo zet je `FLUX_REPO=~/pad/naar/flux-web-compo
 |----------------------|----------------------------------------------------------------------------------------------|
 | `catalog/flux/`      | de catalogus per Flux-release: web-types, packages, changelog en Storybook, met de analyse   |
 | `catalog/figma/`     | wat naar Figma gaat: `code-connect/v2/` (de templates) en `descriptions/v2/` (de kennis)     |
-| `server/`            | de MCP-server, de queries op de catalogus en hun tests; `flux:server:pack` bouwt het pakket  |
+| `server/`            | de MCP-server, de queries, de recepten (`prompts/`) en de tests; `flux:server:pack` bouwt het pakket |
 | `resources/`         | de scripts, per spoor: `flux` en `figma`                                                     |
 | `prompts/`           | de prompts voor agents: de analyse en de review van de catalogus, de Figma-descriptions      |
 | `test/`              | de tests van de scripts, ook hun runs tegen een nagemaakte flux-web-components               |

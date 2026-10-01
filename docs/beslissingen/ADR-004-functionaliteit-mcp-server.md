@@ -530,7 +530,9 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
    buiten wat de migratie vraagt.
 2. **Voorwaarden** (eis 7.A van de planning):
    - de versie van Flux is exact gepind in de `package.json`;
-   - de toepassing start standalone;
+   - de toepassing start standalone, en de e2e-testen draaien zonder echte backend. Dat neemt de vierde eis van 7.A,
+     "backend uitgemockt", mee: voor de verificatie telt dat de e2e-testen herhaalbaar draaien, niet hoe de backend
+     gemockt is (beslist op 2026-10-01);
    - er is een e2e-suite, en die is groen.
 
    Ontbreekt er een, dan stopt het recept en meldt het wat ontbreekt. Voor `migreren` en `verbeteren` blokkeert een
@@ -634,7 +636,8 @@ functionaliteit of de vormgeving, behalve wat de migratie vraagt.
   beschrijving. Voer dat pas uit na bevestiging.
 ~~~
 
-De server vervangt de argumenten en voegt het sjabloon toe als embedded resource.
+De server vervangt de argumenten en voegt het sjabloon toe als embedded resource. `server/prompts/migreren.md` werkt
+dit voorbeeld uit, met de voorwaarden van 6.3.
 
 #### 6.6 Terugkanaal: normkandidaten
 
@@ -780,10 +783,14 @@ Daarnaast:
     Dat toetst of de beschrijvingen het model de juiste tool laten kiezen. Vanaf increment 2, als alle zeven tools er
     zijn: `pnpm run flux:server:eval`, met de vragen in `resources/flux/server/kennisvragen.json`. Bij increment 2
     kozen 20 van de 20 vragen de juiste tool (Sonnet 5.5, effort medium);
-  - de recepten van begin tot einde op een kleine toepassing op niveau 7.A, in `server/test/fixtures/app/`, met twee
-    kleine, verzonnen versies in de catalogus met gekende verschillen. `migreren` moet eindigen met groene e2e-testen
-    en een volledig ingevuld rapport (increment 3), en `valideren` moet de afwijkingen vinden die er bewust in zitten
-    (increment 4).
+  - de recepten van begin tot einde op een kleine toepassing op niveau 7.A, in `server/test/fixtures/app/`:
+    `pnpm run flux:server:eval-recipe <recept>`. De toepassing gebruikt echte versies van Flux uit de registry en de
+    echte catalogus, niet twee verzonnen versies (beslist op 2026-10-01): dat toetst ook de catalogus en de packages,
+    en de gekende verschillen staan in de changelog, bv. FLUX-620 en FLUX-219. `migreren` gaat van 2.12.1 naar 2.20.0
+    en moet eindigen met groene e2e-testen en een volledig ingevuld rapport (increment 3); `valideren` moet de
+    afwijkingen vinden die er bewust in zitten (increment 4). Bij increment 3 slaagde `migreren` met Opus 5.5,
+    effort high: het vond de vier gekende verschillen, paste de e2e-test aan die FLUX-620 brak, en schreef een
+    volledig rapport.
 
 ### 10. Incrementen
 
@@ -879,14 +886,16 @@ Af als:
   - de resources `flux://prompts/{name}` en `flux://templates/{workflow}`, ook in `resources/list`.
 - **De prompts `migreren` (sectie 6.5) en `design-naar-code` (6.2)**, elk volgens het stramien van 6.3, met hun
   rapportsjabloon (6.4) en een aanbevolen model en effort.
-- **De voorwaarden** volgen eis 7.A van de planning. Die heeft er vier, en 6.3 noemt er drie: "backend uitgemockt"
-  ontbreekt. Of die vierde een recept doet stoppen, beslissen we bij het schrijven van de recepten.
+- **De voorwaarden** volgen eis 7.A van de planning; "backend uitgemockt" zit in de voorwaarde dat de toepassing
+  standalone start en de e2e-testen zonder echte backend draaien (6.3).
 - **Controle 5** (`server/test/prompts.test.mjs`), en de golden tests van `prompts/list` en een gerenderd recept.
-- **De evaluatie van `migreren`** (sectie 9): van begin tot einde op de toepassing in `server/test/fixtures/app/`,
-  met twee verzonnen versies in de catalogus. Ze draait apart, niet in `pnpm test`.
+- **De evaluatie van `migreren`** (sectie 9): van begin tot einde op de toepassing in `server/test/fixtures/app/`, met
+  `@domg-wc` 2.12.1 uit de registry van Flux naar 2.20.0, en de echte catalogus. Ze draait apart, niet in `pnpm test`:
+  `flux:server:eval-recipe`. Niet 2.12.0: dat package importeert `.raw.css`-bestanden die er niet in zitten (FLUX-604
+  in 2.12.1).
 
-Af als: `migreren` de toepassing in de fixture naar de nieuwere verzonnen versie brengt, met groene e2e-testen en een
-volledig ingevuld rapport.
+Af als: `migreren` de toepassing in de fixture naar 2.20.0 brengt, met groene e2e-testen en een volledig ingevuld
+rapport.
 
 #### Increment 4: de norm
 
