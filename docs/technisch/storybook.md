@@ -86,5 +86,9 @@ web-types: elk `vl-*`-element en elk attribuut moet erin staan, of in een note `
 Faalt een reeks, of onderbreek je het script (Ctrl+C), dan stopt het de lopende run van Claude en verwijdert het de
 analyses van die reeks: ze zijn niet (volledig) gereviewd. Hetzelfde commando maakt ze daarna opnieuw.
 
-**De controle.** `storybook:check` toetst de voorbeelden in elke versie die de analyse gebruikt. Het meldt ook analyses
-die geen versie nog gebruikt; `--prune` ruimt ze op.
+**De controle.** `storybook:check` toetst de voorbeelden in elke versie die de analyse gebruikt, met dezelfde module als
+de tool `flux_check_markup` (`server/src/markup.mjs`, zie [De server](server.md)): elke bevinding met ernst `error` is
+een fout. Dat zijn een element of attribuut buiten de web-types zonder note, en lit-syntax (`.prop`, `@event`,
+`?attr`), want een voorbeeld is gewone HTML. Een waarde of een slot die de web-types niet kennen, is een warning en
+geen fout: daar zijn de web-types vaak onvolledig, bv. `placement="bottom-end"` van `vl-popover`. Het meldt ook
+analyses die geen versie nog gebruikt; `--prune` ruimt ze op.

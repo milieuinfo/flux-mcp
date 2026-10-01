@@ -28,14 +28,15 @@ Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat e
   documentatie uit Storybook van die release;
 - de scripts die hem vullen;
 - `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries;
-- de MCP-server van increment 1 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zes tools en vijf resources op die
-  queries, over stdio, zonder `flux_check_markup` en zonder prompts. Zie `docs/technisch/server.md`.
+- de MCP-server van increment 1 en 2 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zeven tools, waaronder
+  `flux_check_markup` (`server/src/markup.mjs`), en vijf resources op die queries, over stdio, nog zonder prompts. Zie
+  `docs/technisch/server.md`.
 
 ## Structuur
 
 | Map                                         | Inhoud                                                                    |
 |---------------------------------------------|---------------------------------------------------------------------------|
-| `server/src/`                               | queries en de logica om de catalogus op te bouwen (`changelog.mjs`, `commits.mjs`, `web-types.mjs`, `packages.mjs`, `catalog.mjs`; voor Storybook `mdx.mjs`, `storybook.mjs`, `docs.mjs`; de url van Storybook in `storybook-url.mjs`) |
+| `server/src/`                               | queries en de logica om de catalogus op te bouwen (`changelog.mjs`, `commits.mjs`, `web-types.mjs`, `packages.mjs`, `catalog.mjs`; voor Storybook `mdx.mjs`, `storybook.mjs`, `docs.mjs`; de url van Storybook in `storybook-url.mjs`; de controle van markup in `markup.mjs`) |
 | `server/src/mcp/`                           | de MCP-server: het protocol, de tools, de resources, de Markdown en de delen (`protocol.mjs`, `server.mjs`, `tools.mjs`, `resources.mjs`, `render.mjs`, `paging.mjs`, `schema.mjs`) |
 | `server/bin/flux-mcp.mjs`                   | het startpunt van de server, over stdio                                   |
 | `server/package.json`, `server/CHANGELOG.md` | het manifest van het npm-pakket en de changelog van flux-mcp; `flux:server:pack` bouwt het pakket in `dist/` |
@@ -64,6 +65,7 @@ FLUX_UPDATE_GOLDEN=1 pnpm test              # maakt de golden antwoorden van de 
 # De MCP-server:
 node server/bin/flux-mcp.mjs                # over stdio; een client start hem zelf (docs/technisch/server.md)
 pnpm run flux:server:pack                   # bouwt het npm-pakket in dist/flux-mcp, met de catalogus
+pnpm run flux:server:eval                   # Claude Code: kiest een model met de kennisvragen de juiste tool?
 
 # Na een Flux-release, voor versie X.Y.Z; catalog:update doet alles, ook de analyse en de review door Claude Code:
 pnpm run flux:catalog:update X.Y.Z
@@ -150,7 +152,9 @@ Een lokale clone van de bronrepo gebruik je met `FLUX_REPO=~/pad/naar/flux-web-c
 - **Dependencies van de packages** staan niet in de bronrepo: de build van Flux zet ze pas bij het publiceren
   in de package.json. `packages:copy` haalt ze uit de registry.
 - **Web-types kunnen onvolledig zijn.** Het `ellipsis` attribuut van `vl-breadcrumb` (2.20.0) staat bv. in de
-  code maar niet in de web-types.
+  code maar niet in de web-types. Ook de lijsten van waarden en de slots: `placement="bottom-end"` van `vl-popover`
+  is geldig, en `vl-content-header` heeft meer slots dan `image`. `markup.mjs` meldt waarden en slots daarom als
+  warning, en een element of attribuut als error, tenzij een analyse het als `not-in-web-types` noteert.
 - **macOS is hoofdletterongevoelig.** `CHANGELOG.md` en `changelog.md` wijzen daar naar hetzelfde bestand; de
   scripts houden daar rekening mee.
 - **De catalogus bevat de releases op de hoofdlijn van `develop-v2`**, de commits `chore(release): 2.x.y`, vanaf

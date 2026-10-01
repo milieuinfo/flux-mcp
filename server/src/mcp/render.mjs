@@ -455,6 +455,28 @@ function findChanges(result) {
     ]);
 }
 
+function checkMarkup(result) {
+    const versions = result.targetVersion ? `${result.version}, met ${result.targetVersion} als doel` : result.version;
+    const counts = ['error', 'warning', 'info'].map((severity) => `${severity}: ${result.counts[severity]}`);
+    const items = result.findings.map((finding) => {
+        const element = finding.element ? `<${finding.element}>` : null;
+        const where = [element, finding.attribute ? code(finding.attribute) : null].filter(Boolean).join(' ');
+        const position = `${finding.line}:${finding.column}${where ? ` ${where}` : ''}`;
+        const lines = [`- **${finding.severity}** ${code(finding.code)} op ${position} — ${finding.message}`];
+        if (finding.suggestion) lines.push(`  - Voorstel: ${finding.suggestion}`);
+        if (finding.entry?.action) lines.push(`  - Actie volgens de changelog: ${finding.entry.action}`);
+        return lines.join('\n');
+    });
+    return join([
+        `# Controle van markup tegen Flux ${versions}`,
+        warnings(result),
+        `${plural(result.elements, 'vl-element', 'vl-elementen')} gecontroleerd (${result.syntax}); ` +
+            `${counts.join(', ')}.`,
+        items.length > 0 ? items.join('\n') : 'Geen bevindingen: de markup volgt de API in de web-types.',
+        footer(result),
+    ]);
+}
+
 const RENDERERS = {
     flux_list_versions: listVersions,
     flux_search_docs: searchDocs,
@@ -462,6 +484,7 @@ const RENDERERS = {
     flux_get_guidance: getGuidance,
     flux_get_upgrade: getUpgrade,
     flux_find_changes: findChanges,
+    flux_check_markup: checkMarkup,
 };
 
 export function render(tool, result) {

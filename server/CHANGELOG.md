@@ -3,6 +3,18 @@
 Per versie van flux-mcp: wat er aan de server veranderde. Welke versies van Flux de catalogus bevat, zegt de tool
 `flux_list_versions`.
 
+## 0.2.0 (nog niet gepubliceerd)
+
+Increment 2 van ADR-004: `flux_check_markup`.
+
+- De tool `flux_check_markup` toetst HTML, een lit-template of een heel `.ts`- of `.js`-bestand aan de web-types van
+  een versie, met regel en kolom. Met `targetVersion` meldt ze wat er in die versie breekt, met de entry uit de
+  changelog.
+- Waarden en slots buiten de web-types zijn een warning: daar zijn de web-types vaak onvolledig.
+- De instructies en de beschrijvingen van `flux_get_component` en `flux_get_upgrade` noemen `flux_check_markup`.
+- `flux:server:eval` toetst met 20 kennisvragen of een model de juiste tool kiest: 20 van 20 met Sonnet 5.5, effort
+  medium.
+
 ## 0.1.0 (nog niet gepubliceerd)
 
 Increment 1 van ADR-004: de kennis die de catalogus heeft, over MCP.

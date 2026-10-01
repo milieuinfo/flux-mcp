@@ -12,6 +12,8 @@
 import { spawn, spawnSync } from 'node:child_process';
 
 const BUDGET = process.env.FLUX_CLAUDE_BUDGET || null;
+// De ingebouwde tools van een run die in de catalogus leest en schrijft.
+const DEFAULT_TOOLS = ['Read', 'Grep', 'Glob', 'Edit', 'Write', 'Bash'];
 // De runs die nu lopen, zodat een script ze kan stoppen voor het opruimt (stopRunning).
 const running = new Set();
 // Zonder deze variabelen gebruikt claude de aanmelding van het abonnement.
@@ -26,7 +28,8 @@ export function requireClaude() {
     }
 }
 
-// Eén run. Geeft het resultaat terug zoals claude het meldt, met structured_output bij een --json-schema.
+// Eén run. Geeft het resultaat terug zoals claude het meldt, met structured_output bij een --json-schema, en met
+// 'toolUses': de tools die Claude aanriep, in volgorde, als { name, input }.
 //   label    wat er in de uitvoer staat, bv. 'analyse 2.20.0 (reeks 1)';
 //   model    het model, bv. 'claude-opus-5-5';
 //   effort   de effort, bv. 'xhigh';
@@ -34,8 +37,9 @@ export function requireClaude() {
 //   cwd      de map waarin claude draait;
 //   source   een map die claude mag lezen (--add-dir), bv. een checkout van de bronrepo;
 //   allowed  de toegelaten tools (--allowedTools); al de rest wordt geweigerd;
+//   tools    de ingebouwde tools die er zijn (--tools); [] laat enkel de tools van MCP-servers over;
 //   extra    extra argumenten, bv. ['--json-schema', …].
-export function runClaude({ label, prompt, cwd, source, allowed, model, effort, extra = [] }) {
+export function runClaude({ label, prompt, cwd, source, allowed, model, effort, tools = DEFAULT_TOOLS, extra = [] }) {
     if (!model || !effort) throw new Error('runClaude heeft een model en een effort nodig.');
     console.log(`== ${label} (claude -p, ${model}, effort ${effort}${BUDGET ? `, max $${BUDGET}` : ''})`);
     const args = [
@@ -51,7 +55,7 @@ export function runClaude({ label, prompt, cwd, source, allowed, model, effort, 
         '--permission-prompts', 'none',
         ...(BUDGET ? ['--max-budget-usd', BUDGET] : []),
         ...(source ? ['--add-dir', source] : []),
-        '--tools', 'Read', 'Grep', 'Glob', 'Edit', 'Write', 'Bash',
+        '--tools', ...(tools.length > 0 ? tools : ['']),
         '--allowedTools', ...allowed,
         ...extra,
     ];
@@ -63,6 +67,7 @@ export function runClaude({ label, prompt, cwd, source, allowed, model, effort, 
         child.on('close', () => running.delete(child));
         let buffer = '';
         let result = null;
+        const toolUses = [];
         child.stdout.on('data', (chunk) => {
             buffer += chunk;
             let newline;
@@ -89,6 +94,7 @@ export function runClaude({ label, prompt, cwd, source, allowed, model, effort, 
                 if (event.type === 'result') result = event;
                 // Kort wat Claude doet, zodat een lange run niet stil lijkt.
                 for (const part of event.type === 'assistant' ? event.message.content : []) {
+                    if (part.type === 'tool_use') toolUses.push({ name: part.name, input: part.input ?? {} });
                     if (part.type !== 'tool_use' || part.name === 'StructuredOutput') continue;
                     const input = part.input ?? {};
                     const detail = shown(input.command ?? input.file_path ?? input.pattern ?? '');
@@ -117,7 +123,7 @@ export function runClaude({ label, prompt, cwd, source, allowed, model, effort, 
                 const detail = result.result ? `: ${result.result}` : '';
                 return reject(new Error(`claude faalde: ${result.subtype}${detail}`));
             }
-            resolve(result);
+            resolve({ ...result, toolUses });
         });
         child.stdin.end(prompt);
     });

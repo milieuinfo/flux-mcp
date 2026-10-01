@@ -446,7 +446,7 @@
         {
             "name": "flux_get_component",
             "title": "Een component van Flux",
-            "description": "Alles over één component in één versie van Flux: de API (attributen, properties, slots en events uit de web-types), de voorbeelden per story, de status, en op vraag de documentatie en wat er de vorige versies aan veranderde. 'component' is een element ('vl-button' of 'button'), een Storybook-id ('components-atom-button', zoals in de Figma-description) of een link naar Storybook. Standaard de secties 'api' en 'examples'; 'docs' geeft de hele pagina, 'history' de wijzigingen met impact. Status 'deprecated' komt uit de web-types, 'next' is een voorloper van v3; generatie 'legacy' in de metadata is de technische basis, geen uitfasering. Zoek je nog welke component past, gebruik flux_search_docs.",
+            "description": "Alles over één component in één versie van Flux: de API (attributen, properties, slots en events uit de web-types), de voorbeelden per story, de status, en op vraag de documentatie en wat er de vorige versies aan veranderde. 'component' is een element ('vl-button' of 'button'), een Storybook-id ('components-atom-button', zoals in de Figma-description) of een link naar Storybook. Standaard de secties 'api' en 'examples'; 'docs' geeft de hele pagina, 'history' de wijzigingen met impact. Status 'deprecated' komt uit de web-types, 'next' is een voorloper van v3; generatie 'legacy' in de metadata is de technische basis, geen uitfasering. Zoek je nog welke component past, gebruik flux_search_docs; markup die je schreef, controleer je met flux_check_markup.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -1051,7 +1051,7 @@
         {
             "name": "flux_get_upgrade",
             "title": "Een upgrade van Flux",
-            "description": "Wat er verandert bij een upgrade van Flux van versie 'from' naar 'to', voor een afnemend project. Geeft de wijzigingen per impact: 'action' (je moet iets aanpassen of nakijken, altijd met de actie), 'opt-in' (een nieuwe mogelijkheid) en 'automatic' (je krijgt ze mee), de netto wijzigingen aan de API uit de web-types, wat zonder changelog-entry veranderde, de documentatie en de dependencies. Geef in 'components' de elementen die het project gebruikt: dan komen ook de algemene wijzigingen ('general') die elk project raken. Zonder 'from' enkel wat er in 'to' nieuw is. Een groot antwoord komt in delen: haal ze allemaal op met 'cursor'. Voor één ticket of één onderwerp, gebruik flux_find_changes.",
+            "description": "Wat er verandert bij een upgrade van Flux van versie 'from' naar 'to', voor een afnemend project. Geeft de wijzigingen per impact: 'action' (je moet iets aanpassen of nakijken, altijd met de actie), 'opt-in' (een nieuwe mogelijkheid) en 'automatic' (je krijgt ze mee), de netto wijzigingen aan de API uit de web-types, wat zonder changelog-entry veranderde, de documentatie en de dependencies. Geef in 'components' de elementen die het project gebruikt: dan komen ook de algemene wijzigingen ('general') die elk project raken. Zonder 'from' enkel wat er in 'to' nieuw is. Een groot antwoord komt in delen: haal ze allemaal op met 'cursor'. Wat er in de code van het project breekt, toont flux_check_markup met 'targetVersion'. Voor één ticket of één onderwerp, gebruik flux_find_changes.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -1733,6 +1733,227 @@
             },
             "annotations": {
                 "title": "Zoek een wijziging in Flux",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        },
+        {
+            "name": "flux_check_markup",
+            "title": "Controleer markup met Flux-componenten",
+            "description": "Controleert markup met Flux web-componenten tegen de API in de web-types van één versie van Flux: onbekende elementen en attributen, ongeldige waarden, deprecated onderdelen, slots, properties en events, met regel en kolom. 'markup' is HTML, een lit-template of een heel .ts- of .js-bestand (syntax 'lit', standaard): de tool neemt er de templates html`…` uit en controleert geen dynamische waarden. Met 'targetVersion' ook wat er in die versie breekt (breaks-in-target), met de entry uit de changelog: gebruik dat voor een migratie. Los elke error op. Een warning over een waarde of een slot kan een gat in de web-types zijn: kijk dan de documentatie na met flux_get_component. De tool toetst enkel de API; patronen en toegankelijkheid beoordeel je met flux_get_guidance.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "De versie van Flux: bv. '2.20.0', 'v2.20.0' of 'latest'. Neem de versie van @domg-wc/components uit de package.json van het project. 'latest' is de nieuwste versie in deze catalogus."
+                    },
+                    "markup": {
+                        "type": "string",
+                        "maxLength": 50000,
+                        "description": "De markup: HTML, een lit-template of een heel .ts- of .js-bestand. Tot 50.000 tekens."
+                    },
+                    "syntax": {
+                        "type": "string",
+                        "enum": [
+                            "lit",
+                            "html"
+                        ],
+                        "default": "lit",
+                        "description": "'lit' (standaard): templates html`…`, met .prop, @event en ?attr; 'html': gewone HTML."
+                    },
+                    "targetVersion": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "Een nieuwere versie: wat breekt er in de markup bij een upgrade daarheen?"
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [
+                    "version",
+                    "markup"
+                ],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "targetVersion": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "syntax": {
+                        "type": "string",
+                        "enum": [
+                            "lit",
+                            "html"
+                        ]
+                    },
+                    "elements": {
+                        "type": "integer"
+                    },
+                    "counts": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                                "type": "integer"
+                            },
+                            "warning": {
+                                "type": "integer"
+                            },
+                            "info": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "error",
+                            "warning",
+                            "info"
+                        ]
+                    },
+                    "findings": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "severity": {
+                                    "type": "string",
+                                    "enum": [
+                                        "error",
+                                        "warning",
+                                        "info"
+                                    ]
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "element": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "attribute": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "line": {
+                                    "type": "integer"
+                                },
+                                "column": {
+                                    "type": "integer"
+                                },
+                                "suggestion": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "entry": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "code",
+                                "severity",
+                                "message",
+                                "element",
+                                "attribute",
+                                "line",
+                                "column",
+                                "suggestion",
+                                "source"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources",
+                    "targetVersion",
+                    "syntax",
+                    "elements",
+                    "counts",
+                    "findings"
+                ]
+            },
+            "annotations": {
+                "title": "Controleer markup met Flux-componenten",
                 "readOnlyHint": true,
                 "destructiveHint": false,
                 "idempotentHint": true,

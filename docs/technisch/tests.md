@@ -37,3 +37,10 @@ registry en Storybook, en hoort daarom niet bij `pnpm test` (zie [De catalogus](
 
 `test/runs/server.test.mjs` bouwt het pakket met `flux:server:pack` en controleert dat de server eruit dezelfde
 antwoorden geeft als uit de repo.
+
+`server/test/markup.test.mjs` test de controle van markup met inline fragmenten en nagemaakte web-types: elke code, met
+regel en kolom. `server.test.mjs` heeft er golden antwoorden voor, ook een migratie met `targetVersion`.
+
+`flux:server:eval`, de kennisvragen voor een model, hoort niet bij `pnpm test`: het draait Claude Code op het
+abonnement (zie [De server](server.md#de-kennisvragen)). De run in `test/runs/server.test.mjs` test het script met de
+nagemaakte `claude`.

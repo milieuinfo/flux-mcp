@@ -1,0 +1,64 @@
+[
+    { "question": "Welke versies van de Flux web-componenten kent deze server?", "expected": ["flux_list_versions"] },
+    {
+        "question": "Is Flux 2.17.3 gekend, en wat is de nieuwste versie in de catalogus?",
+        "expected": ["flux_list_versions"]
+    },
+    {
+        "question": "Welke component gebruik ik in Flux 2.20.0 om een datum te laten kiezen?",
+        "expected": ["flux_search_docs"]
+    },
+    {
+        "question": "Hoe toon ik in Flux 2.20.0 een melding over de volle breedte bovenaan de pagina?",
+        "expected": ["flux_search_docs", "flux_get_component"]
+    },
+    { "question": "Welke attributen heeft vl-button in Flux 2.20.0?", "expected": ["flux_get_component"] },
+    { "question": "Geef een voorbeeld van vl-tabs-next in Flux 2.20.0.", "expected": ["flux_get_component"] },
+    { "question": "Welke slots heeft vl-modal in Flux 2.20.0?", "expected": ["flux_get_component"] },
+    {
+        "question": "Mag ik vl-search nog gebruiken in Flux 2.20.0, en wat in de plaats?",
+        "expected": ["flux_get_component", "flux_search_docs"]
+    },
+    {
+        "question": "Wat veranderde er in de vorige versies aan vl-alert, tot en met Flux 2.20.0?",
+        "expected": ["flux_get_component", "flux_find_changes"]
+    },
+    {
+        "question": "Welke patronen voor formulieren beschrijft Flux 2.20.0?",
+        "expected": ["flux_get_guidance", "flux_search_docs"]
+    },
+    {
+        "question": "Wat zegt de richtlijn van Flux 2.20.0 over toegankelijkheid en bediening met het toetsenbord?",
+        "expected": ["flux_search_docs", "flux_get_guidance"]
+    },
+    {
+        "question": "Hoe registreer ik de Flux web-componenten in een nieuw project?",
+        "expected": ["flux_search_docs", "flux_get_guidance"]
+    },
+    {
+        "question": "Mijn project gebruikt Flux 2.12.0 met vl-alert en vl-breadcrumb. Wat moet ik aanpassen voor een upgrade naar 2.20.0?",
+        "expected": ["flux_get_upgrade"]
+    },
+    { "question": "Wat is er nieuw in Flux 2.20.0 tegenover 2.19.0?", "expected": ["flux_get_upgrade"] },
+    {
+        "question": "Welke dependencies van de Flux-packages veranderden er tussen 2.19.0 en 2.20.0?",
+        "expected": ["flux_get_upgrade"]
+    },
+    { "question": "In welke versie van Flux zit ticket FLUX-800?", "expected": ["flux_find_changes"] },
+    {
+        "question": "In welke versie van Flux werd het focusbeheer van vl-side-sheet aangepast?",
+        "expected": ["flux_find_changes"]
+    },
+    {
+        "question": "Klopt deze markup voor Flux 2.20.0? <vl-alert type=\"oops\" closable=\"false\"></vl-alert>",
+        "expected": ["flux_check_markup"]
+    },
+    {
+        "question": "Controleer dit lit-template tegen Flux 2.20.0: html`<vl-button .disabled=${this.bezig} @click=${this.bewaar}>Bewaar</vl-button>`",
+        "expected": ["flux_check_markup"]
+    },
+    {
+        "question": "Ik migreer van Flux 2.12.0 naar 2.20.0. Breekt deze code dan? <vl-datepicker disable-mobile-native-input></vl-datepicker>",
+        "expected": ["flux_check_markup", "flux_get_upgrade"]
+    }
+]
