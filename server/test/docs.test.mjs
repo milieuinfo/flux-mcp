@@ -5,7 +5,7 @@ import path from 'node:path';
 import { after, before, describe, test } from 'node:test';
 import { CATALOG_DIR, CatalogError } from '../src/catalog.mjs';
 import { buildReleaseFiles, writeReleaseFiles } from '../src/changelog.mjs';
-import { createDocs } from '../src/docs.mjs';
+import { createDocs, mainElement, statusOf } from '../src/docs.mjs';
 import { checkStorybook } from '../src/storybook.mjs';
 
 // Een kopie van de echte catalogus voor 2.19.0 en 2.20.0: de Storybook, de web-types en de bronnen van de changelog,
@@ -135,7 +135,10 @@ describe('getPage', () => {
         const link = 'https://x/?path=/docs/afnemen-aan-de-slag--documentatie';
         assert.equal(docs.getPage('2.20.0', link).id, 'afnemen-aan-de-slag');
         assert.equal(docs.getPage('2.20.0', 'text').id, 'components-atom-text');
-        assert.throws(() => docs.getPage('2.20.0', 'onbestaand'), /Zoek met searchDocs/);
+        assert.throws(
+            () => docs.getPage('2.20.0', 'onbestaand'),
+            (error) => /Geen pagina 'onbestaand'/.test(error.message) && error.details.suggest === 'search',
+        );
     });
 });
 
@@ -161,6 +164,68 @@ describe('getComponent', () => {
     test('een element dat niet in de web-types staat', () => {
         const unknown = /staat niet in de web-types van Flux 2\.20\.0/;
         assert.throws(() => docs.getComponent('2.20.0', 'vl-onbestaand'), unknown);
+        assert.throws(
+            () => docs.getComponent('2.20.0', 'vl-onbestaand'),
+            (error) => error.details.code === 'unknown-element' && error.details.element === 'vl-onbestaand',
+        );
+    });
+
+    test('met een Storybook-id of -link: het hoofdelement van de pagina, de andere in related', () => {
+        assert.equal(docs.getComponent('2.20.0', 'components-atom-button').element, 'vl-button');
+        const link = 'https://x/?path=/story/components-block-next-tabs--tabs-default';
+        const tabs = docs.getComponent('2.20.0', link);
+        assert.equal(tabs.element, 'vl-tabs-next');
+        assert.deepEqual(tabs.related.elements, ['vl-tab-link-next', 'vl-tab-next', 'vl-tab-panel-next']);
+        assert.equal(docs.getComponent('2.20.0', 'components-block-tabs-tabs').element, 'vl-tabs');
+    });
+
+    test('een pagina zonder element zegt dat', () => {
+        assert.throws(
+            () => docs.getComponent('2.20.0', 'components-atom-button-style'),
+            /components-atom-button-style toont geen element/,
+        );
+    });
+});
+
+describe('mainElement', () => {
+    const page = (id, elements) => ({ id, elements });
+
+    test('het element dat het langste einde van de id vormt, zonder vl-, map- en -next', () => {
+        const radio = page('components-form-radio-group', ['vl-radio', 'vl-radio-group']);
+        assert.equal(mainElement(radio), 'vl-radio-group');
+        const items = ['vl-map-side-sheet-menu', 'vl-map-side-sheet-menu-item'];
+        const menu = page('map-side-sheet-side-sheet-menu-item', items);
+        assert.equal(mainElement(menu), 'vl-map-side-sheet-menu-item');
+        assert.equal(mainElement(page('components-block-x', ['vl-y'])), 'vl-y');
+        assert.equal(mainElement(page('components-block-x', ['vl-y', 'vl-z'])), null);
+    });
+});
+
+describe('statusOf', () => {
+    test('deprecated, next, internal of stable; legacy is stable', () => {
+        const generation = (value) => ({ title: 'Components/x', status: { condition: { generation: value } } });
+        assert.equal(statusOf({ element: { deprecated: true }, page: generation('v2') }), 'deprecated');
+        assert.equal(statusOf({ element: {}, page: generation('v3-next') }), 'next');
+        assert.equal(statusOf({ page: { title: 'Components - Atom/button-style (intern)' } }), 'internal');
+        assert.equal(statusOf({ element: {}, page: generation('legacy') }), 'stable');
+        assert.equal(statusOf({ element: {} }), 'stable');
+    });
+});
+
+describe('listPages met appliesTo', () => {
+    test('de pagina\'s die een element noemen, als heel woord', () => {
+        const { pages } = docs.listPages('2.20.0', { appliesTo: 'vl-input-field', kind: 'pattern' });
+        assert.ok(pages.length > 0);
+        assert.ok(pages.every((page) => page.kind === 'pattern'));
+        const tab = docs.listPages('2.20.0', { appliesTo: 'vl-tab' }).pages.map((page) => page.id);
+        assert.ok(!tab.includes('components-block-next-tabs'), 'vl-tab-next is geen vermelding van vl-tab');
+    });
+
+    test('een element dat niet in de web-types staat, is een fout', () => {
+        assert.throws(
+            () => docs.listPages('2.20.0', { appliesTo: 'vl-onbestaand' }),
+            (error) => error.details.code === 'unknown-element',
+        );
     });
 });
 

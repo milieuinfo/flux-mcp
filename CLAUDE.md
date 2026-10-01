@@ -22,20 +22,24 @@ Namen in de code (functies, variabelen, JSON-sleutels) blijven Engels, zoals nu.
 FLUX Figma-library met Code Connect snippets, component descriptions en documentation links. De twee sporen
 staan los van elkaar; de server kent Figma niet.
 
-De MCP-koppeling zelf bestaat nog niet; wat de server moet aanbieden, staat als voorstel in ADR-004. Wat er is:
+Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat er is:
 
 - de catalogus: per Flux-release wat er voor een afnemer verandert als hij van de vorige versie upgradet, en de
   documentatie uit Storybook van die release;
 - de scripts die hem vullen;
-- `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries die de
-  server later aan tools en resources hangt.
+- `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries;
+- de MCP-server van increment 1 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zes tools en vijf resources op die
+  queries, over stdio, zonder `flux_check_markup` en zonder prompts. Zie `docs/technisch/server.md`.
 
 ## Structuur
 
 | Map                                         | Inhoud                                                                    |
 |---------------------------------------------|---------------------------------------------------------------------------|
 | `server/src/`                               | queries en de logica om de catalogus op te bouwen (`changelog.mjs`, `commits.mjs`, `web-types.mjs`, `packages.mjs`, `catalog.mjs`; voor Storybook `mdx.mjs`, `storybook.mjs`, `docs.mjs`; de url van Storybook in `storybook-url.mjs`) |
-| `server/test/`                              | de tests van de server, met `node --test`                                 |
+| `server/src/mcp/`                           | de MCP-server: het protocol, de tools, de resources, de Markdown en de delen (`protocol.mjs`, `server.mjs`, `tools.mjs`, `resources.mjs`, `render.mjs`, `paging.mjs`, `schema.mjs`) |
+| `server/bin/flux-mcp.mjs`                   | het startpunt van de server, over stdio                                   |
+| `server/package.json`, `server/CHANGELOG.md` | het manifest van het npm-pakket en de changelog van flux-mcp; `flux:server:pack` bouwt het pakket in `dist/` |
+| `server/test/`                              | de tests van de server, met `node --test`; `mcp/golden/` de golden antwoorden |
 | `test/`                                     | de tests van de scripts en hun modules; `runs/` draait elk script tegen een nagemaakte flux-web-components (`helpers/`) |
 | `catalog/flux/<versie>/web-types/`          | de web-types van een release (script)                                     |
 | `catalog/flux/<versie>/packages/`           | de dependencies van de gepubliceerde packages, uit de registry (script)   |
@@ -55,6 +59,11 @@ Alles loopt via `pnpm run` (pnpm 11, Node 22; `devEngines` weigert npm). Install
 
 ```bash
 pnpm test                                   # alle tests (node --test), ook de runs van de scripts
+FLUX_UPDATE_GOLDEN=1 pnpm test              # maakt de golden antwoorden van de server opnieuw; lees het verschil na
+
+# De MCP-server:
+node server/bin/flux-mcp.mjs                # over stdio; een client start hem zelf (docs/technisch/server.md)
+pnpm run flux:server:pack                   # bouwt het npm-pakket in dist/flux-mcp, met de catalogus
 
 # Na een Flux-release, voor versie X.Y.Z; catalog:update doet alles, ook de analyse en de review door Claude Code:
 pnpm run flux:catalog:update X.Y.Z

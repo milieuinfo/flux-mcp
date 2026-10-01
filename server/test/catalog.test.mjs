@@ -3,7 +3,14 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { after, before, describe, test } from 'node:test';
-import { CATALOG_DIR, CatalogError, compareVersions, createCatalog } from '../src/catalog.mjs';
+import {
+    CATALOG_DIR,
+    CatalogError,
+    compareVersions,
+    createCatalog,
+    resolveVersion,
+    sideBranchBase,
+} from '../src/catalog.mjs';
 import { buildReleaseFiles, compareReleaseFiles, writeReleaseFiles } from '../src/changelog.mjs';
 
 // Een kopie van de echte catalogus met vers gebouwde bestanden, zodat de tests niet afhangen van gebouwde
@@ -39,6 +46,30 @@ describe('compareVersions', () => {
     });
 });
 
+describe('resolveVersion', () => {
+    const versions = ['2.16.0', '2.17.0', '2.18.0', '2.19.0', '2.20.0'];
+
+    test('latest, een versie met of zonder v', () => {
+        assert.deepEqual(resolveVersion(versions, 'latest'), { version: '2.20.0', requested: 'latest', warning: null });
+        assert.equal(resolveVersion(versions, 'v2.18.0').version, '2.18.0');
+    });
+
+    test('een patch op een zijtak valt terug op haar minor, met een waarschuwing', () => {
+        const resolved = resolveVersion(versions, '2.17.3');
+        assert.equal(resolved.version, '2.17.0');
+        assert.equal(resolved.requested, '2.17.3');
+        assert.match(resolved.warning, /2\.17\.3 is een patch op een zijtak.*geldt voor 2\.17\.0/);
+        assert.equal(sideBranchBase(versions, '2.17.3'), '2.17.0');
+        assert.equal(sideBranchBase(versions, '2.17.4'), null, 'enkel de patches uit ADR-002');
+    });
+
+    test('een andere versie is een fout; een nieuwere zegt dat flux-mcp een update nodig heeft', () => {
+        assert.throws(() => resolveVersion(versions, '2.17.4'), /2\.17\.4 staat niet in de catalogus\. Beschikbaar/);
+        assert.throws(() => resolveVersion(versions, '2.20.1'), /de nieuwste is 2\.20\.0\. Werk flux-mcp bij/);
+        assert.throws(() => resolveVersion(versions, 'twee'), /Ongeldige versie/);
+    });
+});
+
 describe('listVersions', () => {
     test('nieuwste eerst, met de keten naar de vorige versie', () => {
         const versions = catalog.listVersions();
@@ -52,6 +83,17 @@ describe('listVersions', () => {
         assert.equal(versions[0].counts.type.feature, 4);
         assert.deepEqual(versions[0].counts.impact, { action: 1, 'opt-in': 3, automatic: 5, none: 9 });
         assert.match(versions[0].summary, /banner/);
+        assert.deepEqual(
+            versions.map((v) => v.changelogAnalysis),
+            ['complete', 'complete'],
+        );
+    });
+});
+
+describe('elementVersions', () => {
+    test('de versies waarin een element in de web-types staat', () => {
+        assert.deepEqual(catalog.elementVersions('button'), ['2.19.0', '2.20.0']);
+        assert.deepEqual(catalog.elementVersions('vl-onbestaand'), []);
     });
 });
 
@@ -186,6 +228,32 @@ describe('getChangesBetween', () => {
         );
     });
 
+    test('met een lijst van componenten, en general: wat geen component, thema of element noemt', () => {
+        const result = catalog.getChangesBetween('2.19.0', '2.20.0', { component: ['vl-alert', 'breadcrumb'] });
+        assert.deepEqual(
+            result.webTypesDiff.changed.map((c) => c.element),
+            ['vl-alert'],
+        );
+        const components = Object.values(result.changes).flat().flatMap((entry) => entry.components);
+        assert.ok(components.includes('vl-alert') && components.includes('vl-breadcrumb'));
+        const general = Object.values(result.general).flat();
+        assert.ok(general.every((e) => !e.components.length && !e.topics.length && !e.mentions.length));
+        assert.equal(catalog.getChangesBetween('2.19.0', '2.20.0').general, null, 'enkel met componenten');
+    });
+
+    test('base is from, tenzij from een patch op een zijtak is', () => {
+        assert.equal(catalog.getChangesBetween('2.19.0', '2.20.0').base, '2.19.0');
+        const real = createCatalog(CATALOG_DIR);
+        const patch = real.getChangesBetween('2.17.3', '2.20.0');
+        assert.equal(patch.base, '2.17.0');
+        assert.equal(patch.webTypesDiff.base, '2.17.0');
+        assert.equal(patch.dependenciesDiff.base, '2.17.0');
+        assert.deepEqual(
+            patch.versions.map((v) => v.version),
+            ['2.18.0', '2.19.0', '2.20.0'],
+        );
+    });
+
     test('een onderbroken keten wordt gemeld', () => {
         const result = catalog.getChangesBetween('2.15.0', '2.20.0');
         assert.equal(result.complete, false);
@@ -280,6 +348,16 @@ describe('findChanges', () => {
         const hidden = catalog.findChanges('cypress-axe', { includeNoImpact: false });
         assert.equal(hidden.results.length, 0);
         assert.equal(hidden.hiddenNoImpact, 1);
+    });
+
+    test('beperkt tot een component en een aantal; total telt alles', () => {
+        const all = catalog.findChanges('flux-800');
+        const limited = catalog.findChanges('flux-800', { limit: 1 });
+        assert.equal(limited.results.length, 1);
+        assert.equal(limited.total, all.results.length);
+        const alert = catalog.findChanges('alert', { component: 'vl-alert' });
+        assert.ok(alert.results.length > 0);
+        assert.ok(alert.results.every((r) => r.components.includes('vl-alert') || r.mentions.includes('vl-alert')));
     });
 });
 

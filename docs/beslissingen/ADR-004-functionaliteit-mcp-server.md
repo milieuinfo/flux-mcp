@@ -231,9 +231,9 @@ Ernst: error · Geldt voor: pattern.form.validation · Sinds: 2.18.0
     van 2.17.3 vergelijkt zo met 2.17.0, en de `warning` zegt dat fixes uit 2.17.1–2.17.3 als wijziging kunnen
     verschijnen (ADR-002). Zonder die terugval gaf `getChangesBetween` `complete: true` zonder diffs en zonder
     `warning`, en faalde `getDocsChanges`;
-  - een versie vóór de oudste in de catalogus, zoals v1 (1.48.2), mag: `complete: false` en `warning` zeggen dat de
-    wijzigingen van vóór 2.0.0 ontbreken (ADR-001, sectie 9), en `apiDelta`, `dependencies` en `docs` ontbreken met de
-    reden;
+  - een versie vóór de oudste in de catalogus, zoals v1, mag. `apiDelta`, `dependencies` en `docs` ontbreken dan, met
+    de reden. Vanaf 1.48.2, de vorige versie van 2.0.0, is de keten van changelogs volledig; vanaf een oudere versie
+    zeggen `complete: false` en `warning` dat de wijzigingen van vóór 2.0.0 ontbreken (ADR-001, sectie 9);
   - elke andere versie die niet in de catalogus staat, geeft `isError`, zoals bij `version`.
 
 ### 4. Tools
@@ -261,6 +261,10 @@ Voor alle tools geldt:
 - **Twee vormen van hetzelfde antwoord.** `structuredContent` volgt een `outputSchema`; `content` geeft hetzelfde
   antwoord als Markdown. De specificatie raadt aan daar de JSON als tekst te herhalen, maar Markdown leest een model
   compacter, en de pagina's zijn al Markdown. Beide komen uit dezelfde gegevens, en de tests controleren dat.
+  Claude Code geeft het model echter enkel de JSON van `structuredContent`, en een `resource_link` als tekst; de
+  Markdown gebruikt het niet (smoke test met Claude Code 2.1.286, increment 1). Andere clients kunnen `content` tonen.
+  We houden beide vormen: de grens geldt voor de JSON, en `structuredContent` blijft machineleesbaar, bv. voor
+  flux-agents. We herbekijken dat wanneer we weten welke vorm VS Code en flux-agents gebruiken.
 - **Vaste velden:** `version` (de effectieve versie), `catalog` (de versie van flux-mcp), `warnings` en `sources`.
   Een bron is `{ kind, path, url? }`, met `path` relatief aan `catalog/flux/`. `kind` is `web-types`, `packages`,
   `changelog`, `changelog-analysis`, `storybook` of `storybook-analysis`. Wat uit een `*-analysis` komt, schreef een
@@ -272,7 +276,7 @@ Voor alle tools geldt:
 - **Omvang.** De standaard is `detail: "summary"`. Een antwoord blijft standaard onder 10.000 tokens:
   - **De grens** is 30.000 tekens, gemeten op de JSON van `structuredContent`, de grootste van de twee vormen. Tekens
     in plaats van tokens, zodat de grens niet van een tokenizer afhangt en de cursor deterministisch is. De smoke test
-    gaat na of Claude Code beide vormen aan het model geeft; zo ja, dan halveren we de grens.
+    ging na welke vorm Claude Code aan het model geeft: enkel de JSON. De grens geldt dus voor wat het model leest.
   - **Eén lijst, op volgorde.** Wat een antwoord kan doen groeien, staat in een vaste volgorde, per tool beschreven.
     Een deel stopt bij het laatste item dat nog onder de grens past, en geeft een `nextCursor`; `cursor` haalt het
     volgende deel. Elk deel heeft de vaste velden, en bij `flux_get_upgrade` ook `resolved`.
@@ -372,7 +376,8 @@ Voor alle tools geldt:
     antwoord klein genoeg blijft;
   - `general`: met `components` ook de entries die geen component en geen thema noemen, per impact zoals `changes`.
     Een wijziging aan de globale styling of aan de build raakt elk project, maar valt anders weg uit een filter op
-    componenten. Over alle versies zijn dat 48 van de 300 entries met een impact;
+    componenten. Ook een element in de tekst telt als noemen. Over alle versies zijn dat 39 van de 300 entries met een
+    impact;
   - `apiDelta`: de netto diff van de web-types tussen `from` en `to`, enkel het contract, voor de gevraagde
     componenten; de beschrijvingen met `detail: "full"`;
   - `unexplained`: de wijzigingen aan het contract zonder changelog-entry (`inChangelog: false`, ADR-001 sectie 6);
@@ -666,10 +671,14 @@ Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die 
   bracht, en de nieuwere, zoals 2025-11-25, waar een ongeldige invoer een `isError` is in plaats van een protocolfout.
   Vraagt de client bij `initialize` een revisie die de server kent, dan antwoordt hij met die; anders met de nieuwste
   die hij kent. Oudere revisies, zoals 2025-03-26 met zijn JSON-RPC-batches, niet: Claude Code en VS Code met Copilot
-  spreken de nieuwere.
+  spreken de nieuwere. De revisie 2026-07-28 werkt zonder handshake bij `initialize`, met de revisie per verzoek en
+  `server/discover`; die kent de server nog niet. Claude Code gebruikt bij een server over stdio standaard de
+  handshake, en de MCP Inspector 2.9 vraagt 2025-11-25.
 - **Schema's als gewone objecten.** De JSON Schema's staan in de definitie van elke tool. Een kleine validator voor
-  het deel van JSON Schema dat we gebruiken (`type`, `enum`, `required`, `maxLength`, `items`) geeft bij een ongeldige
-  invoer een `isError` met een duidelijke tekst.
+  het deel van JSON Schema dat we gebruiken (`type`, ook als lijst, `enum`, `required`, `properties`,
+  `additionalProperties`, `items`, `minLength`, `maxLength`, `minItems`, `maxItems`, `minimum` en `maximum`) geeft bij
+  een ongeldige invoer een `isError` met een duidelijke tekst. De tests toetsen er elk antwoord mee aan het
+  `outputSchema`.
 - **Bestanden:**
   - `server/src/mcp/protocol.mjs`: JSON-RPC over stdio;
   - `server/src/mcp/server.mjs`: de capabilities, de instructies en de registratie;
@@ -693,8 +702,9 @@ Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die 
   - `findChanges` krijgt `component` en `limit`;
   - `listVersions` zegt per versie of de analyse van de changelog `complete`, `partial` of `missing` is;
   - een index van element naar versies, voor de fouten van `flux_get_component` en `flux_check_markup`;
-  - de terugval van een patch op een zijtak naar haar minor, uit een vaste lijst, ook voor `from` in
-    `getChangesBetween` en `getDocsChanges` (sectie 3);
+  - de terugval van een patch op een zijtak naar haar minor, uit een vaste lijst (`resolveVersion` en
+    `SIDE_BRANCH_PATCHES` in `catalog.mjs`). `getChangesBetween` neemt voor `from` haar minor als basis van de diffs
+    (`base`), en `flux_get_upgrade` vraagt `getDocsChanges` vanaf die basis (sectie 3);
   - de meldingen die naar een functie verwijzen ("Zoek met searchDocs of listPages", in `docs.mjs`), worden neutraal;
     de tool voegt de naam van de juiste tool toe.
 - **Verdelen als npm-pakket, met de catalogus erin** (open beslissing 4). Na elke release van Flux volgt
@@ -719,10 +729,11 @@ Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die 
   - **Uit de catalogus** enkel wat de server leest: per versie `web-types/`, `packages/`, de gebouwde bestanden van
     `changelog/` die `readRelease` leest, `changelog-analysis/` en `storybook/index.json`, en `storybook-analysis/`.
   - **Elke pagina van Storybook één keer**, per inhoud, zoals `storybook-analysis/` al werkt: 5500 pagina's worden
-    ongeveer 1200 bestanden. Het script zet ze op één plek en laat `file` in de `index.json` van elke versie ernaar
-    wijzen; `loadStorybook` volgt `file` al, dus er is geen tweede lader. De sleutel is een hash van de Markdown zelf,
-    niet `inputHash`: die negeert witruimte, en `components-block-side-navigation` heeft in 2.4.0 en 2.5.0 dezelfde
-    `inputHash` met een spatie verschil. Uitgepakt wordt het pakket zo ongeveer 27 MB in plaats van 46 MB.
+    772 bestanden. Het script zet ze op één plek en laat `file` in de `index.json` van elke versie ernaar wijzen;
+    `loadStorybook` volgt `file` al, dus er is geen tweede lader. De sleutel is een hash van de Markdown zelf, niet
+    `inputHash`. Die telt ook de code van de stories en de web-types mee, die niet in de Markdown staan, en negeert
+    witruimte: `components-block-side-navigation` heeft in 2.4.0 en 2.5.0 dezelfde `inputHash` met een spatie
+    verschil. Het pakket is zo 31 MB uitgepakt in plaats van 46 MB, en 4,2 MB gecomprimeerd.
   - Een test bouwt het pakket en start de server eruit.
 
 - **HTTP later.** Streamable HTTP kan vanuit dezelfde kern, met `node:http`, zodra een gedeelde service gewenst is.
@@ -745,7 +756,9 @@ Daarnaast:
 
 - **Golden tests:** `tools/list`, `resources/templates/list` en `prompts/list`, een gerenderd recept, en per tool een
   paar antwoorden op de echte catalogus, byte voor byte. `catalog` krijgt daarin een vaste waarde, zodat ze niet bij
-  elke versie van flux-mcp wijzigen.
+  elke versie van flux-mcp wijzigen. Ze vragen versies die volledig geanalyseerd zijn en nooit `latest`: een nieuwe
+  release of de analyse van een oudere versie verandert ze zo niet. `flux_list_versions` telt de analyses per versie
+  en heeft daarom een test op zijn vorm, geen golden.
 - **Omvang:** elk deel van de standaardantwoorden voor de grootste gevallen blijft onder 30.000 tekens JSON
   (sectie 4): `flux_get_upgrade` van 2.0.0 naar 2.20.0, de grootste component, de grootste pagina. Alle delen samen
   geven hetzelfde als het antwoord zonder grens.

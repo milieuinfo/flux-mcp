@@ -1,0 +1,191 @@
+{
+    "structuredContent": {
+        "version": "2.20.0",
+        "catalog": "0.0.0-test",
+        "warnings": [],
+        "element": "vl-breadcrumb",
+        "category": "block",
+        "status": "stable",
+        "description": "Gebruik de `breadcrumb` component om de locatie van de huidige pagina af te beelden binnen een navigeerbare hiërarchie.",
+        "deprecated": null,
+        "page": "components-block-breadcrumb",
+        "title": "Components - Block/breadcrumb/breadcrumb",
+        "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie",
+        "summary": "Documentatie van vl-breadcrumb met vl-breadcrumb-item, de kruimelnavigatie die de plaats van de huidige pagina in een hiërarchie toont. Items zijn links (href), knoppen (type=\"button\", bv. om een submenu in een vl-popover te openen) of tekst voor de huidige pagina; meng geen links en knoppen in één breadcrumb. Met ellipsis blijft elk item op één regel en wordt te lange tekst afgekapt, bv. in een side-sheet.",
+        "analysis": "available",
+        "metadata": {
+            "condition": {
+                "base": "LitElement",
+                "generation": "TODO",
+                "css": "govflanders",
+                "tests": [
+                    "Component",
+                    "Storybook"
+                ],
+                "documentation": "basis",
+                "wcag": "FLUX-732",
+                "jiraMeta": "FLUX-210"
+            }
+        },
+        "api": {
+            "attributes": [],
+            "properties": [],
+            "slots": [],
+            "events": [],
+            "notes": [
+                {
+                    "type": "not-in-web-types",
+                    "element": "vl-breadcrumb",
+                    "name": "ellipsis",
+                    "text": "ellipsis houdt elk breadcrumb item op één regel en kapt een item dat ook op een nieuwe regel niet past af met een ellipsis (…). Het staat in de code als Boolean-attribuut en in de argTypes, en de story vl-breadcrumb - ellipsis gebruikt het, maar de web-types van 2.20.0 geven voor vl-breadcrumb geen enkel attribuut."
+                }
+            ]
+        },
+        "examples": [
+            {
+                "id": "components-block-breadcrumb--breadcrumb-default",
+                "name": "vl-breadcrumb - default",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/story/components-block-breadcrumb--breadcrumb-default",
+                "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Regelgeving</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Webuniversum</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Componenten</vl-breadcrumb-item>\n</vl-breadcrumb>",
+                "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent } from '@domg-wc/components/block';\n\n// vl-breadcrumb registreert vl-breadcrumb-item niet zelf.\nregisterWebComponents([VlBreadcrumbComponent, VlBreadcrumbItemComponent]);"
+            },
+            {
+                "id": "components-block-breadcrumb--breadcrumb-buttons",
+                "name": "vl-breadcrumb - buttons",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/story/components-block-breadcrumb--breadcrumb-buttons",
+                "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item type=\"button\">Natuur</vl-breadcrumb-item>\n    <div>\n        <vl-breadcrumb-item id=\"submenu-fauna-flora\" type=\"button\">Flora</vl-breadcrumb-item>\n        <vl-popover distance=\"6\" for=\"submenu-fauna-flora\" hide-arrow placement=\"bottom-start\" trigger=\"click hover\">\n            <vl-popover-action-list>\n                <vl-popover-action icon=\"nature-leaf\">Flora</vl-popover-action>\n                <vl-popover-action icon=\"programming-bug\">Fauna</vl-popover-action>\n            </vl-popover-action-list>\n        </vl-popover>\n    </div>\n    <vl-breadcrumb-item>Bomen</vl-breadcrumb-item>\n</vl-breadcrumb>",
+                "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent registreert zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlPopoverComponent]);\n\n// vl-breadcrumb maakt van elk kind een stap: de <div> houdt het item Flora en zijn popover samen in één stap.\n// De popover opent zelf bij klik en hover op het element met id submenu-fauna-flora.\ndocument.querySelector('vl-breadcrumb-item[type=\"button\"]').addEventListener('click', () => {\n    console.log('click Natuur');\n});\ndocument.querySelector('vl-popover-action[icon=\"nature-leaf\"]').addEventListener('click', () => {\n    console.log('click flora');\n});\ndocument.querySelector('vl-popover-action[icon=\"programming-bug\"]').addEventListener('click', () => {\n    console.log('click fauna');\n});"
+            },
+            {
+                "id": "components-block-breadcrumb--breadcrumb-ellipsis",
+                "name": "vl-breadcrumb - ellipsis",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/story/components-block-breadcrumb--breadcrumb-ellipsis",
+                "html": "<vl-breadcrumb ellipsis>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Regelgeving</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Besluit van de Vlaamse Regering tot vaststelling van een gewestelijke stedenbouwkundige verordening voor publiciteitsinrichtingen</vl-breadcrumb-item>\n</vl-breadcrumb>",
+                "js": null
+            }
+        ],
+        "history": [
+            {
+                "version": "2.20.0",
+                "entries": [
+                    {
+                        "version": "2.20.0",
+                        "id": "9311ae6",
+                        "ticket": "FLUX-800",
+                        "type": "feature",
+                        "impact": "opt-in",
+                        "impactSource": "analysis",
+                        "components": [
+                            "vl-breadcrumb"
+                        ],
+                        "summary": "ellipsis attribuut voor lange breadcrumb items"
+                    },
+                    {
+                        "version": "2.20.0",
+                        "id": "c04a72c",
+                        "ticket": "FLUX-800",
+                        "type": "feature",
+                        "impact": "automatic",
+                        "impactSource": "analysis",
+                        "components": [
+                            "vl-cascader"
+                        ],
+                        "summary": "breadcrumb opgebouwd met vl-breadcrumb en WCAG verbeteringen"
+                    }
+                ],
+                "api": null
+            },
+            {
+                "version": "2.14.0",
+                "entries": [
+                    {
+                        "version": "2.14.0",
+                        "id": "25e8c24",
+                        "ticket": "FLUX-209",
+                        "type": "fix",
+                        "impact": "automatic",
+                        "impactSource": "analysis",
+                        "components": [
+                            "vl-breadcrumb"
+                        ],
+                        "summary": "focus outline kleur correctie voor Edge"
+                    }
+                ],
+                "api": null
+            },
+            {
+                "version": "2.8.0",
+                "entries": [
+                    {
+                        "version": "2.8.0",
+                        "id": "ff03a87",
+                        "ticket": "FLUX-365",
+                        "type": "feature",
+                        "impact": "opt-in",
+                        "impactSource": "analysis",
+                        "components": [
+                            "vl-breadcrumb"
+                        ],
+                        "summary": "breadcrumb items als buttons"
+                    }
+                ],
+                "api": null
+            }
+        ],
+        "related": {
+            "elements": [
+                "vl-breadcrumb-item"
+            ],
+            "pages": []
+        },
+        "sources": [
+            {
+                "kind": "web-types",
+                "path": "2.20.0/web-types/block.web-types.json"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.20.0/storybook/pages/components-block-breadcrumb.md",
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-block-breadcrumb--documentatie"
+            },
+            {
+                "kind": "storybook-analysis",
+                "path": "storybook-analysis/components-block-breadcrumb/31b47dc46d7c.json"
+            },
+            {
+                "kind": "changelog",
+                "path": "2.20.0/changelog/"
+            },
+            {
+                "kind": "changelog-analysis",
+                "path": "2.20.0/changelog-analysis/"
+            },
+            {
+                "kind": "changelog",
+                "path": "2.14.0/changelog/"
+            },
+            {
+                "kind": "changelog-analysis",
+                "path": "2.14.0/changelog-analysis/"
+            },
+            {
+                "kind": "changelog",
+                "path": "2.8.0/changelog/"
+            },
+            {
+                "kind": "changelog-analysis",
+                "path": "2.8.0/changelog-analysis/"
+            }
+        ]
+    },
+    "otherContent": [
+        {
+            "type": "resource_link",
+            "uri": "flux://2.20.0/docs/components-block-breadcrumb",
+            "name": "components-block-breadcrumb",
+            "title": "Components - Block/breadcrumb/breadcrumb",
+            "description": "De volledige pagina uit Storybook, als Markdown.",
+            "mimeType": "text/markdown"
+        }
+    ]
+}

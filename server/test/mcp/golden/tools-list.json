@@ -1,0 +1,1743 @@
+{
+    "tools": [
+        {
+            "name": "flux_list_versions",
+            "title": "Flux-versies in de catalogus",
+            "description": "Welke versies van de Flux web-componenten (@domg-wc/*) deze server kent, en wat er per versie is: de datum, de vorige versie, het aantal wijzigingen per impact, de web-types, de dependencies, de analyse van de changelog en de pagina's uit Storybook. 'latest' is de nieuwste versie in deze catalogus, niet per se de nieuwste release van Flux. Gebruik deze tool om te weten of een versie gekend is; voor wat er in een versie veranderde, gebruik je flux_get_upgrade. Met detail 'full' ook de samenvatting per versie.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "type": "string",
+                        "enum": [
+                            "summary",
+                            "full"
+                        ],
+                        "default": "summary",
+                        "description": "'summary' (standaard) of 'full', met de beschrijvingen en uitleg erbij."
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "latest": {
+                        "type": "string"
+                    },
+                    "coverage": {
+                        "type": "object",
+                        "properties": {
+                            "oldest": {
+                                "type": "string"
+                            },
+                            "newest": {
+                                "type": "string"
+                            },
+                            "gaps": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "version": {
+                                            "type": "string"
+                                        },
+                                        "previousOf": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "version",
+                                        "previousOf"
+                                    ]
+                                }
+                            },
+                            "notIncluded": {
+                                "type": "object",
+                                "properties": {
+                                    "majors": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "sideBranchPatches": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "majors",
+                                    "sideBranchPatches"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "oldest",
+                            "newest",
+                            "gaps",
+                            "notIncluded"
+                        ]
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "version": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "previous": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "previousInCatalog": {
+                                    "type": "boolean"
+                                },
+                                "impact": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "webTypes": {
+                                    "type": "boolean"
+                                },
+                                "packages": {
+                                    "type": "boolean"
+                                },
+                                "changelogAnalysis": {
+                                    "type": "string",
+                                    "enum": [
+                                        "complete",
+                                        "partial",
+                                        "missing"
+                                    ]
+                                },
+                                "pages": {
+                                    "type": "integer"
+                                },
+                                "pagesAnalysed": {
+                                    "type": "integer"
+                                },
+                                "storybookUrl": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "summary": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "version",
+                                "impact",
+                                "changelogAnalysis",
+                                "pages",
+                                "pagesAnalysed"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources",
+                    "latest",
+                    "coverage",
+                    "versions"
+                ]
+            },
+            "annotations": {
+                "title": "Flux-versies in de catalogus",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        },
+        {
+            "name": "flux_search_docs",
+            "title": "Zoek in de documentatie van Flux",
+            "description": "Zoekt in de documentatie van één versie van Flux (de pagina's uit Storybook): welke component, welk patroon, welke richtlijn of welk recept past bij een vraag. Zoek in het Nederlands of het Engels, op functie ('datumkiezer', 'formulier validatie') of op naam ('vl-modal'). Geeft per pagina de titel, de soort, de elementen met hun status, een samenvatting, een passage en de link. Beperk met kind, bv. 'component' of 'pattern'. Ken je de component al, gebruik dan flux_get_component; voor alle gidsen of patronen van een soort, flux_get_guidance.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "De versie van Flux: bv. '2.20.0', 'v2.20.0' of 'latest'. Neem de versie van @domg-wc/components uit de package.json van het project. 'latest' is de nieuwste versie in deze catalogus."
+                    },
+                    "query": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "description": "De zoekvraag, bv. \"datumkiezer\" of \"formulier validatie\"."
+                    },
+                    "kind": {
+                        "type": "string",
+                        "enum": [
+                            "component",
+                            "guide",
+                            "guideline",
+                            "pattern",
+                            "recipe",
+                            "styles",
+                            "planning",
+                            "flux-team"
+                        ],
+                        "description": "Enkel pagina's van deze soort."
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 50,
+                        "default": 10,
+                        "description": "Hoeveel resultaten."
+                    },
+                    "includeFluxTeam": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Ook de pagina's over het werk van het Flux-team zelf (Bijdragen, Beheren)."
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [
+                    "version",
+                    "query"
+                ],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "query": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "elements": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "deprecated",
+                                                    "next",
+                                                    "internal",
+                                                    "stable"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "name",
+                                            "status"
+                                        ]
+                                    }
+                                },
+                                "summary": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "passage": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "score": {
+                                    "type": "number"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "title",
+                                "kind",
+                                "elements",
+                                "score",
+                                "url"
+                            ]
+                        }
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "hiddenFluxTeam": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources",
+                    "query",
+                    "results",
+                    "total",
+                    "hiddenFluxTeam"
+                ]
+            },
+            "annotations": {
+                "title": "Zoek in de documentatie van Flux",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        },
+        {
+            "name": "flux_get_component",
+            "title": "Een component van Flux",
+            "description": "Alles over één component in één versie van Flux: de API (attributen, properties, slots en events uit de web-types), de voorbeelden per story, de status, en op vraag de documentatie en wat er de vorige versies aan veranderde. 'component' is een element ('vl-button' of 'button'), een Storybook-id ('components-atom-button', zoals in de Figma-description) of een link naar Storybook. Standaard de secties 'api' en 'examples'; 'docs' geeft de hele pagina, 'history' de wijzigingen met impact. Status 'deprecated' komt uit de web-types, 'next' is een voorloper van v3; generatie 'legacy' in de metadata is de technische basis, geen uitfasering. Zoek je nog welke component past, gebruik flux_search_docs.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "De versie van Flux: bv. '2.20.0', 'v2.20.0' of 'latest'. Neem de versie van @domg-wc/components uit de package.json van het project. 'latest' is de nieuwste versie in deze catalogus."
+                    },
+                    "component": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "Een element ('vl-button', 'button'), een Storybook-id of een link naar Storybook."
+                    },
+                    "sections": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "api",
+                                "examples",
+                                "docs",
+                                "history"
+                            ]
+                        },
+                        "maxItems": 4,
+                        "description": "Welke secties: 'api', 'examples', 'docs', 'history'. Standaard 'api' en 'examples'."
+                    },
+                    "detail": {
+                        "type": "string",
+                        "enum": [
+                            "summary",
+                            "full"
+                        ],
+                        "default": "summary",
+                        "description": "'summary' (standaard) of 'full', met de beschrijvingen en uitleg erbij."
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [
+                    "version",
+                    "component"
+                ],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "element": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "deprecated",
+                            "next",
+                            "internal",
+                            "stable"
+                        ]
+                    },
+                    "description": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "deprecated": {
+                        "type": [
+                            "string",
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "page": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "title": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "url": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "summary": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "analysis": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            "available",
+                            "missing",
+                            null
+                        ]
+                    },
+                    "metadata": {
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "api": {
+                        "type": "object",
+                        "properties": {
+                            "attributes": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "properties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "slots": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "events": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "notes": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        },
+                        "required": [
+                            "attributes",
+                            "properties",
+                            "slots",
+                            "events",
+                            "notes"
+                        ]
+                    },
+                    "examples": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "html": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "js": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "name",
+                                "url"
+                            ]
+                        }
+                    },
+                    "docs": {
+                        "type": "string"
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "version": {
+                                    "type": "string"
+                                },
+                                "entries": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "version": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "ticket": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "impact": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "action",
+                                                    "opt-in",
+                                                    "automatic",
+                                                    "none"
+                                                ]
+                                            },
+                                            "impactSource": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "analysis",
+                                                    "derived"
+                                                ]
+                                            },
+                                            "components": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "summary": {
+                                                "type": "string"
+                                            },
+                                            "action": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "explanation": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "example": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "version",
+                                            "id",
+                                            "ticket",
+                                            "type",
+                                            "impact",
+                                            "impactSource",
+                                            "components",
+                                            "summary"
+                                        ]
+                                    }
+                                },
+                                "api": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "version",
+                                "entries",
+                                "api"
+                            ]
+                        }
+                    },
+                    "related": {
+                        "type": "object",
+                        "properties": {
+                            "elements": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "pages": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "elements",
+                            "pages"
+                        ]
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources",
+                    "element",
+                    "category",
+                    "status",
+                    "page",
+                    "related"
+                ]
+            },
+            "annotations": {
+                "title": "Een component van Flux",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        },
+        {
+            "name": "flux_get_guidance",
+            "title": "Gidsen, richtlijnen, patronen en recepten van Flux",
+            "description": "De gidsen, richtlijnen, patronen, recepten, styles en planning uit de documentatie van één versie van Flux. Zonder 'id' een index met per pagina de id, de soort, de titel en een samenvatting; beperk met 'kind' (bv. 'pattern') of met 'appliesTo' (enkel de pagina's die een element noemen, bv. 'vl-input-field'). Met 'id' de pagina zelf, als Markdown. De id van een pagina is de referentie in een rapport, bv. 'patronen-formulier-validatie'. Een componentpagina haal je op met flux_get_component; zoeken op een onderwerp doe je met flux_search_docs.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "De versie van Flux: bv. '2.20.0', 'v2.20.0' of 'latest'. Neem de versie van @domg-wc/components uit de package.json van het project. 'latest' is de nieuwste versie in deze catalogus."
+                    },
+                    "id": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De id van een pagina, of een link naar Storybook. Zonder id: de index."
+                    },
+                    "kind": {
+                        "type": "string",
+                        "enum": [
+                            "guide",
+                            "guideline",
+                            "pattern",
+                            "recipe",
+                            "styles",
+                            "planning",
+                            "flux-team"
+                        ],
+                        "description": "Enkel deze soort. Standaard alle behalve 'flux-team', het werk van het Flux-team zelf."
+                    },
+                    "appliesTo": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "Enkel de pagina's die dit element noemen, bv. 'vl-input-field'."
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 500,
+                        "description": "Hoeveel pagina's in de index."
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [
+                    "version"
+                ],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "pages": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "summary": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "kind",
+                                "title",
+                                "url"
+                            ]
+                        }
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "hiddenFluxTeam": {
+                        "type": "integer"
+                    },
+                    "page": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "kind": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "summary": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "analysis": {
+                                "type": "string",
+                                "enum": [
+                                    "available",
+                                    "missing"
+                                ]
+                            },
+                            "links": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "kind",
+                            "title",
+                            "url",
+                            "analysis",
+                            "links"
+                        ]
+                    },
+                    "markdown": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources"
+                ]
+            },
+            "annotations": {
+                "title": "Gidsen, richtlijnen, patronen en recepten van Flux",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        },
+        {
+            "name": "flux_get_upgrade",
+            "title": "Een upgrade van Flux",
+            "description": "Wat er verandert bij een upgrade van Flux van versie 'from' naar 'to', voor een afnemend project. Geeft de wijzigingen per impact: 'action' (je moet iets aanpassen of nakijken, altijd met de actie), 'opt-in' (een nieuwe mogelijkheid) en 'automatic' (je krijgt ze mee), de netto wijzigingen aan de API uit de web-types, wat zonder changelog-entry veranderde, de documentatie en de dependencies. Geef in 'components' de elementen die het project gebruikt: dan komen ook de algemene wijzigingen ('general') die elk project raken. Zonder 'from' enkel wat er in 'to' nieuw is. Een groot antwoord komt in delen: haal ze allemaal op met 'cursor'. Voor één ticket of één onderwerp, gebruik flux_find_changes.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "to": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "De versie van Flux: bv. '2.20.0', 'v2.20.0' of 'latest'. Neem de versie van @domg-wc/components uit de package.json van het project. 'latest' is de nieuwste versie in deze catalogus."
+                    },
+                    "from": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "description": "De versie van het project, bv. '2.12.0'. Zonder from: wat er in 'to' nieuw is."
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "maxLength": 100
+                        },
+                        "maxItems": 300,
+                        "description": "De elementen die het project gebruikt, bv. ['vl-button', 'vl-alert']."
+                    },
+                    "impact": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "action",
+                                "opt-in",
+                                "automatic",
+                                "none"
+                            ]
+                        },
+                        "minItems": 1,
+                        "maxItems": 4,
+                        "description": "Welke impact: standaard 'action', 'opt-in' en 'automatic'; 'none' raakt geen project."
+                    },
+                    "detail": {
+                        "type": "string",
+                        "enum": [
+                            "summary",
+                            "full"
+                        ],
+                        "default": "summary",
+                        "description": "'summary' (standaard) of 'full', met de beschrijvingen en uitleg erbij."
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [
+                    "to"
+                ],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "resolved": {
+                        "type": "object",
+                        "properties": {
+                            "from": {
+                                "type": "string"
+                            },
+                            "base": {
+                                "type": "string"
+                            },
+                            "to": {
+                                "type": "string"
+                            },
+                            "versions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "complete": {
+                                "type": "boolean"
+                            },
+                            "missing": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ]
+                            },
+                            "crossesMajor": {
+                                "type": "boolean"
+                            }
+                        },
+                        "required": [
+                            "from",
+                            "base",
+                            "to",
+                            "versions",
+                            "complete",
+                            "crossesMajor"
+                        ]
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "changes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "version": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "ticket": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "impact": {
+                                        "type": "string",
+                                        "enum": [
+                                            "action",
+                                            "opt-in",
+                                            "automatic",
+                                            "none"
+                                        ]
+                                    },
+                                    "impactSource": {
+                                        "type": "string",
+                                        "enum": [
+                                            "analysis",
+                                            "derived"
+                                        ]
+                                    },
+                                    "components": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "action": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "explanation": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "example": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "version",
+                                    "id",
+                                    "ticket",
+                                    "type",
+                                    "impact",
+                                    "impactSource",
+                                    "components",
+                                    "summary"
+                                ]
+                            }
+                        }
+                    },
+                    "general": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "version": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "ticket": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "impact": {
+                                        "type": "string",
+                                        "enum": [
+                                            "action",
+                                            "opt-in",
+                                            "automatic",
+                                            "none"
+                                        ]
+                                    },
+                                    "impactSource": {
+                                        "type": "string",
+                                        "enum": [
+                                            "analysis",
+                                            "derived"
+                                        ]
+                                    },
+                                    "components": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "action": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "explanation": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "example": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "version",
+                                    "id",
+                                    "ticket",
+                                    "type",
+                                    "impact",
+                                    "impactSource",
+                                    "components",
+                                    "summary"
+                                ]
+                            }
+                        }
+                    },
+                    "apiDelta": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "added": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "removed": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "changed": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "descriptions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "apiDeltaUnavailable": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "unexplained": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "element": {
+                                    "type": "string"
+                                },
+                                "change": {
+                                    "type": "string",
+                                    "enum": [
+                                        "added",
+                                        "removed",
+                                        "changed"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "element",
+                                "change"
+                            ]
+                        }
+                    },
+                    "docs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "change": {
+                                    "type": "string",
+                                    "enum": [
+                                        "added",
+                                        "changed",
+                                        "removed"
+                                    ]
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "change",
+                                "id",
+                                "title",
+                                "kind",
+                                "url"
+                            ]
+                        }
+                    },
+                    "docsUnavailable": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "dependencies": {
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "dependenciesUnavailable": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "unlistedCommits": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "summaries": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "version": {
+                                    "type": "string"
+                                },
+                                "summary": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "version",
+                                "summary"
+                            ]
+                        }
+                    },
+                    "hiddenNoImpact": {
+                        "type": "integer"
+                    },
+                    "hiddenDescriptions": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources",
+                    "resolved",
+                    "changes",
+                    "apiDelta",
+                    "unexplained",
+                    "docs",
+                    "dependencies",
+                    "hiddenNoImpact"
+                ]
+            },
+            "annotations": {
+                "title": "Een upgrade van Flux",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        },
+        {
+            "name": "flux_find_changes",
+            "title": "Zoek een wijziging in Flux",
+            "description": "In welke versie van Flux zit een ticket (bv. 'FLUX-800') of een wijziging over een onderwerp (bv. 'window ready')? Zoekt over alle versies in de catalogus, de nieuwste eerst, in de tekst, de uitleg en de actie van elke entry van de changelog. Beperk met 'component'. Geeft per resultaat de versie, het ticket, het type, de impact, de componenten, de samenvatting en de uitleg. Voor alles wat er tussen twee versies verandert, gebruik flux_get_upgrade.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "description": "Een ticket, bv. 'FLUX-800', of woorden die allemaal moeten voorkomen."
+                    },
+                    "component": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "Enkel wijzigingen aan dit element, bv. 'vl-alert'."
+                    },
+                    "includeNoImpact": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Ook wijzigingen met impact 'none', zoals testen en documentatie."
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100,
+                        "default": 20,
+                        "description": "Hoeveel resultaten."
+                    },
+                    "cursor": {
+                        "type": "string",
+                        "maxLength": 400,
+                        "description": "De nextCursor van een vorig deel van hetzelfde antwoord, met dezelfde andere argumenten."
+                    }
+                },
+                "required": [
+                    "query"
+                ],
+                "additionalProperties": false
+            },
+            "outputSchema": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "catalog": {
+                        "type": "string"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "kind",
+                                "path"
+                            ],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "web-types",
+                                        "packages",
+                                        "changelog",
+                                        "changelog-analysis",
+                                        "storybook",
+                                        "storybook-analysis"
+                                    ]
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "part": {
+                        "type": "integer"
+                    },
+                    "parts": {
+                        "type": "integer"
+                    },
+                    "nextCursor": {
+                        "type": "string"
+                    },
+                    "query": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "version": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "ticket": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "impact": {
+                                    "type": "string",
+                                    "enum": [
+                                        "action",
+                                        "opt-in",
+                                        "automatic",
+                                        "none"
+                                    ]
+                                },
+                                "impactSource": {
+                                    "type": "string"
+                                },
+                                "components": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "summary": {
+                                    "type": "string"
+                                },
+                                "explanation": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "action": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "version",
+                                "id",
+                                "ticket",
+                                "type",
+                                "impact",
+                                "components",
+                                "summary"
+                            ]
+                        }
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "hiddenNoImpact": {
+                        "type": "integer"
+                    },
+                    "coverage": {
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "version",
+                    "catalog",
+                    "warnings",
+                    "sources",
+                    "query",
+                    "results",
+                    "total",
+                    "hiddenNoImpact",
+                    "coverage"
+                ]
+            },
+            "annotations": {
+                "title": "Zoek een wijziging in Flux",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false
+            }
+        }
+    ]
+}
