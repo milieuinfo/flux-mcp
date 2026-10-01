@@ -3,8 +3,8 @@
 `flux-mcp` is een MCP-server over stdio: hij geeft een LLM-agent kennis over de Flux web-componenten, per versie, uit
 de catalogus in `catalog/flux/`. Wat de server aanbiedt en waarom, staat in
 [ADR-004](../beslissingen/ADR-004-functionaliteit-mcp-server.md); deze pagina beschrijft hoe hij werkt, hoe je hem
-start, koppelt en test. Hij kent increment 1 en 2 van de ADR: de tools en resources op wat de catalogus heeft, en
-`flux_check_markup`; nog zonder prompts.
+start, koppelt en test. Hij kent increment 1 tot en met 3 van de ADR: de tools en resources op wat de catalogus heeft,
+`flux_check_markup`, en de recepten `migreren` en `design-naar-code` als prompts.
 
 ## Starten en koppelen
 
@@ -58,7 +58,15 @@ Node 22 of hoger; de server heeft geen dependencies.
 | `flux://{version}/docs/{page}`            | één pagina                                              |
 | `flux://{version}/components/{component}` | één component, zoals `flux_get_component` met alle secties |
 
-`completion/complete` vult `{version}`, `{page}` en `{component}` aan.
+| `flux://prompts/{name}`                   | een recept als tekst, voor een client zonder prompts    |
+| `flux://templates/{workflow}`             | het rapportsjabloon van een workflow                    |
+
+| Prompt             | Workflow                                                                             |
+|--------------------|--------------------------------------------------------------------------------------|
+| `migreren`         | de toepassing naar een nieuwere versie van Flux brengen, met een migratierapport      |
+| `design-naar-code` | een scherm bouwen uit een ontwerp in Figma, met de Figma MCP in dezelfde client      |
+
+`completion/complete` vult `{version}`, `{page}` en `{component}` aan, en het argument `doelversie` van een recept.
 
 ### Gedrag dat elke tool deelt
 
@@ -111,6 +119,23 @@ dezelfde module voor de voorbeelden van de analyses (zie [Storybook](storybook.m
   enkele was een fout in een voorbeeld, bv. `placement="bottom-end"` van `vl-popover`, of de slots `title-link` en
   `context-link` van `vl-content-header`.
 
+### De recepten
+
+Een recept is een workflow die de ontwikkelaar zelf start; in Claude Code met `/mcp__flux__migreren 2.20.0` als de
+server `flux` heet. Het recept staat als Markdown met frontmatter in `server/prompts/<naam>.md`, het rapportsjabloon in
+`server/templates/<workflow>.md` (ADR-004, sectie 6):
+
+- **De frontmatter:** `name`, `title`, `description` (met een aanbevolen model en effort), `arguments` (per argument
+  `name`, `description`, `required` en `default`) en `template`. `prompts.mjs` leest een klein deel van YAML; een
+  onbekende sleutel, een argument dat de tekst niet gebruikt of een `{{naam}}` zonder argument is een fout bij het
+  laden.
+- **Het renderen** vervangt enkel `{{argument}}`, met de standaardwaarde als het ontbreekt. `prompts/get` geeft de
+  tekst als bericht van de gebruiker, en het sjabloon als embedded resource.
+- **Het stramien** (ADR-004, 6.3): voorwaarden, kennis ophalen, een checkpoint voor er code wijzigt, uitvoeren,
+  verifiëren met `flux_check_markup`, de build en de e2e-testen, en een rapport in `.flux/rapporten/` van het project.
+  Een voorwaarde is dat de toepassing standalone start en de e2e-testen draaien zonder echte backend.
+- Elke wijziging aan een recept krijgt een entry in `server/CHANGELOG.md`.
+
 ## De code
 
 | Bestand                         | Wat                                                                                   |
@@ -124,6 +149,8 @@ dezelfde module voor de voorbeelden van de analyses (zie [Storybook](storybook.m
 | `server/src/mcp/paging.mjs`     | de delen en de cursor                                                                 |
 | `server/src/mcp/schema.mjs`     | een kleine validator voor JSON Schema: de argumenten, en in de tests de antwoorden    |
 | `server/src/markup.mjs`         | de tokenizer voor HTML en lit, en de controle van `flux_check_markup` en `storybook:check` |
+| `server/src/mcp/prompts.mjs`    | de recepten: laden, renderen, `prompts/list`, `prompts/get` en hun resources          |
+| `server/prompts/`, `server/templates/` | de recepten en hun rapportsjablonen                                            |
 | `server/package.json`           | het manifest van het pakket: naam, versie, `bin` en `engines`                          |
 | `server/CHANGELOG.md`           | wat er per versie van flux-mcp veranderde                                             |
 
@@ -230,3 +257,26 @@ toetst of een model met de beschrijvingen van de tools de juiste tool kiest. Per
 lege map, en het script vergelijkt de eerste tool van flux-mcp met de tools die goed zijn. Het faalt als een vraag een
 andere tool kiest. De runs lopen op het abonnement van Claude Code en horen niet bij `pnpm test`. Wijzig je de
 beschrijving van een tool of de instructies, draai het dan opnieuw.
+
+### De evaluatie van een recept
+
+```bash
+pnpm run flux:server:eval-recipe migreren          # Opus 5.5, effort high
+pnpm run flux:server:eval-recipe migreren --keep   # laat de toepassing na de run staan
+```
+
+voert een recept van begin tot einde uit op een echte toepassing, en controleert daarna zelf het resultaat.
+`server/test/fixtures/<recept>.json` zegt welke toepassing het krijgt, met welke argumenten, en wat er moet kloppen;
+de toepassing staat in `server/test/fixtures/app/` (zie haar README). Het script:
+
+1. kopieert de toepassing naar een tijdelijke map, met git, en installeert ze; de e2e-testen moeten er groen zijn;
+2. start het recept als slash-commando in Claude Code, met enkel deze server. Bij het checkpoint hervat het de sessie
+   met "akkoord";
+3. controleert de versies in package.json, de build en de e2e-testen, `flux_check_markup` op de HTML, de gekende
+   verschillen, het rapport, en dat het recept geen ander nieuw bestand achterliet
+   (`resources/flux/server/recipe-check.mjs`).
+
+Voor `migreren` is dat de containeraanvraag op `@domg-wc` 2.12.1, naar 2.20.0. Het script vraagt netwerk (de registry
+van Flux, npm, en chromium voor Playwright) en draait pnpm met een lege gebruikersconfiguratie: de packages van Flux
+zijn publiek, en een verlopen token in `~/.npmrc` laat een installatie anders falen. Een run duurt lang en loopt op het
+abonnement van Claude Code; ze hoort niet bij `pnpm test`.

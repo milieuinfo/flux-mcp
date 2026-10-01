@@ -38,8 +38,24 @@ export function requireClaude() {
 //   source   een map die claude mag lezen (--add-dir), bv. een checkout van de bronrepo;
 //   allowed  de toegelaten tools (--allowedTools); al de rest wordt geweigerd;
 //   tools    de ingebouwde tools die er zijn (--tools); [] laat enkel de tools van MCP-servers over;
+//   env      extra omgevingsvariabelen voor claude en wat het start;
+//   resume   de session_id van een vorige run om verder te gaan, bv. na een checkpoint;
+//   persist  bewaar de sessie, zodat een volgende run ze kan hervatten;
 //   extra    extra argumenten, bv. ['--json-schema', …].
-export function runClaude({ label, prompt, cwd, source, allowed, model, effort, tools = DEFAULT_TOOLS, extra = [] }) {
+export function runClaude({
+    label,
+    prompt,
+    cwd,
+    source,
+    allowed,
+    model,
+    effort,
+    tools = DEFAULT_TOOLS,
+    env = {},
+    resume = null,
+    persist = false,
+    extra = [],
+}) {
     if (!model || !effort) throw new Error('runClaude heeft een model en een effort nodig.');
     console.log(`== ${label} (claude -p, ${model}, effort ${effort}${BUDGET ? `, max $${BUDGET}` : ''})`);
     const args = [
@@ -48,7 +64,8 @@ export function runClaude({ label, prompt, cwd, source, allowed, model, effort, 
         '--effort', effort,
         '--output-format', 'stream-json',
         '--verbose',
-        '--no-session-persistence',
+        ...(persist || resume ? [] : ['--no-session-persistence']),
+        ...(resume ? ['--resume', resume] : []),
         // Expliciet manual: anders neemt claude de defaultMode uit de instellingen over. In 'auto' keurt een
         // classifier dan zelf acties goed die niet in --allowedTools staan, zoals 'node -e'.
         '--permission-mode', 'manual',
@@ -62,7 +79,8 @@ export function runClaude({ label, prompt, cwd, source, allowed, model, effort, 
     const shown = (text) => String(text).replace(`${cwd}/`, '').replace(source ?? '\0', '<bron>');
     const started = Date.now();
     return new Promise((resolve, reject) => {
-        const child = spawn('claude', args, { cwd, env: CLAUDE_ENV, stdio: ['pipe', 'pipe', 'inherit'] });
+        const options = { cwd, env: { ...CLAUDE_ENV, ...env }, stdio: ['pipe', 'pipe', 'inherit'] };
+        const child = spawn('claude', args, options);
         running.add(child);
         child.on('close', () => running.delete(child));
         let buffer = '';

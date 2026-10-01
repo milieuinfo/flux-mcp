@@ -14,6 +14,7 @@ import { CATALOG_DIR, CatalogError, createCatalog } from '../catalog.mjs';
 import { createDocs } from '../docs.mjs';
 import { paginate } from './paging.mjs';
 import { dispatch, ERRORS, RpcError } from './protocol.mjs';
+import { createPrompts } from './prompts.mjs';
 import { render } from './render.mjs';
 import { createResources } from './resources.mjs';
 import { validate } from './schema.mjs';
@@ -23,16 +24,16 @@ import { createTools } from './tools.mjs';
 // server kent, dan antwoordt hij met die; anders met de nieuwste (ADR-004, sectie 8).
 export const PROTOCOL_VERSIONS = ['2025-11-25', '2025-06-18'];
 
-// De instructies voor het model, zoals in sectie 7 van ADR-004, beperkt tot wat er in dit increment is: nog zonder
-// prompts (sectie 10).
+// De instructies voor het model, zoals in sectie 7 van ADR-004.
 export const INSTRUCTIONS =
-    'Flux-MCP levert kennis over de Flux web-componenten (@domg-wc/*) per versie. Neem de versie van ' +
-    '@domg-wc/components uit de package.json van het project en geef ze mee aan elke tool; latest is de nieuwste ' +
-    'versie in deze catalogus. Zoek met flux_search_docs, haal een component op met flux_get_component, en gidsen, ' +
-    'richtlijnen, patronen en recepten met flux_get_guidance. Voor een upgrade: flux_get_upgrade, met de componenten ' +
-    'die het project gebruikt; in welke versie een ticket zit: flux_find_changes. Controleer gegenereerde of ' +
-    'gewijzigde markup met flux_check_markup. De API komt uit de web-types; tekst uit een bron *-analysis schreef ' +
-    'een LLM. De server leest of wijzigt geen code; dat doe jij in het project.';
+    'Flux-MCP levert kennis over de Flux web-componenten (@domg-wc/*) per versie, en recepten voor de ' +
+    'Flux-workflows als prompts. Neem de versie van @domg-wc/components uit de package.json van het project en geef ' +
+    'ze mee aan elke tool; latest is de nieuwste versie in deze catalogus. Zoek met flux_search_docs, haal een ' +
+    'component op met flux_get_component, en gidsen, richtlijnen, patronen en recepten met flux_get_guidance. Voor ' +
+    'een upgrade: flux_get_upgrade, met de componenten die het project gebruikt; in welke versie een ticket zit: ' +
+    'flux_find_changes. Controleer gegenereerde of gewijzigde markup met flux_check_markup. De API komt uit de ' +
+    'web-types; tekst uit een bron *-analysis schreef een LLM. Volg bij een Flux-prompt de stappen, de checkpoints ' +
+    'en het rapportformaat. De server leest of wijzigt geen code; dat doe jij in het project.';
 
 const MANIFEST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../package.json');
 
@@ -50,7 +51,8 @@ export function createServer({
     const docs = createDocs(catalogDir, { catalog });
     const { tools, explain } = createTools({ catalog, docs, catalogVersion: version });
     const byName = new Map(tools.map((tool) => [tool.name, tool]));
-    const resources = createResources({ catalog, docs, tools: byName, explain });
+    const prompts = createPrompts({ catalog });
+    const resources = createResources({ catalog, docs, tools: byName, explain, prompts });
 
     const failed = (text) => ({ content: [{ type: 'text', text }], isError: true });
 
@@ -86,6 +88,7 @@ export function createServer({
                 capabilities: {
                     tools: { listChanged: false },
                     resources: { subscribe: false, listChanged: false },
+                    prompts: { listChanged: false },
                     completions: {},
                 },
                 serverInfo: { name: 'flux-mcp', title: 'Flux MCP', version },
@@ -109,7 +112,17 @@ export function createServer({
         'resources/list': () => ({ resources: resources.list() }),
         'resources/templates/list': () => ({ resourceTemplates: resources.templates() }),
         'resources/read': ({ uri } = {}) => resources.read(uri),
-        'completion/complete': (params) => resources.complete(params),
+        'prompts/list': () => ({ prompts: prompts.list() }),
+        'prompts/get': (params) => {
+            try {
+                return prompts.get(params);
+            } catch (error) {
+                if (error instanceof CatalogError) throw new RpcError(ERRORS.INVALID_PARAMS, error.message);
+                throw error;
+            }
+        },
+        'completion/complete': (params) =>
+            params?.ref?.type === 'ref/prompt' ? prompts.complete(params) : resources.complete(params),
     };
 
     return { handle: (message) => dispatch(message, methods, log), tools };

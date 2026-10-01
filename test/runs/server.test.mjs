@@ -62,6 +62,7 @@ const MESSAGES = [
         params: { name: 'flux_get_upgrade', arguments: { from: '1.0.0', to: 'latest', components: ['vl-knop'] } },
     },
     { jsonrpc: '2.0', id: 5, method: 'resources/read', params: { uri: 'flux://1.0.0/docs/afnemen-aan-de-slag' } },
+    { jsonrpc: '2.0', id: 6, method: 'prompts/get', params: { name: 'migreren', arguments: { doelversie: '1.1.0' } } },
 ];
 
 describe('flux:server:pack', () => {
@@ -92,7 +93,8 @@ describe('flux:server:pack', () => {
         if (!ws.exists('dist/flux-mcp')) await ws.run('flux:server:pack');
         const fromRepo = await talk('server/bin/flux-mcp.mjs', MESSAGES);
         const fromPackage = await talk('dist/flux-mcp/server/bin/flux-mcp.mjs', MESSAGES);
-        assert.equal(fromPackage.length, 5, 'een antwoord per verzoek, geen voor de notificatie');
+        assert.equal(fromPackage.length, 6, 'een antwoord per verzoek, geen voor de notificatie');
+        assert.match(fromPackage[5].result.messages[0].content.text, /naar versie 1\.1\.0 van de Flux/, 'de recepten');
         assert.deepEqual(fromPackage, fromRepo);
         assert.ok(fromPackage.slice(1, 4).every((response) => response.result && !response.result.isError));
         assert.equal(fromPackage[1].result.structuredContent.latest, '1.1.0');

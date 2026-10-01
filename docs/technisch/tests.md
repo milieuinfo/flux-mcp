@@ -44,3 +44,8 @@ regel en kolom. `server.test.mjs` heeft er golden antwoorden voor, ook een migra
 `flux:server:eval`, de kennisvragen voor een model, hoort niet bij `pnpm test`: het draait Claude Code op het
 abonnement (zie [De server](server.md#de-kennisvragen)). De run in `test/runs/server.test.mjs` test het script met de
 nagemaakte `claude`.
+
+`server/test/mcp/prompts.test.mjs` is controle 5 uit ADR-004: elk recept in `server/prompts/` noemt enkel tools die er
+zijn en zijn eigen sjabloon, en volgt het stramien. `server.test.mjs` heeft golden antwoorden voor `prompts/list` en
+een gerenderd recept. `test/recipe-check.test.mjs` test wat `flux:server:eval-recipe` na een run controleert; de run
+zelf hoort niet bij `pnpm test` (zie [De server](server.md#de-evaluatie-van-een-recept)).

@@ -7,9 +7,12 @@
 //   flux://{version}/docs/{page}                één pagina, samengevoegd
 //   flux://{version}/components/{component}     één component, zoals flux_get_component met alle secties
 //
+//   flux://prompts/{name}                       een recept als tekst, voor een client zonder prompts
+//   flux://templates/{workflow}                 het rapportsjabloon van een workflow
+//
 // {version} mag 'latest' zijn, of een patch op een zijtak: de inhoud noemt de effectieve versie. resources/list geeft
-// enkel flux://versions; de rest staat in resources/templates/list, want 26 versies met samen 5500 pagina's is te veel
-// voor een lijst. Een resource wordt niet in delen geknipt: wie ze leest, vroeg ze zelf.
+// flux://versions, de recepten en de sjablonen; de rest staat in resources/templates/list, want 26 versies met samen
+// 5500 pagina's is te veel voor een lijst. Een resource wordt niet in delen geknipt: wie ze leest, vroeg ze zelf.
 
 import { CatalogError } from '../catalog.mjs';
 import { ERRORS, RpcError } from './protocol.mjs';
@@ -66,10 +69,17 @@ const ROUTES = [
 // Zoveel waarden geeft completion/complete hoogstens, zoals de specificatie vraagt.
 const MAX_COMPLETIONS = 100;
 
-export function createResources({ catalog, docs, tools, explain }) {
+export function createResources({ catalog, docs, tools, explain, prompts }) {
     const contents = (uri, mimeType, text) => ({ contents: [{ uri, mimeType, text }] });
 
     function read(uri) {
+        try {
+            const recipe = prompts?.read(String(uri ?? ''));
+            if (recipe) return contents(uri, recipe.mimeType, recipe.text);
+        } catch (error) {
+            if (!(error instanceof CatalogError)) throw error;
+            throw new RpcError(ERRORS.RESOURCE_NOT_FOUND, error.message, { uri });
+        }
         const route = ROUTES.map(([pattern, name]) => [pattern.exec(String(uri ?? '')), name]).find(([match]) => match);
         if (!route) throw new RpcError(ERRORS.RESOURCE_NOT_FOUND, `Onbekende resource: ${uri}.`, { uri });
         const [[, ...raw], name] = route;
@@ -138,5 +148,5 @@ export function createResources({ catalog, docs, tools, explain }) {
         };
     }
 
-    return { list: () => RESOURCES, templates: () => TEMPLATES, read, complete };
+    return { list: () => [...RESOURCES, ...(prompts?.resources() ?? [])], templates: () => TEMPLATES, read, complete };
 }

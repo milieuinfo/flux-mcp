@@ -29,6 +29,7 @@
         "flux:storybook:check": "node ./resources/flux/storybook/check.mjs",
         "flux:server:pack": "node ./resources/flux/server/pack.mjs",
         "flux:server:eval": "node ./resources/flux/server/eval.mjs",
+        "flux:server:eval-recipe": "node ./resources/flux/server/eval-recipe.mjs",
         "test": "node --test \"server/test/**/*.test.mjs\" \"test/**/*.test.mjs\""
     },
     "devDependencies": {
