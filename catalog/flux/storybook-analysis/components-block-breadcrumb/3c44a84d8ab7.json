@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "page": "components-block-breadcrumb",
+  "inputHash": "3c44a84d8ab7",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-breadcrumb met vl-breadcrumb-item, de kruimelnavigatie die de plaats van de huidige pagina in een hiërarchie toont. Een item met href wordt een link, een item zonder href gewone tekst.",
+  "keywords": [
+    "breadcrumb",
+    "vl-breadcrumb",
+    "vl-breadcrumb-item",
+    "kruimelpad",
+    "broodkruimel",
+    "kruimelnavigatie",
+    "navigatie",
+    "navigation",
+    "hiërarchie",
+    "huidige pagina"
+  ],
+  "examples": {
+    "components-block-breadcrumb--breadcrumb-default": {
+      "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Regelgeving</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Webuniversum</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Componenten</vl-breadcrumb-item>\n</vl-breadcrumb>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent } from '@domg-wc/components/block';\n\n// vl-breadcrumb registreert vl-breadcrumb-item niet zelf.\nregisterWebComponents([VlBreadcrumbComponent, VlBreadcrumbItemComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-breadcrumb",
+      "name": "[default]",
+      "text": "Het voorbeeld vl-breadcrumb - default zet de vl-breadcrumb-item-elementen als kinderen in vl-breadcrumb. De code heeft geen default slot: ze zet op elk kind zelf slot=\"item-<index>\" en toont het als een stap in de lijst (een <li> met <slot name=\"item-<index>\">). Elk direct kind wordt dus een stap. De web-types van 2.7.0 kennen voor vl-breadcrumb geen slot.",
+      "source": "libs/components/src/block/breadcrumb/vl-breadcrumb.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-breadcrumb-item",
+      "name": "[default]",
+      "text": "Het voorbeeld vl-breadcrumb - default zet de tekst van elk item (Vlaanderen Intern, Regelgeving, Webuniversum, Componenten) in het default slot van vl-breadcrumb-item, zoals de code het definieert (<slot></slot>, in een <a> als href gezet is en anders in een <span>). De web-types van 2.7.0 kennen voor vl-breadcrumb-item geen slot.",
+      "source": "libs/components/src/block/breadcrumb/vl-breadcrumb-item.component.ts"
+    }
+  ]
+}

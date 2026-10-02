@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "recepten-imports",
+  "inputHash": "a34c51a4277b",
+  "analysedFor": "2.20.0",
+  "summary": "De manieren om Flux-componenten te importeren: een import met side-effects, een named import en een named import via de barrel zonder neveneffecten, met registerWebComponents uit @domg-wc/common om de geïmporteerde referentie te gebruiken zodat de bundler ze niet als dode code weglaat. Legt ook uit dat de @webComponent-decorator een component registreert zodra zijn module geladen wordt, en wat dat betekent voor tree shaking.",
+  "keywords": [
+    "imports",
+    "import",
+    "named import",
+    "side effects",
+    "sideeffects",
+    "barrel file",
+    "root barrel",
+    "registerwebcomponents",
+    "webcomponent decorator",
+    "registratie",
+    "register web components",
+    "tree shaking",
+    "webpack",
+    "bundler",
+    "dead code"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "text": "Het voorbeeld van de import met side-effects gebruikt '@domg-wc/components/block/button'. In 2.20.0 staat vl-button in atom, niet in block: de barrel van de component is libs/components/src/atom/button/index.ts, dus import '@domg-wc/components/atom/button';. Een map block/button bestaat niet.",
+      "source": "apps/storybook/docs/g_recepten/imports.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "text": "De pagina noemt de klassen VlButtonElement en VlLinkButtonElement, en stelt voor om VlButtonElement; onder de import te zetten. Die bestaan in 2.20.0 niet: de klasse van vl-button is VlButtonComponent, en de barrel van de button exporteert enkel VlButtonComponent en vlInputAddonStyles. Een vl-link-button staat niet in de web-types en niet in de code; de import van de button registreert dus enkel vl-button.",
+      "source": "libs/components/src/atom/button/index.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De secties 'Named Import' en 'Named Import via root-barrel file' tonen dezelfde code: VlButtonComponent uit '@domg-wc/components/atom'. @domg-wc/components heeft in 2.20.0 geen root-barrel (libs/components/src heeft geen index.ts); de ingangen zijn de barrels per categorie: atom, block, compliance en form. Bij het publiceren zet libs-pack.sh sideEffects van components op [\"./*/*/**\"]: de barrel per categorie, zoals @domg-wc/components/atom, geldt als zonder neveneffecten, de barrel per component, zoals @domg-wc/components/atom/button, als met. Voor common en styles is dat [\"./*/**\"], voor map [\"./*/**\", \"./vl-map.*\"]. De getoonde code is dus de variant via de barrel zonder neveneffecten; een named import uit de barrel van de component is import { VlButtonComponent } from '@domg-wc/components/atom/button';.",
+      "source": "resources/bash-scripts/libs-pack.sh"
+    }
+  ]
+}

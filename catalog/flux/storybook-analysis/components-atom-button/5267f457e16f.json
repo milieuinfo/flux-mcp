@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "page": "components-atom-button",
+  "inputHash": "5267f457e16f",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-button, de knop voor een actie op de pagina. Toont de varianten secondary, tertiary, ghost en error, de toestanden disabled en loading, de maten block, large, wide en narrow, een icoon of enkel een icoon (met verplicht label), een toggle (on, controlled en het event vl-toggle) en cta-link om een link als knop te tonen, eventueel als download. Om naar een andere pagina te navigeren raadt de pagina vl-link aan.",
+  "keywords": [
+    "knop",
+    "button",
+    "vl-button",
+    "primary button",
+    "secondary button",
+    "ghost button",
+    "icon button",
+    "icoonknop",
+    "toggle button",
+    "loading",
+    "disabled",
+    "call to action",
+    "cta-link",
+    "download",
+    "input-group"
+  ],
+  "examples": {
+    "components-atom-button--button-primary": {
+      "html": "<vl-button>Klik op mij</vl-button>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\n\nregisterWebComponents([VlButtonComponent]);\n\ndocument.querySelector('vl-button').addEventListener('vl-click', () => {\n    console.log('vl-click');\n});"
+    },
+    "components-atom-button--button-secondary": {
+      "html": "<vl-button secondary>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-tertiary": {
+      "html": "<vl-button tertiary>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-ghost": {
+      "html": "<vl-button ghost>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-disabled": {
+      "html": "<vl-button disabled>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-error": {
+      "html": "<vl-button error>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-block": {
+      "html": "<vl-button block>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-large": {
+      "html": "<vl-button large>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-wide": {
+      "html": "<vl-button wide>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-narrow": {
+      "html": "<vl-button narrow>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-loading": {
+      "html": "<vl-button loading>Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-icon": {
+      "html": "<vl-button icon=\"location\">Klik op mij</vl-button>"
+    },
+    "components-atom-button--button-icon-only": {
+      "html": "<vl-button label=\"Locatie\" icon=\"location\"></vl-button>"
+    },
+    "components-atom-button--button-icon-only-ghost": {
+      "html": "<vl-button ghost label=\"Verwijder\" icon=\"trash\"></vl-button>"
+    },
+    "components-atom-button--button-toggle": {
+      "html": "<vl-button toggle>Klik op mij</vl-button>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\n\nregisterWebComponents([VlButtonComponent]);\n\n// vl-toggle volgt op een wijziging van on, door een klik of door on te zetten; de nieuwe toestand staat in\n// event.detail.on.\ndocument.querySelector('vl-button[toggle]').addEventListener('vl-toggle', (event) => {\n    console.log(event.detail.on ? 'aan' : 'uit');\n});"
+    },
+    "components-atom-button--button-cta-link": {
+      "html": "<vl-button icon=\"add\" cta-link=\"https://www.vlaanderen.be\">Voeg nieuw object toe.</vl-button>"
+    },
+    "components-atom-button--button-cta-link-download": {
+      "html": "<vl-button icon=\"file-download\" cta-link=\"data:text/plain;charset=utf-8,Verslag FLUX-710\" download=\"verslag.txt\">Download het verslag</vl-button>"
+    },
+    "components-atom-button--button-input-group": {
+      "html": "<!-- input-group heeft enkel effect naast een invoerveld, zie Components - Form/input-group. -->\n<vl-button input-group>Klik op mij</vl-button>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "name": "input-group",
+      "text": "De story vl-button - input-group bindt het attribuut als ?inputGroup=${inputGroup}. Lit zet een boolean attribuut met toggleAttribute, en in een HTML-document maakt de browser die naam kleine letters: het element krijgt inputgroup, niet input-group. vl-button kent enkel input-group (attribute: 'input-group' in vl-button.component.ts, zo staat het ook in de web-types), dus de story zet de opmaak voor een input-group niet aan. Het voorbeeld gebruikt input-group. Die opmaak werkt bovendien enkel als de knop het eerste of laatste kind naast een invoerveld is, zoals op de pagina Components - Form/input-group.",
+      "source": "libs/components/src/atom/button/stories/vl-button.stories.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-button",
+      "name": "aria-haspopup",
+      "text": "De pagina raadt onder Toegankelijkheid aria-haspopup aan (true, menu, listbox, tree, grid of dialog), en vl-button geeft het door aan de interne <button>, of aan de <a> bij cta-link. De web-types vermelden het niet, en dus ook de API-tabel niet. Als globaal ARIA-attribuut mag het wel op elk element.",
+      "source": "libs/components/src/atom/button/vl-button.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-button",
+      "name": "aria-expanded",
+      "text": "vl-button declareert aria-expanded als property (ariaExpanded, met reflect) en geeft het door aan de interne <button>, niet aan de <a> bij cta-link. Het staat niet in de web-types en niet op de pagina.",
+      "source": "libs/components/src/atom/button/vl-button.component.ts"
+    }
+  ]
+}

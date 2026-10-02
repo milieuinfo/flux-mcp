@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "bijdragen-opzet-structuur",
+  "inputHash": "ff28a51d97b0",
+  "analysedFor": "2.20.0",
+  "summary": "Voor wie bijdraagt aan Flux: hoe de monorepo flux-web-components opgezet is, met Node via Volta en pnpm als package manager (en waarom npm geweigerd wordt), met een cheatsheet van npm naar pnpm. Ze beschrijft ook de apps en libs in de repo en welk npm-package elke lib oplevert.",
+  "keywords": [
+    "opzet",
+    "structuur",
+    "project structure",
+    "monorepo",
+    "flux-web-components",
+    "bijdragen",
+    "contributing",
+    "pnpm",
+    "npm",
+    "volta",
+    "node versie",
+    "corepack",
+    "devengines",
+    "supply-chain security",
+    "cheatsheet"
+  ],
+  "examples": {},
+  "notes": []
+}

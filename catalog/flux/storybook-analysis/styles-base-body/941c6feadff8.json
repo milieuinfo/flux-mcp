@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "page": "styles-base-body",
+  "inputHash": "941c6feadff8",
+  "analysedFor": "2.20.0",
+  "summary": "Interne stylingpagina over de globale stijl van html en body, die Flux zelf op het document zet (vlBodyStyles in de globale styling, zodra de eerste Lit-component van Flux aangemaakt wordt en autoRegisterStyles aan staat). Ze zet het font via --vl-font, past de 62,5%-truc toe zodat 1rem gelijk is aan 10px, en maakt de tekst en de regelhoogte kleiner op schermen tot 767px.",
+  "keywords": [
+    "body",
+    "html",
+    "globale styling",
+    "global styles",
+    "font-size",
+    "62.5%",
+    "rem",
+    "10px",
+    "regelhoogte",
+    "line-height",
+    "typografie",
+    "typography",
+    "mobiel",
+    "base styles"
+  ],
+  "examples": {
+    "styles-base-body--body-default": {
+      "html": "<!-- Geen markup of klasse nodig: Flux zet de stijl van html en body zelf op het document. De story toont enkel\n     deze tekst in die stijl. -->\n<div>Deze specifieke &lt;body&gt; en &lt;html&gt; styling wordt automatisch op het document gezet.</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Onder 'Implementatie' toont de pagina de code als css, maar het is TypeScript: vl-body.css.ts, een lit css-template dat vlMediaScreenSmall (767) importeert en in de media query invult. Als CSS-bestand overgenomen werkt ze niet; de media query is @media screen and (max-width: 767px).",
+      "source": "libs/styles/src/base/body/stories/vl-body.stories-doc.mdx"
+    }
+  ]
+}

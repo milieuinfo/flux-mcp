@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "map-action-draw-action-draw-action-style",
+  "inputHash": "08556bb7c045",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-draw-action-style, dat je als direct kind in een draw-actie zet (vl-map-draw-point-action, vl-map-draw-line-action, vl-map-draw-polygon-action of vl-map-measure-action) om de stijl tijdens het tekenen te bepalen: de vulkleur en de rand van de figuur, en de kleur, de rand en de straal van de punten. Wat je weglaat, valt terug op het standaardblauw rgba(2, 85, 204, …), een rand van 1 en punten met een straal van 4; de stijl van de getekende features op de laag zet je met vl-map-layer-style.",
+  "keywords": [
+    "draw action style",
+    "vl-map-draw-action-style",
+    "tekenstijl",
+    "draw style",
+    "tekenen op kaart",
+    "draw polygon",
+    "polygoon",
+    "stijl",
+    "kleur",
+    "fill color",
+    "border color",
+    "circle size",
+    "vertex",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-draw-action-draw-action-style--map-draw-action-style-default": {
+      "html": "<!-- vl-map-draw-action-style geeft zijn stijl aan zijn parent: zet het direct in de draw-actie. vl-map-layer-style\n     bepaalt de stijl van de features op de laag, dus ook van wat je getekend hebt. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action default-active>\n            <vl-map-draw-action-style\n                color=\"rgba(255, 105, 180, 0.8)\"\n                border-color=\"rgba(0, 191, 255, 0.8)\"\n                border-size=\"3\"\n                circle-color=\"rgba(255, 255, 0, 0.8)\"\n                circle-border-color=\"rgba(76, 187, 23, 0.8)\"\n                circle-border-size=\"5\"\n                circle-size=\"10\"\n            ></vl-map-draw-action-style>\n        </vl-map-draw-polygon-action>\n        <vl-map-layer-style\n            border-size=\"2\"\n            color=\"rgba(255, 127, 80, 0.8)\"\n            border-color=\"rgba(64, 224, 208, 0.8)\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDrawActionStyle,\n    VlMapDrawPolygonAction,\n    VlMapFeaturesLayer,\n    VlMapLayerStyle,\n} from '@domg-wc/map';\n\n// De story zet ook de property active. default-active alleen activeert de actie ook, zolang geen andere actie van de\n// kaart actief is; active = true maakt ze actief, ook als er al een andere actie actief is.\ndocument.querySelector('vl-map-draw-polygon-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-draw-line-action",
+      "text": "De web-types geven vl-map-draw-line-action de doc-url van deze pagina (map-action-draw-action-draw-action-style) in plaats van die van zijn eigen pagina, map-action-draw-action-draw-line-action. Daarom toont deze pagina ook de API van vl-map-draw-line-action. vl-map-draw-line-action is een draw-actie waarin je vl-map-draw-action-style kan zetten, net als vl-map-draw-polygon-action in de story.",
+      "source": "libs/map/map.web-types.json"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-draw-action-style",
+      "text": "De web-types zeggen niet dat de attributen van vl-map-draw-action-style niet reactief zijn, maar dat zijn ze niet: het element observeert geen attributen, en leest ze één keer, kort nadat het op de pagina komt, wanneer het zijn stijl aan de draw-actie erboven geeft. Zet de attributen dus vóór het element in de draw-actie komt.",
+      "source": "libs/map/src/components/action/draw-action/draw-action-style/vl-map-draw-action-style.ts"
+    }
+  ]
+}

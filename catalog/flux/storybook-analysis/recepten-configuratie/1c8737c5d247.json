@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "recepten-configuratie",
+  "inputHash": "1c8737c5d247",
+  "analysedFor": "2.20.0",
+  "summary": "Hoe je de voorkeuren van Flux wijzigt met FluxConfig.setPreferences uit @domg-wc/common: autoRegisterStyles, logWebComponentRegistration, logTreeshakeRegistration en een default prozaDomain voor vl-proza-message, vl-proza-message-preloader en de vlProza directive. Dat moet gebeuren voordat de eerste component geregistreerd wordt; bij de fat-lib zet je autoRegisterStyles en de twee log-voorkeuren als attributen op de script-tag.",
+  "keywords": [
+    "configuratie",
+    "configuration",
+    "fluxconfig",
+    "setpreferences",
+    "preferences",
+    "voorkeuren",
+    "autoregisterstyles",
+    "auto-register-styles",
+    "logwebcomponentregistration",
+    "logtreeshakeregistration",
+    "prozadomain",
+    "proza domein",
+    "fat-lib",
+    "logging",
+    "settings"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-content-security-policy-historiek-csp-aanpak",
+  "inputHash": "333d1c2b6d3c",
+  "analysedFor": "2.20.0",
+  "summary": "Tijdlijn van de CSP-aanpak van Flux, van de eerste verkenning in januari 2023 tot v2.4.0 (augustus 2025), waarin de embedded styles van de oudere componenten vervangen zijn door adoptedStyleSheets. De pagina somt op welke componenten in v2.4.0 CSP-compliant werden en noemt vl-textarea-rich als enige uitzondering.",
+  "keywords": [
+    "content security policy",
+    "csp",
+    "historiek",
+    "history",
+    "csp-compliant",
+    "adoptedstylesheets",
+    "embedded style",
+    "v2.4.0",
+    "v2.3.0",
+    "vl-header-next",
+    "vl-footer-next",
+    "vl-textarea-rich"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De pagina noemt vl-header-next als CSP-veilige header (v2.3.0) en als component die in v2.4.0 CSP-compliant werd, en de code registreert het element (`@webComponent('vl-header-next')`), maar het staat niet in de web-types van 2.20.0.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De pagina noemt vl-footer-next als CSP-veilige footer (v2.3.0), en de code registreert het element (`@webComponent('vl-footer-next')`), maar het staat niet in de web-types van 2.20.0.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "page": "patronen-navigatie-functionele-header-met-back-en-tabs",
+  "inputHash": "8864bb67038c",
+  "analysedFor": "2.16.0",
+  "summary": "Patroon voor een vl-functional-header met de terug-link en daarnaast een horizontale navigatie met tabs in het sub-title slot: vl-tabs-next met horizontal-navigation en no-border, met een vl-tab-link-next per link. custom-css haalt de marge onder de subrij weg en zet ruimte tussen de terug-link en de tabs.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "tabs",
+    "tabbladen",
+    "horizontale navigatie",
+    "horizontal navigation",
+    "subnavigatie",
+    "sub navigation",
+    "terug-link",
+    "back link",
+    "vl-tabs-next",
+    "vl-tab-link-next",
+    "tab links",
+    "sub-title slot"
+  ],
+  "examples": {
+    "patronen-navigatie-functionele-header-met-back-en-tabs--functionele-header-met-back-en-tabs": {
+      "html": "<vl-functional-header\n    title=\"School- en studietoelagen\"\n    custom-css=\"\n        :host .vl-functional-header__sub-row {\n            margin-bottom: 0;\n        }\n        :host .vl-functional-header__sub__action + .vl-functional-header__sub__action::before {\n            margin: 1rem;\n        }\n    \"\n>\n    <vl-tabs-next slot=\"sub-title\" label=\"Onderwerpen\" horizontal-navigation no-border>\n        <vl-tab-link-next id=\"tab1\" href=\"#trein\">Trein</vl-tab-link-next>\n        <vl-tab-link-next id=\"tab2\" href=\"#ov\">Metro, tram en bus</vl-tab-link-next>\n        <vl-tab-link-next id=\"tab3\" href=\"#fiets\">Fiets</vl-tab-link-next>\n    </vl-tabs-next>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "label",
+      "text": "label geeft de tabnavigatie een toegankelijke naam (aria-label op de nav). Het staat in de code van vl-tabs-next en in de argTypes van zijn stories, maar niet in de web-types van 2.16.0.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "horizontal-navigation",
+      "text": "horizontal-navigation toont de tabs als navigatie met links (vl-tab-link-next in een lijst), zonder ARIA-tablist en zonder panelen. Het staat in de code van vl-tabs-next en in de argTypes van zijn stories, maar niet in de web-types van 2.16.0.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "no-border",
+      "text": "no-border verbergt de onderste rand van de tabnavigatie (class vl-tabs--no-border). Het staat in de code van vl-tabs-next en in de argTypes van zijn stories, maar niet in de web-types van 2.16.0.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-link-next",
+      "name": "href",
+      "text": "href is de doel-URL van de tab link en is verplicht: zonder href geeft de component een waarschuwing in de console. Het staat in de code, maar de web-types van 2.16.0 kennen voor vl-tab-link-next geen enkel attribuut.",
+      "source": "libs/components/src/block/next/tabs/vl-tab-link.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tabs-next",
+      "text": "De web-types van 2.16.0 geven vl-tabs-next de attributen en events van de oudere vl-tabs: active-tab, alt, disable-links, responsive-label, display-style en within-functional-header, en de events change en vl-click. De code van vl-tabs-next kent die niet: ze heeft enkel label, horizontal-navigation en no-border (naast custom-css), en de tabs zelf vuren vl-tab-click en vl-tab-link-click.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tabs-next",
+      "text": "De tekst van de pagina noemt de component vl-tabs en linkt naar components-block-tabs-tabs--documentatie, de pagina van de oudere vl-tabs. Het voorbeeld gebruikt vl-tabs-next met vl-tab-link-next (uit @domg-wc/components/block/next), die op components-block-next-tabs--documentatie beschreven staan.",
+      "source": "apps/storybook/docs/f_patronen/navigatie/functionele-header/3_met-back-en-tabs/functionele-header-met-back-en-tabs.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "title",
+      "text": "De code op de pagina zet de paginatitel met het attribuut title. De web-types van 2.16.0 markeren title als deprecated: gebruik title-label, want het standaard HTML-attribuut title toont een native tooltip. De component neemt title nog over als titel en haalt het attribuut daarna weg (_titleChangedCallback in libs/components/src/block/functional-header/vl-functional-header.component.ts). Het voorbeeld volgt de code van de pagina.",
+      "source": "apps/storybook/docs/f_patronen/navigatie/functionele-header/functionele-header.helpers.ts"
+    }
+  ]
+}

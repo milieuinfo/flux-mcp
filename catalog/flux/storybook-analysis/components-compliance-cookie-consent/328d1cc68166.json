@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "page": "components-compliance-cookie-consent",
+  "inputHash": "328d1cc68166",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-cookie-consent, de modal 'Cookie-toestemming' die de gebruiker informeert over de cookies van Departement Omgeving en zijn keuzes (opt-ins) in cookies bewaart. De modal opent vanzelf zolang er geen geldige keuze is, tenzij auto-open-disabled; de methode open() toont hem opnieuw. Extra opt-ins voeg je toe met vl-cookie-consent-opt-in-kinderen of addOptIn(); Matomo-analytics start met matomo-id en matomo-url, of voor een gekende host van Departement Omgeving.",
+  "keywords": [
+    "cookie consent",
+    "cookie-toestemming",
+    "vl-cookie-consent",
+    "vl-cookie-consent-opt-in",
+    "cookies",
+    "cookie banner",
+    "cookie modal",
+    "toestemming",
+    "consent",
+    "opt-in",
+    "gdpr",
+    "privacy",
+    "analytics",
+    "matomo"
+  ],
+  "examples": {
+    "components-compliance-cookie-consent--cookie-consent-default": {
+      "html": "<vl-cookie-consent id=\"cookie-consent\" auto-open-disabled></vl-cookie-consent>\n<vl-button id=\"button-open-cookie-consent\">Open cookie-consent</vl-button>",
+      "js": "// Met auto-open-disabled opent de modal niet vanzelf bij het laden. open() toont hem, ook als de gebruiker zijn\n// keuze al bewaarde.\ndocument.querySelector('#button-open-cookie-consent').addEventListener('click', () => {\n    document.querySelector('#cookie-consent').open();\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie-consent",
+      "name": "open",
+      "text": "De story opent de modal met de methode open(); die toont hem ook als de gebruiker al een geldige keuze bewaarde. vl-cookie-consent heeft nog andere publieke methodes: close() (sluit de modal, bewaart de toestemming en de opt-ins in cookies en roept hun callbacks op), reset() (verwijdert de cookies en roept de deactivated-callbacks op, maar zet de waarden van de opt-ins niet terug, anders dan de JSDoc zegt: _resetOptInValue doet in find een toewijzing in plaats van een vergelijking, zet zo de id van elk vl-cookie-consent-opt-in-kind zonder name-attribuut op 'null' en vindt geen match; heeft een kind wel een name-attribuut, dan krijgt het die naam als id en werpt reset() een TypeError, omdat het getAttribute oproept op het opt-in-object in plaats van op het element), addOptIn({ name, label, description, value, mandatory, callback: { activated, deactivated } }), addOptInActivatedCallback(name, callback), addOptInDeactivatedCallback(name, callback), isOptInActive(name) en isOpen(). Geen ervan staat in de web-types van 2.7.0.",
+      "source": "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie-consent-opt-in",
+      "name": "label",
+      "text": "Het label van de opt-in in de modal. vl-cookie-consent leest bij het aanmaken zijn vl-cookie-consent-opt-in-kinderen en maakt per kind een opt-in, met het id van het kind als naam; de keuze komt in de cookie vl-cookie-consent-<id>. De web-types kennen voor vl-cookie-consent-opt-in geen enkel attribuut.",
+      "source": "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie-consent-opt-in",
+      "name": "description",
+      "text": "De beschrijving van de opt-in, in kleine tekst onder het label.",
+      "source": "libs/components/src/compliance/cookie-consent/vl-cookie-consent-opt-in.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie-consent-opt-in",
+      "name": "checked",
+      "text": "De opt-in staat standaard aan. Een keuze die de gebruiker al in de cookie bewaarde, gaat voor.",
+      "source": "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie-consent-opt-in",
+      "name": "mandatory",
+      "text": "De opt-in is verplicht: aangevinkt en uitgeschakeld, zodat de gebruiker hem niet kan wijzigen.",
+      "source": "libs/components/src/compliance/cookie-consent/vl-cookie-consent-opt-in.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-cookie-consent",
+      "name": "analytics",
+      "text": "Volgens de web-types activeert analytics het verwerken van gebruikersstatistieken, en de pagina zegt dat analytics mits toestemming van de gebruiker gebeuren. In de code voegt vl-cookie-consent het Matomo-script toe bij de eerste connectedCallback, ongeacht analytics; het attribuut doet dat enkel opnieuw als het nadien gezet of gewijzigd wordt, en dan alleen als het script er nog niet is. Het script gebruikt matomo-id en matomo-url als beide gezet zijn, en anders de Matomo-site die bij window.location.host hoort in een vaste lijst van hosts van Departement Omgeving; voor een andere host volgt een console.warn en geen tracking. De enige voorwaarde is dat auto-opt-in-functional-disabled ontbreekt (anders volgt een console.error); een opt-in of keuze van de gebruiker controleert de component niet.",
+      "source": "libs/components/src/compliance/cookie-consent/vl-cookie-consent.component.ts"
+    }
+  ]
+}

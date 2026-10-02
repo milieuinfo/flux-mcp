@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "components-block-pill-pill",
+  "inputHash": "608b7cecc33d",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-pill, een kleine pil met een korte tekst, bv. een label of een filter. Een pill is closable (event close), checkable (event check, met detail.checked) of clickable (event click), krijgt met type de kleur success, warning of error en kan disabled zijn. De pagina toont enkel een standaardvoorbeeld en de API-tabel.",
+  "keywords": [
+    "pill",
+    "vl-pill",
+    "badge",
+    "tag",
+    "chip",
+    "filter chip",
+    "status",
+    "statuslabel",
+    "toegepaste filter",
+    "filter",
+    "closable",
+    "checkable",
+    "clickable"
+  ],
+  "examples": {
+    "components-block-pill-pill--pill-default": {
+      "html": "<vl-pill>Optie 1</vl-pill>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlPillComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlPillComponent]);\n\nconst pill = document.querySelector('vl-pill');\n// close volgt op een klik op het kruisje van een pill met closable. Het event bubbelt niet, en de pill verwijdert\n// zichzelf niet.\npill.addEventListener('close', (event) => {\n    console.log('close', event);\n});\n// check volgt op het aan- of uitvinken van een pill met checkable; event.detail.checked geeft de nieuwe toestand.\npill.addEventListener('check', (event) => {\n    console.log(event.detail.checked);\n});\n// click volgt op een klik op een pill met clickable.\npill.addEventListener('click', (event) => {\n    console.log('click', event);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-pill",
+      "name": "checked",
+      "text": "vl-pill declareert checked ook als attribuut (attribute: 'checked', met reflect), en de cypress-test zet het zo. De web-types en de API-tabel kennen checked enkel als property; de story zet de property (.checked). Het attribuut doet hetzelfde: <vl-pill checkable checked> toont een aangevinkte pill. Bij het aan- of uitvinken past de pill checked zelf aan, en dus ook het attribuut.",
+      "source": "libs/components/src/block/pill/vl-pill.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-pill",
+      "text": "Volgens de web-types volgt het event click op een klik op een pill met clickable. De component dispatcht dan een eigen CustomEvent click (bubbles en composed) op de pill, maar de native click van de interne button komt ook uit de shadow DOM: een listener voor click op een clickable pill krijgt per klik twee events. Ook een pill zonder clickable geeft bij een klik de native click van de browser. Wil je enkel het event van de component, controleer dan event instanceof CustomEvent.",
+      "source": "libs/components/src/block/pill/vl-pill.component.ts"
+    }
+  ]
+}

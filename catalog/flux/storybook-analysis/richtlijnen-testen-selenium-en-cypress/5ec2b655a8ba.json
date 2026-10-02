@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-testen-selenium-en-cypress",
+  "inputHash": "5ec2b655a8ba",
+  "analysedFor": "2.20.0",
+  "summary": "Vergelijkt Selenium, dat bij Departement Omgeving typisch gebruikt wordt voor frontend testen, met Cypress. Selenium past minder goed bij een SPA: door responsive layout, de shadow DOM van web componenten en frameworks is minder eenduidig wat er in de DOM gebeurt, en het Page Object Model veronderstelt aparte pagina's. Voor Cypress verwijst de pagina naar de detailpagina onder Bijdragen.",
+  "keywords": [
+    "selenium",
+    "cypress",
+    "testen",
+    "testing",
+    "frontend test",
+    "e2e",
+    "spa",
+    "shadow dom",
+    "web components",
+    "page object model",
+    "pom",
+    "webdriver"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link bij 'SSR toepassingen' wijst naar applicatief-testen-test-piramide-ssr-vs-spa, een pagina die in 2.20.0 niet bestaat. De pagina staat op 'Richtlijnen/Testen/Test Piramide SSR vs SPA' (richtlijnen-testen-test-piramide-ssr-vs-spa).",
+      "source": "apps/storybook/docs/e_richtlijnen/d_testen/5_selenium-en-cypress.mdx"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "page": "components-atom-text",
+  "inputHash": "15dedddfa585",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-text, een inline tekst met een afwijkende opmaak: bold, italic, underline, de kleuren success, warning en error, annotation (grijs, minder opvallend) en small. Gebruik het om een stuk tekst anders op te maken dan de omringende tekst.",
+  "keywords": [
+    "tekst",
+    "text",
+    "vl-text",
+    "inline tekst",
+    "tekststijl",
+    "text style",
+    "cursief",
+    "italic",
+    "onderstreept",
+    "underline",
+    "annotatie",
+    "annotation",
+    "kleine tekst",
+    "error text",
+    "success text"
+  ],
+  "examples": {
+    "components-atom-text--text-default": {
+      "html": "<vl-text>tekst - default</vl-text>"
+    },
+    "components-atom-text--text-bold": {
+      "html": "<vl-text bold>text - bold</vl-text>"
+    },
+    "components-atom-text--text-italic": {
+      "html": "<vl-text italic>text - italic</vl-text>"
+    },
+    "components-atom-text--text-underline": {
+      "html": "<vl-text underline>text - underline</vl-text>"
+    },
+    "components-atom-text--text-success": {
+      "html": "<vl-text success>text - success</vl-text>"
+    },
+    "components-atom-text--text-warning": {
+      "html": "<vl-text warning>text - warning</vl-text>"
+    },
+    "components-atom-text--text-error": {
+      "html": "<vl-text error>text - error</vl-text>"
+    },
+    "components-atom-text--text-annotation": {
+      "html": "<vl-text annotation>text - annotation</vl-text>"
+    },
+    "components-atom-text--text-small": {
+      "html": "<vl-text small>text - small</vl-text>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-text",
+      "text": "De doc-url van vl-text in de web-types wijst naar components-atom-text-text--documentatie, een pagina die in 2.7.0 niet bestaat. De documentatie van vl-text staat op components-atom-text--documentatie. De verkeerde url staat in de configuratie van de web-types-generator.",
+      "source": "resources/generate-web-types/wt-config-build/components-atom.wt-config.ts"
+    }
+  ]
+}

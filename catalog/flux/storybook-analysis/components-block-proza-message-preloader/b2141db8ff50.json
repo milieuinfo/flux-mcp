@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "page": "components-block-proza-message-preloader",
+  "inputHash": "b2141db8ff50",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-proza-message-preloader, dat alle Proza-berichten van een domein in één request ophaalt en in een cache bewaart, zodat elke vl-proza-message van dat domein zijn bericht daar eerst zoekt in plaats van het apart op te vragen. Plaats het één keer per domein, zo hoog mogelijk in de toepassing, of roep VlProzaMessagePreloader.preload(domein) zelf aan.",
+  "keywords": [
+    "proza",
+    "proza message preloader",
+    "vl-proza-message-preloader",
+    "preload",
+    "preloader",
+    "cache",
+    "berichten vooraf ophalen",
+    "domein",
+    "performance",
+    "beheerde tekst"
+  ],
+  "examples": {
+    "components-block-proza-message-preloader--proza-message-preloader-default": {
+      "html": "<vl-proza-message-preloader domain=\"mockdomain\"></vl-proza-message-preloader>\n\n<!-- Als een inline element -->\n<vl-proza-message domain=\"mockdomain\" code=\"inline\"></vl-proza-message>\n\n<!-- Als een block element -->\n<vl-proza-message domain=\"mockdomain\" code=\"block\"></vl-proza-message>\n\n<!-- In een knop -->\n<vl-button>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-button>\n\n<!-- In een link -->\n<vl-link href=\"#\" external>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlProzaMessage, VlProzaMessagePreloader } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProzaMessagePreloader, VlProzaMessage, VlButtonComponent, VlLinkComponent]);\n\n// De preloader haalt alle berichten van het domein op met één GET proza/domein/{domain} (of vanaf base-url), een\n// lijst van { code, tekst }, bv. [{ \"code\": \"inline\", \"tekst\": \"Inline\" }, { \"code\": \"action\", \"tekst\": \"Action\" }].\n// vl-proza-message zoekt zijn bericht eerst in die cache; staat het er niet in, dan vraagt hij het apart op.\n\n// Zonder het element kan je een domein ook zelf preloaden, met een optionele baseUrl als tweede argument:\n// VlProzaMessagePreloader.preload('mockdomain');"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message-preloader",
+      "name": "base-url",
+      "text": "Onder Base Url spreekt de pagina van een baseUrl op de proza-message component, en van het pad {baseUrl}proza/domein/{domain}/{code}. Op deze pagina gaat het om het attribuut base-url van vl-proza-message-preloader, en dat haalt alle berichten van het domein in één request op vanaf {base-url}proza/domein/{domain}, zoals de web-types zeggen, niet per code. De waarde komt zonder scheidingsteken voor proza/, dus eindigt ze op een /.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-message-preloader.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-link",
+      "text": "De story opent <vl-link href=\"#\" external> maar sluit het af met </a> in plaats van </vl-link>. De HTML-parser negeert die eindtag, want er staat geen <a> open, zodat vl-link pas sluit aan het einde van zijn parent; in de story valt dat niet op omdat er niets na komt. Het voorbeeld sluit af met </vl-link>.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-message-preloader.stories.ts"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "page": "afnemen-migratie-v2-faq",
+  "inputHash": "a85e220751a3",
+  "analysedFor": "2.20.0",
+  "summary": "Veelgestelde vragen bij de migratie naar v2: registreren met een import of met registerWebComponents, de fat-js bundel, de Webpack-regel voor css met '?raw', verdwenen Web Universum-klasses zoals vl-u-visually-hidden, de events vl-change en vl-input, eigen css na de globale styling, de nieuwe grid-klasses en wat breekt na het weghalen van de 'data-vl-'-prefix.",
+  "keywords": [
+    "migratie faq",
+    "migration faq",
+    "veelgestelde vragen",
+    "registerwebcomponents",
+    "fat-js bundel",
+    "webpack raw css",
+    "vl-visually-hidden",
+    "events",
+    "vl-change",
+    "vl-input",
+    "globalstyles",
+    "custom css",
+    "vl-grid",
+    "vl-column",
+    "data-vl prefix"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld van de directe import gebruikt `import '@domg-wc/components/button'`. Dat pad bestaat in 2.20.0 niet: vl-button staat in libs/components/src/atom/button, dus `@domg-wc/components/atom/button`. De pagina 'Afnemen/Aan De Slag' importeert zo ook `@domg-wc/components/block/accordion`.",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld van de expliciete registratie importeert `VlButtonComponent` uit `@domg-wc/components`. Dat package heeft in 2.20.0 geen hoofdingang: libs/components/src heeft geen index.ts en package.template.json geen main of exports. VlButtonComponent komt uit `@domg-wc/components/atom` (libs/components/src/atom/index.ts), zoals op de pagina 'Recepten/Tree Shaking'.",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina noemt als fat-js bundel `domg-wc-2.0.0.min.js`, met de nieuwe componenten. De fat-lib van 2.20.0 heet `domg-wc-compliance-<versie>.min.js` (resources/ci-jenkins/bash/verify-release.sh) en registreert enkel de compliance componenten (resources/utils-fat-lib/fat-lib-index.ts). De pagina 'Recepten/CDN Bundel - fat-lib' laadt ze met type=\"module\".",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De link bij vl-visually-hidden wijst naar styles-layout-afnemers-accessibility, een pagina die in 2.20.0 niet bestaat. De klasse staat op 'Styles/Layout/Accessibility' (styles-layout-accessibility).",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.mdx"
+    }
+  ]
+}

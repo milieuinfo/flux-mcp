@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "page": "components-atom-link",
+  "inputHash": "2a93d26f1c84",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-link, de link naar een andere pagina. Toont de varianten bold, small, large en error, een externe link (nieuw tabblad met een icoon), een icoon bij de tekst of enkel een icoon, en button-as-link voor een actie op dezelfde pagina in de stijl van een link. Met label vul je het aria-label van de link in.",
+  "keywords": [
+    "link",
+    "vl-link",
+    "hyperlink",
+    "anchor",
+    "externe link",
+    "external link",
+    "button as link",
+    "knop als link",
+    "icon link",
+    "navigatie",
+    "navigation",
+    "aria-label"
+  ],
+  "examples": {
+    "components-atom-link--link-default": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-bold": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" bold>Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-small": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" small>Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-large": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" large>Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-error": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" error>Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-external": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" external>Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-icon": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" icon=\"arrow-right-fat\" icon-placement=\"before\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-icon-only": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" icon=\"arrow-right-fat\"></vl-link>"
+    },
+    "components-atom-link--button-styled-as-link": {
+      "html": "<vl-link button-as-link>Annuleren</vl-link>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-link",
+      "name": "label",
+      "text": "De story vl-link - button as link zet het arg label op 'annuleer inschrijving', maar de template van de stories geeft label niet door aan vl-link. De story toont dus een vl-link zonder label (en zonder aria-label op de knop). Het attribuut label bestaat wel: de component zet het als aria-label op de <a> of de <button>.",
+      "source": "libs/components/src/atom/link/stories/vl-link.stories.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-link",
+      "name": "block",
+      "text": "vl-link declareert block als boolean property, maar gebruikt het niet: het zet geen class in de render en geen CSS van vl-link kent het. Het attribuut heeft dus geen effect. Het staat niet in de web-types en niet op de pagina.",
+      "source": "libs/components/src/atom/link/vl-link.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "recepten-van-npm-naar-pnpm",
+  "inputHash": "e919491c9099",
+  "analysedFor": "2.20.0",
+  "summary": "Stappenplan om je eigen toepassing van npm naar pnpm te migreren, voor supply-chain security: pnpm pinnen met corepack of Volta, .npmrc enkel voor registry en auth, pnpm-workspace.yaml met strictDepBuilds, minimumReleaseAge (met @domg-wc/* als uitzondering) en allowBuilds, pnpm import, scripts aanpassen, phantom dependencies oplossen, CI en een vangnet met devEngines en een preinstall-script. De @domg-wc packages werken met beide package managers; de pagina sluit af met een cheatsheet van de commando's.",
+  "keywords": [
+    "pnpm",
+    "npm",
+    "migratie",
+    "migration",
+    "package manager",
+    "supply chain security",
+    "corepack",
+    "volta",
+    "pnpm-workspace.yaml",
+    "allowbuilds",
+    "minimumreleaseage",
+    "phantom dependencies",
+    "lockfile",
+    "devengines",
+    "cheatsheet"
+  ],
+  "examples": {},
+  "notes": []
+}

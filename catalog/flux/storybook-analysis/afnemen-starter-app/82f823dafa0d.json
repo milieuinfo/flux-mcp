@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "afnemen-starter-app",
+  "inputHash": "82f823dafa0d",
+  "analysedFor": "2.0.2",
+  "summary": "Beschrijft de uigov-starter-app, een voorbeeldproject om een nieuwe toepassing van te forken, en de framework-agnostische aanpak van Departement Omgeving met web components en Lit. Ze overloopt de gebruikte tools met hun versies (Node, Volta, Webpack met SWC, TypeScript, Lit, Prettier, ESLint, Jest, Cypress) en de npm-scripts van het project.",
+  "keywords": [
+    "starter app",
+    "uigov-starter-app",
+    "boilerplate",
+    "project setup",
+    "nieuwe toepassing",
+    "framework agnostisch",
+    "framework agnostic",
+    "lit",
+    "volta",
+    "webpack",
+    "swc",
+    "typescript",
+    "eslint",
+    "jest",
+    "cypress"
+  ],
+  "examples": {},
+  "notes": []
+}

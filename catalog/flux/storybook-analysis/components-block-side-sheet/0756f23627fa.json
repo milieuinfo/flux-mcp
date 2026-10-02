@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "page": "components-block-side-sheet",
+  "inputHash": "0756f23627fa",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-side-sheet, een paneel aan de rechter- of linkerrand dat de gebruiker opent en sluit met een toggle knop, of dat je van buitenaf bedient met toggle(), open() en close(). Gebruik het voor extra inhoud of een taak naast de pagina; de breedte stel je in met --vl-side-sheet-width en --vl-side-sheet-width-mobile.",
+  "keywords": [
+    "side sheet",
+    "side-sheet",
+    "vl-side-sheet",
+    "zijpaneel",
+    "zijbalk",
+    "sidebar",
+    "side panel",
+    "drawer",
+    "paneel openen",
+    "toggle",
+    "hide-toggle-button",
+    "custom-icon",
+    "--vl-side-sheet-width"
+  ],
+  "examples": {
+    "components-block-side-sheet--side-sheet-default": {
+      "html": "<vl-side-sheet>\n    <p>\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna ante. Integer eu sem\n        mollis, ornare libero nec, pulvinar augue. Nunc ac rhoncus ipsum. Mauris vitae elementum erat. Donec\n        gravida hendrerit magna, quis feugiat felis sodales quis. Sed tempor ornare elit, non aliquam urna\n        maximus imperdiet. Suspendisse finibus ullamcorper dictum. Sed vehicula tortor quis dignissim tincidunt.\n        Maecenas turpis ante, blandit sed efficitur eu, varius vitae nibh. Vivamus porttitor mi in massa\n        elementum sollicitudin. Cras id porta nisi, vel pulvinar neque. Mauris sodales mi sem, sit amet\n        fringilla tellus ultrices et. Quisque sed interdum mauris. Suspendisse rutrum maximus ornare. Morbi sed\n        vestibulum magna, a tincidunt mi. Aliquam in imperdiet diam.\n    </p>\n    <p>\n        Nulla mattis eget mi at mattis. Donec ut nisi ipsum. Sed placerat, augue vel dapibus blandit, nulla\n        purus hendrerit orci, ut maximus ligula quam at sapien. Nunc efficitur augue est, ac laoreet libero\n        blandit in. Aliquam non sagittis libero. Fusce posuere magna venenatis, facilisis magna quis, dictum\n        risus. In nulla augue, efficitur congue porta sit amet, convallis eu justo. Etiam facilisis maximus\n        dolor, a scelerisque sapien fringilla non. Quisque vestibulum mauris erat, vel ultrices massa dictum sit\n        amet. Integer nec bibendum arcu, sit amet pretium turpis.\n    </p>\n    <p>\n        Vivamus ligula diam, lobortis eget ultricies vitae, varius id arcu. Sed id mauris sed augue ultricies\n        luctus. Donec pulvinar a sapien quis posuere. Suspendisse non varius dui. Nullam eu posuere neque.\n        Vivamus eget felis turpis. Curabitur tortor ante, vulputate vel quam ut, posuere mattis ipsum. Maecenas\n        vel metus tortor. Quisque id turpis est. Donec est eros, laoreet vel metus id, tempor pulvinar eros. Nam\n        sed semper eros. Aenean placerat tellus ex, ac ultricies dui ornare ac. Suspendisse eget semper risus.\n        Nullam eleifend leo justo, eu rhoncus erat lacinia quis. Nam finibus nunc sit amet justo interdum\n        dignissim.\n    </p>\n    <p>\n        Donec iaculis purus leo. Aliquam pulvinar magna vitae dolor varius auctor. Sed dapibus convallis est,\n        non pharetra felis eleifend nec. Donec erat ex, tempus in sem quis, imperdiet gravida justo. Morbi sem\n        purus, efficitur eget massa ut, molestie placerat orci. Phasellus sollicitudin convallis augue, ut\n        tincidunt nulla faucibus ut. Praesent ullamcorper erat sit amet nisi venenatis eleifend. Vestibulum\n        vehicula tristique ipsum, vel placerat tortor maximus eu. Phasellus mauris purus, semper vulputate\n        maximus sit amet, faucibus eget risus. Sed in imperdiet dui, vel suscipit nibh. Nunc ac lectus tempus,\n        venenatis mauris non, ornare nunc. Cras at nibh nec sem vestibulum facilisis. Curabitur et elit\n        hendrerit, ullamcorper nibh vitae, eleifend augue. Aliquam imperdiet eros quis pulvinar suscipit.\n    </p>\n    <p>\n        In dapibus, est eu eleifend vehicula, purus arcu consequat nulla, accumsan viverra mi massa vel metus.\n        Vestibulum ut nunc viverra, pellentesque urna et, consectetur metus. Quisque bibendum diam non eros\n        porta, non volutpat leo commodo. Morbi odio nulla, tempus non lobortis ac, imperdiet vitae sem. Class\n        aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce ac sodales\n        eros. In hac habitasse platea dictumst.\n    </p>\n</vl-side-sheet>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSideSheet } from '@domg-wc/components/block';\n\nregisterWebComponents([VlSideSheet]);"
+    },
+    "components-block-side-sheet--side-sheet-toggle": {
+      "html": "<style>\n    :root {\n        --vl-side-sheet-width-mobile: 100%;\n        --vl-side-sheet-width: 480px;\n    }\n\n    #vl-side-sheet-close-button {\n        position: fixed;\n        top: 1rem;\n        right: 3rem;\n    }\n</style>\n<vl-button id=\"toggle-side-sheet\" type=\"button\">toggle()</vl-button>\n<vl-button id=\"open-side-sheet\" type=\"button\">open()</vl-button>\n<vl-button id=\"close-side-sheet\" type=\"button\">close()</vl-button>\n<vl-side-sheet id=\"side-sheet-toggle\">\n    <vl-button id=\"vl-side-sheet-close-button\" type=\"button\" tertiary icon=\"cross\"></vl-button>\n    <p>\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna ante. Integer eu sem\n        mollis, ornare libero nec, pulvinar augue. Nunc ac rhoncus ipsum. Mauris vitae elementum erat. Donec\n        gravida hendrerit magna, quis feugiat felis sodales quis. Sed tempor ornare elit, non aliquam urna\n        maximus imperdiet. Suspendisse finibus ullamcorper dictum. Sed vehicula tortor quis dignissim\n        tincidunt. Maecenas turpis ante, blandit sed efficitur eu, varius vitae nibh. Vivamus porttitor mi\n        in massa elementum sollicitudin. Cras id porta nisi, vel pulvinar neque. Mauris sodales mi sem, sit\n        amet fringilla tellus ultrices et. Quisque sed interdum mauris. Suspendisse rutrum maximus ornare.\n        Morbi sed vestibulum magna, a tincidunt mi. Aliquam in imperdiet diam.\n    </p>\n    <p>\n        Nulla mattis eget mi at mattis. Donec ut nisi ipsum. Sed placerat, augue vel dapibus blandit, nulla\n        purus hendrerit orci, ut maximus ligula quam at sapien. Nunc efficitur augue est, ac laoreet libero\n        blandit in. Aliquam non sagittis libero. Fusce posuere magna venenatis, facilisis magna quis, dictum\n        risus. In nulla augue, efficitur congue porta sit amet, convallis eu justo. Etiam facilisis maximus\n        dolor, a scelerisque sapien fringilla non. Quisque vestibulum mauris erat, vel ultrices massa dictum\n        sit amet. Integer nec bibendum arcu, sit amet pretium turpis.\n    </p>\n    <p>\n        Vivamus ligula diam, lobortis eget ultricies vitae, varius id arcu. Sed id mauris sed augue\n        ultricies luctus. Donec pulvinar a sapien quis posuere. Suspendisse non varius dui. Nullam eu\n        posuere neque. Vivamus eget felis turpis. Curabitur tortor ante, vulputate vel quam ut, posuere\n        mattis ipsum. Maecenas vel metus tortor. Quisque id turpis est. Donec est eros, laoreet vel metus\n        id, tempor pulvinar eros. Nam sed semper eros. Aenean placerat tellus ex, ac ultricies dui ornare\n        ac. Suspendisse eget semper risus. Nullam eleifend leo justo, eu rhoncus erat lacinia quis. Nam\n        finibus nunc sit amet justo interdum dignissim.\n    </p>\n    <p>\n        Donec iaculis purus leo. Aliquam pulvinar magna vitae dolor varius auctor. Sed dapibus convallis\n        est, non pharetra felis eleifend nec. Donec erat ex, tempus in sem quis, imperdiet gravida justo.\n        Morbi sem purus, efficitur eget massa ut, molestie placerat orci. Phasellus sollicitudin convallis\n        augue, ut tincidunt nulla faucibus ut. Praesent ullamcorper erat sit amet nisi venenatis eleifend.\n        Vestibulum vehicula tristique ipsum, vel placerat tortor maximus eu. Phasellus mauris purus, semper\n        vulputate maximus sit amet, faucibus eget risus. Sed in imperdiet dui, vel suscipit nibh. Nunc ac\n        lectus tempus, venenatis mauris non, ornare nunc. Cras at nibh nec sem vestibulum facilisis.\n        Curabitur et elit hendrerit, ullamcorper nibh vitae, eleifend augue. Aliquam imperdiet eros quis\n        pulvinar suscipit.\n    </p>\n    <p>\n        In dapibus, est eu eleifend vehicula, purus arcu consequat nulla, accumsan viverra mi massa vel\n        metus. Vestibulum ut nunc viverra, pellentesque urna et, consectetur metus. Quisque bibendum diam\n        non eros porta, non volutpat leo commodo. Morbi odio nulla, tempus non lobortis ac, imperdiet vitae\n        sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\n        Fusce ac sodales eros. In hac habitasse platea dictumst.\n    </p>\n</vl-side-sheet>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlSideSheet } from '@domg-wc/components/block';\n\nregisterWebComponents([VlSideSheet, VlButtonComponent]);\n\n// De ids van de drie knoppen buiten de side-sheet staan niet in de story, die de click handlers rechtstreeks in de\n// template bindt; ze dienen enkel om de knoppen hier terug te vinden.\ncustomElements.whenDefined('vl-side-sheet').then(() => {\n    const sideSheet = document.querySelector('#side-sheet-toggle');\n\n    document.querySelector('#toggle-side-sheet').addEventListener('click', () => sideSheet.toggle());\n    document.querySelector('#open-side-sheet').addEventListener('click', () => sideSheet.open());\n    document.querySelector('#close-side-sheet').addEventListener('click', () => sideSheet.close());\n\n    // Met --vl-side-sheet-width-mobile: 100% valt de toggle knop op mobiel buiten het scherm; deze knop in de\n    // side-sheet sluit hem dan.\n    document.querySelector('#vl-side-sheet-close-button').addEventListener('click', () => sideSheet.close());\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-side-sheet",
+      "text": "De web-types van 2.7.0 geven vl-side-sheet enkel custom-css. De argTypes beschrijven enable-swipe, left, right, absolute, open, toggle-text, tooltip-text, custom-icon, icon-placement en hide-toggle-button zonder table.category, en de generator van de web-types neemt enkel argTypes met category Attributes over (resources/generate-web-types/web-types.generator.ts). De API-tabel mist daardoor alle attributen die de component leest; de notes not-in-web-types beschrijven ze.",
+      "source": "libs/components/src/block/side-sheet/stories/vl-side-sheet.stories-arg.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "enable-swipe",
+      "text": "Laat de gebruiker de side-sheet sluiten door te swipen: naar rechts, of naar links bij left (via swipe-detect). Default false.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "left",
+      "text": "Plaatst de side-sheet en zijn toggle knop aan de linkerrand (class vl-side-sheet--left); de pijltjes van de toggle knop draaien mee. Default false.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "right",
+      "text": "Plaatst de side-sheet aan de rechterrand. Dat is de standaard: zonder left staat de side-sheet al rechts. Default false.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "absolute",
+      "text": "Positioneert de side-sheet absolute in plaats van fixed (class vl-side-sheet--absolute), zonder de padding-top van 43px voor de header; de component haalt dan de vl-section en de vl-content-block rond de inhoud weg. Default false.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "open",
+      "text": "Duidt aan dat de side-sheet open is; open() zet het, close() haalt het weg en toggle() wisselt. Default false.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "toggle-text",
+      "text": "Zet een tekst in de toggle knop; de component schrijft de waarde als innerHTML van die vl-button.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "tooltip-text",
+      "text": "Zet de tekst als title op de toggle knop, de native tooltip; zonder waarde haalt de component de title weg.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "custom-icon",
+      "text": "Vervangt het open- en het sluiticoon van de toggle knop door één icoon, zoals de pagina beschrijft onder Custom icon. Zonder custom-icon toont de knop een pijltje (nav-left of nav-right) volgens de positie en de toestand.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "icon-placement",
+      "text": "before (standaard) of after: de plaats van het icoon in de toggle knop, die de component doorgeeft als icon-placement van de vl-button. vl-side-sheet leest het enkel in connectedCallback; _observedAttributes bevat icon-position in plaats van icon-placement, dus een wijziging nadat het element in de DOM hangt, heeft geen effect.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-side-sheet",
+      "name": "hide-toggle-button",
+      "text": "Verbergt de toggle knop (vl-visually-hidden); de pagina beschrijft het onder Openen en sluiten zonder knop: bedien de side-sheet dan met toggle(), open() en close(). De pagina zegt het op true te zetten, maar elk aanwezig attribuut verbergt de knop, ook hide-toggle-button=\"false\"; enkel weglaten toont hem.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-side-sheet",
+      "text": "De pagina beschrijft de methodes toggle(), open() en close(), en de code heeft daarnaast onClose(callback), die een callback uitvoert na het sluiten (in de code staat 'TODO storybook documentatie'). Geen van die methodes staat in de web-types: vl-side-sheet heeft er enkel custom-css en geen js-sectie, dus ook geen events of properties.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-side-sheet",
+      "text": "De pagina geeft onder 'Breedte zelf instellen' --vl-side-sheet-width-mobile: 100% als voorbeeld, zonder te waarschuwen voor de toggle knop. In de CSS staat die knop bij een open side-sheet naast de side-sheet (right: 100%, links: left: 100%); de standaardbreedte op mobiel, calc(100vw - 56px), laat daar net plaats voor. Bij 100% valt de knop op mobiel buiten het scherm en kan de gebruiker de side-sheet er niet meer mee sluiten. De story vl-side-sheet - toggle zet zelf een sluitknop in de side-sheet die close() aanroept.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De code die de pagina toont onder 'voorbeeld code om side-sheet te openen en te sluiten van buitenaf' zoekt ook #vl-side-sheet-open-button-with-close-listener op, een element dat niet in de story staat; de variabele listenerButton wordt nergens gebruikt. Voor openen en sluiten volstaan toggle(), open() en close() op het element #side-sheet-toggle.",
+      "source": "libs/components/src/block/side-sheet/stories/vl-side-sheet.stories-utils.ts"
+    }
+  ]
+}

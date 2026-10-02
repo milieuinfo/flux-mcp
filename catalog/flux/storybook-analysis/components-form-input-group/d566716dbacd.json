@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "components-form-input-group",
+  "inputHash": "d566716dbacd",
+  "analysedFor": "2.3.0",
+  "summary": "Patroon, geen aparte component, om een vl-input-field en een vl-button als één geheel te tonen, bv. een veld met een knop om een locatie te kiezen: een div met de classes vl-group en vl-group--input-group, en het attribuut input-group op het veld en op de knop. De knop staat links of rechts, met tekst of enkel een icoon.",
+  "keywords": [
+    "input group",
+    "input-group",
+    "invoergroep",
+    "veld met knop",
+    "input with button",
+    "zoekveld met knop",
+    "search field with button",
+    "vl-group--input-group",
+    "vl-input-field",
+    "vl-button",
+    "icon button"
+  ],
+  "examples": {
+    "components-form-input-group--input-group-button-left": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-button input-group>Locatie kiezen</vl-button>\n    <vl-input-field input-group></vl-input-field>\n</div>"
+    },
+    "components-form-input-group--input-group-button-right": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-input-field input-group block></vl-input-field>\n    <vl-button input-group>Locatie kiezen</vl-button>\n</div>"
+    },
+    "components-form-input-group--input-group-icon-left": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-button input-group icon=\"location\"></vl-button>\n    <vl-input-field input-group block></vl-input-field>\n</div>"
+    },
+    "components-form-input-group--input-group-icon-right": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-input-field input-group></vl-input-field>\n    <vl-button input-group icon=\"location\" tertiary></vl-button>\n</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "name": "label",
+      "text": "De stories input-group - icon left en icon right tonen een vl-button met enkel een icoon (icon=\"location\"), zonder inhoud en zonder label. De code van vl-button noemt label verplicht voor een knop zonder inhoud, zoals een icon-only knop (WCAG 4.1.2), in de waarschuwing van handleSlotChange: label wordt de aria-label van de <button> in de shadow DOM, en zonder label heeft de knop geen toegankelijke naam. De voorbeelden volgen de stories; geef zo'n knop zelf een label met de naam van de actie.",
+      "source": "libs/components/src/atom/button/vl-button.component.ts"
+    }
+  ]
+}

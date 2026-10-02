@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-4-onderscheidbaar",
+  "inputHash": "40a1b81e5e0b",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 1.4 Onderscheidbaar: informatie niet enkel via kleur, geluid dat vanzelf afspeelt kunnen pauzeren of stiller zetten, genoeg contrast voor tekst (4,5:1, grote tekst 3:1) en niet-tekstuele content (3:1), tekst tot 200% vergroten, geen tekst in afbeeldingen, reflow, tekstafstand en extra inhoud bij hover of focus. 1.4.1 is brons[basis], 1.4.2 brons[plus] en de rest zilver[basis].",
+  "keywords": [
+    "onderscheidbaar",
+    "distinguishable",
+    "contrast",
+    "color contrast",
+    "gebruik van kleur",
+    "use of color",
+    "herschalen van tekst",
+    "resize text",
+    "zoom",
+    "reflow",
+    "tekstafstand",
+    "text spacing",
+    "hover",
+    "knopinfo",
+    "tooltip"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "page": "ontwerp-form-form-data",
+  "inputHash": "44cfe66f12e1",
+  "analysedFor": "2.1.0",
+  "summary": "De helper parseFormData uit @domg-wc/components/form zet de waarden van een formulier om naar een object: één waarde per veld, en een array voor een veld met meerdere waarden, zoals een vl-select-rich met multiple. Ze werkt met de Flux-formuliercomponenten en met native form controls.",
+  "keywords": [
+    "form data",
+    "formdata",
+    "parseformdata",
+    "formulierdata",
+    "formulier uitlezen",
+    "read form values",
+    "multiselect",
+    "meerdere waarden",
+    "multiple values",
+    "submit",
+    "formulier",
+    "form"
+  ],
+  "examples": {
+    "ontwerp-form-form-data--form-data": {
+      "html": "<style>\n    #form {\n        margin-top: 1rem;\n        max-width: 800px;\n    }\n\n    .form-buttons vl-button:not(:last-child) {\n        margin-right: 1.4rem;\n    }\n\n    #form .form-data[hidden] {\n        display: none;\n    }\n</style>\n\n<form id=\"form\" class=\"vl-form\">\n    <div class=\"vl-grid\">\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"naam\" label=\"Naam *\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-input-field id=\"naam\" name=\"naam\" block></vl-input-field>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"hobbies\" label=\"Hobbies *\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-select-rich\n                id=\"hobbies\"\n                name=\"hobbies\"\n                multiple\n                placeholder=\"Selecteer je hobbies\"\n                no-results-text=\"Geen hobbies gevonden\"\n                no-choices-text=\"Geen resterende hobbies gevonden\"\n            ></vl-select-rich>\n            <vl-form-message for=\"hobbies\" state=\"valueMissing\">Gelieve een hobby te selecteren.</vl-form-message>\n        </div>\n        <div class=\"vl-column vl-column--8 vl-column--start-5\">\n            <div class=\"form-buttons\">\n                <vl-button type=\"submit\">Verstuur</vl-button>\n                <vl-button type=\"reset\" secondary>Reset</vl-button>\n            </div>\n        </div>\n        <div class=\"vl-column vl-column--4 form-data\" hidden>\n            <label class=\"vl-form__label\">Formulier data</label>\n        </div>\n        <div class=\"vl-column vl-column--8 form-data\" hidden>\n            <pre id=\"form-data\"></pre>\n        </div>\n    </div>\n</form>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport {\n    parseFormData,\n    VlFormLabelComponent,\n    VlFormMessageComponent,\n    VlInputFieldComponent,\n    VlSelectRichComponent,\n} from '@domg-wc/components/form';\n\nregisterWebComponents([\n    VlFormLabelComponent,\n    VlInputFieldComponent,\n    VlSelectRichComponent,\n    VlFormMessageComponent,\n    VlButtonComponent,\n]);\n\n// vl-select-rich krijgt zijn opties via de property options.\ndocument.querySelector('#hobbies').options = [\n    { label: 'Padel', value: 'padel' },\n    { label: 'Dans', value: 'dans' },\n    { label: 'Drummen', value: 'drummen' },\n    { label: 'Zwemmen', value: 'zwemmen' },\n    { label: 'Boardgames', value: 'boardgames' },\n    { label: 'Fietsen', value: 'fietsen' },\n    { label: 'Cocktails', value: 'cocktails' },\n];\n\nconst form = document.querySelector('#form');\nconst output = document.querySelector('#form-data');\n\n// Toont de geparste data onder de knoppen, of verbergt ze na een reset.\nconst showFormData = (data) => {\n    output.textContent = data ? JSON.stringify(data, null, 10) : '';\n    form.querySelectorAll('.form-data').forEach((column) => (column.hidden = !data));\n};\n\n// parseFormData geeft één waarde per veld, en een array voor een veld met het attribuut multiple (hier hobbies).\nform.addEventListener('submit', (event) => {\n    event.preventDefault();\n    const data = parseFormData(form);\n    console.log(data);\n    showFormData(data);\n});\nform.addEventListener('reset', () => showFormData(null));"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-select-rich",
+      "name": "deletable",
+      "text": "De demo zet deletable op vl-select-rich, maar dat attribuut bestaat in 2.1.0 niet: de web-types en de properties in de code kennen enkel not-deletable. Zonder not-deletable zijn de gekozen opties al verwijderbaar (removeItemButton: !this.notDeletable). Het voorbeeld laat deletable weg.",
+      "source": "libs/integrations/src/form/form-data/vl-form-data.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De labels 'Naam *' en 'Hobbies *' en de vl-form-message met state=\"valueMissing\" voor hobbies wijzen op verplichte velden, maar vl-input-field en vl-select-rich hebben in de demo geen required. valueMissing treedt dan nooit op, dus de boodschap 'Gelieve een hobby te selecteren.' verschijnt niet en het formulier wordt ook leeg verstuurd. Het voorbeeld neemt de demo ongewijzigd over; voeg required toe als de velden echt verplicht zijn.",
+      "source": "libs/integrations/src/form/form-data/vl-form-data.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat parseFormData zonder multiFormControlNames de form controls met meerdere waarden zoekt aan de hand van het multiple attribuut. De code geeft ook een array voor een naam die op het moment van parsen meer dan één waarde in de FormData heeft (bv. twee aangevinkte checkboxes met dezelfde naam); met één aangevinkte waarde krijg je voor zo'n naam dan een string. Geef je multiFormControlNames wel mee, dan gebruikt de functie enkel die lijst en zoekt ze niet meer naar multiple of dubbele namen.",
+      "source": "libs/components/src/form/utils/form.util.ts"
+    }
+  ]
+}

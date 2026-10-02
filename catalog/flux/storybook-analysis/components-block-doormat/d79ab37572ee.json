@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "components-block-doormat",
+  "inputHash": "d79ab37572ee",
+  "analysedFor": "2.13.0",
+  "summary": "Documentatie van vl-doormat, een blok met een titel, een tekst en een optionele afbeelding dat als geheel naar een pagina linkt. Gebruik het om een snel overzicht te geven van de informatie op je website. Varianten zijn een externe link met link-label, de alternatieve stijl alt, een afbeelding of een graphic, en full-height om doormats in een vl-grid even hoog te maken.",
+  "keywords": [
+    "doormat",
+    "vl-doormat",
+    "overzichtsblok",
+    "navigatieblok",
+    "link block",
+    "klikbaar blok",
+    "clickable card",
+    "card link",
+    "externe link",
+    "external link",
+    "afbeelding",
+    "graphic",
+    "full height",
+    "even hoog"
+  ],
+  "examples": {
+    "components-block-doormat--doormat-default": {
+      "html": "<vl-doormat href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\">\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-external": {
+      "html": "<vl-doormat\n    href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n    link-label=\"Bouwen, wonen en energie - opent in nieuw venster\"\n    external\n>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-alt": {
+      "html": "<vl-doormat href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\" alt>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-image": {
+      "html": "<vl-doormat\n    href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n    image-src=\"https://picsum.photos/100/150?image=1048\"\n    image-alt=\"Bouwen in Brussel\"\n>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-graphic": {
+      "html": "<vl-doormat\n    href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n    image-src=\"https://picsum.photos/1600/400?image=1048\"\n    image-alt=\"Bouwen in Brussel\"\n    graphic\n>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-full-height": {
+      "html": "<div class=\"vl-grid\">\n    <vl-doormat\n        full-height\n        href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n        class=\"vl-column vl-column--6 vl-column--align-self-stretch\"\n    >\n        <span slot=\"title\">Bouwen, wonen en energie</span>\n        <span slot=\"text\">Weinig tekst.</span>\n    </vl-doormat>\n    <vl-doormat\n        full-height\n        href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n        class=\"vl-column vl-column--6 vl-column--align-self-stretch\"\n    >\n        <span slot=\"title\">Grotere doormat</span>\n        <span slot=\"text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>\n    </vl-doormat>\n</div>"
+    }
+  },
+  "notes": []
+}

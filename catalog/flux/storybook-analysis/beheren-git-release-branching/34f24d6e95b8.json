@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "beheren-git-release-branching",
+  "inputHash": "34f24d6e95b8",
+  "analysedFor": "2.20.0",
+  "summary": "Voor het Flux-team: een diagram van hoe commits in flux-web-components van feature-branches via de pre-release-branch naar de release-branches gaan, en welke tags daarbij gelegd worden. Pre-release-branches leveren beta-releases, release-branches finale releases; voor elke tag komt er een artifact op Artifactory.",
+  "keywords": [
+    "git",
+    "branching",
+    "branching strategie",
+    "branching strategy",
+    "release branch",
+    "pre-release",
+    "develop branch",
+    "hotfix",
+    "tag",
+    "semantic-release",
+    "beta release",
+    "artifactory",
+    "release proces",
+    "beheren"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het diagram (apps/storybook/resources/beheren/git-branching-strategie-flux.png) toont de branches 'develop', 'hotfix', 'release' en 'release-1.0' en tags als 'v1.0.0-beta.1' en 'v1.0.1-fix.1'. In 2.20.0 kent de configuratie van semantic-release 'release-v2' als release-branch, 'develop-v2' en 'develop-v2-*' als pre-release-branches (resources/ci-jenkins/release/.releaserc-develop) en 'release-v2-2.4' (range 2.4.x) als onderhoudsbranch (resources/ci-jenkins/release/.releaserc-release). Met 'prerelease: true' wordt de branchnaam het pre-release-deel van de versie: een tag heet bv. 'v2.11.0-develop-v2.1' (resources/docs-internal/nuttige-commandos.md), niet '-beta.1'. resources/ci-jenkins/bash/release-and-publish.sh released enkel op een branch met 'develop', 'bugfix' of 'release' in de naam; op een branch 'hotfix' stopt het zonder release.",
+      "source": "apps/storybook/docs/c_beheren/2_git-release-branching.mdx"
+    }
+  ]
+}

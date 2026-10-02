@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-overzicht",
+  "inputHash": "104682943243",
+  "analysedFor": "2.20.0",
+  "summary": "Overzicht van WCAG-principe 2, bedienbaar: de richtlijnen 2.1 tot 2.5 met hun succescriteria van niveau A en AA, per richtlijn verdeeld over [basis] en [plus]. In de tabellen staan boven de lijn (---) de criteria van brons (niveau A) en eronder die van zilver (niveau AA); 2.1, 2.2 en 2.3 hebben enkel brons en geen lijn. De pagina linkt naar de uitwerking per richtlijn.",
+  "keywords": [
+    "bedienbaar",
+    "operable",
+    "wcag principe 2",
+    "wcag principle 2",
+    "toegankelijkheid",
+    "accessibility",
+    "succescriteria",
+    "success criteria",
+    "toetsenbordtoegankelijk",
+    "keyboard accessible",
+    "genoeg tijd",
+    "navigeerbaar",
+    "input modaliteiten",
+    "brons",
+    "zilver"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "map-layer-wms-layer-wms-style",
+  "inputHash": "b5eb37093169",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-map-wms-style, dat je als direct kind in een WMS-kaartlaag zoals vl-map-tiled-wms-layer of vl-map-image-wms-layer zet om die laag server-side te stijlen met een SLD (Styled Layer Descriptor). De laag stuurt de XML uit het attribuut sld mee als parameter SLD_BODY in haar WMS-requests.",
+  "keywords": [
+    "wms style",
+    "vl-map-wms-style",
+    "sld",
+    "styled layer descriptor",
+    "sld_body",
+    "server side styling",
+    "wms stijl",
+    "stijl",
+    "style",
+    "wms",
+    "kaartlaag",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-layer-wms-layer-wms-style--map-wms-style-default": {
+      "html": "<!-- vl-map-wms-style staat als direct kind in de WMS-laag. De laag stuurt de XML uit sld mee als parameter SLD_BODY in\n     haar WMS-requests. Deze SLD toont de waarde 10 van beide rasterlagen in paars (#800080) en de waarden 100 en 1000\n     doorzichtig. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-tiled-wms-layer\n        name=\"Overstromingsgevaarkaarten\"\n        version=\"1.1.0\"\n        url=\"https://geoservice.waterinfo.be/wms\"\n        layers=\"Overstromingsgevaarkaarten-PLUVIAAL:overstroombaar_gebied_PLU_noCC,Overstromingsgevaarkaarten-FLUVIAAL:overstroombaar_gebied_FLU_noCC\"\n    >\n        <vl-map-wms-style\n            sld='<StyledLayerDescriptor xmlns=\"http://www.opengis.net/sld\" xmlns:ogc=\"http://www.opengis.net/ogc\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"1.0.0\" xsi:schemaLocation=\"http://www.opengis.net/sld StyledLayerDescriptor.xsd\">\n                <NamedLayer>\n                    <Name>Overstromingsgevaarkaarten-PLUVIAAL:overstroombaar_gebied_PLU_noCC</Name>\n                    <UserStyle>\n                        <FeatureTypeStyle>\n                            <Rule>\n                                <RasterSymbolizer>\n                                    <Opacity>1</Opacity>\n                                    <ColorMap type=\"values\">\n                                        <ColorMapEntry color=\"#800080\" quantity=\"10.0\"/>\n                                        <ColorMapEntry color=\"#FFFFFF\" quantity=\"100.0\" opacity=\"0\"/>\n                                        <ColorMapEntry color=\"#FFFFFF\" quantity=\"1000.0\" opacity=\"0\"/>\n                                    </ColorMap>\n                                </RasterSymbolizer>\n                            </Rule>\n                        </FeatureTypeStyle>\n                    </UserStyle>\n                </NamedLayer>\n                <NamedLayer>\n                    <Name>Overstromingsgevaarkaarten-FLUVIAAL:overstroombaar_gebied_FLU_noCC</Name>\n                    <UserStyle>\n                        <FeatureTypeStyle>\n                            <Rule>\n                                <RasterSymbolizer>\n                                    <Opacity>1</Opacity>\n                                    <ColorMap type=\"values\">\n                                        <ColorMapEntry color=\"#800080\" quantity=\"10.0\"/>\n                                        <ColorMapEntry color=\"#FFFFFF\" quantity=\"100.0\" opacity=\"0\"/>\n                                        <ColorMapEntry color=\"#FFFFFF\" quantity=\"1000.0\" opacity=\"0\"/>\n                                    </ColorMap>\n                                </RasterSymbolizer>\n                            </Rule>\n                        </FeatureTypeStyle>\n                    </UserStyle>\n                </NamedLayer>\n            </StyledLayerDescriptor>'\n        ></vl-map-wms-style>\n    </vl-map-tiled-wms-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-wms-style",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-wms-style het attribuut custom-css. Het element heeft geen shadow DOM: VlMapWmsStyle heeft geen eigen constructor, dus BaseHTMLElement krijgt geen HTML. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

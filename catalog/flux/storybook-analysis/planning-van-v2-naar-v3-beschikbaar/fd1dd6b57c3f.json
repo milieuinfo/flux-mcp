@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "page": "planning-van-v2-naar-v3-beschikbaar",
+  "inputHash": "fd1dd6b57c3f",
+  "analysedFor": "2.10.1",
+  "summary": "Overzicht per component van wat in v2 al klaarstaat voor de overgang naar v3: welke componenten deprecated zijn (vl-footer, vl-header, vl-side-navigation), welke '-next'-variant ze vervangt, uit welk artifact, en welke tag je in v3 gebruikt. Ook vl-side-navigation-layout, een nieuwe layout-component zonder legacy-variant.",
+  "keywords": [
+    "v2 naar v3",
+    "migratie",
+    "migration",
+    "deprecated",
+    "next componenten",
+    "next components",
+    "vl-header-next",
+    "vl-footer-next",
+    "vl-side-navigation-next",
+    "vl-side-navigation-layout"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-side-navigation-next",
+      "text": "De tabel geeft 'release v2.9.0' voor Side Navigation [next]. vl-side-navigation-next kwam pas in 2.10.0 (FLUX-27) en staat vanaf 2.10.0 in de web-types.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-side-navigation-layout",
+      "text": "De tabel geeft 'release v2.9.0' voor Side Navigation Layout. vl-side-navigation-layout kwam pas in 2.10.0 (FLUX-27) en staat vanaf 2.10.0 in de web-types.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De links naar Side Navigation [next] en Side Navigation Layout wijzen naar components-next-side-navigation-side-navigation en components-next-side-navigation-side-navigation-layout, pagina's die in 2.10.1 niet bestaan. De pagina's zijn components-block-next-side-navigation-next en components-block-next-side-navigation-layout.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De pagina noemt `<vl-header-next>` als v2-gebruik van Header [next]. De code registreert het element (`@webComponent('vl-header-next')` in libs/components/src/compliance/next/header/vl-header.component.ts), maar het staat niet in de web-types van 2.10.1.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De pagina noemt `<vl-footer-next>` als v2-gebruik van Footer [next]. De code registreert het element (`@webComponent('vl-footer-next')` in libs/components/src/compliance/next/footer/vl-footer.component.ts), maar het staat niet in de web-types van 2.10.1.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    }
+  ]
+}

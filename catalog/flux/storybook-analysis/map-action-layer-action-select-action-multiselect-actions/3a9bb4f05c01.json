@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "page": "map-action-layer-action-select-action-multiselect-actions",
+  "inputHash": "3a9bb4f05c01",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-multiselect-actions, een kaartactie die met één klik alle features onder de muis samen selecteert, ook als ze overlappen en op verschillende vl-map-features-layers liggen; de lagen geef je met hun name mee in de property layers. In 2.4.0 zit de klasse niet in de index van @domg-wc/map en moet layers gezet zijn vóór het element aan de kaart hangt (zie notes).",
+  "keywords": [
+    "multiselect",
+    "multi select",
+    "vl-map-multiselect-actions",
+    "meerdere features selecteren",
+    "select multiple features",
+    "overlappende features",
+    "overlapping features",
+    "meerdere kaartlagen",
+    "multiple layers",
+    "selecteren op de kaart",
+    "select action",
+    "kaartactie",
+    "map action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-layer-action-select-action-multiselect-actions--map-multiselect-actions-default": {
+      "html": "<!-- Drie lagen met een name: layer-3 met een polygoon, layer-1 en layer-2 met elk een punt binnen die polygoon. Een\n     klik op een punt selecteert zo ook de polygoon eronder. vl-map-multiselect-actions koppelt zich via de namen aan de\n     drie lagen; de actie zelf komt er in JavaScript bij (zie js). De features staan in Lambert 72 (EPSG:31370), de\n     projectie van vl-map. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer name=\"layer-3\">\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n        <vl-map-layer-circle-style></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"layer-1\">\n        <vl-map-layer-circle-style color=\"rgba(0, 255, 21, 1)\" border-color=\"#000000\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"layer-2\">\n        <vl-map-layer-circle-style color=\"rgba(255, 230, 21, 1)\" border-color=\"#000000\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerStyle,\n} from '@domg-wc/map';\n// VlMapMultiselectActions staat in 2.4.0 niet in de index van @domg-wc/map (zie de notes). Importeer daarom het\n// bestand van de component zelf: dat registreert vl-map-multiselect-actions.\nimport '@domg-wc/map/components/action/layer-action/select-action/multiselect-actions/vl-map-multiselect-actions.js';\n\n// De features als GeoJSON-objecten, met coördinaten in Lambert 72 (EPSG:31370).\ndocument.querySelector('vl-map-features-layer[name=\"layer-1\"]').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [175000, 184000] },\n        },\n    ],\n};\ndocument.querySelector('vl-map-features-layer[name=\"layer-2\"]').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: { type: 'Point', coordinates: [175000, 185000] },\n        },\n    ],\n};\n// layer-3 krijgt één Feature, geen FeatureCollection.\ndocument.querySelector('vl-map-features-layer[name=\"layer-3\"]').features = {\n    type: 'Feature',\n    id: 3,\n    geometry: {\n        type: 'Polygon',\n        coordinates: [\n            [\n                [144000, 171000],\n                [200000, 171000],\n                [200000, 205000],\n                [144000, 205000],\n                [144000, 171000],\n            ],\n        ],\n    },\n};\n\n// vl-map-multiselect-actions zoekt de lagen uit de property layers (hun name) enkel op wanneer het element aan de kaart\n// gehangen wordt; layers achteraf zetten heeft geen effect. Maak het element daarom hier, zet layers en active, en\n// hang het dan pas in vl-map.\nconst multiselectActions = document.createElement('vl-map-multiselect-actions');\nmultiselectActions.layers = ['layer-1', 'layer-2', 'layer-3'];\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\nmultiselectActions.active = true;\ndocument.querySelector('vl-map').append(multiselectActions);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-multiselect-actions",
+      "text": "De MDX toont import { VlMapMultiselectActions } from '@domg-wc/map', maar libs/map/src/index.ts exporteert VlMapMultiselectActions niet en importeert vl-map-multiselect-actions.ts ook niet. Die import vindt de klasse dus niet, en @domg-wc/map laden registreert het element vl-map-multiselect-actions niet. Het package bevat het bestand wel: importeer components/action/layer-action/select-action/multiselect-actions/vl-map-multiselect-actions.js uit @domg-wc/map, zoals het voorbeeld doet.",
+      "source": "libs/map/src/index.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-multiselect-actions",
+      "name": "layers",
+      "text": "De web-types geven layers als property waarmee je de actie aan meerdere kaartlagen koppelt, zonder beperking. De setter (overgeërfd van VlMapSelectActions) bewaart echter enkel de namen; connectedCallback zoekt daarmee de lagen op en maakt de actie. Zet je layers pas nadat het element aan de kaart hangt, bv. op een element uit de HTML nadat de component geladen is, dan maakt het geen actie aan en selecteert het niets. De story werkt omdat Lit de property zet vóór het element in de DOM komt; het voorbeeld maakt het element daarom in JavaScript.",
+      "source": "libs/map/src/components/action/layer-action/select-action/select-actions/vl-map-select-actions.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-multiselect-actions",
+      "name": "cluster",
+      "text": "De web-types geven vl-map-multiselect-actions het attribuut cluster ('Geeft aan de de features geclustered worden', standaard false), maar het heeft geen effect. _createAction geeft cluster: this._cluster !== undefined mee, wat altijd waar is omdat getAttribute null teruggeeft voor een ontbrekend attribuut, en VlMultiselectActions vervangt de clusterafhandeling _fixClusterBehavior door een lege methode (libs/map/src/actions/select/multiselect-actions.ts). Met of zonder cluster gedraagt de actie zich dus hetzelfde.",
+      "source": "libs/map/src/components/action/layer-action/select-action/multiselect-actions/vl-map-multiselect-actions.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-multiselect-actions",
+      "text": "De link naar map-select-actions in de inleiding van de pagina (ook in de description van de web-types) wijst naar /docs/map-action-layer-action-select-action--map-select-actions-default: dat is de pagina van vl-map-select-action, met een story-id die daar niet bestaat. De pagina van vl-map-select-actions heeft id map-action-layer-action-select-action-select-actions.",
+      "source": "libs/map/src/components/action/layer-action/select-action/multiselect-actions/stories/vl-map-multiselect-actions.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-features-layer",
+      "name": "features",
+      "text": "De web-types geven de property features het type string, maar de story van deze pagina geeft er GeoJSON-objecten aan (een FeatureCollection, en voor layer-3 één Feature). De setter zet dat object met JSON.stringify in het attribuut features; een string als waarde zou dus dubbel gecodeerd worden. Geef de property een object, of zet de GeoJSON als string in het attribuut features. De getter geeft de OpenLayers-features van de laag terug, geen string.",
+      "source": "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-multiselect-actions",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-multiselect-actions het attribuut custom-css. Het element heeft geen shadow DOM: VlMapAction roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. Het element tekent ook zelf niets: het voegt een OpenLayers-actie toe aan de kaart.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

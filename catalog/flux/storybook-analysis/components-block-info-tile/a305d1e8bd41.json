@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "page": "components-block-info-tile",
+  "inputHash": "a305d1e8bd41",
+  "analysedFor": "2.1.0",
+  "summary": "Documentatie van vl-info-tile, een tegel voor informatieve en interactieve dashboards, met slots voor titel, subtitel, inhoud en een menu rechtsboven. Varianten zijn size (small, medium, large), center en toggleable (openklapbaar, eventueel met auto-open).",
+  "keywords": [
+    "info tile",
+    "info-tile",
+    "vl-info-tile",
+    "tegel",
+    "tile",
+    "card",
+    "kaart",
+    "dashboard",
+    "toggleable",
+    "openklapbaar",
+    "popover menu"
+  ],
+  "examples": {
+    "components-block-info-tile--info-tile-default": {
+      "html": "<vl-info-tile>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlInfoTile } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInfoTile]);"
+    },
+    "components-block-info-tile--info-tile-small": {
+      "html": "<vl-info-tile size=\"small\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-medium": {
+      "html": "<vl-info-tile size=\"medium\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-large": {
+      "html": "<vl-info-tile size=\"large\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-centered": {
+      "html": "<vl-info-tile center>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-toggleable": {
+      "html": "<vl-info-tile toggleable>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-menu-slot": {
+      "html": "<vl-info-tile>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"menu\">\n        <vl-button ghost icon=\"nav-show-more-vertical\" id=\"btn-acties\" label=\"Acties\"></vl-button>\n        <vl-popover for=\"btn-acties\" placement=\"bottom-end\">\n            <vl-popover-action-list>\n                <vl-popover-action icon=\"search\">Zoeken</vl-popover-action>\n                <vl-popover-action icon=\"edit\">Aanpassen</vl-popover-action>\n                <vl-popover-action icon=\"bin\">Verwijderen</vl-popover-action>\n            </vl-popover-action-list>\n        </vl-popover>\n    </span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlInfoTile, VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent registreert zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlInfoTile, VlPopoverComponent, VlButtonComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "size",
+      "text": "size zet de padding van de tegel: small, medium of large (INFO_TILE_SIZE); de stories vl-info-tile - small, medium en large gebruiken het. De component observeert size en leest getAttribute('size'), maar de web-types van 2.1.0 geven in de plaats data-vl-size.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-info-tile",
+      "name": "data-vl-size",
+      "text": "De web-types van 2.1.0 geven data-vl-size als attribuut voor de grootte, maar vl-info-tile leest enkel size: _observedAttributes bevat size, en het attribuutprefix van BaseHTMLElement is in 2.1.0 leeg, zodat data-vl-size geen effect heeft. Gebruik size, zoals de argTypes en de stories.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "footer",
+      "text": "Het slot footer staat onderaan de tegel; zonder inhoud verwijdert de component de footer. Het staat in de code (<slot name=\"footer\">), maar niet in de argTypes en de web-types van 2.1.0, en geen story gebruikt het.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "title-label",
+      "text": "Het slot title-label staat in de heading van de tegel, direct na het slot title; zonder inhoud verwijdert de component het. Het staat in de code (<slot name=\"title-label\">), maar niet in de web-types van 2.1.0, en geen story gebruikt het.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover hij zich plaatst; de story vl-info-tile - menu slot zet for=\"btn-acties\". De code van vl-popover leest for als attribuut (attribute: 'for'), maar de web-types van 2.1.0 geven for enkel als JS-property, niet als attribuut.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "icon toont een icoon in de actie; de story vl-info-tile - menu slot gebruikt search, edit en bin. Het staat in de code van vl-popover-action (property icon), maar de web-types van 2.1.0 kennen voor vl-popover-action geen enkel attribuut of property; ook action en selected ontbreken.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    }
+  ]
+}

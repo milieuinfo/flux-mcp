@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-analytics-matomo-analytics",
+  "inputHash": "1db8fb266c9b",
+  "analysedFor": "2.20.0",
+  "summary": "Beschrijft Matomo, het zelf gehoste en privacyvriendelijke web-analyticsplatform van Departement Omgeving, met zijn ontwikkel-, oefen- en productieomgeving. Legt uit hoe de Storybook van Flux logt: een matomo-loader.js per gepubliceerde versie zoekt één centraal matomo-tracking.js hoger in de mappenboom, dat pageviews bij het laden en bij SPA-navigatie logt, met de Storybook-versie als custom dimension.",
+  "keywords": [
+    "matomo",
+    "analytics",
+    "web analytics",
+    "tracking",
+    "statistieken",
+    "statistics",
+    "pageview",
+    "custom dimension",
+    "privacy",
+    "google analytics alternatief",
+    "storybook",
+    "matomo-tracking.js",
+    "matomo-loader.js"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina raadt aan de productieomgeving (stats.omgeving.vlaanderen.be) te raadplegen, maar in apps/storybook/matomo-tracking.js van 2.20.0 staat logTo op 'ONTWIKKEL'. Met dat bestand logt elke host naar stats-ontwikkel.omgeving.vlaanderen.be (site 45), ook de gepubliceerde versies. De productieomgeving krijgt enkel data als het centraal geplaatste matomo-tracking.js logTo op 'PRODUCTIE' zet.",
+      "source": "apps/storybook/matomo-tracking.js"
+    }
+  ]
+}

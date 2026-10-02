@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "page": "styles-base-mixin",
+  "inputHash": "8872c0edccc4",
+  "analysedFor": "2.4.0",
+  "summary": "Interne stylingpagina over de CSS-mixins van @domg-wc/styles: TypeScript-functies die een lit CSSResult teruggeven, zoals mixins in SCSS. vlWaveAnimationMixin(name, color) maakt de @keyframes van de golvende laadanimatie van vl-button, vlFocusOutlineMixin() de focus-outline die o.a. vl-link en vl-button in hun :focus-regel gebruiken.",
+  "keywords": [
+    "mixin",
+    "css mixin",
+    "css-in-ts",
+    "lit css",
+    "focus outline",
+    "focus",
+    "outline",
+    "wave animation",
+    "laadanimatie",
+    "loading animation",
+    "keyframes",
+    "toegankelijkheid",
+    "accessibility",
+    "vlfocusoutlinemixin",
+    "vlwaveanimationmixin"
+  ],
+  "examples": {
+    "styles-base-mixin--wave-animation-mixin-default": {
+      "html": "<div class=\"sb-wave-animation-blue\"></div>",
+      "js": "import { vlWaveAnimationMixin } from '@domg-wc/styles';\nimport { css } from 'lit';\n\n// vlWaveAnimationMixin geeft enkel de @keyframes met de naam die je meegeeft: drie bolletjes als box-shadow op 10, 20\n// en 30px rechts van het element, die om beurten op en neer gaan. De animatie zelf zet je op je eigen klasse.\nconst waveStyles = css`\n    .sb-wave-animation-blue {\n        animation: sb-wave-animation-blue infinite 1s linear;\n        width: 1rem;\n        height: 1rem;\n        border-radius: 50%;\n    }\n\n    ${vlWaveAnimationMixin('sb-wave-animation-blue', 'lightblue')}\n`;\n\n// In een Lit-component zet je waveStyles in static styles; op een gewone pagina voeg je het toe aan het document.\ndocument.adoptedStyleSheets = [...document.adoptedStyleSheets, waveStyles.styleSheet];"
+    },
+    "styles-base-mixin--focus-outline-mixin-default": {
+      "html": "<div class=\"sb-focus-outline\">outline bij focus</div>",
+      "js": "import { vlFocusOutlineMixin } from '@domg-wc/styles';\nimport { css } from 'lit';\n\n// Zoals in de story staat de outline hier altijd: de mixin bevat geen :focus-selector (zie notes). In de componenten\n// van Flux staat hij in een :focus-regel van een element dat focus kan krijgen.\nconst focusStyles = css`\n    .sb-focus-outline {\n        ${vlFocusOutlineMixin()}\n        width: 200px;\n        padding: 10px;\n        text-align: center;\n    }\n`;\n\n// In een Lit-component zet je focusStyles in static styles; op een gewone pagina voeg je het toe aan het document.\ndocument.adoptedStyleSheets = [...document.adoptedStyleSheets, focusStyles.styleSheet];"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-link-button",
+      "text": "De pagina zegt dat vlFocusOutlineMixin gebruikt wordt in vl-link, vl-button en vl-link-button. Een element vl-link-button bestaat niet in 2.4.0: het staat niet in de web-types. Het was het legacy-element <button is=\"vl-link-button\"> uit v1, dat de pagina over de migratie-impact (apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx) als deprecated opsomt. Wel bestaat in 2.4.0 libs/components/src/atom/button/vl-link-button.css.ts: de stijl van de link (<a>) die vl-button met cta-link rendert, die de mixin in zijn :focus-regel gebruikt.",
+      "source": "libs/styles/src/base/mixin/stories/vl-mixin.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De story vlFocusOutlineMixin zet de mixin rechtstreeks op .sb-focus-outline, zonder :focus. De outline staat dus altijd, en de div kan geen focus krijgen (geen tabindex), hoewel de tekst 'outline bij focus' zegt. De mixin geeft enkel box-shadow: none, een outline van 3px in --vl-color--focus en outline-offset: 2px; in de componenten staat hij telkens in een regel voor :focus (in vl-select-rich samen met de klassen is-focused en is-open), bv. in vl-button.css.ts, vl-link-button.css.ts, vl-link-style.css.ts en vl-icon-style.css.ts.",
+      "source": "libs/styles/src/base/mixin/stories/vl-mixin.stories.ts"
+    }
+  ]
+}

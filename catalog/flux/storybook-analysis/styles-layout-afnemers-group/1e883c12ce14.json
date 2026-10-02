@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "page": "styles-layout-afnemers-group",
+  "inputHash": "1e883c12ce14",
+  "analysedFor": "2.4.0",
+  "summary": "CSS-klassen op basis van flexbox om gelijkaardige elementen, zoals knoppen, links, iconen of accordions, naast of onder elkaar te groeperen. Modifiers regelen de richting (vl-group--column), de breedte van de items (vl-group--stretch-children), de uitlijning, scheidingslijnen, het stapelen per breakpoint (vl-group--collapse-*) en de combinatie van knop en invoerveld (vl-group--input-group).",
+  "keywords": [
+    "group",
+    "vl-group",
+    "groeperen",
+    "flexbox",
+    "flex",
+    "button group",
+    "knoppen naast elkaar",
+    "stack",
+    "separator",
+    "scheidingslijn",
+    "uitlijning",
+    "alignment",
+    "collapse",
+    "responsive",
+    "kolom"
+  ],
+  "examples": {
+    "styles-layout-afnemers-group--group-buttons": {
+      "html": "<div class=\"vl-group\">\n    <vl-button>Aanvraag starten</vl-button>\n    <vl-button secondary>Annuleren</vl-button>\n</div>"
+    },
+    "styles-layout-afnemers-group--group-links": {
+      "html": "<!-- De story geeft de groep ook style=\"height: 140px\", enkel om in de demo ruimte te laten voor de uitlijning. -->\n<div class=\"vl-group vl-group--separator-row\">\n    <vl-link href=\"#\" icon=\"bell\">Notificaties</vl-link>\n    <vl-link href=\"#\" icon=\"graduate\">Opleidingen</vl-link>\n    <vl-link href=\"#\" icon=\"pin\">Locaties</vl-link>\n</div>"
+    },
+    "styles-layout-afnemers-group--group-accordions": {
+      "html": "<div class=\"vl-group vl-group--column vl-group--stretch-children vl-group--separator-column\">\n    <vl-accordion toggle-text=\"Accordion 1\">\n        <div class=\"vl-group vl-group--column vl-group--stretch-children\">\n            <vl-accordion toggle-text=\"Accordion 1.1\">Inhoud accordion 1.1</vl-accordion>\n            <vl-accordion toggle-text=\"Accordion 1.2\">Inhoud accordion 1.2</vl-accordion>\n        </div>\n    </vl-accordion>\n    <vl-accordion toggle-text=\"Accordion 2\">\n        <div class=\"vl-group vl-group--column vl-group--stretch-children\">\n            <vl-accordion toggle-text=\"Accordion 2.1\">Inhoud accordion 2.1</vl-accordion>\n            <vl-accordion toggle-text=\"Accordion 2.2\">Inhoud accordion 2.2</vl-accordion>\n        </div>\n    </vl-accordion>\n    <vl-accordion toggle-text=\"Accordion 3\">\n        <div class=\"vl-group vl-group--column vl-group--stretch-children\">\n            <vl-accordion toggle-text=\"Accordion 3.1\">Inhoud accordion 3.1</vl-accordion>\n            <vl-accordion toggle-text=\"Accordion 3.2\">Inhoud accordion 3.2</vl-accordion>\n        </div>\n    </vl-accordion>\n</div>"
+    },
+    "styles-layout-afnemers-group--group-icons": {
+      "html": "<!-- De story zet ook href=\"#\" op elke vl-icon, een attribuut dat vl-icon niet kent (zie notes), en geeft de groep\n     style=\"height: 140px\" voor de demo. -->\n<div class=\"vl-group vl-group--column\">\n    <vl-icon icon=\"bell\"></vl-icon>\n    <vl-icon icon=\"graduate\"></vl-icon>\n    <vl-icon icon=\"pin\"></vl-icon>\n</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Onder 'Responsief' noemt de pagina `vl-group--collapse-cs` voor extra-small schermen. Die klasse bestaat niet: in vl-group.css.ts en in de argTypes heet ze `vl-group--collapse-xs` (max-width 500px).",
+      "source": "libs/styles/src/layout/group/stories/vl-group.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Onder 'Scheidingslijnen' zegt de pagina dat er een lijn tussen de items komt. Voor `vl-group--separator-row` klopt dat (`> * + *::before`), maar `vl-group--separator-column` geeft in 2.4.0 elk item een border-top en het laatste item ook een border-bottom: er staat dus ook een lijn boven het eerste en onder het laatste item. De argTypes zeggen het wel juist: 'Voegt horizontale scheidingslijnen toe boven en onder items.'",
+      "source": "libs/styles/src/layout/group/vl-group.css.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-icon",
+      "name": "href",
+      "text": "De story 'vl-group - icons' zet `href=\"#\"` op elke `vl-icon`. vl-icon kent geen attribuut href: het staat niet in de web-types van 2.4.0 en niet in de code van de component (libs/components/src/atom/icon). Het voorbeeld laat het weg. Het attribuut clickable van vl-icon maakt het icoon enkel focusbaar met een klikbare stijl (tabindex 0 en de klasse vl-icon--clickable); voor een icoon dat naar een url leidt, gebruik je vl-link met href en icon, zoals in de story 'vl-group - links'.",
+      "source": "libs/styles/src/layout/group/stories/vl-group.stories.ts"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "page": "components-form-upload",
+  "inputHash": "8b6f811c9a60",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-upload, een uploadveld op basis van Dropzone waarin de gebruiker één of meer bestanden sleept of kiest, met grenzen voor het aantal (max-files), de grootte (max-size) en het type (accepted-files), duplicaatdetectie met disallow-duplicates, en opladen naar url, automatisch met auto-process of met de methode upload(). De pagina beschrijft ook de publieke methodes, zoals getFiles(), addFile() en on()/off() voor de events van Dropzone, en raadt aan de grenzen in sub-title te vermelden.",
+  "keywords": [
+    "upload",
+    "vl-upload",
+    "bestand opladen",
+    "file upload",
+    "bijlage",
+    "attachment",
+    "drag and drop",
+    "slepen",
+    "dropzone",
+    "max-files",
+    "max-size",
+    "accepted-files",
+    "duplicaten",
+    "formulier",
+    "form control"
+  ],
+  "examples": {
+    "components-form-upload--upload-default": {
+      "html": "<!-- sub-title zoals de story hem samenstelt: de standaardtekst, met op een nieuwe regel het maximum aantal bestanden\n     (max-files, standaard 1) en de maximale grootte (max-size, standaard 2). vl-upload toont sub-title met\n     white-space: pre-line, dus het regeleinde blijft zichtbaar. -->\n<vl-upload\n    label=\"bestand uploaden\"\n    url=\"http://httpbin.org/post\"\n    sub-title=\"Sleep de bijlage naar hier om toe te voegen\nUpload 1 bestand(en) van maximaal 2 MB\"\n></vl-upload>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlUploadComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlUploadComponent]);\n\nconst upload = document.querySelector('vl-upload');\n\n// Bij vl-addedfile en vl-removedfile is event.detail.file het bestand, en event.detail.value de nieuwe waarde: een\n// FormData met de geaccepteerde bestanden onder de name van het veld (of het id), of null zonder bestanden.\nupload.addEventListener('vl-addedfile', (event) => {\n    console.log(event.detail.file.name, upload.getFiles());\n});\n\n// vl-error volgt op een bestand dat niet voldoet, bv. te groot of één te veel; event.detail.errorMessage is de\n// melding die ook bij het bestand verschijnt.\nupload.addEventListener('vl-error', (event) => {\n    console.log(event.detail.file.name, event.detail.errorMessage);\n});\n\n// Zonder auto-process laadt vl-upload niets op: upload.upload() stuurt de bestanden in de wachtrij naar url.\n// vl-success volgt per bestand, met in event.detail.response het antwoord van de server.\nupload.addEventListener('vl-success', (event) => {\n    console.log(event.detail.file.name, event.detail.response);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-upload",
+      "name": "error-message-max-files",
+      "text": "De web-types en de argTypes noemen het attribuut voor de melding bij te veel bestanden error-message-maxfiles. De code kent enkel error-message-max-files, zoals ook de template van de story en de Cypress-tests het schrijven; error-message-maxfiles heeft geen effect. Gebruik error-message-max-files, met {{maxFiles}} voor het maximum aantal bestanden.",
+      "source": "libs/components/src/form/upload/vl-upload.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-upload",
+      "name": "error-message-filesize",
+      "text": "De web-types en de argTypes zeggen dat je in error-message-filesize {{maxSize}} gebruikt voor de maximale grootte. De default gebruikt {{maxFilesize}}, en vl-upload geeft de tekst ongewijzigd door aan Dropzone (dictFileTooBig) zonder zelf {{maxSize}} te vervangen. Gebruik {{maxFilesize}}, zoals de default.",
+      "source": "libs/components/src/form/upload/vl-upload.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-upload",
+      "name": "disallow-duplicates",
+      "text": "De sectie Duplicaat detectie zegt dat je naar het event duplicateRemoved luistert om de gebruiker te informeren. Dat event bestaat niet in de code of de web-types. Verwijdert vl-upload een duplicaat, dan stuurt het een vl-input met detail.type 'removedduplicatefile' en in detail.file het verwijderde bestand.",
+      "source": "libs/components/src/form/upload/stories/vl-upload.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-upload",
+      "name": "vl-change",
+      "text": "De web-types geven vl-change en vl-input het detail { value: string, type: string, file: File }. In de code is detail.type 'addedfile' of 'removedfile', en is detail.value geen string maar een FormData met de geaccepteerde bestanden (onder de name van het veld, of het id), of null zonder bestanden. vl-upload maakt dat detail bovendien vóór het de waarde bijwerkt: detail.value is de waarde van vóór het toevoegen of verwijderen. Lees de bestanden in je listener met getFiles(), of luister naar vl-addedfile en vl-removedfile: daar is detail.value de nieuwe waarde.",
+      "source": "libs/components/src/form/upload/vl-upload.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-upload",
+      "name": "vl-initialised",
+      "text": "De web-types geven vl-initialised het detail { type: string }, maar vl-upload stuurt het event zonder detail: event.detail is null. Ook vl-queuecomplete wijkt af: volgens de web-types heeft het detail een file, maar de code geeft enkel type ('vl-queuecomplete') en value.",
+      "source": "libs/components/src/form/upload/vl-upload.component.ts"
+    }
+  ]
+}

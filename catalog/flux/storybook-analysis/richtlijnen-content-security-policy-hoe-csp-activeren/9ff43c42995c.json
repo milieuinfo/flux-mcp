@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-content-security-policy-hoe-csp-activeren",
+  "inputHash": "9ff43c42995c",
+  "analysedFor": "2.15.0",
+  "summary": "Hoe je CSP activeert voor een toepassing met Flux: migreer eerst naar v2.4.0 of hoger, configureer op de server zo strikt mogelijke CSP-headers, en versoepel ze enkel waar nodig, bv. voor de CDN, vl-header-next en vl-textarea-rich. De pagina geeft de ideale configuratie, de werkende configuratie van de flux-csp-poc en uitleg over hashes en nonces.",
+  "keywords": [
+    "content security policy",
+    "csp",
+    "csp activeren",
+    "csp header",
+    "configuratie",
+    "configuration",
+    "security headers",
+    "default-src",
+    "frame-ancestors",
+    "object-src",
+    "hash",
+    "nonce",
+    "flux-csp-poc",
+    "clickjacking"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De pagina noemt vl-header-next als de CSP-compliant global header vanaf v2.3.0, en de code registreert het element (`@webComponent('vl-header-next')`), maar het staat niet in de web-types van 2.15.0.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De pagina noemt vl-footer-next als component van de flux-csp-poc, en de code registreert het element (`@webComponent('vl-footer-next')`), maar het staat niet in de web-types van 2.15.0.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

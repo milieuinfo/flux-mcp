@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "planning-componenten-overzicht",
+  "inputHash": "59a3fc0f22c6",
+  "analysedFor": "2.8.1",
+  "summary": "Een tabel met de componenten, stijlen en kaart-acties van Flux, met per onderdeel de generatie (legacy, v2, v3-next), de basisklasse, de herkomst van de CSS, hoe uitgebreid de documentatie is, de WCAG-status en de soorten testen. Handig om te zien welke componenten nog legacy zijn of al een v3-next-versie hebben; de pagina toont dezelfde tabel als Bijdragen/Componenten Overzicht, en in 2.8.1 staat de WCAG-kolom overal nog op TODO.",
+  "keywords": [
+    "componenten overzicht",
+    "component overview",
+    "component status",
+    "planning",
+    "generatie",
+    "legacy",
+    "v2",
+    "v3-next",
+    "wcag",
+    "testen",
+    "documentatie",
+    "litelement",
+    "map actions"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-breadcrumb-item",
+      "text": "De tabel heeft twee rijen 'breadcrumb' die allebei naar de pagina van breadcrumb (components-block-breadcrumb) linken. De tweede rij is breadcrumb-item (sleutel 'components-block-breadcrumb-item' in de metadata), maar heeft de naam 'breadcrumb' gekregen. In 2.8.1 heeft vl-breadcrumb-item een eigen pagina, 'Components - Block/breadcrumb/breadcrumb-item' (components-block-breadcrumb-breadcrumb-item).",
+      "source": "apps/storybook/.storybook/flux-meta-data/json/components-block.meta-data.json"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "Het overzicht noemt header-next (v3-next) en de code registreert het element vl-header-next, maar de web-types van 2.8.1 bevatten het niet.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "Het overzicht noemt footer-next (v3-next) en de code registreert het element vl-footer-next, maar de web-types van 2.8.1 bevatten het niet.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "styles-concept",
+  "inputHash": "02b646c1f020",
+  "analysedFor": "2.4.0",
+  "summary": "Uitleg over de opmaak in de next/v2-aanpak van Flux: een component draagt zijn eigen styling in zijn shadow DOM, en wat daar niet in past staat onder Styles. De base-CSS (fonts, mixins, variabelen, native elementen) is intern; afnemers gebruiken de layout-classes vl-grid, vl-group en vl-section, en voor witruimte de varianten van vl-margin en vl-padding (bv. vl-margin--small), op native elementen, en hoeven die niet te registreren omdat elk Flux-component de layout-CSS globaal zet.",
+  "keywords": [
+    "styling",
+    "opmaak",
+    "styles",
+    "css",
+    "shadow dom",
+    "layout",
+    "layout classes",
+    "vl-grid",
+    "vl-group",
+    "vl-section",
+    "witruimte",
+    "spacing",
+    "css-variabelen",
+    "css variables",
+    "bem"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De links naar de 'next' opzet (#next-conventies), de next-componenten (#waarom-componenten) en het wegwerken van de elementen (#element-complicatie) wijzen naar de pagina planning-aanpak-v2-2024-v3-2025, die in Storybook 2.4.0 niet bestaat. De uitleg staat op Planning/Aanpak v2, v3, ... (planning-aanpak-v2-v3), in de secties 'Next' Conventies, Waarom 'Next' Componenten en Element complicatie; de sectie over de componenten heet daar dus niet waarom-componenten.",
+      "source": "apps/storybook/docs/h_opmaak/1_opmaak-concept.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina noemt als containers enkel vl-grid, vl-group, vl-margin, vl-padding en vl-section. De layout-CSS die een Flux-component globaal zet (vlLayoutStyles, deel van vlGlobalStyles) bevat in 2.4.0 ook vl-column, vl-content-block, vl-separator, vl-spacer en vl-stacked, elk met een eigen pagina onder Styles/Layout (afnemers). vl-margin en vl-padding zijn bovendien geen classes op zich: de classes heten vl-margin--small, vl-margin--medium, vl-margin--no, vl-margin--no-bottom en vl-margin--no-top, en zo ook voor vl-padding (libs/styles/src/layout/margin/vl-margin.css.ts, libs/styles/src/layout/padding/vl-padding.css.ts).",
+      "source": "libs/styles/src/vl-styles.ts"
+    }
+  ]
+}

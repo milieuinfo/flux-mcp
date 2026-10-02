@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "page": "design-system",
+  "inputHash": "5d7c215bf4f2",
+  "analysedFor": "2.20.0",
+  "summary": "Legt uit dat Flux een design system wil zijn en uit welke delen het bestaat: componenten, font, iconen, kleuren, layout en grid, documentatie, richtlijnen en voorbeelden. Ze zegt ook wat Flux niet doet: de toepassingen zelf bouwen is de taak van de ontwikkelteams.",
+  "keywords": [
+    "design system",
+    "ontwerpsysteem",
+    "flux",
+    "componenten",
+    "components",
+    "iconen",
+    "icons",
+    "kleurenpalet",
+    "color palette",
+    "layout",
+    "grid",
+    "richtlijnen",
+    "guidelines"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat het kleurenpalet nog niet expliciet aangeboden wordt. In 2.20.0 beschrijft de pagina 'Styles/Kleurenpalet' (styles-kleurenpalet) het palet als globaal beschikbare CSS-variabelen, bv. var(--vl-color--primary) en var(--vl-color--text-default), gedefinieerd in libs/styles/src/base/var/vl-color-foundation-v2.raw.css.",
+      "source": "apps/storybook/docs/3_design-system.mdx"
+    }
+  ]
+}

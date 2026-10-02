@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-toegankelijkheid-en-wcag",
+  "inputHash": "49e701573c91",
+  "analysedFor": "2.4.0",
+  "summary": "Hoe Flux toegankelijkheid aanpakt met WCAG: de 4 principes, de 3 niveaus en hoe de richtlijnen verder in Storybook gedocumenteerd zijn. Flux deelt de criteria van WCAG 2.2 in brons (niveau A) en zilver (niveau AA), elk met [basis] en [+]; elke toepassing moet brons[basis] halen, publieke toepassingen evolueren naar zilver[+].",
+  "keywords": [
+    "toegankelijkheid",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "wcag 2.2",
+    "wcag 2.1 aa",
+    "succescriteria",
+    "success criteria",
+    "brons",
+    "zilver",
+    "niveau a",
+    "niveau aa",
+    "principes",
+    "inter",
+    "richtlijnen"
+  ],
+  "examples": {},
+  "notes": []
+}

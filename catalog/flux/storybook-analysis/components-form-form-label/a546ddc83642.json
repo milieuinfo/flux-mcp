@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "page": "components-form-form-label",
+  "inputHash": "a546ddc83642",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-form-label, het label bij een formulierveld: for verwijst naar het id van de control, de tekst komt uit het label-attribuut of het default slot, en annotation toont een kleinere toelichting naast het label. Een klik op het label zet de focus in de control; de pagina geeft ook een CSS-regel tegen witruimte tussen een label met annotatie en een volgende vl-text annotation.",
+  "keywords": [
+    "form label",
+    "vl-form-label",
+    "label",
+    "veldlabel",
+    "field label",
+    "input label",
+    "annotatie",
+    "annotation",
+    "toelichting",
+    "for",
+    "formulier",
+    "form"
+  ],
+  "examples": {
+    "components-form-form-label--form-label-default": {
+      "html": "<vl-form-label label=\"Naam\"></vl-form-label>"
+    },
+    "components-form-form-label--form-label-with-annotation": {
+      "html": "<vl-form-label label=\"Naam\" annotation=\"(enkel achternaam)\"></vl-form-label>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-form-label",
+      "name": "label",
+      "text": "De web-types beschrijven label enkel als de tekst van het label. De code zet bij elke update ook het label-attribuut van de form control met als id de waarde van for (gezocht in de omliggende form, anders in de parent van vl-form-label) op die waarde, ook als label leeg is, en haalt het weg wanneer vl-form-label uit de pagina verdwijnt. Staat de tekst enkel in het default slot, dan krijgt de control label=\"\" en verliest hij zijn aria-label, terwijl het <label for> in de shadow DOM van vl-form-label de control niet bereikt. Zet de tekst daarom in het label-attribuut.",
+      "source": "libs/components/src/form/form-label/vl-form-label.component.ts"
+    }
+  ]
+}

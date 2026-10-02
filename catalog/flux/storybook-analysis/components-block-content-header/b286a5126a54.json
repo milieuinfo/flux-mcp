@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "components-block-content-header",
+  "inputHash": "b286a5126a54",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-content-header, de header met een groot achtergrondbeeld, een contextlink en een titellink bovenaan een informerende pagina. De component heeft een <img slot=\"image\">, een <a slot=\"context-link\"> en een <a slot=\"title-link\"> nodig.",
+  "keywords": [
+    "content header",
+    "content-header",
+    "vl-content-header",
+    "paginaheader",
+    "page header",
+    "hero",
+    "hero image",
+    "header met afbeelding",
+    "achtergrondafbeelding",
+    "background image",
+    "titel",
+    "contextlink",
+    "informerende pagina",
+    "banner"
+  ],
+  "examples": {
+    "components-block-content-header--content-header-default": {
+      "html": "<vl-content-header>\n    <img\n        slot=\"image\"\n        sizes=\"100vw\"\n        src=\"https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80\"\n        srcset=\"\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80 400w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80 700w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80 800w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80 1000w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80 1300w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80 1400w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80 1600w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1900&q=80 1900w,\n            https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80 2000w\n        \"\n    />\n    <a slot=\"context-link\" href=\"https://www.vlaanderen.be\">Context</a>\n    <a slot=\"title-link\" href=\"https://www.vlaanderen.be\">Vlaanderen</a>\n</vl-content-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlContentHeaderComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlContentHeaderComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-content-header",
+      "text": "Het voorbeeld onder Voorbeeld op de pagina is een lege <vl-content-header></vl-content-header>, en de web-types noemen geen van de drie verplicht: 'context-link (slot)' en 'title-link (slot)' hebben de default '', 'image (slot)' heeft geen default en een lege beschrijving. De code heeft echter alle drie de elementen nodig: bij het verbinden (connectedCallback) en bij elke wijziging kloont __processSlotElements zonder controle het eerste img[slot=\"image\"], a[slot=\"context-link\"] en a[slot=\"title-link\"]. Ontbreekt er één, dan volgt een TypeError (cloneNode op null). Enkel een <img> en een <a> werken: bv. een <picture> of een <span> met dat slot wordt niet gevonden.",
+      "source": "libs/components/src/block/content-header/vl-content-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-content-header",
+      "text": "De argTypes en de web-types zetten context-link en title-link bij de attributen, als 'context-link (slot)' en 'title-link (slot)', en het beeld bij de slots als 'image (slot)'. Het zijn geen attributen: de namen die je in slot=\"…\" zet, zijn image, context-link en title-link. Het zijn ook geen echte slots: de shadow DOM heeft geen <slot>, de component kloont de elementen naar een <picture>, een <div> voor de context en een <h2> in zijn shadow DOM. Een event listener op het originele <img> of <a> werkt daardoor niet op wat de gebruiker ziet.",
+      "source": "libs/components/src/block/content-header/stories/vl-content-header.stories-arg.ts"
+    }
+  ]
+}

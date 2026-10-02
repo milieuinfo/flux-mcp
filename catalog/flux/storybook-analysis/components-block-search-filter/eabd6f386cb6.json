@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "page": "components-block-search-filter",
+  "inputHash": "eabd6f386cb6",
+  "analysedFor": "2.16.0",
+  "summary": "Documentatie van vl-search-filter, een paneel met een zoekformulier om bv. een lijst of tabel te filteren: je zet er een <form> in met sections (elk met een vl-title en velden) en een footer met de zoek- en resetknop. Op een smal scherm (body smaller dan 767px) toont hij de mobiele weergave met een eigen titel (mobile-modal-title, anders filter-title, anders Filter); het attribuut mobile-modal volgt in de code die breedte. De pagina meldt dat de component later grondig herwerkt wordt, samen met vl-table.",
+  "keywords": [
+    "zoekfilter",
+    "search filter",
+    "vl-search-filter",
+    "filter",
+    "filteren",
+    "filterpaneel",
+    "filter panel",
+    "zoekformulier",
+    "search form",
+    "zoeken",
+    "search",
+    "mobile modal",
+    "mobiele weergave",
+    "filter-title"
+  ],
+  "examples": {
+    "components-block-search-filter--search-filter-default": {
+      "html": "<vl-search-filter>\n    <form>\n        <div>\n            <section>\n                <vl-title type=\"h2\" alt no-space-bottom>Doorzoek projecten</vl-title>\n                <div>\n                    <vl-form-label for=\"filterOpId\" label=\"Project id\" light></vl-form-label>\n                    <vl-input-field id=\"filterOpId\" type=\"text\" name=\"id\" block></vl-input-field>\n                </div>\n                <div>\n                    <vl-form-label for=\"filterOpNaamProject\" label=\"Project naam\" light></vl-form-label>\n                    <vl-input-field\n                        type=\"text\"\n                        id=\"filterOpNaamProject\"\n                        name=\"name\"\n                        block\n                        autocomplete=\"given-name\"\n                    ></vl-input-field>\n                </div>\n                <div>\n                    <vl-form-label for=\"filterOpNaamManager\" label=\"Manager familienaam\" light></vl-form-label>\n                    <vl-input-field\n                        type=\"text\"\n                        id=\"filterOpNaamManager\"\n                        name=\"name\"\n                        block\n                        autocomplete=\"family-name\"\n                    ></vl-input-field>\n                </div>\n            </section>\n            <section>\n                <vl-title type=\"h2\" alt no-space-bottom>Locatie</vl-title>\n                <div>\n                    <vl-form-label for=\"vl-select-city\" label=\"Stad\" light></vl-form-label>\n                    <vl-select\n                        name=\"vl-select-city\"\n                        block\n                        autocomplete=\"address-level2\"\n                        placeholder=\"Kies een stad\"\n                    ></vl-select>\n                </div>\n                <div>\n                    <vl-form-label for=\"vl-select-country\" label=\"Land\" light></vl-form-label>\n                    <vl-select\n                        name=\"vl-select-country\"\n                        block\n                        autocomplete=\"address-level2\"\n                        placeholder=\"Kies een land\"\n                    ></vl-select>\n                </div>\n            </section>\n        </div>\n        <footer>\n            <div class=\"vl-group vl-group--wrap\">\n                <vl-button type=\"submit\">Zoeken</vl-button>\n                <vl-button type=\"reset\" secondary>Reset</vl-button>\n            </div>\n        </footer>\n    </form>\n</vl-search-filter>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlSearchFilterComponent } from '@domg-wc/components/block';\nimport { VlFormLabelComponent, VlInputFieldComponent, VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([\n    VlSearchFilterComponent,\n    VlTitleComponent,\n    VlFormLabelComponent,\n    VlInputFieldComponent,\n    VlSelectComponent,\n    VlButtonComponent,\n]);\n\n// De keuzes van een vl-select zet je met de property options.\ndocument.querySelector('vl-select[name=\"vl-select-city\"]').options = [\n    { label: 'Kies een stad', value: '' },\n    { label: 'Brussel', value: 'brussel' },\n    { label: 'Gent', value: 'gent' },\n];\ndocument.querySelector('vl-select[name=\"vl-select-country\"]').options = [\n    { label: 'Kies een land', value: '' },\n    { label: 'België', value: 'België' },\n    { label: 'Frankrijk', value: 'Frankrijk' },\n    { label: 'Nederland', value: 'Nederland' },\n];\n\n// vl-search-filter roept bij elke submit van zijn formulier preventDefault() op: het formulier wordt niet verzonden.\n// Verwerk de zoekopdracht zelf in een submit-listener op het formulier, bv. met new FormData(form)."
+    },
+    "components-block-search-filter--search-filter-mobile": {
+      "html": "<vl-search-filter mobile-modal mobile-modal-title=\"Mobile title\">\n    <form>\n        <div>\n            <section>\n                <vl-title type=\"h2\" alt no-space-bottom>Doorzoek projecten</vl-title>\n                <div>\n                    <vl-form-label for=\"filterOpId\" label=\"Project id\" light></vl-form-label>\n                    <vl-input-field id=\"filterOpId\" type=\"text\" name=\"id\" block></vl-input-field>\n                </div>\n                <div>\n                    <vl-form-label for=\"filterOpNaamProject\" label=\"Project naam\" light></vl-form-label>\n                    <vl-input-field\n                        type=\"text\"\n                        id=\"filterOpNaamProject\"\n                        name=\"name\"\n                        block\n                        autocomplete=\"given-name\"\n                    ></vl-input-field>\n                </div>\n                <div>\n                    <vl-form-label for=\"filterOpNaamManager\" label=\"Manager familienaam\" light></vl-form-label>\n                    <vl-input-field\n                        type=\"text\"\n                        id=\"filterOpNaamManager\"\n                        name=\"name\"\n                        block\n                        autocomplete=\"family-name\"\n                    ></vl-input-field>\n                </div>\n            </section>\n            <section>\n                <vl-title type=\"h2\" alt no-space-bottom>Locatie</vl-title>\n                <div>\n                    <vl-form-label for=\"vl-select-city\" label=\"Stad\" light></vl-form-label>\n                    <vl-select\n                        name=\"vl-select-city\"\n                        block\n                        autocomplete=\"address-level2\"\n                        placeholder=\"Kies een stad\"\n                    ></vl-select>\n                </div>\n                <div>\n                    <vl-form-label for=\"vl-select-country\" label=\"Land\" light></vl-form-label>\n                    <vl-select\n                        name=\"vl-select-country\"\n                        block\n                        autocomplete=\"address-level2\"\n                        placeholder=\"Kies een land\"\n                    ></vl-select>\n                </div>\n            </section>\n        </div>\n        <footer>\n            <div class=\"vl-group vl-group--wrap\">\n                <vl-button type=\"submit\">Zoeken</vl-button>\n                <vl-button type=\"reset\" secondary>Reset</vl-button>\n            </div>\n        </footer>\n    </form>\n</vl-search-filter>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlSearchFilterComponent } from '@domg-wc/components/block';\nimport { VlFormLabelComponent, VlInputFieldComponent, VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([\n    VlSearchFilterComponent,\n    VlTitleComponent,\n    VlFormLabelComponent,\n    VlInputFieldComponent,\n    VlSelectComponent,\n    VlButtonComponent,\n]);\n\n// De keuzes van een vl-select zet je met de property options.\ndocument.querySelector('vl-select[name=\"vl-select-city\"]').options = [\n    { label: 'Kies een stad', value: '' },\n    { label: 'Brussel', value: 'brussel' },\n    { label: 'Gent', value: 'gent' },\n];\ndocument.querySelector('vl-select[name=\"vl-select-country\"]').options = [\n    { label: 'Kies een land', value: '' },\n    { label: 'België', value: 'België' },\n    { label: 'Frankrijk', value: 'Frankrijk' },\n    { label: 'Nederland', value: 'Nederland' },\n];\n\n// vl-search-filter roept bij elke submit van zijn formulier preventDefault() op: het formulier wordt niet verzonden.\n// Verwerk de zoekopdracht zelf in een submit-listener op het formulier, bv. met new FormData(form).\n// In de mobiele weergave verbergt vl-search-filter zich na een submit met het attribuut hidden; haal dat weg om\n// hem opnieuw te tonen."
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-search-filter",
+      "name": "mobile-modal",
+      "text": "Volgens de web-types en de argTypes activeert mobile-modal de mobiele weergave, die ook aangaat als de viewport kleiner is dan 768px. In de code zet een ResizeObserver op document.body de property zodra hij de body observeert, en bij elke wijziging van de grootte van de body, op 'breedte van de body < 767px'. Op een breder scherm draait hij een gezet mobile-modal dus terug. De story toont de mobiele weergave in een mobiele viewport.",
+      "source": "libs/components/src/block/search-filter/vl-search-filter.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search-filter",
+      "name": "[default]",
+      "text": "De web-types geven vl-search-filter geen slots. In de code toont hij zijn inhoud in een default slot en verwacht hij daar een <form>: hij geeft het formulier zijn stijlklassen, de eerste div rond de submit-knop (vl-button of button met type=\"submit\"; in de story de div met vl-group) de klasse vl-search-filter--submit, en in de mobiele weergave het eerste element rond die knop (in de story de footer) een eigen klasse. Bij elke submit roept hij preventDefault() op; in de mobiele weergave verbergt hij zich daarna met hidden.",
+      "source": "libs/components/src/block/search-filter/vl-search-filter.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-select",
+      "name": "deletable",
+      "text": "De story zet deletable op beide vl-select's, maar vl-select kent geen attribuut deletable: het staat niet in de web-types en niet in de code. Een gekozen waarde is standaard te wissen; not-deletable zet dat af. Het voorbeeld laat deletable weg.",
+      "source": "libs/components/src/block/search-filter/stories/vl-search-filter.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-form-label",
+      "name": "for",
+      "text": "vl-form-label zoekt in zijn formulier het element met als id de waarde van for, en zet er zijn label op (getFormControl in libs/components/src/form/form-label/vl-form-label.component.ts). De vl-select's in de story hebben enkel name=\"vl-select-city\" en name=\"vl-select-country\", geen id, dus de labels Stad en Land zijn niet aan hun select gekoppeld. Het voorbeeld volgt de story; geef in je eigen code de vl-select een id gelijk aan for.",
+      "source": "libs/components/src/block/search-filter/stories/vl-search-filter.stories.ts"
+    }
+  ]
+}

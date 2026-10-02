@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "page": "map-overview-map",
+  "inputHash": "58ec2a960e31",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-overview-map, een overzichtskaartje in een vl-map waarmee de gebruiker wisselt tussen de basiskaartlagen van de kaart. Het kaartje toont telkens een andere basiskaartlaag dan de kaart; een klik erop maakt die laag zichtbaar op de kaart. Zet het in de vl-map, samen met minstens twee basiskaartlagen.",
+  "keywords": [
+    "overview map",
+    "overzichtskaart",
+    "overzichtskaartje",
+    "minimap",
+    "basiskaartlaag wisselen",
+    "switch base layer",
+    "basemap switcher",
+    "baselayer",
+    "achtergrondkaart",
+    "luchtfoto",
+    "orthofoto",
+    "grb",
+    "vl-map-overview-map",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-overview-map--map-overview-map-default": {
+      "html": "<!-- vl-map-overview-map staat in de vl-map, samen met de basiskaartlagen waartussen de gebruiker wisselt. Eén ervan\n     is zichtbaar op de kaart, het overzichtskaartje toont een volgende. Een klik op het overzichtskaartje maakt die laag\n     zichtbaar op de kaart en toont er de volgende, na de laatste weer de eerste. Met één basiskaartlaag blijft het\n     overzichtskaartje leeg. -->\n<vl-map lambert2008>\n    <vl-map-overview-map></vl-map-overview-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-baselayer-grb></vl-map-baselayer-grb>\n    <vl-map-baselayer-grb-ortho></vl-map-baselayer-grb-ortho>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-overview-map",
+      "name": "custom-css",
+      "text": "De web-types geven vl-map-overview-map het attribuut custom-css, maar het element heeft geen shadow DOM: BaseHTMLElement voegt de CSS dan niet toe en geeft de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.'. De pagina zegt terecht dat de component geen configuratie heeft.",
+      "source": "libs/map/src/components/overview-map/vl-map-overview-map.ts"
+    }
+  ]
+}

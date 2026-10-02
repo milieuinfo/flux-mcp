@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "page": "components-form-checkbox",
+  "inputHash": "63adff920738",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-checkbox, een selectievakje waarmee de gebruiker één of meer opties aanvinkt, of met switch een schakelaar voor een instelling die meteen werkt. De pagina legt uit welke value in de FormData komt (enkel als hij aangevinkt is, zonder value 'on'), hoe resetFormControl() de beginwaarde terugzet, en hoe je een alleen-lezen checkbox maakt met disabled en een verborgen input.",
+  "keywords": [
+    "checkbox",
+    "selectievakje",
+    "aanvinkvakje",
+    "vl-checkbox",
+    "switch",
+    "toggle switch",
+    "schakelaar",
+    "form control",
+    "formulier",
+    "formdata",
+    "readonly",
+    "indeterminate",
+    "vl-change"
+  ],
+  "examples": {
+    "components-form-checkbox--checkbox-default": {
+      "html": "<vl-checkbox id=\"checkbox-default\" name=\"checkbox\"><span>Bevestig</span></vl-checkbox>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlCheckboxComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlCheckboxComponent]);\n\n// vl-input volgt enkel op een klik van de gebruiker, vl-change ook op een wijziging van checked door code.\n// event.detail.checked is de nieuwe toestand; event.detail.value staat er enkel in als de checkbox aangevinkt is\n// (de value, of 'on' zonder value).\ndocument.querySelector('#checkbox-default').addEventListener('vl-change', (event) => {\n    console.log(event.detail.checked, event.detail.value);\n});"
+    },
+    "components-form-checkbox--checkbox-value": {
+      "html": "<vl-checkbox id=\"checkbox-value\" name=\"checkbox\" value=\"bevestigd\"><span>Bevestig</span></vl-checkbox>"
+    },
+    "components-form-checkbox--checkbox-switch": {
+      "html": "<vl-checkbox id=\"checkbox-switch\" name=\"checkbox\" switch><span>Instellingen toepassen</span></vl-checkbox>"
+    },
+    "components-form-checkbox--checkbox-readonly": {
+      "html": "<vl-checkbox id=\"checkbox-readonly\" name=\"checkbox\" disabled value=\"bevestigd\" checked><span>Bevestig</span></vl-checkbox>\n<input type=\"hidden\" name=\"checkbox\" value=\"bevestigd\" />"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-checkbox",
+      "name": "[default]",
+      "text": "De stories zetten de tekst van de checkbox in het default slot (<span>Bevestig</span>), zoals de code van vl-checkbox het definieert (<slot></slot>). De web-types van 2.14.0 kennen voor vl-checkbox geen default slot: ze noemen het slot 'content', een naam die in de code niet bestaat. Inhoud met slot=\"content\" toont de checkbox dus niet.",
+      "source": "libs/components/src/form/checkbox/vl-checkbox.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-checkbox",
+      "name": "vl-change",
+      "text": "De web-types en de argTypes geven vl-change het type { value: string }. De code geeft hetzelfde detail mee als bij vl-input en vl-valid: { checked, value, currentTarget }, waarbij checked de nieuwe toestand is en value er enkel in staat als de checkbox aangevinkt is (de value, of 'on' zonder value). De beschrijving van het event klopt wel.",
+      "source": "libs/components/src/form/checkbox/vl-checkbox.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-checkbox",
+      "name": "label",
+      "text": "Volgens de web-types vult label het aria-label van het veld. De code doet dat enkel voor de gewone checkbox: de switch-variant zet geen aria-label op zijn input en krijgt zijn toegankelijke naam enkel van de inhoud van het slot, via <label for>. Geef een switch dus altijd tekst.",
+      "source": "libs/components/src/form/checkbox/vl-checkbox.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-checkbox",
+      "name": "id",
+      "text": "Volgens de web-types en de argTypes moet je bij de switch-variant een id instellen. De code maakt zelf een id (vl-checkbox-1, vl-checkbox-2, …) als het element er geen heeft, voor de switch en voor de gewone checkbox.",
+      "source": "libs/components/src/form/checkbox/vl-checkbox.component.ts"
+    }
+  ]
+}

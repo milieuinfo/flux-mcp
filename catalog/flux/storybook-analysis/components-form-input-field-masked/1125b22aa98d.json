@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "page": "components-form-input-field-masked",
+  "inputHash": "1125b22aa98d",
+  "analysedFor": "2.16.0",
+  "summary": "Documentatie van vl-input-field-masked, een invoerveld dat de invoer opmaakt volgens een mask (Cleave.js) en ze valideert (patternMismatch). Er zijn vaste masks voor iban, rijksregisternummer, uuid, datum, getal, prijs en telefoonnummers, en je registreert eigen masks met VlInputFieldMaskedComponent.setMasks(); getRawValue() en raw-value geven de waarde zonder opmaak.",
+  "keywords": [
+    "input field masked",
+    "vl-input-field-masked",
+    "masked input",
+    "input mask",
+    "invoermasker",
+    "iban",
+    "rijksregisternummer",
+    "rrn",
+    "uuid",
+    "telefoonnummer",
+    "phone number",
+    "prijs",
+    "price",
+    "cleave",
+    "raw value"
+  ],
+  "examples": {
+    "components-form-input-field-masked--input-field-masked-iban": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"IBAN\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"iban\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. BE94 7310 5568 1914</vl-text>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFormLabelComponent, VlInputFieldMaskedComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlInputFieldMaskedComponent, VlFormLabelComponent]);\n\n// event.detail.value is de opgemaakte waarde (bv. 'BE94 7310 5568 1914'), of zonder opmaak met raw-value;\n// getRawValue() geeft altijd de waarde zonder opmaak (bv. 'BE94731055681914').\ndocument.querySelector('#story-input').addEventListener('vl-change', (event) => {\n    console.log(event.detail.value, event.target.getRawValue());\n});"
+    },
+    "components-form-input-field-masked--input-field-masked-rrn": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Rijkregisternummer\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"rrn\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. 85.01.05-123.40</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-uuid": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"UUID\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"uuid\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. 234DFF23-423F-DF23-4D34-53D3296018DC</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-date": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Date\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"date\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. 21.12.2025</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-numerical": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Numerical\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"numerical\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. 123</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-price": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Price\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"price\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. € 1.000,59</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-phone": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Phone\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"phone\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. +32 24 42 26 00</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-phone-international": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Phone international\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"phoneinternational\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. 032422600</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-mobile": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Mobile\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"mobile\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. +32 478 34 23 12</vl-text>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-custom": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Custom\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"custom-mask\"></vl-input-field-masked>\n    <br />\n    <vl-text annotation small>bv. 5345-44523431</vl-text>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFormLabelComponent, VlInputFieldMaskedComponent } from '@domg-wc/components/form';\n\n// Registreer eigen masks bij het entry point, vóór er een vl-input-field-masked met dat mask op de pagina komt: de\n// component leest zijn mask in connectedCallback en maakt de opmaak één keer, in firstUpdated. Een onbekend mask geeft\n// geen fout; het veld krijgt dan geen opmaak. De import hierboven registreert vl-input-field-masked al, dus een\n// element dat dan al in de HTML van de pagina staat, leest zijn mask vóór setMasks loopt. Voeg de HTML hierboven pas\n// na setMasks toe, bv. vanuit je app. setMasks vervangt eerder geregistreerde eigen masks (de vaste masks blijven),\n// dus geef ze allemaal in één keer mee.\nconst CUSTOM_MASK = {\n    blocks: [8, 4],\n    delimiters: ['-'],\n    numericOnly: true,\n    numeralPositiveOnly: true,\n    regex: /^[0-9]{12}$/,\n};\n\nVlInputFieldMaskedComponent.setMasks({ 'custom-mask': CUSTOM_MASK });\n\nregisterWebComponents([VlInputFieldMaskedComponent, VlFormLabelComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-input-field-masked",
+      "text": "De tekst onder Custom noemt de functie VlInputFieldMasked.setMasks(); een klasse VlInputFieldMasked bestaat niet. setMasks is een statische methode van VlInputFieldMaskedComponent, zoals het codevoorbeeld eronder en de stories ze aanroepen.",
+      "source": "libs/components/src/form/input-field-masked/stories/vl-input-field-masked.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-input-field-masked",
+      "name": "mask",
+      "text": "De web-types geven mask enkel de negen vaste waarden, van 'iban' tot 'mobile'. mask aanvaardt ook elke sleutel die je met VlInputFieldMaskedComponent.setMasks() registreert, zoals 'custom-mask' in de story vl-input-field-masked - custom. De component leest zijn mask in connectedCallback en maakt de opmaak één keer, in firstUpdated: registreer eigen masks dus vóór het element op de pagina komt.",
+      "source": "libs/components/src/form/input-field-masked/vl-input-field-masked.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-input-field-masked",
+      "name": "mask",
+      "text": "De story vl-input-field-masked - custom geeft als voorbeeld '5345-44523431' (4 en 8 cijfers), maar het mask van de story heeft blocks [8, 4] en maakt de invoer op als 8 cijfers, een streepje en 4 cijfers, bv. 53454452-3431.",
+      "source": "libs/components/src/form/input-field-masked/stories/vl-input-field-masked.stories.ts"
+    }
+  ]
+}

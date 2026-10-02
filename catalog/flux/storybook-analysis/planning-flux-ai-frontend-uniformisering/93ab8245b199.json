@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "planning-flux-ai-frontend-uniformisering",
+  "inputHash": "93ab8245b199",
+  "analysedFor": "2.20.0",
+  "summary": "Visie van Flux op frontend-uniformisering met AI: een geversioneerde kennislaag (Figma, web-types, .llm.md, release notes), ontsloten via een Figma-MCP en een Flux-MCP en gebruikt door een Flux-Agent in 8 workflows, zoals design naar code, versiemigratie en een toepassing valideren. Ook de eisen aan een toepassing (technisch fundament en uniforme UI/UX), de terugkoppellus, de fasering, de risico's en een FAQ.",
+  "keywords": [
+    "flux-ai",
+    "ai",
+    "mcp server",
+    "flux-mcp",
+    "flux-agent",
+    "figma",
+    "code connect",
+    "design naar code",
+    "design to code",
+    "versiemigratie",
+    "version migration",
+    ".llm.md",
+    "uniformisering",
+    "e2e testen",
+    "kennislaag"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "icon",
+      "text": "De pagina gebruikt `icon=\"alert-circle\"` op vl-alert. De web-types van 2.20.0 geven als type 'warning' | 'check' | 'info-circle', maar de code zet elk icoon in de klasse `vl-icon--${icon}` (libs/components/src/block/alert/vl-alert.component.ts) en alert-circle staat in de iconenlijst (libs/components/src/atom/icon/vl-icon-list.ts).",
+      "source": "apps/storybook/docs/d_planning/5_flux-ai-frontend-uniformisering.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Sectie 7.B en FAQ 11.8 leggen minimaal WCAG 2.2 AA op. De pagina 'Richtlijnen/Toegankelijkheid - Aanpak/Toegankelijkheid en WCAG' stelt als doel dat elke toepassing brons[basis] haalt, een deel van niveau A, en dat enkel publieke toepassingen naar zilver[plus], heel niveau AA, evolueren.",
+      "source": "apps/storybook/docs/d_planning/5_flux-ai-frontend-uniformisering.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Sectie 3 zegt dat de web-types de API van elke component beschrijven, met ook de CSS custom properties. De web-types van 2.20.0 bevatten enkel attributen, slots, properties en events: de generator (resources/generate-web-types/web-types.generator.ts) schrijft geen CSS custom properties weg.",
+      "source": "apps/storybook/docs/d_planning/5_flux-ai-frontend-uniformisering.mdx"
+    }
+  ]
+}

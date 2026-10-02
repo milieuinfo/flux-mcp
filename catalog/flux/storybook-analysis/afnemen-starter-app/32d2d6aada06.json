@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "afnemen-starter-app",
+  "inputHash": "32d2d6aada06",
+  "analysedFor": "2.19.0",
+  "summary": "Beschrijft de flux-starter-app, een voorbeeldproject om een nieuwe toepassing van te forken, en de framework-agnostische aanpak van Departement Omgeving met web components en Lit. Ze overloopt de gebruikte tools (Volta, Webpack met SWC, TypeScript, Lit, Prettier, ESLint, Jest, Cypress) en de npm-scripts van het project.",
+  "keywords": [
+    "starter app",
+    "flux-starter-app",
+    "boilerplate",
+    "project setup",
+    "nieuwe toepassing",
+    "framework agnostisch",
+    "framework agnostic",
+    "lit",
+    "volta",
+    "webpack",
+    "swc",
+    "typescript",
+    "eslint",
+    "jest",
+    "cypress"
+  ],
+  "examples": {},
+  "notes": []
+}

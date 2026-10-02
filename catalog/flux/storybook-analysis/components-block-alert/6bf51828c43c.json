@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "page": "components-block-alert",
+  "inputHash": "6bf51828c43c",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-alert, een melding over belangrijke informatie, met type info, success, warning of error, een icoon, een titel (attribuut of slot title), een boodschap (default slot of message) en knoppen in het slot actions. Varianten zijn closable (met het event vl-alert-closed), naked, banner over de volledige breedte, multiline en size small. Met alert-role kies je alert, alertdialog (de focus zet je zelf) of no-role voor een melding die al bij het laden op de pagina staat.",
+  "keywords": [
+    "alert",
+    "melding",
+    "vl-alert",
+    "waarschuwing",
+    "foutmelding",
+    "succesmelding",
+    "info melding",
+    "notification",
+    "banner",
+    "naked alert",
+    "alertdialog",
+    "alert-role",
+    "closable",
+    "vl-alert-closed",
+    "toegankelijkheid"
+  ],
+  "examples": {
+    "components-block-alert--alert-default": {
+      "html": "<vl-alert>\n    <span>Als u vaststelt dat er foute informatie over u in het bestand van de Centrale voor Kredieten aan Particulieren staat, dan kunt u een rechtzetting aanvragen.</span>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert]);"
+    },
+    "components-block-alert--alert-error": {
+      "html": "<vl-alert icon=\"warning\" title=\"Opgelet!\" type=\"error\">\n    <span>U heeft geen rechten om deze actie uit te voeren.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-info": {
+      "html": "<vl-alert icon=\"info-circle\" title=\"Info\" type=\"info\">\n    <span>Als u vaststelt dat er foute informatie over u in het bestand van de Centrale voor Kredieten aan Particulieren staat, dan kunt u een rechtzetting aanvragen.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-success": {
+      "html": "<vl-alert icon=\"check\" title=\"Gelukt!\" type=\"success\">\n    <span>We hebben uw melding goed ontvangen en nemen deze spoedig in behandeling.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-warning": {
+      "html": "<vl-alert icon=\"warning\" title=\"Technische storing\" type=\"warning\">\n    <span>Door een technische storing is dit loket tijdelijk niet beschikbaar.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-with-button": {
+      "html": "<vl-alert>\n    <span>Phasellus congue ipsum ut felis auctor, eget maximus justo dapibus. Nam sit amet pulvinar odio. Maecenas rhoncus quam eget neque porttitor, et faucibus nisl elementum.</span>\n    <vl-button slot=\"actions\">button text</vl-button>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert, VlButtonComponent]);"
+    },
+    "components-block-alert--alert-with-title-slot": {
+      "html": "<vl-alert>\n    <span slot=\"title\">Titel</span>\n    <span>Phasellus congue ipsum ut felis auctor, eget maximus justo dapibus. Nam sit amet pulvinar odio. Maecenas rhoncus quam eget neque porttitor, et faucibus nisl elementum.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-closeable": {
+      "html": "<vl-alert closable>\n    <span>Phasellus congue ipsum ut felis auctor, eget maximus justo dapibus. Nam sit amet pulvinar odio. Maecenas rhoncus quam eget neque porttitor, et faucibus nisl elementum.</span>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert]);\n\n// De sluitknop verwijdert vl-alert uit de DOM en pas daarna volgt vl-alert-closed. Luister daarom op het element\n// zelf: een listener op een parent of op document krijgt het event niet.\ndocument.querySelector('vl-alert[closable]').addEventListener('vl-alert-closed', () => {\n    console.log('melding gesloten');\n});"
+    },
+    "components-block-alert--alert-naked-error": {
+      "html": "<vl-alert naked icon=\"warning\" title=\"Opgelet!\" type=\"error\" message=\"U heeft geen rechten om deze actie uit te voeren.\"></vl-alert>"
+    },
+    "components-block-alert--alert-naked-warning": {
+      "html": "<vl-alert naked icon=\"warning\" title=\"Opgelet!\" type=\"warning\" message=\"U heeft geen rechten om deze actie uit te voeren.\"></vl-alert>"
+    },
+    "components-block-alert--alert-naked-success": {
+      "html": "<vl-alert naked icon=\"check\" title=\"Opgelet!\" type=\"success\" message=\"U heeft geen rechten om deze actie uit te voeren.\"></vl-alert>"
+    },
+    "components-block-alert--alert-banner": {
+      "html": "<vl-alert banner closable alert-role=\"no-role\" size=\"small\" type=\"warning\" icon=\"warning\" title=\"Juridische waarde\">\n    <span>De door deze toepassing gegenereerde informatie heeft geen juridische waarde.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-multiline": {
+      "html": "<!-- Laat de tekst direct na de opening-tag starten: pre-line toont een newline daar als witruimte. -->\n<vl-alert multiline icon=\"info-circle\" title=\"Info\" type=\"info\"\n    ><span>Eerste regel.</span>\n    <span>Tweede regel.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-alert-dialog": {
+      "html": "<vl-alert icon=\"warning\" title=\"Uw sessie verloopt\" type=\"warning\" alert-role=\"alertdialog\">\n    <span>Over 2 minuten wordt u automatisch afgemeld. Wilt u aangemeld blijven?</span>\n    <vl-button slot=\"actions\">Aangemeld blijven</vl-button>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert, VlButtonComponent]);\n\n// Bij alert-role=\"alertdialog\" verplaatst de component de focus niet zelf: doe het zodra de melding verschijnt.\n// vl-alert rendert asynchroon; wacht op updateComplete, anders bestaat de focusbare melding nog niet.\nconst alert = document.querySelector('vl-alert[alert-role=\"alertdialog\"]');\nawait alert.updateComplete;\nalert.focus(); // verplaatst de focus naar de melding zelf\n\n// Of zet de gebruiker meteen bij de actie:\n// alert.querySelector('vl-button')?.focus();"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "multiline",
+      "text": "De story vl-alert - multiline zet multiline, een titel, een type en een icoon, maar geen boodschap: geen message en geen inhoud in het default slot. Ze toont dus niets van de nieuwe regels die multiline behoudt. Het voorbeeld vult het default slot zoals het codeblok 'Correct' op de pagina, met de tekst direct na de opening-tag.",
+      "source": "libs/components/src/block/alert/stories/vl-alert.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "text": "De story vl-alert - naked success toont een succesmelding met de titel 'Opgelet!' en de boodschap 'U heeft geen rechten om deze actie uit te voeren.', dezelfde tekst als naked error. Dat strookt niet met de richtlijn onder Toegankelijkheid om de aard van de melding ook in de tekst te zetten, bv. met een titel als 'Gelukt!'. Het voorbeeld neemt de tekst van de story over; kies in een toepassing een titel en boodschap die bij een succes passen.",
+      "source": "libs/components/src/block/alert/stories/vl-alert.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "icon",
+      "text": "De web-types geven als type van icon enkel 'warning' | 'check' | 'info-circle', de opties van de story. De beschrijving van hetzelfde attribuut zegt dat je het icoon kiest uit de lijst op https://www.vlaanderen.be/vlaanderen-design-system/componenten/icon, en de code zet voor elke waarde de class vl-icon--<icon>. Een ander icoon uit die lijst werkt dus ook.",
+      "source": "libs/components/src/block/alert/vl-alert.component.ts"
+    }
+  ]
+}

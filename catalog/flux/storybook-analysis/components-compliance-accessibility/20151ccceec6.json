@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "page": "components-compliance-accessibility",
+  "inputHash": "20151ccceec6",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-accessibility, dat een volledige toegankelijkheidsverklaring voor een toepassing van Departement Omgeving opbouwt: functionele header, nalevingsstatus, niet-toegankelijke inhoud, opstelling van de verklaring, contactgegevens en handhavingsprocedure. Je vult de verklaring in met application, evaluation, compliance, date, date-modified, version en de property limitations. Het slot header vervangt de standaardheader; disable-back-link en hide-back-link werken dan niet meer.",
+  "keywords": [
+    "toegankelijkheidsverklaring",
+    "accessibility statement",
+    "vl-accessibility",
+    "toegankelijkheid",
+    "accessibility",
+    "wcag",
+    "nalevingsstatus",
+    "compliance",
+    "evaluatie",
+    "niet-toegankelijke inhoud",
+    "limitations",
+    "bestuursdecreet",
+    "compliance pagina"
+  ],
+  "examples": {
+    "components-compliance-accessibility--accessibility-default": {
+      "html": "<vl-accessibility></vl-accessibility>"
+    },
+    "components-compliance-accessibility--accessibility-self-evaluated": {
+      "html": "<vl-accessibility compliance=\"NOT_COMPLIANT\" evaluation=\"SELF_EVALUATED\"></vl-accessibility>",
+      "js": "const lorem =\n    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';\n\ndocument.querySelector('vl-accessibility').limitations = {\n    // 'Niet-naleving van het bestuursdecreet': tijdelijke limitaties.\n    withTiming: [lorem, lorem],\n    // 'Onevenredige last': permanente limitaties.\n    withoutTiming: [lorem],\n    // 'De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving'.\n    outsideApplicableLaw: [lorem, lorem, lorem],\n};"
+    },
+    "components-compliance-accessibility--accessibility-expert-evaluated": {
+      "html": "<vl-accessibility compliance=\"NOT_COMPLIANT\" evaluation=\"EXPERT_EVALUATED\"></vl-accessibility>",
+      "js": "const lorem =\n    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';\n\ndocument.querySelector('vl-accessibility').limitations = {\n    // 'Niet-naleving van het bestuursdecreet': tijdelijke limitaties.\n    withTiming: [lorem, lorem],\n    // 'Onevenredige last': permanente limitaties.\n    withoutTiming: [lorem],\n    // 'De inhoud valt buiten de werkingssfeer van de toepasselijke wetgeving'.\n    outsideApplicableLaw: [lorem, lorem, lorem],\n};"
+    },
+    "components-compliance-accessibility--accessibility-header-slot": {
+      "html": "<vl-accessibility>\n    <vl-functional-header\n        slot=\"header\"\n        title=\"Departement Omgeving &amp; Andere\"\n        sub-title=\"Toegankelijkheid en gebruiksvoorwaarden \"\n        link=\"https://omgeving.vlaanderen.be\"\n        back=\"Start\"\n        skip-to-content-id=\"#main-content\"\n    ></vl-functional-header>\n</vl-accessibility>",
+      "js": "// De story geeft ook limitaties mee. Omdat evaluation op NOT_EVALUATED (de default) blijft, toont de component ze\n// niet: onder 'Niet-toegankelijke inhoud' staat dan enkel dat die onbekend is.\nconst lorem =\n    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';\n\ndocument.querySelector('vl-accessibility').limitations = {\n    withTiming: [lorem, lorem],\n    withoutTiming: [lorem],\n    outsideApplicableLaw: [lorem, lorem, lorem],\n};"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-accessibility",
+      "name": "limitations",
+      "text": "De web-types en de argTypes beschrijven limitations zonder voorwaarde. De component toont de limitaties enkel als evaluation SELF_EVALUATED of EXPERT_EVALUATED is en compliance niet FULLY_COMPLIANT. Met NOT_EVALUATED (de default) staat onder 'Niet-toegankelijke inhoud' enkel dat die onbekend is omdat de website niet getest is, en zegt de nalevingsstatus ongeacht compliance dat de website niet voldoet. Met FULLY_COMPLIANT is de sectie 'Niet-toegankelijke inhoud' verborgen. De story 'header slot' geeft limitations mee zonder evaluation te wijzigen, dus zonder zichtbaar effect.",
+      "source": "libs/components/src/compliance/accessibility/child/inaccessible-content.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "title",
+      "text": "De story 'header slot' zet de titel van vl-functional-header met het attribuut title, dat volgens de web-types deprecated is omdat het een native tooltip geeft. De component neemt de waarde nog over als titel en verwijdert daarna het attribuut. De standaardheader van vl-accessibility gebruikt title-label; gebruik dat ook in een eigen header.",
+      "source": "libs/components/src/compliance/accessibility/stories/vl-accessibility.stories.ts"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "page": "map-baselayer",
+  "inputHash": "972f09f0adb5",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-baselayer, de basiskaartlaag van een vl-map: een WMTS- of WFS-laag die je zelf instelt met url, layer en type. Met background-layer komt er een achtergrondlaag onder, standaard CartoWeb van het Nationaal Geografisch Instituut, of met background-type en background-options een eigen XYZ-, WMS-, WMTS- of vectorlaag. Voor de GRB-kaarten zijn er de afgeleide elementen vl-map-baselayer-grb, vl-map-baselayer-grb-gray en vl-map-baselayer-grb-ortho.",
+  "keywords": [
+    "baselayer",
+    "base layer",
+    "vl-map-baselayer",
+    "basiskaart",
+    "basislaag",
+    "achtergrondlaag",
+    "background layer",
+    "wmts",
+    "grb",
+    "cartoweb",
+    "ngi",
+    "xyz",
+    "openstreetmap",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-baselayer--map-baselayer-default": {
+      "html": "<!-- Een WMTS-basislaag: de laag grb_bsk van de WMTS-dienst op url. Zonder type gebruikt vl-map-baselayer ook wmts. -->\n<vl-map>\n    <vl-map-baselayer\n        layer=\"grb_bsk\"\n        title=\"GRB basis laag\"\n        type=\"wmts\"\n        url=\"https://geo.api.vlaanderen.be/GRB/wmts\"\n    ></vl-map-baselayer>\n</vl-map>"
+    },
+    "map-baselayer--map-baselayer-background-layer": {
+      "html": "<!-- background-layer legt onder de basislaag een achtergrondlaag met opacity 0.3: zonder background-type en\n     background-options is dat de WMS-dienst CartoWeb van het Nationaal Geografisch Instituut\n     (https://cartoweb.wms.ngi.be/service, lagen crossborder en topo). -->\n<vl-map>\n    <vl-map-baselayer\n        background-layer\n        layer=\"grb_bsk\"\n        title=\"GRB basis laag\"\n        type=\"wmts\"\n        url=\"https://geo.api.vlaanderen.be/GRB/wmts\"\n    ></vl-map-baselayer>\n</vl-map>"
+    },
+    "map-baselayer--map-baselayer-custom-background-layer": {
+      "html": "<!-- Met background-type en background-options kies je zelf de achtergrondlaag; background-layer moet er ook op staan.\n     background-options is JSON met de opties van de OpenLayers-bron van dat type, hier een XYZ-bron met de tegels van\n     OpenStreetMap. -->\n<vl-map>\n    <vl-map-baselayer\n        background-layer\n        background-type=\"xyz\"\n        background-options='{\"url\":\"https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png\",\"attributions\":\"Tiles © OpenStreetMap contributors\"}'\n        layer=\"grb_bsk\"\n        title=\"GRB basis laag\"\n        type=\"wmts\"\n        url=\"https://geo.api.vlaanderen.be/GRB/wmts\"\n    ></vl-map-baselayer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-baselayer",
+      "name": "background-type",
+      "text": "De web-types zeggen dat je met background-type en background-options zelf een achtergrondlaag instelt. De code maakt een achtergrondlaag echter enkel als ook background-layer aanwezig is (_createBaseLayer en _backgroundOptions): zonder background-layer hebben background-type en background-options geen effect. De story 'vl-map-baselayer - custom background layer' zet daarom ook background-layer.",
+      "source": "libs/map/src/components/baselayer/vl-map-base-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-baselayer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-baselayer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapBaseLayer heeft geen eigen constructor en roept die van BaseHTMLElement dus zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. Het element tekent ook zelf niets: het voegt een basislaag toe aan de kaart van vl-map.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

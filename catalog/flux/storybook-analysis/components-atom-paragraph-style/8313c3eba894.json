@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "page": "components-atom-paragraph-style",
+  "inputHash": "8313c3eba894",
+  "analysedFor": "2.7.0",
+  "summary": "Interne pagina over vlParagraphStyles, de CSS van vl-paragraph als bouwblok: ze geeft de <p>-elementen in de shadow DOM van een component de classes bold en introduction, ook samen. Niet voor rechtstreeks gebruik; in een toepassing gebruik je vl-paragraph. vlParagraphStyles wordt geëxporteerd uit @domg-wc/components/atom.",
+  "keywords": [
+    "paragraph style",
+    "vlparagraphstyles",
+    "paragraafstijl",
+    "paragraph css",
+    "alinea",
+    "introductietekst",
+    "introduction",
+    "bold paragraph",
+    "typografie",
+    "typography",
+    "shadow dom",
+    "intern"
+  ],
+  "examples": {
+    "components-atom-paragraph-style--paragraph-style-default": {
+      "html": "<!-- In de shadow DOM van een component met vlParagraphStyles. De classes zijn te combineren. -->\n<p>paragraph - default</p>\n<p class=\"bold\">paragraph - bold</p>\n<p class=\"introduction\">paragraph - introduction</p>\n<p class=\"bold introduction\">paragraph - bold introduction</p>",
+      "js": "import { BaseLitElement, webComponent } from '@domg-wc/common';\nimport { vlParagraphStyles } from '@domg-wc/components/atom';\nimport { CSSResult, html, TemplateResult } from 'lit';\n\n// vlParagraphStyles stijlt de <p>-elementen in de shadow DOM van de component: de classes bold en introduction.\n@webComponent('my-component-with-paragraph')\nexport class MyComponentWithParagraph extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [vlParagraphStyles];\n    }\n\n    render(): TemplateResult {\n        return html`\n            <p class=\"introduction\">Mijn inleiding</p>\n        `;\n    }\n}"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "map-layer-wmts-layer",
+  "inputHash": "ce37dd7a31a4",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-map-wmts-layer, een WMTS-kaartlaag in een vl-map, bv. een laag van de GRB-WMTS van geo.api.vlaanderen.be. Je geeft url en layer mee; de component bouwt zelf het tegelraster en kiest zonder matrix-set de matrix set volgens de projectie van de kaart.",
+  "keywords": [
+    "wmts",
+    "wmts layer",
+    "vl-map-wmts-layer",
+    "wmts-laag",
+    "web map tile service",
+    "tegels",
+    "tiles",
+    "matrix set",
+    "matrix-set",
+    "grb",
+    "kaartlaag",
+    "map layer",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-layer-wmts-layer--map-wmts-layer-default": {
+      "html": "<!-- De laag toont de laag grb_sel van de GRB-WMTS boven de grijze GRB-basiskaart. Zonder matrix-set kiest de\n     component BPL2008VL, omdat de kaart in Lambert 2008 staat (lambert2008). -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-wmts-layer\n        layer=\"grb_sel\"\n        name=\"GRB Wegenkaart\"\n        url=\"https://geo.api.vlaanderen.be/GRB/wmts\"\n    ></vl-map-wmts-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-wmts-layer",
+      "name": "matrix-set",
+      "text": "De web-types en de argTypes geven matrix-set de default BPL2008VL. Zonder het attribuut kiest de component de matrix set echter volgens de projectie van de kaart: BPL2008VL voor Lambert 2008 (lambert2008) en BPL72VL voor Lambert 72; WGS84VL als de laag geen direct kind van een vl-map is en dus geen projectie heeft.",
+      "source": "libs/map/src/components/layer/wmts-layer/vl-map-wmts-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-wmts-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-wmts-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

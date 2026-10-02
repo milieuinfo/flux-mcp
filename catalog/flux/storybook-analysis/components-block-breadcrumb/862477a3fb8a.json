@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "page": "components-block-breadcrumb",
+  "inputHash": "862477a3fb8a",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-breadcrumb met vl-breadcrumb-item, de kruimelnavigatie die de plaats van de huidige pagina in een hiërarchie toont. Items zijn links (href), knoppen (type=\"button\", bv. om een submenu in een vl-popover te openen) of tekst zonder href en type; meng geen links en knoppen in één breadcrumb.",
+  "keywords": [
+    "breadcrumb",
+    "vl-breadcrumb",
+    "vl-breadcrumb-item",
+    "kruimelpad",
+    "broodkruimel",
+    "kruimelnavigatie",
+    "navigatie",
+    "navigation",
+    "hiërarchie",
+    "huidige pagina",
+    "submenu",
+    "popover"
+  ],
+  "examples": {
+    "components-block-breadcrumb--breadcrumb-default": {
+      "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item href=\"#\">Vlaanderen Intern</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Regelgeving</vl-breadcrumb-item>\n    <vl-breadcrumb-item href=\"#\">Webuniversum</vl-breadcrumb-item>\n    <vl-breadcrumb-item>Componenten</vl-breadcrumb-item>\n</vl-breadcrumb>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent } from '@domg-wc/components/block';\n\n// vl-breadcrumb registreert vl-breadcrumb-item niet zelf.\nregisterWebComponents([VlBreadcrumbComponent, VlBreadcrumbItemComponent]);"
+    },
+    "components-block-breadcrumb--breadcrumb-buttons": {
+      "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item type=\"button\">Natuur</vl-breadcrumb-item>\n    <div>\n        <vl-breadcrumb-item id=\"submenu-fauna-flora\" type=\"button\">Flora</vl-breadcrumb-item>\n        <vl-popover distance=\"6\" for=\"submenu-fauna-flora\" hide-arrow placement=\"bottom-start\" trigger=\"click hover\">\n            <vl-popover-action-list>\n                <vl-popover-action icon=\"nature-leaf\">Flora</vl-popover-action>\n                <vl-popover-action icon=\"programming-bug\">Fauna</vl-popover-action>\n            </vl-popover-action-list>\n        </vl-popover>\n    </div>\n    <vl-breadcrumb-item type=\"button\">Bomen</vl-breadcrumb-item>\n</vl-breadcrumb>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent registreert zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlPopoverComponent]);\n\n// vl-breadcrumb maakt van elk kind een stap: de <div> houdt het item Flora en zijn popover samen in één stap.\n// De popover opent zelf bij klik en hover op het element met id submenu-fauna-flora.\nconst [natuur, bomen] = document.querySelectorAll('vl-breadcrumb > vl-breadcrumb-item');\nnatuur.addEventListener('click', () => {\n    console.log('click Natuur');\n});\nbomen.addEventListener('click', () => {\n    console.log('click Bomen');\n});\ndocument.querySelector('vl-popover-action[icon=\"nature-leaf\"]').addEventListener('click', () => {\n    console.log('click flora');\n});\ndocument.querySelector('vl-popover-action[icon=\"programming-bug\"]').addEventListener('click', () => {\n    console.log('click fauna');\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover hij zich plaatst. De code van vl-popover leest for als attribuut (attribute: 'for'), maar de web-types van 2.14.0 geven for enkel als JS-property, niet als attribuut.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "icon toont een icoon voor de tekst van de actie. Het staat in de code van vl-popover-action, maar de web-types van 2.14.0 kennen voor vl-popover-action geen enkel attribuut of property.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "placement",
+      "text": "De story vl-breadcrumb - buttons zet placement=\"bottom-start\". De web-types van 2.14.0 geven als type van placement enkel 'top' | 'right' | 'bottom' | 'left', terwijl de beschrijving van hetzelfde attribuut een suffix -start of -end toelaat. De code typeert placement als Placement van @floating-ui/dom (libs/components/src/block/popover/vl-popover.defaults.ts), dat bottom-start kent; de waarde is dus geldig.",
+      "source": "libs/components/src/block/breadcrumb/stories/vl-breadcrumb.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "trigger",
+      "text": "De story vl-breadcrumb - buttons zet trigger=\"click hover\". De web-types van 2.14.0 geven als type van trigger één waarde, 'click' | 'focus' | 'hover', maar de beschrijving laat toe om acties met spaties te combineren, en de code test elke actie met includes (libs/components/src/block/popover/vl-floating-ui.controller.ts). De combinatie is dus geldig.",
+      "source": "libs/components/src/block/breadcrumb/stories/vl-breadcrumb.stories.ts"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "page": "recepten-debounce",
+  "inputHash": "8440406c9efb",
+  "analysedFor": "2.20.0",
+  "summary": "De functie debounce uit @domg-wc/common, die een functie pas aanroept nadat er een aantal milliseconden geen nieuwe aanroep kwam. Het voorbeeld beperkt zo de verwerking van het vl-input event van vl-input-field tot één keer per 200 ms stilte.",
+  "keywords": [
+    "debounce",
+    "throttle",
+    "@domg-wc/common",
+    "utility",
+    "util",
+    "hulpfunctie",
+    "helper function",
+    "vl-input",
+    "vl-input-field",
+    "event",
+    "input event",
+    "rate limiting",
+    "performance"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld noemt de parameter van de callback event, maar debounce roept de functie aan met de lijst van argumenten, niet gespreid: setTimeout(() => func(args), ms). De callback krijgt dus [event]; gebruik destructuring, zoals de stories van vl-rich-data doen: debounce(([event]) => { … }, 200). throttle werkt op dezelfde manier.",
+      "source": "libs/common/src/util/utils.ts"
+    }
+  ]
+}

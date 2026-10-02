@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "page": "components-block-pager",
+  "inputHash": "d0a62bd727d8",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-pager, de paginering onder een lijst of tabel: het toont welke rijen zichtbaar zijn (bv. 1-7 van 50), links naar Vorige en Volgende en de paginanummers. Je stuurt het met total-items, items-per-page en current-page en reageert op het event change om de rijen van de nieuwe pagina te laden; pagination-disabled laat de paginanummers weg, align-center en align-right lijnen de pager uit. De pagina heeft geen eigen tekst, enkel de stories en de API.",
+  "keywords": [
+    "pager",
+    "paginering",
+    "pagination",
+    "vl-pager",
+    "paginanummers",
+    "page numbers",
+    "vorige volgende",
+    "previous next",
+    "tabel paginering",
+    "table pagination",
+    "current-page",
+    "items-per-page"
+  ],
+  "examples": {
+    "components-block-pager--pager-default": {
+      "html": "<vl-pager total-items=\"50\" items-per-page=\"7\" current-page=\"1\"></vl-pager>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlIconComponent } from '@domg-wc/components/atom';\nimport { VlPagerComponent } from '@domg-wc/components/block';\n\n// vl-pager gebruikt vl-icon voor de pijlen, maar registreert het niet zelf.\nregisterWebComponents([VlPagerComponent, VlIconComponent]);\n\n// change volgt wanneer de huidige pagina wijzigt; event.detail bevat currentPage, totalPage, itemsPerPage en\n// totalItems. De pager toont zelf geen data: laad hier de rijen van de nieuwe pagina.\ndocument.querySelector('vl-pager').addEventListener('change', (event) => {\n    console.log(event.detail.currentPage);\n});"
+    },
+    "components-block-pager--pager-single-page": {
+      "html": "<vl-pager total-items=\"10\" items-per-page=\"10\" current-page=\"1\"></vl-pager>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlIconComponent } from '@domg-wc/components/atom';\nimport { VlPagerComponent } from '@domg-wc/components/block';\n\n// vl-pager gebruikt vl-icon voor de pijlen, maar registreert het niet zelf.\nregisterWebComponents([VlPagerComponent, VlIconComponent]);\n\ndocument.querySelector('vl-pager').addEventListener('change', (event) => {\n    console.log(event.detail.currentPage);\n});"
+    },
+    "components-block-pager--pager-without-page-items": {
+      "html": "<vl-pager total-items=\"100\" items-per-page=\"10\" current-page=\"1\" pagination-disabled></vl-pager>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlIconComponent } from '@domg-wc/components/atom';\nimport { VlPagerComponent } from '@domg-wc/components/block';\n\n// vl-pager gebruikt vl-icon voor de pijlen, maar registreert het niet zelf.\nregisterWebComponents([VlPagerComponent, VlIconComponent]);\n\ndocument.querySelector('vl-pager').addEventListener('change', (event) => {\n    console.log(event.detail.currentPage);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-pager",
+      "text": "De web-types en de argTypes geven als default total-items 100, items-per-page 10 en current-page 1. De code kent enkel die voor current-page (die valt terug op 1): zonder total-items of items-per-page rekent vl-pager met 0, zodat het bereik en het aantal pagina's niet kloppen. Zet ze altijd, zoals de stories doen.",
+      "source": "libs/components/src/block/pager/vl-pager.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-pager",
+      "text": "Het event change heeft in detail currentPage, totalPage, itemsPerPage en totalItems: totalPage, niet totalPages zoals in het geëxporteerde type Pagination. Het volgt niet enkel op een klik, zoals de web-types zeggen, maar op elke wijziging van current-page naar een andere pagina, ook als je het attribuut zelf zet (niet bij de eerste waarde). Het event bubbelt, maar is niet composed.",
+      "source": "libs/components/src/block/pager/vl-pager.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-pager",
+      "name": "pagination-disabled",
+      "text": "Volgens de web-types schakelt pagination-disabled de paginanummers uit ('determines if the page links should be disabled'). De code laat ze weg: enkel het bereik en Vorige en Volgende blijven, zoals in de story vl-pager - without page items.",
+      "source": "libs/components/src/block/pager/vl-pager.component.ts"
+    }
+  ]
+}

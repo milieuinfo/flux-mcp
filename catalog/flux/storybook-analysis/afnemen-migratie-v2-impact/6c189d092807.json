@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "page": "afnemen-migratie-v2-impact",
+  "inputHash": "6c189d092807",
+  "analysedFor": "2.1.0",
+  "summary": "Naslag per component van wat de migratie naar v2 verandert: welk legacy element of '-next'-component uit v1 door welke v2-component of style-class vervangen wordt, uit welk artifact, en wat geschrapt is. Gebruik ze om v1-markup zoals `<button is=\"vl-button\">` of `<vl-button-next>` om te zetten naar v2.",
+  "keywords": [
+    "migratie impact",
+    "migration",
+    "v1 naar v2",
+    "legacy componenten",
+    "deprecated",
+    "vervanging",
+    "replacement",
+    "next componenten",
+    "is attribuut",
+    "customized built-in elements",
+    "breaking changes",
+    "style classes",
+    "vl-grid",
+    "vl-group",
+    "vl-button"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link naar de cta-link documentatie wijst naar components-atoms-button, een pagina die in 2.1.0 niet bestaat. De pagina van vl-button is components-atom-button; de tabel eronder linkt wel juist.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "name": "type",
+      "text": "Onder 'nieuw in v2' staat de ghost variant als `<vl-button type=\"ghost\">`. In 2.1.0 is ghost een boolean attribuut (`<vl-button ghost>`); `type` is het type van de native button, met default 'button' (libs/components/src/atom/button/vl-button.component.ts en vl-button.defaults.ts).",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "name": "cta-link",
+      "text": "Onder 'nieuw in v2' staat de CTA link als `<vl-button cta-link>`, zonder waarde. In 2.1.0 is `cta-link` geen boolean maar de url van de link (default ''): render() toont enkel een link als ctaLink niet leeg is, dus zonder waarde blijft het een gewone button (libs/components/src/atom/button/vl-button.component.ts). De story 'vl-button - cta-link' gebruikt `cta-link=\"https://www.vlaanderen.be\"` (libs/components/src/atom/button/stories/vl-button.stories.ts).",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De link bij Image wijst naar styles-base-image, een pagina die in 2.1.0 niet bestaat.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De tabellen Margin en Padding geven als v2-gebruik `class=\"vl-margin\"` en `class=\"vl-padding\"`. Die klasses bestaan in 2.1.0 niet: @domg-wc/styles kent enkel de modifiers `vl-margin--small`, `--medium`, `--no`, `--no-bottom` en `--no-top` (libs/styles/src/layout/margin/vl-margin.css.ts), en hetzelfde voor `vl-padding--` (libs/styles/src/layout/padding/vl-padding.css.ts). De pagina's styles-layout-afnemers-margin en styles-layout-afnemers-padding gebruiken ook enkel die modifiers.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De tabel Stacked geeft als v2-gebruik `class=\"vl-stacked\"`. Die klasse bestaat in 2.1.0 niet: @domg-wc/styles kent enkel `vl-stacked-small`, `vl-stacked-medium` en `vl-stacked-large` (libs/styles/src/layout/stacked/vl-stacked.css.ts). De pagina styles-layout-afnemers-stacked gebruikt ook enkel die klasses.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De tabel Input Group geeft als v2-gebruik `<div class=\"vl-group--input-group\">`. In 2.1.0 werkt die modifier enkel samen met `vl-group`: de regel staat als `&.vl-group--input-group` binnen `.vl-group` (libs/styles/src/layout/group/vl-group.css.ts). De pagina components-form-input-group gebruikt `<div class=\"vl-group vl-group--input-group\">`.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-button-pill",
+      "text": "Volgens de pagina is de Button Pill in v2 geschrapt en verhuist de functionaliteit naar `<vl-pill clickable>`. De web-types van 2.1.0 vermelden toch nog een element `vl-button-pill` (attributen custom-css en type), met een doc-url naar components-block-pill-button-pill, een pagina die in 2.1.0 niet bestaat. In de code van 2.1.0 bestaat het element niet: libs/components/src/block/pill bevat enkel vl-pill. Gebruik `<vl-pill clickable>`.",
+      "source": "libs/components/src/block/block.web-types.json"
+    }
+  ]
+}

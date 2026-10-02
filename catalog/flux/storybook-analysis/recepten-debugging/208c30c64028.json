@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "page": "recepten-debugging",
+  "inputHash": "208c30c64028",
+  "analysedFor": "2.20.0",
+  "summary": "Hoe je de TypeScript-broncode van de Flux-componenten debugt met de .js.map-bestanden in de npm-packages. Bundel je je toepassing met webpack, voeg dan source-map-loader toe aan de webpack-configuratie, zodat die map-bestanden mee in je bundel komen.",
+  "keywords": [
+    "debugging",
+    "debuggen",
+    "source maps",
+    "sourcemap",
+    ".js.map",
+    "map files",
+    "source-map-loader",
+    "webpack",
+    "webpack configuratie",
+    "broncode",
+    "typescript",
+    "devtools",
+    "bundler"
+  ],
+  "examples": {},
+  "notes": []
+}

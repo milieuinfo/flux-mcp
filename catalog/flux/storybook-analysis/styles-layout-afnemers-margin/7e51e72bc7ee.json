@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "styles-layout-afnemers-margin",
+  "inputHash": "7e51e72bc7ee",
+  "analysedFor": "2.4.0",
+  "summary": "Utility-klassen om de margin van een element aan te passen. vl-margin--small en vl-margin--medium zetten de marge boven en onder op --vl-spacing--small (1.5rem) of --vl-spacing--medium (3rem) en links en rechts op 0, op schermen tot 767px telkens op --vl-spacing--normal (2rem); vl-margin--no, vl-margin--no-top en vl-margin--no-bottom zetten de marge rondom, bovenaan of onderaan op 0. Gebruik bij voorkeur deze klassen in plaats van eigen marges.",
+  "keywords": [
+    "margin",
+    "marge",
+    "vl-margin",
+    "vl-margin--small",
+    "vl-margin--medium",
+    "vl-margin--no",
+    "spacing",
+    "witruimte",
+    "whitespace",
+    "no margin",
+    "margin-top",
+    "margin-bottom",
+    "utility class"
+  ],
+  "examples": {
+    "styles-layout-afnemers-margin--margin-default": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-content krijgt hier zelf een margin van 15px; normaal bepaalt de container\n       (bv. vl-section) die marge. */\n    .sb-container {\n        width: 300px;\n        background-color: lightblue;\n        border: black 1px dashed;\n    }\n\n    .sb-content {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        margin: 15px;\n        height: 50px;\n        background-color: white;\n        border: rgb(152, 191, 34) 5px solid;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content\">default</div>\n</div>"
+    },
+    "styles-layout-afnemers-margin--margin-small": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-content krijgt hier zelf een margin van 15px; normaal bepaalt de container\n       (bv. vl-section) die marge. */\n    .sb-container {\n        width: 300px;\n        background-color: lightblue;\n        border: black 1px dashed;\n    }\n\n    .sb-content {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        margin: 15px;\n        height: 50px;\n        background-color: white;\n        border: rgb(152, 191, 34) 5px solid;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content vl-margin--small\">vl-margin--small</div>\n</div>"
+    },
+    "styles-layout-afnemers-margin--margin-medium": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-content krijgt hier zelf een margin van 15px; normaal bepaalt de container\n       (bv. vl-section) die marge. */\n    .sb-container {\n        width: 300px;\n        background-color: lightblue;\n        border: black 1px dashed;\n    }\n\n    .sb-content {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        margin: 15px;\n        height: 50px;\n        background-color: white;\n        border: rgb(152, 191, 34) 5px solid;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content vl-margin--medium\">vl-margin--medium</div>\n</div>"
+    },
+    "styles-layout-afnemers-margin--margin-no": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-content krijgt hier zelf een margin van 15px; normaal bepaalt de container\n       (bv. vl-section) die marge. */\n    .sb-container {\n        width: 300px;\n        background-color: lightblue;\n        border: black 1px dashed;\n    }\n\n    .sb-content {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        margin: 15px;\n        height: 50px;\n        background-color: white;\n        border: rgb(152, 191, 34) 5px solid;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content vl-margin--no\">vl-margin--no</div>\n</div>"
+    },
+    "styles-layout-afnemers-margin--margin-no-bottom": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-content krijgt hier zelf een margin van 15px; normaal bepaalt de container\n       (bv. vl-section) die marge. */\n    .sb-container {\n        width: 300px;\n        background-color: lightblue;\n        border: black 1px dashed;\n    }\n\n    .sb-content {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        margin: 15px;\n        height: 50px;\n        background-color: white;\n        border: rgb(152, 191, 34) 5px solid;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content vl-margin--no-bottom\">vl-margin--no-bottom</div>\n</div>"
+    },
+    "styles-layout-afnemers-margin--margin-no-top": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-content krijgt hier zelf een margin van 15px; normaal bepaalt de container\n       (bv. vl-section) die marge. */\n    .sb-container {\n        width: 300px;\n        background-color: lightblue;\n        border: black 1px dashed;\n    }\n\n    .sb-content {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        margin: 15px;\n        height: 50px;\n        background-color: white;\n        border: rgb(152, 191, 34) 5px solid;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content vl-margin--no-top\">vl-margin--no-top</div>\n</div>"
+    }
+  },
+  "notes": []
+}

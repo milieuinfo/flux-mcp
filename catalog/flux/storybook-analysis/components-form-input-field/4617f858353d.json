@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "components-form-input-field",
+  "inputHash": "4617f858353d",
+  "analysedFor": "2.16.0",
+  "summary": "Documentatie van vl-input-field, het invoerveld voor één regel tekst of een getal in een formulier. De pagina toont validatie met required, min-length, pattern en de regex-property, en blur-validation; voor een datum, een bestand, een checkbox, radio's of een mask zijn er aparte componenten.",
+  "keywords": [
+    "input field",
+    "vl-input-field",
+    "invoerveld",
+    "tekstveld",
+    "text input",
+    "number input",
+    "formulier",
+    "form control",
+    "validatie",
+    "pattern",
+    "regex",
+    "blur-validation",
+    "placeholder",
+    "input-group"
+  ],
+  "examples": {
+    "components-form-input-field--input-field-default": {
+      "html": "<vl-input-field></vl-input-field>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlInputFieldComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlInputFieldComponent]);\n\n// vl-change volgt op elke wijziging van de waarde, ook door code; vl-input enkel op invoer door de gebruiker.\n// event.detail.value is de nieuwe waarde.\ndocument.querySelector('vl-input-field').addEventListener('vl-input', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-input-field--input-field-number": {
+      "html": "<vl-input-field type=\"number\"></vl-input-field>"
+    },
+    "components-form-input-field--input-field-blur-validation": {
+      "html": "<vl-input-field required blur-validation placeholder=\"Min. 3 letters\" min-length=\"3\" pattern=\"^[a-zA-Z]+$\"></vl-input-field>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-input-field",
+      "name": "input-group",
+      "text": "De template van de stories bindt het arg inputGroup als inputGroup=${…}. HTML kent geen hoofdletters in attribuutnamen, dus dat zet een attribuut inputgroup en niet input-group: de control input-group doet in Storybook niets. In je code schrijf je input-group, zoals de web-types en de pagina Input Group.",
+      "source": "libs/components/src/form/input-field/stories/vl-input-field.stories.ts"
+    }
+  ]
+}

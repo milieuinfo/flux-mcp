@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "page": "map-side-sheet-side-sheet",
+  "inputHash": "6353b911831f",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-side-sheet, een uitklapbaar zijpaneel over een vl-map met een toggle-knop, bv. voor een vl-map-layer-switcher of eigen inhoud. Het erft van vl-side-sheet, maar staat standaard links en absoluut gepositioneerd binnen de kaart; met right komt het rechts.",
+  "keywords": [
+    "side sheet",
+    "zijpaneel",
+    "map side sheet",
+    "uitklapbaar paneel",
+    "collapsible panel",
+    "drawer",
+    "sidebar",
+    "toggle",
+    "kaartpaneel",
+    "links",
+    "rechts",
+    "twee zijpanelen",
+    "vl-map-side-sheet",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-side-sheet-side-sheet--map-side-sheet-default": {
+      "html": "<!-- vl-map-side-sheet staat in de vl-map, standaard links en absoluut gepositioneerd over de kaart (het zet zelf left\n     en absolute). De toggle-knop opent en sluit het zijpaneel; met open staat het bij het laden open. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-side-sheet>\n        <div>Plaats hier je zijpaneel content.</div>\n    </vl-map-side-sheet>\n</vl-map>"
+    },
+    "map-side-sheet-side-sheet--map-side-sheet-dual": {
+      "html": "<!-- Twee zijpanelen op dezelfde kaart: het eerste links (de default van vl-map-side-sheet), het tweede met right\n     rechts. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-side-sheet>\n        <div>Plaats hier je zijpaneel content.</div>\n    </vl-map-side-sheet>\n    <vl-map-side-sheet right>\n        <div>Plaats hier je zijpaneel content.</div>\n    </vl-map-side-sheet>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-side-sheet",
+      "name": "toggle",
+      "text": "Methode toggle(), geërfd van vl-side-sheet: sluit het zijpaneel als het open is, en opent het anders. De pagina van vl-side-sheet beschrijft ze onder 'Openen en sluiten zonder knop', maar de web-types van vl-map-side-sheet hebben geen js-sectie, net als die van vl-side-sheet.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-side-sheet",
+      "name": "open",
+      "text": "Methode open(), geërfd van vl-side-sheet: opent het zijpaneel door het attribuut open te zetten. De pagina van vl-side-sheet beschrijft ze onder 'Openen en sluiten zonder knop'.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-side-sheet",
+      "name": "close",
+      "text": "Methode close(), geërfd van vl-side-sheet: sluit het zijpaneel door het attribuut open te verwijderen. De pagina van vl-side-sheet beschrijft ze onder 'Openen en sluiten zonder knop'.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-side-sheet",
+      "name": "onClose",
+      "text": "Methode onClose(callback), geërfd van vl-side-sheet: roept de callback aan na het sluiten van het zijpaneel. Ze staat ook niet in de documentatie van vl-side-sheet (in de code: 'TODO storybook documentatie'). De code roept de callback aan in _handleOnClose, en dat loopt ook als het zijpaneel al dicht was: bij het in de DOM hangen van vl-map-side-sheet, en zonder custom-icon bij een wijziging van right. Sluit je een open zijpaneel met close() of de toggle-knop, dan loopt _handleOnClose twee keer (via de wijziging van open en rechtstreeks in close()), en de callback dus ook.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.component.ts"
+    }
+  ]
+}

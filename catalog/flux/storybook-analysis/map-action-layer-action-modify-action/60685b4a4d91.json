@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "map-action-layer-action-modify-action",
+  "inputHash": "60685b4a4d91",
+  "analysedFor": "2.13.0",
+  "summary": "Documentatie van vl-map-modify-action, een kaartactie waarmee de gebruiker bestaande features aanpast op de vl-map-features-layer waarin de actie staat, of op de laag die je met het attribuut layer aanwijst: klik een feature aan en versleep dan de punten van haar geometrie. Met snapping en vl-map-wfs-layer-elementen in de actie snappen de punten op de features van die WFS-lagen; de aangepaste feature krijg je via de methode onModify(callback).",
+  "keywords": [
+    "modify action",
+    "vl-map-modify-action",
+    "feature aanpassen",
+    "feature bewerken",
+    "geometrie wijzigen",
+    "edit feature",
+    "modify geometry",
+    "hoekpunt verslepen",
+    "vertex",
+    "snapping",
+    "snap",
+    "kaartactie",
+    "map action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-layer-action-modify-action--map-modify-action-default": {
+      "html": "<!-- De actie past features aan van de vl-map-features-layer waarin ze staat: klik een feature aan en versleep dan de\n     punten van haar geometrie. De features staan in Lambert 72, daarom projection-code=\"EPSG:31370\" op een kaart in\n     Lambert 2008. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-modify-action></vl-map-modify-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n        <vl-map-layer-circle-style border-size=\"2\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerStyle,\n    VlMapModifyAction,\n} from '@domg-wc/map';\n\n// De features als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370): twee punten, een lijn en een polygoon.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [127836.54, 200879.51] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: { type: 'Point', coordinates: [122161.53, 185358.26] },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: {\n                type: 'LineString',\n                coordinates: [\n                    [107836.54, 170879.51],\n                    [102161.53, 192358.26],\n                ],\n            },\n        },\n        {\n            type: 'Feature',\n            id: 4,\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [147055.0, 197908.0],\n                        [157055.0, 197908.0],\n                        [157055.0, 187908.0],\n                        [147055.0, 187908.0],\n                        [147055.0, 197908.0],\n                    ],\n                ],\n            },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-modify-action').active = true;"
+    },
+    "map-action-layer-action-modify-action--map-modify-action-snapping": {
+      "html": "<!-- Met snapping en een vl-map-wfs-layer in de actie snappen de punten die je versleept op de features van die\n     WFS-laag, binnen snapping-pixel-tolerance pixels. De WFS-laag komt niet zelf op de kaart: zolang de actie actief\n     is, toont ze de features in een eigen laag. Door max-resolution=\"4\" zijn ze pas zichtbaar als je inzoomt tot een\n     resolutie onder 4. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-modify-action snapping snapping-pixel-tolerance=\"1000\">\n            <vl-map-wfs-layer\n                name=\"Stromend waterlichamen\"\n                url=\"https://geoserver.vmm.be/geoserver/vmm/wfs\"\n                layers=\"owl_l\"\n                max-resolution=\"4\"\n            ></vl-map-wfs-layer>\n        </vl-map-modify-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n        <vl-map-layer-circle-style border-size=\"2\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerStyle,\n    VlMapModifyAction,\n    VlMapWfsLayer,\n} from '@domg-wc/map';\n\n// Eén punt als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370).\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [151285.5138477709, 211586.43498009123] },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-modify-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-modify-action",
+      "name": "snapping",
+      "text": "De web-types en de argTypes geven snapping als attribuut met standaard false: zonder snapping zou de actie niet snappen. De code (__snappingOptions) snapt echter altijd. Zonder vl-map-wfs-layer in de actie geeft __snappingOptions true terug, los van het attribuut: de actie snapt dan op haar eigen laag, met een vaste tolerantie van 7 pixels (VlSnapInteraction in libs/map/src/actions/snap/snap-interaction.ts). Met vl-map-wfs-layer-elementen in de actie test ze getAttribute('snapping') !== undefined, en getAttribute geeft null voor een ontbrekend attribuut; die test is dus altijd waar, en de actie snapt altijd op die lagen, binnen snapping-pixel-tolerance pixels (standaard 10). Het attribuut snapping heeft in 2.13.0 dus geen effect, en snapping-pixel-tolerance werkt enkel met vl-map-wfs-layer-elementen in de actie. De basisklasse van de draw-acties, VlMapDrawAction (libs/map/src/components/action/draw-action/vl-map-draw-action.ts), test hetzelfde attribuut wel correct met !== null.",
+      "source": "libs/map/src/components/action/layer-action/modify-action/vl-map-modify-action.ts"
+    }
+  ]
+}

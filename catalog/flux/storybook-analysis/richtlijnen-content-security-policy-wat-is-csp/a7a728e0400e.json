@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-content-security-policy-wat-is-csp",
+  "inputHash": "a7a728e0400e",
+  "analysedFor": "2.20.0",
+  "summary": "Inleiding tot Content Security Policy (CSP): een HTTP-header die per type bron (script, style, img, font, frame, …) bepaalt wat de browser mag laden en uitvoeren, en die inline scripts en styles standaard blokkeert tenzij je ze toestaat met 'unsafe-inline', nonces of hashes. De pagina legt uit hoe CSP beschermt tegen cross-site scripting (stored, reflected, DOM-based en CSS XSS), met voorbeelden van zulke aanvallen en links naar achtergrondartikels.",
+  "keywords": [
+    "content security policy",
+    "csp",
+    "beveiliging",
+    "security",
+    "http header",
+    "cross-site scripting",
+    "xss",
+    "stored xss",
+    "reflected xss",
+    "dom based xss",
+    "inline script",
+    "nonce",
+    "unsafe-inline"
+  ],
+  "examples": {},
+  "notes": []
+}

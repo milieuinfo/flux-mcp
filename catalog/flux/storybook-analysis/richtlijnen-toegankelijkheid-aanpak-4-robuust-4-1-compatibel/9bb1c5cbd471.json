@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-4-robuust-4-1-compatibel",
+  "inputHash": "9bb1c5cbd471",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 4.1 Compatibel: een website of app moet werken met alle browsers en ondersteunende technologieën, zoals schermlezers. Met 4.1.2 Naam, rol, waarde (brons[basis]): bedienbare onderdelen krijgen een toegankelijke naam en rol, bv. met aria-label, aria-labelledby of role=\"group\"; en 4.1.3 Statusberichten (zilver[plus]): meld wijzigingen zoals zoekresultaten of een bevestiging met role=\"status\". Met HTML-voorbeelden uit de WCAG-technieken ARIA14, ARIA16 en ARIA22.",
+  "keywords": [
+    "compatibel",
+    "compatible",
+    "naam rol waarde",
+    "name role value",
+    "statusberichten",
+    "status messages",
+    "aria-label",
+    "aria-labelledby",
+    "role status",
+    "aria-live",
+    "schermlezer",
+    "screen reader",
+    "ondersteunende technologie",
+    "assistive technology",
+    "toegankelijkheid"
+  ],
+  "examples": {},
+  "notes": []
+}

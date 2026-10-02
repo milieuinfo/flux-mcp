@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "page": "map-current-location",
+  "inputHash": "bbf9b0cdadd3",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-current-location, een knop op een vl-map die de kaart centreert op de huidige locatie van de gebruiker, opgevraagd via de geolocatie van de browser, en inzoomt tot het niveau in zoom (standaard 10). Met tooltip pas je de tooltip van de knop aan (standaard 'Huidige locatie').",
+  "keywords": [
+    "huidige locatie",
+    "current location",
+    "mijn locatie",
+    "my location",
+    "locate me",
+    "geolocatie",
+    "geolocation",
+    "gps",
+    "locatieknop",
+    "kaart centreren",
+    "center map",
+    "zoom",
+    "vl-map-current-location",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-current-location--map-current-location-default": {
+      "html": "<!-- vl-map-current-location staat in de vl-map. Bij een klik op de knop vraagt het de positie op met\n     navigator.geolocation.getCurrentPosition (de browser vraagt de gebruiker daarvoor toestemming), zet die om naar\n     de projectie van de kaart, centreert de kaart erop en zoomt in tot zoom (standaard 10). De tooltip van de knop is\n     standaard 'Huidige locatie'. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-current-location></vl-map-current-location>\n</vl-map>"
+    }
+  },
+  "notes": []
+}

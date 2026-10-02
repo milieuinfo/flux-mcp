@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "page": "components-block-steps-step",
+  "inputHash": "449fba79aeb9",
+  "analysedFor": "2.4.0",
+  "summary": "API-pagina van vl-step, één stap binnen vl-steps, met slots voor icoon, sub-icoon, titel, titelannotatie, subtitel en content. Toont uitklapbare stappen (toggleable, als accordion) en de toestanden highlighted, disabled, success, warning en error via het attribuut type.",
+  "keywords": [
+    "stap",
+    "step",
+    "vl-step",
+    "vl-steps",
+    "stappenplan",
+    "procedure",
+    "toggleable step",
+    "accordion",
+    "uitklapbaar",
+    "status",
+    "highlighted",
+    "disabled step",
+    "success",
+    "error"
+  ],
+  "examples": {
+    "components-block-steps-step--steps-toggleable": {
+      "html": "<vl-steps>\n    <vl-step toggleable>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"subtitle\">Dit is de eerste subtitel.</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n    <vl-step toggleable>\n        <span slot=\"icon\">2</span>\n        <span slot=\"title\">Stap 2: tweede actie</span>\n        <span slot=\"subtitle\">Dit is de tweede subtitel.</span>\n        <span slot=\"content\">Dit is de tweede stap content.</span>\n    </vl-step>\n    <vl-step toggleable>\n        <span slot=\"icon\">3</span>\n        <span slot=\"title\">Stap 3: derde actie</span>\n        <span slot=\"subtitle\">Dit is de derde subtitel.</span>\n        <span slot=\"content\">Dit is de derde stap content.</span>\n    </vl-step>\n</vl-steps>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlStepsComponent } from '@domg-wc/components/block';\n\n// vl-steps registreert zelf vl-step en vl-duration-step; @domg-wc/components/block exporteert enkel VlStepsComponent.\nregisterWebComponents([VlStepsComponent]);\n\n// In 2.4.0 geeft vl-step geen event naar buiten bij het openen of sluiten van een stap."
+    },
+    "components-block-steps-step--steps-states": {
+      "html": "<vl-steps>\n    <vl-step>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"subtitle\">Dit is de eerste subtitel.</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n    <vl-step type=\"highlighted\">\n        <span slot=\"icon\">2</span>\n        <span slot=\"title\">Stap 2: tweede actie</span>\n        <span slot=\"subtitle\">Dit is de tweede subtitel.</span>\n        <span slot=\"content\">Dit is de tweede stap content.</span>\n    </vl-step>\n    <vl-step type=\"disabled\">\n        <span slot=\"icon\">3</span>\n        <span slot=\"title\">Stap 3: derde actie</span>\n        <span slot=\"subtitle\">Dit is de derde subtitel.</span>\n        <span slot=\"content\">Deze stap is geannuleerd.</span>\n    </vl-step>\n    <vl-step type=\"success\">\n        <span slot=\"icon\">4</span>\n        <span slot=\"title\">Stap 4: vierde actie</span>\n        <span slot=\"subtitle\">Dit is de vierde subtitel.</span>\n        <span slot=\"content\">Dit is de vierde stap content.</span>\n    </vl-step>\n    <vl-step type=\"warning\">\n        <span slot=\"icon\">5</span>\n        <span slot=\"title\">Stap 5: vijfde actie</span>\n        <span slot=\"subtitle\">Dit is de vijfde subtitel.</span>\n        <span slot=\"content\">Dit is de vijfde stap content.</span>\n    </vl-step>\n    <vl-step type=\"error\">\n        <span slot=\"icon\">6</span>\n        <span slot=\"title\">Stap 6: zesde actie</span>\n        <span slot=\"subtitle\">Dit is de zesde subtitel.</span>\n        <span slot=\"content\">Dit is de zesde stap content.</span>\n    </vl-step>\n</vl-steps>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "icon",
+      "text": "Slot voor het hoofdicoon van de stap, in de stories het nummer van de stap. De web-types van 2.4.0 noemen geen enkel slot van vl-step; de stories gebruiken icon, title, subtitle en content.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "sub-icon",
+      "text": "Slot voor een sub-icoon bij het hoofdicoon.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "title",
+      "text": "Slot voor de titel van de stap, in een h3. Bij een toggleable stap staat de titel in de knop die de stap opent en sluit.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "title-annotation",
+      "text": "Slot voor een annotatie naast de titel. vl-step kijkt enkel bij de eerste render of het slot gevuld is; een annotatie die je later toevoegt, verschijnt niet.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "subtitle",
+      "text": "Slot voor de subtitel onder de titel.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "content",
+      "text": "Slot voor de inhoud van de stap; bij een toggleable stap klapt die open en dicht.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    }
+  ]
+}

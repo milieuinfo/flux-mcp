@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "page": "recepten-css-styling",
+  "inputHash": "2d62faacf63c",
+  "analysedFor": "2.1.0",
+  "summary": "Hoe de styling van Flux werkt: de globale CSS komt eenmalig op het document, en in je eigen componenten met een shadow DOM moet je die styling zelf opnieuw toevoegen. Ook hoe je per component eigen CSS toevoegt met het attribuut custom-css, en dat je de automatische globale styling kan uitschakelen met autoRegisterStyles. De uitleg over de registratie beschrijft nog de elementen van v1, niet de code van 2.1.0.",
+  "keywords": [
+    "styling",
+    "css",
+    "custom css",
+    "custom-css",
+    "globale styling",
+    "global styles",
+    "globalstyles",
+    "shadow dom",
+    "adoptedstylesheets",
+    "autoregisterstyles",
+    "styling uitschakelen",
+    "css overschrijven",
+    "override css",
+    "lit styles"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De sectie 'Elementen & CSS' beschrijft de package @domg-wc/elements, de decorator @elementStyles, RegisterStyles.registerElementsStyles() en UigConfig. Geen daarvan bestaat in 2.1.0: de packages zijn @domg-wc/common, components, map en styles. De globale CSS komt op het document via GlobalStyles.getInstance().register() uit @domg-wc/common, die de constructor van BaseLitElement oproept; die zet [vlResetStyles, ...vlLegacyStyles, ...vlGlobalStyles] op document.adoptedStyleSheets als FluxConfig.getPreferences().autoRegisterStyles waar is (libs/common/src/styles/global-styles.ts, libs/common/src/base/base.lit.element.ts). Vanaf 2.2.0 beschrijft de pagina GlobalStyles en BaseLitElement.",
+      "source": "apps/storybook/docs/g_recepten/css-styling.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld voor eigen componenten met een shadow DOM importeert vlElementsStyle uit @domg-wc/styles. Dat bestaat in 2.1.0 niet: @domg-wc/styles exporteert o.a. vlResetStyles, vlLegacyStyles, vlGlobalStyles en vlLayoutStyles (libs/styles/src/index.ts). De globale styling die GlobalStyles op het document zet, is [vlResetStyles, ...vlLegacyStyles, ...vlGlobalStyles] (libs/common/src/styles/global-styles.ts).",
+      "source": "apps/storybook/docs/g_recepten/css-styling.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-accordion-list",
+      "name": "custom-css",
+      "text": "Het voorbeeld van custom-css gebruikt vl-accordion-list. Dat element bestaat in 2.1.0 niet: het staat niet in de web-types en niet in de code; de pagina Afnemen/Migratie v2 - Impact noemt het een deprecated component uit v1, vervangen door Group. vl-accordion bestaat wel en kent custom-css.",
+      "source": "apps/storybook/docs/g_recepten/css-styling.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "name": "custom-css",
+      "text": "De pagina zegt dat custom-css werkt voor de componenten onder map, form en components. Dat klopt niet helemaal. De compliance-componenten (vl-header, vl-footer, vl-cookie-consent, vl-cookie-statement, vl-privacy en vl-accessibility) zetten allowCustomCSS op false en loggen 'Custom CSS is niet toegelaten voor dit component.'. vl-table erft van LitElement en kent custom-css niet. Componenten zonder shadow DOM (createRenderRoot() geeft this terug), zoals vl-side-navigation met zijn onderdelen, vl-tab, vl-tab-section, vl-search-result-title en vl-search-result-text, erven het attribuut wel van BaseLitElement, maar loggen enkel 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.'.",
+      "source": "libs/common/src/base/base.lit.element.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Enkel de constructor van BaseLitElement roept GlobalStyles.getInstance().register() op; BaseHTMLElement doet dat niet. Componenten die van BaseHTMLElement erven, zoals vl-accordion, vl-modal, vl-template, vl-pager en vl-info-tile, registreren de globale CSS dus niet; vl-functional-header en vl-http-error-message roepen register() wel zelf op. vl-table erft van LitElement en registreert ook niets. Gebruik je enkel zulke componenten, dan staat de globale styling niet op het document, tenzij je zelf GlobalStyles.getInstance().register() uit @domg-wc/common oproept.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "page": "map-select-location",
+  "inputHash": "0e54ca1c8f21",
+  "analysedFor": "2.8.1",
+  "summary": "Documentatie van vl-select-location, een zoekveld met dropdown (een vl-select-rich met zoekfunctie) waarmee de gebruiker een adres of een Lambert-coördinaat kiest; de suggesties komen van de geolocation-API van geo.api.vlaanderen.be. Gebruik het als adresveld in een formulier of los van een kaart; vl-map-search gebruikt het als zoekbalk op de kaart.",
+  "keywords": [
+    "adres selecteren",
+    "adres zoeken",
+    "address picker",
+    "address autocomplete",
+    "locatie kiezen",
+    "location select",
+    "geolocatie",
+    "geocoding",
+    "select-rich",
+    "autocomplete",
+    "lambert",
+    "coördinaat",
+    "formulierveld",
+    "vl-select-location",
+    "kaart"
+  ],
+  "examples": {
+    "map-select-location--select-location-default": {
+      "html": "<!-- vl-select-location zoekt bij het typen (na 300 ms) suggesties op in de geolocation-API van\n     geo.api.vlaanderen.be; een Lambert-coördinaat (x, y) geeft de coördinaat zelf en de adressen bij die coördinaat.\n     De placeholder is standaard 'Zoeken op kaart', die van het zoekveld 'Zoeken op adres of coördinaat'. -->\n<vl-select-location id=\"zoeken-op-kaart\" name=\"zoeken-op-kaart\"></vl-select-location>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-select-location",
+      "text": "De web-types en de API-tabel geven placeholder de default '' en search-placeholder de default 'Zoek item': dat zijn de defaults van vl-select-rich, want de argTypes van de pagina zijn die van vl-select-rich. vl-select-location zet in zijn constructor placeholder op 'Zoeken op kaart' en search-placeholder op 'Zoeken op adres of coördinaat' (vl-select-location.defaults.ts); dat zijn ook de args van de story.",
+      "source": "libs/map/src/components/select-location/stories/vl-select-location.stories-arg.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-select-location",
+      "name": "lambert2008",
+      "text": "Attribuut lambert2008: location geeft de bounding box van een gekozen adres dan in Lambert 2008 (EPSG:3812) in plaats van Lambert 72. vl-map-search zet het zelf als zijn kaart lambert2008 heeft; gebruik je vl-select-location los bij een kaart in Lambert 2008, zet het dan zelf. De code leest het met hasAttribute('lambert2008').",
+      "source": "libs/map/src/components/select-location/vl-select-location.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-select-location",
+      "name": "location",
+      "text": "Getter location: een Promise met de bounding box [minX, minY, maxX, maxY] van de gekozen optie, of undefined zonder keuze. Voor een adres vraagt het de Location-API van geo.api.vlaanderen.be op; voor een Lambert-coördinaat is het een vak van 2 bij 2 meter rond die coördinaat. vl-map-search leest het na vl-input om de kaart te laten zoomen.",
+      "source": "libs/map/src/components/select-location/vl-select-location.ts"
+    }
+  ]
+}

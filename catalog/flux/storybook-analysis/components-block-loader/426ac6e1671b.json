@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "page": "components-block-loader",
+  "inputHash": "426ac6e1671b",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-loader, een animerende laadindicator met een tekst in een role=\"status\" live region, zodat een screenreader de laadstatus beleefd aankondigt. De tekst zet je met het attribuut text of met eigen inhoud in het slot; light is voor een donkere achtergrond en single verbergt de tekst visueel. Onder Toegankelijkheid staat hoe je de loader van bij het laden van de pagina verborgen en zonder tekst in de DOM zet, zodat de aankondiging betrouwbaar werkt.",
+  "keywords": [
+    "loader",
+    "vl-loader",
+    "laadindicator",
+    "loading",
+    "loading indicator",
+    "spinner",
+    "laden",
+    "bezig met laden",
+    "live region",
+    "role status",
+    "screenreader",
+    "toegankelijkheid"
+  ],
+  "examples": {
+    "components-block-loader--loader-default": {
+      "html": "<vl-loader text=\"Pagina is aan het laden\"></vl-loader>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlLoaderComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlLoaderComponent]);"
+    },
+    "components-block-loader--loader-light-without-text": {
+      "html": "<div class=\"vl-section\" style=\"background: #b7b7b7\">\n    <!-- single verbergt de tekst enkel visueel (vl-u-visually-hidden): ze blijft in de live region staan. -->\n    <vl-loader light text=\"Pagina is aan het laden\" single></vl-loader>\n</div>"
+    },
+    "components-block-loader--loader-with-custom-content": {
+      "html": "<vl-loader>\n    <span><strong>Informatie</strong> is aan het laden</span>\n</vl-loader>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-loader",
+      "name": "text",
+      "text": "De web-types en de argTypes geven als default van text een lege string, maar zonder text en zonder inhoud toont vl-loader 'Pagina is aan het laden', de standaardinhoud van zijn slot; de args van de stories gebruiken die tekst ook als default, en omdat de stories de helper story() niet gebruiken, toont 'Show code' text=\"Pagina is aan het laden\". text vervangt die standaardinhoud; eigen inhoud in het slot gaat voor op text.",
+      "source": "libs/components/src/block/loader/vl-loader.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-loader",
+      "name": "[default]",
+      "text": "Het standaard slot vervangt de standaardtekst door eigen, eventueel opgemaakte inhoud in de live region (role=\"status\"); de pagina beschrijft het onder Aangepaste inhoud en de story vl-loader - with custom content gebruikt het. Het staat in de code (<slot>), maar de web-types van 2.20.0 geven voor vl-loader geen slots.",
+      "source": "libs/components/src/block/loader/vl-loader.component.ts"
+    }
+  ]
+}

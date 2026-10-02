@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "page": "styles-layout-grid",
+  "inputHash": "dc7037a62a31",
+  "analysedFor": "2.8.1",
+  "summary": "CSS-klassen voor een responsief 12-koloms grid op basis van CSS Grid: vl-grid op de container, en per kolom vl-column met vl-column--N (breedte), vl-column--start-N (startkolom) en uitlijning met justify-self en align-self, telkens met varianten voor de breakpoints m, s en xs. Gebruik het voor de layout van een pagina of een formulier (vervangt vl-form-grid); de afstand tussen rijen en kolommen zet je met --vl-grid-row-gap en --vl-grid-col-gap.",
+  "keywords": [
+    "grid",
+    "vl-grid",
+    "vl-column",
+    "12 kolommen",
+    "12-column grid",
+    "kolom",
+    "column",
+    "layout",
+    "responsief",
+    "responsive",
+    "breakpoint",
+    "css grid",
+    "justify-self",
+    "align-self",
+    "form grid"
+  ],
+  "examples": {
+    "styles-layout-grid--grid-responsive": {
+      "html": "<style>\n    /* Demo-stijl van de story: geeft de lege kolommen een hoogte en een kleur. */\n    .vl-grid.grid-responsive-story {\n        --vl-column-min-height: 8vmax;\n        padding: 1vmax;\n\n        @media screen and (max-width: 1023px) {\n            --vl-column-min-height: 5vmax;\n        }\n\n        @media screen and (max-width: 767px) {\n            --vl-column-min-height: 4vmax;\n        }\n\n        @media screen and (max-width: 500px) {\n            --vl-column-min-height: 3vmax;\n        }\n\n        .vl-column {\n            min-height: var(--vl-column-min-height);\n            background-color: mediumspringgreen;\n            border: lightseagreen 2px solid;\n        }\n\n        .sb-header {\n            background-color: lightblue;\n        }\n\n        .sb-footer {\n            background-color: lightblue;\n        }\n\n        .sb-main {\n            grid-row: span 3;\n\n            .vl-column {\n                background-color: lightseagreen;\n            }\n        }\n\n        .sb-main__sub {\n            .vl-column {\n                background-color: mediumspringgreen;\n            }\n        }\n\n        /* De story voegt hier ook gridStoriesResponsiveCss uit vl-grid.stories.css.ts toe: per kolom een label\n           met het aantal kolommen op elk breakpoint. */\n    }\n</style>\n<div class=\"vl-grid grid-responsive-story\">\n    <div class=\"vl-column sb-header vl-column--1 vl-column--m-3 vl-column--s-6 vl-column--xs-9\"></div>\n    <div class=\"vl-column sb-header vl-column--11 vl-column--m-9 vl-column--s-6 vl-column--xs-3\"></div>\n    <div class=\"sb-main vl-column vl-column--8 vl-grid vl-column--m-12\">\n        <div class=\"vl-column vl-column--5\"></div>\n        <div class=\"vl-column vl-column--7\"></div>\n        <div class=\"vl-column vl-column--5\"></div>\n        <div class=\"vl-column vl-column--7\"></div>\n        <div class=\"sb-main__sub vl-column vl-column--9 vl-grid\">\n            <div class=\"vl-column vl-column--4\"></div>\n            <div class=\"vl-column vl-column--4\"></div>\n            <div class=\"vl-column vl-column--4\"></div>\n            <div class=\"vl-column vl-column--8\"></div>\n            <div class=\"vl-column vl-column--4\"></div>\n        </div>\n        <div class=\"vl-column vl-column--3\"></div>\n    </div>\n    <div class=\"vl-column vl-column--4 vl-column--m-12\"></div>\n    <div class=\"vl-column vl-column--2 vl-column--m-6 vl-column--xs-12\"></div>\n    <div class=\"vl-column vl-column--2 vl-column--m-6 vl-column--xs-12\"></div>\n    <div class=\"vl-column vl-column--1 vl-column--m-3 vl-column--s-6 vl-column--xs-12\"></div>\n    <div class=\"vl-column vl-column--1 vl-column--m-3 vl-column--s-6 vl-column--xs-12\"></div>\n    <div class=\"vl-column vl-column--1 vl-column--m-3 vl-column--s-6 vl-column--xs-12\"></div>\n    <div class=\"vl-column vl-column--1 vl-column--m-3 vl-column--s-6 vl-column--xs-12\"></div>\n    <div class=\"vl-column sb-footer vl-column--4\"></div>\n    <div class=\"vl-column sb-footer vl-column--2\"></div>\n    <div class=\"vl-column sb-footer vl-column--1\"></div>\n    <div class=\"vl-column sb-footer vl-column--2\"></div>\n    <div class=\"vl-column sb-footer vl-column--1\"></div>\n    <div class=\"vl-column sb-footer vl-column--2\"></div>\n</div>"
+    },
+    "styles-layout-grid--grid-column-start": {
+      "html": "<style>\n    /* Demo-stijl van de story; ze geldt voor elk .vl-grid op de pagina en geeft de lege kolommen een hoogte en een\n       kleur. De story heeft ook een regel voor #story--styles-layout-grid--grid-column-start-inner, een id dat enkel\n       in Storybook bestaat. */\n    .vl-grid {\n        --vl-column-min-height: 20px;\n        grid-template-rows: 20px;\n        padding: 1vmax;\n\n        @media screen and (max-width: 1023px) {\n            --vl-column-min-height: 5vmax;\n        }\n\n        @media screen and (max-width: 767px) {\n            --vl-column-min-height: 4vmax;\n        }\n\n        @media screen and (max-width: 500px) {\n            --vl-column-min-height: 3vmax;\n        }\n\n        .vl-column {\n            min-height: var(--vl-column-min-height);\n            background-color: mediumspringgreen;\n            border: lightseagreen 2px solid;\n        }\n    }\n</style>\n<div class=\"vl-grid\">\n    <div class=\"vl-column vl-column--1 vl-column--start-12 vl-column--m-4 vl-column--m-start-9\"></div>\n    <div class=\"vl-column vl-column--2 vl-column--start-11 vl-column--m-4 vl-column--m-start-9\"></div>\n    <div class=\"vl-column vl-column--3 vl-column--start-10 vl-column--m-4 vl-column--m-start-9\"></div>\n    <div class=\"vl-column vl-column--4 vl-column--start-9\"></div>\n    <div class=\"vl-column vl-column--5 vl-column--start-8 vl-column--m-8 vl-column--m-start-5\"></div>\n    <div class=\"vl-column vl-column--6 vl-column--start-7 vl-column--m-8 vl-column--m-start-5\"></div>\n    <div class=\"vl-column vl-column--7 vl-column--start-6 vl-column--m-8 vl-column--m-start-5\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-5\"></div>\n    <div class=\"vl-column vl-column--9 vl-column--start-4 vl-column--m-start-1 vl-column--m-12\"></div>\n    <div class=\"vl-column vl-column--10 vl-column--start-3 vl-column--m-start-1 vl-column--m-12\"></div>\n    <div class=\"vl-column vl-column--11 vl-column--start-2 vl-column--m-start-1 vl-column--m-12\"></div>\n    <div class=\"vl-column vl-column--12 vl-column--start-1\"></div>\n</div>"
+    },
+    "styles-layout-grid--grid-justify-align": {
+      "html": "<style>\n    /* Demo-stijl van de story; ze geldt voor elk .vl-grid op de pagina. De vaste rijhoogtes maken het effect van\n       align-self zichtbaar. */\n    .vl-grid {\n        --vl-column-min-height: 1vmax;\n        grid-template-rows: 30px 30px 30px 30px 60px 60px 60px 30px;\n\n        .vl-column {\n            background-color: mediumspringgreen;\n            border: lightseagreen 2px solid;\n        }\n    }\n</style>\n<div class=\"vl-grid\">\n    <div class=\"vl-column vl-column--8 vl-column--start-5 vl-column--justify-self-start\">\n        &nbsp;justify-self-start&nbsp;\n    </div>\n    <div class=\"vl-column vl-column--8 vl-column--start-5 vl-column--justify-self-center\">\n        &nbsp;justify-self-center&nbsp;\n    </div>\n    <div class=\"vl-column vl-column--8 vl-column--start-5 vl-column--justify-self-end\">\n        &nbsp;justify-self-end&nbsp;\n    </div>\n    <div class=\"vl-column vl-column--8 vl-column--start-5 vl-column--justify-self-stretch\">\n        &nbsp;justify-self-stretch&nbsp;\n    </div>\n    <div class=\"vl-column vl-column--6 vl-column--align-self-start\">&nbsp;align-items-start&nbsp;</div>\n    <div class=\"vl-column vl-column--6\"></div>\n    <div class=\"vl-column vl-column--6 vl-column--align-self-center\">&nbsp;align-items-center&nbsp;</div>\n    <div class=\"vl-column vl-column--6\"></div>\n    <div class=\"vl-column vl-column--6 vl-column--align-self-end\">&nbsp;align-items-end&nbsp;</div>\n    <div class=\"vl-column vl-column--6\"></div>\n    <div class=\"vl-column vl-column--6 vl-column--align-self-stretch\">&nbsp;align-items-stretch&nbsp;</div>\n    <div class=\"vl-column vl-column--6\"></div>\n</div>"
+    },
+    "styles-layout-grid--grid-with-form": {
+      "html": "<form>\n    <div class=\"vl-grid\">\n        <div class=\"vl-column vl-column--2\">\n            <vl-form-label for=\"email\" label=\"Email\"></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--10\">\n            <vl-input-field id=\"email\" name=\"email\" block placeholder=\"Bijv. naam@voorbeeld.be\"></vl-input-field>\n        </div>\n        <div class=\"vl-column vl-column--2\">\n            <vl-form-label for=\"name\" label=\"Voornaam\"></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--10\">\n            <vl-input-field id=\"name\" name=\"name\" block placeholder=\"John\"></vl-input-field>\n        </div>\n        <div class=\"vl-column vl-column--2\">\n            <vl-form-label for=\"surname\" label=\"Naam\"></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--10\">\n            <vl-input-field id=\"surname\" name=\"surname\" block placeholder=\"Doe\"></vl-input-field>\n        </div>\n        <div class=\"vl-column vl-column--10 vl-column--start-3\">\n            <vl-button type=\"submit\">Inschrijven</vl-button>\n        </div>\n    </div>\n</form>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Onder 'vl-column - responsive' noemt de pagina `vl-grid--X-justify-self-start` als responsieve variant. Die klasse bestaat niet: justify-self en align-self staan op de kolom, ook responsief, als `vl-column--m-justify-self-start`, `vl-column--s-…` en `vl-column--xs-…` (column/vl-column-m.css.ts, vl-column-s.css.ts, vl-column-xs.css.ts).",
+      "source": "libs/styles/src/layout/grid/stories/vl-grid.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat `vl-grid--justify-items-*` en `vl-grid--align-items-*` (en hun varianten met m, s en xs) op grid niveau werken. In vl-grid.css.ts staan die regels (uit grid/vl-grid-l.css.ts enz.) genest in `.vl-grid { .vl-column { … } }`, met de selector `.vl-grid .vl-column.vl-grid--justify-items-start`. Ze werken dus enkel op een element dat ook `vl-column` is en in een `vl-grid` staat, zoals een genest grid; op een buitenste `<div class=\"vl-grid\">` hebben ze geen effect. Geen story toont deze klassen.",
+      "source": "libs/styles/src/layout/grid/vl-grid.css.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "In de story 'vl-grid - justify / align' dragen de kolommen met `vl-column--align-self-start`, `-center`, `-end` en `-stretch` de tekst 'align-items-start' enz. De klassen zijn align-self op de kolom, niet align-items op het grid.",
+      "source": "libs/styles/src/layout/grid/stories/vl-grid.stories.ts"
+    }
+  ]
+}

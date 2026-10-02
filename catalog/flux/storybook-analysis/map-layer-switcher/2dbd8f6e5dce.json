@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "page": "map-layer-switcher",
+  "inputHash": "2dbd8f6e5dce",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-layer-switcher, een lijst met een checkbox per kaartlaag van een vl-map waarmee de gebruiker kaartlagen toont of verbergt; het label van een checkbox is de name van de kaartlaag. Zet het in de vl-map, meestal in een vl-map-side-sheet. Met de property layers toon je een subselectie en met het attribuut title een andere titel dan 'Kaartlagen'; de varianten tonen ook kaartlagen met resoluties en kaartlagen die je dynamisch toevoegt en verwijdert.",
+  "keywords": [
+    "layer switcher",
+    "kaartlagen",
+    "lagen tonen of verbergen",
+    "toggle layers",
+    "layer visibility",
+    "zichtbaarheid",
+    "layer control",
+    "lagenlijst",
+    "checkbox",
+    "side sheet",
+    "subselectie",
+    "resolutie",
+    "dynamische kaartlagen",
+    "vl-map-layer-switcher",
+    "kaart"
+  ],
+  "examples": {
+    "map-layer-switcher--map-layer-switcher-default": {
+      "html": "<!-- vl-map-layer-switcher staat binnen de vl-map, hier in een vl-map-side-sheet. Het toont een checkbox per kaartlaag\n     die rechtstreeks in de vl-map staat, met de name van de kaartlaag als label. De coördinaten van de features staan\n     in Lambert 72 (EPSG:31370), de projectie van de vl-map in 2.4.0. -->\n<vl-map>\n    <vl-map-side-sheet>\n        <vl-map-layer-switcher></vl-map-layer-switcher>\n    </vl-map-side-sheet>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer name=\"Kaartlaag 1\">\n        <vl-map-layer-circle-style color=\"black\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"Kaartlaag 2\">\n        <vl-map-layer-circle-style color=\"yellow\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"Kaartlaag 3\">\n        <vl-map-layer-circle-style color=\"red\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerSwitcher,\n    VlMapSideSheet,\n} from '@domg-wc/map';\n\n// Elke kaartlaag krijgt één punt, in Lambert 72 (EPSG:31370).\nconst points = {\n    'Kaartlaag 1': [149055.0, 199908.0],\n    'Kaartlaag 2': [154055.0, 199908.0],\n    'Kaartlaag 3': [159055.0, 199908.0],\n};\nfor (const [name, coordinates] of Object.entries(points)) {\n    document.querySelector(`vl-map-features-layer[name=\"${name}\"]`).features = {\n        type: 'FeatureCollection',\n        features: [{ type: 'Feature', geometry: { type: 'Point', coordinates } }],\n    };\n}"
+    },
+    "map-layer-switcher--map-layer-switcher-subselection": {
+      "html": "<!-- Dezelfde kaart als het standaardvoorbeeld; de property layers (zie js) beperkt de layer-switcher tot\n     Kaartlaag 1 en Kaartlaag 2. -->\n<vl-map>\n    <vl-map-side-sheet>\n        <vl-map-layer-switcher></vl-map-layer-switcher>\n    </vl-map-side-sheet>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer name=\"Kaartlaag 1\">\n        <vl-map-layer-circle-style color=\"black\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"Kaartlaag 2\">\n        <vl-map-layer-circle-style color=\"yellow\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"Kaartlaag 3\">\n        <vl-map-layer-circle-style color=\"red\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerSwitcher,\n    VlMapSideSheet,\n} from '@domg-wc/map';\n\n// Enkel de kaartlagen met deze name krijgen een checkbox. Zet layers zo vroeg mogelijk: de layer-switcher beslist\n// één keer, nadat de kaartlagen klaar zijn, of het nieuwe kaartlagen in de vl-map blijft volgen (enkel als layers\n// dan nog niet gezet is).\ndocument.querySelector('vl-map-layer-switcher').layers = ['Kaartlaag 1', 'Kaartlaag 2'];\n\n// Elke kaartlaag krijgt één punt, in Lambert 72 (EPSG:31370).\nconst points = {\n    'Kaartlaag 1': [149055.0, 199908.0],\n    'Kaartlaag 2': [154055.0, 199908.0],\n    'Kaartlaag 3': [159055.0, 199908.0],\n};\nfor (const [name, coordinates] of Object.entries(points)) {\n    document.querySelector(`vl-map-features-layer[name=\"${name}\"]`).features = {\n        type: 'FeatureCollection',\n        features: [{ type: 'Feature', geometry: { type: 'Point', coordinates } }],\n    };\n}"
+    },
+    "map-layer-switcher--map-layer-switcher-resolutions": {
+      "html": "<!-- min-resolution (inclusief) en max-resolution (exclusief) bepalen bij welke resoluties de kaart een kaartlaag\n     toont. Zoom in of uit om de kaartlagen te zien wisselen. In 2.4.0 blijft de checkbox van een kaartlaag die op de\n     huidige resolutie niet zichtbaar is wel ingeschakeld (zie de notes). -->\n<vl-map>\n    <vl-map-side-sheet>\n        <vl-map-layer-switcher></vl-map-layer-switcher>\n    </vl-map-side-sheet>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer name=\"Kaartlaag met resolutie 1\" min-resolution=\"0\" max-resolution=\"90\">\n        <vl-map-layer-circle-style color=\"black\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"Kaartlaag met resolutie 2\" min-resolution=\"90\" max-resolution=\"180\">\n        <vl-map-layer-circle-style color=\"yellow\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n    <vl-map-features-layer name=\"Kaartlaag met resolutie 3\" min-resolution=\"180\" max-resolution=\"270\">\n        <vl-map-layer-circle-style color=\"red\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerSwitcher,\n    VlMapSideSheet,\n} from '@domg-wc/map';\n\n// Elke kaartlaag krijgt één punt, in Lambert 72 (EPSG:31370).\nconst points = {\n    'Kaartlaag met resolutie 1': [149055.0, 199908.0],\n    'Kaartlaag met resolutie 2': [154055.0, 199908.0],\n    'Kaartlaag met resolutie 3': [159055.0, 199908.0],\n};\nfor (const [name, coordinates] of Object.entries(points)) {\n    document.querySelector(`vl-map-features-layer[name=\"${name}\"]`).features = {\n        type: 'FeatureCollection',\n        features: [{ type: 'Feature', geometry: { type: 'Point', coordinates } }],\n    };\n}"
+    },
+    "map-layer-switcher--map-layer-switcher-dynamic": {
+      "html": "<!-- Per kaartlaag twee knoppen: toevoegen, en verwijderen, die pas werkt als de kaartlaag op de kaart staat. De story\n     geeft elke section ook het id van zijn kaartlaag (zwart, geel, rood); dat id zou dan twee keer op de pagina staan\n     en wordt niet gebruikt, daarom staat het hier niet. -->\n<section>\n    <button id=\"add-zwart\">toevoegen zwart laag</button>\n    <button id=\"remove-zwart\" disabled>verwijderen zwart laag</button>\n</section>\n<section>\n    <button id=\"add-geel\">toevoegen geel laag</button>\n    <button id=\"remove-geel\" disabled>verwijderen geel laag</button>\n</section>\n<section>\n    <button id=\"add-rood\">toevoegen rood laag</button>\n    <button id=\"remove-rood\" disabled>verwijderen rood laag</button>\n</section>\n\n<!-- De kaartlagen staan eerst buiten de vl-map: de layer-switcher toont ze pas als handleAddLayerForId ze in de\n     vl-map zet. -->\n<vl-map-features-layer name=\"Kaartlaag zwart\" id=\"zwart\">\n    <vl-map-layer-circle-style color=\"black\"></vl-map-layer-circle-style>\n</vl-map-features-layer>\n<vl-map-features-layer name=\"Kaartlaag geel\" id=\"geel\">\n    <vl-map-layer-circle-style color=\"yellow\"></vl-map-layer-circle-style>\n</vl-map-features-layer>\n<vl-map-features-layer name=\"Kaartlaag rood\" id=\"rood\">\n    <vl-map-layer-circle-style color=\"red\"></vl-map-layer-circle-style>\n</vl-map-features-layer>\n\n<!-- De vl-map staat in 2.4.0 altijd in Lambert 72 (EPSG:31370), dezelfde projectie als de coördinaten van de\n     features. -->\n<vl-map id=\"map-dynamic-layers\">\n    <vl-map-side-sheet>\n        <vl-map-layer-switcher></vl-map-layer-switcher>\n    </vl-map-side-sheet>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerSwitcher,\n    VlMapSideSheet,\n} from '@domg-wc/map';\n\n// De functies van het codevoorbeeld op de pagina, zonder TypeScript en met de imports uit het package.\n\n// Voegt een kaartlaag toe aan de vl-map; de layer-switcher ziet ze verschijnen en voegt een checkbox toe.\nconst addMapLayer = (layerSelector, vlMapSelector) => {\n    const newLayer = document.querySelector(layerSelector);\n    const vlMap = document.querySelector(vlMapSelector);\n    vlMap.appendChild(newLayer);\n};\n\n// Verwijdert een kaartlaag uit haar vl-map; de layer-switcher verwijdert haar checkbox.\nconst removeMapLayer = (layerSelector, vlMapSelector) => {\n    const layerToRemove = document.querySelector(layerSelector);\n    const vlMap = document.querySelector(vlMapSelector);\n    vlMap.removeChild(layerToRemove);\n};\n\nconst vlMapSelector = 'vl-map#map-dynamic-layers';\n\nconst handleAddLayerForId = (id, event) => {\n    addMapLayer(`vl-map-features-layer#${id}`, vlMapSelector);\n\n    // De verwijderknop werkt pas nu de kaartlaag op de kaart staat; de toevoegknop verdwijnt.\n    const addButton = event.target;\n    addButton.nextElementSibling.disabled = false;\n    addButton.remove();\n};\n\nconst handleRemoveLayerForId = (id, event) => {\n    removeMapLayer(`vl-map-features-layer#${id}`, vlMapSelector);\n\n    const removeButton = event.target;\n    removeButton.remove();\n};\n\n// Elke kaartlaag krijgt één punt, in Lambert 72 (EPSG:31370), de projectie van deze kaart.\nconst points = {\n    zwart: [149055.0, 199908.0],\n    geel: [154055.0, 199908.0],\n    rood: [159055.0, 199908.0],\n};\nfor (const [id, coordinates] of Object.entries(points)) {\n    document.querySelector(`vl-map-features-layer#${id}`).features = {\n        type: 'FeatureCollection',\n        features: [{ type: 'Feature', geometry: { type: 'Point', coordinates } }],\n    };\n    document.querySelector(`#add-${id}`).addEventListener('click', (event) => handleAddLayerForId(id, event));\n    document.querySelector(`#remove-${id}`).addEventListener('click', (event) => handleRemoveLayerForId(id, event));\n}"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-layer-switcher",
+      "name": "layers",
+      "text": "In de code is layers ook een attribuut: een Lit-property met type Array en attribute 'layers', waarvan Lit de waarde als JSON leest, bv. layers='[\"Kaartlaag 1\", \"Kaartlaag 2\"]'. De web-types en de API-tabel vermelden layers enkel als property.",
+      "source": "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-switcher",
+      "name": "layers",
+      "text": "De pagina en de beschrijving van layers zeggen dat de layer-switcher met een subselectie kaartlagen niet langer automatisch toevoegt of verwijdert. De code beslist dat één keer, in connectedCallback, nadat de kaartlagen van de kaart ready zijn: is layers dan nog niet gezet (de default null; een lege array telt als gezet), dan start een MutationObserver die elke kaartlaag die later in de vl-map bijkomt aan de lijst toevoegt, ook als haar name niet in layers staat. Wie layers pas daarna zet, krijgt die nieuwe kaartlagen dus toch in de layer-switcher. Het attribuut layers in de HTML is vóór die controle gezet.",
+      "source": "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-switcher",
+      "text": "De variant 'Kaartlagen met resoluties' toont kaartlagen met min-resolution en max-resolution. De layer-switcher wil na elke render en na elke moveend van de kaart de checkbox uitschakelen van een kaartlaag die op de huidige resolutie niet zichtbaar is, maar zoekt die checkbox met de selector vl-checkbox[data-layer=\"…\"], terwijl render op de vl-checkbox het attribuut layer zet, niet data-layer. De selector vindt niets: in 2.4.0 blijft elke checkbox ingeschakeld, ook als de kaart de kaartlaag op die resolutie niet toont.",
+      "source": "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-switcher",
+      "text": "render bindt checked=${layer.visible} als attribuut, niet als boolean-attribuut, aan de vl-checkbox. Voor een verborgen kaartlaag (attribuut hidden) wordt dat checked=\"false\", en de Boolean-property checked van vl-checkbox is true zodra het attribuut bestaat: de checkbox staat aangevinkt terwijl de kaart de kaartlaag niet toont. Een klik (vl-input) keert de zichtbaarheid van de kaartlaag om, zodat checkbox en kaartlaag omgekeerd blijven. De stories gebruiken geen verborgen kaartlaag.",
+      "source": "libs/map/src/components/layer-switcher/vl-map-layer-switcher.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het volledige codevoorbeeld onder de story 'dynamic layers' is het bestand vl-map-layer-switcher.stories-utils.ts uit de bronrepo. Het importeert VlMap en VlMapLayer, enkel als type voor TypeScript, met relatieve paden ('../../../vl-map', '../../layer/vl-map-layer') die enkel in die repo bestaan; een afnemer importeert ze uit @domg-wc/map. De HTML met de knoppen en de kaartlagen, en de koppeling van de knoppen aan handleAddLayerForId en handleRemoveLayerForId, staan niet in het codevoorbeeld maar in vl-map-layer-switcher.stories-templates.ts en vl-map-layer-switcher.stories.ts.",
+      "source": "libs/map/src/components/layer-switcher/stories/vl-map-layer-switcher.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De template van de stories 'default' en 'subselection' heeft na de drie kaartlagen de sluittags </vl-map-wmts-layer> en </vl-map-wfs-layer>, zonder openingstags. De HTML-parser negeert die sluittags: er staat geen WMTS- of WFS-laag op de kaart, en het voorbeeld laat ze weg.",
+      "source": "libs/map/src/components/layer-switcher/stories/vl-map-layer-switcher.stories.ts"
+    }
+  ]
+}

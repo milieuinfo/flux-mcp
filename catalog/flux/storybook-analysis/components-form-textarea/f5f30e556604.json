@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "components-form-textarea",
+  "inputHash": "f5f30e556604",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-textarea, een tekstveld over meerdere regels in een formulier, met validatie via required, min-length en max-length. Voor tekst met opmaak gebruik je vl-textarea-rich.",
+  "keywords": [
+    "textarea",
+    "vl-textarea",
+    "tekstveld",
+    "tekstvak",
+    "text area",
+    "multiline",
+    "meerdere regels",
+    "formulier",
+    "form control",
+    "max-length",
+    "min-length",
+    "rows",
+    "validatie"
+  ],
+  "examples": {
+    "components-form-textarea--textarea-default": {
+      "html": "<vl-textarea></vl-textarea>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTextareaComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlTextareaComponent]);\n\n// vl-change volgt op elke wijziging van de waarde, ook door code; vl-input enkel op invoer door de gebruiker.\n// event.detail.value is de nieuwe tekst.\ndocument.querySelector('vl-textarea').addEventListener('vl-input', (event) => {\n    console.log(event.detail.value);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-textarea",
+      "text": "De sectie Doel verwijst voor tekst met opmaak naar vl-textarea-rich met de link /docs/components-form--text-area-rich--documentatie. Die pagina bestaat niet: de pagina van vl-textarea-rich is components-form-textarea-rich. De beschrijving van vl-textarea in de web-types bevat dezelfde link.",
+      "source": "libs/components/src/form/textarea/stories/vl-textarea.stories-doc.mdx"
+    }
+  ]
+}

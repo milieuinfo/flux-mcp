@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "page": "components-compliance-footer",
+  "inputHash": "1a31fc427407",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-footer, dat de globale footer-widget van Digitaal Vlaanderen (Mijn Burgerprofiel) onderaan in de body injecteert, met richtlijnen voor de tekst van de footer. Je hebt een identifier van Digitaal Vlaanderen nodig; development kiest hun ontwikkel-servers, en de component laadt scripts van prod.widgets.burgerprofiel.vlaanderen.be. vl-footer is legacy: voor nieuwe toepassingen is er vl-footer-next (pagina components-compliance-next-footer).",
+  "keywords": [
+    "footer",
+    "vl-footer",
+    "voettekst",
+    "global footer",
+    "globale footer",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "mijn burgerprofiel",
+    "widget",
+    "vlaamse overheid",
+    "page footer",
+    "legacy"
+  ],
+  "examples": {
+    "components-compliance-footer--footer-default": {
+      "html": "<vl-footer development identifier=\"0337f8dc-3266-4e7a-8f4a-95fd65189e5b\"></vl-footer>"
+    }
+  },
+  "notes": []
+}

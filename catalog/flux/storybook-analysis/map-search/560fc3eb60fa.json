@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "page": "map-search",
+  "inputHash": "560fc3eb60fa",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-search, een zoekbalk op een vl-map waarmee de gebruiker zoekt op adres of Lambert-coördinaat, met suggesties van de geolocation-API van geo.api.vlaanderen.be; na een keuze zoomt de kaart naar die locatie. Zet het in de vl-map, of erbuiten en koppel het met bindMap. Intern gebruikt het vl-search en vl-select-location.",
+  "keywords": [
+    "zoeken op kaart",
+    "adres zoeken",
+    "address search",
+    "map search",
+    "geocoding",
+    "locatie zoeken",
+    "search bar",
+    "zoekbalk",
+    "coördinaat",
+    "lambert",
+    "zoom naar adres",
+    "bindmap",
+    "vl-map-search",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-search--map-search-default": {
+      "html": "<!-- vl-map-search staat in de vl-map, die het als overlay op de kaart toont. De gebruiker zoekt op adres of op een\n     Lambert-coördinaat (x, y); na een keuze zoomt de kaart naar die locatie, tot hoogstens zoomniveau 14. Staat er links\n     een vl-map-side-sheet, zet dan with-offset, zodat de toggle van het zijpaneel niet over de zoekbalk valt. -->\n<vl-map>\n    <vl-map-search></vl-map-search>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n</vl-map>"
+    },
+    "map-search--map-search-outside-map": {
+      "html": "<!-- vl-map-search staat hier buiten de vl-map, bv. boven de kaart. Zonder koppeling zoomt het nergens heen: koppel\n     het met bindMap aan de kaart (zie js). -->\n<vl-map-search></vl-map-search>\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapSearch } from '@domg-wc/map';\n\n// vl-map-search staat buiten de vl-map: koppel het met bindMap aan de kaart. Doe dat na de import, want pas dan kent\n// het element bindMap.\ndocument.querySelector('vl-map-search').bindMap(document.querySelector('vl-map'));"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-search",
+      "text": "search-empty-text en search-no-results-text (default 'Geen adres gevonden') hebben geen effect. vl-map-search zet ze met dezelfde naam door op de vl-select-location in zijn shadow DOM, maar die kent als vl-select-rich enkel no-results-text en no-choices-text. De teksten bij geen resultaten blijven dus die van vl-select-rich ('Geen resultaten gevonden' en 'Geen resterende opties gevonden'), en vl-map-search heeft geen attribuut om ze te wijzigen. placeholder en search-placeholder werken wel.",
+      "source": "libs/map/src/components/search/vl-map-search.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-search",
+      "name": "custom-css",
+      "text": "De web-types en de API geven vl-map-search het attribuut custom-css, maar het heeft geen effect: vl-map-search overschrijft connectedCallback zonder super.connectedCallback() aan te roepen, en precies daar voegt BaseHTMLElement de custom CSS toe aan de shadow DOM.",
+      "source": "libs/map/src/components/search/vl-map-search.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-search",
+      "name": "bindMap",
+      "text": "Methode bindMap(map): koppelt een vl-map-search dat niet in de vl-map staat aan een vl-map, zodat die kaart na een keuze naar de locatie zoomt. De story 'outside map' gebruikt ze, maar vl-map-search heeft geen js-sectie in de web-types.",
+      "source": "libs/map/src/components/search/vl-map-search.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-search",
+      "name": "onSelect",
+      "text": "Methode onSelect(callback): na de keuze van een locatie roept vl-map-search de callback aan in plaats van de kaart te laten zoomen. De callback krijgt de bounding box [minX, minY, maxX, maxY] van de locatie in Lambert 72, het coördinatenstelsel van vl-map. Zocht de gebruiker op een Lambert-coördinaat, dan is het een vak van 2 m op 2 m rond de ingetypte coördinaat, ook bij de keuze van een adres uit de resultaten van die coördinaat (getter location in vl-select-location.ts).",
+      "source": "libs/map/src/components/search/vl-map-search.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-search",
+      "name": "bindMap",
+      "text": "De story 'outside map' roept bindMap aan in een <script> binnen de lit-template. Lit maakt een template aan via innerHTML, en de browser voert een script dat zo in de DOM komt niet uit: in de story wordt vl-map-search dus niet aan de kaart gekoppeld, en na de keuze van een adres logt het 'Locatie kan niet opgehaald worden.' in plaats van te zoomen. Het voorbeeld roept bindMap aan in js, na de import van @domg-wc/map.",
+      "source": "libs/map/src/components/search/stories/vl-map-search.stories.ts"
+    }
+  ]
+}

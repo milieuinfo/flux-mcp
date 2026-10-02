@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "page": "components-form-datepicker",
+  "inputHash": "c00cd558d806",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-datepicker, een invoerveld met een kalender (Flatpickr) om een datum, een periode (type range), een tijd of een datum met tijd te kiezen. De pagina legt de ISO-waarde per type uit, het formaat, de mask- en pattern-validatie, hoe je de kalender positioneert met position of static en de weergave op mobiele toestellen; de stories tonen ook de grenzen min-date en max-date.",
+  "keywords": [
+    "datepicker",
+    "vl-datepicker",
+    "datumkiezer",
+    "date picker",
+    "kalender",
+    "calendar",
+    "datum kiezen",
+    "time picker",
+    "tijd",
+    "date range",
+    "periode",
+    "date-time",
+    "flatpickr",
+    "min-date",
+    "form control"
+  ],
+  "examples": {
+    "components-form-datepicker--datepicker-default": {
+      "html": "<vl-datepicker id=\"datepicker-default\" name=\"datepicker-default\"></vl-datepicker>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlDatepickerComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlDatepickerComponent]);\n\nconst datepicker = document.querySelector('#datepicker-default');\n\n// vl-change volgt op elke wijziging van de waarde, ook door code; vl-input enkel op invoer van de gebruiker; vl-valid\n// op een wijziging waarna de waarde geldig is. event.detail.value is de waarde in ISO-formaat, bv. '2023-12-31'\n// (type date).\ndatepicker.addEventListener('vl-change', (event) => console.log('vl-change', event.detail.value));\ndatepicker.addEventListener('vl-input', (event) => console.log('vl-input', event.detail.value));\ndatepicker.addEventListener('vl-valid', (event) => console.log('vl-valid', event.detail.value));\n\n// vl-reset volgt op resetFormControl(), die ook loopt als de form gereset wordt (zie Publieke methodes); het event\n// heeft geen detail.\ndatepicker.addEventListener('vl-reset', () => console.log('vl-reset'));"
+    },
+    "components-form-datepicker--datepicker-min-date-and-max-date": {
+      "html": "<!-- De story rekent de datums uit vanaf vandaag: value is het huidige tijdstip in ISO-formaat\n     (new Date().toISOString(), hier ingekort tot de datum), min-date twee dagen ervoor en max-date twee dagen erna,\n     in het formaat d.m.Y. Hier met 02.10.2026 als vandaag. -->\n<vl-datepicker\n    id=\"datepicker-default\"\n    name=\"datepicker-default\"\n    value=\"2026-10-02\"\n    format=\"d.m.Y\"\n    min-date=\"30.09.2026\"\n    max-date=\"04.10.2026\"\n></vl-datepicker>"
+    },
+    "components-form-datepicker--datepicker-static": {
+      "html": "<vl-datepicker id=\"datepicker-static\" name=\"datepicker-static\" static></vl-datepicker>"
+    },
+    "components-form-datepicker--datepicker-range": {
+      "html": "<!-- De story rekent de datums uit vanaf vandaag: min-date tien dagen ervoor en max-date tien dagen erna (d.m.Y),\n     value van vier dagen ervoor tot vier dagen erna (Y-m-d/Y-m-d). Hier met 02.10.2026 als vandaag. -->\n<vl-datepicker\n    id=\"datepicker-range\"\n    name=\"datepicker-range\"\n    value=\"2026-09-28/2026-10-06\"\n    type=\"range\"\n    format=\"d.m.Y\"\n    min-date=\"22.09.2026\"\n    max-date=\"12.10.2026\"\n></vl-datepicker>"
+    },
+    "components-form-datepicker--datepicker-time": {
+      "html": "<vl-datepicker id=\"datepicker-time\" name=\"datepicker-time\" type=\"time\" format=\"H:i\"></vl-datepicker>"
+    },
+    "components-form-datepicker--datepicker-date-time": {
+      "html": "<vl-datepicker\n    id=\"datepicker-datetime\"\n    name=\"datepicker-datetime\"\n    type=\"date-time\"\n    format=\"d.m.Y H:i\"\n></vl-datepicker>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-datepicker",
+      "name": "disable-mobile-native-input",
+      "text": "De sectie Mobile ondersteuning zegt dat de datepicker standaard als kalender verschijnt en dat het attribuut enable-mobile-native-input hem op mobiele toestellen als native invoerveld toont. Dat attribuut bestaat niet, niet in de code en niet in de web-types; de component kent enkel disable-mobile-native-input, dat hij doorgeeft als de Flatpickr-optie disableMobile. Zonder dat attribuut, en als Flatpickr een mobiel toestel meldt (isMobile), rendert de component zijn eigen invoerveld met kalenderknop niet en krijgt het native invoerveld (input type=\"date\") de stijl van een invoerveld; met disable-mobile-native-input blijft het invoerveld met de Flatpickr-kalender. De pagina en de beschrijving in de web-types ('Rendert de native datepicker op mobiele toestellen in plaats van flatpickr calendar') zeggen het omgekeerde.",
+      "source": "libs/components/src/form/datepicker/stories/vl-datepicker.stories-doc.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-datepicker",
+      "name": "raw-value",
+      "text": "De code declareert het attribuut raw-value (property rawValue), maar de web-types en de argTypes kennen het niet, en de datepicker leest het nergens: het heeft geen effect. De waarde zonder mask vraag je op met de methode getRawValue(), enkel als er een mask actief is (type date of time, zonder disable-mask-validation). Die methode staat, net als getDates() met de gekozen datums als Date-objecten, niet onder Publieke methodes.",
+      "source": "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+    }
+  ]
+}

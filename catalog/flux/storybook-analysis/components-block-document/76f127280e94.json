@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "components-block-document",
+  "inputHash": "76f127280e94",
+  "analysedFor": "2.5.0",
+  "summary": "Documentatie van vl-document, een link naar een bestand met een documenticoon, het type (bv. PDF), een titel en metadata zoals formaat en grootte, via de slots type, title en metadata. Met href geef je de url van het bestand mee (default #) en met target waar de link opent.",
+  "keywords": [
+    "document",
+    "vl-document",
+    "bestand",
+    "file",
+    "download",
+    "downloadlink",
+    "download link",
+    "pdf",
+    "bijlage",
+    "attachment",
+    "file link",
+    "publicatie"
+  ],
+  "examples": {
+    "components-block-document--document-default": {
+      "html": "<!-- Zet href op de url van het bestand: zonder href verwijst de link naar #. -->\n<vl-document>\n    <span slot=\"type\">PDF</span>\n    <span slot=\"title\">Hubert en Jan van Eyck, Vlaamse Primitieven</span>\n    <span slot=\"metadata\">PDF - 580 kB</span>\n</vl-document>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlDocumentComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlDocumentComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-document",
+      "name": "target",
+      "text": "De argTypes geven voor target de opties _blank, _self, _parent, _top, timeline en question, in de keuzelijst en als type in de tabel van Storybook. De beschrijving van hetzelfde attribuut, ook in de web-types, noemt enkel _blank, _self, _parent en _top; timeline en question zijn geen waarden voor het target van een link (het zijn types van vl-infoblock). De code zet de waarde ongewijzigd als target op de interne <a>.",
+      "source": "libs/components/src/block/document/stories/vl-document.stories-arg.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-document",
+      "text": "Bovenaan de pagina staat dat de gebruiker het bestand in de browser kan bekijken of downloaden. De interne <a> heeft in de code altijd het attribuut download, en geen attribuut van vl-document zet het af. Een bestand van dezelfde origin downloadt de browser dus, ook met target; voor een url van een andere origin negeert de browser het attribuut download en volgt hij de link zoals gewoonlijk.",
+      "source": "libs/components/src/block/document/vl-document.component.ts"
+    }
+  ]
+}

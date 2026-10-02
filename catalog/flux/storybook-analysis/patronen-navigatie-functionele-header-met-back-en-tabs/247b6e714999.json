@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "patronen-navigatie-functionele-header-met-back-en-tabs",
+  "inputHash": "247b6e714999",
+  "analysedFor": "2.11.0",
+  "summary": "Patroon voor een vl-functional-header met de terug-link en daarnaast tabs in het sub-title slot: een vl-tabs met within-functional-header, disable-links en active-tab, met een lege vl-tabs-pane per tab. custom-css lijnt de subtitel bovenaan uit, haalt de marge onder de subrij weg en de ruimte boven de tablinks.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "tabs",
+    "tabbladen",
+    "subnavigatie",
+    "sub navigation",
+    "terug-link",
+    "back link",
+    "vl-tabs",
+    "vl-tabs-pane",
+    "within-functional-header",
+    "sub-title slot",
+    "header met tabs",
+    "header tabs"
+  ],
+  "examples": {
+    "patronen-navigatie-functionele-header-met-back-en-tabs--functionele-header-met-back-en-tabs": {
+      "html": "<vl-functional-header\n    title=\"School- en studietoelagen\"\n    custom-css=\"\n        #sub-title{\n            vertical-align: text-top;\n        }\n        :host .vl-functional-header__sub-row {\n            margin-bottom: 0;\n        }\n    \"\n>\n    <vl-tabs\n        slot=\"sub-title\"\n        disable-links\n        within-functional-header\n        active-tab=\"trein\"\n        custom-css=\"\n            :host(.vl-tabs--within-functional-header) .vl-tab__link {\n                padding-top: 0;\n            }\n        \"\n    >\n        <vl-tabs-pane id=\"trein\" title=\"Trein\"></vl-tabs-pane>\n        <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\"></vl-tabs-pane>\n        <vl-tabs-pane id=\"fiets\" title=\"Fiets\"></vl-tabs-pane>\n    </vl-tabs>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-tabs",
+      "text": "De story importeert en registreert VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlFunctionalHeaderComponent en VlSearchComponent, maar niet VlTabsComponent, terwijl het voorbeeld enkel vl-functional-header, vl-tabs en vl-tabs-pane gebruikt. Wie het patroon overneemt, importeert en registreert VlTabsComponent uit @domg-wc/components/block zelf; vl-tabs registreert vl-tabs-pane mee.",
+      "source": "apps/storybook/docs/f_patronen/navigatie/functionele-header/3_met-back-en-tabs/functionele-header-met-back-en-tabs.stories.ts"
+    }
+  ]
+}

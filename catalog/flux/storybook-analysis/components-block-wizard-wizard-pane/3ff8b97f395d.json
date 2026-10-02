@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "page": "components-block-wizard-wizard-pane",
+  "inputHash": "3ff8b97f395d",
+  "analysedFor": "2.13.0",
+  "summary": "Documentatie van vl-wizard-pane, één stap in een vl-wizard: name is de naam van de stap in de voortgangsindicator, en de inhoud verschijnt enkel als de pane actief is. Welke pane actief is, bepaalt vl-wizard met active-step; de wizard zelf staat op een aparte pagina.",
+  "keywords": [
+    "wizard pane",
+    "vl-wizard-pane",
+    "wizard",
+    "vl-wizard",
+    "stap",
+    "step",
+    "wizard stap",
+    "meerstapsformulier",
+    "multi-step form",
+    "stappenplan",
+    "progress indicator"
+  ],
+  "examples": {
+    "components-block-wizard-wizard-pane--wizard-pane-default": {
+      "html": "<vl-wizard>\n    <vl-wizard-pane name=\"Stap 1\"><p>Pane content</p></vl-wizard-pane>\n</vl-wizard>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-wizard-pane",
+      "name": "[default]",
+      "text": "De web-types geven vl-wizard-pane geen slots. In de code rendert de pane een default slot, enkel als hij actief is: de inhoud van de stap zet je rechtstreeks in vl-wizard-pane, zoals de <p> in de story.",
+      "source": "libs/components/src/block/wizard/vl-wizard-pane.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-wizard-pane",
+      "name": "isActive",
+      "text": "De web-types en de argTypes beschrijven isActive als attribuut ('Bepaalt of de pane actief is', in de argTypes van het type string). vl-wizard-pane declareert isActive als Boolean property zonder eigen attribuutnaam, en vl-wizard overschrijft die bij elke update: enkel de pane op positie active-step (vanaf 1) is actief en toont zijn inhoud, de andere tonen niets. Zet de actieve stap dus met active-step op vl-wizard, niet met isActive op de pane. Zonder active-step begint vl-wizard op 1 (constructor), hoewel de web-types van vl-wizard 0 als default geven.",
+      "source": "libs/components/src/block/wizard/vl-wizard.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-wizard-pane",
+      "name": "name",
+      "text": "Volgens de web-types en de argTypes is de naam zichtbaar in de tooltip van de stap. vl-wizard geeft de namen van de panes als steps aan vl-progress-indicator, met show-labels tenzij hide-labels op vl-wizard staat. Standaard staat de naam dus als label bij de stap (met een title-attribuut); enkel met hide-labels verschijnt ze in een vl-tooltip (libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts).",
+      "source": "libs/components/src/block/wizard/vl-wizard.component.ts"
+    }
+  ]
+}

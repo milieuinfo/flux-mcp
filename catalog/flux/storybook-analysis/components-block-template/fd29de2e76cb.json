@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "page": "components-block-template",
+  "inputHash": "fd29de2e76cb",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-template, het sjabloon van een pagina met een slot header (in de story vl-header), een slot main voor de inhoud in het hoofdgedeelte van de pagina, en een slot footer (in de story vl-footer). Met v-center centreer je de inhoud verticaal, met v-stretch neemt ze de volledige hoogte in.",
+  "keywords": [
+    "template",
+    "vl-template",
+    "paginasjabloon",
+    "page template",
+    "layout",
+    "page layout",
+    "pagina-opbouw",
+    "header",
+    "footer",
+    "main content",
+    "v-center",
+    "v-stretch"
+  ],
+  "examples": {
+    "components-block-template--template-default": {
+      "html": "<div class=\"vl-u-sticky-gf\">\n    <vl-template>\n        <vl-header slot=\"header\" identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" development></vl-header>\n        <div slot=\"main\">\n            <vl-content-header>\n                <img\n                    slot=\"image\"\n                    src=\"https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80\"\n                    srcset=\"\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80   400w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80   700w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80   800w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80 1000w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80 1300w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80 1400w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80 1600w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1900&q=80 1900w,\n                        https://images.unsplash.com/photo-1561070791-2526d30994b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80 2000w\n                    \"\n                />\n                <a slot=\"context-link\" href=\"https://webcomponenten.omgeving.vlaanderen.be/storybook/\">flux-webcomponents</a>\n                <a slot=\"title-link\" href=\"https://webcomponenten.omgeving.vlaanderen.be/storybook/\">1.2.3</a>\n            </vl-content-header>\n            <section class=\"vl-grid\">\n                <div class=\"vl-content-block\">\n                    <div id=\"grid\" class=\"vl-grid vl-stacked-medium\" slot=\"main\">\n                        <vl-title type=\"h1\" class=\"vl-column vl-column--12\">vl-template</vl-title>\n                    </div>\n                </div>\n            </section>\n        </div>\n        <vl-footer slot=\"footer\" identifier=\"0337f8dc-3266-4e7a-8f4a-95fd65189e5b\" development></vl-footer>\n    </vl-template>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlContentHeaderComponent, VlTemplate } from '@domg-wc/components/block';\nimport { VlFooter, VlHeader } from '@domg-wc/components/compliance';\n\n// De identifiers van vl-header en vl-footer zijn die van de story; gebruik die van je eigen toepassing bij Digitaal\n// Vlaanderen. development gebruikt de ontwikkel-servers van Digitaal Vlaanderen.\nregisterWebComponents([VlTemplate, VlHeader, VlFooter, VlContentHeaderComponent, VlTitleComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-template",
+      "name": "header",
+      "text": "Het slot header toont zijn inhoud boven de pagina; de story zet er vl-header in. Het slot staat niet in de web-types, die voor vl-template geen slots vermelden.",
+      "source": "libs/components/src/block/template/vl-template.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-template",
+      "name": "main",
+      "text": "Het slot main toont zijn inhoud in <div class=\"vl-page\"><main class=\"vl-main-content\">, de inhoud die v-center en v-stretch schikken. Het slot staat niet in de web-types.",
+      "source": "libs/components/src/block/template/vl-template.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-template",
+      "name": "footer",
+      "text": "Het slot footer toont zijn inhoud onder de pagina; de story zet er vl-footer in. Het slot staat niet in de web-types.",
+      "source": "libs/components/src/block/template/vl-template.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-template",
+      "name": "v-center",
+      "text": "Centreert de inhoud verticaal: de div rond header, inhoud en footer in de shadow DOM neemt de volledige hoogte en breedte in (position: absolute) en .vl-page schuift naar het midden (top: 50%; transform: translate(0, -50%)). Default false. De argTypes beschrijven v-center zonder table.category, en de generator van de web-types neemt enkel argTypes met category Attributes over; daardoor geven de web-types van 2.4.0 vl-template enkel custom-css.",
+      "source": "libs/components/src/block/template/vl-template.flux-css.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-template",
+      "name": "v-stretch",
+      "text": "Laat de inhoud de volledige hoogte innemen: de div rond header, inhoud en footer in de shadow DOM (position: absolute), .vl-page, de main en de elementen in het slot main krijgen height: 100%. Default false. Net als v-center staat het in de argTypes zonder table.category en daardoor niet in de web-types van 2.4.0.",
+      "source": "libs/components/src/block/template/vl-template.flux-css.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-template",
+      "text": "De story zet vl-header in het slot header en vl-footer in het slot footer, maar de header en de footer van Digitaal Vlaanderen verschijnen niet in die slots. vl-header voegt bij connectedCallback een <div id=\"header__container\"> toe aan het begin van <body> en laadt daar de widget in; vl-footer doet hetzelfde bij het renderen, met een <div id=\"footer__container\"> aan het einde van <body> (libs/components/src/compliance/footer/vl-footer.component.ts). Waar je ze in vl-template zet, bepaalt dus niet waar ze getoond worden; ook de documentatie van vl-header zegt dat de header standaard in het native <body> element geïnjecteerd wordt.",
+      "source": "libs/components/src/compliance/header/vl-header.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "page": "styles-layout-group",
+  "inputHash": "154ec1bf209b",
+  "analysedFor": "2.20.0",
+  "summary": "CSS-klassen op basis van flexbox om gelijkaardige elementen, zoals knoppen, links, iconen of accordions, naast of onder elkaar te groeperen. Modifiers regelen de richting (vl-group--column), de uitlijning, de gap, wrapping, scheidingslijnen, het stapelen per breakpoint (vl-group--collapse-*) en de combinatie van knop en invoerveld (vl-group--input-group). Gebruik vl-group om items binnen een kolom te schikken, waar een vl-grid overkill is.",
+  "keywords": [
+    "group",
+    "vl-group",
+    "groeperen",
+    "flexbox",
+    "flex",
+    "button group",
+    "knoppen naast elkaar",
+    "stack",
+    "gap",
+    "separator",
+    "scheidingslijn",
+    "uitlijning",
+    "alignment",
+    "wrap",
+    "collapse"
+  ],
+  "examples": {
+    "styles-layout-group--group-buttons": {
+      "html": "<div class=\"vl-group\">\n    <vl-button>Aanvraag starten</vl-button>\n    <vl-button secondary>Annuleren</vl-button>\n</div>"
+    },
+    "styles-layout-group--group-links": {
+      "html": "<!-- De story geeft de groep ook style=\"height: 140px\", enkel om in de demo ruimte te laten voor de uitlijning. -->\n<div class=\"vl-group vl-group--separator-row\">\n    <vl-link href=\"#\" icon=\"bell\">Notificaties</vl-link>\n    <vl-link href=\"#\" icon=\"graduate\">Opleidingen</vl-link>\n    <vl-link href=\"#\" icon=\"pin\">Locaties</vl-link>\n</div>"
+    },
+    "styles-layout-group--group-accordions": {
+      "html": "<div class=\"vl-group vl-group--column vl-group--stretch-children vl-group--separator-column\">\n    <vl-accordion toggle-text=\"Accordion 1\" heading-level=\"2\">\n        <div class=\"vl-group vl-group--column vl-group--stretch-children\">\n            <vl-accordion toggle-text=\"Accordion 1.1\" heading-level=\"3\">Inhoud accordion 1.1</vl-accordion>\n            <vl-accordion toggle-text=\"Accordion 1.2\" heading-level=\"3\">Inhoud accordion 1.2</vl-accordion>\n        </div>\n    </vl-accordion>\n    <vl-accordion toggle-text=\"Accordion 2\" heading-level=\"2\">\n        <div class=\"vl-group vl-group--column vl-group--stretch-children\">\n            <vl-accordion toggle-text=\"Accordion 2.1\" heading-level=\"3\">Inhoud accordion 2.1</vl-accordion>\n            <vl-accordion toggle-text=\"Accordion 2.2\" heading-level=\"3\">Inhoud accordion 2.2</vl-accordion>\n        </div>\n    </vl-accordion>\n    <vl-accordion toggle-text=\"Accordion 3\" heading-level=\"2\">\n        <div class=\"vl-group vl-group--column vl-group--stretch-children\">\n            <vl-accordion toggle-text=\"Accordion 3.1\" heading-level=\"3\">Inhoud accordion 3.1</vl-accordion>\n            <vl-accordion toggle-text=\"Accordion 3.2\" heading-level=\"3\">Inhoud accordion 3.2</vl-accordion>\n        </div>\n    </vl-accordion>\n</div>"
+    },
+    "styles-layout-group--group-icons": {
+      "html": "<!-- De story zet ook href=\"#\" op elke vl-icon, een attribuut dat vl-icon niet kent (zie notes), en geeft de groep\n     style=\"height: 140px\" voor de demo. -->\n<div class=\"vl-group vl-group--column\">\n    <vl-icon icon=\"bell\"></vl-icon>\n    <vl-icon icon=\"graduate\"></vl-icon>\n    <vl-icon icon=\"pin\"></vl-icon>\n</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Onder 'Responsief' noemt de pagina `vl-group--collapse-cs` voor extra-small schermen. Die klasse bestaat niet: in vl-group.css.ts en in de argTypes heet ze `vl-group--collapse-xs` (max-width 500px).",
+      "source": "libs/styles/src/layout/group/stories/vl-group.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-icon",
+      "name": "href",
+      "text": "De story 'vl-group - icons' zet `href=\"#\"` op elke `vl-icon`. vl-icon kent geen attribuut href: het staat niet in de web-types van 2.20.0 en niet in de code van de component (libs/components/src/atom/icon). Het voorbeeld laat het weg. Voor een klikbaar icoon verwijzen de web-types naar vl-button of vl-link met een icon; het attribuut clickable van vl-icon is deprecated.",
+      "source": "libs/styles/src/layout/group/stories/vl-group.stories.ts"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-content-security-policy-csp-problematieken",
+  "inputHash": "b406037a8205",
+  "analysedFor": "2.20.0",
+  "summary": "Welke CSP-uitzonderingen de Flux-componenten sinds v2.4.0 nog nodig hebben: het domein https://cdn.omgeving.vlaanderen.be voor fonts, scripts en styles, extra domeinen per omgeving voor de v5 global header (vl-header-next en vl-footer-next), images van https://geo.api.vlaanderen.be voor vl-map, en style-src-attr 'unsafe-inline' voor vl-textarea-rich (TinyMCE). Lees ze om een CSP voor een toepassing met Flux op te stellen.",
+  "keywords": [
+    "content security policy",
+    "csp",
+    "beveiliging",
+    "security",
+    "global header",
+    "vl-header-next",
+    "vl-footer-next",
+    "vl-textarea-rich",
+    "tinymce",
+    "rich text editor",
+    "vl-map",
+    "unsafe-eval",
+    "unsafe-inline",
+    "style-src-attr",
+    "cdn"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De pagina noemt vl-header-next als de CSP-compliant integratie van de v5 global header, en de code registreert het element (`@webComponent('vl-header-next')`), maar het staat niet in de web-types van 2.20.0.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De pagina noemt vl-footer-next als de integratie van de v5 global footer, en de code registreert het element (`@webComponent('vl-footer-next')`), maar het staat niet in de web-types van 2.20.0.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

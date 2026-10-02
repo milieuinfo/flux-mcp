@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "afnemen-migratie-v2-aanpak",
+  "inputHash": "91a7c4c26a7b",
+  "analysedFor": "2.20.0",
+  "summary": "Het stappenplan om een toepassing van Flux v1 naar v2 te migreren: eerst naar v1.48.2, dan de legacy componenten (zoals de `is=\"...\"`-elementen) vervangen door hun '-next'-variant, en tot slot naar v2 door de '-next'-suffix en de 'data-vl-'-prefix weg te halen. Ze geeft ook het pnpm-commando voor de nieuwe packages en de tabel van oude naar nieuwe imports.",
+  "keywords": [
+    "migratie",
+    "migration",
+    "upgrade",
+    "v1 naar v2",
+    "migrate to v2",
+    "aanpak",
+    "stappenplan",
+    "next componenten",
+    "-next suffix",
+    "data-vl prefix",
+    "legacy componenten",
+    "is attribuut",
+    "imports",
+    "@domg-wc/components",
+    "breaking changes"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "In de inhoudstafel wijst '3.3 Imports' naar het anker #31-imports; de sectie is 3.3 en de link in de tekst ('zie hieronder') gebruikt #33-imports.",
+      "source": "apps/storybook/docs/a_afnemen/4_migratie-aanpak.mdx"
+    }
+  ]
+}

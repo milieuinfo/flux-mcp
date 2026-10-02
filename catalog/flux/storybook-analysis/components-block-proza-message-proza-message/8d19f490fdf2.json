@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "page": "components-block-proza-message-proza-message",
+  "inputHash": "8d19f490fdf2",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-proza-message, dat een Proza bericht toont: tekst die de business achteraf beheert, opgehaald met domain en code bij proza/domein/{domain}/{code} (of achter base-url). Het werkt inline, als blok, in een knop of in een link; mag de gebruiker de berichten van het domein aanpassen, dan toont het ernaast een edit- en een refresh-knop.",
+  "keywords": [
+    "proza",
+    "proza message",
+    "proza bericht",
+    "vl-proza-message",
+    "beheerde tekst",
+    "managed content",
+    "cms",
+    "domain",
+    "code",
+    "base-url",
+    "editeerbaar",
+    "editable",
+    "toegelaten operaties",
+    "parameters"
+  ],
+  "examples": {
+    "components-block-proza-message-proza-message--proza-message-default": {
+      "html": "<!-- Als een inline element -->\n<vl-proza-message domain=\"mockdomain\" code=\"inline\"></vl-proza-message>\n\n<!-- Als een block element -->\n<vl-proza-message domain=\"mockdomain\" code=\"block\"></vl-proza-message>\n\n<!-- In een knop -->\n<vl-button>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-button>\n\n<!-- In een link -->\n<vl-link href=\"#\" external>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlProzaMessage } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProzaMessage, VlButtonComponent, VlLinkComponent]);\n\n// vl-proza-message haalt het bericht op bij proza/domein/{domain}/{code}, relatief tov de huidige url of achter\n// base-url, tenzij vl-proza-message-preloader het domein al ophaalde. Per domein vraagt het ook één keer\n// proza/domein/{domain}/toegelatenoperaties op. In Storybook antwoordt een mock voor mockdomain.\n// Een bericht met een block element (bv. een div) krijgt vanzelf het attribuut block."
+    },
+    "components-block-proza-message-proza-message--proza-message-editable": {
+      "html": "<!-- Als een inline element -->\n<vl-proza-message domain=\"mockdomaineditable\" code=\"inline\"></vl-proza-message>\n\n<!-- Als een block element -->\n<vl-proza-message domain=\"mockdomaineditable\" code=\"block\"></vl-proza-message>\n\n<!-- In een knop -->\n<vl-button>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-button>\n<vl-button secondary>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-button>\n<vl-button tertiary>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-button>\n\n<!-- In een link -->\n<vl-link href=\"#\" external>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlProzaMessage } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProzaMessage, VlButtonComponent, VlLinkComponent]);\n\n// Er is geen attribuut om een bericht editeerbaar te maken: de backend beslist. Geeft\n// proza/domein/{domain}/toegelatenoperaties voor de huidige gebruiker update: true terug, dan toont\n// vl-proza-message naast het bericht een edit-knop, die /proza/domeinen/{domain}/codes/{code} in een nieuw tabblad\n// opent, en een refresh-knop, die het bericht opnieuw ophaalt zonder de cache van de browser.\n// In Storybook geeft de mock voor mockdomaineditable update: true terug."
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message",
+      "text": "De pagina linkt voor proza-message-preloader naar components-block-proza-message-preloader--proza-message-preloader-default, een pagina die in 2.20.0 niet bestaat: vl-proza-message-preloader staat op components-block-proza-message-proza-message-preloader. Ook de doc-url van vl-proza-message in de web-types wijst naar een onbestaande pagina (components-block-proza-message--documentatie); de juiste is components-block-proza-message-proza-message--documentatie.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-message.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message",
+      "name": "block",
+      "text": "Volgens de web-types duidt block aan dat de inhoud van het bericht een block element is. De code zet of verwijdert block zelf na het laden van elk bericht: aan als het bericht een element met display block, inline-block, flex, grid of table bevat, anders uit. Een block dat je zelf zet, wordt dus overschreven.",
+      "source": "libs/components/src/block/proza-message/vl-proza-message.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message",
+      "name": "domain",
+      "text": "De argTypes markeren domain als verplicht, maar zonder domain neemt vl-proza-message het prozaDomain uit FluxConfig (FluxConfig.setPreferences({ prozaDomain })). Deze pagina zegt dat niet; de pagina van de vlProza directive en het recept Configuratie wel.",
+      "source": "libs/components/src/block/proza-message/vl-proza-message.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message",
+      "name": "base-url",
+      "text": "base-url geldt voor het ophalen van het bericht en van de toegelaten operaties, maar niet voor de edit-knop: die opent altijd /proza/domeinen/{domain}/codes/{code} op de host van de huidige pagina. De pagina zegt enkel dat de edit-knop naar het Proza portaal leidt. De code plakt base-url voor het pad proza/domein/..., dus laat het eindigen op een /.",
+      "source": "libs/components/src/block/proza-message/vl-proza-message.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message",
+      "name": "parameters",
+      "text": "De web-types en de pagina zeggen niet in welk formaat parameters staat. De code geeft het door aan vl-typography, dat het als JSON leest, bv. parameters='{\"naam\": \"Jan\"}', en in het bericht elke ${parameter.naam} vervangt door de waarde; placeholders zonder waarde verdwijnen.",
+      "source": "libs/components/src/block/typography/vl-typography.component.ts"
+    }
+  ]
+}

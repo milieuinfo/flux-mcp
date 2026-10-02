@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-3-assistentie-bij-invoer",
+  "inputHash": "104c4dc00acc",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 3.3 Assistentie bij invoer, vooral voor formulieren: help gebruikers fouten vermijden, begrijpen en herstellen. Met foutidentificatie en labels of instructies (brons[basis]), overbodige invoer (brons[plus]), foutsuggestie (zilver[basis]) en foutpreventie bij wettelijke, financiële of persoonlijke gegevens en toegankelijke authenticatie (zilver[plus]). Met een HTML-voorbeeld uit de WCAG-techniek ARIA18 van een foutmelding met role=\"alertdialog\".",
+  "keywords": [
+    "assistentie bij invoer",
+    "input assistance",
+    "formulier",
+    "form validation",
+    "foutmelding",
+    "error message",
+    "foutidentificatie",
+    "error identification",
+    "labels of instructies",
+    "labels or instructions",
+    "foutsuggestie",
+    "error suggestion",
+    "redundant entry",
+    "toegankelijke authenticatie",
+    "accessible authentication"
+  ],
+  "examples": {},
+  "notes": []
+}

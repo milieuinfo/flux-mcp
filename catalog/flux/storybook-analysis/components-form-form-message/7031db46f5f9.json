@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "page": "components-form-form-message",
+  "inputHash": "7031db46f5f9",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-form-message, de foutmelding bij een formulierveld: een boodschap per veld (for) en per ValidityState-sleutel (state), of een algemene zonder state. De form control in dezelfde form toont en verbergt zijn boodschappen zelf, één tegelijk, en koppelt de tekst als aria-description aan het veld; met show toon je een boodschap manueel.",
+  "keywords": [
+    "form message",
+    "vl-form-message",
+    "foutmelding",
+    "error message",
+    "validatieboodschap",
+    "validation message",
+    "field error",
+    "validitystate",
+    "formuliervalidatie",
+    "form validation",
+    "aria-description"
+  ],
+  "examples": {
+    "components-form-form-message--form-message-default": {
+      "html": "<vl-form-message show validation-message=\"Dit is een form message.\"></vl-form-message>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-form-message",
+      "name": "validation-message",
+      "text": "De story vl-form-message - default zet de tekst in het attribuut validation-message, en de sectie validationMessage beschrijft het, maar de web-types en de argTypes kennen het niet. De form control vult het zelf in met zijn validationMessage wanneer hij de foutmelding toont; vl-form-message toont het enkel als het default slot leeg is.",
+      "source": "libs/components/src/form/form-message/vl-form-message.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-form-message",
+      "name": "pre-line",
+      "text": "De code kent het attribuut pre-line (property preLine), dat de nieuwe lijnen in de boodschap behoudt. De web-types en de argTypes noemen het preLine; die naam werkt niet als HTML-attribuut, want de component leest enkel pre-line.",
+      "source": "libs/components/src/form/form-message/vl-form-message.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-form-message",
+      "name": "state",
+      "text": "Volgens de sectie Volgorde volgen de boodschappen de volgorde van de vl-form-messages in de DOM. De form control toont er telkens één: die voor de eerste sleutel van zijn ValidityState die faalt, in de volgorde van ValidityState (valueMissing, typeMismatch, patternMismatch, tooLong, tooShort, rangeUnderflow, rangeOverflow, …). Is er voor die sleutel geen boodschap, dan neemt hij de eerste vl-form-message zonder state. De volgorde in de DOM telt dus enkel tussen boodschappen voor dezelfde state, of zonder state.",
+      "source": "libs/components/src/form/form-control/form-control.ts"
+    }
+  ]
+}

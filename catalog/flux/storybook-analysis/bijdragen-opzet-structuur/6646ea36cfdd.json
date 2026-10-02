@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "bijdragen-opzet-structuur",
+  "inputHash": "6646ea36cfdd",
+  "analysedFor": "2.19.0",
+  "summary": "Voor wie bijdraagt aan Flux: hoe de monorepo flux-web-components opgezet is, met de private dependencies uit Artifactory en Node via Volta, met npm om dependencies te beheren en scripts te draaien. Ze beschrijft ook de apps en libs in de repo en welk npm-package elke lib oplevert.",
+  "keywords": [
+    "opzet",
+    "structuur",
+    "project structure",
+    "monorepo",
+    "flux-web-components",
+    "bijdragen",
+    "contributing",
+    "npm",
+    "volta",
+    "node versie",
+    "artifactory",
+    "npmrc",
+    "private dependencies",
+    "apps",
+    "libs"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina laat Node installeren met 'volta install node@20.11.0' en verwacht 'v20.11.0' als uitvoer van 'node -v'. De package.json van 2.19.0 legt met Volta Node 22.20.0 vast (\"volta\": { \"node\": \"22.20.0\" }).",
+      "source": "apps/storybook/docs/b_bijdragen/1_opzet-structuur.mdx"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "page": "components-atom-link",
+  "inputHash": "8e1bf56effaa",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-link, de link naar een andere pagina. Toont de varianten bold, small, large en error, een externe link (nieuw tabblad met een icoon; zet in label dat hij in een nieuw venster opent), een icoon voor of na de tekst of enkel een icoon (met verplicht label), en button-as-link voor een actie op dezelfde pagina in de stijl van een link. Bij elke klik volgt het event vl-click.",
+  "keywords": [
+    "link",
+    "vl-link",
+    "hyperlink",
+    "anchor",
+    "externe link",
+    "external link",
+    "button as link",
+    "knop als link",
+    "icon link",
+    "navigatie",
+    "navigation",
+    "aria-label",
+    "vl-click"
+  ],
+  "examples": {
+    "components-atom-link--link-default": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlLinkComponent } from '@domg-wc/components/atom';\n\nregisterWebComponents([VlLinkComponent]);\n\n// vl-click volgt op elke klik (bubbles en composed). Het native click event werkt ook: gebruik er één van.\ndocument.querySelector('vl-link').addEventListener('vl-click', () => {\n    console.log('link geklikt');\n});"
+    },
+    "components-atom-link--link-bold": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" bold label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-small": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" small label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-large": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" large label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-error": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" error label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-external": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" external label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-icon": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" icon=\"arrow-right-fat\" icon-placement=\"before\" label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-icon-only": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" icon=\"arrow-right-fat\" label=\"Ga naar Vlaanderen.be\"></vl-link>"
+    },
+    "components-atom-link--button-styled-as-link": {
+      "html": "<vl-link button-as-link label=\"Annuleer inschrijving\">Annuleren</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlLinkComponent } from '@domg-wc/components/atom';\n\nregisterWebComponents([VlLinkComponent]);\n\n// Met button-as-link rendert vl-link een <button type=\"button\"> in plaats van een <a>: de actie hang je aan vl-click.\ndocument.querySelector('vl-link[button-as-link]').addEventListener('vl-click', () => {\n    console.log('annuleren');\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-link",
+      "name": "aria-haspopup",
+      "text": "De pagina raadt onder Toegankelijkheid aria-haspopup aan (true, menu, listbox, tree, grid of dialog) voor een link die een menu of dialog opent, en vl-link geeft het door aan de interne <a>, of aan de <button> bij button-as-link. De web-types vermelden het niet, en dus ook de API-tabel niet. Als globaal ARIA-attribuut mag het wel op elk element.",
+      "source": "libs/components/src/atom/link/vl-link.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-link",
+      "name": "block",
+      "text": "vl-link declareert block als boolean property, maar gebruikt het niet: het zet geen class in de render en geen CSS van vl-link kent het. Het attribuut heeft dus geen effect. Het staat niet in de web-types en niet op de pagina.",
+      "source": "libs/components/src/atom/link/vl-link.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-link",
+      "name": "type",
+      "text": "De web-types geven als type van het attribuut type 'string: 'button'' | ''submit'' | ''reset'', een verminkte versie van de samenvatting string: 'button' | 'submit' | 'reset' in de argTypes. De geldige waarden zijn button (de default), submit en reset, en ze werken enkel samen met button-as-link.",
+      "source": "libs/components/src/atom/link/stories/vl-link.stories-arg.ts"
+    }
+  ]
+}

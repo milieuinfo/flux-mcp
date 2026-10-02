@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "beheren-git-release-branching",
+  "inputHash": "9f3a80c4b402",
+  "analysedFor": "2.1.0",
+  "summary": "Voor het Flux-team: een diagram van hoe commits in flux-web-components van feature-branches via de pre-release-branch naar de release-branches gaan, en welke tags daarbij gelegd worden. Pre-release-branches leveren beta-releases, release-branches finale releases; voor elke tag komt er een artifact op Artifactory.",
+  "keywords": [
+    "git",
+    "branching",
+    "branching strategie",
+    "branching strategy",
+    "release branch",
+    "pre-release",
+    "develop branch",
+    "hotfix",
+    "tag",
+    "semantic-release",
+    "beta release",
+    "artifactory",
+    "release proces",
+    "beheren"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het diagram (apps/storybook/resources/beheren/git-branching-strategie-uig.png) toont de branches 'develop', 'hotfix', 'release' en 'release-1.0' en tags als 'v1.0.0-beta.1' en 'v1.0.1-fix.1'. In 2.1.0 kent de configuratie van semantic-release 'release-v2' als release-branch en 'release-v2-rc' als pre-release-branch met het label 'rc' (resources/ci-bamboo/release/.releaserc-release), en 'develop-v2' en 'develop-v2-*' als pre-release-branches (resources/ci-bamboo/release/.releaserc-develop). Met 'prerelease: true' wordt de branchnaam het pre-release-deel van de versie, niet '-beta.1'; de pagina 'Beheren/CI - CD' spreekt ook van een '-develop' suffix. resources/ci-bamboo/bash/release-and-publish.sh released enkel op een branch met 'develop', 'bugfix' of 'release' in de naam; op een branch 'hotfix' stopt het zonder release.",
+      "source": "apps/storybook/docs/c_beheren/2_git-release-branching.stories.mdx"
+    }
+  ]
+}

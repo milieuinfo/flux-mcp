@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "recepten-cdn-bundel-fat-lib",
+  "inputHash": "7bcd1621468e",
+  "analysedFor": "2.20.0",
+  "summary": "De fat-lib: een statische bundel van de compliance-componenten (header, footer, cookie-consent, cookie-statement, privacy en accessibility) op de CDN, voor websites en legacy toepassingen zonder bundler. Ze bestaat enkel per versie (domg-wc-compliance-<versie>.min.js, met een leesbare variant en een source map) en je laadt ze met een script-tag van het type module.",
+  "keywords": [
+    "cdn",
+    "fat-lib",
+    "fat lib",
+    "bundel",
+    "bundle",
+    "domg-wc-compliance",
+    "script tag",
+    "zonder bundler",
+    "without bundler",
+    "legacy",
+    "compliance",
+    "static website",
+    "versie",
+    "versioned"
+  ],
+  "examples": {},
+  "notes": []
+}

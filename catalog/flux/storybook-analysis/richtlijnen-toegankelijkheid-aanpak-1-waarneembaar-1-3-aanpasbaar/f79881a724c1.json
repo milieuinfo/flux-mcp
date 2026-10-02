@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-3-aanpasbaar",
+  "inputHash": "f79881a724c1",
+  "analysedFor": "2.4.0",
+  "summary": "WCAG-richtlijn 1.3 Aanpasbaar: leg de structuur en de relaties van de pagina vast in de code, in een logische volgorde, zonder informatie die enkel zichtbaar of hoorbaar is, bruikbaar in staande en liggende stand en met een duidelijk doel per invoerveld. 1.3.1 tot 1.3.3 zijn brons[basis], 1.3.4 en 1.3.5 zilver[basis]; met HTML-voorbeelden voor ARIA-landmarks, semantische elementen, koppen, role=\"group\" en autocomplete.",
+  "keywords": [
+    "aanpasbaar",
+    "adaptable",
+    "info en relaties",
+    "info and relationships",
+    "semantische html",
+    "semantic html",
+    "landmarks",
+    "aria role",
+    "koppen",
+    "headings",
+    "betekenisvolle volgorde",
+    "weergavestand",
+    "orientation",
+    "autocomplete",
+    "input purpose"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "In vb. 4 van 1.3.1 ('Gebruik 'aria-labelledby' om regions te benoemen.') sluit '<h1 id=\"p123\">Calendar<h1>' de kop niet af: de tweede <h1> moet </h1> zijn. Wie het voorbeeld overneemt, opent een tweede kop rond de rest van de inhoud.",
+      "source": "apps/storybook/docs/e_richtlijnen/a_toegankelijkheid-aanpak/1_waarneembaar/1.3_aanpasbaar.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Succescriterium 1.3.1 heet op deze pagina 'Info en onderlinge verhoudingen', op het overzicht van '1. Waarneembaar' 'Info en relaties'.",
+      "source": "apps/storybook/docs/e_richtlijnen/a_toegankelijkheid-aanpak/1_waarneembaar/1.0_overzicht.stories.mdx"
+    }
+  ]
+}

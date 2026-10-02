@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "map-baselayer-baselayer-grb",
+  "inputHash": "f7e0b45d84a9",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-map-baselayer-grb, een basiskaartlaag voor een vl-map met de GRB-basiskaart in kleur (WMTS-laag grb_bsk van https://geo.api.vlaanderen.be/GRB/wmts). Gebruik ze als standaard ondergrond van een kaart van Vlaanderen; het element erft van vl-map-baselayer, dus met background-layer komt er een achtergrondlaag van het Nationaal Geografisch Instituut onder.",
+  "keywords": [
+    "grb",
+    "grootschalig referentiebestand",
+    "grb basiskaart",
+    "grb_bsk",
+    "basiskaart",
+    "baselayer",
+    "base layer",
+    "achtergrondkaart",
+    "background layer",
+    "wmts",
+    "vl-map-baselayer-grb",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-baselayer-baselayer-grb--map-baselayer-grb-default": {
+      "html": "<!-- De basiskaartlaag staat rechtstreeks in de vl-map. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb></vl-map-baselayer-grb>\n</vl-map>"
+    },
+    "map-baselayer-baselayer-grb--map-baselayer-grb-background-layer": {
+      "html": "<!-- background-layer legt onder de GRB-laag een achtergrondlaag met opacity 0.3: zonder background-type en\n     background-options is dat CartoWeb van het Nationaal Geografisch Instituut. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb background-layer></vl-map-baselayer-grb>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-baselayer-grb",
+      "text": "De sectie 'Voorbeeld' toont het codeblok <vl-map-baselayer-grb></vl-map-baselayer-grb>, maar daaronder de story 'vl-map-baselayer-grb - background layer', met background-layer; dezelfde story staat nog eens onder 'Varianten'. De story 'vl-map-baselayer-grb - default' staat niet op de pagina. Bij grb-gray en grb-ortho toont 'Voorbeeld' wel de default story.",
+      "source": "libs/map/src/components/baselayer/vl-map-base-layer-grb/stories/vl-map-baselayer-grb.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-baselayer-grb",
+      "text": "Onder 'Configuratie' zegt de pagina dat de component geen configuratie heeft. De web-types geven vl-map-baselayer-grb wel de attributen van vl-map-baselayer (background-layer, background-type, background-options, layer, title, type, url en custom-css), en de story 'vl-map-baselayer-grb - background layer' gebruikt background-layer. layer, title en url hebben in de code een default (grb_bsk, 'GRB basis laag' en https://geo.api.vlaanderen.be/GRB/wmts); een attribuut met dezelfde naam gaat voor.",
+      "source": "libs/map/src/components/baselayer/vl-map-base-layer-grb/stories/vl-map-baselayer-grb.stories-doc.mdx"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "page": "components-block-popover",
+  "inputHash": "801b0cdf3c65",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-popover, een klein venster dat bij een klik op een trigger (het element met het id in for) boven de inhoud verschijnt, vooral voor context- en submenu's opgebouwd met vl-popover-action-list en vl-popover-action. De pagina behandelt de pijl en distance, placement (met -start of -end), strategy en een parent met position: relative, trigger (hover als tooltip is deprecated: gebruik vl-tooltip), een actie markeren met selected, een scheiding met <hr class=\"vl-separator\" /> en acties als link met href.",
+  "keywords": [
+    "popover",
+    "vl-popover",
+    "popup",
+    "contextmenu",
+    "context menu",
+    "submenu",
+    "actiemenu",
+    "action menu",
+    "dropdown menu",
+    "meer acties",
+    "vl-popover-action",
+    "vl-popover-action-list",
+    "placement",
+    "floating-ui"
+  ],
+  "examples": {
+    "components-block-popover--popover-default": {
+      "html": "<!-- De eerste parent van de popover op position: relative, zie Strategy. -->\n<div style=\"position: relative;\">\n    <vl-button ghost icon=\"nav-show-more-vertical\" id=\"btn-acties\" label=\"Acties\"></vl-button>\n    <vl-popover for=\"btn-acties\" placement=\"bottom-start\">\n        <vl-popover-action-list>\n            <vl-popover-action icon=\"search\" action=\"search\">Zoeken</vl-popover-action>\n            <vl-popover-action icon=\"bell\" action=\"report\">Rapportenoverzicht</vl-popover-action>\n            <vl-popover-action icon=\"pin\" action=\"locate\">Vind locatie</vl-popover-action>\n        </vl-popover-action-list>\n    </vl-popover>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlPopoverComponent } from '@domg-wc/components/block';\n\n// vl-popover registreert vl-popover-action-list en vl-popover-action zelf.\nregisterWebComponents([VlPopoverComponent, VlButtonComponent]);\n\n// Markeer de aangeklikte actie met het attribuut selected en haal het weg bij de andere acties. action is vrije data\n// bij de actie, bv. om te bepalen wat er moet gebeuren.\ndocument.querySelector('vl-popover-action-list').addEventListener('click', (event) => {\n    const actionElement = event.target.closest('vl-popover-action');\n    if (!actionElement) return;\n    console.log(actionElement.action);\n    actionElement.parentElement.querySelectorAll('vl-popover-action').forEach((item) => {\n        if (item !== actionElement) item.removeAttribute('selected');\n    });\n    actionElement.setAttribute('selected', '');\n});"
+    },
+    "components-block-popover--popover-hover": {
+      "html": "<!-- De eerste parent van de popover op position: relative, zie Strategy. -->\n<div style=\"position: relative;\">\n    <vl-button ghost icon=\"nav-show-more-vertical\" id=\"btn-acties\" label=\"Acties\"></vl-button>\n    <vl-popover for=\"btn-acties\" trigger=\"hover\">\n        <vl-popover-action-list>\n            <vl-popover-action icon=\"search\" action=\"search\">Zoeken</vl-popover-action>\n            <vl-popover-action icon=\"bell\" action=\"report\">Rapportenoverzicht</vl-popover-action>\n            <vl-popover-action icon=\"pin\" action=\"locate\">Vind locatie</vl-popover-action>\n        </vl-popover-action-list>\n    </vl-popover>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlPopoverComponent } from '@domg-wc/components/block';\n\n// vl-popover registreert vl-popover-action-list en vl-popover-action zelf.\nregisterWebComponents([VlPopoverComponent, VlButtonComponent]);\n\ndocument.querySelector('vl-popover-action-list').addEventListener('click', (event) => {\n    const actionElement = event.target.closest('vl-popover-action');\n    if (!actionElement) return;\n    console.log(actionElement.action);\n    actionElement.parentElement.querySelectorAll('vl-popover-action').forEach((item) => {\n        if (item !== actionElement) item.removeAttribute('selected');\n    });\n    actionElement.setAttribute('selected', '');\n});"
+    },
+    "components-block-popover--popover-actions": {
+      "html": "<vl-popover-action-list>\n    <vl-popover-action icon=\"search\" action=\"zoeken\">Zoeken</vl-popover-action>\n    <vl-popover-action icon=\"bell\" action=\"rapporten-tonen\">Rapportenoverzicht</vl-popover-action>\n    <vl-popover-action icon=\"pin\" action=\"locatie-vinden\">Vind locatie</vl-popover-action>\n</vl-popover-action-list>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlPopoverActionComponent, VlPopoverActionListComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlPopoverActionListComponent, VlPopoverActionComponent]);\n\n// Markeer de aangeklikte actie met het attribuut selected en haal het weg bij de andere acties.\ndocument.querySelector('vl-popover-action-list').addEventListener('click', (event) => {\n    const actionElement = event.target.closest('vl-popover-action');\n    if (!actionElement) return;\n    console.log(actionElement.action);\n    actionElement.parentElement.querySelectorAll('vl-popover-action').forEach((item) => {\n        if (item !== actionElement) item.removeAttribute('selected');\n    });\n    actionElement.setAttribute('selected', '');\n});"
+    },
+    "components-block-popover--popover-actions-divider": {
+      "html": "<vl-popover-action-list>\n    <vl-popover-action icon=\"search\" action=\"zoeken\">Zoeken</vl-popover-action>\n    <vl-popover-action icon=\"bell\" action=\"rapporten-tonen\">Rapportenoverzicht</vl-popover-action>\n    <vl-popover-action icon=\"pin\" action=\"locatie-vinden\">Vind locatie</vl-popover-action>\n    <hr class=\"vl-separator\" />\n    <vl-popover-action icon=\"save\" action=\"bewaren\">Bewaren</vl-popover-action>\n    <vl-popover-action icon=\"trash\" action=\"verwijderen\">Verwijderen</vl-popover-action>\n</vl-popover-action-list>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlPopoverActionComponent, VlPopoverActionListComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlPopoverActionListComponent, VlPopoverActionComponent]);\n\n// Markeer de aangeklikte actie met het attribuut selected en haal het weg bij de andere acties. Een klik op de\n// scheidingslijn is geen actie.\ndocument.querySelector('vl-popover-action-list').addEventListener('click', (event) => {\n    const actionElement = event.target.closest('vl-popover-action');\n    if (!actionElement) return;\n    console.log(actionElement.action);\n    actionElement.parentElement.querySelectorAll('vl-popover-action').forEach((item) => {\n        if (item !== actionElement) item.removeAttribute('selected');\n    });\n    actionElement.setAttribute('selected', '');\n});"
+    },
+    "components-block-popover--popover-actions-links": {
+      "html": "<vl-popover-action-list>\n    <vl-popover-action icon=\"search\" href=\"#zoeken\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Zoeken</vl-popover-action>\n    <vl-popover-action icon=\"bell\" href=\"#rapporten-tonen\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Rapportenoverzicht</vl-popover-action>\n    <vl-popover-action icon=\"pin\" href=\"#locatie-vinden\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Vind locatie</vl-popover-action>\n</vl-popover-action-list>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover ze gepositioneerd wordt. vl-popover declareert het als attribuut (attribute: 'for'), en de pagina en de stories zetten het zo; de web-types vermelden for enkel als property. vl-popover zoekt het element in het document en in de root van de popover. Met trigger click gebruikt vl-popover, als het element zelf geen button is, de eerste button erin (ook in de shadow DOM, zoals bij vl-button) voor de klik en voor aria-controls, aria-haspopup en aria-expanded.",
+      "source": "libs/components/src/block/popover/vl-floating-ui.controller.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "open",
+      "text": "vl-popover declareert open ook als attribuut (attribute: 'open', met reflect): met open staat de popover open, en de popover zet en verwijdert het attribuut zelf bij openen en sluiten. De web-types kennen open enkel als property. De methodes show(), hide() en toggle() staan niet in de web-types.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "Het icoon voor de tekst van de actie, met de naam van een icoon zoals bij vl-icon (bv. search). vl-popover-action declareert icon als property met het attribuut icon; de web-types vermelden voor vl-popover-action geen enkel attribuut, property of slot.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "action",
+      "text": "Vrije data bij de actie, bv. een sleutel waarmee een click-handler bepaalt wat er moet gebeuren; de component doet er zelf niets mee. Als attribuut of als property: de story vl-popover - actions divider zet het attribuut, de stories default, hover en actions de property (.action).",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "selected",
+      "text": "Markeert de actie als geselecteerd: een blauwe lijn links, en aria-selected=\"true\" op de actie. De opmaak hangt aan het attribuut (:host([selected])) en de property wordt niet gereflecteerd; zet dus het attribuut, zoals de click-handler van de stories doet. De argTypes beschrijven selected als property, de web-types niet.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "href",
+      "text": "Maakt van de actie een link: vl-popover-action rendert dan een <a role=\"menuitem\"> in plaats van een <button role=\"menuitem\">. Zie de waarschuwing op de pagina: sinds 2.5.0 horen href, target en rel op vl-popover-action, niet op een eigen link erin.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "target",
+      "text": "Het target van de link, enkel samen met href.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "rel",
+      "text": "Het rel-attribuut van de link, enkel samen met href.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover-action",
+      "name": "selected",
+      "text": "Onder Popover Actions staat dat je acties kan markeren als active. vl-popover-action kent geen active: het attribuut is selected, zoals in de stories en in het voorbeeld eronder.",
+      "source": "libs/components/src/block/popover/stories/vl-popover.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "placement",
+      "text": "De web-types geven voor placement enkel de waarden 'top' | 'right' | 'bottom' | 'left', maar de beschrijving en de pagina laten een suffix -start of -end toe, en de story vl-popover - default zet placement=\"bottom-start\". vl-popover geeft de waarde ongewijzigd door aan floating-ui, dat ook bv. top-end en left-start kent.",
+      "source": "libs/components/src/block/popover/stories/vl-popover.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover-action",
+      "name": "selected",
+      "text": "Het voorbeeld met LitElement onder Popover Actions bindt selected=${selected}. Dat zet het attribuut ook als selected false is (selected=\"false\"), en elk aanwezig attribuut selected markeert de actie. De story gebruikt ?selected=${selected}; zet in gewone HTML het attribuut enkel op de geselecteerde actie.",
+      "source": "libs/components/src/block/popover/stories/vl-popover.stories-doc.mdx"
+    }
+  ]
+}

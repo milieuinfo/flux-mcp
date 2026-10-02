@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "page": "recepten-events",
+  "inputHash": "24447b51325f",
+  "analysedFor": "2.1.0",
+  "summary": "Hoe je naar events van de UIG-componenten (Flux) luistert: de eigen custom events met de prefix vl-, zoals vl-change en vl-input van vl-checkbox, hebben de voorkeur boven native events zoals click. De custom events staan onder Configuratie op de pagina van een component; de pagina verwijst verder naar de documentatie van Lit over events en wijst op retargeting in de shadow DOM.",
+  "keywords": [
+    "events",
+    "custom events",
+    "custom event",
+    "vl-change",
+    "vl-input",
+    "native events",
+    "retargeting",
+    "shadow dom",
+    "event listener",
+    "lit",
+    "vl-checkbox",
+    "uig"
+  ],
+  "examples": {},
+  "notes": []
+}

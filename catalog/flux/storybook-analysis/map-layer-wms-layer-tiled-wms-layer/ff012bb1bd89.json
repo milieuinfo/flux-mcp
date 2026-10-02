@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "map-layer-wms-layer-tiled-wms-layer",
+  "inputHash": "ff012bb1bd89",
+  "analysedFor": "2.13.0",
+  "summary": "Documentatie van vl-map-tiled-wms-layer, een WMS-kaartlaag in een vl-map die de kaart in tegels (tiles) opvraagt. Je geeft de WMS-url en de layers mee, en optioneel styles en version (standaard 1.3.0); een vl-map-wms-style in de laag stijlt ze server-side met een SLD. Wil je één afbeelding per bevraging, gebruik dan vl-map-image-wms-layer.",
+  "keywords": [
+    "wms",
+    "tiled wms",
+    "vl-map-tiled-wms-layer",
+    "tegels",
+    "tiles",
+    "web map service",
+    "wms layer",
+    "wms-laag",
+    "kaartlaag",
+    "map layer",
+    "overlay",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-layer-wms-layer-tiled-wms-layer--map-tiled-wms-layer-default": {
+      "html": "<!-- De laag vraagt de WMS-laag GEM_GRENS in tegels op. Zonder version gebruikt ze WMS 1.3.0. De story heeft geen\n     basiskaartlaag: enkel de gemeentegrenzen zijn te zien. -->\n<vl-map lambert2008>\n    <vl-map-tiled-wms-layer\n        layers=\"GEM_GRENS\"\n        name=\"Gemeentegrenzen\"\n        url=\"https://geo.api.vlaanderen.be/GRB/wms\"\n    ></vl-map-tiled-wms-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-tiled-wms-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-tiled-wms-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

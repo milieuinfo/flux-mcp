@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-1-tekstalternatieven",
+  "inputHash": "0e20fb815ea1",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 1.1 Tekstalternatieven, met succescriterium 1.1.1 Niet-tekstuele content (brons[basis]): geef de informatie uit afbeeldingen, grafieken, pictogrammen en infographics ook als tekst weer. Met HTML-voorbeelden uit de WCAG Quick Reference voor alt, aria-label, aria-labelledby, role=\"img\" en de inhoud van object.",
+  "keywords": [
+    "tekstalternatief",
+    "text alternative",
+    "alt-tekst",
+    "alt text",
+    "alt attribuut",
+    "niet-tekstuele content",
+    "non-text content",
+    "afbeelding",
+    "image",
+    "aria-label",
+    "aria-labelledby",
+    "emoji",
+    "wcag 1.1.1",
+    "toegankelijkheid",
+    "accessibility"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Vb. 7, 'Bied tekst alternatieven voor emoji's, emoticons, ASCII-art en leetspeak', linkt naar dezelfde techniek als vb. 6 (https://www.w3.org/WAI/WCAG22/Techniques/html/H53), en die gaat over de inhoud van de object tag, niet over emoji's.",
+      "source": "apps/storybook/docs/e_richtlijnen/a_toegankelijkheid-aanpak/1_waarneembaar/1.1_tekstalternatieven.mdx"
+    }
+  ]
+}

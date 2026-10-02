@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "page": "components-block-functional-header",
+  "inputHash": "a20a4545cabb",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-functional-header, de header bovenaan een toepassing met de titel (title-label), een subtitel, de terug-link en acties. De pagina geeft richtlijnen voor de terug-link (back-link, back), sticky en skip-to-content-id, en toont de slots en varianten met tabs (vl-tabs-next in het sub-header slot), een breadcrumb in het sub-title slot, full-width en het verbergen of uitschakelen van de terug-link.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "vl-functional-header",
+    "application header",
+    "paginaheader",
+    "page header",
+    "paginatitel",
+    "terug-link",
+    "back link",
+    "breadcrumb",
+    "tabs",
+    "sub-header",
+    "sticky header",
+    "skip link",
+    "acties"
+  ],
+  "examples": {
+    "components-block-functional-header--functional-header-default": {
+      "html": "<vl-functional-header\n    sub-title=\"Voor lager, middelbaar en hoger onderwijs\"\n    title-label=\"School- en studietoelagen\"\n></vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-actions": {
+      "html": "<vl-functional-header\n    sub-title=\"Voor lager, middelbaar en hoger onderwijs\"\n    title-label=\"School- en studietoelagen\"\n>\n    <div slot=\"actions\">\n        <a href=\"#\">Actie 1</a>\n        <a href=\"#\">Actie 2</a>\n    </div>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-slots": {
+      "html": "<vl-functional-header>\n    <span slot=\"back\">Terug</span>\n    <a slot=\"back-link\" href=\"#\">Terug</a>\n    <span slot=\"sub-header\">Sub header content</span>\n    <span slot=\"sub-title\">Voor lager, middelbaar en hoger onderwijs</span>\n    <span slot=\"title\">School- en studietoelagen</span>\n    <span slot=\"top-left\">Linkerbovenhoek content</span>\n    <span slot=\"top-right\">Rechterbovenhoek content</span>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-tabs": {
+      "html": "<vl-functional-header title-label=\"School- en studietoelagen\">\n    <vl-tabs-next slot=\"sub-header\" horizontal-navigation label=\"Transportmiddelen\">\n        <vl-tab-link-next href=\"#trein\">Trein</vl-tab-link-next>\n        <vl-tab-link-next href=\"#metro\">Metro, tram en bus</vl-tab-link-next>\n        <vl-tab-link-next href=\"#fiets\">Fiets</vl-tab-link-next>\n    </vl-tabs-next>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-breadcrumb": {
+      "html": "<vl-functional-header title-label=\"School- en studietoelagen\" hide-back-link>\n    <vl-breadcrumb slot=\"sub-title\">\n        <vl-breadcrumb-item href=\"1\">Vlaanderen Intern</vl-breadcrumb-item>\n        <vl-breadcrumb-item href=\"2\">Regelgeving</vl-breadcrumb-item>\n        <vl-breadcrumb-item href=\"3\">Webuniversum</vl-breadcrumb-item>\n        <vl-breadcrumb-item>Componenten</vl-breadcrumb-item>\n    </vl-breadcrumb>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-full-width": {
+      "html": "<vl-functional-header full-width title-label=\"School- en studietoelagen\">\n    <span slot=\"sub-title\">Full width</span>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-disable-back-link": {
+      "html": "<vl-functional-header disable-back-link title-label=\"School- en studietoelagen\">\n    <span slot=\"sub-title\">Voor lager, middelbaar en hoger onderwijs</span>\n</vl-functional-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFunctionalHeaderComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlFunctionalHeaderComponent]);\n\n// Met disable-back-link is de terug-link een knop zonder href: de component navigeert niet en vuurt enkel\n// vl-click-back. Handel de klik dus zelf af.\ndocument.querySelector('vl-functional-header').addEventListener('vl-click-back', () => {\n    console.log('vl-click-back');\n});"
+    },
+    "components-block-functional-header--functional-header-hide-back-link": {
+      "html": "<vl-functional-header hide-back-link title-label=\"School- en studietoelagen\">\n    <span slot=\"sub-title\">Voor lager, middelbaar en hoger onderwijs</span>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-hide-sub-header": {
+      "html": "<vl-functional-header hide-sub-header title-label=\"School- en studietoelagen\"></vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "horizontal-navigation",
+      "text": "horizontal-navigation toont de tabs als navigatie met links (vl-tab-link-next in een lijst), zonder ARIA-tablist en zonder panelen. Het staat in de code van vl-tabs-next en in de argTypes van zijn stories, maar niet in de web-types van 2.15.0.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "label",
+      "text": "label geeft de tabnavigatie een toegankelijke naam (aria-label op de nav). Het staat in de code van vl-tabs-next en in de argTypes van zijn stories, maar niet in de web-types van 2.15.0.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-link-next",
+      "name": "href",
+      "text": "href is de doel-URL van de tab link en is verplicht: zonder href geeft de component een waarschuwing in de console. Het staat in de code, maar de web-types van 2.15.0 kennen voor vl-tab-link-next geen enkel attribuut.",
+      "source": "libs/components/src/block/next/tabs/vl-tab-link.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tabs-next",
+      "name": "within-functional-header",
+      "text": "Onder 'Met tabs' zegt de pagina dat de component vl-tabs het attribuut within-functional-header moet krijgen, en ze linkt naar components-block-tabs-tabs--documentatie, de pagina van de oudere vl-tabs. De story gebruikt vl-tabs-next met horizontal-navigation, zonder within-functional-header. De code van vl-tabs-next kent within-functional-header niet (enkel label, horizontal-navigation en no-border, naast custom-css); dat attribuut bestaat enkel op vl-tabs in libs/components/src/block/tabs. De web-types van 2.15.0 geven vl-tabs-next wel de attributen van vl-tabs, within-functional-header inbegrepen. Het voorbeeld volgt de story.",
+      "source": "libs/components/src/block/functional-header/stories/vl-functional-header.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "text": "De story 'slots' vult de slots back, back-link, sub-header en sub-title samen, terwijl de web-types zeggen dat die niet te combineren zijn. In de component staan de slots back-link en sub-title als standaardinhoud in het slot sub-header, en het slot back als standaardinhoud in back-link. Een gevuld slot sub-header vervangt dus de hele subrij: van die vier toont de story enkel 'Sub header content'. Kies in je eigen code ofwel sub-header, ofwel back-link of back met sub-title.",
+      "source": "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "actions",
+      "text": "De web-types noemen actions een slot, maar de shadow DOM van vl-functional-header heeft geen <slot name=\"actions\">. De component kopieert de outerHTML van elk kind van het element met slot=\"actions\" naar een lijst in de shadow DOM, en doet dat opnieuw bij elke wijziging (__processSlotActions, met een MutationObserver). Wat je toont, zijn dus nieuwe elementen: event listeners en properties die je op de originele kinderen zet, gaan niet mee.",
+      "source": "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "skip-to-content-id",
+      "text": "De pagina vraagt om steeds skip-to-content-id in te vullen en de terug-link expliciet een URL te geven met back-link. Geen enkele story zet skip-to-content-id, en de stories met een terug-link zetten geen back-link. Zonder skip-to-content-id rendert de component geen skip-link en geeft hij een waarschuwing in de console; zonder back-link wijst de terug-link naar document.referrer. De story 'breadcrumb' bindt bovendien skipToContentId in plaats van skip-to-content-id. De voorbeelden volgen de stories; voeg beide attributen toe in je eigen code.",
+      "source": "libs/components/src/block/functional-header/stories/vl-functional-header.stories.ts"
+    }
+  ]
+}

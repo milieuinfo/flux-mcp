@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "page": "components-block-infoblock",
+  "inputHash": "cf86563adc59",
+  "analysedFor": "2.11.0",
+  "summary": "Documentatie van vl-infoblock, een blok met een titel met icoon en een inleidende tekst, bv. boven een overzicht van contacten, publicaties, veelgestelde vragen of nieuwsberichten. Met type kies je een vast icoon (contact, publications, faq, news, timeline, question), met icon een eigen icoon; de titel zet je met het attribuut title of met een element in het slot title, bv. een vl-title.",
+  "keywords": [
+    "infoblock",
+    "vl-infoblock",
+    "info block",
+    "informatieblok",
+    "titel met icoon",
+    "heading with icon",
+    "section intro",
+    "inleiding",
+    "contact",
+    "faq",
+    "nieuws",
+    "publicaties",
+    "timeline"
+  ],
+  "examples": {
+    "components-block-infoblock--infoblock-contact": {
+      "html": "<vl-infoblock title=\"Contactenlijst\" type=\"contact\">\n    Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.\n</vl-infoblock>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlInfoblockComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInfoblockComponent]);"
+    },
+    "components-block-infoblock--infoblock-publications": {
+      "html": "<vl-infoblock title=\"Contracten\" type=\"publications\">\n    Hieronder bevindt zich een overzicht van al uw contracten binnen de Vlaamse Overheid\n</vl-infoblock>"
+    },
+    "components-block-infoblock--infoblock-faq": {
+      "html": "<vl-infoblock title=\"Veelgestelde vragen\" type=\"faq\">\n    Hieronder bevindt zich een overzicht van alle veelgestelde vragen binnen de Vlaamse Overheid.\n</vl-infoblock>"
+    },
+    "components-block-infoblock--infoblock-news": {
+      "html": "<vl-infoblock title=\"Nieuwsberichten\" type=\"news\">\n    Hieronder bevindt zich een overzicht van alle nieuwsberichten binnen de Vlaamse Overheid.\n</vl-infoblock>"
+    },
+    "components-block-infoblock--infoblock-timeline": {
+      "html": "<vl-infoblock title=\"Archief\" type=\"timeline\">\n    Hieronder bevindt zicht een overzicht van alle gearchiveerde berichten binnen de Vlaamse Overheid.\n</vl-infoblock>"
+    },
+    "components-block-infoblock--infoblock-question": {
+      "html": "<vl-infoblock title=\"Overheidsdiensten\" type=\"question\">\n    Hieronder bevindt zicht een overzicht van alle overheidsdiensten binnen de Vlaamse Overheid.\n</vl-infoblock>"
+    },
+    "components-block-infoblock--infoblock-custom-icon": {
+      "html": "<vl-infoblock title=\"Evenementen\" icon=\"calendar\">\n    Hieronder bevindt zicht een overzicht van alle evenementen binnen de Vlaamse Overheid.\n</vl-infoblock>"
+    },
+    "components-block-infoblock--infoblock-with-slot-elements": {
+      "html": "<vl-infoblock type=\"contact\">\n    <vl-title type=\"h2\" slot=\"title\">Titel via slot</vl-title>\n    Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.\n</vl-infoblock>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlInfoblockComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInfoblockComponent, VlTitleComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-infoblock",
+      "name": "type",
+      "text": "type kiest een vast icoon: contact, publications, faq, news, timeline of question, de opties uit de argTypes. De component zet er de class vl-infoblock--<type> mee op het blok. vl-infoblock observeert title, icon en type, maar de web-types van 2.11.0 geven voor vl-infoblock enkel custom-css.",
+      "source": "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-infoblock",
+      "name": "icon",
+      "text": "icon zet een eigen icoon vooraan de titel: de component geeft de waarde door aan het attribuut icon van een interne vl-icon. De story vl-infoblock - custom icon gebruikt calendar; de argTypes bieden calendar, programming-bug en key aan en verwijzen voor de volledige lijst naar https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-icon. Het staat in de code en de argTypes, maar niet in de web-types van 2.11.0.",
+      "source": "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-infoblock",
+      "name": "title",
+      "text": "title is zowel een attribuut als een slot. Het attribuut zet de tekst van de standaardtitel, een h2 in de header na het icoon; omdat title ook het globale HTML-attribuut is en op het element blijft staan, toont de browser die tekst ook als tooltip. Het slot title vervangt de h2, zoals in de story vl-infoblock - with slot elements met <vl-title type=\"h2\" slot=\"title\">. Beide staan in de code (_observedAttributes en <slot name=\"title\">), maar niet in de web-types van 2.11.0.",
+      "source": "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-infoblock",
+      "name": "[default]",
+      "text": "Het standaard slot is de inhoud van het blok, onder de titel (in div.vl-infoblock__content); elke story zet er haar tekst in. Het staat in de code (<slot></slot>), maar de web-types van 2.11.0 geven voor vl-infoblock geen slots.",
+      "source": "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-infoblock",
+      "text": "De template van de stories, behalve vl-infoblock - with slot elements, zet slot=\"info\" op vl-infoblock: het slot van vl-contact-card waarin een infoblock daar staat. Buiten vl-contact-card heeft dat attribuut geen effect, maar 'Show code' toont het wel. De voorbeelden laten het weg.",
+      "source": "libs/components/src/block/infoblock/stories/vl-infoblock.stories.ts"
+    }
+  ]
+}

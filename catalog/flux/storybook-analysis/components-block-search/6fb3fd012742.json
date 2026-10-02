@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "page": "components-block-search",
+  "inputHash": "6fb3fd012742",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-search, een zoekveld met een zoekknop. De component is deprecated en verdwijnt in v3: bouw een zoekformulier met een input group van vl-input-field en vl-button met loading, zoals in het zoek-patroon onder Patronen/Zoeken.",
+  "keywords": [
+    "zoeken",
+    "search",
+    "vl-search",
+    "zoekveld",
+    "search field",
+    "zoekbalk",
+    "search bar",
+    "zoekknop",
+    "search button",
+    "inline search",
+    "deprecated",
+    "input group"
+  ],
+  "examples": {
+    "components-block-search--search-default": {
+      "html": "<vl-search id=\"search-inline\" inline></vl-search>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSearchComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlSearchComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "inline",
+      "text": "De story zet inline. In de code geeft inline de class vl-search--inline: een compacte zoekbalk (standaard 25rem breed, aan te passen met --vl-search-width) waarin de tekst van het label visueel verborgen is en een vergrootglas toont, en met een vergrootglas in de zoekknop. De web-types van 2.20.0 geven vl-search geen enkel attribuut.",
+      "source": "libs/components/src/block/search/vl-search.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "block",
+      "text": "block is de standaardweergave: zonder inline of block zet vl-search zelf block. inline en block sluiten elkaar uit; zet je het ene, dan haalt de component het andere weg. Het attribuut staat niet in de web-types.",
+      "source": "libs/components/src/block/search/vl-search.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "alt",
+      "text": "alt geeft de class vl-search--alt; in de block-weergave krijgt de zoekbalk daarmee een witte achtergrond. Het attribuut staat niet in de web-types.",
+      "source": "libs/components/src/block/search/vl-search.flux-css.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "label",
+      "text": "label zet de tekst van het label bij het zoekveld, standaard Zoekterm; het slot label vervangt die tekst. Attribuut en slot staan niet in de web-types.",
+      "source": "libs/components/src/block/search/vl-search.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "submit-label",
+      "text": "submit-label zet de tekst van de zoekknop, standaard Zoeken; het slot submit-label vervangt die tekst. Attribuut en slot staan niet in de web-types.",
+      "source": "libs/components/src/block/search/vl-search.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "input",
+      "text": "Het slot input vervangt het eigen zoekveld van vl-search door het element dat je erin zet; de code voorziet vl-select-location. Het slot staat niet in de web-types.",
+      "source": "libs/components/src/block/search/vl-search.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "change",
+      "text": "Bij een change van zijn eigen zoekveld stuurt vl-search een change-event zonder detail; de zoekterm lees je met de property value. Event en property staan niet in de web-types.",
+      "source": "libs/components/src/block/search/vl-search.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search",
+      "name": "custom-css",
+      "text": "De API-tabel van de Storybook-pagina toont custom-css (argTypes: defaultArgTypes), en vl-search erft het attribuut van BaseHTMLElement (libs/common/src/base/base.html.element.ts), dat de CSS bij connectedCallback aan de shadow DOM toevoegt. De web-types van 2.20.0 geven vl-search geen enkel attribuut, ook custom-css niet.",
+      "source": "libs/components/src/block/search/stories/vl-search.stories.ts"
+    }
+  ]
+}

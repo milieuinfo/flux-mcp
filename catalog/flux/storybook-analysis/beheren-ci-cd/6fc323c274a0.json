@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "beheren-ci-cd",
+  "inputHash": "6fc323c274a0",
+  "analysedFor": "2.20.0",
+  "summary": "Voor het Flux-team: hoe de build en de release van flux-web-components op Jenkins lopen, als declaratieve multibranch pipeline op Kubernetes met de stages Trivy scan, build-en-tests, release-and-publish, verify-release en finalise-release. Ze legt ook uit wat de stage release-and-publish doet: semantic-release bepaalt met .releaserc-develop of .releaserc-release de versie en legt de tag, daarna worden de packages naar Artifactory gepubliceerd en wordt Storybook opnieuw gebouwd.",
+  "keywords": [
+    "ci",
+    "cd",
+    "ci/cd",
+    "jenkins",
+    "jenkinsfile",
+    "pipeline",
+    "kubernetes",
+    "semantic-release",
+    "release",
+    "trivy",
+    "artifactory",
+    "versionering",
+    "versioning",
+    "changelog",
+    "github release"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat de drie release stages op de top-level agent draaien en één workspace delen, en dat verify-release de build/dist-output van release-and-publish nodig heeft. resources/ci-jenkins/bash/verify-release.sh van 2.20.0 zegt dat verify-release een eigen agent declareert en in een eigen pod met een verse workspace draait, zonder de install die release-and-publish achterlaat (changelog 2.18.0: 'FLUX-643 - Jenkins build - verify-release isoleren in een eigen pod'). Hetzelfde script leest de versie wel uit build/dist/libs/components en de fat-lib uit build/dist/fat-lib, 'uit de gedeelde workspace'. Jenkinsfile.groovy zelf zat niet in de gelezen bron.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina somt het uploaden van de fat-lib als tgz naar Artifactory op als stap van elke release-and-publish. In resources/ci-jenkins/bash/release-and-publish.sh gebeurt die upload enkel op een release-branch; op een develop- of bugfix-branch wordt de tgz wel gemaakt, maar niet geüpload.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat er enkel bij een release een changelog aangemaakt wordt. Ook resources/ci-jenkins/release/.releaserc-develop gebruikt @semantic-release/changelog en schrijft resources/changelog/CHANGELOG.md bij. Het verschil zit in .releaserc-release: enkel die commit de changelog, package.json en de web-types met @semantic-release/git ('chore(release): <versie> [skip ci]') en maakt een GitHub release met @semantic-release/github.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "page": "components-block-doormat",
+  "inputHash": "866dfe6107c0",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-doormat, een blok met een titel, een tekst en een optionele afbeelding dat als geheel naar een pagina linkt. Gebruik het om een snel overzicht te geven van de informatie op je website. Varianten zijn de alternatieve stijl alt en een afbeelding of een graphic; external opent de link in een nieuw tabblad.",
+  "keywords": [
+    "doormat",
+    "vl-doormat",
+    "overzichtsblok",
+    "navigatieblok",
+    "link block",
+    "klikbaar blok",
+    "clickable card",
+    "card link",
+    "externe link",
+    "external link",
+    "afbeelding",
+    "image",
+    "graphic"
+  ],
+  "examples": {
+    "components-block-doormat--doormat-default": {
+      "html": "<vl-doormat href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\">\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlDoormatComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlDoormatComponent]);"
+    },
+    "components-block-doormat--doormat-alt": {
+      "html": "<vl-doormat href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\" alt>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-image": {
+      "html": "<vl-doormat\n    href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n    image-src=\"https://picsum.photos/100/150?image=1048\"\n    image-alt=\"Bouwen in Brussel\"\n>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    },
+    "components-block-doormat--doormat-graphic": {
+      "html": "<vl-doormat\n    href=\"https://www.vlaanderen.be/bouwen-wonen-en-energie\"\n    image-src=\"https://picsum.photos/1600/400?image=1048\"\n    image-alt=\"Bouwen in Brussel\"\n    graphic\n>\n    <span slot=\"title\">Bouwen, wonen en energie</span>\n    <span slot=\"text\">De overheid zet zich in om betaalbaar en kwaliteitsvol wonen voor iedereen beschikbaar te maken. Ze biedt sociale woningen aan, geeft premies aan wie zijn woning verbouwt en energiezuinig maakt en zoekt oplossingen om de stijging van de vastgoedprijzen onder controle te houden.</span>\n</vl-doormat>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-doormat",
+      "name": "image-height",
+      "text": "De argTypes en de web-types zeggen dat image-height niet van toepassing is als graphic aan staat. De code zet de hoogte ook dan op de afbeelding (height in renderImage), en de stijl van .vl-doormat__graphic legt enkel de breedte vast (width: 100% in vl-doormat.css.ts), niet de hoogte: image-height werkt bij graphic dus wel, en vervormt de afbeelding als de verhouding niet klopt. Voor image-width klopt de beschrijving: width: 100% overschrijft het width-attribuut.",
+      "source": "libs/components/src/block/doormat/vl-doormat.component.ts"
+    }
+  ]
+}

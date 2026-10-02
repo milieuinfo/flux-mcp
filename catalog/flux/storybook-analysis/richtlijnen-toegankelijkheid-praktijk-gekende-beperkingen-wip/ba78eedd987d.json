@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip",
+  "inputHash": "ba78eedd987d",
+  "analysedFor": "2.20.0",
+  "summary": "Gekende toegankelijkheidsbeperkingen (werk in uitvoering). vl-upload krijgt bij een validatiefout geen aria-invalid in de accessibility tree, omdat de upload-knop role=\"button\" heeft en Dropzone de file-input verbergt; de fout komt enkel via vl-form-message, dat ze in een role=\"status\"-regio met aria-live=\"polite\" rendert, zodat een screenreader ze voorleest. Daarnaast kan je in Safari met de standaardinstellingen niet met tab naar buttons, checkboxes of radios; gebruik option+tab of de instelling 'Press Tab to highlight each item on a web page'.",
+  "keywords": [
+    "gekende beperkingen",
+    "known limitations",
+    "toegankelijkheid",
+    "accessibility",
+    "vl-upload",
+    "aria-invalid",
+    "vl-form-message",
+    "aria-live",
+    "screenreader",
+    "screen reader",
+    "safari",
+    "focus",
+    "tab option",
+    "keyboard navigation",
+    "dropzone"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "page": "map-loading-indicator",
+  "inputHash": "5782ac5691c0",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-map-loading-indicator, een laadbalk bovenaan een vl-map. Plaats het element in de vl-map: het toont de balk tussen de events loadstart en loadend van de OpenLayers-kaart, dus zolang de kaart gegevens laadt.",
+  "keywords": [
+    "laadindicator",
+    "loading indicator",
+    "vl-map-loading-indicator",
+    "laadbalk",
+    "loading bar",
+    "progress bar",
+    "spinner",
+    "laden",
+    "loading",
+    "loadstart",
+    "loadend",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-loading-indicator--map-loading-indicator-default": {
+      "html": "<!-- vl-map-loading-indicator hoort in de vl-map: het toont de laadbalk tussen de events loadstart en loadend van de\n     OpenLayers-kaart. De twee knoppen horen enkel bij de demo: ze vuren die events zelf af. -->\n<div style=\"margin-bottom:10px\">\n    <vl-button data-cy=\"short-wait\">Fake kort wachten</vl-button>\n    <vl-button data-cy=\"long-wait\">Fake lang wachten</vl-button>\n</div>\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-loading-indicator></vl-map-loading-indicator>\n</vl-map>",
+      "js": "// De import registreert de elementen; de story registreert vl-button zelf.\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlMap, VlMapBaseLayerGRBGray, VlMapLoadingIndicator } from '@domg-wc/map';\nimport { MapEvent } from 'ol';\n\nregisterWebComponents([VlButtonComponent]);\n\n// Enkel voor de demo: vuur loadstart af op de OpenLayers-kaart (de property map van vl-map), en na ttw milliseconden\n// loadend.\nconst fakeLoadMap = async (ttw) => {\n    const vlMap = document.querySelector('vl-map');\n    vlMap.map.dispatchEvent(new MapEvent('loadstart', vlMap.map));\n    await new Promise((resolve) => setTimeout(resolve, ttw));\n    vlMap.map.dispatchEvent(new MapEvent('loadend', vlMap.map));\n};\n\ndocument.querySelector('[data-cy=\"short-wait\"]').addEventListener('click', () => fakeLoadMap(500));\ndocument.querySelector('[data-cy=\"long-wait\"]').addEventListener('click', () => fakeLoadMap(10000));"
+    }
+  },
+  "notes": []
+}

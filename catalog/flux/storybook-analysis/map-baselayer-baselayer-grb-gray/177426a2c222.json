@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "page": "map-baselayer-baselayer-grb-gray",
+  "inputHash": "177426a2c222",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-map-baselayer-grb-gray, een basiskaartlaag voor een vl-map met de GRB-basiskaart in grijstinten (WMTS-laag grb_bsk_grijs van https://geo.api.vlaanderen.be/GRB/wmts). Gebruik ze als rustige achtergrond onder je eigen kaartlagen; het element erft van vl-map-baselayer, dus met background-layer komt er een achtergrondlaag van het Nationaal Geografisch Instituut onder.",
+  "keywords": [
+    "grb",
+    "grb grijs",
+    "grb gray",
+    "grijze kaart",
+    "grijstinten",
+    "grayscale",
+    "basiskaart",
+    "baselayer",
+    "base layer",
+    "achtergrondkaart",
+    "background layer",
+    "wmts",
+    "vl-map-baselayer-grb-gray",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-baselayer-baselayer-grb-gray--map-baselayer-grb-gray-default": {
+      "html": "<!-- De basiskaartlaag staat rechtstreeks in de vl-map. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n</vl-map>"
+    },
+    "map-baselayer-baselayer-grb-gray--map-baselayer-grb-gray-background-layer": {
+      "html": "<!-- background-layer legt onder de GRB-laag een achtergrondlaag met opacity 0.3: zonder background-type en\n     background-options is dat CartoWeb van het Nationaal Geografisch Instituut. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray background-layer></vl-map-baselayer-grb-gray>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-baselayer-grb-gray",
+      "text": "Onder 'Configuratie' zegt de pagina dat de component geen configuratie heeft. De web-types geven vl-map-baselayer-grb-gray wel de attributen van vl-map-baselayer (background-layer, background-type, background-options, layer, title, type, url en custom-css), en de story 'vl-map-baselayer-grb-gray - background layer' gebruikt background-layer. layer, title en url hebben in de code een default (grb_bsk_grijs, 'GRB basis laag grijs' en https://geo.api.vlaanderen.be/GRB/wmts); een attribuut met dezelfde naam gaat voor.",
+      "source": "libs/map/src/components/baselayer/vl-map-base-layer-grb-gray/stories/vl-map-baselayer-grb-gray.stories-doc.mdx"
+    }
+  ]
+}

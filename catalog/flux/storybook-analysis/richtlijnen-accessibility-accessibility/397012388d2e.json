@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-accessibility-accessibility",
+  "inputHash": "397012388d2e",
+  "analysedFor": "2.3.0",
+  "summary": "Richtlijnen voor digitale toegankelijkheid met Flux: geef elke form control een label, met een vl-form-label en zijn for-attribuut of met het label-attribuut van de control; schrijf foutboodschappen die zeggen hoe je de fout oplost; gebruik placeholder enkel voor een voorbeeldwaarde en stel autocomplete correct in. De pagina beschrijft ook een gekende beperking: Safari legt met de standaardinstellingen geen focus op buttons, checkboxes en radios, tenzij met tab+option of een instelling in Safari.",
+  "keywords": [
+    "toegankelijkheid",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "formulier",
+    "form",
+    "label",
+    "vl-form-label",
+    "foutboodschap",
+    "error message",
+    "placeholder",
+    "autocomplete",
+    "focus",
+    "safari",
+    "keyboard navigation"
+  ],
+  "examples": {},
+  "notes": []
+}

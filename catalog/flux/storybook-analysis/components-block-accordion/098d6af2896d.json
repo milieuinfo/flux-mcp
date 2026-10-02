@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "page": "components-block-accordion",
+  "inputHash": "098d6af2896d",
+  "analysedFor": "2.8.1",
+  "summary": "Documentatie van vl-accordion, een blok dat inhoud toont of verbergt met een toggle. De toggle krijgt een tekst (toggle-text, of open-toggle-text en close-toggle-text die wisselen), een icoon of een eigen title slot; verder zijn er slots voor een subtitel en een menu rechtsboven, content-padding, disabled, default-open en het event vl-on-toggle. Meerdere accordions onder elkaar groepeer je met de klassen van Group (vl-group vl-group--column): de accordion-list waarnaar de pagina verwijst, bestaat niet meer in v2.",
+  "keywords": [
+    "accordion",
+    "accordeon",
+    "vl-accordion",
+    "uitklapbaar",
+    "collapsible",
+    "expand collapse",
+    "openklappen",
+    "toggle",
+    "disclosure",
+    "show hide",
+    "menu slot",
+    "subtitel",
+    "subtitle",
+    "vl-on-toggle"
+  ],
+  "examples": {
+    "components-block-accordion--accordion-default": {
+      "html": "<vl-accordion toggle-text=\"Lees meer over de onderwijsdoelstelling\">\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n</vl-accordion>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAccordionComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAccordionComponent]);\n\n// vl-on-toggle volgt bij het openen en sluiten via de toggle; event.detail.open zegt of de accordion open is.\ndocument.querySelector('vl-accordion').addEventListener('vl-on-toggle', (event) => {\n    console.log(event.detail.open ? 'geopend' : 'gesloten');\n});"
+    },
+    "components-block-accordion--accordion-dynamic-toggle": {
+      "html": "<vl-accordion close-toggle-text=\"Sluit de onderwijsdoelstelling\" open-toggle-text=\"Open de onderwijsdoelstelling\">\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n</vl-accordion>"
+    },
+    "components-block-accordion--accordion-icon": {
+      "html": "<vl-accordion icon=\"university\" toggle-text=\"Lees meer over de onderwijsdoelstelling\">\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n</vl-accordion>"
+    },
+    "components-block-accordion--accordion-title-slot": {
+      "html": "<vl-accordion>\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n    <span slot=\"title\">Lees meer over de onderwijsdoelstelling</span>\n</vl-accordion>"
+    },
+    "components-block-accordion--accordion-subtitle-slot": {
+      "html": "<vl-accordion>\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n    <span slot=\"title\">Lees meer over de onderwijsdoelstelling</span>\n    <vl-text slot=\"subtitle\" annotation>Lorem ipsum</vl-text>\n</vl-accordion>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTextComponent } from '@domg-wc/components/atom';\nimport { VlAccordionComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAccordionComponent, VlTextComponent]);"
+    },
+    "components-block-accordion--accordion-image-subtitle-slot": {
+      "html": "<vl-accordion>\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n    <span slot=\"title\">Lees meer over de onderwijsdoelstelling</span>\n    <img style=\"width: 50px\" src=\"cat.jpeg\" slot=\"subtitle\" />\n</vl-accordion>"
+    },
+    "components-block-accordion--accordion-menu-slot": {
+      "html": "<vl-accordion>\n    <span>Onderwijs helpt jonge mensen en volwassenen om zichzelf te ontwikkelen en hun weg te vinden in onze samenleving. Het hoger onderwijs speelt daarnaast een belangrijke rol in innovatie dankzij het belang van wetenschappelijk onderzoek.</span>\n    <span slot=\"title\">Lees meer over de onderwijsdoelstelling</span>\n    <vl-text slot=\"subtitle\" annotation>Lorem ipsum</vl-text>\n    <span slot=\"menu\">\n        <vl-button ghost icon=\"menu\" id=\"btn-acties\" label=\"onderwijs-menu\"></vl-button>\n        <vl-popover for=\"btn-acties\" placement=\"bottom-end\">\n            <vl-popover-action-list>\n                <vl-popover-action icon=\"search\">Zoeken</vl-popover-action>\n                <vl-popover-action icon=\"edit\">Aanpassen</vl-popover-action>\n                <vl-popover-action icon=\"bin\">Verwijderen</vl-popover-action>\n            </vl-popover-action-list>\n        </vl-popover>\n    </span>\n</vl-accordion>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlTextComponent } from '@domg-wc/components/atom';\nimport { VlAccordionComponent, VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent laadt zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlAccordionComponent, VlPopoverComponent, VlButtonComponent, VlTextComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-annotation",
+      "text": "De stories vl-accordion - subtitle slot en vl-accordion - menu slot vullen het slot subtitle met <vl-annotation slot=\"subtitle\">. Dat element bestaat niet in 2.8.1: <vl-annotation> was een component van v1, en in v2 neemt vl-text met het attribuut annotation die rol over (zie de pagina over de impact van de migratie naar v2). In Storybook staat de subtitel dus als gewone tekst, zonder de opmaak van een annotatie. De voorbeelden gebruiken <vl-text slot=\"subtitle\" annotation>.",
+      "source": "libs/components/src/block/accordion/stories/vl-accordion.stories.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover hij zich plaatst. De code van vl-popover leest for als attribuut (attribute: 'for'), maar de web-types van 2.8.1 geven for enkel als JS-property, niet als attribuut.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "icon toont een icoon voor de tekst van de actie (class vl-icon--<naam>). Het staat in de code van vl-popover-action, maar de web-types van 2.8.1 kennen voor vl-popover-action geen enkel attribuut of property; ook href, target, rel, action en selected ontbreken.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "[default]",
+      "text": "Het voorbeeld vl-accordion - menu slot zet de vl-popover-action-list in het default slot van vl-popover, zoals de code van vl-popover het definieert (<slot></slot>). De web-types van 2.8.1 kennen voor vl-popover geen slot.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action-list",
+      "name": "[default]",
+      "text": "Het voorbeeld vl-accordion - menu slot zet de vl-popover-action-elementen in het default slot van vl-popover-action-list, zoals de code het definieert (<slot></slot>). De web-types van 2.8.1 kennen voor vl-popover-action-list geen enkel attribuut, property of slot.",
+      "source": "libs/components/src/block/popover/vl-popover-action-list.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "[default]",
+      "text": "Het voorbeeld vl-accordion - menu slot zet de tekst van elke actie (Zoeken, Aanpassen, Verwijderen) in het default slot van vl-popover-action, zoals de code het definieert (<slot></slot>, na het icoon). De web-types van 2.8.1 kennen voor vl-popover-action geen slot.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "placement",
+      "text": "De story vl-accordion - menu slot zet placement=\"bottom-end\". De web-types van 2.8.1 geven als type van placement enkel 'top' | 'right' | 'bottom' | 'left', terwijl de beschrijving van hetzelfde attribuut een suffix -start of -end toelaat. De code typeert placement als Placement van @floating-ui/dom (libs/components/src/block/popover/vl-popover.defaults.ts), dat bottom-end kent; de waarde is dus geldig.",
+      "source": "libs/components/src/block/accordion/stories/vl-accordion.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Voor meerdere accordions verwijst de pagina naar de accordion-list component, met een link naar components-block-accordion-list--documentatie. Die pagina bestaat niet in de Storybook van 2.8.1 en vl-accordion-list staat niet in de web-types: <vl-accordion-list> was een component van v1, die volgens de pagina over de impact van de migratie naar v2 vervangen is door Group. Groepeer accordions onder elkaar met de klassen vl-group en vl-group--column, zoals de story vl-group - accordions op de pagina Group (styles-layout-group).",
+      "source": "libs/components/src/block/accordion/stories/vl-accordion.stories-doc.mdx"
+    }
+  ]
+}

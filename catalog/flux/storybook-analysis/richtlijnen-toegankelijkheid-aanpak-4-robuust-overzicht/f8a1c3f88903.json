@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-4-robuust-overzicht",
+  "inputHash": "f8a1c3f88903",
+  "analysedFor": "2.4.0",
+  "summary": "Overzicht van WCAG-principe 4, robuust: de inhoud moet altijd juist weergegeven worden, ook door ondersteunende technologieën, en daarvoor moet de ontwikkelaar de juiste code gebruiken. De enige richtlijn is 4.1 Compatibel, met de succescriteria Naam, rol, waarde (brons, [basis]) en Statusberichten (zilver, [+]). De pagina linkt naar de uitwerking van de richtlijn.",
+  "keywords": [
+    "robuust",
+    "robust",
+    "wcag principe 4",
+    "wcag principle 4",
+    "toegankelijkheid",
+    "accessibility",
+    "succescriteria",
+    "success criteria",
+    "compatibel",
+    "compatible",
+    "naam rol waarde",
+    "name role value",
+    "statusberichten",
+    "status messages"
+  ],
+  "examples": {},
+  "notes": []
+}

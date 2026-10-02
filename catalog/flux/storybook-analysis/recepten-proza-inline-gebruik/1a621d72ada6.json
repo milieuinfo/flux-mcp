@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "page": "recepten-proza-inline-gebruik",
+  "inputHash": "1a621d72ada6",
+  "analysedFor": "2.20.0",
+  "summary": "De vlProza directive uit @domg-wc/components/block zet een Proza bericht als platte tekst in een attribuut van een Lit-template, bv. de title van vl-alert, met de opties parameters, domain en fallback. De pagina legt ook uit hoe je een default domein instelt met FluxConfig.setPreferences({ prozaDomain }), hoe de directive samenwerkt met vl-proza-message-preloader, en wanneer je beter vl-proza-message gebruikt.",
+  "keywords": [
+    "proza",
+    "vlproza",
+    "proza directive",
+    "lit directive",
+    "vl-proza-message",
+    "vl-proza-message-preloader",
+    "prozadomain",
+    "fluxconfig",
+    "attribuut",
+    "attribute",
+    "plain text",
+    "vl-alert",
+    "berichten",
+    "messages",
+    "fallback"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "icon",
+      "text": "Het voorbeeld 'Alert met proza titel en parameters' gebruikt `icon=\"user\"` op vl-alert. De web-types van 2.20.0 geven als type 'warning' | 'check' | 'info-circle', maar de code zet elk icoon in de klasse `vl-icon--${icon}` (libs/components/src/block/alert/vl-alert.component.ts) en user staat in de iconenlijst (libs/components/src/atom/icon/vl-icon-list.ts).",
+      "source": "apps/storybook/docs/g_recepten/proza-inline.mdx"
+    }
+  ]
+}

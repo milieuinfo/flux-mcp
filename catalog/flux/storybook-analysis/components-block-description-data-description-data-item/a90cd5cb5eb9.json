@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "components-block-description-data-description-data-item",
+  "inputHash": "a90cd5cb5eb9",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-description-data-item, één label/waarde-paar voor vl-description-data. Label en waarde geef je mee als attribuut (label, value) of via de slots label en value, bv. voor een link; met items-size, items-medium-size, items-small-size en items-extra-small-size overschrijf je de kolombreedte die vl-description-data oplegt. Los gebruikt toont het item zijn label en waarde, maar zonder <dl>.",
+  "keywords": [
+    "description data item",
+    "vl-description-data-item",
+    "description-data",
+    "label",
+    "waarde",
+    "value",
+    "label waarde paar",
+    "key value pair",
+    "term en definitie",
+    "metadata",
+    "kolombreedte",
+    "items-size"
+  ],
+  "examples": {
+    "components-block-description-data-description-data-item--description-data-item-default": {
+      "html": "<vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlDescriptionDataItem } from '@domg-wc/components/block';\n\nregisterWebComponents([VlDescriptionDataItem]);"
+    },
+    "components-block-description-data-description-data-item--description-data-item-with-slot-elements": {
+      "html": "<vl-description-data-item>\n    <span slot=\"label\">Uitgever</span>\n    <span slot=\"value\">Kind en Gezin</span>\n</vl-description-data-item>"
+    }
+  },
+  "notes": []
+}

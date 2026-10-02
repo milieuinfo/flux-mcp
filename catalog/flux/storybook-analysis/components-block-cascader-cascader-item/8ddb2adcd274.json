@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "components-block-cascader-cascader-item",
+  "inputHash": "8ddb2adcd274",
+  "analysedFor": "2.4.0",
+  "summary": "Stories van vl-cascader-item, één knoop in de boom van een vl-cascader; de uitleg staat op de pagina Cascader. Het attribuut label is verplicht en komt ook in de breadcrumb, annotation zet een grijze tekst onder de standaardlink. Het slot label vervangt die link, bv. door een vl-title, en het slot content toont extra inhoud onder het label.",
+  "keywords": [
+    "cascader item",
+    "vl-cascader-item",
+    "cascader",
+    "drilldown",
+    "boomstructuur",
+    "tree",
+    "hiërarchie",
+    "label slot",
+    "content slot",
+    "annotation",
+    "nested list"
+  ],
+  "examples": {
+    "components-block-cascader-cascader-item--cascader-item-slots": {
+      "html": "<vl-cascader>\n    <p slot=\"home\">Vlaanderen</p>\n    <vl-breadcrumb slot=\"breadcrumb-placeholder\">\n        <vl-breadcrumb-item>Vlaanderen</vl-breadcrumb-item>\n    </vl-breadcrumb>\n    <vl-cascader-item label=\"West-Vlaanderen\">\n        <vl-title type=\"h5\" underline alt no-space-bottom slot=\"label\">Provincie: West-Vlaanderen</vl-title>\n        <p slot=\"content\">Het is de meest westelijk gelegen provincie van Vlaanderen en België en is de enige Belgische provincie die aan de Noordzee ligt. De provincie heeft een oppervlakte van 3.197 km² en telt ruim 1,2 miljoen inwoners. De hoofdstad van West-Vlaanderen is Brugge.</p>\n        <vl-cascader-item label=\"Gemeente\">\n            <vl-cascader-item label=\"Stad\"></vl-cascader-item>\n        </vl-cascader-item>\n    </vl-cascader-item>\n</vl-cascader>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlCascaderComponent } from '@domg-wc/components/block';\n\n// VlCascaderComponent registreert zelf vl-cascader-item, vl-link, vl-icon en vl-text, maar niet vl-breadcrumb en\n// vl-breadcrumb-item voor het slot breadcrumb-placeholder.\n// Een klik op de inhoud van het slot label opent het volgende niveau; label=\"West-Vlaanderen\" komt in de breadcrumb.\nregisterWebComponents([VlCascaderComponent, VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlTitleComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-cascader-item",
+      "name": "annotation",
+      "text": "De argTypes en de web-types zeggen dat annotation 'de ondertitel in de breadcrumb navigatie' bepaalt. In de code komt annotation niet in de breadcrumb, die enkel het label toont: de standaardweergave van een item zet annotation als <vl-text annotation> onder de link met het label (defaultItemActionTemplate in vl-cascader.utils.ts). Vul je het slot label, dan toont het item annotation niet; met een template via template-type enkel als die template item.annotation zelf toont.",
+      "source": "libs/components/src/block/cascader/vl-cascader.utils.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cascader-item",
+      "name": "template-type",
+      "text": "template-type kiest de template uit de property templates van vl-cascader waarmee het item getoond wordt; het item toont dan die template en het slot content, niet het slot label. Het attribuut staat in de code van vl-cascader-item en de pagina Cascader legt het uit onder Dynamische templates, maar de web-types van 2.4.0 geven voor vl-cascader-item enkel custom-css, annotation en label.",
+      "source": "libs/components/src/block/cascader/vl-cascader-item.component.ts"
+    }
+  ]
+}

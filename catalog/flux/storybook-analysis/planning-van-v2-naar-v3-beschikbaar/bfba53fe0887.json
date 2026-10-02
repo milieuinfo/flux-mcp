@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "page": "planning-van-v2-naar-v3-beschikbaar",
+  "inputHash": "bfba53fe0887",
+  "analysedFor": "2.8.1",
+  "summary": "Overzicht per component van wat in v2 al klaarstaat voor de overgang naar v3: vl-footer en vl-header zijn deprecated en worden vervangen door vl-footer-next en vl-header-next (sinds 2.3.0), met per variant het artifact en de tag die je in v2 en in v3 gebruikt.",
+  "keywords": [
+    "v2 naar v3",
+    "migratie",
+    "migration",
+    "deprecated",
+    "next componenten",
+    "next components",
+    "vl-header-next",
+    "vl-footer-next",
+    "header",
+    "footer"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De pagina noemt `<vl-header-next>` als v2-gebruik van Header [next]. De code registreert het element (`@webComponent('vl-header-next')` in libs/components/src/compliance/next/header/vl-header.component.ts), maar het staat niet in de web-types van 2.8.1.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De pagina noemt `<vl-footer-next>` als v2-gebruik van Footer [next]. De code registreert het element (`@webComponent('vl-footer-next')` in libs/components/src/compliance/next/footer/vl-footer.component.ts), maar het staat niet in de web-types van 2.8.1.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    }
+  ]
+}

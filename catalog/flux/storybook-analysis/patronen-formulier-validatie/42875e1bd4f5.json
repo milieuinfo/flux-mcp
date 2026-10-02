@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "page": "patronen-formulier-validatie",
+  "inputHash": "42875e1bd4f5",
+  "analysedFor": "2.16.0",
+  "summary": "Hoe validatie werkt in de Flux-formuliercomponenten: ze volgen de native Constraint Validation API, en een vl-form-message toont de foutmelding voor één ValidityState-sleutel (state) van de form control met het id in for. Met voorbeelden voor een verplicht veld (required, valueMissing) en een patroon (pattern, patternMismatch).",
+  "keywords": [
+    "formuliervalidatie",
+    "form validation",
+    "validatie",
+    "validitystate",
+    "constraint validation api",
+    "vl-form-message",
+    "foutmelding",
+    "error message",
+    "verplicht veld",
+    "required",
+    "valuemissing",
+    "pattern",
+    "patternmismatch",
+    "checkvalidity"
+  ],
+  "examples": {
+    "patronen-formulier-validatie--formulier-validatie-verplicht": {
+      "html": "<form onsubmit=\"return false;\">\n    <vl-form-label for=\"voornaam\" label=\"Voornaam *\"></vl-form-label>\n    <vl-input-field id=\"voornaam\" name=\"voornaam\" autocomplete=\"given-name\" required></vl-input-field>\n    <vl-form-message for=\"voornaam\" state=\"valueMissing\">Gelieve een voornaam in te vullen.</vl-form-message>\n</form>"
+    },
+    "patronen-formulier-validatie--formulier-validatie-patroon": {
+      "html": "<form onsubmit=\"return false;\">\n    <vl-form-label for=\"familienaam\" label=\"Familienaam\"></vl-form-label>\n    <vl-input-field id=\"familienaam\" name=\"familienaam\" autocomplete=\"family-name\" pattern=\"^[a-zA-Z]*$\"></vl-input-field>\n    <vl-form-message for=\"familienaam\" state=\"patternMismatch\">Gelieve geen nummers of speciale tekens in te vullen.</vl-form-message>\n</form>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-input-field",
+      "text": "De lijst met ValidityState-attributen koppelt tooLong aan het attribuut maxlength en tooShort aan minlength, de namen van native HTML. vl-input-field en vl-textarea kennen die namen niet: in de web-types en in de code heten ze max-length en min-length (libs/components/src/form/input-field/vl-input-field.component.ts, libs/components/src/form/textarea/vl-textarea.component.ts). Een maxlength of minlength op de component geeft dus geen tooLong- of tooShort-validatie.",
+      "source": "apps/storybook/docs/f_patronen/formulier/2_validatie/formulier-validatie.mdx"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "page": "components-form-datepicker",
+  "inputHash": "2e32cf9741e8",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-datepicker, een invoerveld met een kalender (Flatpickr) om een datum, een periode (type range), een tijd of een datum met tijd te kiezen. De pagina legt de ISO-waarde per type uit, het formaat, de grenzen min-date/max-date en min-time/max-time met de validatie rangeUnderflow en rangeOverflow, de mask validatie, en hoe je de kalender positioneert met position, static of anchor-positioning.",
+  "keywords": [
+    "datepicker",
+    "vl-datepicker",
+    "datumkiezer",
+    "date picker",
+    "kalender",
+    "calendar",
+    "datum kiezen",
+    "time picker",
+    "tijd",
+    "date range",
+    "periode",
+    "date-time",
+    "flatpickr",
+    "min-date",
+    "form control"
+  ],
+  "examples": {
+    "components-form-datepicker--datepicker-default": {
+      "html": "<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-default\">Datum</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-default\"\n                name=\"datepicker-default\"\n                label=\"Datum\"\n                placeholder=\"dd.mm.YYYY\"\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Typ of selecteer een datum</vl-text>\n        <vl-form-message for=\"datepicker-default\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-default\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-default\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlDatepickerComponent, VlFormLabelComponent, VlFormMessageComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlDatepickerComponent, VlFormLabelComponent, VlFormMessageComponent, VlButtonComponent]);\n\n// vl-change volgt op elke wijziging van de waarde, ook door code; vl-input enkel op invoer van de gebruiker.\n// event.detail.value is de waarde in ISO-formaat, bv. '2023-12-31' (type date).\ndocument.querySelector('#datepicker-default').addEventListener('vl-change', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-datepicker--datepicker-min-date-and-max-date": {
+      "html": "<!-- De story rekent de datums uit vanaf vandaag: value is het huidige tijdstip in ISO-formaat\n     (new Date().toISOString(), hier ingekort tot de datum), min-date twee dagen ervoor en max-date twee dagen erna,\n     in het formaat d.m.Y. Hier met 29.09.2026 als vandaag. -->\n<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-min-max-date\">Datum</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-min-max-date\"\n                name=\"datepicker-min-max-date\"\n                label=\"Datum\"\n                value=\"2026-09-29\"\n                placeholder=\"dd.mm.YYYY\"\n                format=\"d.m.Y\"\n                min-date=\"27.09.2026\"\n                max-date=\"01.10.2026\"\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Typ of selecteer een datum tussen de minimum en maximum data</vl-text>\n        <vl-form-message for=\"datepicker-min-max-date\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-min-max-date\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-min-max-date\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>"
+    },
+    "components-form-datepicker--datepicker-static": {
+      "html": "<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-static\">Datum</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-static\"\n                name=\"datepicker-static\"\n                label=\"Datum\"\n                placeholder=\"dd.mm.YYYY\"\n                static\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Typ of selecteer een datum</vl-text>\n        <vl-form-message for=\"datepicker-static\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-static\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-static\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>"
+    },
+    "components-form-datepicker--datepicker-range": {
+      "html": "<!-- De story rekent de datums uit vanaf vandaag: min-date tien dagen ervoor en max-date tien dagen erna (d.m.Y),\n     value van vier dagen ervoor tot vier dagen erna (Y-m-d/Y-m-d). Hier met 29.09.2026 als vandaag. -->\n<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-range\">Start- en einddatum</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-range\"\n                name=\"datepicker-range\"\n                label=\"Start- en einddatum\"\n                value=\"2026-09-25/2026-10-03\"\n                placeholder=\"dd.mm.YYYY tot en met dd.mm.YYYY\"\n                type=\"range\"\n                format=\"d.m.Y\"\n                min-date=\"19.09.2026\"\n                max-date=\"09.10.2026\"\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Kies een start- en einddatum</vl-text>\n        <vl-form-message for=\"datepicker-range\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-range\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-range\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>"
+    },
+    "components-form-datepicker--datepicker-time": {
+      "html": "<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-time\">Tijd</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-time\"\n                name=\"datepicker-time\"\n                label=\"Tijd\"\n                placeholder=\"hh:mm\"\n                type=\"time\"\n                format=\"H:i\"\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Kies een tijd</vl-text>\n        <vl-form-message for=\"datepicker-time\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-time\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-time\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>"
+    },
+    "components-form-datepicker--datepicker-min-time-and-max-time": {
+      "html": "<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-min-max-time\">Tijd</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-min-max-time\"\n                name=\"datepicker-min-max-time\"\n                label=\"Tijd\"\n                placeholder=\"hh:mm\"\n                type=\"time\"\n                format=\"H:i\"\n                min-time=\"10:00\"\n                max-time=\"11:00\"\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Kies een tijd tussen een minimum en maximum</vl-text>\n        <vl-form-message for=\"datepicker-min-max-time\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-min-max-time\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-min-max-time\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>"
+    },
+    "components-form-datepicker--datepicker-date-time": {
+      "html": "<form class=\"vl-grid\">\n    <div class=\"vl-column vl-column--12\">\n        <vl-form-label for=\"datepicker-datetime\">Datum en tijd</vl-form-label>\n        <div>\n            <vl-datepicker\n                id=\"datepicker-datetime\"\n                name=\"datepicker-datetime\"\n                label=\"Datum en tijd\"\n                placeholder=\"dd.mm.YYYY hh:mm\"\n                type=\"date-time\"\n                format=\"d.m.Y H:i\"\n            ></vl-datepicker>\n        </div>\n        <vl-text annotation>Kies een datum en tijd</vl-text>\n        <vl-form-message for=\"datepicker-datetime\" state=\"patternMismatch\">Waarde voldoet niet aan het opgegeven patroon.</vl-form-message>\n        <vl-form-message for=\"datepicker-datetime\" state=\"rangeOverflow\">Waarde overschrijdt het toegestane maximum.</vl-form-message>\n        <vl-form-message for=\"datepicker-datetime\" state=\"rangeUnderflow\">Waarde ligt onder het toegestane minimum.</vl-form-message>\n    </div>\n    <div class=\"vl-column vl-column--12\">\n        <vl-button type=\"submit\">Submit</vl-button>\n    </div>\n</form>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-datepicker",
+      "name": "label",
+      "text": "De stories zetten label op vl-datepicker en de tekst van het label in het default slot van vl-form-label, zonder label-attribuut. vl-form-label zet bij elke update het label-attribuut van de control met als id zijn for (gezocht in de omliggende form, anders in zijn parent) op zijn eigen label-attribuut, ook als dat leeg is. In deze opbouw krijgt de datepicker dus label=\"\" en verliest zijn invoerveld zijn aria-label; het <label for> in de shadow DOM van vl-form-label bereikt het veld niet. De voorbeelden volgen de stories; zet in je eigen code de tekst in het label-attribuut van vl-form-label, zoals de stories van vl-input-field-masked doen.",
+      "source": "libs/components/src/form/form-label/vl-form-label.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-datepicker",
+      "name": "raw-value",
+      "text": "De code declareert het attribuut raw-value (property rawValue), maar de web-types en de argTypes kennen het niet, en de datepicker leest het nergens: het heeft geen effect. De waarde zonder mask vraag je op met de methode getRawValue(), enkel als er een mask actief is (type date of time, zonder disable-mask-validation). Die methode staat, net als getDates() met de gekozen datums als Date-objecten, niet onder Publieke methodes.",
+      "source": "libs/components/src/form/datepicker/vl-datepicker.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "page": "components-atom-link",
+  "inputHash": "f2b57680f513",
+  "analysedFor": "2.8.1",
+  "summary": "Documentatie van vl-link, de link naar een andere pagina. Toont de varianten bold, small, large en error, een externe link (nieuw tabblad met een icoon; zet in label dat hij in een nieuw venster opent), een icoon bij de tekst of enkel een icoon, en button-as-link voor een actie op dezelfde pagina in de stijl van een link.",
+  "keywords": [
+    "link",
+    "vl-link",
+    "hyperlink",
+    "anchor",
+    "externe link",
+    "external link",
+    "button as link",
+    "knop als link",
+    "icon link",
+    "navigatie",
+    "navigation",
+    "aria-label"
+  ],
+  "examples": {
+    "components-atom-link--link-default": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-bold": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" bold label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-small": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" small label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-large": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" large label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-error": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" error label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-external": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" external label=\"Ga naar Vlaanderen.be (opent in een nieuw venster)\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-icon": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" icon=\"arrow-right-fat\" icon-placement=\"before\" label=\"Ga naar Vlaanderen.be\">Vlaanderen</vl-link>"
+    },
+    "components-atom-link--link-icon-only": {
+      "html": "<vl-link href=\"https://www.vlaanderen.be\" icon=\"arrow-right-fat\" label=\"Ga naar Vlaanderen.be\"></vl-link>"
+    },
+    "components-atom-link--button-styled-as-link": {
+      "html": "<vl-link button-as-link label=\"Annuleer inschrijving\">Annuleren</vl-link>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-link",
+      "name": "block",
+      "text": "vl-link declareert block als boolean property, maar gebruikt het niet: het zet geen class in de render en geen CSS van vl-link kent het. Het attribuut heeft dus geen effect. Het staat niet in de web-types en niet op de pagina.",
+      "source": "libs/components/src/atom/link/vl-link.component.ts"
+    }
+  ]
+}

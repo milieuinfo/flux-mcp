@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-1-2-op-tijd-gebaseerde-media",
+  "inputHash": "c7df635e6be6",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 1.2 Op tijd gebaseerde media: een tekstversie of audiobeschrijving voor louter geluid of video, ondertitels bij vooraf opgenomen en live video, en een audiodescriptie of transcript. Alle criteria vallen onder [plus]: 1.2.1 tot 1.2.3 onder brons, 1.2.4 en 1.2.5 onder zilver; de pagina heeft geen codevoorbeelden.",
+  "keywords": [
+    "op tijd gebaseerde media",
+    "time-based media",
+    "video",
+    "audio",
+    "podcast",
+    "ondertitels",
+    "captions",
+    "subtitles",
+    "audiodescriptie",
+    "audio description",
+    "transcript",
+    "media-alternatief",
+    "wcag 1.2",
+    "toegankelijkheid",
+    "accessibility"
+  ],
+  "examples": {},
+  "notes": []
+}

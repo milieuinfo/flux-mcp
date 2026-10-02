@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "styles-layout-afnemers-accessibility",
+  "inputHash": "ecd3f699a188",
+  "analysedFor": "2.7.0",
+  "summary": "CSS-klasse die de toegankelijkheid verbetert: vl-visually-hidden verbergt content visueel maar houdt ze beschikbaar voor screenreaders. Gebruik ze voor extra context, labels of instructies die enkel voor assistieve technologie nodig zijn.",
+  "keywords": [
+    "toegankelijkheid",
+    "accessibility",
+    "a11y",
+    "visually hidden",
+    "vl-visually-hidden",
+    "sr-only",
+    "screenreader",
+    "screen reader only",
+    "verborgen tekst",
+    "hidden text"
+  ],
+  "examples": {
+    "styles-layout-afnemers-accessibility--visually-hidden-default": {
+      "html": "<div>Deze content is zichtbaar voor de gebruiker.\n    Maar deze content ...<span class=\"vl-visually-hidden\">... is enkel toegankelijk voor screenreaders.</span>\n</div>"
+    }
+  },
+  "notes": []
+}

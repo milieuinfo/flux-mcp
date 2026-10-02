@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "page": "styles-layout-padding",
+  "inputHash": "b747eab3e374",
+  "analysedFor": "2.20.0",
+  "summary": "Utility-klassen om de padding van een element aan te passen. vl-padding--small en vl-padding--medium zetten de padding boven en onder op --vl-spacing--small (1.5rem) of --vl-spacing--medium (3rem) en links en rechts op 0, op schermen tot 767px telkens op --vl-spacing--normal (2rem); vl-padding--no, vl-padding--no-top en vl-padding--no-bottom zetten de padding rondom, bovenaan of onderaan op 0. Zonder klasse bepaalt de container, typisch vl-section, de padding; gebruik bij voorkeur deze klassen in plaats van eigen padding.",
+  "keywords": [
+    "padding",
+    "vl-padding",
+    "vl-padding--small",
+    "vl-padding--medium",
+    "vl-padding--no",
+    "spacing",
+    "witruimte",
+    "binnenruimte",
+    "whitespace",
+    "no padding",
+    "padding-top",
+    "padding-bottom",
+    "utility class"
+  ],
+  "examples": {
+    "styles-layout-padding--padding-default": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-container krijgt hier zelf een padding van 15px; normaal bepaalt de container\n       (bv. vl-section) die padding. */\n    .sb-container {\n        width: 300px;\n        height: 100px;\n        background-color: lightblue;\n        border: rgb(152, 191, 34) 5px solid;\n        padding: 15px;\n    }\n\n    .sb-content {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        background-color: white;\n        border: black 1px dashed;\n    }\n</style>\n<div class=\"sb-container\">\n    <div class=\"sb-content\">default</div>\n</div>"
+    },
+    "styles-layout-padding--padding-small": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-container krijgt hier zelf een padding van 15px; normaal bepaalt de container\n       (bv. vl-section) die padding. */\n    .sb-container {\n        width: 300px;\n        height: 100px;\n        background-color: lightblue;\n        border: rgb(152, 191, 34) 5px solid;\n        padding: 15px;\n    }\n\n    .sb-content {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        background-color: white;\n        border: black 1px dashed;\n    }\n</style>\n<div class=\"sb-container vl-padding--small\">\n    <div class=\"sb-content\">vl-padding--small</div>\n</div>"
+    },
+    "styles-layout-padding--padding-medium": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-container krijgt hier zelf een padding van 15px; normaal bepaalt de container\n       (bv. vl-section) die padding. */\n    .sb-container {\n        width: 300px;\n        height: 100px;\n        background-color: lightblue;\n        border: rgb(152, 191, 34) 5px solid;\n        padding: 15px;\n    }\n\n    .sb-content {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        background-color: white;\n        border: black 1px dashed;\n    }\n</style>\n<div class=\"sb-container vl-padding--medium\">\n    <div class=\"sb-content\">vl-padding--medium</div>\n</div>"
+    },
+    "styles-layout-padding--padding-no": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-container krijgt hier zelf een padding van 15px; normaal bepaalt de container\n       (bv. vl-section) die padding. */\n    .sb-container {\n        width: 300px;\n        height: 100px;\n        background-color: lightblue;\n        border: rgb(152, 191, 34) 5px solid;\n        padding: 15px;\n    }\n\n    .sb-content {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        background-color: white;\n        border: black 1px dashed;\n    }\n</style>\n<div class=\"sb-container vl-padding--no\">\n    <div class=\"sb-content\">vl-padding--no</div>\n</div>"
+    },
+    "styles-layout-padding--padding-no-bottom": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-container krijgt hier zelf een padding van 15px; normaal bepaalt de container\n       (bv. vl-section) die padding. */\n    .sb-container {\n        width: 300px;\n        height: 100px;\n        background-color: lightblue;\n        border: rgb(152, 191, 34) 5px solid;\n        padding: 15px;\n    }\n\n    .sb-content {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        background-color: white;\n        border: black 1px dashed;\n    }\n</style>\n<div class=\"sb-container vl-padding--no-bottom\">\n    <div class=\"sb-content\">vl-padding--no-bottom</div>\n</div>"
+    },
+    "styles-layout-padding--padding-no-top": {
+      "html": "<style>\n    /* Demo-stijl van de story. .sb-container krijgt hier zelf een padding van 15px; normaal bepaalt de container\n       (bv. vl-section) die padding. */\n    .sb-container {\n        width: 300px;\n        height: 100px;\n        background-color: lightblue;\n        border: rgb(152, 191, 34) 5px solid;\n        padding: 15px;\n    }\n\n    .sb-content {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n        background-color: white;\n        border: black 1px dashed;\n    }\n</style>\n<div class=\"sb-container vl-padding--no-top\">\n    <div class=\"sb-content\">vl-padding--no-top</div>\n</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat in het 'default voorbeeld' de margin expliciet op 15px staat. De stories zetten op .sb-container echter `padding: 15px`, geen margin: het is de padding die de voorbeelden met de klassen vl-padding--* vergelijken.",
+      "source": "libs/styles/src/layout/padding/stories/vl-padding.stories-doc.mdx"
+    }
+  ]
+}

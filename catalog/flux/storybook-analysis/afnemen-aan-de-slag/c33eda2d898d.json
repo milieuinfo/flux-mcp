@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "afnemen-aan-de-slag",
+  "inputHash": "c33eda2d898d",
+  "analysedFor": "2.3.0",
+  "summary": "Hoe je als afnemer begint met de Flux Web Components: Node en npm, de packages in je package.json, en het registreren van een component met een import of registerWebComponents. Ook wat je voor styling (niet) moet doen en waar je de documentatie per component vindt.",
+  "keywords": [
+    "aan de slag",
+    "getting started",
+    "installatie",
+    "installation",
+    "npm",
+    "package.json",
+    "dependencies",
+    "@domg-wc/components",
+    "registerwebcomponents",
+    "registratie",
+    "register web component",
+    "import",
+    "volta",
+    "styling"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld van package.json neemt enkel @domg-wc/components en @domg-wc/map op, en de pagina noemt @domg-wc/components het minimum. De tweede manier van registreren importeert registerWebComponents echter rechtstreeks uit @domg-wc/common. Dat package komt in 2.3.0 enkel transitief binnen, als dependency van @domg-wc/components; onder een strikte package manager zoals pnpm is het dan niet importeerbaar. Neem @domg-wc/common dus op als je registerWebComponents gebruikt; de pagina van 2.20.0 zegt dat ook.",
+      "source": "apps/storybook/docs/a_afnemen/1_aan-de-slag.stories.mdx"
+    }
+  ]
+}

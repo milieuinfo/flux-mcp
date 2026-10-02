@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "recepten-configuratie",
+  "inputHash": "029cf73897e0",
+  "analysedFor": "2.1.0",
+  "summary": "Hoe je de voorkeuren van Flux wijzigt met setPreferences op de statische klasse uit @domg-wc/common (de pagina noemt ze UigConfig, in de code van 2.1.0 heet ze FluxConfig): autoRegisterStyles, logWebComponentRegistration en logTreeshakeRegistration. Dat moet gebeuren voordat de eerste component geregistreerd wordt; bij de fat-lib zet je dezelfde voorkeuren als attributen op de script-tag.",
+  "keywords": [
+    "configuratie",
+    "configuration",
+    "uigconfig",
+    "fluxconfig",
+    "setpreferences",
+    "preferences",
+    "voorkeuren",
+    "autoregisterstyles",
+    "auto-register-styles",
+    "logwebcomponentregistration",
+    "logtreeshakeregistration",
+    "fat-lib",
+    "logging",
+    "settings"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina gebruikt de klasse UigConfig: import { UigConfig } from '@domg-wc/common'. Die bestaat in 2.1.0 niet; @domg-wc/common exporteert FluxConfig (libs/common/src/index.ts, libs/common/src/config/flux-config.ts), met dezelfde setPreferences en getPreferences. Gebruik import { FluxConfig } from '@domg-wc/common' en FluxConfig.setPreferences({ logWebComponentRegistration: true }). Vanaf 2.2.0 noemt de pagina FluxConfig.",
+      "source": "apps/storybook/docs/g_recepten/configuratie.stories.mdx"
+    }
+  ]
+}

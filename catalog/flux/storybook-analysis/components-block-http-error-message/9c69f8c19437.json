@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "page": "components-block-http-error-message",
+  "inputHash": "9c69f8c19437",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-http-error-message, de foutboodschap voor een foutpagina met een titel, tekst, afbeelding en acties, en tussen de tekst en de acties de URL, het tijdstip en de user-agent. Met error-code toont de component de standaardinhoud voor 400, 401, 403, 404, 405, 408, 410 tot 415 en 500 tot 506 (zonder error-code die van 400); title, image, image-alt en de slots text en actions overschrijven die. De pagina raadt aan de component standalone in een <main> te plaatsen, zonder header, footer of functional header.",
+  "keywords": [
+    "foutpagina",
+    "error page",
+    "foutboodschap",
+    "error message",
+    "http error",
+    "http-foutcode",
+    "status code",
+    "vl-http-error-message",
+    "error-code",
+    "404",
+    "pagina niet gevonden",
+    "page not found",
+    "500",
+    "internal server error",
+    "geen toegang"
+  ],
+  "examples": {
+    "components-block-http-error-message--http-error-message-default": {
+      "html": "<vl-http-error-message\n    title=\"Niets gevonden hiervoor.\"\n    image=\"https://cdn.milieuinfo.be/http-error-message-assets/LATEST/img/unexpected-error.svg\"\n    image-alt=\"Niets gevonden\"\n>\n    <p slot=\"text\">Sorry, er liep iets onverwachts mis.</p>\n    <div slot=\"actions\">\n        <vl-button cta-link=\"#\">Opnieuw opstarten</vl-button>\n    </div>\n</vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-400": {
+      "html": "<vl-http-error-message error-code=\"400\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-401": {
+      "html": "<vl-http-error-message error-code=\"401\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-403": {
+      "html": "<vl-http-error-message error-code=\"403\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-404": {
+      "html": "<vl-http-error-message error-code=\"404\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-405": {
+      "html": "<vl-http-error-message error-code=\"405\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-408": {
+      "html": "<vl-http-error-message error-code=\"408\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-410": {
+      "html": "<vl-http-error-message error-code=\"410\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-411": {
+      "html": "<vl-http-error-message error-code=\"411\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-412": {
+      "html": "<vl-http-error-message error-code=\"412\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-413": {
+      "html": "<vl-http-error-message error-code=\"413\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-414": {
+      "html": "<vl-http-error-message error-code=\"414\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-415": {
+      "html": "<vl-http-error-message error-code=\"415\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-500": {
+      "html": "<vl-http-error-message error-code=\"500\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-501": {
+      "html": "<vl-http-error-message error-code=\"501\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-502": {
+      "html": "<vl-http-error-message error-code=\"502\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-503": {
+      "html": "<vl-http-error-message error-code=\"503\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-504": {
+      "html": "<vl-http-error-message error-code=\"504\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-505": {
+      "html": "<vl-http-error-message error-code=\"505\"></vl-http-error-message>"
+    },
+    "components-block-http-error-message--http-error-message-506": {
+      "html": "<vl-http-error-message error-code=\"506\"></vl-http-error-message>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-http-error-message",
+      "name": "error-code",
+      "text": "Onder Varianten noemt de pagina vl-http-400-message en de andere specifieke http error messages deprecated. In 2.15.0 bestaan ze niet meer: de code en de web-types kennen enkel vl-http-error-message, en de changelog van 2.0.0 (UIG-3185) vermeldt dat vl-http-400-message tot vl-http-506-message geschrapt zijn. Gebruik <vl-http-error-message error-code=\"...\">.",
+      "source": "libs/components/src/block/http-error-message/stories/vl-http-error-message.stories-doc.mdx"
+    }
+  ]
+}

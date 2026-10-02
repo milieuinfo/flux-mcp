@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "page": "afnemen-migratie-v2-faq",
+  "inputHash": "178a05c148d9",
+  "analysedFor": "2.1.0",
+  "summary": "Veelgestelde vragen bij de migratie naar v2: registreren met een directe import of met registerWebComponents, de fat-js bundel op de CDN, de events vl-change en vl-input die v1-events als vl-checked vervangen, en de algemene wijzigingen aan attributen: geen 'data-vl-'-prefix meer en geen elementen met `is=\"\"`.",
+  "keywords": [
+    "migratie faq",
+    "migration faq",
+    "veelgestelde vragen",
+    "registerwebcomponents",
+    "import",
+    "fat-js bundel",
+    "cdn",
+    "events",
+    "event listeners",
+    "vl-change",
+    "vl-input",
+    "vl-checked",
+    "data-vl prefix",
+    "is attribuut"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld van de directe import gebruikt `import '@domg-wc/components/button'`. Dat pad bestaat in 2.1.0 niet: vl-button staat in libs/components/src/atom/button, dus `@domg-wc/components/atom/button`. De pagina 'Afnemen/Aan De Slag' importeert zo ook `@domg-wc/components/block/accordion`.",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld van de expliciete registratie importeert `VlButtonComponent` uit `@domg-wc/components`. Dat package heeft in 2.1.0 geen hoofdingang: libs/components/src heeft geen index.ts en libs/components/package.json geen main of exports. VlButtonComponent komt uit `@domg-wc/components/atom` (libs/components/src/atom/index.ts), zoals op de pagina's 'Recepten/Imports' en 'Recepten/Tree Shaking'.",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina noemt als fat-js bundel `domg-wc-2.0.0.min.js`, met de nieuwe componenten. De fat-lib van 2.1.0 heet `domg-wc-compliance-<versie>.min.js` (resources/ci-bamboo/bash/release-and-publish.sh) en registreert enkel de compliance componenten (resources/utils-fat-lib/fat-lib-index.ts). De pagina 'Recepten/CDN Bundel - fat-lib' laadt ze met type=\"module\".",
+      "source": "apps/storybook/docs/a_afnemen/6_migratie-faq.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-button-pill",
+      "text": "De pagina zet `is=\"vl-button-pill\"` om naar `<vl-pill clickable>`: de Button Pill is geschrapt. De web-types van 2.1.0 vermelden toch nog een element `vl-button-pill` (attributen custom-css en type), met een doc-url naar components-block-pill-button-pill, een pagina die in 2.1.0 niet bestaat. In de code van 2.1.0 bestaat het element niet: libs/components/src/block/pill bevat enkel vl-pill.",
+      "source": "libs/components/src/block/block.web-types.json"
+    }
+  ]
+}

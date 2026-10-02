@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "recepten-lit-binnen-andere-frameworks",
+  "inputHash": "9ab2c7e96f89",
+  "analysedFor": "2.15.0",
+  "summary": "Overzicht van de ondersteuning van de Flux-componenten, als Lit-elementen, in andere frameworks: volledig in Angular 16.2.10, Vue 3.2.38 en React 19; tot en met React 18 beperkt, en makkelijker met @lit/react. Voor de compatibiliteit per framework verwijst de pagina naar custom-elements-everywhere.com.",
+  "keywords": [
+    "frameworks",
+    "framework",
+    "angular",
+    "vue",
+    "react",
+    "react 19",
+    "@lit/react",
+    "lit",
+    "custom elements",
+    "web components",
+    "interoperability",
+    "compatibiliteit",
+    "compatibility",
+    "custom-elements-everywhere"
+  ],
+  "examples": {},
+  "notes": []
+}

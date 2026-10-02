@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "page": "planning-historiek-toekomst",
+  "inputHash": "67a520d62606",
+  "analysedFor": "2.14.0",
+  "summary": "Achtergrond over Flux: waarom het team de componenten van het Webuniversum als echte web-componenten aanbiedt, de geschiedenis van het team en de codebase van vóór 2020 tot nu, en de planning per periode, met de release van v2 in juni 2025 en de doelen voor 2025, zoals een CSP POC, Lambert-2008 in de map, het wegwerken van BaseElementOfType en het herschrijven van vl-table, vl-side-navigation en vl-tabs.",
+  "keywords": [
+    "planning",
+    "roadmap",
+    "historiek",
+    "history",
+    "toekomst",
+    "future",
+    "flux-team",
+    "uig-team",
+    "webuniversum",
+    "web components",
+    "v2",
+    "planning 2025"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De inhoudstafel linkt 'Planning 2025' naar #planning-2024, maar de kop heet 'Planning 2025'; een anker planning-2024 bestaat niet op de pagina.",
+      "source": "apps/storybook/docs/d_planning/1_historiek-en-toekomst.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Onder 'Planning 2025' staat als doel de legacy basis klasse 'BaseElementOfType' weg te werken. Die klasse bestaat in 2.14.0 niet meer: 2.0.0 verving BaseElementOfType(HTMLElement) door BaseHTMLElement (UIG-2811). De componenten die nog niet op Lit draaien, zoals vl-modal, vl-pager en vl-map, extenden nu van BaseHTMLElement uit @domg-wc/common (libs/common/src/base/base.html.element.ts).",
+      "source": "apps/storybook/docs/d_planning/1_historiek-en-toekomst.mdx"
+    }
+  ]
+}

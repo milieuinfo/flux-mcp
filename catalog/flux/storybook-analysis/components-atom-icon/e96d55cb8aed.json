@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "page": "components-atom-icon",
+  "inputHash": "e96d55cb8aed",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-icon, dat een icoon uit het icon-font van Vlaanderen toont op basis van zijn naam in het attribuut icon. Toont de varianten small, large, light en clickable (opmaak van een actie en focusbaar), right-margin en left-margin voor een icoon voor of na tekst, en een overzicht van alle iconen.",
+  "keywords": [
+    "icoon",
+    "icon",
+    "vl-icon",
+    "iconen",
+    "icons",
+    "pictogram",
+    "icon font",
+    "vlaanderen-icon",
+    "icon list",
+    "alle iconen",
+    "icon size",
+    "klikbaar icoon",
+    "clickable icon"
+  ],
+  "examples": {
+    "components-atom-icon--icon-default": {
+      "html": "<vl-icon icon=\"calendar\"></vl-icon>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlIconComponent } from '@domg-wc/components/atom';\n\nregisterWebComponents([VlIconComponent]);"
+    },
+    "components-atom-icon--icon-small": {
+      "html": "<vl-icon icon=\"calendar\" small></vl-icon>"
+    },
+    "components-atom-icon--icon-large": {
+      "html": "<vl-icon icon=\"calendar\" large></vl-icon>"
+    },
+    "components-atom-icon--icon-light": {
+      "html": "<vl-icon icon=\"calendar\" light></vl-icon>"
+    },
+    "components-atom-icon--icon-clickable": {
+      "html": "<!-- clickable geeft het icoon de kleur en cursor van een actie en tabindex=\"0\"; vl-icon vuurt zelf geen event\n     af. -->\n<vl-icon icon=\"calendar\" clickable></vl-icon>"
+    },
+    "components-atom-icon--icon-before-text": {
+      "html": "<!-- De story gebruikt de class flex-center van Storybook zelf (display: flex; align-items: center), hier als\n     inline style. -->\n<div style=\"display: flex; align-items: center\">\n    <vl-icon icon=\"calendar\" right-margin></vl-icon>\n    <span>Dit is een tekst</span>\n</div>"
+    },
+    "components-atom-icon--icon-after-text": {
+      "html": "<!-- De story gebruikt de class flex-center van Storybook zelf (display: flex; align-items: center), hier als\n     inline style. -->\n<div style=\"display: flex; align-items: center\">\n    <span>Dit is een tekst</span>\n    <vl-icon icon=\"calendar\" left-margin></vl-icon>\n</div>"
+    },
+    "components-atom-icon--all-icons": {
+      "html": "<!-- Het overzicht is vl-all-icons, een component van Storybook dat niet in @domg-wc/components zit. Het toont per\n     icoon een vl-icon met zijn naam. De namen staan in de lijst in vl-all-icons.component.ts; de API van vl-icon\n     somt ze in 2.4.0 niet op. -->\n<div>\n    <vl-icon icon=\"add\"></vl-icon>\n    <span>add</span>\n</div>\n<div>\n    <vl-icon icon=\"addressbook\"></vl-icon>\n    <span>addressbook</span>\n</div>\n<div>\n    <vl-icon icon=\"airplane\"></vl-icon>\n    <span>airplane</span>\n</div>\n<!-- … en zo verder voor elke naam. -->"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-all-icons",
+      "text": "De story vl-icon - alle iconen toont <vl-all-icons>, een component voor Storybook dat per naam uit een vaste lijst van 466 iconen een vl-icon en de naam toont en bij een klik de naam naar het klembord kopieert. Het wordt niet geëxporteerd uit @domg-wc/components/atom (de index van icon exporteert enkel VlIconComponent), staat niet in de web-types, en Storybook toont zijn code niet (sourceState=\"none\").",
+      "source": "libs/components/src/atom/icon/vl-all-icons.component.ts"
+    }
+  ]
+}

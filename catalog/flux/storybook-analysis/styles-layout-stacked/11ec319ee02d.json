@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "styles-layout-stacked",
+  "inputHash": "11ec319ee02d",
+  "analysedFor": "2.20.0",
+  "summary": "CSS-klassen die verticale witruimte (row-gap) zetten tussen de kinderen van een flexbox- of grid-container: vl-stacked-small (1.5rem), vl-stacked-medium (3rem) en vl-stacked-large (6rem, op schermen tot 1023px 3rem). Zit je niet in een flexbox- of grid-container, voeg dan vl-stacked toe: die maakt van het element een flexbox in kolom.",
+  "keywords": [
+    "stacked",
+    "vl-stacked",
+    "vl-stacked-small",
+    "vl-stacked-medium",
+    "vl-stacked-large",
+    "stack",
+    "stapelen",
+    "row-gap",
+    "gap",
+    "witruimte",
+    "whitespace",
+    "vertical spacing",
+    "flexbox",
+    "grid",
+    "column"
+  ],
+  "examples": {
+    "styles-layout-stacked--stacked-large": {
+      "html": "<style>\n    /* Demo-stijl van de story: maakt de lege kinderen zichtbaar als lijnen. */\n    .sb-line {\n        background-color: mediumspringgreen;\n        border: lightseagreen 2px solid;\n    }\n</style>\n<div class=\"vl-stacked vl-stacked-large\">\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n</div>"
+    },
+    "styles-layout-stacked--stacked-medium": {
+      "html": "<style>\n    /* Demo-stijl van de story: maakt de lege kinderen zichtbaar als lijnen. */\n    .sb-line {\n        background-color: mediumspringgreen;\n        border: lightseagreen 2px solid;\n    }\n</style>\n<div class=\"vl-stacked vl-stacked-medium\">\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n</div>"
+    },
+    "styles-layout-stacked--stacked-small": {
+      "html": "<style>\n    /* Demo-stijl van de story: maakt de lege kinderen zichtbaar als lijnen. */\n    .sb-line {\n        background-color: mediumspringgreen;\n        border: lightseagreen 2px solid;\n    }\n</style>\n<div class=\"vl-stacked vl-stacked-small\">\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n    <div class=\"sb-line\"></div>\n</div>"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "page": "planning-van-v2-naar-v3-beschikbaar",
+  "inputHash": "68cf94a2675a",
+  "analysedFor": "2.20.0",
+  "summary": "Overzicht per component van wat in v2 al klaarstaat voor de overgang naar v3: welke componenten deprecated zijn (vl-footer, vl-header, vl-search, vl-share-buttons, vl-side-navigation, vl-tabs), welke '-next'-variant ze vervangt, uit welk artifact, en welke tag je in v3 gebruikt. Ook de nieuwe standaardpositionering van vl-datepicker met de opt-out `inline-positioning`, die in v3 verdwijnt.",
+  "keywords": [
+    "v2 naar v3",
+    "migratie",
+    "migration",
+    "deprecated",
+    "next componenten",
+    "next components",
+    "vl-header-next",
+    "vl-footer-next",
+    "vl-side-navigation-next",
+    "vl-tabs-next",
+    "vl-datepicker",
+    "inline-positioning",
+    "anchor positioning",
+    "vl-share-buttons",
+    "vl-search"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-datepicker",
+      "name": "inline-positioning",
+      "text": "De tabel geeft 'release v2.14.0' voor de nieuwe positionering van de datepicker. Het attribuut `anchor-positioning` kwam als opt-in in 2.15.0 (FLUX-595); de positionering met de Popover API werd pas in 2.17.0 de default, met `inline-positioning` als opt-out (FLUX-742). `inline-positioning` staat vanaf 2.17.0 in de web-types.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-side-navigation-next",
+      "text": "De tabel geeft 'release v2.9.0' voor Side Navigation [next]. vl-side-navigation-next kwam pas in 2.10.0 (FLUX-27) en staat vanaf 2.10.0 in de web-types.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-side-navigation-layout-next",
+      "text": "De tabel geeft 'release v2.9.0' en `<vl-side-navigation-layout-next>` voor Side Navigation Layout. De component kwam in 2.10.0 als vl-side-navigation-layout (FLUX-27) en heet pas vanaf 2.11.0 vl-side-navigation-layout-next (FLUX-541).",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-side-navigation-layout-next",
+      "text": "Als v3-gebruik van Side Navigation Layout staat `<vl-side-navigation-layout-next>`, met de suffix, terwijl het v3-artifact components/block is. Bij alle andere next-componenten op de pagina valt '-next' in v3 weg, zoals 'Planning/Aanpak v2, v3, ...' het beschrijft.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De links naar Side Navigation [next] en Side Navigation Layout wijzen naar components-next-side-navigation-side-navigation en components-next-side-navigation-side-navigation-layout, pagina's die in 2.20.0 niet bestaan. De pagina's zijn components-block-next-side-navigation en components-block-next-side-navigation-layout.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De pagina noemt `<vl-header-next>` als v2-gebruik van Header [next]. De code registreert het element (`@webComponent('vl-header-next')` in libs/components/src/compliance/next/header/vl-header.component.ts), maar het staat niet in de web-types van 2.20.0.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De pagina noemt `<vl-footer-next>` als v2-gebruik van Footer [next]. De code registreert het element (`@webComponent('vl-footer-next')` in libs/components/src/compliance/next/footer/vl-footer.component.ts), maar het staat niet in de web-types van 2.20.0.",
+      "source": "apps/storybook/docs/d_planning/4_van-v2-naar-v3-beschikbaar.mdx"
+    }
+  ]
+}

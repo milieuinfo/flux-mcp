@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-testen-test-piramide-component-bibliotheek",
+  "inputHash": "abd1f72e66b9",
+  "analysedFor": "2.1.0",
+  "summary": "Beschrijft hoe het team (hier nog UIG-team genoemd) de componentbibliotheek test, als variant op de SPA test piramide: TypeScript als stabiele basis, minimale unit testen enkel voor logica los van de visualisatie en de focus op visuele componenttesten in Storybook. Aparte integratie- en e2e-testen zijn er niet; artefact-integratietesten met de Consumer-toepassing controleren dat andere teams de artefacts kunnen afnemen.",
+  "keywords": [
+    "test piramide",
+    "test pyramid",
+    "component bibliotheek",
+    "component library",
+    "componenttest",
+    "component testing",
+    "storybook",
+    "unit test",
+    "typescript",
+    "artefact integratie test",
+    "consumer",
+    "testen",
+    "testing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De links naar de 'klassieke test piramide' (applicatief-testen-klassieke-test-piramide) en de 'SPA test piramide' (applicatief-testen-test-piramide-ssr-vs-spa) wijzen naar pagina's die in 2.1.0 niet bestaan. De pagina's staan op 'Richtlijnen/Testen/Klassieke Test Piramide' (richtlijnen-testen-klassieke-test-piramide) en 'Richtlijnen/Testen/Test Piramide SSR vs SPA' (richtlijnen-testen-test-piramide-ssr-vs-spa).",
+      "source": "apps/storybook/docs/e_richtlijnen/b_testen/3_test-piramide-component-bibliotheek.stories.mdx"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "page": "components-form-select-rich",
+  "inputHash": "c93c82f31ff8",
+  "analysedFor": "2.1.0",
+  "summary": "Documentatie van vl-select-rich, een uitgebreide keuzelijst op basis van Choices.js, met een zoekveld (search), meervoudige selectie met multiple, groepen en opties die geselecteerd of disabled zijn. De component is niet WCAG-conform: gebruik waar mogelijk vl-select, en bij minder dan 7 opties radio buttons of checkboxes.",
+  "keywords": [
+    "select rich",
+    "vl-select-rich",
+    "multiselect",
+    "multi select",
+    "meervoudige selectie",
+    "keuzelijst",
+    "dropdown",
+    "zoeken",
+    "searchable select",
+    "choices.js",
+    "groepen",
+    "option groups",
+    "not-deletable"
+  ],
+  "examples": {
+    "components-form-select-rich--select-rich-default": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\nconst select = document.querySelector('#geboorteplaats');\n// Geef een nieuwe array mee om de opties te wijzigen: vl-select-rich bouwt zich enkel opnieuw op als de referentie\n// van de array verandert. Zet de opties vóór de eerste render: een reset van de form zet options terug op een kopie\n// van de opties bij de eerste render.\nselect.options = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];\n\n// event.detail.value is de value van de gekozen optie, of null zonder keuze; select.getSelected() geeft hetzelfde.\nselect.addEventListener('vl-change', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-select-rich--select-rich-search": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\" search></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\nconst select = document.querySelector('#geboorteplaats');\nselect.options = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];\n\n// vl-select-search volgt op elke invoer in het zoekveld; event.detail.value is de zoekterm.\nselect.addEventListener('vl-select-search', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-select-rich--select-rich-not-deletable": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\" not-deletable></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\ndocument.querySelector('#geboorteplaats').options = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];"
+    },
+    "components-form-select-rich--select-rich-groups": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\n// Een groep is een optie met een label, een lege value en de opties van de groep in choices.\ndocument.querySelector('#geboorteplaats').options = [\n    {\n        label: 'België',\n        value: '',\n        choices: [\n            { label: 'Hasselt', value: 'hasselt' },\n            { label: 'Turnhout', value: 'turnhout' },\n            { label: 'Knokke-Heist', value: 'knokke-heist' },\n            { label: 'Waregem', value: 'waregem' },\n            { label: 'Lier', value: 'lier' },\n        ],\n    },\n    {\n        label: 'Puerto Rico',\n        value: '',\n        choices: [{ label: 'Rio Piedras', value: 'rio piedras' }],\n    },\n];"
+    },
+    "components-form-select-rich--select-rich-multiple": {
+      "html": "<vl-select-rich id=\"hobby's\" name=\"hobby's\" placeholder=\"Kies je hobby's\" multiple></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\nconst select = document.getElementById(\"hobby's\");\nselect.options = [\n    { label: 'Padel', value: 'padel' },\n    { label: 'Dans', value: 'dans' },\n    { label: 'Drummen', value: 'drummen' },\n    { label: 'Zwemmen', value: 'zwemmen' },\n    { label: 'Boardgames', value: 'boardgames' },\n    { label: 'Fietsen', value: 'fietsen' },\n];\n\n// Bij multiple is event.detail.value een array met de values van de gekozen opties.\nselect.addEventListener('vl-change', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-select-rich--select-rich-selected-option": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\ndocument.querySelector('#geboorteplaats').options = [\n    { label: 'Hasselt', value: 'hasselt', selected: true },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];"
+    },
+    "components-form-select-rich--select-rich-disabled-option": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\ndocument.querySelector('#geboorteplaats').options = [\n    { label: 'Hasselt', value: 'hasselt', disabled: true },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];"
+    },
+    "components-form-select-rich--select-rich-read-only": {
+      "html": "<vl-select-rich id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select-rich>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectRichComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectRichComponent]);\n\n// Alleen-lezen: alle opties disabled, de gekozen optie ook selected.\ndocument.querySelector('#geboorteplaats').options = [\n    { label: 'Hasselt', value: 'hasselt', disabled: true, selected: true },\n    { label: 'Turnhout', value: 'turnhout', disabled: true },\n    { label: 'Knokke-Heist', value: 'knokke-heist', disabled: true },\n    { label: 'Waregem', value: 'waregem', disabled: true },\n    { label: 'Lier', value: 'lier', disabled: true },\n    { label: 'Rio Piedras', value: 'rio piedras', disabled: true },\n];"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-select-rich",
+      "text": "De pagina geeft getSelected() het type string | string[]. Zonder keuze geeft de methode bij een enkelvoudige select null terug, en bij multiple een lege array; detail.value van vl-change, vl-input en vl-valid is dezelfde waarde.",
+      "source": "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-select-rich",
+      "text": "Volgens de pagina zet resetFormControl() de value terug op de initiële value. vl-select-rich zet bij een reset de hele options terug op een kopie die hij bij de eerste render maakte, met de selected-vlaggen van toen. Opties die je na de eerste render toevoegt of wijzigt, verdwijnen dus bij een reset van de form, en zet je options pas na de eerste render, dan is de lijst na een reset leeg.",
+      "source": "libs/components/src/form/select-rich/vl-select-rich.component.ts"
+    }
+  ]
+}

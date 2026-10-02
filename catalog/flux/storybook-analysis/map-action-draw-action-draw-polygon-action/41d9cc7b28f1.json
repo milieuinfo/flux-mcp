@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "map-action-draw-action-draw-polygon-action",
+  "inputHash": "41d9cc7b28f1",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-map-draw-polygon-action, een kaartactie waarmee de gebruiker een polygoon tekent op de vl-map-features-layer waarin de actie staat, of op de laag die je met het attribuut layer aanwijst. Een ongeldige polygoon, bv. een die zichzelf kruist, krijgt standaard een rode invalid-stijl (uit te zetten met allow-invalid-geometry op vl-map); met snapping klikt het tekenen vast aan bestaande features.",
+  "keywords": [
+    "draw polygon action",
+    "vl-map-draw-polygon-action",
+    "polygoon tekenen",
+    "polygon",
+    "draw polygon",
+    "vlak tekenen",
+    "area",
+    "tekenen op kaart",
+    "draw",
+    "ongeldige polygoon",
+    "invalid geometry",
+    "snapping",
+    "snap",
+    "map action",
+    "kaart"
+  ],
+  "examples": {
+    "map-action-draw-action-draw-polygon-action--map-draw-polygon-action-default": {
+      "html": "<!-- De actie tekent op de vl-map-features-layer waarin ze staat; vl-map-layer-style bepaalt de stijl van de\n     getekende polygonen op die laag. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action></vl-map-draw-polygon-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDrawPolygonAction,\n    VlMapFeaturesLayer,\n    VlMapLayerStyle,\n} from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-draw-polygon-action').active = true;"
+    },
+    "map-action-draw-action-draw-polygon-action--map-draw-polygon-action-snapping": {
+      "html": "<!-- Met snapping en een vl-map-wfs-layer in de actie snapt het tekenen op de features van die WFS-laag, binnen\n     snapping-pixel-tolerance pixels. De WFS-laag komt niet zelf op de kaart: zolang de actie actief is, toont ze de\n     features in een eigen laag. Door max-resolution=\"4\" zijn ze pas zichtbaar als je inzoomt tot een resolutie\n     onder 4. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action snapping snapping-pixel-tolerance=\"1000\">\n            <vl-map-wfs-layer\n                name=\"Stromend waterlichamen\"\n                url=\"https://geoserver.vmm.be/geoserver/vmm/wfs\"\n                layers=\"owl_l\"\n                max-resolution=\"4\"\n            ></vl-map-wfs-layer>\n        </vl-map-draw-polygon-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDrawPolygonAction,\n    VlMapFeaturesLayer,\n    VlMapLayerStyle,\n    VlMapWfsLayer,\n} from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-draw-polygon-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-draw-polygon-action",
+      "name": "snapping-pixel-tolerance",
+      "text": "De web-types en de argTypes zeggen dat snapping-pixel-tolerance (standaard 10) bepaalt binnen hoeveel pixels er gesnapt wordt. De code gebruikt het attribuut echter enkel als er kaartlagen (zoals vl-map-wfs-layer) in de actie staan. Zonder zulke lagen snapt de actie op haar eigen laag met een vaste tolerantie van 7 pixels (VlSnapInteraction in libs/map/src/actions/snap/snap-interaction.ts) en heeft snapping-pixel-tolerance geen effect.",
+      "source": "libs/map/src/components/action/draw-action/vl-map-draw-action.ts"
+    }
+  ]
+}

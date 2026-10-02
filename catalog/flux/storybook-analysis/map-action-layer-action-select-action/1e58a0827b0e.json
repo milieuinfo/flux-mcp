@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "page": "map-action-layer-action-select-action",
+  "inputHash": "1e58a0827b0e",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-select-action, een kaartactie waarmee de gebruiker door te klikken een feature selecteert op de vl-map-features-layer waarin de actie staat, of op de laag die je met het attribuut layer aanwijst. Een vl-map-layer-style of vl-map-layer-circle-style in de actie geeft de geselecteerde feature een eigen stijl, ook bij een geclusterde laag; de geselecteerde feature krijg je via de methode onSelect(callback).",
+  "keywords": [
+    "select action",
+    "vl-map-select-action",
+    "feature selecteren",
+    "select feature",
+    "selectie",
+    "selection",
+    "klikken op kaart",
+    "highlight",
+    "clustering",
+    "cluster",
+    "kaartactie",
+    "map action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-layer-action-select-action--map-select-action-default": {
+      "html": "<!-- De actie selecteert features van de vl-map-features-layer waarin ze staat. De features staan in Lambert 72,\n     daarom projection-code=\"EPSG:31370\" op een kaart in Lambert 2008. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-select-action></vl-map-select-action>\n        <vl-map-layer-circle-style border-color=\"#000000\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapSelectAction,\n} from '@domg-wc/map';\n\n// De features als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370): drie punten.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [146055.0, 196908.0] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: { type: 'Point', coordinates: [149055.0, 199908.0] },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: { type: 'Point', coordinates: [152055.0, 202908.0] },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-select-action').active = true;"
+    },
+    "map-action-layer-action-select-action--map-select-action-custom-style": {
+      "html": "<!-- De vl-map-layer-circle-style in de actie bepaalt de stijl van het geselecteerde punt en van het punt onder de\n     muis: rood. De vl-map-layer-circle-style direct in de laag bepaalt de stijl van de punten op de laag. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-select-action>\n            <vl-map-layer-circle-style color=\"#ff0000\" border-color=\"#000000\"></vl-map-layer-circle-style>\n        </vl-map-select-action>\n        <vl-map-layer-circle-style border-color=\"#000000\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapSelectAction,\n} from '@domg-wc/map';\n\n// De features als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370): drie punten.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [146055.0, 196908.0] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: { type: 'Point', coordinates: [149055.0, 199908.0] },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: { type: 'Point', coordinates: [152055.0, 202908.0] },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-select-action').active = true;"
+    },
+    "map-action-layer-action-select-action--map-select-action-clustering": {
+      "html": "<!-- cluster en cluster-distance=\"100\" op de laag voegen punten die dicht bij elkaar liggen samen tot één cluster.\n     Bij clustering gebruik je best een vl-map-layer-circle-style in de actie: dan past de grootte van de selectie zich\n     aan het aantal geclusterde features aan en wordt de tekst van de stijl getoond. De story zet ook cluster op de\n     actie; zie de notes voor wat dat attribuut in 2.6.0 doet. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer cluster cluster-distance=\"100\" projection-code=\"EPSG:31370\">\n        <vl-map-select-action cluster>\n            <vl-map-layer-circle-style\n                color=\"#0099ff\"\n                text-color=\"#ffffff\"\n                border-color=\"#ffffff\"\n            ></vl-map-layer-circle-style>\n        </vl-map-select-action>\n        <vl-map-layer-circle-style border-color=\"#000000\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapSelectAction,\n} from '@domg-wc/map';\n\n// De features als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370): drie punten.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [146055.0, 196908.0] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: { type: 'Point', coordinates: [149055.0, 199908.0] },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: { type: 'Point', coordinates: [152055.0, 202908.0] },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-select-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-select-action",
+      "name": "cluster",
+      "text": "De web-types en de argTypes geven cluster als attribuut met standaard false. _createAction geeft de actie echter cluster: this._cluster !== undefined mee, en _cluster is getAttribute('cluster'), dat null teruggeeft als het attribuut ontbreekt; die test is dus altijd waar. De clusterafhandeling van VlSelectAction (_fixClusterBehavior in libs/map/src/actions/select/select-action.ts) staat daardoor altijd aan, ook zonder cluster: na elke selectie en na elke verplaatsing van de kaart vervangt de actie de selectie door een markering van de geselecteerde feature(s) op basis van hun id. Features zonder id verliezen zo hun selectiestijl. Het attribuut cluster heeft in 2.6.0 dus geen effect.",
+      "source": "libs/map/src/components/action/layer-action/select-action/vl-map-select-action.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-features-layer",
+      "name": "features",
+      "text": "De web-types geven de property features het type string, maar de stories van deze pagina geven er een GeoJSON-object (een FeatureCollection) aan. De setter zet dat object met JSON.stringify in het attribuut features; een string als waarde zou dus dubbel gecodeerd worden. Geef de property een object, of zet de GeoJSON als string in het attribuut features. De getter geeft de OpenLayers-features van de laag terug, geen string.",
+      "source": "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-select-action",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-select-action het attribuut custom-css. Het element heeft geen shadow DOM: VlMapAction roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. Het element tekent ook zelf niets: het voegt een OpenLayers-actie toe aan de kaart.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

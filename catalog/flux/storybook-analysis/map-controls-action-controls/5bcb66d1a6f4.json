@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "map-controls-action-controls",
+  "inputHash": "5bcb66d1a6f4",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-map-action-controls, de wrapper rond de vl-map-action-control-knoppen van een vl-map: het toont ze rechtsboven op de kaart en zet bij een klik op een control de andere actieve controls uit, zodat er maar één kaartactie tegelijk aan staat. Gebruik het wanneer de gebruiker op de kaart kiest tussen acties zoals tekenen, aanpassen en verwijderen.",
+  "keywords": [
+    "map action controls",
+    "vl-map-action-controls",
+    "vl-map-action-control",
+    "kaartacties",
+    "actieknoppen",
+    "map controls",
+    "toolbar",
+    "werkbalk",
+    "toggle",
+    "tekenen",
+    "draw",
+    "editeren",
+    "verwijderen",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-controls-action-controls--map-action-controls-default": {
+      "html": "<!-- Elke vl-map-action-control verwijst met action-id naar het id van een actie in dezelfde vl-map.\n     vl-map-action-controls toont de knoppen rechtsboven op de kaart; klikt de gebruiker een control aan, dan zet het\n     de andere actieve controls en hun acties uit. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action id=\"draw-action\"></vl-map-draw-polygon-action>\n        <vl-map-modify-action id=\"modify-action\"></vl-map-modify-action>\n        <vl-map-delete-action id=\"delete-action\"></vl-map-delete-action>\n    </vl-map-features-layer>\n    <vl-map-action-controls>\n        <vl-map-action-control action-id=\"draw-action\" label=\"Teken\"></vl-map-action-control>\n        <vl-map-action-control action-id=\"modify-action\" label=\"Editeer\"></vl-map-action-control>\n        <vl-map-action-control action-id=\"delete-action\" label=\"Verwijder\"></vl-map-action-control>\n    </vl-map-action-controls>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-action-controls",
+      "text": "De pagina zegt dat vl-map-action-controls ervoor zorgt dat er altijd maar één actieve vl-map-action-control is. De code doet dat enkel bij een klik: in connectedCallback luistert het naar change-control van de vl-map-action-control-elementen die er op dat moment in staan, en zet bij een activering de andere actieve controls uit met deactivate(). Een control die later toegevoegd wordt, krijgt die listener niet: klikt de gebruiker erop, dan blijven de andere controls aan. Ze gaat wel uit als een van de eerdere controls aangaat, want die zoeken de controls bij elke klik opnieuw op. activate() en default-active sturen geen change-control: twee controls met default-active staan dus allebei aan.",
+      "source": "libs/map/src/components/controls/vl-map-action-controls.ts"
+    }
+  ]
+}

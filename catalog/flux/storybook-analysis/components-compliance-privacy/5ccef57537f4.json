@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "components-compliance-privacy",
+  "inputHash": "5ccef57537f4",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-privacy, dat een volledige privacyverklaring van Departement Omgeving toont: een functionele header, de versie en de datum (attributen version en date), de privacytekst met een inhoudsopgave en de contactgegevens van de DPO. De slots header, version, content en bottom vervangen die secties; met een eigen header in het slot header, bv. een vl-functional-header met back=\"Start\", werken disable-back-link en hide-back-link niet meer.",
+  "keywords": [
+    "privacy",
+    "privacyverklaring",
+    "privacy statement",
+    "privacy policy",
+    "vl-privacy",
+    "persoonsgegevens",
+    "personal data",
+    "avg",
+    "gdpr",
+    "dpo",
+    "compliance pagina",
+    "functional header",
+    "departement omgeving"
+  ],
+  "examples": {
+    "components-compliance-privacy--privacy-default": {
+      "html": "<vl-privacy></vl-privacy>"
+    },
+    "components-compliance-privacy--privacy-header-slot": {
+      "html": "<vl-privacy>\n    <vl-functional-header\n        slot=\"header\"\n        title=\"Departement Omgeving\"\n        sub-title=\"Privacy\"\n        link=\"https://omgeving.vlaanderen.be\"\n        back=\"Start\"\n    ></vl-functional-header>\n</vl-privacy>"
+    }
+  },
+  "notes": []
+}

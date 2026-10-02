@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "page": "components-block-tooltip",
+  "inputHash": "46d239de7721",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-tooltip, een klein venster met korte, niet-interactieve uitleg dat verschijnt bij hover en focus op het element met het id in for. Je kiest de oriëntatie met placement, verbergt de pijl met hide-arrow en bepaalt met type of de tooltip het label of de beschrijving van de trigger is (aria-labelledby of aria-describedby); zet de eerste parent op position: relative. Heeft de inhoud interactieve elementen nodig, gebruik dan vl-popover.",
+  "keywords": [
+    "tooltip",
+    "vl-tooltip",
+    "hint",
+    "hover",
+    "focus",
+    "info-icoon",
+    "info icon",
+    "contextuele uitleg",
+    "aria-describedby",
+    "aria-labelledby",
+    "placement",
+    "hide-arrow",
+    "floating-ui"
+  ],
+  "examples": {
+    "components-block-tooltip--tooltip-default": {
+      "html": "<!-- De eerste parent van de tooltip op position: relative, zie Strategy. -->\n<div style=\"position: relative;\">\n    <vl-button ghost icon=\"info-circle\" id=\"btn-context\" label=\"Meer info\"></vl-button>\n    <vl-tooltip for=\"btn-context\">Een boodschap die context geeft.</vl-tooltip>\n</div>"
+    },
+    "components-block-tooltip--tooltip-as-label": {
+      "html": "<!-- De eerste parent van de tooltip op position: relative, zie Strategy. -->\n<div style=\"position: relative;\">\n    <button\n        id=\"clickable-ui-element\"\n        style=\"border: 1px solid var(--vl-color--border); background: white; width: 100px; height: 100px;\"\n    ></button>\n    <vl-tooltip for=\"clickable-ui-element\" type=\"label\">Een UI element zonder eigen tekst of label</vl-tooltip>\n</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tooltip",
+      "name": "for",
+      "text": "for is het id van het element waarop de tooltip verschijnt bij hover en focus, en waartegenover hij gepositioneerd wordt. vl-tooltip declareert for als attribuut (attribute: 'for', in libs/components/src/block/tooltip/vl-tooltip.component.ts), en de pagina en de stories zetten het zo; de web-types vermelden for enkel als property. vl-tooltip zoekt het element in het document en in de root van de tooltip; vindt het niets, dan logt het een waarschuwing en gebruikt het zijn parent-element. Op dat element zelf (bij een vl-button dus op de vl-button, niet op de button in de shadow DOM) zet vl-tooltip aria-describedby of aria-labelledby, zie type.",
+      "source": "libs/components/src/block/popover/vl-floating-ui.controller.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tooltip",
+      "name": "open",
+      "text": "vl-tooltip declareert open ook als attribuut (attribute: 'open', met reflect): met open staat de tooltip open, en de tooltip zet en verwijdert het attribuut zelf bij tonen en verbergen. De web-types kennen open enkel als property. De methodes show(), hide() en toggle(), geërfd van vl-popover, staan niet in de web-types.",
+      "source": "libs/components/src/block/tooltip/vl-tooltip.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tooltip",
+      "name": "placement",
+      "text": "De web-types en de argTypes geven voor placement enkel de waarden 'top' | 'right' | 'bottom' | 'left', maar de pagina en de beschrijving van het attribuut laten een suffix -start of -end toe, bv. top-start. vl-tooltip geeft de waarde ongewijzigd door aan computePosition van floating-ui, dat die waarden kent.",
+      "source": "libs/components/src/block/tooltip/stories/vl-tooltip.stories-arg.ts"
+    }
+  ]
+}

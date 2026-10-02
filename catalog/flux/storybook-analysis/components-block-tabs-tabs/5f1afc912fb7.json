@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "page": "components-block-tabs-tabs",
+  "inputHash": "5f1afc912fb7",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-tabs, dat gerelateerde inhoud over tabbladen verdeelt: elk vl-tabs-pane-kind wordt een tab met zijn title, active-tab kiest de actieve tab en disable-links zet de aanpassing van de url uit. Op mobiel worden de tabs een uitklapbaar menu met responsive-label als tekst; display-style kiest vast voor tabs of voor dat menu, en within-functional-header past de tabs aan voor een functional header. Een vl-tabs-pane toevoegen of verwijderen kan ook na het laden, en de events change en vl-click geven het id van de tab.",
+  "keywords": [
+    "tabs",
+    "tabbladen",
+    "vl-tabs",
+    "vl-tabs-pane",
+    "tab navigation",
+    "tabnavigatie",
+    "active-tab",
+    "responsive-label",
+    "uitklapbaar menu",
+    "dynamische tabs",
+    "dynamic tabs",
+    "functional header",
+    "disable-links",
+    "display-style"
+  ],
+  "examples": {
+    "components-block-tabs-tabs--tabs-default": {
+      "html": "<vl-tabs active-tab=\"trein\" disable-links>\n    <vl-tabs-pane id=\"trein\" title=\"Trein\">\n        Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat\n        porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Integer posuere erat a ante\n        venenatis dapibus posuere velit aliquet.\n    </vl-tabs-pane>\n    <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\">\n        Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem\n        malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem\n        ipsum dolor sit amet, consectetur adipiscing elit.\n    </vl-tabs-pane>\n    <vl-tabs-pane id=\"fiets\" title=\"Fiets\">\n        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean\n        eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac\n        facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.\n    </vl-tabs-pane>\n</vl-tabs>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTabsComponent } from '@domg-wc/components/block';\n\n// VlTabsComponent registreert ook vl-tabs-pane, vl-tab en vl-tab-section.\nregisterWebComponents([VlTabsComponent]);\n\nconst tabs = document.querySelector('vl-tabs');\n\n// change en vl-click komen van de vl-tab in de shadow DOM van vl-tabs en bubbelen niet: luister op vl-tabs zelf.\n// event.detail.activeTab is het id van de vl-tabs-pane.\n// change volgt op een klik op een tab die niet actief is.\ntabs.addEventListener('change', (event) => {\n    console.log('change', event.detail.activeTab);\n});\n// vl-click volgt op een klik op een tab, maar enkel als screenX en screenY van de klik niet 0 zijn: niet bij de\n// klik waarmee vl-tabs zelf de tab van active-tab activeert.\ntabs.addEventListener('vl-click', (event) => {\n    console.log('vl-click', event.detail.activeTab);\n});"
+    },
+    "components-block-tabs-tabs--tabs-without-active-tab": {
+      "html": "<vl-tabs responsive-label=\"Navigatie/menu\">\n    <vl-tabs-pane id=\"trein\" title=\"Trein\">\n        Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat\n        porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Integer posuere erat a ante\n        venenatis dapibus posuere velit aliquet.\n    </vl-tabs-pane>\n    <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\">\n        Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem\n        malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem\n        ipsum dolor sit amet, consectetur adipiscing elit.\n    </vl-tabs-pane>\n    <vl-tabs-pane id=\"fiets\" title=\"Fiets\">\n        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean\n        eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac\n        facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.\n    </vl-tabs-pane>\n</vl-tabs>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTabsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlTabsComponent]);\n\n// responsive-label is de tekst van het uitklapbare menu op mobiel, zolang er geen tab geselecteerd is.\n// change bubbelt niet: luister op vl-tabs zelf. event.detail.activeTab is het id van de vl-tabs-pane.\ndocument.querySelector('vl-tabs').addEventListener('change', (event) => {\n    console.log('change', event.detail.activeTab);\n});"
+    },
+    "components-block-tabs-tabs--tabs-dynamic": {
+      "html": "<div>\n    <vl-button id=\"add-pane-button\">Pane toevoegen</vl-button>\n    <vl-tabs id=\"tabs\" active-tab=\"trein\" disable-links>\n        <vl-tabs-pane id=\"trein\" title=\"Trein\">\n            Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat\n            porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Integer posuere erat a ante\n            venenatis dapibus posuere velit aliquet.\n        </vl-tabs-pane>\n        <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\">\n            Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta\n            sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n        </vl-tabs-pane>\n    </vl-tabs>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlTabsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlTabsComponent, VlButtonComponent]);\n\nlet index = 0;\n\n// vl-tabs volgt zijn kinderen met een MutationObserver: een vl-tabs-pane die je toevoegt, krijgt meteen een tab;\n// een vl-tabs-pane die je verwijdert, verliest die.\nconst addPane = () => {\n    const div = document.createElement('div');\n    div.innerHTML =\n        '<vl-tabs-pane id=\"fiets-' + index + '\" title=\"Fiets ' + index + '\">TEST ' + index + '</vl-tabs-pane>';\n\n    if (div.firstElementChild) {\n        document.querySelector('vl-tabs#tabs')?.appendChild(div.firstElementChild);\n        index++;\n    }\n};\n\ndocument.querySelector('#add-pane-button').addEventListener('click', addPane);\n\n// change bubbelt niet: luister op vl-tabs zelf. event.detail.activeTab is het id van de vl-tabs-pane.\ndocument.querySelector('vl-tabs#tabs').addEventListener('change', (event) => {\n    console.log('change', event.detail.activeTab);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs",
+      "name": "href",
+      "text": "vl-tabs kent het attribuut href: bij een wijziging krijgt elke tab href=\"<href>#<id van de vl-tabs-pane>\". Het attribuut staat niet in de web-types.",
+      "source": "libs/components/src/block/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De API op deze pagina toont ook vl-tab en vl-tab-section, zonder attributen of beschrijving. Die elementen maak je niet zelf: vl-tabs maakt per vl-tabs-pane een vl-tab aan in zijn shadow DOM, en zonder within-functional-header ook een vl-tab-section waarin het vl-tabs-pane getoond wordt. De tabbladen zelf maak je met vl-tabs-pane (id en title), dat een eigen pagina heeft: components-block-tabs-tabs-pane.",
+      "source": "libs/components/src/block/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tabs",
+      "text": "De doc-url van vl-tabs, vl-tabs-pane, vl-tab en vl-tab-section in de web-types wijst naar components-block-tabs--documentatie, een pagina die in 2.14.0 niet bestaat. De documentatie van vl-tabs, vl-tab en vl-tab-section staat op components-block-tabs-tabs--documentatie, die van vl-tabs-pane op components-block-tabs-tabs-pane--documentatie. De verkeerde url staat in de configuratie van de web-types-generator.",
+      "source": "resources/generate-web-types/wt-config-build/components-block.wt-config.ts"
+    }
+  ]
+}

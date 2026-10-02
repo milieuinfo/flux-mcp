@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "page": "components-compliance-privacy",
+  "inputHash": "5bee5a87a201",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-privacy, dat een volledige privacyverklaring van Departement Omgeving toont: een functionele header, de versie en de datum (attributen version en date), de privacytekst met een inhoudsopgave en de contactgegevens van de DPO. De slots header, version, content en bottom vervangen die secties; met een eigen header in het slot header, bv. een vl-functional-header met back=\"Start\", werken disable-back-link en hide-back-link niet meer.",
+  "keywords": [
+    "privacy",
+    "privacyverklaring",
+    "privacy statement",
+    "privacy policy",
+    "vl-privacy",
+    "persoonsgegevens",
+    "personal data",
+    "avg",
+    "gdpr",
+    "dpo",
+    "compliance pagina",
+    "functional header",
+    "departement omgeving"
+  ],
+  "examples": {
+    "components-compliance-privacy--privacy-default": {
+      "html": "<vl-privacy></vl-privacy>",
+      "js": "import { VlPrivacy } from '@domg-wc/components/compliance';\n\nconst privacy = document.querySelector('vl-privacy');\n\n// De standaard vl-functional-header in vl-privacy vuurt vl-click-back af bij een klik op de terug-link; het event\n// bubbelt (composed) tot op vl-privacy.\nprivacy.addEventListener('vl-click-back', () => console.log('vl-click-back'));"
+    },
+    "components-compliance-privacy--privacy-header-slot": {
+      "html": "<vl-privacy>\n    <vl-functional-header\n        slot=\"header\"\n        title=\"Departement Omgeving\"\n        sub-title=\"Privacy\"\n        link=\"https://omgeving.vlaanderen.be\"\n        back=\"Start\"\n    ></vl-functional-header>\n</vl-privacy>",
+      "js": "import { VlPrivacy } from '@domg-wc/components/compliance';\n\nconst privacy = document.querySelector('vl-privacy');\n\n// De vl-functional-header in het slot header vuurt vl-click-back af bij een klik op de terug-link (met label Start).\nprivacy.addEventListener('vl-click-back', () => console.log('vl-click-back'));"
+    }
+  },
+  "notes": []
+}

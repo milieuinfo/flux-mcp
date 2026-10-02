@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "styles-layout-section",
+  "inputHash": "4a0a28d92ce0",
+  "analysedFor": "2.15.0",
+  "summary": "CSS-klasse vl-section om een toepassing op te delen in secties met consistente witruimte boven en onder. vl-section--alt geeft een lichtgrijze achtergrond, vl-section--small en vl-section--medium geven minder witruimte, vl-section--bordered zet een scheidingslijn tussen opeenvolgende secties die allebei die klasse hebben, en vl-section--overlap toont een omkaderd vl-content-block op de overgang van een transparante bovenkant naar een lichtgrijze onderkant. De kleuren pas je aan met de variabelen --vl-section--alt-bg en --vl-section--border.",
+  "keywords": [
+    "section",
+    "sectie",
+    "vl-section",
+    "vl-section--alt",
+    "vl-section--bordered",
+    "vl-section--small",
+    "vl-section--overlap",
+    "page section",
+    "witruimte",
+    "whitespace",
+    "achtergrond",
+    "background",
+    "scheidingslijn",
+    "divider",
+    "layout"
+  ],
+  "examples": {
+    "styles-layout-section--section-default": {
+      "html": "<style>\n    /* Demo-stijl van de story: centreert de tekst in de secties. */\n    .vl-section p {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n    }\n</style>\n<section class=\"vl-section vl-section--alt\">\n    <p>vl-section vl-section--alt</p>\n</section>\n<section class=\"vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>\n<section class=\"vl-section vl-section--bordered vl-section--small\">\n    <p>vl-section vl-section--bordered vl-section--small</p>\n</section>\n<section class=\"vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>"
+    },
+    "styles-layout-section--section-light-blue": {
+      "html": "<style>\n    /* Demo-stijl van de story: centreert de tekst in de secties. */\n    .vl-section p {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n    }\n\n    /* Overschrijft de kleurvariabelen van vl-section: de achtergrond van vl-section--alt en de scheidingslijn van\n       vl-section--bordered. */\n    .sb-light-blue.vl-section {\n        --vl-section--alt-bg: lightblue;\n        --vl-section--border: lightblue;\n    }\n</style>\n<section class=\"sb-light-blue vl-section vl-section--alt\">\n    <p>vl-section vl-section--alt</p>\n</section>\n<section class=\"sb-light-blue vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>\n<section class=\"sb-light-blue vl-section vl-section--bordered vl-section--small\">\n    <p>vl-section vl-section--bordered vl-section--small</p>\n</section>\n<section class=\"sb-light-blue vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>"
+    },
+    "styles-layout-section--section-overlap": {
+      "html": "<style>\n    /* Demo-stijl van de story: centreert de tekst in de secties. */\n    .vl-section p {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        font-size: 14px;\n    }\n</style>\n<section class=\"vl-section vl-section--overlap\">\n    <p class=\"vl-content-block\">vl-content-block</p>\n    <p>vl-section vl-section--overlap</p>\n</section>\n<section class=\"vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>\n<section class=\"vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>\n<section class=\"vl-section vl-section--bordered\">\n    <p>vl-section vl-section--bordered</p>\n</section>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina noemt vl-section--alt, vl-section--small, vl-section--medium en vl-section--bordered en zegt dat het voorbeeld eronder 'dit alles' toepast. De story vl-section - light blue (en ook vl-section - default) gebruikt vl-section--medium echter niet; die klasse bestaat wel in vl-section.css.ts.",
+      "source": "libs/styles/src/layout/section/stories/vl-section.stories-doc.mdx"
+    }
+  ]
+}

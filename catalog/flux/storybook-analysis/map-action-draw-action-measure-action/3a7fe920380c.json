@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "page": "map-action-draw-action-measure-action",
+  "inputHash": "3a7fe920380c",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-measure-action, een kaartactie waarmee de gebruiker de afstand tussen twee punten meet: ze tekent een lijn van twee punten op de vl-map-features-layer en toont de lengte in meter in een pill, die je na het meten kan sluiten om de meting te verwijderen. Met vl-map-measure-control in vl-map-action-controls zet de gebruiker het meten aan en uit met een knop.",
+  "keywords": [
+    "measure action",
+    "vl-map-measure-action",
+    "meten",
+    "afstand meten",
+    "measure distance",
+    "measure",
+    "lengte",
+    "ruler",
+    "vl-map-measure-control",
+    "measure control",
+    "snapping",
+    "kaartactie",
+    "map action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-draw-action-measure-action--map-measure-action-default": {
+      "html": "<!-- De actie tekent de meetlijn op de vl-map-features-layer waarin ze staat; vl-map-layer-style bepaalt de stijl van\n     die lijn. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-measure-action></vl-map-measure-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerStyle, VlMapMeasureAction } from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-measure-action').active = true;"
+    },
+    "map-action-draw-action-measure-action--map-measure-action-snapping": {
+      "html": "<!-- Met snapping en een vl-map-wfs-layer in de actie snappen de meetpunten op de features van die WFS-laag, binnen\n     snapping-pixel-tolerance pixels. De WFS-laag komt niet zelf op de kaart: zolang de actie actief is, toont ze de\n     features in een eigen laag. Door max-resolution=\"4\" zijn ze pas zichtbaar als je inzoomt tot een resolutie\n     onder 4. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-measure-action snapping snapping-pixel-tolerance=\"1000\">\n            <vl-map-wfs-layer\n                name=\"Stromend waterlichamen\"\n                url=\"https://geoserver.vmm.be/geoserver/vmm/wfs\"\n                layers=\"owl_l\"\n                max-resolution=\"4\"\n            ></vl-map-wfs-layer>\n        </vl-map-measure-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerStyle,\n    VlMapMeasureAction,\n    VlMapWfsLayer,\n} from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-measure-action').active = true;"
+    },
+    "map-action-draw-action-measure-action--map-measure-action-control": {
+      "html": "<!-- vl-map-measure-control toont in vl-map-action-controls een toggle-knop \"Meten\" rechtsboven op de kaart. Het\n     vindt de vl-map-measure-action van de kaart zelf: je koppelt ze niet met een id. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-action-controls>\n        <vl-map-measure-control></vl-map-measure-control>\n    </vl-map-action-controls>\n    <vl-map-features-layer>\n        <vl-map-measure-action></vl-map-measure-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapActionControls,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerStyle,\n    VlMapMeasureAction,\n    VlMapMeasureControl,\n} from '@domg-wc/map';\n\n// De story zet de property active: het meten staat meteen aan, en de kaart zet dan ook de knop \"Meten\" aan.\ndocument.querySelector('vl-map-measure-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-measure-action",
+      "name": "snapping-pixel-tolerance",
+      "text": "De web-types en de argTypes zeggen dat snapping-pixel-tolerance (standaard 10) bepaalt binnen hoeveel pixels er gesnapt wordt. De code gebruikt het attribuut echter enkel als er vl-map-wfs-layer-elementen in de actie staan (__snappingLayers zoekt enkel naar vl-map-wfs-layer). Zonder zulke lagen snapt de actie op haar eigen laag met een vaste tolerantie van 7 pixels (VlSnapInteraction in libs/map/src/actions/snap/snap-interaction.ts) en heeft snapping-pixel-tolerance geen effect.",
+      "source": "libs/map/src/components/action/draw-action/vl-map-draw-action.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-measure-action",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-measure-action het attribuut custom-css. Het element heeft geen shadow DOM: VlMapAction roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. Het element tekent ook zelf niets: het voegt een OpenLayers-actie toe aan de kaart.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "page": "components-block-upload-progress",
+  "inputHash": "c2c30c4cbcf7",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-upload-progress, dat de voortgang van de upload van één bestand toont met bestandsnaam, grootte en een progress bar in procent, of onbepaald met indeterminate. Met error of success en message toon je de uitkomst, en met retryable en cancellable knoppen die de events vl-upload-progress-retry en vl-upload-progress-cancel afvuren; de component heeft geen eigen witruimte.",
+  "keywords": [
+    "upload progress",
+    "vl-upload-progress",
+    "uploadvoortgang",
+    "voortgang",
+    "progress bar",
+    "bestand uploaden",
+    "file upload",
+    "indeterminate",
+    "annuleren",
+    "cancel",
+    "opnieuw proberen",
+    "retry",
+    "upload mislukt",
+    "upload error"
+  ],
+  "examples": {
+    "components-block-upload-progress--upload-progress-default": {
+      "html": "<vl-upload-progress progress=\"50\"></vl-upload-progress>"
+    },
+    "components-block-upload-progress--upload-progress-indeterminate": {
+      "html": "<vl-upload-progress indeterminate></vl-upload-progress>"
+    },
+    "components-block-upload-progress--upload-progress-error": {
+      "html": "<vl-upload-progress\n    progress=\"23\"\n    cancellable\n    retryable\n    error\n    message=\"Er liep iets fout bij het uploaden, gelieve opnieuw te proberen of de upload te annuleren.\"\n></vl-upload-progress>",
+      "js": "const uploadProgress = document.querySelector('vl-upload-progress');\n\n// De knoppen Opnieuw proberen (retryable) en Annuleren (cancellable) vuren deze events af; event.detail bevat\n// filename en target (het element zelf).\nuploadProgress.addEventListener('vl-upload-progress-retry', (event) => {\n    console.log('opnieuw proberen', event.detail.filename);\n});\nuploadProgress.addEventListener('vl-upload-progress-cancel', (event) => {\n    console.log('annuleren', event.detail.filename);\n});"
+    },
+    "components-block-upload-progress--upload-progress-success": {
+      "html": "<vl-upload-progress progress=\"100\" success message=\"Upload voltooid\"></vl-upload-progress>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-upload-progress",
+      "text": "De pagina importeert VlUploadProgressComponent uit @domg-wc/components/block, maar libs/components/src/block/index.ts exporteert die klasse niet in 2.20.0. De barrel van de component, libs/components/src/block/upload-progress/index.ts, exporteert ze wel; zie de pagina Imports voor de import per component.",
+      "source": "libs/components/src/block/index.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-upload-progress",
+      "text": "De defaults van filename en filesize zijn demowaarden: Document.pdf en 123 MB (web-types en vl-upload-progress.defaults.ts). Zonder die attributen toont de component dus 'Document.pdf (123 MB)'. De stories zetten filename en filesize op precies die waarden, waardoor de helper story() ze weglaat en 'Show code' ze niet toont, hoewel de story ze toont. De voorbeelden hier volgen de story en laten ze dus ook weg; zet in een toepassing filename en filesize altijd zelf.",
+      "source": "libs/components/src/block/upload-progress/stories/vl-upload-progress.stories.ts"
+    }
+  ]
+}

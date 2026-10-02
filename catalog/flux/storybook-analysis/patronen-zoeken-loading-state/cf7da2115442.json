@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "patronen-zoeken-loading-state",
+  "inputHash": "cf7da2115442",
+  "analysedFor": "2.20.0",
+  "summary": "Patroon voor een zoekformulier zonder aparte zoek-component: een input group met vl-input-field en een vl-button type=\"submit\" in een form met role=\"search\". Tijdens een trage zoekopdracht zet je loading op de knop, die dan klikken blokkeert en aria-busy zet; een aria-live-regio (role=\"status\") kondigt het resultaat aan.",
+  "keywords": [
+    "zoeken",
+    "search",
+    "zoekformulier",
+    "search form",
+    "zoekveld",
+    "loading",
+    "loading state",
+    "laadtoestand",
+    "input group",
+    "vl-input-field",
+    "vl-button",
+    "aria-busy",
+    "aria-live",
+    "role search",
+    "status message"
+  ],
+  "examples": {
+    "patronen-zoeken-loading-state--zoeken-loading-state": {
+      "html": "<form role=\"search\" aria-label=\"Zoeken op deze site\">\n    <div class=\"vl-group vl-group--input-group\">\n        <vl-input-field input-group block type=\"search\" name=\"zoekterm\" label=\"Zoekterm\"></vl-input-field>\n        <vl-button input-group icon=\"search\" type=\"submit\" label=\"Zoeken\" tertiary></vl-button>\n    </div>\n    <p data-search-status role=\"status\" aria-live=\"polite\"></p>\n</form>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlInputFieldComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlButtonComponent, VlInputFieldComponent]);\n\n// De story simuleert een trage backend (bv. een MAGDA-call): het resultaat komt na 1,5 seconde.\nconst RESULT_DELAY_MS = 1500;\n\nconst form = document.querySelector('form[role=\"search\"]');\nform.addEventListener('submit', (event) => {\n    event.preventDefault();\n    const button = form.querySelector('vl-button');\n    // Zolang loading aanstaat, start een herhaalde submit (bv. Enter in het zoekveld) geen tweede zoekopdracht.\n    if (button.hasAttribute('loading')) {\n        return;\n    }\n\n    const status = form.querySelector('[data-search-status]');\n    button.toggleAttribute('loading', true);\n    status.textContent = 'Bezig met zoeken…';\n\n    window.setTimeout(() => {\n        button.toggleAttribute('loading', false);\n        status.textContent = '8 resultaten geladen.';\n    }, RESULT_DELAY_MS);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "name": "loading",
+      "text": "Het patroon zet loading op een tertiary vl-button. De documentatie van vl-button (sectie Loading) en de beschrijving van loading in de web-types raden aan een loading button enkel te gebruiken voor primary buttons.",
+      "source": "libs/components/src/atom/button/stories/vl-button.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De code onder Opbouw laat het attribuut data-search-status op de status-regio weg, en het TypeScript-fragment gebruikt button en status zonder te tonen hoe je ze opzoekt of welk event de zoekopdracht start. De story vangt het submit-event van het form op, zoekt de status-regio met [data-search-status] en negeert een submit zolang de knop loading heeft. Het voorbeeld volgt de story.",
+      "source": "apps/storybook/docs/f_patronen/zoeken/zoeken-loading-state.stories.ts"
+    }
+  ]
+}

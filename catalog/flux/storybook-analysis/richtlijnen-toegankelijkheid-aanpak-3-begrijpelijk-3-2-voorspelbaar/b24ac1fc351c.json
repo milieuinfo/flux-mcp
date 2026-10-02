@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-2-voorspelbaar",
+  "inputHash": "b24ac1fc351c",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 3.2 Voorspelbaar: toon inhoud in een voorspelbare volgorde en geef dezelfde onderdelen dezelfde vormgeving. Met 3.2.1 Bij focus en 3.2.2 Bij input (brons[basis]: niets verandert vanzelf wanneer een onderdeel de focus krijgt, en de focus springt niet vanzelf verder), 3.2.6 Consistente hulp (brons[plus]) en 3.2.3 Consistente navigatie en 3.2.4 Consistente identificatie (zilver[basis]).",
+  "keywords": [
+    "voorspelbaar",
+    "predictable",
+    "bij focus",
+    "on focus",
+    "bij input",
+    "on input",
+    "change of context",
+    "consistente navigatie",
+    "consistent navigation",
+    "consistente identificatie",
+    "consistent identification",
+    "consistente hulp",
+    "consistent help",
+    "wcag 3.2"
+  ],
+  "examples": {},
+  "notes": []
+}

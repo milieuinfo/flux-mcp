@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-praktijk-gekende-beperkingen-wip",
+  "inputHash": "fa5f9f85048a",
+  "analysedFor": "2.19.0",
+  "summary": "Gekende toegankelijkheidsbeperkingen (werk in uitvoering). In Safari kan je met de standaardinstellingen niet met tab naar buttons, checkboxes of radios; gebruik option+tab of de instelling 'Press Tab to highlight each item on a web page'.",
+  "keywords": [
+    "gekende beperkingen",
+    "known limitations",
+    "toegankelijkheid",
+    "accessibility",
+    "safari",
+    "focus",
+    "tab option",
+    "keyboard navigation",
+    "toetsenbordnavigatie",
+    "wcag"
+  ],
+  "examples": {},
+  "notes": []
+}

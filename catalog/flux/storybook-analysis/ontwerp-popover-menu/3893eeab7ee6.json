@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "page": "ontwerp-popover-menu",
+  "inputHash": "3893eeab7ee6",
+  "analysedFor": "2.8.1",
+  "summary": "Patroon voor een popover-menu achter een kebab-icoon: een ghost vl-button met het icoon nav-show-more-vertical opent een vl-popover met een vl-popover-action-list van acties. Gebruik het wanneer er te weinig ruimte is om alle acties rechtstreeks te tonen.",
+  "keywords": [
+    "popover",
+    "popover menu",
+    "kebab menu",
+    "drie puntjes",
+    "meer acties",
+    "more actions",
+    "actiemenu",
+    "action menu",
+    "contextmenu",
+    "context menu",
+    "dropdown menu",
+    "overflow menu",
+    "vl-popover-action",
+    "nav-show-more-vertical"
+  ],
+  "examples": {
+    "ontwerp-popover-menu--menu": {
+      "html": "<div>\n    <vl-button ghost icon=\"nav-show-more-vertical\" id=\"btn-acties\" label=\"Acties\"></vl-button>\n    <vl-popover for=\"btn-acties\" placement=\"bottom-end\" trigger=\"focus click hover\" hide-on-click>\n        <vl-popover-action-list>\n            <vl-popover-action icon=\"search\">Zoeken</vl-popover-action>\n            <vl-popover-action icon=\"edit\">Aanpassen</vl-popover-action>\n            <vl-popover-action icon=\"bin\">Verwijderen</vl-popover-action>\n        </vl-popover-action-list>\n    </vl-popover>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent registreert zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlPopoverComponent, VlButtonComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover hij zich plaatst. De code van vl-popover leest for als attribuut (attribute: 'for'), maar de web-types van 2.8.1 geven for enkel als JS-property, niet als attribuut.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "icon toont een icoon voor de tekst van de actie (class vl-icon--<naam>). Het staat in de code van vl-popover-action, maar de web-types van 2.8.1 kennen voor vl-popover-action geen enkel attribuut of property; ook href, target, rel, action en selected ontbreken.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "placement",
+      "text": "Het voorbeeld zet placement=\"bottom-end\". De web-types van 2.8.1 geven als type van placement enkel 'top' | 'right' | 'bottom' | 'left', terwijl de beschrijving van hetzelfde attribuut een suffix -start of -end toelaat. De code typeert placement als Placement van @floating-ui/dom (libs/components/src/block/popover/vl-popover.defaults.ts), dat bottom-end kent; de waarde is dus geldig.",
+      "source": "libs/components/src/block/popover/stories/vl-popover.stories-arg.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "trigger",
+      "text": "Het voorbeeld zet trigger=\"focus click hover\". De web-types van 2.8.1 geven als type van trigger enkel 'click' | 'focus' | 'hover', terwijl de beschrijving van hetzelfde attribuut toelaat om waarden met een spatie te combineren. De controller van de popover controleert elke trigger met includes() op de string; de combinatie is dus geldig.",
+      "source": "libs/components/src/block/popover/vl-floating-ui.controller.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "trigger",
+      "text": "Onder Ontwerp staat dat het menu opent door op het icoon te klikken, en sluit door opnieuw op het icoon te klikken of ergens buiten het menu. De code zet trigger=\"focus click hover\": door hover opent het menu ook zodra de muis over de knop gaat, en sluit het 100 ms nadat de muis de knop verlaat, tenzij die dan op de popover staat. focus in trigger verandert niets: de controller (libs/components/src/block/popover/vl-floating-ui.controller.ts) opent de popover bij focus op de knop altijd. Wil je enkel het gedrag uit de tekst, laat trigger dan weg; de default is click.",
+      "source": "libs/integrations/src/popover/menu/vl-popover-menu.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de vl-popover-action-list in het default slot van vl-popover, zoals de code van vl-popover het definieert (<slot></slot>). De web-types van 2.8.1 kennen voor vl-popover geen slot.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action-list",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de vl-popover-action-elementen in het default slot van vl-popover-action-list, zoals de code het definieert (<slot></slot>). De web-types van 2.8.1 kennen voor vl-popover-action-list geen enkel attribuut, property of slot.",
+      "source": "libs/components/src/block/popover/vl-popover-action-list.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de tekst van elke actie (Zoeken, Aanpassen, Verwijderen) in het default slot van vl-popover-action, zoals de code het definieert (<slot></slot>, na het icoon). De web-types van 2.8.1 kennen voor vl-popover-action geen slot.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    }
+  ]
+}

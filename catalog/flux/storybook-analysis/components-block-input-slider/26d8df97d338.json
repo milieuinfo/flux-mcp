@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "page": "components-block-input-slider",
+  "inputHash": "26d8df97d338",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-input-slider, een schuifregelaar samen met een numeriek invoerveld om een waarde tussen min-value en max-value te kiezen; een waarde buiten dat bereik wordt gecorrigeerd. Elke nieuwe waarde volgt het event vl-change-value met de waarde in event.detail.value. Het is niet de vl-ui-range component van Digitaal Vlaanderen, al is de stijl erop gebaseerd.",
+  "keywords": [
+    "input slider",
+    "vl-input-slider",
+    "slider",
+    "schuifregelaar",
+    "range",
+    "range slider",
+    "bereik",
+    "numerieke invoer",
+    "number input",
+    "min max",
+    "vl-change-value"
+  ],
+  "examples": {
+    "components-block-input-slider--input-slider-default": {
+      "html": "<vl-input-slider></vl-input-slider>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlInputSliderComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInputSliderComponent]);\n\n// vl-change-value bubbelt niet: luister op het element zelf. De nieuwe waarde staat in event.detail.value.\ndocument.querySelector('vl-input-slider').addEventListener('vl-change-value', (event) => {\n    console.log(event.detail.value);\n});"
+    }
+  },
+  "notes": []
+}

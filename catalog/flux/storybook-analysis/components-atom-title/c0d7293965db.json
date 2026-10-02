@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "page": "components-atom-title",
+  "inputHash": "c0d7293965db",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-title, een titel die als h1 tot h6 rendert volgens het attribuut type (zonder type een h1). appearance geeft de titel de stijl van een ander niveau zonder de semantiek te wijzigen; underline en alt (hoofdletters met een lijn) voegen een lijn toe en no-space-bottom vermindert de ruimte eronder. Hou de rangorde van de headings logisch en sla geen niveau over.",
+  "keywords": [
+    "titel",
+    "title",
+    "vl-title",
+    "heading",
+    "kop",
+    "h1",
+    "h2",
+    "heading level",
+    "appearance",
+    "underline",
+    "hoofdletters",
+    "uppercase",
+    "no-space-bottom",
+    "typografie",
+    "typography"
+  ],
+  "examples": {
+    "components-atom-title--title-default": {
+      "html": "<vl-title type=\"h1\">Ik ben een titel</vl-title>\n<vl-title type=\"h2\">Ik ben een titel</vl-title>\n<vl-title type=\"h3\">Ik ben een titel</vl-title>\n<vl-title type=\"h4\">Ik ben een titel</vl-title>\n<vl-title type=\"h5\">Ik ben een titel</vl-title>\n<vl-title type=\"h6\">Ik ben een titel</vl-title>"
+    },
+    "components-atom-title--title-appearance": {
+      "html": "<!-- Semantisch een h2 en een h3, met de stijl van een h3 en een h4. -->\n<vl-title type=\"h2\" appearance=\"h3\">Ik ben een titel</vl-title>\n<vl-title type=\"h3\" appearance=\"h4\">Ik ben een titel</vl-title>"
+    },
+    "components-atom-title--title-underline": {
+      "html": "<vl-title type=\"h2\" underline>Ik ben een titel</vl-title>"
+    },
+    "components-atom-title--title-alt": {
+      "html": "<vl-title type=\"h2\" alt>Ik ben een titel</vl-title>"
+    },
+    "components-atom-title--title-no-space-bottom": {
+      "html": "<vl-title type=\"h2\" no-space-bottom>Ik ben een titel</vl-title>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat vl-title de voorkeur geniet boven het oude vl-title element, met een link naar elements-title-h1--documentatie. Die pagina bestaat niet in de Storybook van 2.20.0: het oude element was <h1 is=\"vl-h1\"> (en zo verder tot vl-h6) uit v1, gedocumenteerd in de Storybook van release-v1/1.48.0 en in v2 vervangen door <vl-title type=\"hx\">, zie de pagina over de impact van de migratie naar v2.",
+      "source": "libs/components/src/atom/title/stories/vl-title.stories-doc.mdx"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-1-toetsenbordtoegankelijk",
+  "inputHash": "9fd149cb1e0b",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 2.1 Toetsenbordtoegankelijk: alles wat op de website kan, moet ook met enkel een toetsenbord lukken. Met 2.1.1 Toetsenbord en 2.1.2 Geen toetsenbordval (brons[basis]: elk onderdeel met het toetsenbord bereiken en er ook weer weg kunnen) en 2.1.4 Enkel teken sneltoetsen (brons[plus]) over het uitzetten en opnieuw toewijzen van sneltoetsen.",
+  "keywords": [
+    "toetsenbordtoegankelijk",
+    "keyboard accessible",
+    "toetsenbord",
+    "keyboard",
+    "toetsenbordbediening",
+    "keyboard navigation",
+    "toetsenbordval",
+    "keyboard trap",
+    "sneltoetsen",
+    "keyboard shortcuts",
+    "character key shortcuts",
+    "wcag 2.1.1",
+    "wcag 2.1.2",
+    "wcag 2.1.4",
+    "toegankelijkheid"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Succescriterium 2.1.4 heet 'Enkel teken sneltoetsen', maar de tekst geldt voor elke sneltoets en vraagt dat gebruikers sneltoetsen kunnen uitzetten én opnieuw toewijzen, en daarnaast dat een sneltoets enkel actief is als het onderdeel de focus heeft. Het gelinkte WCAG-succescriterium 2.1.4 (https://www.w3.org/Translations/WCAG22-nl/#character-key-shortcuts) geldt enkel voor sneltoetsen met alleen letters, cijfers, leestekens of symbolen, zonder een toets als Ctrl of Alt, en vraagt minstens één van de drie: uitzetten, opnieuw toewijzen (met een toets als Ctrl of Alt) of enkel actief bij focus.",
+      "source": "apps/storybook/docs/e_richtlijnen/a_toegankelijkheid-aanpak/2_bediendbaar/2.1_toetsenbordtoegankelijk.mdx"
+    }
+  ]
+}

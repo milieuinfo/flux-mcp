@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "page": "components-form-input-group",
+  "inputHash": "3b791c074afe",
+  "analysedFor": "2.16.0",
+  "summary": "Patroon, geen aparte component, om een vl-input-field en een vl-button als één geheel te tonen, bv. een veld met een knop om een locatie te kiezen: een div met de classes vl-group en vl-group--input-group, en het attribuut input-group op het veld en op de knop. De knop staat links of rechts, met tekst of enkel een icoon.",
+  "keywords": [
+    "input group",
+    "input-group",
+    "invoergroep",
+    "veld met knop",
+    "input with button",
+    "zoekveld met knop",
+    "search field with button",
+    "vl-group--input-group",
+    "vl-input-field",
+    "vl-button",
+    "icon button"
+  ],
+  "examples": {
+    "components-form-input-group--input-group-button-left": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-button input-group label=\"locatie kiezen\">Locatie kiezen</vl-button>\n    <vl-input-field input-group label=\"locatie ingave\"></vl-input-field>\n</div>"
+    },
+    "components-form-input-group--input-group-button-right": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-input-field input-group block label=\"locatie ingave\"></vl-input-field>\n    <vl-button input-group label=\"locatie kiezen\">Locatie kiezen</vl-button>\n</div>"
+    },
+    "components-form-input-group--input-group-icon-left": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-button input-group icon=\"location\" label=\"locatie kiezen\"></vl-button>\n    <vl-input-field input-group block label=\"locatie ingave\"></vl-input-field>\n</div>"
+    },
+    "components-form-input-group--input-group-icon-right": {
+      "html": "<div class=\"vl-group vl-group--input-group\">\n    <vl-input-field input-group label=\"locatie ingave\"></vl-input-field>\n    <vl-button input-group icon=\"location\" tertiary label=\"locatie kiezen\"></vl-button>\n</div>"
+    }
+  },
+  "notes": []
+}

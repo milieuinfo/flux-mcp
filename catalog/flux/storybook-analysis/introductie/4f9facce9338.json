@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "introductie",
+  "inputHash": "4f9facce9338",
+  "analysedFor": "2.3.0",
+  "summary": "Startpagina van de Storybook van Flux: wat de Flux Web Components van Departement Omgeving zijn, gebouwd op Webuniversum v3 van Digitaal Vlaanderen. Ze legt uit hoe het team werkt en releaset, en waar je de changelog, de planning, issues en de documentatie van elke versie vindt.",
+  "keywords": [
+    "introductie",
+    "introduction",
+    "flux",
+    "web components",
+    "departement omgeving",
+    "webuniversum",
+    "storybook",
+    "releases",
+    "changelog",
+    "issues",
+    "jira",
+    "rocket.chat",
+    "documentatie",
+    "documentation"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link naar de uitleg over '-next' componenten wijst naar de pagina planning-aanpak-v2-2024-v3-2025 (anker #waarom-componenten), die in 2.3.0 niet bestaat. De uitleg staat op 'Planning/Aanpak v2, v3, ...' (planning-aanpak-v2-v3), in de sectie 'Waarom 'Next' Componenten'.",
+      "source": "apps/storybook/docs/2_introductie.stories.mdx"
+    }
+  ]
+}

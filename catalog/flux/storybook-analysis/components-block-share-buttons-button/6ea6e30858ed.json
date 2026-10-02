@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "components-block-share-buttons-button",
+  "inputHash": "6ea6e30858ed",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-share-button, één knop om een pagina te delen via een medium: facebook, twitter, linkedin, googleplus of mail. Hij toont een link met het icoon en de naam van het medium; je zet hem in een vl-share-buttons en geeft zelf de bestemming van de link mee in href.",
+  "keywords": [
+    "delen",
+    "share",
+    "share button",
+    "deelknop",
+    "sociale media",
+    "social media",
+    "facebook",
+    "twitter",
+    "linkedin",
+    "mail",
+    "vl-share-button",
+    "vl-share-buttons"
+  ],
+  "examples": {
+    "components-block-share-buttons-button--share-button-default": {
+      "html": "<vl-share-buttons>\n    <vl-share-button href=\"#\" medium=\"facebook\"></vl-share-button>\n</vl-share-buttons>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlShareButton, VlShareButtonsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlShareButtonsComponent, VlShareButton]);\n\n// vl-share-button zet href ongewijzigd op zijn link: de url waarmee je de pagina deelt, geef je zelf mee."
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-button",
+      "name": "medium",
+      "text": "Attribuut voor het medium: facebook, twitter, linkedin, googleplus of mail. Het bepaalt het icoon (vl-vi-<medium>), de klasse vl-share-button--<medium> en de naam in de link en in zijn title (Deel op Facebook, Twitter, LinkedIn, Google Plus of mail). De web-types noemen enkel custom-css; de argTypes van de story beschrijven medium wel.",
+      "source": "libs/components/src/block/share-buttons/vl-share-button.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-button",
+      "name": "href",
+      "text": "Attribuut met de bestemming van de link. vl-share-button zet het ongewijzigd op zijn <a> en bouwt zelf geen deel-url op. De web-types noemen enkel custom-css; de argTypes van de story beschrijven href wel.",
+      "source": "libs/components/src/block/share-buttons/vl-share-button.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "afnemen-aan-de-slag",
+  "inputHash": "c90e2cfa2565",
+  "analysedFor": "2.20.0",
+  "summary": "Hoe je als afnemer begint met de Flux Web Components: Node en pnpm, de packages in je package.json, de Webpack-regel voor de raw css, en het registreren van een component met een import of registerWebComponents. Ook wat je voor styling (niet) moet doen en waar je de documentatie per component vindt.",
+  "keywords": [
+    "aan de slag",
+    "getting started",
+    "installatie",
+    "installation",
+    "pnpm",
+    "package.json",
+    "dependencies",
+    "@domg-wc/components",
+    "registerwebcomponents",
+    "registratie",
+    "register web component",
+    "import",
+    "webpack",
+    "raw css",
+    "styling"
+  ],
+  "examples": {},
+  "notes": []
+}

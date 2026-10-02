@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "page": "recepten-debugging",
+  "inputHash": "5adddf9a5d8b",
+  "analysedFor": "2.0.2",
+  "summary": "Hoe je de TypeScript-broncode van de uigov-web-components (Flux) debugt met de .js.map-bestanden in de npm-packages. Bundel je je toepassing met webpack, voeg dan source-map-loader toe aan de webpack-configuratie, zodat die map-bestanden mee in je bundel komen.",
+  "keywords": [
+    "debugging",
+    "debuggen",
+    "source maps",
+    "sourcemap",
+    ".js.map",
+    "map files",
+    "source-map-loader",
+    "webpack",
+    "webpack configuratie",
+    "broncode",
+    "typescript",
+    "devtools",
+    "bundler"
+  ],
+  "examples": {},
+  "notes": []
+}

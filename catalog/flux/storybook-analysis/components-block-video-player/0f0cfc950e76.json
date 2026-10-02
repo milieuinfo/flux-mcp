@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "page": "components-block-video-player",
+  "inputHash": "0f0cfc950e76",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-video-player, een videospeler (vidstack met de Plyr-layout) die een video toont met titel, posterafbeelding en ondertitels. Met type zet je het mimetype, bv. video/mp4, wanneer de source-URL geen bestandsextensie heeft, zoals bij een download-link.",
+  "keywords": [
+    "video",
+    "video player",
+    "videospeler",
+    "vl-video-player",
+    "mediaspeler",
+    "media player",
+    "ondertitels",
+    "subtitles",
+    "poster",
+    "mimetype",
+    "mp4",
+    "vidstack",
+    "plyr"
+  ],
+  "examples": {
+    "components-block-video-player--video-player-default": {
+      "html": "<vl-video-player\n    title=\"Sprite Fright\"\n    source=\"https://files.vidstack.io/sprite-fight/720p.mp4\"\n    subtitles=\"https://files.vidstack.io/sprite-fight/subs/english.vtt\"\n    poster=\"https://files.vidstack.io/sprite-fight/poster.webp\"\n></vl-video-player>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-video-player",
+      "text": "De pagina en de beschrijving van vl-video-player in de web-types noemen de component de nieuwe versie van het vl-video-player element, met een link naar elements-video-player--documentatie. Die pagina bestaat niet in de Storybook van 2.20.0; de web-types van 2.20.0 kennen enkel deze vl-video-player.",
+      "source": "libs/components/src/block/video-player/stories/vl-video-player.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-video-player",
+      "name": "subtitles",
+      "text": "vl-video-player voegt het bestand in subtitles altijd toe als ondertitels met label Nederlands en taal nl-BE, standaard aan; een attribuut voor taal of label is er niet. De story gebruikt een Engelstalig bestand (english.vtt), dat de speler dus als Nederlands aanbiedt.",
+      "source": "libs/components/src/block/video-player/vl-video-player.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-video-player",
+      "text": "title, source, subtitles, poster en type zijn reactieve properties, maar vl-video-player leest ze enkel in firstUpdated, waar het de speler maakt. Een latere wijziging, bv. een andere source, verandert de video niet; vervang daarvoor het element.",
+      "source": "libs/components/src/block/video-player/vl-video-player.component.ts"
+    }
+  ]
+}

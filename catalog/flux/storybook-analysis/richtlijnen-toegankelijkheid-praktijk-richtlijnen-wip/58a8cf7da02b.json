@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip",
+  "inputHash": "58a8cf7da02b",
+  "analysedFor": "2.20.0",
+  "summary": "Praktische toegankelijkheidsregels voor formulieren met Flux (werk in uitvoering): geef elke form control een label, met een vl-form-label en zijn for-attribuut of met het label-attribuut van de control; schrijf foutboodschappen die zeggen hoe je de fout oplost; gebruik placeholder enkel voor een voorbeeldwaarde en niet als label; en stel autocomplete correct in, met off als er geen relevante suggesties zijn.",
+  "keywords": [
+    "toegankelijkheid",
+    "accessibility",
+    "formulier",
+    "form",
+    "label",
+    "form label",
+    "vl-form-label",
+    "foutboodschap",
+    "error message",
+    "placeholder",
+    "autocomplete",
+    "validatie",
+    "validation"
+  ],
+  "examples": {},
+  "notes": []
+}

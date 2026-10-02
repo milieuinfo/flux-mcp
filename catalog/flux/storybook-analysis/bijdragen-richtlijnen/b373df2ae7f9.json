@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "bijdragen-richtlijnen",
+  "inputHash": "b373df2ae7f9",
+  "analysedFor": "2.14.0",
+  "summary": "Voor wie bijdraagt aan Flux: code formatteren met Prettier, en de codeerrichtlijnen, met de nadruk op backwards compatibiliteit, BaseLitElement voor nieuwe componenten, stapsgewijs TypeScript-typing toevoegen zonder de code te wijzigen, en de iconen van Digitaal Vlaanderen.",
+  "keywords": [
+    "richtlijnen",
+    "guidelines",
+    "codeer richtlijnen",
+    "coding guidelines",
+    "bijdragen",
+    "contributing",
+    "prettier",
+    "formattering",
+    "code formatting",
+    "backwards compatibiliteit",
+    "backwards compatibility",
+    "baselitelement",
+    "typescript",
+    "typing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina noemt als basis klasses BaseElement en BaseLitElement. BaseElement bestaat in 2.14.0 niet: @domg-wc/common exporteert BaseHTMLElement en BaseLitElement (libs/common/src/index.ts).",
+      "source": "apps/storybook/docs/b_bijdragen/2_richtlijnen.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Onder de kop 'Cypress' staat 'Richtlijnen m.b.t. Storybook vind je terug onder Bijdragen / Cypress'. Het gaat om de richtlijnen voor Cypress; die voor Storybook staan onder de volgende kop.",
+      "source": "apps/storybook/docs/b_bijdragen/2_richtlijnen.mdx"
+    }
+  ]
+}

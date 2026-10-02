@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "page": "styles-layout-spacer",
+  "inputHash": "d5d4e82de738",
+  "analysedFor": "2.20.0",
+  "summary": "CSS-klassen die onderaan een element witruimte (margin-bottom) toevoegen, op elk element: vl-spacer (2rem), vl-spacer-xxsmall (0.5rem), vl-spacer-xsmall (1rem), vl-spacer-small (1.5rem), vl-spacer-medium (3rem), vl-spacer-large (6rem, op schermen tot 767px 3rem) en vl-spacer-none (geen marge).",
+  "keywords": [
+    "spacer",
+    "vl-spacer",
+    "vl-spacer-small",
+    "vl-spacer-medium",
+    "vl-spacer-large",
+    "vl-spacer-none",
+    "witruimte",
+    "whitespace",
+    "spacing",
+    "marge onderaan",
+    "margin-bottom",
+    "utility class"
+  ],
+  "examples": {
+    "styles-layout-spacer--spacer-default": {
+      "html": "<hr class=\"vl-separator vl-spacer\" />\n<hr class=\"vl-separator\" />"
+    },
+    "styles-layout-spacer--spacer-xx-small": {
+      "html": "<hr class=\"vl-separator vl-spacer-xxsmall\" />\n<hr class=\"vl-separator\" />"
+    },
+    "styles-layout-spacer--spacer-x-small": {
+      "html": "<hr class=\"vl-separator vl-spacer-xsmall\" />\n<hr class=\"vl-separator\" />"
+    },
+    "styles-layout-spacer--spacer-small": {
+      "html": "<hr class=\"vl-separator vl-spacer-small\" />\n<hr class=\"vl-separator\" />"
+    },
+    "styles-layout-spacer--spacer-medium": {
+      "html": "<hr class=\"vl-separator vl-spacer-medium\" />\n<hr class=\"vl-separator\" />"
+    },
+    "styles-layout-spacer--spacer-large": {
+      "html": "<hr class=\"vl-separator vl-spacer-large\" />\n<hr class=\"vl-separator\" />"
+    },
+    "styles-layout-spacer--spacer-none": {
+      "html": "<hr class=\"vl-separator vl-spacer-none\" />\n<hr class=\"vl-separator\" />"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Volgens de pagina voegt vl-spacer-large onderaan een marge van 6rem toe. In vl-spacer.css.ts is dat enkel zo boven 767px: op schermen tot 767px zet vl-spacer-large margin-bottom op --vl-spacing--medium (3rem).",
+      "source": "libs/styles/src/layout/spacer/vl-spacer.css.ts"
+    }
+  ]
+}

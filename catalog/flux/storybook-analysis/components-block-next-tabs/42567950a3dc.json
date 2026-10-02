@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "page": "components-block-next-tabs",
+  "inputHash": "42567950a3dc",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-tabs-next, dat inhoud over tabbladen verdeelt. Als widget op een pagina gebruik je vl-tab-next (met id en panel) en vl-tab-panel-next in het slot panel, volgens het ARIA tab-patroon en bedienbaar met de pijltjestoetsen; als navigatie-element zet je horizontal-navigation en gebruik je vl-tab-link-next met href (en external). Op een klein scherm worden de tabs een uitklapbare lijst.",
+  "keywords": [
+    "tabs",
+    "tabbladen",
+    "vl-tabs-next",
+    "vl-tab-next",
+    "vl-tab-panel-next",
+    "vl-tab-link-next",
+    "tab panel",
+    "tablist",
+    "horizontale navigatie",
+    "horizontal navigation",
+    "tabnavigatie",
+    "sub navigation",
+    "vl-tab-click"
+  ],
+  "examples": {
+    "components-block-next-tabs--tabs-default": {
+      "html": "<vl-tabs-next label=\"Mijn tab widget\">\n    <vl-tab-next id=\"tab1\" panel=\"tabpanel1\">Trein</vl-tab-next>\n    <vl-tab-next id=\"tab2\" panel=\"tabpanel2\">Metro, tram en bus</vl-tab-next>\n    <vl-tab-next id=\"tab3\" panel=\"tabpanel3\">Fiets</vl-tab-next>\n\n    <vl-tab-panel-next id=\"tabpanel1\" slot=\"panel\" aria-labelledby=\"tab1heading\">\n        <vl-title type=\"h2\" id=\"tab1heading\">Trein</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n    <vl-tab-panel-next id=\"tabpanel2\" slot=\"panel\" aria-labelledby=\"tab2heading\">\n        <vl-title type=\"h2\" id=\"tab2heading\">Metro, tram en bus</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n    <vl-tab-panel-next id=\"tabpanel3\" slot=\"panel\" aria-labelledby=\"tab3heading\">\n        <vl-title type=\"h2\" id=\"tab3heading\">Fiets</vl-title>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n    </vl-tab-panel-next>\n</vl-tabs-next>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlTabComponent, VlTabPanelComponent, VlTabsComponent } from '@domg-wc/components/block/next';\n\nregisterWebComponents([VlTabsComponent, VlTabComponent, VlTabPanelComponent, VlTitleComponent]);\n\n// vl-tab-click volgt op een klik, Enter of spatie op een tab (niet op de pijltjestoetsen);\n// event.detail.tab is de vl-tab-next.\ndocument.querySelector('vl-tabs-next').addEventListener('vl-tab-click', (event) => {\n    console.log(event.detail.tab.id);\n});"
+    },
+    "components-block-next-tabs--tabs-horizontal-navigation": {
+      "html": "<vl-tabs-next label=\"Mijn horizontale navigatie\" horizontal-navigation>\n    <vl-tab-link-next href=\"#tab1\">Trein</vl-tab-link-next>\n    <vl-tab-link-next href=\"#tab2\">Metro, tram en bus</vl-tab-link-next>\n    <vl-tab-link-next href=\"https://www.vlaanderen.be/intern/werkplek/dienstreizen-en-woon-werkverkeer/vervoersmiddelen/fietsen\" external>Fiets</vl-tab-link-next>\n</vl-tabs-next>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTabLinkComponent, VlTabsComponent } from '@domg-wc/components/block/next';\n\nregisterWebComponents([VlTabsComponent, VlTabLinkComponent]);\n\n// vl-tab-link-click volgt op een klik op een link; de browser navigeert zelf naar href.\ndocument.querySelector('vl-tabs-next').addEventListener('vl-tab-link-click', (event) => {\n    console.log(event.detail.tab.href);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-tabs-next",
+      "text": "De web-types van vl-tabs-next zijn die van de legacy vl-tabs: de config van de web-types gebruikt voor vl-tabs-next de tabsArgTypes uit libs/components/src/block/tabs, niet die uit block/next/tabs. De attributen active-tab, alt, disable-links, responsive-label, display-style en within-functional-header en de events change en vl-click bestaan niet in vl-tabs-next. vl-tabs-next kent de attributen label, horizontal-navigation en no-border, en de events vl-tab-click en vl-tab-link-click: die vuren vl-tab-next en vl-tab-link-next af, ze bubbelen en zijn composed, en detail.tab is de aangeklikte tab.",
+      "source": "resources/generate-web-types/wt-config-build/components-block.wt-config.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "label",
+      "text": "Toegankelijke naam van de tabs: het aria-label van de nav, en op een klein scherm van de uitklapbare lijst.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "horizontal-navigation",
+      "text": "Maakt van de tabs een navigatie met vl-tab-link-next-elementen: een lijst in een nav, zonder role=\"tablist\", zonder bediening met de pijltjestoetsen en zonder het slot panel. Standaard false.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-next",
+      "name": "no-border",
+      "text": "Verbergt de rand onder de tabs. Standaard false.",
+      "source": "libs/components/src/block/next/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-next",
+      "name": "panel",
+      "text": "Het id van de vl-tab-panel-next die de tab toont; vl-tab-next zet het ook als aria-controls. Verplicht, net als id: zonder volgt een console.warn.",
+      "source": "libs/components/src/block/next/tabs/vl-tab.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-next",
+      "name": "selected",
+      "text": "Markeert de tab als geselecteerd (aria-selected, tabindex). Heeft geen enkele tab selected, dan selecteert vl-tabs-next de eerste en toont zijn panel. Een tab die je zelf selected geeft, krijgt zijn panel niet te zien: vl-tabs-next toont een panel enkel wanneer het zelf een tab selecteert, de eerste bij het laden of een tab na een klik of een toets.",
+      "source": "libs/components/src/block/next/tabs/vl-tab.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-link-next",
+      "name": "href",
+      "text": "Het doel van de link. Verplicht: zonder volgt een console.warn.",
+      "source": "libs/components/src/block/next/tabs/vl-tab-link.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-link-next",
+      "name": "external",
+      "text": "Opent de link in een nieuw venster (target=\"_blank\") en toont een icoon met de tekst '(opent in een nieuw venster)' voor schermlezers.",
+      "source": "libs/components/src/block/next/tabs/vl-tab-link.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tab-link-next",
+      "name": "selected",
+      "text": "Duidt de link aan als huidige pagina (aria-current=\"page\"). Heeft geen enkele link selected, dan duidt vl-tabs-next de eerste aan; zet selected dus op de link van de huidige pagina.",
+      "source": "libs/components/src/block/next/tabs/vl-tab-link.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tabs-next",
+      "name": "horizontal-navigation",
+      "text": "Het codeblok onder Horizontale navigatie laat horizontal-navigation weg (en gebruikt label=\"Mijn navigatie\"), terwijl de story vl-tabs-next - horizontal-navigation het attribuut zet. Zonder horizontal-navigation rendert vl-tabs-next de links als tablist: role=\"tablist\" op de nav, geen lijst en bediening met de pijltjestoetsen. Het voorbeeld volgt de story.",
+      "source": "libs/components/src/block/next/tabs/stories/vl-tabs.stories-doc.mdx"
+    }
+  ]
+}

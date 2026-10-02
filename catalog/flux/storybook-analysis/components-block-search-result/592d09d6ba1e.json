@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "page": "components-block-search-result",
+  "inputHash": "592d09d6ba1e",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-search-result, één zoekresultaat opgebouwd uit vl-search-result-title (bv. een link), vl-search-result-text (bv. een datum) en vl-search-result-properties (labels met hun waarde, met <label> en <data> zoals in vl-properties). Voor een lijst van zoekresultaten zet je ze onder elkaar met de Group layout.",
+  "keywords": [
+    "zoekresultaat",
+    "search result",
+    "zoekresultaten",
+    "search results",
+    "resultatenlijst",
+    "result list",
+    "vl-search-result",
+    "vl-search-result-title",
+    "vl-search-result-text",
+    "vl-search-result-properties",
+    "vl-properties",
+    "zoeken",
+    "search",
+    "vl-group"
+  ],
+  "examples": {
+    "components-block-search-result--search-result-default": {
+      "html": "<vl-search-result>\n    <vl-search-result-title>\n        <a href=\"#\">Vlaanderenkiest.be</a>\n    </vl-search-result-title>\n    <vl-search-result-text>\n        <time>Maandag 22 oktober 2018</time>\n    </vl-search-result-text>\n    <vl-search-result-properties>\n        <label>Vlaanderenkiest.be</label>\n        <data>Verkiezingsresultaten op Vlaanderenkiest.be...</data>\n        <label>Vlaanderen intern</label>\n        <data>Werkt u bij de Vlaamse overheid...</data>\n    </vl-search-result-properties>\n</vl-search-result>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSearchResultComponent } from '@domg-wc/components/block';\n\n// vl-search-result registreert vl-search-result-title, vl-search-result-text en vl-search-result-properties zelf.\nregisterWebComponents([VlSearchResultComponent]);"
+    },
+    "components-block-search-result--search-result-group": {
+      "html": "<div class=\"vl-group vl-group--column vl-group--stretch-children vl-group--no-gap\">\n    <vl-search-result>\n        <vl-search-result-title>\n            <a href=\"#\">Vlaanderenkiest.be</a>\n        </vl-search-result-title>\n        <vl-search-result-text>\n            <time>Maandag 22 oktober 2018</time>\n        </vl-search-result-text>\n        <vl-search-result-properties>\n            <label>Vlaanderenkiest.be</label>\n            <data>Verkiezingsresultaten op Vlaanderenkiest.be...</data>\n            <label>Vlaanderen intern</label>\n            <data>Werkt u bij de Vlaamse overheid...</data>\n        </vl-search-result-properties>\n    </vl-search-result>\n    <vl-search-result>\n        <vl-search-result-title>\n            <a href=\"#\">Vlaanderenkiest.be</a>\n        </vl-search-result-title>\n        <vl-search-result-text>\n            <time>Maandag 22 oktober 2018</time>\n        </vl-search-result-text>\n        <vl-search-result-properties>\n            <label>Vlaanderenkiest.be</label>\n            <data>Verkiezingsresultaten op Vlaanderenkiest.be...</data>\n            <label>Vlaanderen intern</label>\n            <data>Werkt u bij de Vlaamse overheid...</data>\n        </vl-search-result-properties>\n    </vl-search-result>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSearchResultComponent } from '@domg-wc/components/block';\n\n// vl-search-result registreert vl-search-result-title, vl-search-result-text en vl-search-result-properties zelf.\nregisterWebComponents([VlSearchResultComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-search-result",
+      "name": "[default]",
+      "text": "De web-types geven vl-search-result een default slot voor de inhoud van het zoekresultaat, maar de component heeft geen <slot>: in connectedCallback verplaatst hij zijn kinderen naar zijn shadow DOM (this.shadowRoot?.append(...this.childNodes)). Zet de inhoud dus in het element voor je het in de pagina plaatst; wat je nadien toevoegt, verschijnt niet.",
+      "source": "libs/components/src/block/search-result/vl-search-result.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-search-result-properties",
+      "name": "[default]",
+      "text": "De web-types vermelden vl-search-result-properties zonder beschrijving, attributen of slots. Het is een subklasse van vl-properties en heeft geen slot: het leest zijn kinderen en bouwt er in zijn shadow DOM een description list mee op. Elk <label> wordt een label (<dt>), elk <data> een waarde (<dd>) bij het label ervoor, en een nieuw <label> na data begint een nieuw paar. De pagina zegt niet hoe je de inhoud opbouwt; enkel de stories tonen het.",
+      "source": "libs/components/src/block/properties/vl-properties.builder.ts"
+    }
+  ]
+}

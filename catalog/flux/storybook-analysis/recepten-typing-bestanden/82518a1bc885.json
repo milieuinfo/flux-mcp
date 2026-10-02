@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "page": "recepten-typing-bestanden",
+  "inputHash": "82518a1bc885",
+  "analysedFor": "2.20.0",
+  "summary": "De npm packages van Flux bevatten naast het getranspileerde JavaScript ook .d.ts-bestanden. Schrijf je je toepassing in TypeScript, dan werk je daardoor getypeerd en krijg je autocomplete in je IDE.",
+  "keywords": [
+    "typescript",
+    "typing",
+    "types",
+    "typings",
+    ".d.ts",
+    "d.ts",
+    "declaration files",
+    "type definities",
+    "autocomplete",
+    "ide",
+    "intellisense"
+  ],
+  "examples": {},
+  "notes": []
+}

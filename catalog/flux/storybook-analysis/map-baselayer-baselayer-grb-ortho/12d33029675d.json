@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "page": "map-baselayer-baselayer-grb-ortho",
+  "inputHash": "12d33029675d",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-baselayer-grb-ortho, een basiskaartlaag voor een vl-map met de orthofoto's (luchtfoto's): de WMTS-laag omwrgbmrvl van https://geo.api.vlaanderen.be/OMWRGBMRVL/wmts. Gebruik ze als je kaartlagen boven een luchtfoto wil tonen; het element erft van vl-map-baselayer, dus met background-layer komt er een achtergrondlaag van het Nationaal Geografisch Instituut onder.",
+  "keywords": [
+    "ortho",
+    "orthofoto",
+    "orthophoto",
+    "luchtfoto",
+    "aerial photo",
+    "omwrgbmrvl",
+    "grb ortho",
+    "basiskaart",
+    "baselayer",
+    "base layer",
+    "background layer",
+    "wmts",
+    "vl-map-baselayer-grb-ortho",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-baselayer-baselayer-grb-ortho--map-baselayer-grb-ortho-default": {
+      "html": "<!-- De basiskaartlaag staat rechtstreeks in de vl-map. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-ortho></vl-map-baselayer-grb-ortho>\n</vl-map>"
+    },
+    "map-baselayer-baselayer-grb-ortho--map-baselayer-grb-ortho-background-layer": {
+      "html": "<!-- background-layer legt onder de orthofoto een achtergrondlaag met opacity 0.3: zonder background-type en\n     background-options is dat CartoWeb van het Nationaal Geografisch Instituut. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-ortho background-layer></vl-map-baselayer-grb-ortho>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-baselayer-grb-ortho",
+      "text": "Onder 'Configuratie' zegt de pagina dat de component geen configuratie heeft. De web-types geven vl-map-baselayer-grb-ortho wel de attributen van vl-map-baselayer (background-layer, background-type, background-options, layer, title, type, url en custom-css), en de story 'vl-map-baselayer-grb-ortho - background layer' gebruikt background-layer. layer, title en url hebben in de code een default (omwrgbmrvl, 'GRB ortho laag' en https://geo.api.vlaanderen.be/OMWRGBMRVL/wmts); een attribuut met dezelfde naam gaat voor.",
+      "source": "libs/map/src/components/baselayer/vl-map-base-layer-grb-ortho/stories/vl-map-baselayer-grb-ortho.stories-doc.mdx"
+    }
+  ]
+}

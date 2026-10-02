@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "beheren-storybook-publicatie",
+  "inputHash": "14cc11104ec7",
+  "analysedFor": "2.0.2",
+  "summary": "Voor het Flux-team: hoe de geversioneerde Storybook-documentatie op https://milieuinfo.github.io/uigov-builds gepubliceerd wordt vanuit de repository uigov-builds. Die heeft een map per releaseversie met Storybook, een map per beta-versie met Storybook en de artifacts (enkel op aanvraag), een map latest die naar de recentste versie doorverwijst en landingspagina's met links naar de versies.",
+  "keywords": [
+    "storybook",
+    "publicatie",
+    "publishing",
+    "documentatie",
+    "documentation",
+    "uigov-builds",
+    "github pages",
+    "geversioneerd",
+    "versioned docs",
+    "latest",
+    "release",
+    "release-v2",
+    "landingspagina",
+    "beheren"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De structuur toont enkel develop/ en release/, met de v1-versies 1.0.0 en 1.9.0. In 2.0.2 linkt apps/storybook/docs/2_introductie.stories.mdx voor v1 naar https://milieuinfo.github.io/uigov-builds/release/latest/storybook en voor v2 naar https://milieuinfo.github.io/uigov-builds/release-v2/latest/storybook, met de overzichten release/ en release-v2/; release-v2/ staat niet in de structuur. resources/generate-web-types/web-types.generator.ts zet de doc-urls in de web-types van 2.0.2 dan weer op release/<versie>/storybook, bv. https://milieuinfo.github.io/uigov-builds/release/2.0.2/storybook/.",
+      "source": "apps/storybook/docs/c_beheren/4_storybook-publicatie.stories.mdx"
+    }
+  ]
+}

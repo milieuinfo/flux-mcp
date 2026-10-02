@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "page": "components-form-select",
+  "inputHash": "c5f444834de9",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-select, een native keuzelijst voor één optie, met de opties via de options-property of als <option>- en <optgroup>-elementen in de HTML, en varianten voor groepen, een geselecteerde of uitgeschakelde optie, niet-verwijderbaar en alleen-lezen. vl-select is toegankelijker dan vl-select-rich en dus de eerste keuze; bij minder dan 7 opties raadt de pagina radio buttons of checkboxes aan.",
+  "keywords": [
+    "select",
+    "vl-select",
+    "keuzelijst",
+    "selectielijst",
+    "dropdown",
+    "native select",
+    "options",
+    "optgroup",
+    "groepen",
+    "not-deletable",
+    "read only",
+    "placeholder",
+    "formulier",
+    "form control"
+  ],
+  "examples": {
+    "components-form-select--select-default": {
+      "html": "<vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectComponent]);\n\nconst options = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];\nconst select = document.querySelector('#geboorteplaats');\n// Geef een nieuwe array mee om de opties te wijzigen: vl-select bouwt zich enkel opnieuw op bij een nieuwe referentie.\nselect.options = options;\n// vl-select neemt initialOptions over wanneer het element op de pagina komt, en zet bij een reset van de form options\n// terug op initialOptions. Zet je options pas daarna, zoals hier, zet dan ook initialOptions; anders is de lijst leeg\n// na een reset.\nselect.initialOptions = options;\n\n// event.detail.value is de value van de gekozen optie, of '' zonder keuze.\nselect.addEventListener('vl-change', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-select--select-not-deletable": {
+      "html": "<vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\" not-deletable></vl-select>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectComponent]);\n\nconst options = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];\nconst select = document.querySelector('#geboorteplaats');\nselect.options = options;\n// Nodig voor een reset van de form, omdat options pas gezet wordt als het element al op de pagina staat.\nselect.initialOptions = options;"
+    },
+    "components-form-select--select-groups": {
+      "html": "<vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectComponent]);\n\n// group zet de optie in een <optgroup> met dat label. Heeft minstens één optie een group, dan komen de opties zonder\n// group in de groep 'Overig'.\nconst options = [\n    { label: 'Hasselt', value: 'hasselt', group: 'België' },\n    { label: 'Turnhout', value: 'turnhout', group: 'België' },\n    { label: 'Knokke-Heist', value: 'knokke-heist', group: 'België' },\n    { label: 'Waregem', value: 'waregem', group: 'België' },\n    { label: 'Lier', value: 'lier', group: 'België' },\n    { label: 'Rio Piedras', value: 'rio piedras', group: 'Puerto Rico' },\n];\nconst select = document.querySelector('#geboorteplaats');\nselect.options = options;\n// Nodig voor een reset van de form, omdat options pas gezet wordt als het element al op de pagina staat.\nselect.initialOptions = options;"
+    },
+    "components-form-select--select-selected-option": {
+      "html": "<vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectComponent]);\n\nconst options = [\n    { label: 'Hasselt', value: 'hasselt', selected: true },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];\nconst select = document.querySelector('#geboorteplaats');\nselect.options = options;\n// Nodig voor een reset van de form, omdat options pas gezet wordt als het element al op de pagina staat.\nselect.initialOptions = options;"
+    },
+    "components-form-select--select-disabled-option": {
+      "html": "<vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\"></vl-select>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectComponent]);\n\nconst options = [\n    { label: 'Hasselt', value: 'hasselt', disabled: true },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n    { label: 'Rio Piedras', value: 'rio piedras' },\n];\nconst select = document.querySelector('#geboorteplaats');\nselect.options = options;\n// Nodig voor een reset van de form, omdat options pas gezet wordt als het element al op de pagina staat.\nselect.initialOptions = options;"
+    },
+    "components-form-select--select-read-only": {
+      "html": "<vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Kies je geboorteplaats\" not-deletable></vl-select>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSelectComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlSelectComponent]);\n\n// Alleen-lezen: alle opties disabled, de gekozen optie selected, en not-deletable op vl-select zodat de knop om de\n// keuze te wissen niet verschijnt.\nconst options = [\n    { label: 'Hasselt', value: 'hasselt', disabled: true, selected: true },\n    { label: 'Turnhout', value: 'turnhout', disabled: true },\n    { label: 'Knokke-Heist', value: 'knokke-heist', disabled: true },\n    { label: 'Waregem', value: 'waregem', disabled: true },\n    { label: 'Rio Piedras', value: 'rio piedras', disabled: true },\n];\nconst select = document.querySelector('#geboorteplaats');\nselect.options = options;\n// Nodig voor een reset van de form, omdat options pas gezet wordt als het element al op de pagina staat.\nselect.initialOptions = options;"
+    },
+    "components-form-select--select-declarative-states": {
+      "html": "<vl-select id=\"woonplaats\" name=\"woonplaats\" label=\"Kies je woonplaats\" placeholder=\"Kies je woonplaats\">\n    <option value=\"antwerpen\">Antwerpen</option>\n    <option value=\"brussel\" selected>Brussel</option>\n    <option value=\"gent\">gent</option>\n    <option value=\"hasselt\" disabled>Hasselt (niet beschikbaar)</option>\n    <option value=\"waregem\">Waregem</option>\n    <option value=\"lier\">Lier</option>\n    <option value=\"rio-piedras\">Rio Piedras</option>\n</vl-select>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-select",
+      "name": "value",
+      "text": "De pagina zegt (sectie value attribuut) dat je de geselecteerde optie met het value attribuut instelt. vl-select heeft value in de code, als property van het type String, maar de web-types kennen geen attribuut value. Bovendien zet de component value zelf op de optie met selected (of op '') wanneer hij op de pagina komt en bij zijn eerste render, zodat een value in de HTML verloren gaat. Kies de optie bij het laden met selected, en wijzig de property value pas nadien.",
+      "source": "libs/components/src/form/select/vl-select.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-select",
+      "name": "readonly",
+      "text": "vl-select declareert in de code een attribuut readonly, maar gebruikt het nergens: het maakt de select niet alleen-lezen. De web-types vermelden het niet. Voor een alleen-lezen select zet je, zoals de story vl-select - read only, alle opties op disabled en vl-select op not-deletable.",
+      "source": "libs/components/src/form/select/vl-select.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-select",
+      "name": "initial-options",
+      "text": "De web-types en de argTypes noemen de property initial-options; in JavaScript heet ze initialOptions (initial-options is de naam van het attribuut). vl-select overschrijft initialOptions met de opties van dat moment wanneer het element op de pagina komt, en zet bij een reset van de form options terug op initialOptions. Zet je options met JavaScript op een element dat al op de pagina staat, dan blijft initialOptions leeg en is de lijst na een reset leeg; zet dan ook initialOptions.",
+      "source": "libs/components/src/form/select/vl-select.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-select",
+      "name": "not-deletable",
+      "text": "De sectie Read only zegt dat je voor een alleen-lezen select alle opties op disabled zet. De story vl-select - read only zet daarnaast not-deletable: zonder dat toont vl-select bij een gekozen optie een knop om de keuze te wissen, ook als alle opties disabled zijn. De opties onder de story op de pagina bevatten ook Lier, de story zelf niet.",
+      "source": "libs/components/src/form/select/stories/vl-select.stories.ts"
+    }
+  ]
+}

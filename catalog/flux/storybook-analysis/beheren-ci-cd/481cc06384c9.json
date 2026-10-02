@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "page": "beheren-ci-cd",
+  "inputHash": "481cc06384c9",
+  "analysedFor": "2.15.0",
+  "summary": "Voor het Flux-team: hoe de build en de release van flux-web-components op Bamboo lopen, als build-plan met de stages Checkout, Install and Cache, Build and Test, Release and Publish en Verify Release. Ze legt ook uit wat de job release-and-publish doet: semantic-release bepaalt met .releaserc-develop of .releaserc-release de versie en legt de tag, daarna worden de artifacts naar Artifactory gepusht en komt er bij een release een GitHub release.",
+  "keywords": [
+    "ci",
+    "cd",
+    "ci/cd",
+    "bamboo",
+    "bamboo specs",
+    "bamboo.yml",
+    "build plan",
+    "pipeline",
+    "semantic-release",
+    "release",
+    "artifactory",
+    "versionering",
+    "versioning",
+    "changelog",
+    "github release"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat de configuratie van semantic-release, .releaserc-develop en .releaserc-release, in de root folder staat. In 2.15.0 staan beide bestanden in resources/ci-bamboo/release; resources/ci-bamboo/bash/release-and-publish.sh kopieert de juiste variant naar .releaserc in de root.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat de develop-variant loopt voor de branches 'develop' en 'develop-xyz', en de release-variant voor 'release' en 'release-x.y'. In 2.15.0 kiest resources/ci-bamboo/bash/release-and-publish.sh de develop-variant als de branchnaam 'develop' of 'bugfix' bevat, en de release-variant als ze 'release' bevat. De configuraties zelf kennen andere branches: resources/ci-bamboo/release/.releaserc-develop 'release-v2' en de prerelease-branches 'develop-v2' en 'develop-v2-*', resources/ci-bamboo/release/.releaserc-release 'release-v2' en 'release-v2-2.4' (range 2.4.x). 'develop', 'develop-xyz', 'release' en 'release-x.y' staan daar niet in.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat er enkel bij een release een changelog aangemaakt wordt. Ook resources/ci-bamboo/release/.releaserc-develop gebruikt @semantic-release/changelog en schrijft resources/changelog/CHANGELOG.md bij. Het verschil zit in .releaserc-release: enkel die commit de changelog, package.json, package-lock.json en de web-types met @semantic-release/git ('chore(release): <versie> [skip ci]') en maakt een GitHub release met @semantic-release/github.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina somt vier stages op en eindigt met verify-release. In 2.15.0 staat er ook resources/ci-bamboo/bash/finalise-release.sh (met finalise-release-docker.sh), dat na een release op een hoofd-release branch (release-v<major>) de develop branch (develop-v<major>) op die release branch rebaset en pusht; changelog 2.14.0: 'FLUX-642 - verify-release en finalise-release tijdens de feitelijke release'. bamboo-specs/bamboo.yml zelf zat niet in de gelezen bron.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De opsomming van wat release-and-publish doet, is onvolledig. resources/ci-bamboo/bash/release-and-publish.sh van 2.15.0 genereert vóór semantic-release de web-types opnieuw (npm run libs:web-types:generate), publiceert de npm packages op een release-branch naar 'local-npm' en op een develop- of bugfix-branch naar 'snapshot-npm', maakt van de fat-lib een tgz die het enkel op een release-branch naar Artifactory (local-generic) uploadt, en bouwt daarna Storybook opnieuw, omdat pas dan CHANGELOG.md up-to-date is, en maakt er storybook-<versie>.tgz van.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat semantic-release voor develop branches een versienummer met een '-develop' suffix maakt. resources/ci-bamboo/release/.releaserc-develop zet 'develop-v2' en 'develop-v2-*' als prerelease, en resources/docs-internal/nuttige-commandos.md toont zo'n versie als tag v2.11.0-develop-v2.1, in channel develop-v2. Voor develop-v2 is het suffix dus '-develop-v2.<n>', niet '-develop'.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.mdx"
+    }
+  ]
+}

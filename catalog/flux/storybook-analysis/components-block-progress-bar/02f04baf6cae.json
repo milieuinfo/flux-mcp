@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "page": "components-block-progress-bar",
+  "inputHash": "02f04baf6cae",
+  "analysedFor": "2.8.1",
+  "summary": "Documentatie van vl-progress-bar, een balk die procentuele voortgang toont met value (0 tot 100). Varianten zijn indeterminate voor een voortgang die niet te bepalen is en error als ze faalde; de component heeft geen eigen witruimte (gebruik vl-padding of vl-margin) en vraagt label of labelledby voor schermlezers.",
+  "keywords": [
+    "progress bar",
+    "vl-progress-bar",
+    "voortgangsbalk",
+    "voortgang",
+    "progress",
+    "percentage",
+    "indeterminate",
+    "onbepaalde voortgang",
+    "loading bar",
+    "laadbalk",
+    "upload progress",
+    "progressbar"
+  ],
+  "examples": {
+    "components-block-progress-bar--progress-bar-default": {
+      "html": "<vl-progress-bar value=\"50\" label=\"Voortgang\"></vl-progress-bar>"
+    },
+    "components-block-progress-bar--progress-bar-indeterminate": {
+      "html": "<vl-progress-bar indeterminate></vl-progress-bar>"
+    },
+    "components-block-progress-bar--progress-bar-error": {
+      "html": "<vl-progress-bar error></vl-progress-bar>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-progress-bar",
+      "name": "label",
+      "text": "Volgens de pagina is een waarde voor label of labelledby noodzakelijk, maar de stories indeterminate en error zetten geen van beide. vl-progress-bar meldt dan bij het verbinden met de DOM een waarschuwing in de console en valt terug op aria-label \"Voortgang\". De voorbeelden volgen de stories; geef in je toepassing een label dat zegt over welke voortgang het gaat.",
+      "source": "libs/components/src/block/progress-bar/stories/vl-progress-bar.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-progress-bar",
+      "name": "labelledby",
+      "text": "labelledby zet aria-labelledby op het element met role=\"progressbar\" in de shadow DOM van vl-progress-bar. Een id in aria-labelledby verwijst enkel naar elementen in dezelfde root, dus een label met dat id in de pagina wordt niet gevonden. Met labelledby en zonder label zet de component ook geen aria-label, zodat de progress bar voor een schermlezer geen naam heeft. Gebruik label.",
+      "source": "libs/components/src/block/progress-bar/vl-progress-bar.component.ts"
+    }
+  ]
+}

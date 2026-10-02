@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "page": "afnemen-artifacts",
+  "inputHash": "dde21a2c14b3",
+  "analysedFor": "2.19.0",
+  "summary": "Overzicht van de npm-packages onder de scope @domg-wc (common, styles, components en map) en de fat-lib domg-wc-compliance op de CDN. Ze beschrijft wat elk package bevat, hoe een component technisch opgebouwd is en in welke soorten (atom, block, compliance, form) de componenten verdeeld zijn.",
+  "keywords": [
+    "artifacts",
+    "packages",
+    "npm",
+    "@domg-wc",
+    "@domg-wc/common",
+    "@domg-wc/components",
+    "@domg-wc/styles",
+    "@domg-wc/map",
+    "cdn",
+    "fat-lib",
+    "domg-wc-compliance",
+    "litelement",
+    "shadow dom",
+    "openlayers"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina noemt als basis klasse 'BaseElement', beschikbaar via de methode 'BaseElementOfType' in @domg-wc/common. Die bestaat in 2.19.0 niet meer: 2.0.0 verving BaseElementOfType(HTMLElement) door BaseHTMLElement (UIG-2811). @domg-wc/common exporteert BaseHTMLElement en BaseLitElement (libs/common/src/index.ts).",
+      "source": "apps/storybook/docs/a_afnemen/2_artifacts.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat een component steeds een shadow DOM heeft en dat de styling in de shadow DOM geïnjecteerd wordt. In 2.19.0 renderen o.a. vl-table, vl-header, vl-footer, vl-tab en vl-side-navigation zonder shadow DOM (createRenderRoot() geeft this terug), bv. libs/components/src/block/table/vl-table.component.ts. De pagina 'Afnemen/Aan De Slag' spreekt ook over componenten zonder shadow DOM.",
+      "source": "apps/storybook/docs/a_afnemen/2_artifacts.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De inhoudstafel verwijst naar secties '@domg-wc/components/block', '@domg-wc/components/form' en '@domg-wc/components/compliance' die niet op de pagina staan, en mist de secties '@domg-wc/styles' en '@domg-wc/components'. De gepubliceerde packages zijn @domg-wc/common, components, map en styles; block, form en compliance zijn submappen van @domg-wc/components.",
+      "source": "apps/storybook/docs/a_afnemen/2_artifacts.mdx"
+    }
+  ]
+}

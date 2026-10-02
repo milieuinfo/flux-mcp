@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "page": "components-block-proza-message-proza-message-preloader",
+  "inputHash": "290ad54007f0",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-proza-message-preloader, dat alle Proza berichten van een domein in één request ophaalt en in een cache zet; vl-proza-message en de vlProza directive zoeken daar eerst. Voeg het één keer per domein toe, zo hoog mogelijk in de toepassing, of roep VlProzaMessagePreloader.preload('domein') aan; met base-url haal je de berichten bij een andere server.",
+  "keywords": [
+    "proza",
+    "proza preloader",
+    "vl-proza-message-preloader",
+    "preload",
+    "voorladen",
+    "prefetch",
+    "cache",
+    "proza berichten",
+    "proza messages",
+    "domein",
+    "domain",
+    "base-url",
+    "vl-proza-message"
+  ],
+  "examples": {
+    "components-block-proza-message-proza-message-preloader--proza-message-preloader-default": {
+      "html": "<vl-proza-message-preloader domain=\"mockdomain\"></vl-proza-message-preloader>\n\n<!-- Als een inline element -->\n<vl-proza-message domain=\"mockdomain\" code=\"inline\"></vl-proza-message>\n\n<!-- Als een block element -->\n<vl-proza-message domain=\"mockdomain\" code=\"block\"></vl-proza-message>\n\n<!-- In een knop -->\n<vl-button>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-button>\n\n<!-- In een link -->\n<vl-link href=\"#\" external>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlProzaMessage, VlProzaMessagePreloader } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProzaMessagePreloader, VlProzaMessage, VlButtonComponent, VlLinkComponent]);\n\n// vl-proza-message-preloader haalt alle berichten van het domein in één request op bij proza/domein/{domain},\n// relatief tov de huidige url of achter base-url, en zet ze in een cache. vl-proza-message zoekt daar eerst en\n// vraagt een bericht enkel apart op als het er niet in zit. In Storybook antwoordt een mock voor mockdomain.\n\n// Zonder element kan het ook in code, bv. bij het opstarten, als je de volgorde of het moment wil bepalen:\n// VlProzaMessagePreloader.preload('mockdomain');"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message-preloader",
+      "name": "base-url",
+      "text": "De sectie Base Url is overgenomen van vl-proza-message: ze spreekt van een baseUrl op de proza-message component en zegt dat de berichten opgehaald worden vanaf {baseUrl}proza/domein/{domain}/{code}. De preloader heeft zelf het attribuut base-url en haalt alle berichten van een domein op bij {baseUrl}proza/domein/{domain}, zoals de web-types zeggen. De code plakt base-url voor dat pad, dus laat het eindigen op een /.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-message-preloader.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message-preloader",
+      "text": "De pagina linkt voor proza-message naar components-block-proza-message--proza-message-default, een pagina die in 2.15.0 niet bestaat: vl-proza-message staat op components-block-proza-message-proza-message. Ook de doc-url van vl-proza-message-preloader in de web-types wijst naar een onbestaande pagina (components-block-proza-message-preloader--documentatie); de juiste is components-block-proza-message-proza-message-preloader--documentatie.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-message-preloader.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message-preloader",
+      "name": "domain",
+      "text": "De argTypes markeren domain als verplicht, maar zonder domain neemt de preloader het prozaDomain uit FluxConfig (FluxConfig.setPreferences({ prozaDomain })). De pagina zegt dat niet; het voorbeeld <vl-proza-message-preloader></vl-proza-message-preloader> in de sectie Voorbeeld haalt dus enkel iets op als er een prozaDomain ingesteld is, en doet anders niets.",
+      "source": "libs/components/src/block/proza-message/vl-proza-message-preloader.component.ts"
+    }
+  ]
+}

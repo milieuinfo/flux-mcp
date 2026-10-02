@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "page": "components-atom-paragraph",
+  "inputHash": "89de2c231a1a",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-paragraph, een paragraaf lopende tekst in de typografie van het design system. Met bold staat de paragraaf in het vet, met introduction wordt ze een inleidende tekst in een grotere, subtielere letter; beide attributen zijn te combineren.",
+  "keywords": [
+    "paragraaf",
+    "paragraph",
+    "vl-paragraph",
+    "alinea",
+    "lopende tekst",
+    "body text",
+    "introductie",
+    "introduction",
+    "intro text",
+    "bold",
+    "vet",
+    "typografie",
+    "typography"
+  ],
+  "examples": {
+    "components-atom-paragraph--paragraph-default": {
+      "html": "<vl-paragraph>paragraaf - default</vl-paragraph>"
+    },
+    "components-atom-paragraph--paragraph-bold": {
+      "html": "<vl-paragraph bold>paragraaf - bold</vl-paragraph>"
+    },
+    "components-atom-paragraph--paragraph-introduction": {
+      "html": "<vl-paragraph introduction>paragraaf - introduction</vl-paragraph>"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "beheren-storybook-publicatie",
+  "inputHash": "e3710855841c",
+  "analysedFor": "2.3.0",
+  "summary": "Voor het Flux-team: hoe de geversioneerde Storybook-documentatie op https://milieuinfo.github.io/flux-builds gepubliceerd wordt vanuit de repository flux-builds. Die heeft een map per releaseversie met Storybook, een map per beta-versie met Storybook en de artifacts (enkel op aanvraag), een map latest die naar de recentste versie doorverwijst en landingspagina's met links naar de versies.",
+  "keywords": [
+    "storybook",
+    "publicatie",
+    "publishing",
+    "documentatie",
+    "documentation",
+    "flux-builds",
+    "github pages",
+    "geversioneerd",
+    "versioned docs",
+    "latest",
+    "release-v1",
+    "release-v2",
+    "landingspagina",
+    "beheren"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De structuur toont enkel develop/ en release-v1/. In 2.3.0 staat de documentatie van v2 onder release-v2/: apps/storybook/docs/2_introductie.stories.mdx linkt naar https://milieuinfo.github.io/flux-builds/release-v2/latest/storybook en naar het overzicht release-v2/, en resources/generate-web-types/web-types.generator.ts zet de doc-urls op release-v2/<versie>/storybook.",
+      "source": "apps/storybook/docs/c_beheren/4_storybook-publicatie.stories.mdx"
+    }
+  ]
+}

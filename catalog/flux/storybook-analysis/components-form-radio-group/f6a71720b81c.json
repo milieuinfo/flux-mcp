@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "page": "components-form-radio-group",
+  "inputHash": "f6a71720b81c",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-radio-group met vl-radio, waarmee de gebruiker precies één keuze maakt uit een lijst. Het value attribuut van de groep bepaalt welke radio aangevinkt is (vink bij voorkeur niets vooraf aan), en met required en blur-validation valideer je dat er een keuze is.",
+  "keywords": [
+    "radio",
+    "radio button",
+    "radio group",
+    "vl-radio-group",
+    "vl-radio",
+    "keuzerondje",
+    "één keuze",
+    "single choice",
+    "formulier",
+    "form control",
+    "required",
+    "blur-validation",
+    "validatie"
+  ],
+  "examples": {
+    "components-form-radio-group--radio-group-default": {
+      "html": "<vl-radio-group id=\"land-zee\" name=\"land-zee\" label=\"land-zee\" value=\"land\">\n    <vl-radio value=\"land\">Land</vl-radio>\n    <vl-radio value=\"zee\">Zee</vl-radio>\n    <vl-radio value=\"lucht\">Lucht</vl-radio>\n</vl-radio-group>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlRadioComponent, VlRadioGroupComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlRadioComponent, VlRadioGroupComponent]);\n\n// vl-change komt van de vl-radio die aangevinkt wordt en bubbelt naar de groep; event.detail.value is zijn value.\ndocument.querySelector('#land-zee').addEventListener('vl-change', (event) => {\n    console.log(event.detail.value);\n});"
+    },
+    "components-form-radio-group--radio-group-blur-validation": {
+      "html": "<vl-radio-group\n    id=\"land-zee-validation\"\n    name=\"land-zee-validation\"\n    label=\"land-zee-validation\"\n    value=\"\"\n    required\n    blur-validation\n>\n    <vl-radio value=\"land\">Land</vl-radio>\n    <vl-radio value=\"zee\">Zee</vl-radio>\n    <vl-radio value=\"lucht\">Lucht</vl-radio>\n</vl-radio-group>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-radio-group",
+      "name": "vl-change",
+      "text": "Volgens de web-types en de argTypes volgt vl-change als een radio aangevinkt of uitgevinkt wordt. vl-radio vuurt vl-change enkel af als hij aangevinkt wordt, met detail { checked: true, value }. De groep vuurt zelf geen vl-change af: een listener op vl-radio-group krijgt het event van de radio, omdat het bubbelt.",
+      "source": "libs/components/src/form/radio-group/vl-radio.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-radio-group",
+      "name": "vl-valid",
+      "text": "Volgens de web-types heeft vl-valid van vl-radio-group het detail { checked: boolean, value?: string } en volgt het als een radio aangevinkt wordt. De groep vuurt een eigen vl-valid af wanneer zijn value wijzigt en de groep geldig is, met detail { value }: de value van de groep, of null. vl-valid van zijn radio's houdt de groep tegen met een listener die hij in connectedCallback op zichzelf zet (stopImmediatePropagation): een listener op een voorouder (zonder capture) of een listener die je later op de groep zet, krijgt enkel het event van de groep. Een listener die al vóór het koppelen aan de DOM op de groep stond, zoals @vl-valid in een lit-template, krijgt ook dat van de radio, met detail { checked: true, value }.",
+      "source": "libs/components/src/form/radio-group/vl-radio-group.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-radio-group",
+      "name": "vl-input",
+      "text": "Volgens de web-types en de argTypes volgt vl-input als een gebruiker een radio aanvinkt. Kiest de gebruiker met de pijltjestoetsen, dan houdt vl-radio-group de toets tegen (preventDefault) en vinkt hij de radio zelf aan: de radio vuurt dan vl-change en vl-valid af, maar geen vl-input, want dat volgt enkel op het input-event van het native radio-element, zoals bij een klik. Volg een keuze van de gebruiker dus met vl-change.",
+      "source": "libs/components/src/form/radio-group/vl-radio-group.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-radio-group",
+      "name": "label",
+      "text": "Volgens de web-types en de argTypes vult label het aria-label attribuut van het veld. vl-radio-group zet label in een visueel verborgen legend van de fieldset rond de radio's; die geeft de groep haar toegankelijke naam.",
+      "source": "libs/components/src/form/radio-group/vl-radio-group.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-radio-group",
+      "name": "block",
+      "text": "vl-radio-group heeft in de code een attribuut block, dat de groep doorgeeft aan al haar vl-radio's, zodat die de volledige breedte innemen. De web-types en de argTypes van vl-radio-group vermelden het niet; vl-radio heeft block wel in de web-types.",
+      "source": "libs/components/src/form/radio-group/vl-radio-group.component.ts"
+    }
+  ]
+}

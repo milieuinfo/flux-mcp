@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "bijdragen-opzet-structuur",
+  "inputHash": "a5d6ebdbc09c",
+  "analysedFor": "2.0.2",
+  "summary": "Voor wie bijdraagt aan Flux: hoe de monorepo uigov-web-components opgezet is, met de private dependencies uit Artifactory en Node 20.11.0 via Volta, met npm om dependencies te beheren en scripts te draaien. Ze beschrijft ook de apps en libs in de repo en welk npm-package elke lib oplevert.",
+  "keywords": [
+    "opzet",
+    "structuur",
+    "project structure",
+    "monorepo",
+    "uigov-web-components",
+    "bijdragen",
+    "contributing",
+    "npm",
+    "volta",
+    "node versie",
+    "artifactory",
+    "npmrc",
+    "private dependencies",
+    "apps",
+    "libs"
+  ],
+  "examples": {},
+  "notes": []
+}

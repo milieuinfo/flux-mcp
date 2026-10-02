@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "page": "map-layer-style",
+  "inputHash": "9619112bb4f8",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-map-layer-style, dat je in een vl-map-features-layer of vl-map-wfs-layer zet om de features van die kaartlaag te stijlen: vulkleur, rand en tekst uit een property van de feature. Met invalid krijgt de laag de rode invalid-stijl, en een stijl met name verschijnt in een vl-map-legend.",
+  "keywords": [
+    "layer style",
+    "kaartlaagstijl",
+    "laagstijl",
+    "feature style",
+    "styling",
+    "vulkleur",
+    "fill color",
+    "rand",
+    "border",
+    "label",
+    "tekst op kaart",
+    "invalid",
+    "legende",
+    "legend",
+    "vl-map-layer-style"
+  ],
+  "examples": {
+    "map-layer-style--map-layer-style-default": {
+      "html": "<!-- vl-map-layer-style staat in de kaartlaag die het stijlt. Zonder attributen: een blauwe vulling\n     rgba(2, 85, 204, 0.8) en een rand rgba(2, 85, 204, 1) van 1 pixel. De features staan in Lambert 72, daarom\n     projection-code=\"EPSG:31370\" op een kaart in Lambert 2008. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-style></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerStyle } from '@domg-wc/map';\n\n// Eén polygoon in Lambert 72 (EPSG:31370), met de property label.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [147055.0, 197908.0],\n                        [157055.0, 197908.0],\n                        [157055.0, 187908.0],\n                        [147055.0, 187908.0],\n                        [147055.0, 197908.0],\n                    ],\n                ],\n            },\n            properties: { label: 'Text' },\n        },\n    ],\n};"
+    },
+    "map-layer-style--map-layer-style-text": {
+      "html": "<!-- text-feature-attribute-name=\"label\" toont de property label van elke feature als tekst op de kaart, hier in\n     het wit en 12px groot. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-style\n            text-color=\"rgba(255, 255, 255, 1)\"\n            text-feature-attribute-name=\"label\"\n            text-size=\"12px\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerStyle } from '@domg-wc/map';\n\n// Eén polygoon in Lambert 72 (EPSG:31370); de property label ('Text') verschijnt als tekst op de kaart.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [147055.0, 197908.0],\n                        [157055.0, 197908.0],\n                        [157055.0, 187908.0],\n                        [147055.0, 187908.0],\n                        [147055.0, 197908.0],\n                    ],\n                ],\n            },\n            properties: { label: 'Text' },\n        },\n    ],\n};"
+    },
+    "map-layer-style--map-layer-style-invalid": {
+      "html": "<!-- invalid tekent de features in de invalid-stijl: een rode vulling rgba(210, 55, 60, 0.3) en een rode\n     stippelrand van 2 pixels. De code kijkt enkel of het attribuut er is: ook invalid=\"false\" zet die stijl aan;\n     verwijder het attribuut om ze uit te zetten. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-style invalid></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerStyle } from '@domg-wc/map';\n\n// Eén polygoon in Lambert 72 (EPSG:31370).\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [147055.0, 197908.0],\n                        [157055.0, 197908.0],\n                        [157055.0, 187908.0],\n                        [147055.0, 187908.0],\n                        [147055.0, 197908.0],\n                    ],\n                ],\n            },\n            properties: { label: 'Text' },\n        },\n    ],\n};"
+    },
+    "map-layer-style--map-layer-style-legend": {
+      "html": "<!-- vl-map-legend in de vl-map toont de stijlen van de kaartlagen. Let op: bij één stijl in een kaartlaag neemt de\n     legende de name van de kaartlaag als tekst, niet die van de stijl. Zonder name op de vl-map-features-layer, zoals in\n     de story, toont de legende een icoon zonder tekst; geef de kaartlaag ook een name om tekst te tonen. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-style name=\"Laag 1\"></vl-map-layer-style>\n    </vl-map-features-layer>\n    <vl-map-legend></vl-map-legend>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerStyle, VlMapLegend } from '@domg-wc/map';\n\n// Eén polygoon in Lambert 72 (EPSG:31370).\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [147055.0, 197908.0],\n                        [157055.0, 197908.0],\n                        [157055.0, 187908.0],\n                        [147055.0, 187908.0],\n                        [147055.0, 197908.0],\n                    ],\n                ],\n            },\n            properties: { label: 'Text' },\n        },\n    ],\n};"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-style",
+      "name": "name",
+      "text": "De story 'vl-map-layer-style - legend' geeft de stijl name=\"Laag 1\" en de vl-map-features-layer geen name. Heeft een kaartlaag één stijl, dan neemt vl-map-legend als tekst de name van de kaartlaag (updateLegendGeometryItems: name: layer.name); de name van de stijl bepaalt dan enkel dat het item getoond wordt. In deze story toont de legende dus een icoon zonder tekst, niet 'Laag 1'. De beschrijving van name in de web-types zegt hetzelfde als de code. De name van een stijl wordt pas de tekst als de kaartlaag meerdere stijlen heeft.",
+      "source": "libs/map/src/components/legend/vl-map-legend.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-legend",
+      "text": "De story 'vl-map-layer-style - legend' zet een vl-map-legend in de vl-map, maar het stories-bestand importeert dat element niet: het importeert enkel vl-map, vl-map-baselayer-grb-gray, vl-map-features-layer en vl-map-layer-style, en geen van die modules importeert vl-map-legend. Heeft geen andere module het element al geregistreerd, dan blijft het een onbekend element en toont de story geen legende. Importeer in je eigen code VlMapLegend mee, zoals in het voorbeeld.",
+      "source": "libs/map/src/components/layer-style/stories/vl-map-layer-style.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-style",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-layer-style het attribuut custom-css. vl-map-layer-style is een BaseHTMLElement zonder shadow DOM: BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. Het element tekent ook zelf niets: het geeft een stijlfunctie aan de OpenLayers-laag van zijn parent.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

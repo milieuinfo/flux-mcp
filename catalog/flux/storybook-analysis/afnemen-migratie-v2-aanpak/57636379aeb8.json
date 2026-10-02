@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "afnemen-migratie-v2-aanpak",
+  "inputHash": "57636379aeb8",
+  "analysedFor": "2.1.0",
+  "summary": "Het stappenplan om een toepassing van Flux v1 naar v2 te migreren: eerst naar v1.48.2, dan de legacy componenten vervangen door hun 'next'-variant, en tot slot naar v2 door de '-next'-suffix en de 'data-vl-'-prefix weg te halen en de imports aan te passen aan de nieuwe package-structuur.",
+  "keywords": [
+    "migratie",
+    "migration",
+    "upgrade",
+    "v1 naar v2",
+    "migrate to v2",
+    "aanpak",
+    "stappenplan",
+    "v1.48.2",
+    "next componenten",
+    "-next suffix",
+    "data-vl prefix",
+    "legacy componenten",
+    "imports",
+    "package structuur",
+    "breaking changes"
+  ],
+  "examples": {},
+  "notes": []
+}

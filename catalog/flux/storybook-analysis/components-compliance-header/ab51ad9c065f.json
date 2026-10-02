@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "page": "components-compliance-header",
+  "inputHash": "ab51ad9c065f",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-header, dat de global header-widget van Digitaal Vlaanderen (Mijn Burgerprofiel) bovenaan in de body injecteert, met de richtlijnen voor de inhoud van de header. Je hebt een identifier van Digitaal Vlaanderen nodig; login-url, login-redirect-url, logout-url en switch-capacity-url configureren de sessie (simple slaat dat over), de property applicationLinks voegt links toe onder Aanmelden, en reject-logout of de property logoutCallback wijzen automatische logouts af. vl-header is legacy: voor nieuwe toepassingen is er vl-header-next (pagina components-compliance-next-header).",
+  "keywords": [
+    "header",
+    "vl-header",
+    "hoofding",
+    "global header",
+    "globale header",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "mijn burgerprofiel",
+    "widget",
+    "aanmelden",
+    "login",
+    "logout",
+    "applicatieve links",
+    "application links",
+    "legacy"
+  ],
+  "examples": {
+    "components-compliance-header--header-default": {
+      "html": "<vl-header development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlHeader]);\n\n// ready volgt op het element zelf zodra de widget de header in de pagina gezet heeft; het bubbelt niet.\ndocument.querySelector('vl-header').addEventListener('ready', () => {\n    console.log('ready');\n});"
+    },
+    "components-compliance-header--header-with-application-links": {
+      "html": "<vl-header development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlHeader]);\n\n// vl-header leest applicationLinks één keer, nadat de widget geladen is: zet de property meteen, niet later.\ndocument.querySelector('vl-header').applicationLinks = [\n    { label: 'Link 1', href: 'https://example.com/link1' },\n    { label: 'Link 2', href: 'https://example.com/link2' },\n];"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header",
+      "name": "height",
+      "text": "vl-header heeft een getter height: de hoogte in pixels van de header die hij in de body zet (#header__container), 0 zolang die er niet is. Hij staat niet in de web-types en niet op de pagina; de pagina van vl-header-next beschrijft dezelfde getter.",
+      "source": "libs/components/src/compliance/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header",
+      "text": "Het stories-bestand importeert VlHeader uit @domg-wc/components/compliance/next en registreert die klasse, maar dat is vl-header-next; vl-header zelf komt er uit de import '../vl-header.component'. Beide entry points exporteren een klasse VlHeader: die uit @domg-wc/components/compliance, zoals de pagina toont, is vl-header, die uit @domg-wc/components/compliance/next is vl-header-next.",
+      "source": "libs/components/src/compliance/header/stories/vl-header.stories.ts"
+    }
+  ]
+}

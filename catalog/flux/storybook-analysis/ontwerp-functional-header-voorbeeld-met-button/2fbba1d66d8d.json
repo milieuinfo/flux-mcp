@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "page": "ontwerp-functional-header-voorbeeld-met-button",
+  "inputHash": "2fbba1d66d8d",
+  "analysedFor": "2.9.0",
+  "summary": "Patroon voor een vl-functional-header met een actieknop (vl-button) rechts naast de breadcrumb. Breadcrumb en knop staan samen in het sub-title slot, in een div met de vl-group-stijl (vl-group--space-between), en custom-css geeft de subrij de volle breedte.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "header met knop",
+    "header button",
+    "actieknop",
+    "action button",
+    "breadcrumb",
+    "kruimelpad",
+    "vl-group",
+    "space-between",
+    "sub-title slot",
+    "custom-css",
+    "paginaheader",
+    "page header"
+  ],
+  "examples": {
+    "ontwerp-functional-header-voorbeeld-met-button--functional-header-with-button": {
+      "html": "<vl-functional-header\n    title=\"School- en studietoelagen\"\n    hide-back-link\n    custom-css=\".vl-functional-header__sub-actions, .vl-functional-header__sub__action { width: 100% } ::slotted(.vl-group) { width: 100% } \"\n>\n    <div class=\"vl-group vl-group--space-between\" slot=\"sub-title\">\n        <vl-breadcrumb slot=\"sub-title\">\n            <vl-breadcrumb-item href=\"#1\">Vlaanderen Intern</vl-breadcrumb-item>\n            <vl-breadcrumb-item href=\"#2\">Regelgeving</vl-breadcrumb-item>\n            <vl-breadcrumb-item href=\"#3\">Webuniversum</vl-breadcrumb-item>\n            <vl-breadcrumb-item>Componenten</vl-breadcrumb-item>\n        </vl-breadcrumb>\n        <vl-button>Actie knop</vl-button>\n    </div>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "text": "De inleiding linkt vl-functional-header naar /docs/components-atom-functional-header--documentatie, een pagina die in de Storybook van 2.9.0 niet bestaat. De component staat onder Block, op components-block-functional-header--documentatie, zoals de lijst Componenten wel juist vermeldt.",
+      "source": "apps/storybook/docs/f_ontwerp/functional-header/1_demo-with-button/functional-header-with-button.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-breadcrumb",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de vl-breadcrumb-item-elementen als kinderen zonder slot-attribuut in vl-breadcrumb, zoals de code van de pagina. De web-types van 2.9.0 kennen voor vl-breadcrumb geen slot en geen attribuut. In de code heeft vl-breadcrumb geen default slot: de component geeft elk kind zelf het slot item-<index> en rendert daarvoor per kind een <slot name=\"item-<index>\"> in een <li>.",
+      "source": "libs/components/src/block/breadcrumb/vl-breadcrumb.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-breadcrumb-item",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de tekst van elk item (bv. Vlaanderen Intern) in het default slot, zoals de code van vl-breadcrumb-item het definieert (<slot></slot>): met het standaardtype link in een <a> als het item een href heeft, met type button in een <button>, en anders in een <span>. De web-types van 2.9.0 kennen voor vl-breadcrumb-item geen slot, enkel de attributen custom-css, href en type.",
+      "source": "libs/components/src/block/breadcrumb/vl-breadcrumb-item.component.ts"
+    }
+  ]
+}

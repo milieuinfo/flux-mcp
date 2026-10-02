@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "page": "components-atom-icon-style",
+  "inputHash": "7e979c084298",
+  "analysedFor": "2.20.0",
+  "summary": "Interne pagina over vlIconStyles, de CSS van vl-icon als bouwblok: een component geeft er een <span> in zijn shadow DOM de opmaak van een Flux-icoon mee, met de classes vl-icon en vl-icon--<naam> (de mapping op het icon-font), en vl-icon--small, --large, --light, --right-margin en --left-margin. vl-button en vl-link gebruiken die CSS zelf; in een toepassing gebruik je vl-icon. vlIconStyles wordt geëxporteerd uit @domg-wc/components/atom.",
+  "keywords": [
+    "icon style",
+    "vliconstyles",
+    "icoonstijl",
+    "icon css",
+    "icon font",
+    "icon mapping",
+    "icoon in eigen component",
+    "custom component",
+    "icon classes",
+    "shadow dom",
+    "intern"
+  ],
+  "examples": {
+    "components-atom-icon-style--icon-style-default": {
+      "html": "<!-- In de shadow DOM van een component met vlIconStyles. vl-icon--<naam> kiest het icoon, de andere classes zijn\n     te combineren. Een decoratief icoon krijgt aria-hidden, zoals vl-icon dat doet als er geen label is. -->\n<span class=\"vl-icon vl-icon--paperplane\" aria-hidden=\"true\"></span>\n<span class=\"vl-icon vl-icon--small vl-icon--paperplane\" aria-hidden=\"true\"></span>\n<span class=\"vl-icon vl-icon--large vl-icon--paperplane\" aria-hidden=\"true\"></span>\n<span class=\"vl-icon vl-icon--light vl-icon--paperplane\" aria-hidden=\"true\"></span>\n<span class=\"vl-icon vl-icon--right-margin vl-icon--paperplane\" aria-hidden=\"true\"></span>\n<span class=\"vl-icon vl-icon--left-margin vl-icon--paperplane\" aria-hidden=\"true\"></span>\n<!-- vl-icon--clickable is de opmaak van het attribuut clickable van vl-icon, dat deprecated is omdat het niet\n     WCAG-compliant is: gebruik vl-button of vl-link met een icoon. -->\n<span class=\"vl-icon vl-icon--clickable vl-icon--paperplane\" aria-hidden=\"true\"></span>",
+      "js": "import { BaseLitElement, webComponent } from '@domg-wc/common';\nimport { vlIconStyles } from '@domg-wc/components/atom';\nimport { CSSResult, html, TemplateResult } from 'lit';\n\n// vlIconStyles bevat de opmaak van .vl-icon en de mapping van elke icoonnaam op het icon-font. Het font\n// vlaanderen-icon en de variabele --vl-icon-font komen uit @domg-wc/styles.\n@webComponent('my-component-with-icon')\nexport class MyComponentWithIcon extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [vlIconStyles];\n    }\n\n    render(): TemplateResult {\n        return html`\n            <span class=\"vl-icon vl-icon--right-margin vl-icon--paperplane\" aria-hidden=\"true\"></span>Verstuur\n        `;\n    }\n}"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina linkt voor het icon-font naar /docs/styles-base-intern-font--documentatie, maar die pagina bestaat niet in 2.20.0. Het font vlaanderen-icon staat op de pagina styles-base-font (Styles/Base (intern)/font).",
+      "source": "libs/components/src/atom/icon-style/stories/vl-icon-style.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-icon",
+      "name": "clickable",
+      "text": "De story toont vl-icon--clickable als een gewone variant, zonder te vermelden dat het attribuut clickable van vl-icon deprecated is omdat het niet WCAG-compliant is (argTypes en web-types van vl-icon: gebruik vl-button of vl-link met een icoon). Een span met enkel die class is bovendien niet focusbaar: vl-icon zet er bij clickable zelf tabindex=\"0\" bij.",
+      "source": "libs/components/src/atom/icon-style/stories/vl-icon-style.stories.ts"
+    }
+  ]
+}

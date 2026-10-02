@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "page": "map-layer-style-layer-circle-style",
+  "inputHash": "b405dafc651c",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-map-layer-circle-style, dat je in een vl-map-features-layer zet om de punten van die kaartlaag als cirkels te tekenen, met grootte (size), kleur, rand en tekst uit een property van de feature. Het erft van vl-map-layer-style en ondersteunt clusters: een cluster toont het aantal features en wordt groter naarmate het er meer bevat, bij te stellen met cluster-multiplier.",
+  "keywords": [
+    "circle style",
+    "cirkelstijl",
+    "punten",
+    "points",
+    "point style",
+    "marker",
+    "cluster",
+    "clustering",
+    "cluster-multiplier",
+    "size",
+    "kleur",
+    "color",
+    "label",
+    "vl-map-layer-circle-style",
+    "kaart"
+  ],
+  "examples": {
+    "map-layer-style-layer-circle-style--map-layer-circle-style-default": {
+      "html": "<!-- vl-map-layer-circle-style tekent elk punt van de kaartlaag als cirkel, standaard met straal 5 (size). De\n     features staan in Lambert 72, daarom projection-code=\"EPSG:31370\" op een kaart in Lambert 2008. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-circle-style border-color=\"rgba(0, 0, 0, 1)\" color=\"rgba(255, 230, 21, 1)\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerCircleStyle } from '@domg-wc/map';\n\n// Drie punten in Lambert 72 (EPSG:31370), met de property label.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        { type: 'Feature', geometry: { type: 'Point', coordinates: [147055.0, 197908.0] }, properties: { label: 'A' } },\n        { type: 'Feature', geometry: { type: 'Point', coordinates: [158755.0, 197208.0] }, properties: { label: 'B' } },\n        { type: 'Feature', geometry: { type: 'Point', coordinates: [158755.0, 187208.0] }, properties: { label: 'C' } },\n    ],\n};"
+    },
+    "map-layer-style-layer-circle-style--map-layer-circle-style-text": {
+      "html": "<!-- text-feature-attribute-name=\"label\" toont de property label van elk punt als tekst in de cirkel. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-circle-style\n            border-color=\"rgba(0, 0, 0, 1)\"\n            color=\"rgba(255, 230, 21, 1)\"\n            size=\"12\"\n            text-color=\"#000\"\n            text-feature-attribute-name=\"label\"\n            text-size=\"18px\"\n        ></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerCircleStyle } from '@domg-wc/map';\n\n// Drie punten in Lambert 72 (EPSG:31370); de property label verschijnt als tekst in de cirkel.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        { type: 'Feature', geometry: { type: 'Point', coordinates: [147055.0, 197908.0] }, properties: { label: 'A' } },\n        { type: 'Feature', geometry: { type: 'Point', coordinates: [158755.0, 197208.0] }, properties: { label: 'B' } },\n        { type: 'Feature', geometry: { type: 'Point', coordinates: [158755.0, 187208.0] }, properties: { label: 'C' } },\n    ],\n};"
+    },
+    "map-layer-style-layer-circle-style--map-layer-circle-style-clustered": {
+      "html": "<!-- cluster en cluster-distance op de kaartlaag groeperen punten die op de kaart dicht bij elkaar liggen. Een cluster\n     toont het aantal features als tekst; een enkel punt toont zijn label. De straal van een cluster is size maal 1,5\n     (2 tot 9 features), maal 2 (10 tot 99), enzovoort, en maal cluster-multiplier. Deze features hebben geen eigen\n     stijl: ook een cluster krijgt dan color en text-color, niet cluster-color en cluster-text-color. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer cluster cluster-distance=\"100\" projection-code=\"EPSG:31370\">\n        <vl-map-layer-circle-style\n            border-color=\"rgba(0, 0,0,1)\"\n            color=\"rgba(255, 230, 21, 1)\"\n            size=\"12\"\n            text-color=\"#000\"\n            text-feature-attribute-name=\"label\"\n            text-size=\"18px\"\n        ></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapFeaturesLayer, VlMapLayerCircleStyle } from '@domg-wc/map';\n\n// Veertien punten in Lambert 72 (EPSG:31370), elk met de property label.\nconst points = [\n    ['A', [147055.0, 197908.0]],\n    ['B', [158755.0, 197208.0]],\n    ['C', [158755.0, 187208.0]],\n    ['D', [159755.0, 187208.0]],\n    ['D1', [158955.0, 187208.0]],\n    ['D2', [160855.0, 187208.0]],\n    ['D3', [161855.0, 187208.0]],\n    ['D4', [158955.0, 188208.0]],\n    ['D5', [160855.0, 188208.0]],\n    ['D6', [161855.0, 188208.0]],\n    ['D6', [162855.0, 188208.0]],\n    ['E3', [159755.0, 177208.0]],\n    ['E2', [158755.0, 177208.0]],\n    ['E1', [158755.0, 186208.0]],\n];\n\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: points.map(([label, coordinates]) => ({\n        type: 'Feature',\n        geometry: { type: 'Point', coordinates },\n        properties: { label },\n    })),\n};"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-circle-style",
+      "name": "cluster-color",
+      "text": "De web-types beschrijven cluster-color als 'De kleur bij het clusteren van features' en cluster-text-color als de kleur van de tekst daarbij. In de code gelden ze enkel voor een cluster waarin minstens één feature een eigen stijl heeft (feature.setStyle) en niet alle features dezelfde stijl hebben. Hebben de features geen eigen stijl, zoals in de story 'clustered', dan krijgt een cluster color en text-color. Hebben ze allemaal dezelfde eigen stijl, dan neemt de cluster de vulling, de rand en de straal van die stijl over, de straal maal de clusterfactor.",
+      "source": "libs/map/src/components/layer-style/vl-map-layer-circle-style/vl-map-layer-circle-style.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-circle-style",
+      "name": "cluster-multiplier",
+      "text": "Onder 'Cluster coëfficiënt' zegt de pagina eerst dat een cluster met '10 of meer features' factor 2 krijgt, maar de lijst eronder zegt 'meer dan 10 features: size x 2' en 'meer dan 100 features: size x 3'. De code neemt Math.max(1.5, het aantal cijfers van het aantal features): 1,5 voor 2 tot 9 features, 2 voor 10 tot 99 en 3 voor 100 tot 999. Een cluster van precies 10 of 100 features valt dus al in de hogere stap. Een enkel punt krijgt gewoon size, zonder cluster-multiplier.",
+      "source": "libs/map/src/components/layer-style/vl-map-layer-circle-style/vl-map-layer-circle-style.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-circle-style",
+      "name": "invalid",
+      "text": "De web-types en de API-tabel geven vl-map-layer-circle-style de attributen invalid en pattern van vl-map-layer-style. vl-map-layer-circle-style overschrijft de stijlfunctie (_styleFunction) en gebruikt ze op de kaart niet: invalid geeft de cirkels geen rode invalid-stijl, en het patroon van pattern komt niet in de cirkels. Enkel vl-map-legend toont pattern, in het icoon van de stijl.",
+      "source": "libs/map/src/components/layer-style/vl-map-layer-circle-style/vl-map-layer-circle-style.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-circle-style",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-layer-circle-style het attribuut custom-css. Het element erft van vl-map-layer-style, een BaseHTMLElement zonder shadow DOM: BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

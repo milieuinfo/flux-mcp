@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-1-waarneembaar-overzicht",
+  "inputHash": "e9b6cfde8a0f",
+  "analysedFor": "2.4.0",
+  "summary": "Overzicht van WCAG-principe 1, waarneembaar: de richtlijnen 1.1 tot 1.4 met hun succescriteria van niveau A en AA, per richtlijn verdeeld over [basis] en [+]. In de tabellen staan boven de lijn (---) de criteria van brons (niveau A) en eronder die van zilver (niveau AA); 1.1 heeft enkel brons en geen lijn. De pagina linkt naar de uitwerking per richtlijn.",
+  "keywords": [
+    "waarneembaar",
+    "perceivable",
+    "wcag principe 1",
+    "wcag principle 1",
+    "toegankelijkheid",
+    "accessibility",
+    "a11y",
+    "succescriteria",
+    "success criteria",
+    "tekstalternatieven",
+    "op tijd gebaseerde media",
+    "aanpasbaar",
+    "onderscheidbaar",
+    "brons",
+    "zilver"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Succescriterium 1.3.1 heet op deze pagina 'Info en relaties', op de pagina '1.3 Aanpasbaar' 'Info en onderlinge verhoudingen'.",
+      "source": "apps/storybook/docs/e_richtlijnen/a_toegankelijkheid-aanpak/1_waarneembaar/1.3_aanpasbaar.stories.mdx"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "page": "components-compliance-next-header",
+  "inputHash": "85574be8af59",
+  "analysedFor": "2.16.0",
+  "summary": "Documentatie van vl-header-next, dat de global header-widget (v5) van Digitaal Vlaanderen bovenaan in de body injecteert; het is de opvolger van de legacy vl-header. Met een identifier van Digitaal Vlaanderen toont het de header en configureert het de sessie via setProfile() met login-url, logout-url en switch-capacity-url, tenzij simple gezet is. De property applicationLinks voegt links toe aan het aanmeldmenu.",
+  "keywords": [
+    "header",
+    "vl-header-next",
+    "hoofding",
+    "global header",
+    "globale header",
+    "global header v5",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "widget",
+    "aanmelden",
+    "login",
+    "sessie",
+    "session",
+    "application links"
+  ],
+  "examples": {
+    "components-compliance-next-header--header-default": {
+      "html": "<vl-header-next development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header-next>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance/next';\n\nregisterWebComponents([VlHeader]);\n\n// In 2.16.0 volgt ready op window, niet op het element (vanaf 2.19.0 op het element zelf), zodra de widget gemount\n// is. Vanaf dan geeft height de hoogte van de header.\nwindow.addEventListener('ready', () => {\n    console.log(document.querySelector('vl-header-next').height);\n});"
+    },
+    "components-compliance-next-header--header-with-application-links": {
+      "html": "<vl-header-next development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header-next>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance/next';\n\nregisterWebComponents([VlHeader]);\n\n// vl-header-next geeft applicationLinks één keer door aan de widget, na het mounten: zet de property meteen.\ndocument.querySelector('vl-header-next').applicationLinks = [\n    { label: 'Link 1', href: 'https://example.com/link1' },\n    { label: 'Link 2', href: 'https://example.com/link2' },\n];"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De code registreert vl-header-next (@webComponent('vl-header-next')), maar het element staat niet in de web-types van 2.16.0, dus de pagina heeft geen API-tabel. Uit de code en de argTypes: de attributen authenticated-user-url (standaard /sso/ingelogde_gebruiker), development, identifier, login-url (/sso/aanmelden), logout-url (/sso/afgemeld), switch-capacity-url (/sso/wissel_organisatie), simple en skeleton; de property applicationLinks (ApplicationMenuLink[]); de getter height; het event ready. Een wijziging van login-url, logout-url of switch-capacity-url roept setProfile() opnieuw aan; applicationLinks leest de component één keer, na het mounten van de widget.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header-next",
+      "name": "ready",
+      "text": "De argTypes noemen ready een event van vl-header-next en de story luistert er met @ready naar op het element. In 2.16.0 geeft de code de ongebonden methode onReady aan window.addEventListener('widget.global_header.mounted', …), waardoor this bij het afvuren window is: ready volgt op window en niet op het element. @ready in een template en een listener op het element ontvangen niets, ook die van vl-functional-header en vl-side-navigation. vl-footer-next heeft dezelfde fout. Vanaf 2.19.0 (FLUX-788) volgt ready op het element zelf.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header-next",
+      "name": "simple",
+      "text": "Volgens de argTypes slaat simple het configureren van de sessie over. De code doet dat enkel in loadWidget, na het mounten. willUpdate roept configureSession() aan zodra login-url, logout-url of switch-capacity-url wijzigt, zonder simple te controleren, ook bij de eerste update, waar Lit de beginwaarden van die properties als wijziging meegeeft. Met simple vraagt vl-header-next dus toch authenticated-user-url op (standaard /sso/ingelogde_gebruiker), en roept het setProfile() aan wanneer een van die attributen wijzigt nadat de widget geladen is.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header-next",
+      "name": "skeleton",
+      "text": "Volgens de argTypes toont skeleton een skeleton voordat de header rendert. De code voegt #header__skeleton direct na #header__container in, en de CSS van de component (vl-header.component.flux-css.ts) verbergt het met #header__container ~ #header__skeleton { display: none }: zolang #header__container bestaat, is de skeleton onzichtbaar. Bij het verwijderen van vl-header-next zoekt disconnectedCallback #header__container__skeleton in plaats van #header__skeleton, dus de skeleton blijft staan; zonder container wordt hij dan zichtbaar als een lege witte balk van 43px bovenaan de body.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header-next",
+      "text": "Onder Logout request citeert de pagina de v4-documentatie over het attribuut reject-logout en de property logoutCallback. vl-header-next kent geen van beide: ze bestaan enkel in de legacy vl-header. Volgens de pagina is het afwijzen van automatische logouts sinds global header v5 niet meer nodig.",
+      "source": "libs/components/src/compliance/next/header/stories/vl-header.stories-doc.mdx"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "components-atom-button-style",
+  "inputHash": "2faf49ee1a5b",
+  "analysedFor": "2.7.0",
+  "summary": "Interne pagina over vlButtonStyles(element, selector), de CSS van vl-button als bouwblok: een component geeft er een eigen <button> of <a> in zijn shadow DOM de opmaak van een Flux-knop mee, met classes als secondary, tertiary, ghost, error, large, loading en disabled. Niet voor rechtstreeks gebruik in een toepassing: gebruik daar vl-button. vlButtonStyles wordt niet geëxporteerd uit @domg-wc/components/atom; het voorbeeld importeert het relatief, binnen de bronrepo.",
+  "keywords": [
+    "button style",
+    "vlbuttonstyles",
+    "knopstijl",
+    "button css",
+    "knop in eigen component",
+    "custom component",
+    "link als knop",
+    "link styled as button",
+    "button classes",
+    "shadow dom",
+    "intern"
+  ],
+  "examples": {
+    "components-atom-button-style--button-style-default": {
+      "html": "<!-- In de shadow DOM van een component met vlButtonStyles('button', '.my-button'). De classes zijn te combineren. -->\n<button class=\"my-button\">Klik hier</button>\n<button class=\"my-button secondary\">Klik hier</button>\n<button class=\"my-button tertiary\">Klik hier</button>\n<button class=\"my-button ghost\">Klik hier</button>\n<button class=\"my-button error\">Klik hier</button>\n<button class=\"my-button secondary large\">Klik hier</button>\n<button class=\"my-button wide\">Klik hier</button>\n<button class=\"my-button narrow\">Klik hier</button>\n<button class=\"my-button block\">Klik hier</button>\n<button class=\"my-button loading\">Klik hier</button>\n<!-- De class disabled geeft de opmaak, het attribuut schakelt de knop uit; vl-button zet ze allebei. -->\n<button class=\"my-button disabled\" disabled>Klik hier</button>\n<button class=\"my-button\"><span class=\"vl-icon vl-icon--before vl-icon--add\"></span>Klik hier</button>\n<button class=\"my-button\">Klik hier<span class=\"vl-icon vl-icon--after vl-icon--add\"></span></button>\n<!-- Een knop met enkel een icoon heeft een toegankelijke naam nodig, zoals label bij vl-button. -->\n<button class=\"my-button icon-only\" aria-label=\"Toevoegen\"><span class=\"vl-icon vl-icon--add\"></span></button>",
+      "js": "import { BaseLitElement, webComponent } from '@domg-wc/common';\nimport { CSSResult, html, TemplateResult } from 'lit';\nimport { vlButtonStyles } from '../button-style/vl-button-style.css';\n\n@webComponent('my-component-with-button')\nexport class MyComponentWithButton extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [vlButtonStyles('button', '.my-button')];\n    }\n\n    render(): TemplateResult {\n        return html`\n            <button class=\"my-button\">My styled button</button>\n        `\n    }\n}"
+    },
+    "components-atom-button-style--button-style-link": {
+      "html": "<!-- In de shadow DOM van een component met vlButtonStyles('a', '.my-button'). De classes zijn te combineren. -->\n<a href=\"#\" class=\"my-button\">Klik hier</a>\n<a href=\"#\" class=\"my-button secondary\">Klik hier</a>\n<a href=\"#\" class=\"my-button tertiary\">Klik hier</a>\n<a href=\"#\" class=\"my-button ghost\">Klik hier</a>\n<a href=\"#\" class=\"my-button error\">Klik hier</a>\n<a href=\"#\" class=\"my-button secondary large\">Klik hier</a>\n<a href=\"#\" class=\"my-button wide\">Klik hier</a>\n<a href=\"#\" class=\"my-button narrow\">Klik hier</a>\n<a href=\"#\" class=\"my-button block\">Klik hier</a>\n<a href=\"#\" class=\"my-button loading\">Klik hier</a>\n<!-- De class disabled geeft enkel de opmaak. Voor een uitgeschakelde cta-link vervangt vl-button de href door\n     javascript:void(0) en zet het tabindex=\"-1\" en aria-disabled=\"true\". -->\n<a href=\"#\" class=\"my-button disabled\">Klik hier</a>\n<a href=\"#\" class=\"my-button\"><span class=\"vl-icon vl-icon--before vl-icon--add\"></span>Klik hier</a>\n<a href=\"#\" class=\"my-button\">Klik hier<span class=\"vl-icon vl-icon--after vl-icon--add\"></span></a>\n<!-- Een link met enkel een icoon heeft een toegankelijke naam nodig, zoals label bij vl-button. -->\n<a href=\"#\" class=\"my-button icon-only\" aria-label=\"Toevoegen\"><span class=\"vl-icon vl-icon--add\"></span></a>",
+      "js": "import { BaseLitElement, webComponent } from '@domg-wc/common';\nimport { CSSResult, html, TemplateResult } from 'lit';\nimport { vlButtonStyles } from '../button-style/vl-button-style.css';\n\n// Zoals het voorbeeld op de pagina, maar voor een link: vlButtonStyles('a', selector) geeft een <a> de opmaak van\n// een knop.\n@webComponent('my-component-with-link-button')\nexport class MyComponentWithLinkButton extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [vlButtonStyles('a', '.my-button')];\n    }\n\n    render(): TemplateResult {\n        return html`\n            <a href=\"#\" class=\"my-button\">Klik hier</a>\n        `;\n    }\n}"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De story zet via renderAllButtonVariants op elke knop een class voor variant, maat, icoon en toestand, maar vlButtonStyles stijlt er maar een deel van: secondary, tertiary, ghost, error, large, wide, narrow, block, loading, disabled en icon-only. De classes primary, toggle, default, icon-none, icon-before, icon-after en idle hebben geen opmaak: primary en default zijn de opmaak zonder extra class, en de variant toggle ziet er daardoor uit als primary (vl-button geeft een toggle die uit staat de class tertiary). De plaats van een icoon komt van vl-icon--before en vl-icon--after op de span. vlButtonStyles kent verder empty-slot, input-group-left, input-group-right en button-in-map, die vl-button zelf zet (libs/components/src/atom/button-style/vl-button-style.css.ts).",
+      "source": "libs/components/src/atom/button-style/vl-button-style.util.ts"
+    }
+  ]
+}

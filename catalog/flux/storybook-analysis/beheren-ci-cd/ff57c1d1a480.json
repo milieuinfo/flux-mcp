@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "page": "beheren-ci-cd",
+  "inputHash": "ff57c1d1a480",
+  "analysedFor": "2.0.2",
+  "summary": "Voor het Flux-team: hoe de build en de release van uigov-web-components op Bamboo lopen, als build-plan met de stages Checkout, Install and Cache, Build and Test, Release and Publish en Verify Release. Ze legt ook uit wat de job release-and-publish doet: semantic-release bepaalt met .releaserc-develop of .releaserc-release de versie en legt de tag, daarna worden de artifacts naar Artifactory gepusht en komt er bij een release een GitHub release.",
+  "keywords": [
+    "ci",
+    "cd",
+    "ci/cd",
+    "bamboo",
+    "bamboo specs",
+    "bamboo.yml",
+    "build plan",
+    "pipeline",
+    "semantic-release",
+    "release",
+    "artifactory",
+    "versionering",
+    "versioning",
+    "changelog",
+    "github release"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat de configuratie van semantic-release, .releaserc-develop en .releaserc-release, in de root folder staat. In 2.0.2 staan beide bestanden in resources/ci-bamboo/release; resources/ci-bamboo/bash/release-and-publish.sh kopieert de juiste variant naar .releaserc in de root.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat de develop-variant loopt voor de branches 'develop' en 'develop-xyz', en de release-variant voor 'release' en 'release-x.y'. In 2.0.2 kiest resources/ci-bamboo/bash/release-and-publish.sh de develop-variant als de branchnaam 'develop' of 'bugfix' bevat, en de release-variant als ze 'release' bevat. resources/ci-bamboo/release/.releaserc-develop kent zoals de pagina zegt 'develop' en 'develop-*' als prerelease-branches, maar ook 'release' als release-branch en 'bugfix' als prerelease-branch (prerelease 'fix'). resources/ci-bamboo/release/.releaserc-release kent enkel 'release-v2' en 'release-v2-rc' (prerelease 'rc'); 'release' en 'release-x.y' staan daar niet in.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat er enkel bij een release een changelog aangemaakt wordt. Ook resources/ci-bamboo/release/.releaserc-develop gebruikt @semantic-release/changelog en schrijft resources/changelog/CHANGELOG.md bij. Het verschil zit in .releaserc-release: enkel die commit de changelog, package.json, package-lock.json, libs/components/components.web-types.json en libs/map/map.web-types.json met @semantic-release/git ('chore(release): <versie> [skip ci]') en maakt een GitHub release met @semantic-release/github.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De opsomming van wat release-and-publish doet, is onvolledig. resources/ci-bamboo/bash/release-and-publish.sh van 2.0.2 genereert vóór semantic-release de web-types opnieuw (npm run libs:web-types:generate), publiceert de npm packages op een release-branch naar 'local-npm' en op een develop- of bugfix-branch naar 'snapshot-npm', maakt van de fat-lib een tgz die het enkel op een release-branch naar Artifactory (local-generic) uploadt, en bouwt daarna Storybook opnieuw, omdat pas dan CHANGELOG.md up-to-date is, en maakt er storybook-<versie>.tgz van.",
+      "source": "apps/storybook/docs/c_beheren/3_ci-cd.stories.mdx"
+    }
+  ]
+}

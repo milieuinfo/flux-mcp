@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "bijdragen-git-branching-strategie",
+  "inputHash": "32ee3244165c",
+  "analysedFor": "2.15.0",
+  "summary": "Voor wie bijdraagt aan Flux: de git-werkwijze in flux-web-components, met een feature-branch per Jira-ticket, commit messages volgens conventional commits voor semantic-release, squashen tot één commit, rebasen voor een lineaire historiek en pull requests met twee approvals van het Flux-team. Ze legt ook uit hoe een team via een develop-branch snapshot-artifacts op Artifactory krijgt.",
+  "keywords": [
+    "git",
+    "branching strategie",
+    "branching strategy",
+    "feature branch",
+    "commit message",
+    "conventional commits",
+    "semantic-release",
+    "squash",
+    "rebase",
+    "pull request",
+    "code review",
+    "snapshot",
+    "artifactory",
+    "bijdragen",
+    "contributing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina geeft als structuur '<type>: <ticket-nummer> - <component> - <korte beschrijving>', maar het voorbeeld eronder, 'feat: FLUX-2322 - op de CDN de TinyMCE theming publiceren', heeft geen deel voor de component.",
+      "source": "apps/storybook/docs/b_bijdragen/3_git-branching-strategie.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat een team snapshot-artifacts krijgt door te integreren op een branch die met 'develop-' begint, bv. 'develop-xyz'. In 2.15.0 behandelt resources/ci-bamboo/bash/release-and-publish.sh elke branch met 'develop' of 'bugfix' in de naam als develop-branch, maar de configuratie van semantic-release die het dan gebruikt (resources/ci-bamboo/release/.releaserc-develop) kent als prerelease-branches enkel 'develop-v2' en 'develop-v2-*'. Een branch 'develop-xyz' valt daarbuiten; volgens die configuratie begint een teambranch met 'develop-v2-'.",
+      "source": "apps/storybook/docs/b_bijdragen/3_git-branching-strategie.mdx"
+    }
+  ]
+}

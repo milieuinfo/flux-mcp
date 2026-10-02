@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "page": "components-form-fieldset",
+  "inputHash": "5190b74e4a43",
+  "analysedFor": "2.16.0",
+  "summary": "Documentatie van vl-fieldset, dat samenhorende formuliervelden groepeert onder een legend, eventueel met een rand (border) of in een horizontale layout met de legend als kolom (horizontal, legend-classes). De legend geef je mee in het slot legend: de component toont hem als label, dat bij een klik de focus in het eerste veld zet, en houdt een visueel verborgen legend voor schermlezers.",
+  "keywords": [
+    "fieldset",
+    "vl-fieldset",
+    "legend",
+    "velden groeperen",
+    "group form fields",
+    "form group",
+    "formuliergroep",
+    "rand",
+    "border",
+    "horizontaal",
+    "horizontal layout",
+    "legend-classes",
+    "formulier"
+  ],
+  "examples": {
+    "components-form-fieldset--fieldset-default": {
+      "html": "<vl-fieldset>\n    <span slot=\"legend\">Volledige naam</span>\n    <div class=\"vl-group vl-group--collapse-xs\">\n        <vl-input-field name=\"voornaam\" id=\"voornaam\" placeholder=\"Voornaam\" label=\"Voornaam\"></vl-input-field>\n        <vl-input-field name=\"naam\" id=\"naam\" placeholder=\"Naam\" label=\"Naam\"></vl-input-field>\n    </div>\n</vl-fieldset>"
+    },
+    "components-form-fieldset--fieldset-with-border": {
+      "html": "<vl-fieldset border>\n    <span slot=\"legend\">Volledige naam</span>\n    <div class=\"vl-grid\">\n        <vl-form-label for=\"voornaam\" class=\"vl-column vl-column--3 vl-column--s-12\">Voornaam</vl-form-label>\n        <vl-input-field\n            name=\"voornaam\"\n            id=\"voornaam\"\n            placeholder=\"Voornaam\"\n            label=\"Voornaam\"\n            class=\"vl-column vl-column--9 vl-column--s-12\"\n        ></vl-input-field>\n        <vl-form-label for=\"naam\" class=\"vl-column vl-column--3 vl-column--s-12\">Naam</vl-form-label>\n        <vl-input-field\n            name=\"naam\"\n            id=\"naam\"\n            placeholder=\"Naam\"\n            label=\"Naam\"\n            class=\"vl-column vl-column--9 vl-column--s-12\"\n        ></vl-input-field>\n    </div>\n</vl-fieldset>"
+    },
+    "components-form-fieldset--fieldset-horizontal": {
+      "html": "<vl-fieldset horizontal legend-classes=\"vl-column--6\">\n    <span slot=\"legend\">Volledige naam</span>\n    <div class=\"vl-column vl-column--6 vl-column--s-12 vl-group vl-group--collapse-xs\">\n        <vl-input-field name=\"voornaam\" id=\"voornaam\" placeholder=\"Voornaam\" label=\"Voornaam\"></vl-input-field>\n        <vl-input-field name=\"naam\" id=\"naam\" placeholder=\"Naam\" label=\"Naam\"></vl-input-field>\n    </div>\n</vl-fieldset>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-fieldset",
+      "name": "legend",
+      "text": "Het codeblok onder Voorbeeld toont een vl-fieldset met legend=\"Fieldset legend\", en de sectie Toegankelijkheid noemt het legend-attribuut verplicht. vl-fieldset heeft geen legend-attribuut, niet in de code en niet in de web-types: de legend komt uit het slot legend, zoals in de stories (<span slot=\"legend\">Volledige naam</span>). Is dat slot leeg, dan schrijft de component 'vl-fieldset: De \"legend\" slot is vereist.' in de console.",
+      "source": "libs/components/src/form/fieldset/stories/vl-fieldset.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-fieldset",
+      "text": "De web-types en de argTypes noemen de slots 'legend slot (vereist)' en 'content slot (vereist)'. In de code heten ze legend, een named slot, en het default slot: de legend zet je in een element met slot=\"legend\", de velden rechtstreeks in vl-fieldset.",
+      "source": "libs/components/src/form/fieldset/vl-fieldset.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-form-label",
+      "name": "label",
+      "text": "In de story vl-fieldset - with border staat de tekst van vl-form-label in het default slot, zonder label-attribuut. vl-form-label zet bij elke update het label-attribuut van de control met als id zijn for (gezocht in de omliggende form, anders in zijn parent) op zijn eigen, hier lege label-attribuut: de vl-input-fields voornaam en naam krijgen label=\"\" en verliezen hun aria-label. Het voorbeeld volgt de story; geef vl-form-label in je eigen code een label-attribuut.",
+      "source": "libs/components/src/form/form-label/vl-form-label.component.ts"
+    }
+  ]
+}

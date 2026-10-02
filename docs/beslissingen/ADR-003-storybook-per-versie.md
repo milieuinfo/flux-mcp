@@ -485,9 +485,9 @@ Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
    versies in de catalogus. Klaar.
 2. **De queries**, met hun tests. Zonder analyse is de catalogus al bruikbaar: tekst, API, status en links. Klaar.
 3. **De analyse:** `prompts/storybook-analyse.md`, `prompts/storybook-review.md`, `storybook:analyse` en
-   `storybook:check`. Gebouwd; de eerste run volgt: 2.20.0 volledig, dan 2.19.0, die enkel de gewijzigde pagina's
-   mag analyseren. Controleer na elke reeks een steekproef van de voorbeelden in Storybook; die toetst de
-   werkwijze, niet elke analyse, want die leest een mens niet na.
+   `storybook:check`. Klaar voor 2.14.0 tot en met 2.20.0: eerst 2.20.0 volledig, daarna per versie de pagina's met
+   een nieuwe hash. De oudere versies volgen. Controleer na elke reeks een steekproef van de voorbeelden in
+   Storybook; die toetst de werkwijze, niet elke analyse, want die leest een mens niet na.
 4. **`catalog:update`** en de documentatie. Klaar. `catalog:backfill` volgt.
 5. **De MCP-koppeling**, samen met die van ADR-001.
 

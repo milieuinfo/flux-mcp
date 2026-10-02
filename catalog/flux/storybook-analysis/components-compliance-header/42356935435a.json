@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "page": "components-compliance-header",
+  "inputHash": "42356935435a",
+  "analysedFor": "2.8.1",
+  "summary": "Documentatie van vl-header, dat de global header-widget van Digitaal Vlaanderen (Mijn Burgerprofiel) bovenaan in de body injecteert, met de richtlijnen voor de inhoud van de header. Je hebt een identifier van Digitaal Vlaanderen nodig; login-url, login-redirect-url, logout-url en switch-capacity-url configureren de sessie (simple slaat dat over), de property applicationLinks voegt links toe onder Aanmelden, en reject-logout of de property logoutCallback wijzen automatische logouts af. Voor de global header v5 is er vl-header-next (pagina components-compliance-header-next).",
+  "keywords": [
+    "header",
+    "vl-header",
+    "hoofding",
+    "global header",
+    "globale header",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "mijn burgerprofiel",
+    "widget",
+    "aanmelden",
+    "login",
+    "logout",
+    "applicatieve links",
+    "application links",
+    "legacy"
+  ],
+  "examples": {
+    "components-compliance-header--header-default": {
+      "html": "<vl-header development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlHeader]);\n\n// ready volgt op het element zelf zodra de widget de header in de pagina gezet heeft; het bubbelt niet.\ndocument.querySelector('vl-header').addEventListener('ready', () => {\n    console.log('ready');\n});"
+    },
+    "components-compliance-header--header-with-application-links": {
+      "html": "<vl-header development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlHeader]);\n\n// vl-header leest applicationLinks één keer, nadat de widget geladen is: zet de property meteen, niet later.\ndocument.querySelector('vl-header').applicationLinks = [\n    { label: 'Link 1', href: 'https://example.com/link1' },\n    { label: 'Link 2', href: 'https://example.com/link2' },\n];"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header",
+      "name": "height",
+      "text": "vl-header heeft een getter height: de hoogte in pixels van de header die hij in de body zet (#header__container), 0 zolang die er niet is. Hij staat niet in de web-types en niet op de pagina.",
+      "source": "libs/components/src/compliance/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header",
+      "name": "skeleton",
+      "text": "Volgens de argTypes en de web-types toont skeleton een skeleton voordat de header rendert. De code voegt #header__skeleton direct na #header__container in, en de CSS van de component (vl-header.component.flux-css.ts) verbergt het met #header__container ~ #header__skeleton { display: none }: zolang #header__container bestaat, is de skeleton onzichtbaar. Bij het verwijderen van vl-header zoekt disconnectedCallback #header__container__skeleton in plaats van #header__skeleton, dus de skeleton blijft staan; zonder container wordt hij dan zichtbaar als een lege witte balk van 43px bovenaan de body.",
+      "source": "libs/components/src/compliance/header/vl-header.component.ts"
+    }
+  ]
+}

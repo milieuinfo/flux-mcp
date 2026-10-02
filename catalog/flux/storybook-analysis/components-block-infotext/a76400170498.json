@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "components-block-infotext",
+  "inputHash": "a76400170498",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-infotext, om een belangrijk getal groot en duidelijk te tonen met een korte omschrijving, bv. het aantal bezoekers per dag. Een getal in het slot value wordt automatisch geformatteerd en de lettergrootte past zich aan de lengte aan; met badge toon je het in een badge, met href wordt het een link, en external opent die link in een nieuw tabblad.",
+  "keywords": [
+    "infotext",
+    "vl-infotext",
+    "kerncijfer",
+    "key figure",
+    "statistiek",
+    "statistic",
+    "getal",
+    "number",
+    "kpi",
+    "badge",
+    "dashboard",
+    "link"
+  ],
+  "examples": {
+    "components-block-infotext--infotext-default": {
+      "html": "<vl-infotext>\n    <span slot=\"value\">3200</span>\n    <span slot=\"text\">Bezoekers per dag</span>\n</vl-infotext>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlInfotextComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInfotextComponent]);"
+    },
+    "components-block-infotext--infotext-badge": {
+      "html": "<vl-infotext badge>\n    <span slot=\"value\">3200</span>\n    <span slot=\"text\">Bezoekers per dag</span>\n</vl-infotext>"
+    },
+    "components-block-infotext--infotext-link": {
+      "html": "<vl-infotext href=\"https://www.vlaanderen.be\">\n    <span slot=\"value\">3200</span>\n    <span slot=\"text\">Bezoekers per dag</span>\n</vl-infotext>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-infotext",
+      "name": "value",
+      "text": "De argTypes geven het slot value het type html, maar vl-infotext verbergt dat slot en toont enkel de tekst (textContent) van het eerste element met slot=\"value\", als getal geformatteerd wanneer het een getal is. Opmaak in de waarde, bv. <strong>, verdwijnt dus.",
+      "source": "libs/components/src/block/infotext/vl-infotext.component.ts"
+    }
+  ]
+}

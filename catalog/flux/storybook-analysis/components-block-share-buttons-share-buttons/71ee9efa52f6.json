@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "page": "components-block-share-buttons-share-buttons",
+  "inputHash": "71ee9efa52f6",
+  "analysedFor": "2.15.0",
+  "summary": "Documentatie van vl-share-buttons, een rij deelknoppen om een pagina te delen op sociale media: het label Deel: gevolgd door een vl-share-button per kanaal. Met alt valt de grijze rand bovenaan weg.",
+  "keywords": [
+    "deelknoppen",
+    "share buttons",
+    "vl-share-buttons",
+    "delen",
+    "share",
+    "sociale media",
+    "social media",
+    "facebook",
+    "linkedin",
+    "twitter",
+    "mail"
+  ],
+  "examples": {
+    "components-block-share-buttons-share-buttons--share-buttons-default": {
+      "html": "<vl-share-buttons>\n    <vl-share-button href=\"#\" medium=\"facebook\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"twitter\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"linkedin\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"googleplus\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"mail\"></vl-share-button>\n</vl-share-buttons>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlShareButton, VlShareButtonsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlShareButtonsComponent, VlShareButton]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-buttons",
+      "name": "[default]",
+      "text": "De web-types geven vl-share-buttons geen slots. In de code toont hij het label Deel: en daarna zijn inhoud in een default slot, waar de vl-share-button's komen.",
+      "source": "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-share-buttons",
+      "text": "De doc-url van vl-share-buttons in de web-types wijst naar components-block-share-buttons-buttons--documentatie, een pagina die in 2.15.0 niet bestaat. De documentatie van vl-share-buttons staat op components-block-share-buttons-share-buttons--documentatie. De verkeerde url staat in de configuratie van de web-types-generator. Het element heeft er ook geen description.",
+      "source": "resources/generate-web-types/wt-config-build/components-block.wt-config.ts"
+    }
+  ]
+}

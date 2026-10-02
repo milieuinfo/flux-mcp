@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "recepten-artifactory-configuratie",
+  "inputHash": "3e5075985829",
+  "analysedFor": "2.20.0",
+  "summary": "Hoe je npm instelt om de Flux-packages af te nemen via de JFrog Artifactory van Departement Omgeving: de registry acd-npm en je persoonlijke authToken in ~/.npmrc, en waar je dat token genereert. Ook hoe je tijdelijk terugschakelt naar de publieke npm-registry.",
+  "keywords": [
+    "artifactory",
+    "jfrog",
+    ".npmrc",
+    "npmrc",
+    "registry",
+    "npm registry",
+    "private registry",
+    "acd-npm",
+    "authtoken",
+    "auth token",
+    "token",
+    "npm configuratie",
+    "npm configuration",
+    "installatie",
+    "installation"
+  ],
+  "examples": {},
+  "notes": []
+}

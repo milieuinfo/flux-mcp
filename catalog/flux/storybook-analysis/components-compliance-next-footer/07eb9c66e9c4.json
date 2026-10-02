@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "components-compliance-next-footer",
+  "inputHash": "07eb9c66e9c4",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-footer-next, dat de global footer-widget (v5) van Digitaal Vlaanderen onderaan in de body injecteert, met de richtlijnen voor de tekst van de footer; het is de opvolger van de legacy vl-footer. Je hebt een identifier van Digitaal Vlaanderen nodig, development kiest hun ontwikkel-servers, en het event ready volgt op het element zodra de widget gemount is. De CSS-variabele --vl-footer--bar-reserved-height regelt de ruimte die de component reserveert voor de vaste footerbalk (standaard 48px).",
+  "keywords": [
+    "footer",
+    "vl-footer-next",
+    "voettekst",
+    "global footer",
+    "globale footer",
+    "global footer v5",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "widget",
+    "vlaamse overheid",
+    "page footer",
+    "sticky footer",
+    "ready event",
+    "--vl-footer--bar-reserved-height"
+  ],
+  "examples": {
+    "components-compliance-next-footer--footer-default": {
+      "html": "<vl-footer-next development identifier=\"0337f8dc-3266-4e7a-8f4a-95fd65189e5b\"></vl-footer-next>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFooter } from '@domg-wc/components/compliance/next';\n\nregisterWebComponents([VlFooter]);\n\n// ready volgt op het element zelf zodra de widget gemount is; het bubbelt niet.\ndocument.querySelector('vl-footer-next').addEventListener('ready', () => {\n    console.log('ready');\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De code registreert vl-footer-next (@webComponent('vl-footer-next')), maar het element staat niet in de web-types van 2.20.0, dus de pagina heeft geen API-tabel. Uit de code en de argTypes: de attributen development (standaard false; kiest widgets.tni-vlaanderen.be in plaats van widgets.vlaanderen.be) en identifier, allebei gereflecteerd, en het event ready. De component zet een footer#footer__container onderaan in de body en mount de widget daarin.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

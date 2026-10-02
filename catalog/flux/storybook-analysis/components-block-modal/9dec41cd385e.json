@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "page": "components-block-modal",
+  "inputHash": "9dec41cd385e",
+  "analysedFor": "2.11.0",
+  "summary": "Documentatie van vl-modal, een dialoogvenster dat de pagina afschermt voor een aparte taak, zoals een bevestiging of een aanvraag. Je opent het met een knop met modal-open en aria-haspopup=\"dialog\", met de methode open() of met het attribuut open bij de rendering; de pagina toont verder title of label (verplicht voor schermlezers), closable, not-cancellable, een eigen actie in het slot button, allow-overflow, size (medium, large, full-screen), position (left, right) en focus-on-modal.",
+  "keywords": [
+    "modal",
+    "vl-modal",
+    "modaal venster",
+    "dialoog",
+    "dialog",
+    "popup",
+    "overlay",
+    "bevestiging",
+    "confirmation dialog",
+    "full-screen modal",
+    "modal-open",
+    "aria-haspopup",
+    "closable",
+    "focus-on-modal"
+  ],
+  "examples": {
+    "components-block-modal--modal-default": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-default\" aria-controls=\"modal-default\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-default\" title=\"Modal default\" allow-overflow>\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlModalComponent } from '@domg-wc/components/block';\nimport { VlDatepickerComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlModalComponent, VlButtonComponent, VlDatepickerComponent]);"
+    },
+    "components-block-modal--modal-with-other-action": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-cl-nc-li\" aria-controls=\"modal-cl-nc-li\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-cl-nc-li\" title=\"Modal met andere actie\" closable not-cancellable>\n    <span slot=\"content\">Lorem ipsum dolor sit amet.</span>\n    <vl-link slot=\"button\" button-as-link icon=\"cross\" icon-placement=\"before\" modal-close>Andere actie</vl-link>\n</vl-modal>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlModalComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlModalComponent, VlButtonComponent, VlLinkComponent]);"
+    },
+    "components-block-modal--modal-medium": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-medium\" aria-controls=\"modal-medium\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-medium\" label=\"Modal medium\" closable allow-overflow size=\"medium\">\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>"
+    },
+    "components-block-modal--modal-large": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-large\" aria-controls=\"modal-large\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-large\" label=\"Modal large\" closable allow-overflow size=\"large\">\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>"
+    },
+    "components-block-modal--modal-full-screen": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-full-screen\" aria-controls=\"modal-full-screen\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-full-screen\" label=\"Modal full screen\" closable size=\"full-screen\">\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>"
+    },
+    "components-block-modal--modal-left": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-left\" aria-controls=\"modal-left\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-left\" label=\"Modal left\" closable allow-overflow position=\"left\">\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>"
+    },
+    "components-block-modal--modal-right": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-right\" aria-controls=\"modal-right\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-right\" label=\"Modal right\" closable allow-overflow position=\"right\">\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>"
+    },
+    "components-block-modal--modal-with-focus-on-modal": {
+      "html": "<vl-button id=\"button-open-modal-vt\" modal-open=\"modal-focus-on-modal\" aria-controls=\"modal-focus-on-modal\" aria-haspopup=\"dialog\">Open</vl-button>\n<vl-modal id=\"modal-focus-on-modal\" label=\"Modal met focus op modal\" closable allow-overflow focus-on-modal>\n    <span slot=\"content\">\n        <vl-datepicker block label=\"Kies een datum\"></vl-datepicker>\n        Lorem ipsum dolor sit amet.\n    </span>\n    <vl-button slot=\"button\">Start aanvraag</vl-button>\n</vl-modal>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-button",
+      "name": "modal-open",
+      "text": "modal-open=\"<id van de modal>\" maakt van een element de knop die de modal opent. vl-button kent het attribuut niet zelf: telkens vl-modal met de DOM verbonden wordt, zoekt vl-modal.lib.js de elementen met modal-open gelijk aan het id van de modal, in het document en in de shadow roots rond vl-modal, en opent de modal bij een klik. Het werkt dus op elk element, maar staat niet in de web-types. Een knop die pas later in de DOM komt, wordt niet gekoppeld; open de modal dan met open(). aria-haspopup=\"dialog\" zet je zelf, zoals de pagina onder Toegankelijkheid vraagt.",
+      "source": "libs/components/src/block/modal/vl-modal.lib.js"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-link",
+      "name": "modal-close",
+      "text": "modal-close sluit de modal bij een klik. vl-link kent het attribuut niet zelf, en vl-modal.lib.js zoekt zulke elementen enkel binnen de dialog in de shadow DOM van vl-modal, zoals de eigen Annuleer-link en de sluitknop. Op een element in het slot button, zoals in de story vl-modal - with other action, doet modal-close dus niets: de modal sluit daar omdat het slot button zelf modal-close draagt zolang not-auto-closable niet gezet is. Met not-auto-closable sluit ook die actie de modal niet.",
+      "source": "libs/components/src/block/modal/vl-modal.lib.js"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-modal",
+      "name": "open",
+      "text": "De web-types beschrijven open als 'Attribuut om de modal onmiddellijk te openen na de rendering'. In de code roept elke wijziging van het attribuut open() op, ook het verwijderen ervan: open weghalen sluit de modal dus niet, maar opent ze opnieuw als ze gesloten was. Sluit de modal via de knoppen, Escape of close(), dan blijft het attribuut open op het element staan. vl-modal vuurt in 2.11.0 zelf geen events bij openen of sluiten; gebruik de methodes open(), close() en isOpen(), en luister met on('close', callback) naar het close-event van de interne dialog.",
+      "source": "libs/components/src/block/modal/vl-modal.component.ts"
+    }
+  ]
+}

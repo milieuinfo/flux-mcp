@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "page": "ontwerp-form-form-data",
+  "inputHash": "f1aebdfe9f91",
+  "analysedFor": "2.2.0",
+  "summary": "De helpers parseFormData en setFormData uit @domg-wc/components/form. parseFormData zet de waarden van een formulier om naar een object, met één waarde per veld en een array voor een veld met meerdere waarden; setFormData vult een formulier in met hetzelfde formaat. Ze werken met de Flux-formuliercomponenten en met native form controls.",
+  "keywords": [
+    "form data",
+    "formdata",
+    "parseformdata",
+    "setformdata",
+    "formulierdata",
+    "formulier uitlezen",
+    "read form values",
+    "formulier invullen",
+    "populate form",
+    "multiselect",
+    "meerdere waarden",
+    "checkbox",
+    "submit",
+    "formulier"
+  ],
+  "examples": {
+    "ontwerp-form-form-data--form-data": {
+      "html": "<style>\n    #form {\n        margin-top: 1rem;\n        max-width: 800px;\n    }\n\n    .form-buttons vl-button:not(:last-child) {\n        margin-right: 1.4rem;\n    }\n\n    #form pre {\n        font-size: 1rem;\n    }\n\n    #form .form-data[hidden] {\n        display: none;\n    }\n</style>\n\n<form id=\"form\" class=\"vl-form\" autocomplete=\"off\">\n    <div class=\"vl-grid\">\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"naam\" label=\"Naam\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-input-field id=\"naam\" name=\"naam\" block></vl-input-field>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"geboorteplaats\" label=\"Geboorteplaats\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-select id=\"geboorteplaats\" name=\"geboorteplaats\" placeholder=\"Selecteer geboorteplaats\"></vl-select>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"hobbies\" label=\"Hobbies\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-select-rich\n                id=\"hobbies\"\n                name=\"hobbies\"\n                multiple\n                placeholder=\"Selecteer je hobbies\"\n                no-results-text=\"Geen hobbies gevonden\"\n                no-choices-text=\"Geen resterende hobbies gevonden\"\n            ></vl-select-rich>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"betrokkenheid\" label=\"Betrokkenheid\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8 vl-column--start-5\">\n            <vl-checkbox id=\"betrokkenheid-plannende-overheid\" name=\"betrokkenheid\" value=\"plannende-overheid\" multiple>\n                <span>Plannende overheid</span>\n            </vl-checkbox>\n            <vl-checkbox id=\"betrokkenheid-adviesverlener\" name=\"betrokkenheid\" value=\"adviesverlener\" multiple>\n                <span>Adviesverlener</span>\n            </vl-checkbox>\n            <vl-checkbox id=\"betrokkenheid-hogere-overheid\" name=\"betrokkenheid\" value=\"hogere-overheid\" multiple>\n                <span>Hogere overheid</span>\n            </vl-checkbox>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"vervoer\" label=\"Vervoer\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-radio-group name=\"vervoer\">\n                <vl-radio value=\"land\">Land</vl-radio>\n                <vl-radio value=\"zee\">Zee</vl-radio>\n                <vl-radio value=\"lucht\">Lucht</vl-radio>\n            </vl-radio-group>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"startDate\" label=\"Aanvangsdatum\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-datepicker static name=\"startDate\"></vl-datepicker>\n        </div>\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"file\" label=\"Bestand\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-upload url=\"test\" name=\"file\" max-files=\"2\"></vl-upload>\n        </div>\n        <div class=\"vl-column vl-column--12\">\n            <div class=\"form-buttons\">\n                <vl-button id=\"stel-in\" type=\"button\" title=\"setFormData()\">Stel in</vl-button>\n                <vl-button type=\"submit\" title=\"parseFormData()\">Verstuur</vl-button>\n                <vl-button type=\"reset\" secondary>Reset</vl-button>\n            </div>\n        </div>\n        <div class=\"vl-column vl-column--4 form-data\" hidden>\n            <vl-form-label class=\"vl-form__label\">Formulier data</vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8 form-data\" hidden>\n            <pre id=\"form-data\"></pre>\n        </div>\n    </div>\n</form>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport {\n    parseFormData,\n    setFormData,\n    VlCheckboxComponent,\n    VlDatepickerComponent,\n    VlFormLabelComponent,\n    VlInputFieldComponent,\n    VlRadioComponent,\n    VlRadioGroupComponent,\n    VlSelectComponent,\n    VlSelectRichComponent,\n    VlUploadComponent,\n} from '@domg-wc/components/form';\n\nregisterWebComponents([\n    VlFormLabelComponent,\n    VlInputFieldComponent,\n    VlSelectComponent,\n    VlSelectRichComponent,\n    VlCheckboxComponent,\n    VlRadioGroupComponent,\n    VlRadioComponent,\n    VlDatepickerComponent,\n    VlUploadComponent,\n    VlButtonComponent,\n]);\n\n// vl-select krijgt zijn opties via de property options.\ndocument.querySelector('#geboorteplaats').options = [\n    { label: 'Hasselt', value: 'hasselt' },\n    { label: 'Turnhout', value: 'turnhout' },\n    { label: 'Knokke-Heist', value: 'knokke-heist' },\n    { label: 'Waregem', value: 'waregem' },\n    { label: 'Lier', value: 'lier' },\n];\n\ndocument.querySelector('#hobbies').options = [\n    { label: 'Padel', value: 'padel' },\n    { label: 'Dans', value: 'dans' },\n    { label: 'Drummen', value: 'drummen' },\n    { label: 'Zwemmen', value: 'zwemmen' },\n    { label: 'Boardgames', value: 'boardgames' },\n    { label: 'Fietsen', value: 'fietsen' },\n    { label: 'Cocktails', value: 'cocktails' },\n];\n\nconst form = document.querySelector('#form');\nconst output = document.querySelector('#form-data');\n\n// Toont de geparste data onder de knoppen, of verbergt ze als er geen data is.\nconst showFormData = (data) => {\n    output.textContent = data ? JSON.stringify(data, null, 10) : '';\n    form.querySelectorAll('.form-data').forEach((column) => (column.hidden = !data));\n};\n\n// setFormData neemt hetzelfde formaat als wat parseFormData teruggeeft: een array voor velden met meerdere\n// waarden, en File-objecten voor vl-upload.\ndocument.querySelector('#stel-in').addEventListener('click', () => {\n    setFormData(form, {\n        naam: 'Dehbi',\n        geboorteplaats: 'knokke-heist',\n        hobbies: ['drummen', 'dans'],\n        betrokkenheid: ['plannende-overheid', 'hogere-overheid'],\n        vervoer: 'zee',\n        startDate: 'today',\n        file: [\n            new File(['Hallo, world!'], 'dossier.txt', { type: 'text/plain' }),\n            new File(['Konichua, world!'], 'aanbeveling.txt', { type: 'text/plain' }),\n        ],\n    });\n});\n\n// parseFormData geeft één waarde per veld, en een array voor een veld met multiple of met een naam die\n// meerdere keren voorkomt (hier hobbies en betrokkenheid).\nform.addEventListener('submit', (event) => {\n    event.preventDefault();\n    const data = parseFormData(form);\n    console.log(data);\n    showFormData(data);\n});\nform.addEventListener('reset', () => showFormData(null));"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-checkbox",
+      "name": "multiple",
+      "text": "De demo zet multiple op elke checkbox van betrokkenheid. vl-checkbox zelf kent dat attribuut niet: het staat niet in de web-types van 2.2.0 en niet in de code van de component. parseFormData leest het wel: voor een form control met het attribuut multiple geeft het altijd een array (libs/components/src/form/utils/form-data-getter.ts). Hier is het overbodig, want drie velden met dezelfde naam geven al een array; bij één losse checkbox zorgt multiple voor een array met één waarde.",
+      "source": "libs/integrations/src/form/form-data/vl-form-data.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-form-label",
+      "name": "for",
+      "text": "Vier labels verwijzen met for naar een id dat niet bestaat: betrokkenheid (de checkboxes hebben de ids betrokkenheid-plannende-overheid, betrokkenheid-adviesverlener en betrokkenheid-hogere-overheid), vervoer (vl-radio-group heeft geen id), startDate (vl-datepicker heeft geen id) en file (vl-upload heeft geen id). for verwacht het id van de form control, dus die labels zijn aan geen veld gekoppeld. Het voorbeeld neemt de demo ongewijzigd over.",
+      "source": "libs/integrations/src/form/form-data/vl-form-data.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "registerWebComponents in de demo krijgt VlSelectComponent, VlRadioGroupComponent en VlRadioComponent niet mee, hoewel het formulier vl-select, vl-radio-group en vl-radio gebruikt; wel VlInputFieldMaskedComponent, VlTextareaRichComponent, VlTitleComponent en VlFormMessageComponent, die het niet gebruikt. registerWebComponents definieert zelf niets (libs/common/src/util/utils.ts): het verwijst naar de klassen zodat een bundler ze bij tree shaking niet weglaat. Het voorbeeld registreert de componenten die het formulier gebruikt.",
+      "source": "libs/integrations/src/form/form-data/vl-form-data.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina geeft voor de parameter data van setFormData het type { [p: string]: FormDataEntryValue[] | File | string }, maar de sectie Checkbox zegt dat je ook een boolean mag meegeven. De code aanvaardt dat: het type is { [p: string]: FormDataEntryValue[] | File | string | boolean }.",
+      "source": "libs/components/src/form/utils/form-data-setter.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het gebruiksvoorbeeld van setFormData zet hobbies op ['Drummen', 'Zwemmen'], maar de native select heeft enkel de values value1, value2 en value3. Bovendien zet setFormData voor een native select enkel select.value: een array wordt daar een string ('Drummen,Zwemmen') en selecteert niets, dus een native select met multiple vul je er niet mee in. Voor vl-select-rich roept setFormData setSelectedValues aan, dat wel een array aanvaardt.",
+      "source": "libs/components/src/form/utils/form-data-setter.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-checkbox",
+      "text": "De sectie Checkbox zegt dat je een checkbox met setFormData uitvinkt door null of undefined mee te geven. De code doet dat niet: handleVlCheckbox vinkt enkel uit bij false, of bij een array zonder de value van de checkbox; bij null of undefined blijft de checkbox zoals hij was. Voor meerdere vl-checkboxes met dezelfde naam, zoals betrokkenheid, werkt enkel een array: handleRadioNodeList negeert daar een string of een boolean.",
+      "source": "libs/components/src/form/utils/form-data-setter.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-radio-group",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de vl-radio-elementen in vl-radio-group, zoals de demo, in het default slot uit de code (<slot></slot>). De web-types van 2.2.0 kennen voor vl-radio-group geen slot.",
+      "source": "libs/components/src/form/radio-group/vl-radio-group.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-checkbox",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de tekst van elke checkbox in het default slot (<span>Plannende overheid</span>), zoals de code van vl-checkbox het definieert (<slot></slot>). De web-types van 2.2.0 kennen voor vl-checkbox geen default slot: ze noemen het slot 'content', een naam die in de code niet bestaat.",
+      "source": "libs/components/src/form/checkbox/vl-checkbox.component.ts"
+    }
+  ]
+}

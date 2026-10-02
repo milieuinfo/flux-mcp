@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "map-layer-wms-layer-image-wms-layer",
+  "inputHash": "3df8bdf9b400",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-map-image-wms-layer, een WMS-kaartlaag in een vl-map die de kaart telkens met één afbeelding opvraagt, in plaats van in tegels zoals vl-map-tiled-wms-layer. Je geeft de WMS-url en de layers mee, en optioneel styles en version (standaard 1.3.0); een vl-map-wms-style in de laag stijlt ze server-side met een SLD.",
+  "keywords": [
+    "wms",
+    "image wms",
+    "vl-map-image-wms-layer",
+    "web map service",
+    "wms layer",
+    "wms-laag",
+    "kaartlaag",
+    "map layer",
+    "één afbeelding",
+    "single image",
+    "overlay",
+    "geoserver",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-layer-wms-layer-image-wms-layer--map-image-wms-layer-default": {
+      "html": "<!-- De laag vraagt de WMS-laag grondwater:beschermingszones_2014 telkens als één afbeelding op. Zonder version\n     gebruikt ze WMS 1.3.0. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-image-wms-layer\n        layers=\"grondwater:beschermingszones_2014\"\n        name=\"Beschermingszones\"\n        url=\"https://www.dov.vlaanderen.be/geoserver/wms\"\n    ></vl-map-image-wms-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-image-wms-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-image-wms-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

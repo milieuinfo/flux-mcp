@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-3-1-leesbaar",
+  "inputHash": "6451f46d6f73",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 3.1 Leesbaar: geef in de code aan in welke taal de tekst staat, zodat een schermlezer ze juist uitspreekt. Met 3.1.1 Taal van de pagina (brons[plus]) en 3.1.2 Taal van onderdelen (zilver[plus]), elk met een HTML-voorbeeld uit de WCAG-technieken H57 en H58: het lang-attribuut op het html-element en op een citaat in een andere taal.",
+  "keywords": [
+    "leesbaar",
+    "readable",
+    "taal van de pagina",
+    "language of page",
+    "taal van onderdelen",
+    "language of parts",
+    "lang attribuut",
+    "lang attribute",
+    "html lang",
+    "schermlezer",
+    "screen reader",
+    "uitspraak",
+    "wcag 3.1.1",
+    "wcag 3.1.2"
+  ],
+  "examples": {},
+  "notes": []
+}

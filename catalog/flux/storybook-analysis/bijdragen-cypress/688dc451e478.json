@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "bijdragen-cypress",
+  "inputHash": "688dc451e478",
+  "analysedFor": "2.20.0",
+  "summary": "Voor wie bijdraagt aan Flux: de richtlijnen voor Cypress-testen, met de naamgeving van de testbestanden, het verschil tussen DOM- en web component-testen, toegankelijkheid testen met visitWithA11y en checkA11y (axe-core) en de berekende styling controleren. Met de pnpm-scripts om de integrator-, Storybook- en componenttesten te draaien.",
+  "keywords": [
+    "cypress",
+    "testen",
+    "testing",
+    "e2e",
+    "component tests",
+    "dom-test",
+    "web component test",
+    "wcag",
+    "accessibility",
+    "a11y",
+    "axe-core",
+    "visitwitha11y",
+    "checka11y",
+    "bijdragen",
+    "contributing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina raadt 'shouldHaveStyle()' aan, bv. .shouldHaveStyle('color', 'rgb(0, 85, 204)'). Dat commando staat in 2.20.0 nergens in libs/ of resources/. De gedeelde Cypress-commando's (resources/cypress-commands/commands.ts) hebben 'shouldHaveComputedStyle', dat via getComputedStyle werkt en één object meekrijgt: .shouldHaveComputedStyle({ style: 'color', value: 'rgb(0, 85, 204)' }), met optioneel 'not' en 'pseudo'.",
+      "source": "apps/storybook/docs/b_bijdragen/4_cypress.mdx"
+    }
+  ]
+}

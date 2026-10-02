@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "page": "components-compliance-privacy",
+  "inputHash": "1f7d32502af8",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-privacy, dat een volledige privacyverklaring van Departement Omgeving toont: een functionele header, de versie en de datum (attributen version en date), de privacytekst met een inhoudsopgave en de contactgegevens van de DPO. De slots header, version, content en bottom vervangen die secties; met een eigen header in het slot header, bv. een vl-functional-header met back=\"Start\", werken disable-back-link en hide-back-link niet meer.",
+  "keywords": [
+    "privacy",
+    "privacyverklaring",
+    "privacy statement",
+    "privacy policy",
+    "vl-privacy",
+    "persoonsgegevens",
+    "personal data",
+    "avg",
+    "gdpr",
+    "dpo",
+    "compliance pagina",
+    "functional header",
+    "departement omgeving"
+  ],
+  "examples": {
+    "components-compliance-privacy--privacy-default": {
+      "html": "<vl-privacy></vl-privacy>"
+    },
+    "components-compliance-privacy--privacy-header-slot": {
+      "html": "<vl-privacy>\n    <vl-functional-header\n        slot=\"header\"\n        title=\"Departement Omgeving\"\n        sub-title=\"Privacy\"\n        link=\"https://omgeving.vlaanderen.be\"\n        back=\"Start\"\n        skip-to-content-id=\"#main-content\"\n    ></vl-functional-header>\n</vl-privacy>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "title",
+      "text": "De story 'header slot' zet de titel van vl-functional-header met het attribuut title, dat volgens de web-types deprecated is omdat het een native tooltip geeft. De component neemt de waarde nog over als titel en verwijdert daarna het attribuut. De standaardheader van vl-privacy (header.component.ts, ook op de pagina) gebruikt title-label; gebruik dat ook in een eigen header.",
+      "source": "libs/components/src/compliance/privacy/stories/vl-privacy.stories.ts"
+    }
+  ]
+}

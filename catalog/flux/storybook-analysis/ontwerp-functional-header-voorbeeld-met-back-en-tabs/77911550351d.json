@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "ontwerp-functional-header-voorbeeld-met-back-en-tabs",
+  "inputHash": "77911550351d",
+  "analysedFor": "2.7.0",
+  "summary": "Patroon voor een vl-functional-header met tabs als subnavigatie: een vl-tabs met within-functional-header in het sub-title slot, naast de standaard terug-link. Binnen de functional header toont vl-tabs enkel de tablijst, zonder panelen; disable-links zet de automatische url-aanpassing uit, en custom-css op de header en op vl-tabs haalt marges en padding weg.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "tabs",
+    "tabbladen",
+    "header met tabs",
+    "header tabs",
+    "terug-link",
+    "back link",
+    "within-functional-header",
+    "subnavigatie",
+    "sub navigation",
+    "sub-title slot",
+    "custom-css",
+    "paginaheader",
+    "page header"
+  ],
+  "examples": {
+    "ontwerp-functional-header-voorbeeld-met-back-en-tabs--functional-header-with-back-and-tabs": {
+      "html": "<vl-functional-header\n    title=\"School- en studietoelagen\"\n    custom-css=\"\n        #sub-title{\n            vertical-align: text-top;\n        }\n        :host .vl-functional-header__sub-row {\n            margin-bottom: 0;\n        }\n    \"\n>\n    <vl-tabs\n        slot=\"sub-title\"\n        disable-links\n        within-functional-header\n        active-tab=\"trein\"\n        custom-css=\"\n            :host(.vl-tabs--within-functional-header) .vl-tab__link {\n                padding-top: 0;\n            }\n        \"\n    >\n        <vl-tabs-pane id=\"trein\" title=\"Trein\"></vl-tabs-pane>\n        <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\"></vl-tabs-pane>\n        <vl-tabs-pane id=\"fiets\" title=\"Fiets\"></vl-tabs-pane>\n    </vl-tabs>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs",
+      "name": "within-functional-header",
+      "text": "Het voorbeeld zet within-functional-header op vl-tabs, zoals de code van de pagina. In de code van 2.7.0 is within-functional-header een boolean attribuut van vl-tabs: de component krijgt de class vl-tabs--within-functional-header (zonder marge en rand onder de tablijst), geeft het attribuut door aan elke vl-tab, en maakt geen vl-tab-section per vl-tabs-pane, zodat enkel de tablijst verschijnt. De web-types van 2.7.0 kennen het attribuut niet; ze beschrijven wel alt als de variant die als subnavigatie onder de functional header dient.",
+      "source": "libs/components/src/block/tabs/vl-tabs.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-tabs",
+      "text": "Het stories-bestand registreert VlBreadcrumbComponent, VlBreadcrumbItemComponent, VlFunctionalHeaderComponent en VlSearchComponent, maar de story gebruikt geen breadcrumb en geen search: ze toont vl-tabs met vl-tabs-pane, en VlTabsComponent staat niet in registerWebComponents. Wie het voorbeeld overneemt, registreert VlFunctionalHeaderComponent en VlTabsComponent uit @domg-wc/components/block; vl-tabs registreert zelf vl-tabs-pane.",
+      "source": "apps/storybook/docs/f_ontwerp/functional-header/3_demo-with-back-and-tabs/functional-header-with-back-and-tabs.stories.ts"
+    }
+  ]
+}

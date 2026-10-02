@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "patronen-navigatie-functionele-header-met-button",
+  "inputHash": "10da7b19adb1",
+  "analysedFor": "2.20.0",
+  "summary": "Patroon voor een vl-functional-header met een actieknop (vl-button) rechts naast de breadcrumb. Breadcrumb en knop staan samen in het sub-title slot, in een div met de vl-group stijl (vl-group--space-between), en custom-css geeft de subrij de volle breedte.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "header met knop",
+    "header button",
+    "actieknop",
+    "action button",
+    "breadcrumb",
+    "kruimelpad",
+    "vl-group",
+    "space-between",
+    "sub-title slot",
+    "custom-css",
+    "paginaheader",
+    "page header"
+  ],
+  "examples": {
+    "patronen-navigatie-functionele-header-met-button--functionele-header-met-button": {
+      "html": "<vl-functional-header\n    title=\"School- en studietoelagen\"\n    hide-back-link\n    custom-css=\".vl-functional-header__sub-actions, .vl-functional-header__sub__action { width: 100% } ::slotted(.vl-group) { width: 100% } \"\n>\n    <div class=\"vl-group vl-group--space-between\" slot=\"sub-title\">\n        <vl-breadcrumb slot=\"sub-title\">\n            <vl-breadcrumb-item href=\"#1\">Vlaanderen Intern</vl-breadcrumb-item>\n            <vl-breadcrumb-item href=\"#2\">Regelgeving</vl-breadcrumb-item>\n            <vl-breadcrumb-item href=\"#3\">Webuniversum</vl-breadcrumb-item>\n            <vl-breadcrumb-item>Componenten</vl-breadcrumb-item>\n        </vl-breadcrumb>\n        <vl-button>Actie knop</vl-button>\n    </div>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "title",
+      "text": "De code op de pagina zet de paginatitel met het attribuut title. De web-types van 2.20.0 markeren title als deprecated: gebruik title-label, want het standaard HTML-attribuut title toont een native tooltip. De component neemt title nog over als titel en haalt het attribuut daarna weg (_titleChangedCallback in libs/components/src/block/functional-header/vl-functional-header.component.ts). Het voorbeeld volgt de code van de pagina.",
+      "source": "apps/storybook/docs/f_patronen/navigatie/functionele-header/functionele-header.helpers.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "text": "De inleiding linkt vl-functional-header naar /docs/components-atom-functional-header--documentatie, een pagina die in de Storybook van 2.20.0 niet bestaat. De component staat onder Block, op components-block-functional-header--documentatie, zoals de lijst Componenten wel juist vermeldt.",
+      "source": "apps/storybook/docs/f_patronen/navigatie/functionele-header/1_met-button/functionele-header-met-button.mdx"
+    }
+  ]
+}

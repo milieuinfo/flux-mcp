@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-5-input-modaliteiten",
+  "inputHash": "22472c1ae622",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 2.5 Input modaliteiten: websites en apps moeten ook werken met andere invoer dan een toetsenbord, zoals een aanraakscherm of een aanwijzer. Met aanwijzergebaren, aanwijzerannulering en label in naam (brons[basis]), bewegingsactivering (brons[plus]), een aanwijsgebied van minimaal 24 × 24 CSS-pixels (zilver[basis]) en sleepbewegingen (zilver[plus]). Met een HTML-voorbeeld uit de WCAG-techniek G208 van een link met verborgen tekst.",
+  "keywords": [
+    "input modaliteiten",
+    "input modalities",
+    "aanraakscherm",
+    "touchscreen",
+    "aanwijzergebaren",
+    "pointer gestures",
+    "pointer cancellation",
+    "label in naam",
+    "label in name",
+    "accessible name",
+    "aanwijsgebied",
+    "target size",
+    "motion actuation",
+    "sleepbewegingen",
+    "dragging movements"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld bij 2.5.3 Label in naam (vb. 1) sluit de paragraaf af met '<p>' in plaats van '</p>'.",
+      "source": "apps/storybook/docs/e_richtlijnen/a_toegankelijkheid-aanpak/2_bediendbaar/2.5_input-modaliteiten.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld bij 2.5.3 Label in naam (vb. 1) verbergt tekst met de class 'hidden_accessibly' uit de WCAG-techniek. Flux kent die class niet: in Flux verberg je tekst visueel, maar leesbaar voor een schermlezer, met '.vl-visually-hidden' (pagina 'Styles/Layout (afnemers)/accessibility').",
+      "source": "libs/styles/src/layout/accessibility/vl-accessibility-styles.css.ts"
+    }
+  ]
+}

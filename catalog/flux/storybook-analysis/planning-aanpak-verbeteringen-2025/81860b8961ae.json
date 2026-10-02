@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "planning-aanpak-verbeteringen-2025",
+  "inputHash": "81860b8961ae",
+  "analysedFor": "2.20.0",
+  "summary": "Het plan van Flux voor 2025 om dichter bij de ontwikkelteams te staan: UX-werk, pragmatische code-reviews met niveaus brons, zilver en goud, en een Frontend Guild met een spoc per team. Het grootste deel gaat over de nieuwe WCAG-aanpak (Europees minimaal AA volgens WCAG 2.2, als vereiste minimaal brons voor interne en zilver+ voor publieke toepassingen, eerst de compliance-componenten verbeteren), waar de toepassingen en de backlog van Flux op dat vlak staan, en referenties naar de specificaties.",
+  "keywords": [
+    "planning 2025",
+    "verbeteringen",
+    "improvements",
+    "wcag",
+    "wcag 2.2",
+    "toegankelijkheid",
+    "accessibility",
+    "a11y",
+    "code review",
+    "frontend guild",
+    "brons zilver goud",
+    "compliance componenten",
+    "en 301 549",
+    "roadmap"
+  ],
+  "examples": {},
+  "notes": []
+}

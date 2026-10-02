@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-3-toevallen-en-fysieke-reacties",
+  "inputHash": "04e9e8be2424",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 2.3 Toevallen en fysieke reacties, met succescriterium 2.3.1 Drie flitsen of beneden drempelwaarde (brons[plus]): laat inhoud niet meer dan drie keer per seconde flitsen of knipperen, om mensen met bv. lichtgevoelige epilepsie te beschermen.",
+  "keywords": [
+    "toevallen",
+    "seizures",
+    "epilepsie",
+    "epilepsy",
+    "lichtgevoelige epilepsie",
+    "photosensitive epilepsy",
+    "flitsen",
+    "flashing",
+    "knipperen",
+    "blinking",
+    "drie flitsen",
+    "three flashes",
+    "animatie",
+    "animation",
+    "wcag 2.3.1"
+  ],
+  "examples": {},
+  "notes": []
+}

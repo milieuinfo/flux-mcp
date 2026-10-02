@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "page": "components-block-info-tile",
+  "inputHash": "ea101bfc2662",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-info-tile, een tegel voor informatieve en interactieve dashboards, met slots voor titel, subtitel, inhoud, badge, menu en footer, of een icoon (als badge) via icon en icon-as-badge. Varianten zijn size (small, medium, large), type (alt, success, warning, error), center, full-height in een vl-grid en toggleable (openklapbaar, eventueel met auto-open).",
+  "keywords": [
+    "info tile",
+    "info-tile",
+    "vl-info-tile",
+    "tegel",
+    "tile",
+    "card",
+    "kaart",
+    "dashboard",
+    "toggleable",
+    "openklapbaar",
+    "icon badge",
+    "popover menu"
+  ],
+  "examples": {
+    "components-block-info-tile--info-tile-default": {
+      "html": "<vl-info-tile>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlInfoTile } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInfoTile]);"
+    },
+    "components-block-info-tile--info-tile-small": {
+      "html": "<vl-info-tile size=\"small\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-medium": {
+      "html": "<vl-info-tile size=\"medium\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-large": {
+      "html": "<vl-info-tile size=\"large\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-alt": {
+      "html": "<vl-info-tile type=\"alt\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-error": {
+      "html": "<vl-info-tile type=\"error\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-success": {
+      "html": "<vl-info-tile type=\"success\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-warning": {
+      "html": "<vl-info-tile type=\"warning\">\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-full-height": {
+      "html": "<div class=\"vl-grid\">\n    <vl-info-tile full-height class=\"vl-column vl-column--6 vl-column--s-12 vl-column--align-self-stretch\">\n        <span slot=\"title\">Broos Deprez</span>\n        <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n        <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n    </vl-info-tile>\n    <vl-info-tile full-height class=\"vl-column vl-column--6 vl-column--s-12 vl-column--align-self-stretch\">\n        <span slot=\"title\">Grotere info tile</span>\n        <span slot=\"subtitle\">sub-title</span>\n        <div slot=\"content\">\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur\n            adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n        </div>\n    </vl-info-tile>\n</div>"
+    },
+    "components-block-info-tile--info-tile-centered": {
+      "html": "<vl-info-tile center>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-toggleable": {
+      "html": "<vl-info-tile toggleable>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-menu-slot": {
+      "html": "<vl-info-tile>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"menu\">\n        <vl-button ghost icon=\"nav-show-more-vertical\" id=\"btn-acties\" label=\"Acties\"></vl-button>\n        <vl-popover for=\"btn-acties\" placement=\"bottom-end\">\n            <vl-popover-action-list>\n                <vl-popover-action icon=\"search\">Zoeken</vl-popover-action>\n                <vl-popover-action icon=\"edit\">Aanpassen</vl-popover-action>\n                <vl-popover-action icon=\"bin\">Verwijderen</vl-popover-action>\n            </vl-popover-action-list>\n        </vl-popover>\n    </span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlInfoTile, VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent registreert zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlInfoTile, VlPopoverComponent, VlButtonComponent]);"
+    },
+    "components-block-info-tile--info-tile-icon": {
+      "html": "<vl-info-tile icon=\"file-tasks-check\" icon-as-badge>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-badge-slot": {
+      "html": "<vl-info-tile>\n    <div\n        slot=\"badge\"\n        style=\"\n            width: 45px;\n            height: 45px;\n            background: var(--vl-color--background-alt);\n            border: 1px solid var(--vl-color--mischka-grey);\n            border-radius: 50%;\n            display: flex;\n            flex-wrap: wrap;\n            place-content: center center;\n            font-weight: 500;\n        \"\n    >BD</div>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n</vl-info-tile>"
+    },
+    "components-block-info-tile--info-tile-footer-slot": {
+      "html": "<vl-info-tile>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n    <div slot=\"footer\">\n        <vl-button icon=\"file-download\">Download</vl-button>\n    </div>\n</vl-info-tile>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlInfoTile } from '@domg-wc/components/block';\n\nregisterWebComponents([VlInfoTile, VlButtonComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "size",
+      "text": "size zet de padding van de tegel: small, medium of large (INFO_TILE_SIZE); de stories vl-info-tile - small, medium en large gebruiken het. De component observeert size en leest getAttribute('size'), maar de web-types van 2.4.0 geven in de plaats data-vl-size.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-info-tile",
+      "name": "data-vl-size",
+      "text": "De web-types van 2.4.0 geven data-vl-size als attribuut voor de grootte, maar vl-info-tile leest enkel size: _observedAttributes bevat size, en het attribuutprefix van BaseHTMLElement is in 2.4.0 leeg, zodat data-vl-size geen effect heeft. Gebruik size, zoals de argTypes en de stories.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "type",
+      "text": "type bepaalt de stijl van de tegel: alt, error, success of warning (INFO_TILE_TYPE), en zet de class vl-info-tile--<type>. De stories vl-info-tile - alt, error, success en warning gebruiken het. Het staat in de code en de argTypes, maar niet in de web-types van 2.4.0.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "full-height",
+      "text": "full-height geeft de tegel een hoogte van 100% (class vl-info-tile--full-height), zoals de pagina onder 'Verticaal vullend' beschrijft; de story vl-info-tile - full height gebruikt het. Het staat in de code en de argTypes, maar niet in de web-types van 2.4.0.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "icon",
+      "text": "icon toont een icoon in de badge-zone van de tegel (class vl-vi-<naam>); werkt niet samen met het slot badge. De story vl-info-tile - icon gebruikt file-tasks-check. Het staat in de code en de argTypes, maar niet in de web-types van 2.4.0.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "icon-as-badge",
+      "text": "icon-as-badge geeft het icoon van icon de badge-stijl (class vl-info-tile__icon--badge); icon is dan vereist. De story vl-info-tile - icon gebruikt het. Het staat in de code en de argTypes, maar niet in de web-types van 2.4.0.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "badge",
+      "text": "Het slot badge toont een eigen badge vooraan de heading, bv. initialen in een cirkel zoals in de story vl-info-tile - badge slot; werkt niet samen met icon. Het staat in de code (<slot name=\"badge\">) en de argTypes, maar de web-types van 2.4.0 geven enkel de slots content, subtitle, title en menu.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "footer",
+      "text": "Het slot footer is de plaats voor actieknoppen onderaan de tegel; zonder inhoud verwijdert de component de footer. De story vl-info-tile - footer slot zet er een vl-button in. Het staat in de code (<slot name=\"footer\">) en de argTypes, maar niet in de web-types van 2.4.0.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-info-tile",
+      "name": "title-label",
+      "text": "Het slot title-label staat in de heading van de tegel, direct na het slot title; zonder inhoud verwijdert de component het. Het staat in de code (<slot name=\"title-label\">), maar niet in de web-types van 2.4.0, en geen story gebruikt het.",
+      "source": "libs/components/src/block/info-tile/vl-info-tile.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-info-tile",
+      "name": "full-height",
+      "text": "De decorator van de story vl-info-tile - full height zet op de tweede tegel fullHeight in plaats van full-height. HTML zet attribuutnamen om naar kleine letters, zodat die tegel het attribuut fullheight krijgt, dat vl-info-tile niet kent (de component observeert full-height): in de story strekt enkel de eerste tegel zich uit. Het voorbeeld zet full-height op beide tegels, zoals de pagina het patroon beschrijft.",
+      "source": "libs/components/src/block/info-tile/stories/vl-info-tile.stories.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover hij zich plaatst; de story vl-info-tile - menu slot zet for=\"btn-acties\". De code van vl-popover leest for als attribuut (attribute: 'for'), maar de web-types van 2.4.0 geven for enkel als JS-property, niet als attribuut.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "icon toont een icoon in de actie (class vl-icon--<naam>); de story vl-info-tile - menu slot gebruikt search, edit en bin. Het staat in de code van vl-popover-action, maar de web-types van 2.4.0 kennen voor vl-popover-action geen enkel attribuut of property; ook action en selected ontbreken.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    }
+  ]
+}

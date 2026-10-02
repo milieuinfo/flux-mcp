@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "page": "components-block-proza-message-proza-directive",
+  "inputHash": "8070a0f56011",
+  "analysedFor": "2.19.0",
+  "summary": "Documentatie van de Lit directive vlProza uit @domg-wc/components/block: ze zet een Proza bericht als platte tekst (zonder HTML-tags) in een attribuut van een Lit-template, bv. de title van vl-alert, waar vl-proza-message als child element niet past. Het domein komt uit FluxConfig.setPreferences({ prozaDomain }) of uit de optie domain; verder zijn er de opties parameters, fallback en baseUrl.",
+  "keywords": [
+    "proza",
+    "vlproza",
+    "proza directive",
+    "lit directive",
+    "proza bericht",
+    "proza message",
+    "attribuut",
+    "attribute binding",
+    "plain text",
+    "prozadomain",
+    "fluxconfig",
+    "fallback",
+    "parameters",
+    "domain override",
+    "vl-alert title"
+  ],
+  "examples": {
+    "components-block-proza-message-proza-directive--proza-directive-default": {
+      "js": "// app.config.js: importeer dit bestand als allereerste, vóór de eerste component van Flux (zie het recept\n// Configuratie). setPreferences werkt enkel zolang FluxConfig nog niet gelezen werd.\nimport { FluxConfig } from '@domg-wc/common';\n\nFluxConfig.setPreferences({ prozaDomain: 'mockdomain' });\n\n// main.js\nimport './app.config.js';\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert, vlProza } from '@domg-wc/components/block';\nimport { html, render } from 'lit';\n\nregisterWebComponents([VlAlert]);\n\n// vlProza is een Lit directive: ze werkt enkel in een Lit-template, bv. in de render() van een LitElement. Tijdens\n// het laden toont het attribuut de fallback (standaard de code), daarna de tekst van het bericht zonder HTML-tags.\n// Het bericht komt uit de cache van vl-proza-message-preloader, of van proza/domein/{domein}/{code} relatief tov de\n// huidige url (of achter de optie baseUrl); in Storybook antwoordt een mock.\n// Zonder domein, niet in FluxConfig en niet in de opties, gooit vlProza een fout.\nrender(\n    html`\n        <vl-alert icon=\"warning\" title=${vlProza('alert.titel')} type=\"warning\" closable></vl-alert>\n        <vl-alert icon=\"info-circle\" title=${vlProza('alert.bericht')} type=\"info\"></vl-alert>\n    `,\n    document.body\n);"
+    },
+    "components-block-proza-message-proza-directive--proza-directive-met-parameters": {
+      "js": "// app.config.js: importeer dit bestand als allereerste, vóór de eerste component van Flux (zie het recept\n// Configuratie). setPreferences werkt enkel zolang FluxConfig nog niet gelezen werd.\nimport { FluxConfig } from '@domg-wc/common';\n\nFluxConfig.setPreferences({ prozaDomain: 'mockdomain' });\n\n// main.js\nimport './app.config.js';\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert, vlProza } from '@domg-wc/components/block';\nimport { html, render } from 'lit';\n\nregisterWebComponents([VlAlert]);\n\n// In de mock van Storybook is het bericht welkom.titel '<p>Welkom, ${parameter.naam}!</p>'. vlProza vervangt\n// ${parameter.naam} door Jan en strip de tags: de titel wordt 'Welkom, Jan!'.\nrender(\n    html`\n        <vl-alert\n            icon=\"user\"\n            title=${vlProza('welkom.titel', { parameters: { naam: 'Jan' } })}\n            type=\"success\"\n        ></vl-alert>\n    `,\n    document.body\n);"
+    },
+    "components-block-proza-message-proza-directive--proza-directive-domain-override": {
+      "js": "// app.config.js: importeer dit bestand als allereerste, vóór de eerste component van Flux (zie het recept\n// Configuratie). setPreferences werkt enkel zolang FluxConfig nog niet gelezen werd.\nimport { FluxConfig } from '@domg-wc/common';\n\nFluxConfig.setPreferences({ prozaDomain: 'mockdomain' });\n\n// main.js\nimport './app.config.js';\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert, vlProza } from '@domg-wc/components/block';\nimport { html, render } from 'lit';\n\nregisterWebComponents([VlAlert]);\n\n// De optie domain gaat voor op het domein uit FluxConfig, enkel voor deze aanroep.\nrender(\n    html`\n        <!-- Met het default domein uit FluxConfig -->\n        <vl-alert icon=\"warning\" title=${vlProza('alert.titel')} type=\"warning\"></vl-alert>\n\n        <!-- Met een ander domein (override) -->\n        <vl-alert\n            icon=\"info-circle\"\n            title=${vlProza('alert.titel', { domain: 'otherdomain' })}\n            type=\"info\"\n        ></vl-alert>\n    `,\n    document.body\n);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt enkel dat je het default domein 'bij het bootstrappen' instelt met FluxConfig.setPreferences({ prozaDomain }). setPreferences zet echter niets meer zodra FluxConfig gelezen werd: dan logt het enkel 'er worden expliciete flux preferences gezet, maar te laat'. Een component van Flux leest FluxConfig bij het registreren (@webComponent, zoals vl-proza-message, dat vl-proza.directive.ts zelf importeert) of bij het aanmaken (BaseLitElement, zoals vl-alert), dus ook een gewone import van vlProza of een component vóór de aanroep. De story schrijft daarom rechtstreeks FluxConfig['preferences'] (met als commentaar dat de preferences al geïnitialiseerd zijn), terwijl de code die ze toont setPreferences gebruikt. Roep setPreferences aan in een apart bestand dat je als allereerste importeert, zoals het recept Configuratie zegt; anders gooit vlProza de fout 'Geen domein opgegeven'.",
+      "source": "libs/common/src/config/flux-config.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat vlProza een fallback toont tijdens het laden. Volgens de code geeft render() bij een nieuwe render met dezelfde code, hetzelfde domein, dezelfde parameters en dezelfde baseUrl opnieuw de fallback terug, zonder het bericht opnieuw te zetten. Rendert het template rond vlProza opnieuw, bv. een LitElement waarvan een property wijzigt, dan krijgt het attribuut weer de fallback (standaard de code) in plaats van de tekst van het bericht.",
+      "source": "libs/components/src/block/proza-message/vl-proza.directive.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "icon",
+      "text": "De story vlProza - met parameters zet icon=\"user\" op vl-alert. De web-types geven als type van icon enkel 'warning' | 'check' | 'info-circle'. De beschrijving van hetzelfde attribuut verwijst naar de volledige iconenlijst en de code zet voor elke waarde de class vl-icon--<icon>, dus user werkt ook.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-directive.stories.ts"
+    }
+  ]
+}

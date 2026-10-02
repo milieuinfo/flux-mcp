@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "page": "bijdragen-git-branching-strategie",
+  "inputHash": "39f591517b83",
+  "analysedFor": "2.0.2",
+  "summary": "Voor wie bijdraagt aan Flux: de git-werkwijze in uigov-web-components, met een feature-branch per Jira-ticket, commit messages volgens conventional commits voor semantic-release, squashen tot één commit, rebasen voor een lineaire historiek en pull requests met twee approvals van het Flux-team. Ze legt ook uit hoe een team via een develop-branch snapshot-artifacts op Artifactory krijgt.",
+  "keywords": [
+    "git",
+    "branching strategie",
+    "branching strategy",
+    "feature branch",
+    "commit message",
+    "conventional commits",
+    "semantic-release",
+    "squash",
+    "rebase",
+    "pull request",
+    "code review",
+    "snapshot",
+    "artifactory",
+    "bijdragen",
+    "contributing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina geeft als structuur '<type>: <ticket-nummer> - <component> - <korte beschrijving>', maar het voorbeeld eronder, 'feat: FLUX-2322 - op de CDN de TinyMCE theming publiceren', heeft geen deel voor de component.",
+      "source": "apps/storybook/docs/b_bijdragen/3_git-branching-strategie.stories.mdx"
+    }
+  ]
+}

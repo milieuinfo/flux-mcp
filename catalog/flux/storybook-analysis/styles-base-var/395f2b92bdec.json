@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "page": "styles-base-var",
+  "inputHash": "395f2b92bdec",
+  "analysedFor": "2.5.0",
+  "summary": "Interne stylingpagina over de globale CSS-variabelen van Flux, die je gebruikt met var(--vl-…): kleuren (achtergrond, tekst, rand, actie, error, success en warning), algemene waarden zoals paginabreedtes, breakpoints en de border-radius, spacing en typografie. De breakpoints bestaan ook als TypeScript-constanten (vlMediaScreenSmall en co.), omdat een media query geen CSS-variabele aanvaardt.",
+  "keywords": [
+    "css-variabelen",
+    "css variables",
+    "custom properties",
+    "design tokens",
+    "--vl-color",
+    "kleuren",
+    "colors",
+    "spacing",
+    "typografie",
+    "typography",
+    "breakpoints",
+    "media queries",
+    "vlmediascreensmall",
+    "var()",
+    "tokens"
+  ],
+  "examples": {
+    "styles-base-var--var-color": {
+      "html": "<style>\n    /* De story gebruikt --vl-color--background-alt (#f7f9fc) en --vl-color--border-alt (#8695a8). */\n    .sb-var {\n        background-color: var(--vl-color--background-alt);\n        border: var(--vl-color--border-alt) 1px solid;\n        width: 240px;\n        padding: 10px;\n        text-align: center;\n    }\n</style>\n<div class=\"sb-var\">de alternatieve achtergrond en rand kleur</div>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt 'een overzicht van alle variabelen' te geven, maar mist twee groepen die vlGlobalStyles ook op het document zet: de z-index-lagen --vl-z-layer--… uit vl-z-layer.raw.css (bv. --vl-z-layer--toaster, --vl-z-layer--side-sheet, --vl-z-layer--popover) en de componentvariabelen uit theming/var/vl-components.raw.css (--vl-side-sheet-width, --vl-side-sheet-width-mobile en --vl-toaster-width).",
+      "source": "libs/styles/src/vl-styles.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Onder 'Media Screen' staat ook vlPageMaxWidthWide = 1280, maar de index van @domg-wc/styles exporteert enkel vlMediaScreenExtraSmall, vlMediaScreenSmall, vlMediaScreenMedium en vlMediaScreenLarge. Als CSS-variabele bestaat --vl-page--max-width-wide: 1280px.",
+      "source": "libs/styles/src/index.ts"
+    }
+  ]
+}

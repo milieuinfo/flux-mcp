@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "page": "styles-layout-accessibility",
+  "inputHash": "65daf5c1e23e",
+  "analysedFor": "2.20.0",
+  "summary": "CSS-klassen die de toegankelijkheid verbeteren. vl-visually-hidden verbergt content visueel maar houdt ze beschikbaar voor screenreaders; vl-skip-link maakt van een interne link (<a href=\"#id\">) een skip-link die pas verschijnt wanneer hij focus krijgt en rechtstreeks naar de inhoud springt.",
+  "keywords": [
+    "toegankelijkheid",
+    "accessibility",
+    "a11y",
+    "visually hidden",
+    "vl-visually-hidden",
+    "sr-only",
+    "screenreader",
+    "screen reader only",
+    "skip link",
+    "vl-skip-link",
+    "skip to content",
+    "blokken omzeilen",
+    "verborgen tekst"
+  ],
+  "examples": {
+    "styles-layout-accessibility--visually-hidden-default": {
+      "html": "<div>Deze content is zichtbaar voor de gebruiker.\n    Maar deze content ...<span class=\"vl-visually-hidden\">... is enkel toegankelijk voor screenreaders.</span>\n</div>"
+    },
+    "styles-layout-accessibility--skip-link-default": {
+      "html": "<a href=\"#main-content\" class=\"vl-skip-link\">Ga meteen naar de inhoud</a>\n<header>\n    <vl-title type=\"h1\">[Applicatie titel]</vl-title>\n    <nav>[Applicatie navigatie]</nav>\n</header>\n<hr class=\"vl-separator-slash\" />\n<main>\n    <vl-title type=\"h2\" id=\"main-content\">[Applicatie inhoud]</vl-title>\n    <vl-typography>\n        <p>Je kan de <strong>skip-link</strong> op twee manieren activeren:</p>\n        <ul>\n            <li>\n                <strong>Start een screenreader</strong>, bv VoiceOver (command+F5), en navigeer naar het begin van\n                de pagina.\n            </li>\n            <li>\n                <strong>Gebruik Tab</strong> om naar het begin van de pagina te navigeren. Zodra de skip-link focus\n                krijgt zal hij verschijnen.\n            </li>\n        </ul>\n        <p>Klikken op de skip-link brengt je meteen naar de inhoud. De header wordt niet voorgelezen.</p>\n    </vl-typography>\n</main>"
+    }
+  },
+  "notes": []
+}

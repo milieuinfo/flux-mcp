@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-testen-klassieke-test-piramide",
+  "inputHash": "e8603e2b5692",
+  "analysedFor": "2.20.0",
+  "summary": "Legt de klassieke test piramide uit als minimum voor het testen van elke toepassing: zo weinig mogelijk overlap tussen de niveaus, en naar de top toe meer complexiteit, implementatie- en doorlooptijd en minder testen. Het principe is om wat je wil testen zo laag mogelijk in de piramide te testen.",
+  "keywords": [
+    "test piramide",
+    "test pyramid",
+    "testen",
+    "testing",
+    "teststrategie",
+    "test strategy",
+    "unit test",
+    "integratietest",
+    "e2e",
+    "end-to-end"
+  ],
+  "examples": {},
+  "notes": []
+}

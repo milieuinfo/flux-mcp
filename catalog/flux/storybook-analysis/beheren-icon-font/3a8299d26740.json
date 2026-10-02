@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "page": "beheren-icon-font",
+  "inputHash": "3a8299d26740",
+  "analysedFor": "2.0.2",
+  "summary": "Voor het Flux-team: hoe het icon-font werkt en hoe je het bijwerkt. Het font komt uit de uigov-assets repository en staat geversioneerd op de CDN van Departement Omgeving; de componenten gebruiken één centraal, gegenereerd icon-mapping bestand in CSS-in-JS, dat je na een nieuwe fontversie opnieuw genereert met npm run libs:icons:generate.",
+  "keywords": [
+    "icon font",
+    "iconfont",
+    "iconen",
+    "icons",
+    "icon mapping",
+    "css-in-js",
+    "generate-icon-files",
+    "libs:icons:generate",
+    "uigov-assets",
+    "cdn",
+    "font updaten",
+    "vl-icon",
+    "beheren"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link naar de icon pagina, /story/components-icon--all-icons, wijst naar een story die in 2.0.2 niet bestaat. De story met alle iconen is 'vl-icon - alle iconen' met id components-atom-icon--all-icons, op de pagina components-atom-icon.",
+      "source": "apps/storybook/docs/c_beheren/5_icon-font.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De inhoudstafel linkt 'Legacy opzet' naar #oude-opzet, maar de kop heet 'Legacy opzet'; een anker oude-opzet bestaat niet op de pagina.",
+      "source": "apps/storybook/docs/c_beheren/5_icon-font.stories.mdx"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "page": "components-block-share-buttons-buttons",
+  "inputHash": "ba63a4938778",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-share-buttons, de balk om een pagina te delen: het label Deel: gevolgd door de vl-share-button's die je erin zet, bv. voor Facebook, Twitter, LinkedIn, Google Plus en mail. Met alt valt de lichtgrijze lijn bovenaan weg.",
+  "keywords": [
+    "delen",
+    "share",
+    "share buttons",
+    "deelknoppen",
+    "sociale media",
+    "social media",
+    "facebook",
+    "twitter",
+    "linkedin",
+    "mail",
+    "vl-share-buttons",
+    "vl-share-button"
+  ],
+  "examples": {
+    "components-block-share-buttons-buttons--share-buttons-default": {
+      "html": "<vl-share-buttons>\n    <vl-share-button href=\"#\" medium=\"facebook\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"twitter\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"linkedin\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"googleplus\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"mail\"></vl-share-button>\n</vl-share-buttons>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlShareButton, VlShareButtonsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlShareButtonsComponent, VlShareButton]);\n\n// vl-share-button zet href ongewijzigd op zijn link: de url waarmee je de pagina deelt, geef je zelf mee."
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-buttons",
+      "name": "[default]",
+      "text": "De web-types geven vl-share-buttons geen slots. In de code toont hij zijn inhoud in een default slot, na het label Deel:; daar zet je de vl-share-button's.",
+      "source": "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-button",
+      "name": "medium",
+      "text": "Attribuut voor het medium: facebook, twitter, linkedin, googleplus of mail. Het bepaalt het icoon (vl-vi-<medium>), de klasse vl-share-button--<medium> en de naam in de link en in zijn title (Deel op Facebook, Twitter, LinkedIn, Google Plus of mail). De web-types noemen enkel custom-css.",
+      "source": "libs/components/src/block/share-buttons/vl-share-button.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-button",
+      "name": "href",
+      "text": "Attribuut met de bestemming van de link. vl-share-button zet het ongewijzigd op zijn <a> en bouwt zelf geen deel-url op. De web-types noemen enkel custom-css.",
+      "source": "libs/components/src/block/share-buttons/vl-share-button.component.ts"
+    }
+  ]
+}

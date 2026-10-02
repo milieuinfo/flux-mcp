@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "page": "components-block-properties",
+  "inputHash": "3beee373e487",
+  "analysedFor": "2.18.0",
+  "summary": "Documentatie van vl-properties, een lijst van labels met hun waarde (in de shadow DOM een description list), bv. de gegevens van een dossier of een adres. Je vult ze met vl-property en vl-property-data in de inhoud of met de property props; de pagina toont html in labels en waarden, de layout stacked en twee kolommen met column en column--full-width. Met label-width kies je de breedte van de labels, no-padding-bottom haalt de witruimte onder het laatste item weg.",
+  "keywords": [
+    "properties",
+    "vl-properties",
+    "eigenschappen",
+    "kenmerken",
+    "gegevens tonen",
+    "label waarde",
+    "key value",
+    "description list",
+    "definitielijst",
+    "vl-property",
+    "vl-property-data",
+    "stacked",
+    "columns",
+    "label-width",
+    "detail view"
+  ],
+  "examples": {
+    "components-block-properties--properties-default": {
+      "html": "<vl-properties>\n    <vl-property>Woonplaats</vl-property>\n    <vl-property-data>Brussel</vl-property-data>\n    <vl-property>Postcode</vl-property>\n    <vl-property-data>1000</vl-property-data>\n</vl-properties>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlPropertiesComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlPropertiesComponent]);"
+    },
+    "components-block-properties--properties-with-props": {
+      "html": "<vl-properties></vl-properties>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlPropertiesComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlPropertiesComponent]);\n\n// props is een lijst van kolommen, elk met items van labels en data. vl-properties toont de props vóór wat in zijn\n// inhoud staat.\ndocument.querySelector('vl-properties').props = [\n    {\n        class: 'column',\n        items: [{ labels: ['Straat'], data: ['Appelstraat', 'Perenstraat'] }],\n    },\n    {\n        class: 'column',\n        items: [{ labels: ['Gemeente'], data: ['Antwerpen', 'Berchem'] }],\n    },\n];"
+    },
+    "components-block-properties--properties-html-enriched": {
+      "html": "<vl-properties>\n    <vl-property>\n        <vl-icon icon=\"location\" small right-margin></vl-icon>\n        Woonplaats\n    </vl-property>\n    <vl-property-data>\n        <vl-icon icon=\"alert-triangle\" small right-margin></vl-icon>\n        Brussel\n    </vl-property-data>\n    <vl-property>Postcode</vl-property>\n    <vl-property-data>1000</vl-property-data>\n</vl-properties>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlIconComponent } from '@domg-wc/components/atom';\nimport { VlPropertiesComponent } from '@domg-wc/components/block';\n\n// vl-properties kopieert de inhoud naar zijn shadow DOM; registreer ook de componenten die erin staan.\nregisterWebComponents([VlPropertiesComponent, VlIconComponent]);"
+    },
+    "components-block-properties--properties-stacked": {
+      "html": "<vl-properties>\n    <div class=\"stacked\">\n        <vl-property>Woonplaats</vl-property>\n        <vl-property-data>Brussel</vl-property-data>\n        <vl-property>Postcode</vl-property>\n        <vl-property-data>1000</vl-property-data>\n    </div>\n</vl-properties>"
+    },
+    "components-block-properties--properties-columns": {
+      "html": "<vl-properties>\n    <div class=\"column\">\n        <vl-property>Woonplaats</vl-property>\n        <vl-property-data>Brussel</vl-property-data>\n    </div>\n    <div class=\"column\">\n        <vl-property>Postcode</vl-property>\n        <vl-property-data>1000</vl-property-data>\n    </div>\n    <div class=\"column column--full-width\">\n        <vl-property>Gewest</vl-property>\n        <vl-property-data>Brussel</vl-property-data>\n    </div>\n</vl-properties>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-property",
+      "text": "vl-property is geen geregistreerde component maar een markering in de inhoud van vl-properties: vl-properties maakt van elke vl-property een label (<dt>) in zijn shadow DOM, met een kopie van de inhoud, en een nieuwe vl-property na data begint een nieuw item. Ook <label> werkt. Is het eerste kind een <div>, dan leest vl-properties elk kind als een groep met de class van die div (column, column--full-width of stacked). De web-types vermelden vl-property niet.",
+      "source": "libs/components/src/block/properties/vl-properties.builder.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-property-data",
+      "text": "vl-property-data is een markering voor de waarde bij de vl-property ervoor: vl-properties maakt er een <dd> van in zijn shadow DOM. Meerdere vl-property-data na elkaar horen bij hetzelfde label. Ook <data> werkt. De web-types vermelden vl-property-data niet.",
+      "source": "libs/components/src/block/properties/vl-properties.builder.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-properties",
+      "name": "no-clone",
+      "text": "no-clone is deprecated en niet meer nodig: vl-properties houdt zijn shadow DOM zelf synchroon met zijn inhoud. Het attribuut geeft enkel een waarschuwing in de console en verdwijnt in v3. Het staat niet in de web-types en niet op de pagina.",
+      "source": "libs/components/src/block/properties/vl-properties.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-properties",
+      "name": "props",
+      "text": "De pagina spreekt van het props attribuut en belooft onder Met props een mix van die data en de inhoud. De web-types en de argTypes kennen props enkel als property, en de story zet de property (.props) op een vl-properties zonder inhoud, dus toont ze enkel de props. Met inhoud komen de props eerst, daarna wat vl-property en vl-property-data geven.",
+      "source": "libs/components/src/block/properties/stories/vl-properties.stories-doc.mdx"
+    }
+  ]
+}

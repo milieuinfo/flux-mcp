@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "page": "bijdragen-componenten-overzicht",
+  "inputHash": "aa6b2568681e",
+  "analysedFor": "2.20.0",
+  "summary": "Voor het Flux-team: een tabel met de componenten, stijlen en kaart-acties van Flux, met per onderdeel de generatie (legacy, v2, v3-next), de basisklasse, de herkomst van de CSS, hoe uitgebreid de documentatie is, de stand van de WCAG-review en de soorten testen. Handig om te zien welke componenten nog legacy zijn of een openstaand WCAG-ticket hebben.",
+  "keywords": [
+    "componenten overzicht",
+    "component overview",
+    "component status",
+    "generatie",
+    "legacy",
+    "v2",
+    "v3-next",
+    "wcag",
+    "accessibility review",
+    "testen",
+    "documentatie",
+    "litelement",
+    "map actions",
+    "bijdragen",
+    "contributing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-breadcrumb-item",
+      "text": "De rij 'breadcrumb-item' linkt naar de pagina van breadcrumb (components-block-breadcrumb). In 2.20.0 heeft vl-breadcrumb-item een eigen pagina, 'Components - Block/breadcrumb/breadcrumb-item' (components-block-breadcrumb-breadcrumb-item).",
+      "source": "apps/storybook/.storybook/flux-meta-data/json/components-block.meta-data.json"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "Het overzicht noemt header-next (v3-next) en de code registreert het element vl-header-next, maar de web-types van 2.20.0 bevatten het niet.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "Het overzicht noemt footer-next (v3-next) en de code registreert het element vl-footer-next, maar de web-types van 2.20.0 bevatten het niet.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

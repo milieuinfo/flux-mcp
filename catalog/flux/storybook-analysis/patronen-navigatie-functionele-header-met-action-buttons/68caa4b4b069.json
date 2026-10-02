@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "patronen-navigatie-functionele-header-met-action-buttons",
+  "inputHash": "68caa4b4b069",
+  "analysedFor": "2.12.1",
+  "summary": "Patroon voor een vl-functional-header met de acties als knoppen in plaats van de standaard actielinks. Een div met de vl-group stijl in het slot top-right bevat tertiaire vl-buttons met een icoon: Aanmaken met tekst, en bewerken en verwijderen (error) als icoonknop met een label.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "actieknoppen",
+    "action buttons",
+    "header acties",
+    "header actions",
+    "top-right slot",
+    "icoonknop",
+    "icon button",
+    "tertiary button",
+    "bewerken",
+    "verwijderen",
+    "paginaheader",
+    "page header"
+  ],
+  "examples": {
+    "patronen-navigatie-functionele-header-met-action-buttons--functionele-header-met-action-buttons": {
+      "html": "<vl-functional-header title=\"School- en studietoelagen\">\n    <div class=\"vl-group vl-margin--small vl-margin--no-bottom\" slot=\"top-right\">\n        <vl-button tertiary icon=\"add\" label=\"Aanmaken\" onclick=\"javascript:console.log('actie: Aanmaken')\">Aanmaken</vl-button>\n        <vl-button tertiary icon=\"edit\" label=\"edit\" onclick=\"javascript:console.log('actie: edit')\"></vl-button>\n        <vl-button tertiary error icon=\"bin\" label=\"delete\" onclick=\"javascript:console.log('actie: delete')\"></vl-button>\n    </div>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "text": "De knoppen voeren hun actie uit met een inline event handler: onclick=\"javascript:console.log('actie: …')\". De ideale CSP-configuratie in de richtlijn 'Hoe CSP activeren' (richtlijnen-content-security-policy-hoe-csp-activeren) heeft script-src 'self', zonder 'unsafe-inline'; onder zo'n policy blokkeert de browser inline event handlers en doen de knoppen niets. vl-button vuurt bij een klik het event vl-click, waar je met addEventListener naar luistert. Het voorbeeld neemt de code van de pagina ongewijzigd over.",
+      "source": "apps/storybook/docs/f_patronen/navigatie/functionele-header/functionele-header.helpers.ts"
+    }
+  ]
+}

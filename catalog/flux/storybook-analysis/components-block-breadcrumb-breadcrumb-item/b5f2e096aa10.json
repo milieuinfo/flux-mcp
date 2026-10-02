@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "page": "components-block-breadcrumb-breadcrumb-item",
+  "inputHash": "b5f2e096aa10",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-breadcrumb-item, één stap in een vl-breadcrumb. Met type kies je een link (standaard, met href), een knop (type=\"button\", met een eigen click-handler) of tekst (type=\"text\", of zonder type en href), bv. voor de huidige pagina.",
+  "keywords": [
+    "breadcrumb item",
+    "vl-breadcrumb-item",
+    "breadcrumb",
+    "kruimelpad",
+    "broodkruimel",
+    "link",
+    "knop",
+    "button",
+    "tekst",
+    "huidige pagina",
+    "current page",
+    "navigatie"
+  ],
+  "examples": {
+    "components-block-breadcrumb-breadcrumb-item--breadcrumb-default": {
+      "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item href=\"#\">Breadcrumb item</vl-breadcrumb-item>\n</vl-breadcrumb>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlBreadcrumbComponent, VlBreadcrumbItemComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlBreadcrumbComponent, VlBreadcrumbItemComponent]);"
+    },
+    "components-block-breadcrumb-breadcrumb-item--breadcrumb-button": {
+      "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item type=\"button\">Breadcrumb item</vl-breadcrumb-item>\n</vl-breadcrumb>",
+      "js": "// Een item met type=\"button\" doet zelf niets: geef het een click-handler.\ndocument.querySelector('vl-breadcrumb-item[type=\"button\"]').addEventListener('click', () => {\n    console.log('click breadcrumb item');\n});"
+    },
+    "components-block-breadcrumb-breadcrumb-item--breadcrumb-text": {
+      "html": "<vl-breadcrumb>\n    <vl-breadcrumb-item type=\"text\">Breadcrumb item</vl-breadcrumb-item>\n</vl-breadcrumb>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-breadcrumb-item",
+      "name": "type",
+      "text": "In de argTypes van type staat de default onder defaultArgs in plaats van defaultValue, waardoor de API-tabel in Storybook geen default voor type toont; ook de web-types van 2.20.0 geven er geen. In de code is de default 'link': een item met href wordt een link, een item zonder href een tekst.",
+      "source": "libs/components/src/block/breadcrumb/stories/vl-breadcrumb-item.stories-arg.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-breadcrumb-item",
+      "text": "Onder Configuratie staat dat er geen element in de web-types is. vl-breadcrumb-item staat wel in de web-types van 2.20.0, met de attributen custom-css, href en type, maar zijn doc-url wijst naar de pagina Breadcrumb (components-block-breadcrumb--documentatie). De API van vl-breadcrumb-item staat daarom op die pagina.",
+      "source": "libs/components/src/block/block.web-types.json"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "components-block-share-buttons-share-button",
+  "inputHash": "3b65ec2a4dab",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-share-button, één deelknop in een vl-share-buttons rij: medium kiest het kanaal (facebook, twitter, linkedin, googleplus of mail), href de link. De component is deprecated en verdwijnt in v3: gebruik een vl-button met cta-link, icon en label.",
+  "keywords": [
+    "deelknop",
+    "share button",
+    "vl-share-button",
+    "delen",
+    "share",
+    "sociale media",
+    "social media",
+    "facebook",
+    "linkedin",
+    "twitter",
+    "mail",
+    "deprecated"
+  ],
+  "examples": {
+    "components-block-share-buttons-share-button--share-button-default": {
+      "html": "<vl-share-buttons>\n    <vl-share-button href=\"#\" medium=\"facebook\"></vl-share-button>\n</vl-share-buttons>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlShareButton, VlShareButtonsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlShareButtonsComponent, VlShareButton]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-buttons",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de vl-share-button in een vl-share-buttons, zoals de story. De web-types geven vl-share-buttons geen slots; in de code toont hij het label Deel: en daarna zijn inhoud in een default slot.",
+      "source": "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "page": "components-compliance-footer-next",
+  "inputHash": "0f5a54ade06d",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-footer-next, dat de global footer-widget (v5) van Digitaal Vlaanderen onderaan in de body injecteert, met de richtlijnen voor de tekst van de footer; het is de versie voor de widget v5, naast vl-footer. Je hebt een identifier van Digitaal Vlaanderen nodig en development kiest hun ontwikkel-servers.",
+  "keywords": [
+    "footer",
+    "vl-footer-next",
+    "voettekst",
+    "global footer",
+    "globale footer",
+    "global footer v5",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "widget",
+    "vlaamse overheid",
+    "page footer",
+    "identifier",
+    "ready event"
+  ],
+  "examples": {
+    "components-compliance-footer-next--footer-default": {
+      "html": "<vl-footer-next development identifier=\"0337f8dc-3266-4e7a-8f4a-95fd65189e5b\"></vl-footer-next>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFooterNext } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlFooterNext]);\n\n// In 2.6.0 komt ready niet op vl-footer-next zelf maar op window: de component geeft zijn methode onReady\n// ongebonden door aan window.addEventListener, dus this is daarin window.\nwindow.addEventListener('ready', () => {\n    console.log('ready');\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De code registreert vl-footer-next (@webComponent('vl-footer-next')), maar het element staat niet in de web-types van 2.6.0, dus de pagina heeft geen API-tabel. Uit de code en de argTypes: de attributen development (standaard false; kiest widgets.tni-vlaanderen.be in plaats van widgets.vlaanderen.be) en identifier, allebei gereflecteerd, en het event ready. De component zet een footer#footer__container onderaan in de body en mount de widget in het div#footer daarin.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-footer-next",
+      "name": "ready",
+      "text": "De argTypes geven ready als event van vl-footer-next en de story luistert er met @ready op het element naar, maar in 2.6.0 komt het event daar niet aan. De component geeft zijn methode onReady ongebonden door aan window.addEventListener('widget.global_footer.mounted', ...), dus this is daarin window en this.dispatchEvent(new CustomEvent('ready')) vuurt ready af op window. De Cypress-test van de component luistert daarom op window; doe dat in 2.6.0 ook. vl-header-next heeft dezelfde fout. Vanaf 2.19.0 (FLUX-788) volgt ready op het element zelf.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "styles-kleurenpalet",
+  "inputHash": "85ee28710d10",
+  "analysedFor": "2.7.0",
+  "summary": "Overzicht van de kleuren van Flux als globale CSS-variabelen (var(--vl-color--…)): hoofdkleuren, statuskleuren en kleursets voor kaders, de themakleuren van Departement Omgeving en reeksen voor grafieken. Met de contrastregels van WCAG en hoe de grafiekkleuren eruitzien bij kleurenblindheid.",
+  "keywords": [
+    "kleuren",
+    "kleurenpalet",
+    "color palette",
+    "colors",
+    "css-variabelen",
+    "css variables",
+    "design tokens",
+    "--vl-color",
+    "statuskleuren",
+    "themakleuren",
+    "theme colors",
+    "grafiekkleuren",
+    "chart colors",
+    "contrast",
+    "wcag"
+  ],
+  "examples": {},
+  "notes": []
+}

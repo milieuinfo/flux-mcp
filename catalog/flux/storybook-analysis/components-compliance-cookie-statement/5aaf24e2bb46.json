@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "page": "components-compliance-cookie-statement",
+  "inputHash": "5aaf24e2bb46",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-cookie-statement, dat een volledige cookieverklaring van Departement Omgeving opbouwt: functionele header, versie en datum, cookiebeleid, uitleg over cookies, de lijst van gebruikte cookies en contactgegevens. De vijf standaardcookies (vl-header-cookie, vl-header-authentication-cookie, vl-authentication-cookie, vl-jsessionid-cookie en vl-sticky-session-cookie) staan er altijd in; eigen cookies voeg je toe als vl-cookie-kinderen. Het slot header vervangt de standaardheader; disable-back-link en hide-back-link werken dan niet meer.",
+  "keywords": [
+    "cookieverklaring",
+    "cookie statement",
+    "vl-cookie-statement",
+    "vl-cookie",
+    "cookiebeleid",
+    "cookie policy",
+    "cookies",
+    "gebruikte cookies",
+    "privacy",
+    "compliance pagina",
+    "functional header"
+  ],
+  "examples": {
+    "components-compliance-cookie-statement--cookie-statement-default": {
+      "html": "<vl-cookie-statement>\n    <vl-cookie\n        title=\"Captcha contactformulier\"\n        name=\"NID\"\n        purpose=\"reCaptcha is een beveiligingsmaatregel die controleert of u een legitieme bezoeker bent, om te voorkomen dat een bot of script het formulier misbruikt om spam mee te versturen.\"\n        domain=\"google.com\"\n        processor=\"Google\"\n        validity=\"Permanente cookie met een geldigheid van 6 maanden\"\n    ></vl-cookie>\n    <vl-cookie\n        title=\"Bestellen publicaties Vlaamse overheid\"\n        name=\"SSESS* (vb. “SSESS8d910012bf7d5f60012be2880f590bf0”)\"\n        purpose=\"Bijhouden van het winkelmandje met bestelde publicaties en succesvol afhandelen van het bestel- en betalingsproces.\"\n        domain=\"publicaties.vlaanderen.be\"\n        processor=\"Vlaamse overheid\"\n        validity=\"Permanente cookie met een geldigheid van 3 weken\"\n    ></vl-cookie>\n</vl-cookie-statement>"
+    },
+    "components-compliance-cookie-statement--cookie-statement-header-slot": {
+      "html": "<vl-cookie-statement>\n    <vl-cookie\n        title=\"Captcha contactformulier\"\n        name=\"NID\"\n        purpose=\"reCaptcha is een beveiligingsmaatregel die controleert of u een legitieme bezoeker bent, om te voorkomen dat een bot of script het formulier misbruikt om spam mee te versturen.\"\n        domain=\"google.com\"\n        processor=\"Google\"\n        validity=\"Permanente cookie met een geldigheid van 6 maanden\"\n    ></vl-cookie>\n    <vl-cookie\n        title=\"Bestellen publicaties Vlaamse overheid\"\n        name=\"SSESS* (vb. “SSESS8d910012bf7d5f60012be2880f590bf0”)\"\n        purpose=\"Bijhouden van het winkelmandje met bestelde publicaties en succesvol afhandelen van het bestel- en betalingsproces.\"\n        domain=\"publicaties.vlaanderen.be\"\n        processor=\"Vlaamse overheid\"\n        validity=\"Permanente cookie met een geldigheid van 3 weken\"\n    ></vl-cookie>\n    <vl-functional-header\n        slot=\"header\"\n        title=\"Departement Omgeving\"\n        sub-title=\"Cookieverklaring\"\n        link=\"https://omgeving.vlaanderen.be\"\n        back=\"Start\"\n    ></vl-functional-header>\n</vl-cookie-statement>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie",
+      "name": "title",
+      "text": "De titel van de cookie: vl-cookie toont hem als h3 (vl-title) boven de eigenschappen. Omdat title ook het globale HTML-attribuut is, toont de browser de waarde als tooltip. vl-cookie leest zijn attributen enkel bij het aanmaken; de web-types kennen voor vl-cookie geen enkel attribuut.",
+      "source": "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie",
+      "name": "name",
+      "text": "De naam van de cookie, getoond bij 'Naam'. Enkel gelezen bij het aanmaken van het element.",
+      "source": "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie",
+      "name": "purpose",
+      "text": "Het doel van de cookie, getoond bij 'Doel'. Enkel gelezen bij het aanmaken van het element.",
+      "source": "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie",
+      "name": "domain",
+      "text": "Het domein van de cookie, getoond bij 'Domein'. Enkel gelezen bij het aanmaken van het element.",
+      "source": "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie",
+      "name": "processor",
+      "text": "De verwerker van de cookie, getoond bij 'Verwerker'. Enkel gelezen bij het aanmaken van het element.",
+      "source": "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie",
+      "name": "validity",
+      "text": "De geldigheid van de cookie, getoond bij 'Geldigheid'. Enkel gelezen bij het aanmaken van het element.",
+      "source": "libs/components/src/compliance/cookie-statement/cookie/vl-cookie.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-cookie-statement",
+      "name": "[default]",
+      "text": "De web-types geven vl-cookie-statement enkel het slot header. In de code staat een default slot in de sectie 'Gebruikte cookies', na de vijf standaardcookies: daar verschijnen de vl-cookie-elementen die je als kind van vl-cookie-statement toevoegt, zoals in de stories.",
+      "source": "libs/components/src/compliance/cookie-statement/vl-cookie-statement.component.ts"
+    }
+  ]
+}

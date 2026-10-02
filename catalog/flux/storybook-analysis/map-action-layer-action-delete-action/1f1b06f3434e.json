@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "map-action-layer-action-delete-action",
+  "inputHash": "1f1b06f3434e",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-map-delete-action, een kaartactie waarmee de gebruiker features verwijdert van de vl-map-features-layer waarin de actie staat, of van de laag die je met het attribuut layer aanwijst: door op een feature te klikken of er een kader rond te trekken. De features onder de muis of in het kader krijgen standaard een rode stijl; een vl-map-layer-style in de actie geeft ze een eigen stijl.",
+  "keywords": [
+    "delete action",
+    "vl-map-delete-action",
+    "feature verwijderen",
+    "delete feature",
+    "remove feature",
+    "verwijderen",
+    "wissen",
+    "box select",
+    "kader selecteren",
+    "kaartactie",
+    "map action",
+    "vl-map-features-layer",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-layer-action-delete-action--map-delete-action-default": {
+      "html": "<!-- De actie verwijdert features van de vl-map-features-layer waarin ze staat. De features staan in Lambert 72, daarom\n     projection-code=\"EPSG:31370\" op een kaart in Lambert 2008. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-delete-action></vl-map-delete-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n        <vl-map-layer-circle-style border-size=\"2\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDeleteAction,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerStyle,\n} from '@domg-wc/map';\n\n// De features als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370): een punt, een lijn en een polygoon.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [210000, 190000] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: {\n                type: 'LineString',\n                coordinates: [\n                    [170000, 170000],\n                    [150000, 206000],\n                ],\n            },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [44000, 171000],\n                        [100000, 171000],\n                        [100000, 205000],\n                        [44000, 205000],\n                        [44000, 171000],\n                    ],\n                ],\n            },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-delete-action').active = true;"
+    },
+    "map-action-layer-action-delete-action--map-delete-action-custom-style": {
+      "html": "<!-- Een vl-map-layer-style in de actie geeft zijn stijl aan de actie: de lijn en de polygoon onder de muis of in het\n     kader worden geel in plaats van rood. vl-map-layer-style heeft geen stijl voor punten: het punt onder de muis of\n     in het kader wordt dan niet getekend. De vl-map-layer-style en vl-map-layer-circle-style direct in de laag bepalen de stijl\n     van de features op de laag. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-delete-action>\n            <vl-map-layer-style\n                text-color=\"#000\"\n                color=\"rgba(255, 230, 21, 0.2)\"\n                border-color=\"rgba(255, 230, 21, 1)\"\n                border-size=\"2\"\n            ></vl-map-layer-style>\n        </vl-map-delete-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n        <vl-map-layer-circle-style border-size=\"2\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDeleteAction,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerStyle,\n} from '@domg-wc/map';\n\n// De features als GeoJSON-object, met coördinaten in Lambert 72 (EPSG:31370): een punt, een lijn en een polygoon.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [210000, 190000] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: {\n                type: 'LineString',\n                coordinates: [\n                    [170000, 170000],\n                    [150000, 206000],\n                ],\n            },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [44000, 171000],\n                        [100000, 171000],\n                        [100000, 205000],\n                        [44000, 205000],\n                        [44000, 171000],\n                    ],\n                ],\n            },\n        },\n    ],\n};\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-delete-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-features-layer",
+      "name": "features",
+      "text": "De web-types geven de property features het type string, maar de stories van deze pagina geven er een GeoJSON-object (een FeatureCollection) aan. De setter zet dat object met JSON.stringify in het attribuut features; een string als waarde zou dus dubbel gecodeerd worden. Geef de property een object, of zet de GeoJSON als string in het attribuut features. De getter geeft de OpenLayers-features van de laag terug, geen string.",
+      "source": "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "page": "beheren-repositories",
+  "inputHash": "1d4d02f8e5f8",
+  "analysedFor": "2.0.2",
+  "summary": "Voor het Flux-team: de drie GitHub-repositories van Flux. uigov-web-components bevat de broncode, Storybook en de playground-toepassingen; uigov-assets publiceert externe assets (govflanders-font, govflanders-style en de theming van TinyMCE) op de CDN van Departement Omgeving; uigov-builds bevat de geversioneerde documentatie.",
+  "keywords": [
+    "repositories",
+    "repo",
+    "github",
+    "uigov-web-components",
+    "uigov-assets",
+    "uigov-builds",
+    "monorepo",
+    "cdn",
+    "govflanders-font",
+    "govflanders-style",
+    "tinymce",
+    "icon font",
+    "fonts",
+    "beheren"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link naar 'Beheren/Documentatie Publicatie' (beheren-documentatie-publicatie) wijst naar een pagina die in 2.0.2 niet bestaat. De publicatie van de geversioneerde documentatie in uigov-builds staat op 'Beheren/Storybook Publicatie' (beheren-storybook-publicatie).",
+      "source": "apps/storybook/docs/c_beheren/1_repositories.stories.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat TinyMCE in vl-textarea gebruikt wordt, met de theming voor v5.10.6 onder 'tinymce' en die voor v6.8.3 onder 'tinymce-next'. In 2.0.2 gebruikt vl-textarea-rich TinyMCE, niet vl-textarea, in versie 6.8.3 (package.json, libs/components/package.json). Die laadt TinyMCE van https://cdn.omgeving.vlaanderen.be/domg/tinymce/6.8.3 en de content-css van https://cdn.omgeving.vlaanderen.be/domg/govflanders-style/14.1.0/custom/tinymce.css (libs/components/src/form/textarea-rich/vl-textarea-rich.component.ts); 'tinymce-next' en 5.10.6 komen verder nergens in libs/, resources/, apps/storybook/ of package.json voor.",
+      "source": "apps/storybook/docs/c_beheren/1_repositories.stories.mdx"
+    }
+  ]
+}

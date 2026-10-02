@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "page": "styles-layout-afnemers-stacked",
+  "inputHash": "6b3ad262b026",
+  "analysedFor": "2.7.0",
+  "summary": "CSS-klassen die verticale witruimte (row-gap) zetten tussen de kinderen van een flexbox- of grid-container, bv. een vl-grid: vl-stacked-small (1.5rem), vl-stacked-medium (3rem) en vl-stacked-large (6rem, op schermen tot 1023px 3rem). Zet de klasse op de parent; ze maakt zelf geen flexbox of grid.",
+  "keywords": [
+    "stacked",
+    "vl-stacked-small",
+    "vl-stacked-medium",
+    "vl-stacked-large",
+    "stack",
+    "stapelen",
+    "row-gap",
+    "gap",
+    "witruimte",
+    "whitespace",
+    "vertical spacing",
+    "grid",
+    "vl-grid",
+    "flexbox"
+  ],
+  "examples": {
+    "styles-layout-afnemers-stacked--stacked-large": {
+      "html": "<style>\n    /* Demo-stijl van de story: maakt de lege kolommen zichtbaar als lijnen. */\n    .vl-grid .vl-column {\n        background-color: mediumspringgreen;\n        border: lightseagreen 2px solid;\n    }\n</style>\n<!-- vl-stacked-large zet de row-gap van de grid op 6rem, op schermen tot 1023px op 3rem. -->\n<div class=\"vl-grid vl-stacked-large\">\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n</div>"
+    },
+    "styles-layout-afnemers-stacked--stacked-medium": {
+      "html": "<style>\n    /* Demo-stijl van de story: maakt de lege kolommen zichtbaar als lijnen. */\n    .vl-grid .vl-column {\n        background-color: mediumspringgreen;\n        border: lightseagreen 2px solid;\n    }\n</style>\n<!-- vl-stacked-medium zet de row-gap van de grid op 3rem. -->\n<div class=\"vl-grid vl-stacked-medium\">\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n</div>"
+    },
+    "styles-layout-afnemers-stacked--stacked-small": {
+      "html": "<style>\n    /* Demo-stijl van de story: maakt de lege kolommen zichtbaar als lijnen. */\n    .vl-grid .vl-column {\n        background-color: mediumspringgreen;\n        border: lightseagreen 2px solid;\n    }\n</style>\n<!-- vl-stacked-small zet de row-gap van de grid op 1.5rem; zonder de klasse is die van een vl-grid 1vmax. -->\n<div class=\"vl-grid vl-stacked-small\">\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n    <div class=\"vl-column vl-column--8 vl-column--start-3\"></div>\n</div>"
+    }
+  },
+  "notes": []
+}

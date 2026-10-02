@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "map-layer-wmts-layer",
+  "inputHash": "309c3da6fe55",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-wmts-layer, een WMTS-kaartlaag in een vl-map, bv. een laag van de GRB-WMTS van geo.api.vlaanderen.be. Je geeft url en layer mee; de component bouwt zelf het tegelraster op de projectie van de kaart (Lambert 72) en gebruikt zonder matrix-set de matrix set BPL72VL.",
+  "keywords": [
+    "wmts",
+    "wmts layer",
+    "vl-map-wmts-layer",
+    "wmts-laag",
+    "web map tile service",
+    "tegels",
+    "tiles",
+    "matrix set",
+    "matrix-set",
+    "grb",
+    "kaartlaag",
+    "map layer",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-layer-wmts-layer--map-wmts-layer-default": {
+      "html": "<!-- De laag toont de laag grb_sel van de GRB-WMTS boven de grijze GRB-basiskaart. Zet de laag rechtstreeks in de\n     vl-map: ze neemt de projectie van de kaart (Lambert 72). Zonder matrix-set gebruikt de component BPL72VL. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-wmts-layer\n        layer=\"grb_sel\"\n        name=\"GRB Wegenkaart\"\n        url=\"https://geo.api.vlaanderen.be/GRB/wmts\"\n    ></vl-map-wmts-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-wmts-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-wmts-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

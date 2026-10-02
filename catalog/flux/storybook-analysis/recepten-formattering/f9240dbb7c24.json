@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "page": "recepten-formattering",
+  "inputHash": "f9240dbb7c24",
+  "analysedFor": "2.20.0",
+  "summary": "De helper-functies uit @domg-wc/common om getallen, bedragen, percentages, datums en tijden te formatteren volgens nl-BE en de taalrichtlijnen van Vlaanderen: formatNumber, formatCurrency, formatPercentage, formatDate, formatTime, formatReadableDate en formatDaysFromNow. Met hun opties, zoals decimals, thousandsSeparator, currency, fullYear, dateSeparator en seconds, en voorbeelden van de uitvoer.",
+  "keywords": [
+    "formattering",
+    "formatting",
+    "formatnumber",
+    "formatcurrency",
+    "formatpercentage",
+    "formatdate",
+    "formattime",
+    "formatreadabledate",
+    "formatdaysfromnow",
+    "nl-be",
+    "getallen",
+    "currency",
+    "datum",
+    "date format",
+    "thousands separator"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De signatuur van formatDate op de pagina toont enkel options?: { fullYear: boolean; }. In 2.20.0 zijn de opties { fullYear?: boolean; dateSeparator?: '.' | '/' | '-' | ' ' | '\\u00A0' }: fullYear is optioneel, en dateSeparator, die de tekst en de voorbeelden wel gebruiken, ontbreekt in de signatuur. Een gewone spatie als dateSeparator wordt een niet-breekbare spatie.",
+      "source": "libs/common/src/format/format.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De voorbeelden formatPercentage(0.1234, 2) en formatPercentage(0.5, 2) geven een getal als tweede argument, maar formatPercentage verwacht een options-object, zoals de signatuur op de pagina zelf toont. Met een getal is options.decimals undefined en krijg je de standaard zonder decimalen: '12%' en '50%', niet '12,34%' en '50,00%'; in TypeScript is het een typefout. Schrijf formatPercentage(0.1234, { decimals: 2 }), zoals de tests in format.cy.ts.",
+      "source": "libs/common/src/format/format.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De signaturen van formatNumber en formatPercentage op de pagina geven thousandsSeparator het type string. In 2.20.0 is het type beperkt tot '.' | '' | ' ' | '\\u00A0'; een andere string is een typefout in TypeScript. Een gewone spatie wordt een niet-breekbare spatie.",
+      "source": "libs/common/src/format/format.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Volgens de pagina werkt thousandsSeparator bij formatPercentage zoals bij formatNumber, dat duizendtallen pas scheidt vanaf vijf cijfers. Enkel formatNumber zet daarvoor useGrouping op 'min2'; formatPercentage gebruikt de standaard van nl-BE en scheidt ze al vanaf vier cijfers. formatPercentage(12.34) geeft dus '1 234%' (met een niet-breekbare spatie), terwijl formatNumber(1234) '1234' geeft.",
+      "source": "libs/common/src/format/format.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Volgens de pagina geven formatDate, formatTime en formatReadableDate bij een argument dat geen Date is de invoer als string terug. De code controleert enkel typeof date !== 'object', en typeof null is 'object': null gaat naar Intl.DateTimeFormat, dat het als tijdstempel 0 formatteert. formatDate(null) geeft dus 1 januari 1970 in de lokale tijdzone, bv. '01.01.70' in België, en niet 'null'. Controleer zelf op null voor je formatteert.",
+      "source": "libs/common/src/format/format.ts"
+    }
+  ]
+}

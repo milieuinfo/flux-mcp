@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "page": "map-action-draw-action-draw-line-action",
+  "inputHash": "f064d46fdaa3",
+  "analysedFor": "2.14.0",
+  "summary": "Documentatie van vl-map-draw-line-action, een kaartactie waarmee de gebruiker een lijn tekent op de vl-map-features-layer waarin de actie staat, of op de laag die je met het attribuut layer aanwijst. Met snapping klikt het tekenen vast aan bestaande features: van die laag zelf, of van de vl-map-wfs-layer-elementen die je in de actie zet.",
+  "keywords": [
+    "draw line action",
+    "vl-map-draw-line-action",
+    "lijn tekenen",
+    "draw line",
+    "linestring",
+    "tekenen op kaart",
+    "draw",
+    "snapping",
+    "snap",
+    "kaartactie",
+    "map action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-draw-action-draw-line-action--map-draw-line-action-default": {
+      "html": "<!-- De actie tekent op de vl-map-features-layer waarin ze staat; vl-map-layer-style bepaalt de stijl van de\n     getekende lijnen op die laag. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-line-action></vl-map-draw-line-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapDrawLineAction, VlMapFeaturesLayer, VlMapLayerStyle } from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-draw-line-action').active = true;"
+    },
+    "map-action-draw-action-draw-line-action--map-draw-line-action-snapping": {
+      "html": "<!-- Met snapping en een vl-map-wfs-layer in de actie snapt het tekenen op de features van die WFS-laag, binnen\n     snapping-pixel-tolerance pixels. De WFS-laag komt niet zelf op de kaart: zolang de actie actief is, toont ze de\n     features in een eigen laag. Door max-resolution=\"4\" zijn ze pas zichtbaar als je inzoomt tot een resolutie\n     onder 4. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-line-action snapping snapping-pixel-tolerance=\"1000\">\n            <vl-map-wfs-layer\n                name=\"Stromend waterlichamen\"\n                url=\"https://geoserver.vmm.be/geoserver/vmm/wfs\"\n                layers=\"owl_l\"\n                max-resolution=\"4\"\n            ></vl-map-wfs-layer>\n        </vl-map-draw-line-action>\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDrawLineAction,\n    VlMapFeaturesLayer,\n    VlMapLayerStyle,\n    VlMapWfsLayer,\n} from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-draw-line-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-draw-line-action",
+      "text": "vl-map-draw-line-action staat wel in de web-types van 2.14.0, met de attributen default-active, layer, snapping en snapping-pixel-tolerance en de property active, maar zijn doc-url wijst naar map-action-draw-action-draw-action-style in plaats van naar deze pagina. Daarom toont deze pagina 'geen element in de web-types' in plaats van de API; de argTypes van de stories (vl-map-draw-action.stories-arg.ts) komen overeen met wat de web-types voor vl-map-draw-line-action geven.",
+      "source": "libs/map/map.web-types.json"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-draw-line-action",
+      "name": "snapping-pixel-tolerance",
+      "text": "De web-types en de argTypes zeggen dat snapping-pixel-tolerance (standaard 10) bepaalt binnen hoeveel pixels er gesnapt wordt. De code gebruikt het attribuut echter enkel als er kaartlagen (zoals vl-map-wfs-layer) in de actie staan. Zonder zulke lagen snapt de actie op haar eigen laag met een vaste tolerantie van 7 pixels (VlSnapInteraction in libs/map/src/actions/snap/snap-interaction.ts) en heeft snapping-pixel-tolerance geen effect.",
+      "source": "libs/map/src/components/action/draw-action/vl-map-draw-action.ts"
+    }
+  ]
+}

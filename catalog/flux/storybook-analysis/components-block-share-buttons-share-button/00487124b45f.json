@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "page": "components-block-share-buttons-share-button",
+  "inputHash": "00487124b45f",
+  "analysedFor": "2.11.0",
+  "summary": "Documentatie van vl-share-button, één deelknop in een vl-share-buttons rij: medium kiest het kanaal (facebook, twitter, linkedin, googleplus of mail), href de link. De knop toont het icoon en de naam van het kanaal, met als title Deel op <kanaal>.",
+  "keywords": [
+    "deelknop",
+    "share button",
+    "vl-share-button",
+    "delen",
+    "share",
+    "sociale media",
+    "social media",
+    "facebook",
+    "linkedin",
+    "twitter",
+    "mail"
+  ],
+  "examples": {
+    "components-block-share-buttons-share-button--share-button-default": {
+      "html": "<vl-share-buttons>\n    <vl-share-button href=\"#\" medium=\"facebook\"></vl-share-button>\n</vl-share-buttons>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlShareButton, VlShareButtonsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlShareButtonsComponent, VlShareButton]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-button",
+      "name": "medium",
+      "text": "Het kanaal van de knop: facebook, twitter, linkedin, googleplus of mail. Het bepaalt het icoon, de kleur en de naam in de knop, en de title Deel op <naam>. De argTypes en de story gebruiken medium, maar de web-types van 2.11.0 vermelden voor vl-share-button enkel custom-css.",
+      "source": "libs/components/src/block/share-buttons/vl-share-button.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-button",
+      "name": "href",
+      "text": "De link van de knop, bv. de deel-url van het kanaal; vl-share-button zet ze op zijn <a>. De argTypes en de story gebruiken href, maar de web-types van 2.11.0 vermelden het niet.",
+      "source": "libs/components/src/block/share-buttons/vl-share-button.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-buttons",
+      "name": "[default]",
+      "text": "Het voorbeeld zet de vl-share-button in een vl-share-buttons, zoals de story. De web-types geven vl-share-buttons geen slots; in de code toont hij het label Deel: en daarna zijn inhoud in een default slot.",
+      "source": "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-share-button",
+      "text": "De doc-url van vl-share-button in de web-types wijst naar components-block-share-buttons-button--documentatie, een pagina die in 2.11.0 niet bestaat. De documentatie van vl-share-button staat op components-block-share-buttons-share-button--documentatie. De verkeerde url staat in de configuratie van de web-types-generator. Het element heeft er ook geen description.",
+      "source": "resources/generate-web-types/wt-config-build/components-block.wt-config.ts"
+    }
+  ]
+}

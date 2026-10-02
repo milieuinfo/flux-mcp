@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "page": "map-legend-item",
+  "inputHash": "364708b24c15",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-legend-item, een item in een vl-map-legend waarmee je zelf bepaalt wat de legende toont. Zonder inhoud toont het item het standaardicoon en -label van de laag of stijl in layer, eventueel met een tekst in het icoon (icon-text); met de slots icon en label geef je een eigen icoon en label. Zodra de legende een vl-map-legend-item bevat, toont ze enkel nog die items.",
+  "keywords": [
+    "legende item",
+    "legend item",
+    "vl-map-legend-item",
+    "legende",
+    "legend",
+    "custom legend",
+    "eigen legende",
+    "icoon",
+    "icon",
+    "label",
+    "icon-text",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-legend-item--map-legend-item-icon-label": {
+      "html": "<!-- Met eigen inhoud in de slots toont de legende het item zoals het is: een paars vierkant en 'Custom label'. Het\n     standaarditem van Openbaar onderzoek wordt dan niet gebruikt. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer\n        name=\"Shapes\"\n        features='{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[153055,203908]},\"properties\":{\"styleId\":\"style-1\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[141000,200908]},\"properties\":{\"styleId\":\"style-2\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[147055,197908],[157055,197908],[157055,187908],[147055,187908],[147055,197908]]]},\"properties\":{\"styleId\":\"style-3\"}}]}'\n        projection-code=\"EPSG:31370\"\n    >\n        <vl-map-layer-circle-style\n            id=\"style-1\"\n            name=\"Openbaar onderzoek\"\n            color=\"#ffe615\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-circle-style\n            id=\"style-2\"\n            name=\"Beslissing\"\n            color=\"red\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-style\n            id=\"style-3\"\n            name=\"Wateroppervlaktes\"\n            color=\"rgba(255,0,0,0.5)\"\n            border-color=\"rgba(255,255,100,1)\"\n            border-size=\"2\"\n            text-feature-attribute-name=\"label\"\n            text-background-color=\"rgba(0,0,255,0.2)\"\n            text-border-color=\"rgba(0,255,0,1)\"\n            text-border-size=\"3\"\n            text-color=\"rgba(20,50,100,1)\"\n            text-offset-x=\"10\"\n            text-offset-y=\"-10\"\n            text-size=\"13px\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n    <vl-map-legend>\n        <vl-map-legend-item layer=\"Openbaar onderzoek\">\n            <span slot=\"label\">Custom label</span>\n            <span slot=\"icon\"><div style=\"height: 0.8em; width: 0.8em; border: 1px solid #000; background-color:purple;\"></div></span>\n        </vl-map-legend-item>\n    </vl-map-legend>\n</vl-map>"
+    },
+    "map-legend-item--map-legend-item-icon": {
+      "html": "<!-- Enkel het slot icon: de legende toont het paarse vierkant zonder label. Zodra het item een kindelement heeft,\n     gebruikt de legende het standaardicoon en -label van Wateroppervlaktes niet meer. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer\n        name=\"Shapes\"\n        features='{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[153055,203908]},\"properties\":{\"styleId\":\"style-1\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[141000,200908]},\"properties\":{\"styleId\":\"style-2\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[147055,197908],[157055,197908],[157055,187908],[147055,187908],[147055,197908]]]},\"properties\":{\"styleId\":\"style-3\"}}]}'\n        projection-code=\"EPSG:31370\"\n    >\n        <vl-map-layer-circle-style\n            id=\"style-1\"\n            name=\"Openbaar onderzoek\"\n            color=\"#ffe615\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-circle-style\n            id=\"style-2\"\n            name=\"Beslissing\"\n            color=\"red\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-style\n            id=\"style-3\"\n            name=\"Wateroppervlaktes\"\n            color=\"rgba(255,0,0,0.5)\"\n            border-color=\"rgba(255,255,100,1)\"\n            border-size=\"2\"\n            text-feature-attribute-name=\"label\"\n            text-background-color=\"rgba(0,0,255,0.2)\"\n            text-border-color=\"rgba(0,255,0,1)\"\n            text-border-size=\"3\"\n            text-color=\"rgba(20,50,100,1)\"\n            text-offset-x=\"10\"\n            text-offset-y=\"-10\"\n            text-size=\"13px\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n    <vl-map-legend>\n        <vl-map-legend-item layer=\"Wateroppervlaktes\">\n            <span slot=\"icon\"><div style=\"height: 0.8em; width: 0.8em; border: 1px solid #000; background-color:purple;\"></div></span>\n        </vl-map-legend-item>\n    </vl-map-legend>\n</vl-map>"
+    },
+    "map-legend-item--map-legend-item-label": {
+      "html": "<!-- Enkel het slot label: de legende toont 'Custom label' zonder icoon. Zodra het item een kindelement heeft,\n     gebruikt de legende het standaardicoon en -label van Wateroppervlaktes niet meer. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer\n        name=\"Shapes\"\n        features='{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[153055,203908]},\"properties\":{\"styleId\":\"style-1\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[141000,200908]},\"properties\":{\"styleId\":\"style-2\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[147055,197908],[157055,197908],[157055,187908],[147055,187908],[147055,197908]]]},\"properties\":{\"styleId\":\"style-3\"}}]}'\n        projection-code=\"EPSG:31370\"\n    >\n        <vl-map-layer-circle-style\n            id=\"style-1\"\n            name=\"Openbaar onderzoek\"\n            color=\"#ffe615\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-circle-style\n            id=\"style-2\"\n            name=\"Beslissing\"\n            color=\"red\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-style\n            id=\"style-3\"\n            name=\"Wateroppervlaktes\"\n            color=\"rgba(255,0,0,0.5)\"\n            border-color=\"rgba(255,255,100,1)\"\n            border-size=\"2\"\n            text-feature-attribute-name=\"label\"\n            text-background-color=\"rgba(0,0,255,0.2)\"\n            text-border-color=\"rgba(0,255,0,1)\"\n            text-border-size=\"3\"\n            text-color=\"rgba(20,50,100,1)\"\n            text-offset-x=\"10\"\n            text-offset-y=\"-10\"\n            text-size=\"13px\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n    <vl-map-legend>\n        <vl-map-legend-item layer=\"Wateroppervlaktes\">\n            <span slot=\"label\">Custom label</span>\n        </vl-map-legend-item>\n    </vl-map-legend>\n</vl-map>"
+    },
+    "map-legend-item--map-legend-item-icon-text": {
+      "html": "<!-- Zonder slots, met icon-text: de legende toont het standaarditem van de stijl Wateroppervlaktes, met de tekst W in\n     het icoon, in de text-color van die stijl. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer\n        name=\"Shapes\"\n        features='{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[153055,203908]},\"properties\":{\"styleId\":\"style-1\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[141000,200908]},\"properties\":{\"styleId\":\"style-2\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[147055,197908],[157055,197908],[157055,187908],[147055,187908],[147055,197908]]]},\"properties\":{\"styleId\":\"style-3\"}}]}'\n        projection-code=\"EPSG:31370\"\n    >\n        <vl-map-layer-circle-style\n            id=\"style-1\"\n            name=\"Openbaar onderzoek\"\n            color=\"#ffe615\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-circle-style\n            id=\"style-2\"\n            name=\"Beslissing\"\n            color=\"red\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-style\n            id=\"style-3\"\n            name=\"Wateroppervlaktes\"\n            color=\"rgba(255,0,0,0.5)\"\n            border-color=\"rgba(255,255,100,1)\"\n            border-size=\"2\"\n            text-feature-attribute-name=\"label\"\n            text-background-color=\"rgba(0,0,255,0.2)\"\n            text-border-color=\"rgba(0,255,0,1)\"\n            text-border-size=\"3\"\n            text-color=\"rgba(20,50,100,1)\"\n            text-offset-x=\"10\"\n            text-offset-y=\"-10\"\n            text-size=\"13px\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n    <vl-map-legend>\n        <vl-map-legend-item layer=\"Wateroppervlaktes\" icon-text=\"W\"></vl-map-legend-item>\n    </vl-map-legend>\n</vl-map>"
+    },
+    "map-legend-item--map-legend-item-default": {
+      "html": "<!-- Een vl-map-legend-item zonder kindelementen toont het standaardicoon en -label uit de legende. De laag Shapes\n     heeft meer stijlen, dus verwijst layer naar de name van een stijl: hier Wateroppervlaktes. Omdat de legende een\n     vl-map-legend-item bevat, toont ze enkel dat item. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer\n        name=\"Shapes\"\n        features='{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[153055,203908]},\"properties\":{\"styleId\":\"style-1\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[141000,200908]},\"properties\":{\"styleId\":\"style-2\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[147055,197908],[157055,197908],[157055,187908],[147055,187908],[147055,197908]]]},\"properties\":{\"styleId\":\"style-3\"}}]}'\n        projection-code=\"EPSG:31370\"\n    >\n        <vl-map-layer-circle-style\n            id=\"style-1\"\n            name=\"Openbaar onderzoek\"\n            color=\"#ffe615\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-circle-style\n            id=\"style-2\"\n            name=\"Beslissing\"\n            color=\"red\"\n            size=\"5\"\n            border-color=\"#000\"\n            border-size=\"1\"\n        ></vl-map-layer-circle-style>\n        <vl-map-layer-style\n            id=\"style-3\"\n            name=\"Wateroppervlaktes\"\n            color=\"rgba(255,0,0,0.5)\"\n            border-color=\"rgba(255,255,100,1)\"\n            border-size=\"2\"\n            text-feature-attribute-name=\"label\"\n            text-background-color=\"rgba(0,0,255,0.2)\"\n            text-border-color=\"rgba(0,255,0,1)\"\n            text-border-size=\"3\"\n            text-color=\"rgba(20,50,100,1)\"\n            text-offset-x=\"10\"\n            text-offset-y=\"-10\"\n            text-size=\"13px\"\n        ></vl-map-layer-style>\n    </vl-map-features-layer>\n    <vl-map-legend>\n        <vl-map-legend-item layer=\"Wateroppervlaktes\"></vl-map-legend-item>\n    </vl-map-legend>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-legend-item",
+      "name": "layer",
+      "text": "De web-types en de argTypes noemen layer de laagnaam. vl-map-legend zoekt het standaarditem echter op de naam van dat item: voor een features-layer of wfs-layer met één stijl is dat de name van de laag, met meer stijlen de name van elke stijl, en voor een tiled- of image-wms-layer de name van de laag. De stories verwijzen zo naar de stijlen Wateroppervlaktes en Openbaar onderzoek van de laag Shapes, niet naar de laag zelf.",
+      "source": "libs/map/src/components/legend/vl-map-legend.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-legend-item",
+      "text": "De varianten Custom Icon en Custom Label doen vermoeden dat je enkel het icoon of enkel het label vervangt. vl-map-legend gebruikt het standaarditem van de laag echter alleen als het vl-map-legend-item geen enkel kindelement heeft; anders toont ze het item zoals het is, en VlMapLegendItem vult zelf geen icoon of label in. Met enkel het slot icon toont het item dus geen label, met enkel het slot label geen icoon.",
+      "source": "libs/map/src/components/legend/vl-map-legend.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-legend-item",
+      "text": "De pagina toont import { VlMapLegendItem } from '@domg-wc/map', maar libs/map/src/index.ts, waaraan tsconfig.base.json @domg-wc/map koppelt, exporteert VlMapLegendItem niet. Het element wordt wel geregistreerd zodra vl-map-legend geladen is, want vl-map-legend.ts importeert de klasse: importeer dus VlMapLegend.",
+      "source": "libs/map/src/index.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-legend-item",
+      "name": "icon-text-color",
+      "text": "VlMapLegendItem declareert de property iconTextColor met het attribuut icon-text-color (reflect), maar de web-types en de argTypes vermelden het niet. Geen enkele code leest de waarde: de kleur van de tekst in het icoon komt uit de text-color van de stijl.",
+      "source": "libs/map/src/components/legend-item/vl-map-legend-item.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-legend-item",
+      "text": "De namen van de stories kloppen niet met hun inhoud. De story met enkel een eigen label (map-legend-item-label) heet 'vl-map-legend-item - icon', net als de story met enkel een eigen icoon. De story met een eigen icoon en label (map-legend-item-icon-label) heet 'vl-map-legend-item - default', terwijl de story met het standaarditem 'vl-map-legend-item - default icon en label' heet.",
+      "source": "libs/map/src/components/legend-item/stories/vl-map-legend-item.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-measure-control",
+      "text": "De template van de stories zet een vl-map-action-controls met een vl-map-measure-control in de kaart, maar de kaart heeft geen vl-map-measure-action: de meetknop start geen meting. Het stories-bestand importeert die twee elementen ook niet. Ze hebben niets met de legende te maken; de voorbeelden laten ze weg.",
+      "source": "libs/map/src/components/legend-item/stories/vl-map-legend-item.stories.ts"
+    }
+  ]
+}

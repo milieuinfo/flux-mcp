@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "page": "components-block-spotlight",
+  "inputHash": "47c225cfed34",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-spotlight, een blok dat een onderwerp in de kijker zet met een titel en optioneel een subtitel, tekst, extra content (bv. een vl-document) of een afbeelding. Met link wordt het hele blok een link, met external opent die in een nieuw tabblad; alt, no-border en size (xs, s, l) bepalen de opmaak.",
+  "keywords": [
+    "spotlight",
+    "vl-spotlight",
+    "in de kijker",
+    "uitgelicht",
+    "featured",
+    "teaser",
+    "card",
+    "kaart",
+    "link",
+    "externe link",
+    "afbeelding",
+    "image",
+    "document"
+  ],
+  "examples": {
+    "components-block-spotlight--spot-light-default": {
+      "html": "<vl-spotlight>\n    <span slot=\"title\">Premies voor renovatie</span>\n</vl-spotlight>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlSpotlight } from '@domg-wc/components/block';\n\nregisterWebComponents([VlSpotlight]);"
+    },
+    "components-block-spotlight--spotlight-with-link": {
+      "html": "<vl-spotlight link=\"http://www.google.com\">\n    <span slot=\"title\">\n        Premies voor renovatie\n        <span class=\"vl-icon vl-icon--light vl-vi vl-vi-external\"></span>\n        <span class=\"vl-u-visually-hidden\">Opent in nieuw venster</span>\n    </span>\n</vl-spotlight>"
+    },
+    "components-block-spotlight--spotlight-no-link": {
+      "html": "<vl-spotlight>\n    <span slot=\"title\">Premies voor renovatie</span>\n</vl-spotlight>"
+    },
+    "components-block-spotlight--spotlight-with-content": {
+      "html": "<vl-spotlight link=\"https://google.be\" alt size=\"s\">\n    <span slot=\"title\">Verslag bestuursvergadering</span>\n    <vl-document slot=\"content\">\n        <span slot=\"type\">DOCX</span>\n        <span slot=\"title\">document</span>\n        <span slot=\"metadata\">DOCX-112kb</span>\n    </vl-document>\n</vl-spotlight>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlDocumentComponent, VlSpotlight } from '@domg-wc/components/block';\n\nregisterWebComponents([VlSpotlight, VlDocumentComponent]);"
+    },
+    "components-block-spotlight--spotlight-with-text": {
+      "html": "<vl-spotlight link=\"https://google.be\">\n    <span slot=\"title\">\n        Premies voor renovatie\n        <span class=\"vl-icon vl-icon--light vl-vi vl-vi-external\"></span>\n        <span class=\"vl-u-visually-hidden\">Opent in nieuw venster</span>\n    </span>\n    <span slot=\"text\">\n        Gaat u bouwen of verbouwen? Investeer in energiebesparende maatregelen en bespaar heel wat op uw\n        energiefactuur.\n    </span>\n</vl-spotlight>"
+    },
+    "components-block-spotlight--spotlight-with-image": {
+      "html": "<vl-spotlight img-src=\"dak.jpg\" img-alt=\"spotlight image\">\n    <span slot=\"title\">Premies voor renovatie</span>\n    <span slot=\"subtitle\">Er zijn er verschillende...</span>\n    <span slot=\"text\">\n        Gaat u bouwen of verbouwen? Investeer in energiebesparende maatregelen en bespaar heel wat op uw\n        energiefactuur.\n    </span>\n</vl-spotlight>"
+    },
+    "components-block-spotlight--spotlight-with-subtitle": {
+      "html": "<vl-spotlight link=\"https://google.be\">\n    <span slot=\"title\">Communicatiespecialist te Willebroek - contract 1 jaar</span>\n    <span slot=\"subtitle\">Niveau A (universitair diploma)</span>\n    <span slot=\"text\">\n        <ul class=\"vl-icon-list\">\n            <li class=\"vl-icon-list__item\">Waterwegen en Zeekanaal NV in Brussel</li>\n            <li class=\"vl-icon-list__item\">Natuur en bos</li>\n            <li class=\"vl-icon-list__item\"></li>\n        </ul>\n    </span>\n</vl-spotlight>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-spotlight",
+      "name": "external",
+      "text": "De stories vl-spotlight - with link en vl-spotlight - with text zetten in het title slot een icoon external en de verborgen tekst 'Opent in nieuw venster', maar zetten external niet: with text kent het attribuut niet, en in with link staat het op de default false, die story() weglaat. vl-spotlight zet target=\"_blank\" enkel met external; zonder opent de link in hetzelfde venster en klopt de tekst voor screenreaders niet. De voorbeelden volgen de stories: zet zelf external als de link in een nieuw venster moet openen, of laat het icoon en de verborgen tekst weg.",
+      "source": "libs/components/src/block/spotlight/stories/vl-spotlight.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-spotlight",
+      "name": "external",
+      "text": "De argTypes geven external het type string, maar vl-spotlight declareert het als Boolean en de web-types geven als default false. Het is een boolean attribuut: external=\"false\" opent de link toch in een nieuw tabblad; laat het attribuut weg om dat niet te doen.",
+      "source": "libs/components/src/block/spotlight/stories/vl-spotlight.stories-arg.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-spotlight",
+      "name": "size",
+      "text": "De web-types en de argTypes geven size als default s, maar vl-spotlight begint met size = '' en zet de klasse vl-spotlight--s enkel als size=\"s\" expliciet gezet is. Zonder size krijgt de spotlight geen van de klassen vl-spotlight--xs, --s of --l; het attribuut weglaten is dus niet hetzelfde als size=\"s\". De story vl-spotlight - with content zet size=\"s\" wel expliciet.",
+      "source": "libs/components/src/block/spotlight/vl-spotlight.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "page": "ontwerp-form-custom-validation",
+  "inputHash": "1859c0974381",
+  "analysedFor": "2.2.0",
+  "summary": "Hoe je een eigen validator aan een Flux form control toevoegt: maak een subklasse van de control (bv. VlInputFieldComponent) met je validator in de statische formControlValidators, en toon de fout met een vl-form-message met state=\"customError\". Een form control heeft maar één custom validator, dus je maakt een component per validator.",
+  "keywords": [
+    "custom validatie",
+    "custom validation",
+    "custom validator",
+    "eigen validator",
+    "customerror",
+    "formcontrolvalidators",
+    "validator",
+    "subklasse",
+    "extend form control",
+    "vl-input-field",
+    "vl-form-message",
+    "formuliervalidatie"
+  ],
+  "examples": {
+    "ontwerp-form-custom-validation--custom-validation": {
+      "html": "<style>\n    #form {\n        margin-top: 1rem;\n        max-width: 800px;\n    }\n\n    .form-buttons vl-button:not(:last-child) {\n        margin-right: 1.4rem;\n    }\n</style>\n\n<form id=\"form\" class=\"vl-form\">\n    <div class=\"vl-grid\">\n        <div class=\"vl-column vl-column--4\">\n            <vl-form-label for=\"waarde\" label=\"Waarde *\" block></vl-form-label>\n        </div>\n        <div class=\"vl-column vl-column--8\">\n            <vl-input-field-with-foo-validator id=\"waarde\" name=\"waarde\" block required></vl-input-field-with-foo-validator>\n            <vl-form-message for=\"waarde\" state=\"valueMissing\">Gelieve een waarde in te vullen.</vl-form-message>\n            <vl-form-message for=\"waarde\" state=\"customError\">Gelieve 'foo' als waarde in te vullen.</vl-form-message>\n        </div>\n        <div class=\"vl-column vl-column--8 vl-column--start-5\">\n            <div class=\"form-buttons\">\n                <vl-button type=\"submit\">Verstuur</vl-button>\n                <vl-button type=\"reset\" secondary>Reset</vl-button>\n            </div>\n        </div>\n    </div>\n</form>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlFormLabelComponent, VlFormMessageComponent, VlInputFieldComponent } from '@domg-wc/components/form';\n\n// De validator zet de ValidityState-sleutel customError; de vl-form-message met state=\"customError\" toont de fout.\n// Een lege waarde is geldig: daarvoor zorgt required, met valueMissing.\nconst fooValidator = {\n    key: 'customError',\n    message: `Value does not equal 'foo'`,\n    isValid(_instance, value) {\n        if (!value) {\n            return true;\n        }\n        return value === 'foo';\n    },\n};\n\n// De validators staan in een statische array: een eigen component per validator, zodat niet elke vl-input-field\n// hem krijgt. Het nieuwe element kent dezelfde attributen als vl-input-field.\nclass VlInputFieldWithFooValidatorComponent extends VlInputFieldComponent {\n    static formControlValidators = [...VlInputFieldComponent.formControlValidators, fooValidator];\n}\ncustomElements.define('vl-input-field-with-foo-validator', VlInputFieldWithFooValidatorComponent);\n\nregisterWebComponents([VlFormLabelComponent, VlFormMessageComponent, VlButtonComponent]);\n\nconst form = document.querySelector('#form');\nconst field = document.querySelector('#waarde');\n\n// Success-stijl na een geldige submit; weg bij een ongeldige submit of een reset.\nform.addEventListener('submit', (event) => {\n    event.preventDefault();\n    field.setAttribute('success', '');\n});\nfield.addEventListener('invalid', () => field.removeAttribute('success'));\nform.addEventListener('reset', () => field.removeAttribute('success'));"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-input-field-with-foo-validator",
+      "text": "Geen Flux-element: het voorbeeld definieert het zelf, als subklasse van VlInputFieldComponent met fooValidator in formControlValidators. Het staat daarom niet in de web-types; het kent dezelfde attributen als vl-input-field.",
+      "source": "libs/integrations/src/form/custom-validation/vl-form-custom-validation.component.ts"
+    }
+  ]
+}

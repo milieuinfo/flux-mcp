@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "page": "map-action-click-action",
+  "inputHash": "5dc070769c21",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-map-click-action, dat een klik op een vl-map opvangt: het toont een pin (vl-map-click-action-pindrop) op de laatst aangeklikte plek en stuurt het event vl-map-clicked met de coördinaat, de resolutie en de projectie van de kaart. Gebruik het om de gebruiker een locatie te laten aanduiden op de kaart.",
+  "keywords": [
+    "map click action",
+    "vl-map-click-action",
+    "klik op kaart",
+    "map click",
+    "click event",
+    "vl-map-clicked",
+    "pin",
+    "pindrop",
+    "marker",
+    "locatie aanduiden",
+    "coördinaat",
+    "coordinate",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-click-action--map-click-action-default": {
+      "html": "<!-- vl-map-click-action staat binnen vl-map: het zoekt de kaart met closest('vl-map') wanneer het op de pagina komt. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-click-action></vl-map-click-action>\n</vl-map>",
+      "js": "import { VlMap, VlMapBaseLayerGRBGray, VlMapClickAction } from '@domg-wc/map';\n\n// vl-map-clicked is geen CustomEvent: coordinate, resolution en projection staan op het event zelf, niet in detail.\n// De coördinaat staat in de projectie van de kaart, hier Lambert 2008 (EPSG:3812).\ndocument.querySelector('vl-map-click-action').addEventListener('vl-map-clicked', (event) => {\n    console.log(event.coordinate, event.resolution, event.projection);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-click-action",
+      "name": "vl-map-clicked",
+      "text": "De web-types en de argTypes geven vl-map-clicked het type { coordinate: Coordinate, resolution: number, projection: ProjectionLike }, zoals bij andere events het type van detail. vl-map-clicked is echter een gewoon Event (de klasse VlMapClickedEvent) zonder detail: lees event.coordinate, event.resolution en event.projection. Het event bubbelt, maar is niet composed.",
+      "source": "libs/map/src/components/action/click-action/VlMapClickedEvent.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-click-action-pindrop",
+      "text": "vl-map-click-action-pindrop staat in de web-types zonder beschrijving en met de doc-url ?path=null. Je plaatst het element niet zelf: vl-map-click-action maakt het aan als overlay van OpenLayers en verplaatst het bij elke klik naar de aangeklikte plek.",
+      "source": "libs/map/src/components/action/click-action/vl-map-click-action.ts"
+    }
+  ]
+}

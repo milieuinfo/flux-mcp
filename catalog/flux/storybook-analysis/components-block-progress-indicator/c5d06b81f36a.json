@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "page": "components-block-progress-indicator",
+  "inputHash": "c5d06b81f36a",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-progress-indicator, een stappenindicator die toont waar de gebruiker is in een proces met meerdere stappen, zoals een formulier over meerdere schermen. Je geeft de omschrijvingen in de property steps en de huidige stap met active-step; de pagina toont de varianten numeric en focus-on-change, show-labels toont de labels in plaats van een tooltip per stap, en een klik op een stap geeft het event vl-click-step.",
+  "keywords": [
+    "progress indicator",
+    "vl-progress-indicator",
+    "stappenindicator",
+    "stappen",
+    "steps",
+    "stepper",
+    "wizard",
+    "multi-step form",
+    "meerstappenformulier",
+    "voortgang",
+    "active-step",
+    "vl-click-step",
+    "numeric"
+  ],
+  "examples": {
+    "components-block-progress-indicator--progress-indicator-default": {
+      "html": "<vl-progress-indicator active-step=\"1\"></vl-progress-indicator>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlProgressIndicatorComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProgressIndicatorComponent]);\n\nconst progressIndicator = document.querySelector('vl-progress-indicator');\n// De omschrijving van elke stap, in volgorde.\nprogressIndicator.steps = ['Stap 1/3: Aanvraag', 'Stap 2/3: Gegevens', 'Stap 3/3: Bevestigen'];\n// vl-click-step volgt op een klik op een stap, met de omschrijving en het nummer (vanaf 1) in event.detail. De\n// component wijzigt active-step niet zelf.\nprogressIndicator.addEventListener('vl-click-step', (event) => {\n    console.log(event.detail.step, event.detail.number);\n});"
+    },
+    "components-block-progress-indicator--progress-indicator-numeric": {
+      "html": "<vl-progress-indicator active-step=\"1\" numeric></vl-progress-indicator>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlProgressIndicatorComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProgressIndicatorComponent]);\n\nconst progressIndicator = document.querySelector('vl-progress-indicator');\nprogressIndicator.steps = ['Stap 1/3: Aanvraag', 'Stap 2/3: Gegevens', 'Stap 3/3: Bevestigen'];\nprogressIndicator.addEventListener('vl-click-step', (event) => {\n    console.log(event.detail.step, event.detail.number);\n});"
+    },
+    "components-block-progress-indicator--progress-indicator-focused": {
+      "html": "<vl-progress-indicator active-step=\"1\" focus-on-change></vl-progress-indicator>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlProgressIndicatorComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProgressIndicatorComponent]);\n\nconst progressIndicator = document.querySelector('vl-progress-indicator');\nprogressIndicator.steps = ['Stap 1/3: Aanvraag', 'Stap 2/3: Gegevens', 'Stap 3/3: Bevestigen'];\n// Met focus-on-change roept de component na elke update focus() op voor de actieve stap. In 2.6.0 is dat de div\n// rond de knop, zonder tabindex: die kan geen focus krijgen, en de focus blijft waar ze was.\nprogressIndicator.addEventListener('vl-click-step', (event) => {\n    console.log(event.detail.step, event.detail.number);\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-progress-indicator",
+      "text": "De web-types vermelden onder de properties van vl-progress-indicator een property zonder naam ('Lijst met omschrijvingen per stap.'), omdat de argType steps geen name heeft. Het gaat om de property steps: een lijst van strings, één per stap, zoals de stories ze zetten (.steps). Zonder steps toont de component niets.",
+      "source": "libs/components/src/block/progress-indicator/stories/vl-progress-indicator.stories-arg.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-progress-indicator",
+      "name": "active-step",
+      "text": "De web-types en de argTypes geven voor active-step de default 0, maar de component begint met 1: zonder active-step is de eerste stap actief. Met active-step=\"0\" is geen stap actief. In 2.6.0 zijn alle stappen aanklikbaar, ook die na de actieve.",
+      "source": "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-progress-indicator",
+      "name": "focus-on-change",
+      "text": "Volgens de web-types en de argTypes krijgt met focus-on-change een stap de focus na een wijziging, en de pagina toont het onder 'Focus op de actieve stap'. In 2.6.0 roept de component na elke update focus() op voor het element .vl-progress-bar__step van de actieve stap: een div zonder tabindex rond de knop, die geen focus kan krijgen. De focus verplaatst dus niet, ook niet naar de knop van die stap. De cypress-test met focus-on-change klikt zelf op de knop en controleert de focus niet.",
+      "source": "libs/components/src/block/progress-indicator/vl-progress-indicator.component.ts"
+    }
+  ]
+}

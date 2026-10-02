@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-testen-technische-test-aanpak-frontend",
+  "inputHash": "fde7f6d7a5ce",
+  "analysedFor": "2.20.0",
+  "summary": "De technische keuzes voor het testen van een frontend: Jest voor unit testen, Cypress en Storybook voor componenttesten. Legt uit wat flaky testen zijn, dat asynchrone gebeurtenissen (promises, observables, SSE, websockets) ze vaak veroorzaken, en waarom Selenium bij AJAX en SPA's timingproblemen heeft.",
+  "keywords": [
+    "testen",
+    "testing",
+    "jest",
+    "cypress",
+    "storybook",
+    "unit test",
+    "componenttest",
+    "component testing",
+    "flaky testen",
+    "flaky tests",
+    "timing",
+    "asynchroon",
+    "async",
+    "selenium",
+    "spa"
+  ],
+  "examples": {},
+  "notes": []
+}

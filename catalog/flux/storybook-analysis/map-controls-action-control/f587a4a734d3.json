@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "page": "map-controls-action-control",
+  "inputHash": "f587a4a734d3",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-action-control, een toggle-knop op een vl-map die een kaartactie aan- of uitzet, zoals tekenen, aanpassen of verwijderen van features. Je koppelt de knop aan de actie door action-id gelijk te zetten aan het id van de actie; zet de knoppen in een vl-map-action-controls, dat ze rechtsboven op de kaart toont en zorgt dat er maar één tegelijk actief is.",
+  "keywords": [
+    "map action control",
+    "kaartactie",
+    "actieknop",
+    "action button",
+    "toggle",
+    "toggle button",
+    "tekenen",
+    "draw",
+    "action-id",
+    "default-active",
+    "control",
+    "vl-map-action-control",
+    "vl-map-action-controls",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-controls-action-control--map-action-control-default": {
+      "html": "<!-- action-id van de control is gelijk aan het id van de actie; beide staan in dezelfde vl-map. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action id=\"draw-polygon-action\"></vl-map-draw-polygon-action>\n    </vl-map-features-layer>\n    <vl-map-action-controls>\n        <vl-map-action-control action-id=\"draw-polygon-action\" label=\"Teken\"></vl-map-action-control>\n    </vl-map-action-controls>\n</vl-map>"
+    },
+    "map-controls-action-control--map-action-control-default-active": {
+      "html": "<!-- default-active zet de control en de gekoppelde actie actief bij het renderen. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action id=\"draw-polygon-action\"></vl-map-draw-polygon-action>\n    </vl-map-features-layer>\n    <vl-map-action-controls>\n        <vl-map-action-control action-id=\"draw-polygon-action\" label=\"Teken\" default-active></vl-map-action-control>\n    </vl-map-action-controls>\n</vl-map>"
+    },
+    "map-controls-action-control--map-action-control-icon": {
+      "html": "<!-- Zonder label toont de knop enkel het icoon: de control zet dan text-hidden op de vl-button. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action id=\"draw-polygon-action\"></vl-map-draw-polygon-action>\n    </vl-map-features-layer>\n    <vl-map-action-controls>\n        <vl-map-action-control action-id=\"draw-polygon-action\" icon=\"pencil\"></vl-map-action-control>\n    </vl-map-action-controls>\n</vl-map>"
+    },
+    "map-controls-action-control--map-action-control-multiple": {
+      "html": "<!-- Elke control hoort bij de actie met hetzelfde id; vl-map-action-controls houdt er maar één tegelijk actief. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-polygon-action id=\"draw-action\"></vl-map-draw-polygon-action>\n        <vl-map-modify-action id=\"modify-action\"></vl-map-modify-action>\n        <vl-map-delete-action id=\"delete-action\"></vl-map-delete-action>\n    </vl-map-features-layer>\n    <vl-map-action-controls>\n        <vl-map-action-control action-id=\"draw-action\" label=\"Teken\"></vl-map-action-control>\n        <vl-map-action-control action-id=\"modify-action\" label=\"Editeer\"></vl-map-action-control>\n        <vl-map-action-control action-id=\"delete-action\" label=\"Verwijder\"></vl-map-action-control>\n    </vl-map-action-controls>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-action-control",
+      "name": "change-control",
+      "text": "De control geeft bij elke klik het event change-control, met event.detail.isActive (true als de knop nu aan staat). Het event bubbelt niet; vl-map-action-controls luistert ernaar op elke vl-map-action-control om de andere actieve controls uit te zetten. De web-types vermelden geen events voor vl-map-action-control.",
+      "source": "libs/map/src/components/controls/action-control/vl-map-action-control.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-action-control",
+      "name": "active",
+      "text": "De publieke getter active geeft terug of de toggle-knop van de control aan staat (on van de interne vl-button). vl-map-action-controls gebruikt ze om de actieve controls te vinden. De web-types vermelden geen properties voor vl-map-action-control.",
+      "source": "libs/map/src/components/controls/action-control/vl-map-action-control.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-action-control",
+      "name": "activate",
+      "text": "De publieke methode activate() zet de toggle-knop aan en zet active op true op de actie waarvan het id gelijk is aan action-id (gezocht in de omringende vl-map). Ze geeft geen change-control, dus vl-map-action-controls zet de andere controls dan niet uit. De web-types vermelden geen methodes voor vl-map-action-control.",
+      "source": "libs/map/src/components/controls/action-control/vl-map-action-control.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-map-action-control",
+      "name": "deactivate",
+      "text": "De publieke methode deactivate() zet de toggle-knop uit en zet active op false op de gekoppelde actie. vl-map-action-controls roept ze aan op de andere actieve controls wanneer er een control aangaat. De web-types vermelden geen methodes voor vl-map-action-control.",
+      "source": "libs/map/src/components/controls/action-control/vl-map-action-control.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-action-control",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-action-control het attribuut custom-css. Het element heeft geen shadow DOM: de mixin VlMapControl laat createRenderRoot het element zelf teruggeven. BaseLitElement.addCustomCSS (libs/common/src/base/base.lit.element.ts) logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe.",
+      "source": "libs/map/src/components/controls/vl-map-control.mixin.ts"
+    }
+  ]
+}

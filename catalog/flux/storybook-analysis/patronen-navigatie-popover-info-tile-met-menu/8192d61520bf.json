@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "page": "patronen-navigatie-popover-info-tile-met-menu",
+  "inputHash": "8192d61520bf",
+  "analysedFor": "2.14.0",
+  "summary": "Patroon voor een openklapbare vl-info-tile (toggleable) met titel, subtitel en inhoud, en een popover-menu in het slot menu: een ghost vl-button met kebab-icoon opent een vl-popover met acties. Gebruik het om een tegel met eigen acties te tonen, bv. in een dashboard.",
+  "keywords": [
+    "info tile",
+    "info-tile",
+    "tegel",
+    "tile",
+    "popover menu",
+    "kebab menu",
+    "menu slot",
+    "toggleable",
+    "openklapbaar",
+    "collapsible",
+    "dashboard",
+    "context menu",
+    "acties",
+    "actions"
+  ],
+  "examples": {
+    "patronen-navigatie-popover-info-tile-met-menu--popover-info-tile-met-menu": {
+      "html": "<vl-info-tile toggleable>\n    <span slot=\"title\">Broos Deprez</span>\n    <span slot=\"subtitle\">Uw zoon (19.05.2005)</span>\n    <div slot=\"content\">De studietoelage voor Broos Deprez werd toegekend.</div>\n    <span slot=\"menu\">\n        <vl-button ghost icon=\"nav-show-more-vertical\" id=\"btn-acties\" label=\"Acties\"></vl-button>\n        <vl-popover for=\"btn-acties\" placement=\"bottom-end\">\n            <vl-popover-action-list>\n                <vl-popover-action icon=\"search\">Zoeken</vl-popover-action>\n                <vl-popover-action icon=\"edit\">Aanpassen</vl-popover-action>\n                <vl-popover-action icon=\"bin\">Verwijderen</vl-popover-action>\n            </vl-popover-action-list>\n        </vl-popover>\n    </span>\n</vl-info-tile>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlInfoTile, VlPopoverComponent } from '@domg-wc/components/block';\n\n// VlPopoverComponent registreert zelf vl-popover-action-list en vl-popover-action.\nregisterWebComponents([VlInfoTile, VlPopoverComponent, VlButtonComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover",
+      "name": "for",
+      "text": "for is het id van het element dat de popover opent en waartegenover hij zich plaatst. De code van vl-popover leest for als attribuut (attribute: 'for'), maar de web-types van 2.14.0 geven for enkel als JS-property, niet als attribuut.",
+      "source": "libs/components/src/block/popover/vl-popover.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-popover-action",
+      "name": "icon",
+      "text": "icon toont een icoon voor de tekst van de actie (class vl-icon--<naam>). Het staat in de code van vl-popover-action, maar de web-types van 2.14.0 kennen voor vl-popover-action geen enkel attribuut of property; ook href, target, rel, action en selected ontbreken.",
+      "source": "libs/components/src/block/popover/vl-popover-action.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-popover",
+      "name": "placement",
+      "text": "Het voorbeeld zet placement=\"bottom-end\". De web-types van 2.14.0 geven als type van placement enkel 'top' | 'right' | 'bottom' | 'left', terwijl de beschrijving van hetzelfde attribuut een suffix -start of -end toelaat. De code typeert placement als Placement van @floating-ui/dom (libs/components/src/block/popover/vl-popover.defaults.ts), dat bottom-end kent; de waarde is dus geldig.",
+      "source": "libs/components/src/block/popover/stories/vl-popover.stories-arg.ts"
+    }
+  ]
+}

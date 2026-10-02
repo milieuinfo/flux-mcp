@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "page": "components-block-proza-message",
+  "inputHash": "33f2f84ee080",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-proza-message, dat een Proza-bericht toont: een tekst die de business in Proza beheert en die de component per domain en code ophaalt, zodat je hem kan wijzigen zonder nieuwe release. Gebruik het voor beheerde teksten, ook in een knop of een link; heeft de gebruiker het recht om berichten van het domein te wijzigen, dan toont het er een edit- en een refresh-knop naast.",
+  "keywords": [
+    "proza",
+    "proza bericht",
+    "proza message",
+    "vl-proza-message",
+    "beheerde tekst",
+    "managed content",
+    "cms",
+    "content management",
+    "tekst ophalen",
+    "domein",
+    "code",
+    "editeerbaar",
+    "base-url"
+  ],
+  "examples": {
+    "components-block-proza-message--proza-message-default": {
+      "html": "<!-- Als een inline element -->\n<vl-proza-message domain=\"mockdomain\" code=\"inline\"></vl-proza-message>\n\n<!-- Als een block element -->\n<vl-proza-message domain=\"mockdomain\" code=\"block\"></vl-proza-message>\n\n<!-- In een knop -->\n<vl-button>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-button>\n\n<!-- In een link -->\n<vl-link href=\"#\" external>\n    <vl-proza-message domain=\"mockdomain\" code=\"action\"></vl-proza-message>\n</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlProzaMessage } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProzaMessage, VlButtonComponent, VlLinkComponent]);\n\n// vl-proza-message haalt elk bericht op met GET proza/domein/{domain}/{code}, relatief tegenover de huidige url (of\n// vanaf base-url), en toont het veld tekst van het antwoord, bv. { \"code\": \"inline\", \"tekst\": \"Inline\" }. De tekst\n// mag html zijn; staat er een block-element in, dan zet de component zelf het attribuut block.\n// Daarnaast vraagt hij per domein GET proza/domein/{domain}/toegelatenoperaties. In deze story antwoordt de server\n// { \"create\": false, \"read\": true, \"update\": false, \"delete\": false }: zonder update geen edit- en refresh-knop."
+    },
+    "components-block-proza-message--proza-message-editable": {
+      "html": "<!-- Als een inline element -->\n<vl-proza-message domain=\"mockdomaineditable\" code=\"inline\"></vl-proza-message>\n\n<!-- Als een block element -->\n<vl-proza-message domain=\"mockdomaineditable\" code=\"block\"></vl-proza-message>\n\n<!-- In een knop -->\n<vl-button>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-button>\n<vl-button secondary>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-button>\n<vl-button tertiary>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-button>\n\n<!-- In een link -->\n<vl-link href=\"#\" external>\n    <vl-proza-message domain=\"mockdomaineditable\" code=\"action\"></vl-proza-message>\n</vl-link>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlProzaMessage } from '@domg-wc/components/block';\n\nregisterWebComponents([VlProzaMessage, VlButtonComponent, VlLinkComponent]);\n\n// Editeerbaar wordt een bericht als GET proza/domein/{domain}/toegelatenoperaties update: true geeft, in deze story\n// { \"create\": true, \"read\": true, \"update\": true, \"delete\": true }. Dan toont vl-proza-message naast de tekst een\n// edit-knop, die /proza/domeinen/{domain}/codes/{code} in een nieuw venster opent, en een refresh-knop, die het\n// bericht opnieuw ophaalt zonder de cache van de browser."
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-proza-message",
+      "name": "base-url",
+      "text": "De pagina spreekt onder Base Url van een baseUrl, maar het attribuut heet base-url, zoals in de web-types; de component leest getAttribute('base-url'). De waarde komt zonder scheidingsteken voor proza/domein/{domain}/{code} (en voor proza/domein/{domain}/toegelatenoperaties), dus eindigt ze op een /. De edit-knop opent ook met base-url /proza/domeinen/{domain}/codes/{code} op de host van de pagina.",
+      "source": "libs/components/src/block/proza-message/vl-proza-rest-client.util.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-link",
+      "text": "De story vl-proza-message - editable opent <vl-link href=\"#\" external> maar sluit het af met </a> in plaats van </vl-link> (de default story sluit wel correct af). De HTML-parser negeert die eindtag, want er staat geen <a> open, zodat vl-link pas sluit aan het einde van zijn parent; in de story valt dat niet op omdat er niets na komt. Het voorbeeld sluit af met </vl-link>.",
+      "source": "libs/components/src/block/proza-message/stories/vl-proza-message.stories.ts"
+    }
+  ]
+}

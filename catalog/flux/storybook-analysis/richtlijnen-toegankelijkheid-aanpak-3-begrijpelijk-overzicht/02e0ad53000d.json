@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-3-begrijpelijk-overzicht",
+  "inputHash": "02e0ad53000d",
+  "analysedFor": "2.4.0",
+  "summary": "Overzicht van WCAG-principe 3, begrijpelijk: de richtlijnen 3.1 Leesbaar, 3.2 Voorspelbaar en 3.3 Assistentie bij invoer met hun succescriteria van niveau A en AA, per richtlijn verdeeld over [basis] en [+]. In de tabellen staan boven de lijn (---) de criteria van brons (niveau A) en eronder die van zilver (niveau AA). De pagina linkt naar de uitwerking per richtlijn.",
+  "keywords": [
+    "begrijpelijk",
+    "understandable",
+    "wcag principe 3",
+    "wcag principle 3",
+    "toegankelijkheid",
+    "accessibility",
+    "succescriteria",
+    "success criteria",
+    "leesbaar",
+    "voorspelbaar",
+    "assistentie bij invoer",
+    "input assistance",
+    "brons",
+    "zilver"
+  ],
+  "examples": {},
+  "notes": []
+}

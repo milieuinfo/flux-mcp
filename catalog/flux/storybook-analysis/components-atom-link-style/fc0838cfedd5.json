@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "page": "components-atom-link-style",
+  "inputHash": "fc0838cfedd5",
+  "analysedFor": "2.5.0",
+  "summary": "Interne pagina over vlLinkStyles(selector), de CSS van vl-link als bouwblok: een component geeft er de <a>-elementen (of een andere selector) in zijn shadow DOM de opmaak van een Flux-link mee, met de classes bold, small, large en error, en met vlIconStyles een icoon voor of na de tekst. Componenten zoals vl-doormat gebruiken die CSS; in een toepassing gebruik je vl-link. vlLinkStyles wordt geëxporteerd uit @domg-wc/components/atom.",
+  "keywords": [
+    "link style",
+    "vllinkstyles",
+    "linkstijl",
+    "link css",
+    "anchor styling",
+    "link in eigen component",
+    "custom component",
+    "link classes",
+    "link met icoon",
+    "shadow dom",
+    "intern"
+  ],
+  "examples": {
+    "components-atom-link-style--link-style-default": {
+      "html": "<!-- In de shadow DOM van een component met vlLinkStyles() en vlIconStyles. De classes zijn te combineren; vlLinkStyles\n     kent ook de class neutral, een link in de kleur van de tekst. De story laat href weg, maar zonder href is een <a>\n     geen link voor het toetsenbord en de schermlezer. -->\n<a href=\"#\">link - default</a>\n<a href=\"#\" class=\"bold\">link - bold</a>\n<a href=\"#\" class=\"small\">link - small</a>\n<a href=\"#\" class=\"large\">link - large</a>\n<a href=\"#\" class=\"error\">link - error</a>\n<!-- vl-icon--before en vl-icon--after zetten de marge tussen icoon en tekst; aria-hidden zoals vl-link het zet. -->\n<a href=\"#\"><span class=\"vl-icon vl-icon--before vl-icon--bike\" aria-hidden=\"true\"></span>link - fiets<span class=\"vl-icon vl-icon--after vl-icon--bike\" aria-hidden=\"true\"></span></a>",
+      "js": "import { BaseLitElement, webComponent } from '@domg-wc/common';\nimport { vlIconStyles, vlLinkStyles } from '@domg-wc/components/atom';\nimport { CSSResult, html, TemplateResult } from 'lit';\n\n// vlLinkStyles(selector) geeft de elementen van de selector de opmaak van een link, zonder argument de <a>-elementen.\n// vlIconStyles is enkel nodig voor een icoon in de link.\n@webComponent('my-component-with-link')\nexport class MyComponentWithLink extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [vlLinkStyles(), vlIconStyles];\n    }\n\n    render(): TemplateResult {\n        return html`\n            <a href=\"#\" class=\"bold\">Mijn link</a>\n        `;\n    }\n}"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De pagina linkt voor vl-doormat naar /docs/components-doormat--documentatie, maar die pagina bestaat niet in 2.5.0: de documentatie van vl-doormat staat op components-block-doormat. vl-doormat gebruikt vlLinkStyles() wel (libs/components/src/block/doormat/vl-doormat.component.ts).",
+      "source": "libs/components/src/atom/link-style/stories/vl-link-style.stories-doc.mdx"
+    }
+  ]
+}

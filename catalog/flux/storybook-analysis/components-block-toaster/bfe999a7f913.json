@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "page": "components-block-toaster",
+  "inputHash": "bfe999a7f913",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-toaster, een vaste zone van maximaal 30rem breed in een hoek van het scherm die meldingen toont, typisch vl-alert; placement kiest de hoek (top-right, top-left, bottom-right of bottom-left). Je zet meldingen declaratief in het default slot, of toont ze dynamisch met showAlert({...}), dat een vl-alert maakt met de keys als attributen, of met show() voor een eigen element of een kloon van het element dat een selector aanwijst. Met fade-out verdwijnen de meldingen van show() en showAlert() na ongeveer 5 seconden, wat de toegankelijkheid schaadt.",
+  "keywords": [
+    "toaster",
+    "toast",
+    "vl-toaster",
+    "melding",
+    "meldingen tonen",
+    "notificatie",
+    "notification",
+    "snackbar",
+    "showalert",
+    "show",
+    "fade-out",
+    "vl-alert",
+    "placement"
+  ],
+  "examples": {
+    "components-block-toaster--toaster-default": {
+      "html": "<template>\n    <vl-alert id=\"alert-success\" type=\"success\" icon=\"check\" title=\"Gelukt\" closable>\n        <p>Wij hebben uw melding goed ontvangen en nemen deze spoedig in behandeling.</p>\n    </vl-alert>\n</template>\n<vl-toaster id=\"default-toaster\"></vl-toaster>\n<vl-button id=\"default-toaster-button\">Toon succesmelding</vl-button>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlToasterComponent } from '@domg-wc/components/block';\n\n// VlToasterComponent registreert ook vl-alert.\nregisterWebComponents([VlToasterComponent, VlButtonComponent]);\n\ndocument.querySelector('#default-toaster-button').addEventListener('click', () => {\n    const toaster = document.querySelector('vl-toaster');\n    const template = document.querySelector('template');\n\n    // kloon de melding uit de template en voeg ze toe aan het default slot van de toaster\n    const alert = template.content.cloneNode(true).querySelector('#alert-success');\n    toaster.appendChild(alert);\n});"
+    },
+    "components-block-toaster--toaster-default-slot": {
+      "html": "<vl-toaster id=\"default-toaster\" placement=\"bottom-right\">\n    <vl-alert id=\"alert-default\" type=\"error\" icon=\"warning\" title=\"Foutmelding\" size=\"small\">\n        <p>Voorwaarden niet voldaan.</p>\n    </vl-alert>\n</vl-toaster>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlToasterComponent } from '@domg-wc/components/block';\n\n// VlToasterComponent registreert ook vl-alert.\nregisterWebComponents([VlToasterComponent]);"
+    },
+    "components-block-toaster--toaster-show-alert": {
+      "html": "<vl-toaster id=\"toaster-show-alert\"></vl-toaster>\n<vl-button id=\"button-technical-error\">Toon waarschuwing</vl-button>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlToasterComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlToasterComponent, VlButtonComponent]);\n\ndocument.querySelector('#button-technical-error').addEventListener('vl-click', () => {\n    const toaster = document.querySelector('#toaster-show-alert');\n    // showAlert() maakt een vl-alert en zet elke key met een waarde als attribuut.\n    toaster.showAlert({\n        title: 'Technische storing',\n        icon: 'warning',\n        type: 'warning',\n        message: 'Door een technische storing is dit loket tijdelijk niet beschikbaar.',\n        closable: true,\n    });\n});"
+    },
+    "components-block-toaster--toaster-fade-out": {
+      "html": "<template>\n    <vl-alert id=\"alert-error\" type=\"error\" icon=\"warning\" title=\"Error\">\n        <p>Er is een fout opgetreden.</p>\n    </vl-alert>\n    <vl-alert id=\"alert-loader\" title=\"Melding\">\n        <vl-loader></vl-loader>\n    </vl-alert>\n</template>\n<vl-toaster id=\"toaster-fade-out\" fade-out></vl-toaster>\n<vl-button id=\"button-error\">Toon foutmelding</vl-button>\n<vl-button id=\"button-loader\">Toon melding met lader</vl-button>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlLoaderComponent, VlToasterComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlToasterComponent, VlButtonComponent, VlLoaderComponent]);\n\nconst toaster = document.querySelector('#toaster-fade-out');\nconst template = document.querySelector('template');\n\n// De story roept toaster.show('#alert-error') aan, maar in 2.4.0 zoekt show(selector) met document.querySelector,\n// en dat zoekt niet in de inhoud van een <template>. Daarom geven we een kloon uit de template mee: show(element)\n// toont het element zelf. Met fade-out verdwijnt de melding vanzelf: de animatie start na 4,4 s en duurt 0,3 s,\n// daarna verwijdert de toaster ze.\nconst showFromTemplate = (selector) => {\n    const alert = template.content.querySelector(selector).cloneNode(true);\n    alert.removeAttribute('id');\n    toaster.show(alert);\n};\n\ndocument.querySelector('#button-error').addEventListener('vl-click', () => showFromTemplate('#alert-error'));\ndocument.querySelector('#button-loader').addEventListener('vl-click', () => showFromTemplate('#alert-loader'));"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-toaster",
+      "text": "De pagina beschrijft de methodes showAlert() en show(); geen van beide staat in de web-types: vl-toaster heeft er geen js-sectie. showAlert(attributes) maakt een vl-alert en zet elke key met een truthy waarde als attribuut, dus een key met false of een lege string laat het attribuut weg. show() zonder argument toont een kloon van het eerste kind van de toaster; show(selector) een kloon van het element dat document.querySelector(selector) vindt; van een kloon verwijdert show() id en slot. show(element) toont het element zelf, zonder kloon: het verhuist naar de toaster. In 2.4.0 kent show() geen <template>: een selector naar een element in een template vindt niets.",
+      "source": "libs/components/src/block/toaster/vl-toaster.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-toaster",
+      "name": "fade-out",
+      "text": "Het codeblok bij showAlert() op de pagina geeft fadeOut: true mee als optie per melding ('optioneel, standaard is false'). Die optie bestaat niet: showAlert() zet de key als attribuut op de vl-alert, en vl-alert kent geen fadeOut (niet in de web-types, niet in VlAlertModel en niet in de code). Of een melding verdwijnt, hangt enkel af van het attribuut fade-out op de vl-toaster. Het codeblok mist bovendien de komma na message: 'Dit is een foutmelding', waardoor het geen geldige JavaScript is.",
+      "source": "libs/components/src/block/toaster/stories/vl-toaster.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-toaster",
+      "name": "fade-out",
+      "text": "Volgens de web-types verdwijnt met fade-out elke alert 5 seconden na openen. De CSS zet de animatie enkel op de elementen in de shadow DOM van de toaster (:host([fade-out]) output *), en enkel de meldingen van show() en showAlert() verwijdert de toaster na de animatie, die start na 4,4 s en 0,3 s duurt. Een vl-alert in het default slot, declaratief of met appendChild zoals in de story vl-toaster - default, verdwijnt niet.",
+      "source": "libs/components/src/block/toaster/vl-toaster.css.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "small",
+      "text": "De story vl-toaster - default slot zet op de vl-alert het attribuut small, dat vl-alert niet kent: het staat niet in de web-types en niet in de code. De kleine variant zet je met size=\"small\"; de story toont de melding dus in de gewone grootte. Het voorbeeld gebruikt size=\"small\".",
+      "source": "libs/components/src/block/toaster/stories/vl-toaster.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-toaster",
+      "text": "De story vl-toaster - fade out roept toaster.show('#alert-error') en toaster.show('#alert-loader') aan, maar beide vl-alerts staan in een <template>. show(selector) zoekt in 2.4.0 met document.querySelector, dat de inhoud van een template niet doorzoekt; het vindt niets en show() doet niets, dus de knoppen van de story tonen geen melding. Het voorbeeld kloont de vl-alert uit de template en geeft de kloon mee aan show(element).",
+      "source": "libs/components/src/block/toaster/stories/vl-toaster.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-toaster",
+      "name": "placement",
+      "text": "De web-types van 2.4.0 geven placement de default false, geen geldige waarde. De default is top-right (vl-toaster.defaults.ts), zoals de argTypes en de beschrijving zeggen ('Standaard worden die geplaatst in de rechterbovenhoek'); de andere waarden zijn top-left, bottom-right en bottom-left. De web-types van vl-toaster in block.web-types.json volgen de bron van 2.4.0 niet, al haalt de generator ze daaruit (resources/generate-web-types/wt-config-build/components-block.wt-config.ts): ook de beschrijving van fade-out verschilt van die in de argTypes, en die van het element van de MDX.",
+      "source": "libs/components/src/block/block.web-types.json"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-toaster",
+      "text": "De beschrijving van vl-toaster in de web-types van 2.4.0 noemt de component de nieuwe versie van het vl-toaster element, met een link naar elements-toaster-h1--documentatie. Die pagina bestaat niet in de Storybook van 2.4.0, en de pagina zelf noemt geen vorige versie. Volgens de migratiepagina (afnemen-migratie-v2-impact) vervangt vl-toaster het vl-toaster-next van v1; het oude <div is=\"vl-toaster\"> is deprecated, met documentatie in de Storybook van 1.48.0.",
+      "source": "libs/components/src/block/block.web-types.json"
+    }
+  ]
+}

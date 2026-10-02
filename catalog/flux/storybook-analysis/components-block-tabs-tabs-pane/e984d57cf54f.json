@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "page": "components-block-tabs-tabs-pane",
+  "inputHash": "e984d57cf54f",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-tabs-pane, één tabblad in vl-tabs: id wordt het id van de tab, title de tekst van de tab, en de inhoud van het element is de inhoud van het tabblad. Je gebruikt het enkel als kind van vl-tabs, dat per vl-tabs-pane een tab aanmaakt.",
+  "keywords": [
+    "tabs pane",
+    "vl-tabs-pane",
+    "tabblad",
+    "tab",
+    "tab panel",
+    "tabpaneel",
+    "tab inhoud",
+    "tab content",
+    "tabs",
+    "vl-tabs"
+  ],
+  "examples": {
+    "components-block-tabs-tabs-pane--tabs-pane-default": {
+      "html": "<vl-tabs>\n    <vl-tabs-pane id=\"trein\" title=\"Trein\">\n        Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat\n        porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Integer posuere erat a ante\n        venenatis dapibus posuere velit aliquet.\n    </vl-tabs-pane>\n    <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\">\n        Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem\n        malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem\n        ipsum dolor sit amet, consectetur adipiscing elit.\n    </vl-tabs-pane>\n    <vl-tabs-pane id=\"fiets\" title=\"Fiets\">\n        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean\n        eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac\n        facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.\n    </vl-tabs-pane>\n</vl-tabs>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlTabsComponent } from '@domg-wc/components/block';\n\n// VlTabsComponent registreert ook vl-tabs-pane, vl-tab en vl-tab-section.\nregisterWebComponents([VlTabsComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-tabs-pane",
+      "name": "observe-title",
+      "text": "observe-title staat in de web-types en de argTypes, maar heeft in 2.7.0 geen effect. vl-tabs-pane leest het attribuut enkel in de private methode titleChangedCallback, en die roept niemand aan: vl-tabs-pane is een BaseLitElement, dat geen <attribuut>ChangedCallback aanroept (dat doet enkel BaseHTMLElement, voor methodes met een underscore). Een gewijzigde title past de tekst van de tab dus niet aan, ook niet met observe-title.",
+      "source": "libs/components/src/block/tabs/vl-tabs-pane.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-pane",
+      "name": "title",
+      "text": "Een element met slot=\"title\" in vl-tabs-pane wordt de tekst van de tab: vl-tabs-pane kopieert het naar vl-tabs (met slot=\"<id>-title-slot\") en volgt wijzigingen van dat element met een MutationObserver. Het slot staat niet in de web-types, die voor vl-tabs-pane geen slots vermelden.",
+      "source": "libs/components/src/block/tabs/vl-tabs-pane.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tabs-pane",
+      "name": "[default]",
+      "text": "Het standaard slot is de inhoud van het tabblad: vl-tabs-pane toont zijn inhoud in <slot></slot>, en vl-tabs toont het vl-tabs-pane in de vl-tab-section van zijn tab. De story zet er in elk vl-tabs-pane een tekst in. Het slot staat in de code, maar de web-types van 2.7.0 geven voor vl-tabs-pane geen slots.",
+      "source": "libs/components/src/block/tabs/vl-tabs-pane.component.ts"
+    }
+  ]
+}

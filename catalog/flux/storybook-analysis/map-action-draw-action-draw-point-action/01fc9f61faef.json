@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "map-action-draw-action-draw-point-action",
+  "inputHash": "01fc9f61faef",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-map-draw-point-action, een kaartactie waarmee de gebruiker punten plaatst op de vl-map-features-layer waarin de actie staat, of op de laag die je met het attribuut layer aanwijst. Met snapping komt een punt vast op een bestaande feature: van die laag zelf, of van de vl-map-wfs-layer-elementen die je in de actie zet.",
+  "keywords": [
+    "draw point action",
+    "vl-map-draw-point-action",
+    "punt tekenen",
+    "punt plaatsen",
+    "draw point",
+    "marker",
+    "tekenen op kaart",
+    "draw",
+    "snapping",
+    "snap",
+    "kaartactie",
+    "map action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-action-draw-action-draw-point-action--map-draw-point-action-default": {
+      "html": "<!-- De actie tekent op de vl-map-features-layer waarin ze staat; vl-map-layer-circle-style bepaalt hoe de\n     getekende punten op die laag getoond worden. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-point-action></vl-map-draw-point-action>\n        <vl-map-layer-circle-style border-size=\"2\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDrawPointAction,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n} from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-draw-point-action').active = true;"
+    },
+    "map-action-draw-action-draw-point-action--map-draw-point-action-snapping": {
+      "html": "<!-- Met snapping en een vl-map-wfs-layer in de actie snapt een nieuw punt op de features van die WFS-laag, binnen\n     snapping-pixel-tolerance pixels. De WFS-laag komt niet zelf op de kaart: zolang de actie actief is, toont ze de\n     features in een eigen laag. Door max-resolution=\"4\" zijn ze pas zichtbaar als je inzoomt tot een resolutie\n     onder 4. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer>\n        <vl-map-draw-point-action snapping snapping-pixel-tolerance=\"1000\">\n            <vl-map-wfs-layer\n                name=\"Stromend waterlichamen\"\n                url=\"https://geoserver.vmm.be/geoserver/vmm/wfs\"\n                layers=\"owl_l\"\n                max-resolution=\"4\"\n            ></vl-map-wfs-layer>\n        </vl-map-draw-point-action>\n        <vl-map-layer-circle-style border-size=\"2\"></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "import {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapDrawPointAction,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapWfsLayer,\n} from '@domg-wc/map';\n\n// De story zet de property active: die maakt de actie actief, ook als er al een andere actie van de kaart actief is.\n// Het attribuut default-active activeert ze enkel als er nog geen andere actie actief is.\ndocument.querySelector('vl-map-draw-point-action').active = true;"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-draw-point-action",
+      "name": "snapping-pixel-tolerance",
+      "text": "De web-types en de argTypes zeggen dat snapping-pixel-tolerance (standaard 10) bepaalt binnen hoeveel pixels er gesnapt wordt. De code gebruikt het attribuut echter enkel als er kaartlagen (zoals vl-map-wfs-layer) in de actie staan. Zonder zulke lagen snapt de actie op haar eigen laag met een vaste tolerantie van 7 pixels (VlSnapInteraction in libs/map/src/actions/snap/snap-interaction.ts) en heeft snapping-pixel-tolerance geen effect.",
+      "source": "libs/map/src/components/action/draw-action/vl-map-draw-action.ts"
+    }
+  ]
+}

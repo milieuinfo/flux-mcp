@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "page": "components-block-autocomplete",
+  "inputHash": "ab3ce6a57f7d",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-autocomplete, een tekstveld dat onder de invoer suggesties toont die passen bij de ingetypte tekst. De suggesties komen uit een vaste lijst in de property items, of uit een API: luister naar het event search en zet het resultaat in de property matches. Verder groepeer je met group-by, kies je de weergave met caption-format of een eigen itemTemplate, en volgt de keuze in het event selected-autocomplete.",
+  "keywords": [
+    "autocomplete",
+    "vl-autocomplete",
+    "suggesties",
+    "suggestions",
+    "typeahead",
+    "zoekveld",
+    "search input",
+    "combobox",
+    "adres zoeken",
+    "geolocation api",
+    "item template",
+    "selected-autocomplete",
+    "group-by",
+    "caption-format"
+  ],
+  "examples": {
+    "components-block-autocomplete--autocomplete-default": {
+      "html": "<vl-autocomplete placeholder=\"Hint: typ Gent\" min-chars=\"1\" max-suggestions=\"5\"></vl-autocomplete>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAutocomplete } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAutocomplete]);\n\nconst autocomplete = document.querySelector('vl-autocomplete');\n// Met items filtert de component zelf: een item past als zijn title de ingetypte tekst bevat.\nautocomplete.items = [\n    { title: 'Gent', subtitle: 'Gemeente', value: '1' },\n    { title: 'Gentbos, Merelbeke', subtitle: 'Adres', value: '2' },\n    { title: 'Gentbruggestraat, Gent', subtitle: 'Adres', value: '3' },\n    { title: 'Gentele, Brugge', subtitle: 'Adres', value: '5' },\n    { title: 'Automotive Contractors Gent ', subtitle: 'Project', value: '6' },\n    { title: 'Buurtshuis Watersportbaan Gent', subtitle: 'Project', value: '7' },\n];"
+    },
+    "components-block-autocomplete--autocomplete-group-by-subtitle": {
+      "html": "<vl-autocomplete min-chars=\"1\" group-by=\"subtitle\" caption-format=\"title-only\" placeholder=\"Hint: typ Gent\"></vl-autocomplete>",
+      "js": "// group-by=\"subtitle\" zet de suggesties onder een kop per waarde van subtitle (Gemeente, Adres, Project).\ndocument.querySelector('vl-autocomplete').items = [\n    { title: 'Gent', subtitle: 'Gemeente', value: '1' },\n    { title: 'Gentbos, Merelbeke', subtitle: 'Adres', value: '2' },\n    { title: 'Gentbruggestraat, Gent', subtitle: 'Adres', value: '3' },\n    { title: 'Gentele, Brugge', subtitle: 'Adres', value: '5' },\n    { title: 'Automotive Contractors Gent ', subtitle: 'Project', value: '6' },\n    { title: 'Buurtshuis Watersportbaan Gent', subtitle: 'Project', value: '7' },\n];"
+    },
+    "components-block-autocomplete--autocomplete-custom-caption-formatter": {
+      "html": "<vl-autocomplete min-chars=\"1\" caption-format=\"subtitle-title-horizontal\" placeholder=\"Hint: typ Gent\"></vl-autocomplete>",
+      "js": "// caption-format=\"subtitle-title-horizontal\" toont elke suggestie als 'subtitle: title', bv. 'Gemeente: Gent'.\ndocument.querySelector('vl-autocomplete').items = [\n    { title: 'Gent', subtitle: 'Gemeente', value: '1' },\n    { title: 'Gentbos, Merelbeke', subtitle: 'Adres', value: '2' },\n    { title: 'Gentbruggestraat, Gent', subtitle: 'Adres', value: '3' },\n    { title: 'Gentele, Brugge', subtitle: 'Adres', value: '5' },\n    { title: 'Automotive Contractors Gent ', subtitle: 'Project', value: '6' },\n    { title: 'Buurtshuis Watersportbaan Gent', subtitle: 'Project', value: '7' },\n];"
+    },
+    "components-block-autocomplete--autocomplete-with-item-template": {
+      "html": "<vl-autocomplete min-chars=\"1\" label=\"Doorzoek PV's\" placeholder=\"Hint: typ ANB\" show-clear></vl-autocomplete>",
+      "js": "import { html } from 'lit';\nimport { registerWebComponents } from '@domg-wc/common';\nimport { VlAutocomplete } from '@domg-wc/components/block';\n\n// VlAutocomplete registreert zelf vl-text, dat de template gebruikt.\nregisterWebComponents([VlAutocomplete]);\n\nconst autocomplete = document.querySelector('vl-autocomplete');\nautocomplete.items = [\n    {\n        title: 'PV.ANB.2026.00412',\n        value: '1',\n        createdOn: '08.05.2026',\n        owner: 'Jane Smith',\n        status: 'Nog niet opnemen',\n    },\n    {\n        title: 'ANB-2026-00412-bis',\n        value: '2',\n        createdOn: '02.04.2026',\n        owner: 'Bob Johnson',\n        status: 'Wel opnemen',\n    },\n    {\n        title: 'ANB 2026 00412',\n        value: '3',\n        createdOn: '15.01.2026',\n        owner: 'Alice Brown',\n        status: 'Niet opnemen',\n    },\n];\n// itemTemplate krijgt het volledige item en geeft een lit TemplateResult terug: de inhoud van de <li>. De <li> zelf\n// (id, klik, role=\"option\") blijft van de component, en caption-format valt weg. Zet er geen links of knoppen in.\nautocomplete.itemTemplate = (item) => html`\n    <div class=\"vl-stacked\">\n        <vl-text bold>${item.title}</vl-text>\n        <vl-text annotation>Aangemaakt op ${item.createdOn}, eigenaar: ${item.owner}, status: ${item.status}</vl-text>\n    </div>\n`;"
+    },
+    "components-block-autocomplete--autocomplete-input-and-api-call": {
+      "html": "<vl-autocomplete placeholder=\"Gemeente, Straat of Project\" min-chars=\"2\" max-suggestions=\"10\"></vl-autocomplete>",
+      "js": "async function fetchDataFromApiCall(autocomplete, searchTerm) {\n    const result = await fetch(\n        `https://geo.api.vlaanderen.be/geolocation/suggestion?q=${searchTerm}&c=${autocomplete.maxSuggestions}`\n    );\n    const responseBody = await result.json();\n    // matches toont de suggesties en zet de laadindicator uit.\n    autocomplete.matches = responseBody.SuggestionResult.map((obj) => ({\n        title: obj,\n        value: obj,\n    }));\n}\n\n// search volgt zodra de gebruiker minstens min-chars tekens typt en de component geen items heeft.\ndocument.querySelector('vl-autocomplete').addEventListener('search', (event) => {\n    fetchDataFromApiCall(event.target, event.detail.searchTerm);\n});"
+    },
+    "components-block-autocomplete--autocomplete-input-and-mocked-api-call": {
+      "html": "<vl-autocomplete placeholder=\"Gemeente, Straat of Project\" min-chars=\"2\" max-suggestions=\"5\"></vl-autocomplete>",
+      "js": "// Typ 'Drab' om de resultaten te zien.\nasync function mockedApiCall(searchTerm, maxSuggestions) {\n    const results = [\n        'Drabbinkdreef, Gent',\n        'Drabstraat, Gent',\n        'Drabstraat, Kontich',\n        'Drabstraat, Mechelen',\n        'Drabstraat, Mortsel',\n        'Drabstraat, Wichelen',\n        'Drabstraat, Zwevezele',\n    ];\n    const filteredResults = results\n        .filter((i) => i.toLowerCase().startsWith(searchTerm.toLowerCase()))\n        .slice(0, maxSuggestions);\n    return {\n        SuggestionResult: filteredResults,\n    };\n}\n\nasync function fetchDataFromMockedApiCall(autocomplete, searchTerm) {\n    const responseBody = await mockedApiCall(searchTerm, autocomplete.maxSuggestions);\n    autocomplete.matches = responseBody.SuggestionResult.map((obj) => ({\n        title: obj,\n        value: obj,\n    }));\n}\n\ndocument.querySelector('vl-autocomplete').addEventListener('search', (event) => {\n    fetchDataFromMockedApiCall(event.target, event.detail.searchTerm);\n});"
+    },
+    "components-block-autocomplete--autocomplete-without-suggestions": {
+      "html": "<vl-autocomplete min-chars=\"1\" placeholder=\"Hint: typ Gent\"></vl-autocomplete>"
+    },
+    "components-block-autocomplete--autocomplete-in-side-sheet": {
+      "html": "<vl-side-sheet>\n    <vl-autocomplete min-chars=\"1\" caption-format=\"subtitle-title-horizontal\" placeholder=\"Hint: typ Gent\"></vl-autocomplete>\n</vl-side-sheet>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAutocomplete, VlSideSheet } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAutocomplete, VlSideSheet]);\n\ndocument.querySelector('vl-side-sheet vl-autocomplete').items = [\n    { title: 'Gent', subtitle: 'Gemeente', value: '1' },\n    { title: 'Gentbos, Merelbeke', subtitle: 'Adres', value: '2' },\n    { title: 'Gentbruggestraat, Gent', subtitle: 'Adres', value: '3' },\n    { title: 'Gentele, Brugge', subtitle: 'Adres', value: '5' },\n    { title: 'Automotive Contractors Gent ', subtitle: 'Project', value: '6' },\n    { title: 'Buurtshuis Watersportbaan Gent', subtitle: 'Project', value: '7' },\n];"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-autocomplete",
+      "name": "matches",
+      "text": "matches is een property met enkel een setter (set matches) die de suggesties toont die je na het event search ophaalt; ze zet ook de laadindicator uit. De pagina en de stories vl-autocomplete - input and api call en vl-autocomplete - input and mocked api call gebruiken ze, maar de web-types van 2.20.0 geven voor vl-autocomplete enkel de properties items en itemTemplate.",
+      "source": "libs/components/src/block/autocomplete/vl-autocomplete.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-autocomplete",
+      "name": "matches",
+      "text": "Onder 'Zonder suggesties voor autocomplete' zegt de pagina dat de laadindicator verdwijnt als je matches gelijkstelt aan een lege array. Dat klopt, maar volgens de code (suggest) toont de component bij een lege lijst, zodra de ingetypte tekst minstens min-chars tekens heeft, een suggestielijst met één niet-selecteerbare regel met de tekst van no-matches-text (standaard 'Geen resultaat'). Wil je geen suggestielijst, zet dan disable-loading.",
+      "source": "libs/components/src/block/autocomplete/vl-autocomplete.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-autocomplete",
+      "text": "De tekst onder Doel, en de description van vl-autocomplete in de web-types, noemen een statische lijst 'static-list' en een API 'dataFetcher'. Geen van beide bestaat in de code van 2.20.0: een vaste lijst geef je mee met de property items, en voor een API luister je naar het event search en zet je de property matches.",
+      "source": "libs/components/src/block/autocomplete/stories/vl-autocomplete.stories-doc.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-autocomplete",
+      "name": "search",
+      "text": "De beschrijving van het event search in de argTypes en de web-types verwijst naar de story 'WithInputAndApiCall'. Die bestaat niet in 2.20.0: het voorbeeld met een API is de story vl-autocomplete - input and api call (AutocompleteInputAndApiCall).",
+      "source": "libs/components/src/block/autocomplete/stories/vl-autocomplete.stories-arg.ts"
+    }
+  ]
+}

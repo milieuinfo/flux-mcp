@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "page": "components-form-input-field-masked",
+  "inputHash": "7be4abe982b2",
+  "analysedFor": "2.7.0",
+  "summary": "Documentatie van vl-input-field-masked, een invoerveld dat de invoer opmaakt volgens een mask (Cleave.js) en ze valideert (patternMismatch). Er zijn vaste masks voor iban, rijksregisternummer, uuid, datum, getal, prijs en telefoonnummers; getRawValue() en raw-value geven de waarde zonder opmaak.",
+  "keywords": [
+    "input field masked",
+    "vl-input-field-masked",
+    "masked input",
+    "input mask",
+    "invoermasker",
+    "iban",
+    "rijksregisternummer",
+    "rrn",
+    "uuid",
+    "telefoonnummer",
+    "phone number",
+    "prijs",
+    "price",
+    "cleave",
+    "raw value"
+  ],
+  "examples": {
+    "components-form-input-field-masked--input-field-masked-iban": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"IBAN\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"iban\"></vl-input-field-masked>\n</div>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFormLabelComponent, VlInputFieldMaskedComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([VlInputFieldMaskedComponent, VlFormLabelComponent]);\n\n// event.detail.value is de opgemaakte waarde (bv. 'BE94 7310 5568 1914'), of zonder opmaak met raw-value;\n// getRawValue() geeft altijd de waarde zonder opmaak (bv. 'BE94731055681914').\ndocument.querySelector('#story-input').addEventListener('vl-change', (event) => {\n    console.log(event.detail.value, event.target.getRawValue());\n});"
+    },
+    "components-form-input-field-masked--input-field-masked-rrn": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Rijkregisternummer\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"rrn\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-uuid": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"UUID\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"uuid\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-date": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Date\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"date\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-numerical": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Numerical\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"numerical\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-price": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Price\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"price\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-phone": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Phone\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"phone\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-phone-international": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Phone international\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"phoneinternational\"></vl-input-field-masked>\n</div>"
+    },
+    "components-form-input-field-masked--input-field-masked-mobile": {
+      "html": "<div>\n    <vl-form-label for=\"story-input\" label=\"Mobile\" block></vl-form-label>\n    <vl-input-field-masked id=\"story-input\" mask=\"mobile\"></vl-input-field-masked>\n</div>"
+    }
+  },
+  "notes": []
+}

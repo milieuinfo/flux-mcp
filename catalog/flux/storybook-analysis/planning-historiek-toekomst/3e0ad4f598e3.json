@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "planning-historiek-toekomst",
+  "inputHash": "3e0ad4f598e3",
+  "analysedFor": "2.20.0",
+  "summary": "Achtergrond over Flux: waarom het team de componenten van het Webuniversum als echte web-componenten aanbiedt, de geschiedenis van het team en de codebase van vóór 2020 tot nu, en de planning per periode, met de release van v2 in juni 2025 en de doelen voor 2025. De planning voor 2026 staat enkel als afbeelding, met onder meer next-versies van side-navigation, tabs en table, een analyse van de map en een mogelijke v3 rond november.",
+  "keywords": [
+    "planning",
+    "roadmap",
+    "historiek",
+    "history",
+    "toekomst",
+    "future",
+    "flux-team",
+    "uig-team",
+    "webuniversum",
+    "web components",
+    "v2",
+    "v3",
+    "planning 2026",
+    "planning 2025"
+  ],
+  "examples": {},
+  "notes": []
+}

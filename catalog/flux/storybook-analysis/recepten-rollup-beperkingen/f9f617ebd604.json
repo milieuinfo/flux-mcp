@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "recepten-rollup-beperkingen",
+  "inputHash": "f9f617ebd604",
+  "analysedFor": "2.20.0",
+  "summary": "Waar je op let als je een toepassing met Flux-componenten met Rollup bundelt in plaats van met webpack, de aangeraden bundler bij Departement Omgeving. Third-party libraries in CommonJS vragen de plugin @rollup/plugin-commonjs, en voor sommige libraries, zoals dropzone, werkt een named import niet en gebruik je een namespace import.",
+  "keywords": [
+    "rollup",
+    "bundler",
+    "bundelen",
+    "bundling",
+    "commonjs",
+    "@rollup/plugin-commonjs",
+    "es modules",
+    "esm",
+    "namespace import",
+    "named import",
+    "import",
+    "dropzone",
+    "webpack",
+    "build"
+  ],
+  "examples": {},
+  "notes": []
+}

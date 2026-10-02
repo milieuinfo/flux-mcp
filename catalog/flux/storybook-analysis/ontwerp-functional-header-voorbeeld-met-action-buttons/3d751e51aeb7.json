@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "ontwerp-functional-header-voorbeeld-met-action-buttons",
+  "inputHash": "3d751e51aeb7",
+  "analysedFor": "2.7.0",
+  "summary": "Patroon voor een vl-functional-header met acties als knoppen in plaats van de standaard actielinks: drie tertiaire vl-buttons met een icoon (add met tekst, edit en een error-knop met bin) in het top-right slot, in een div met de classes vl-group, vl-margin--small en vl-margin--no-bottom.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "actieknoppen",
+    "action buttons",
+    "header acties",
+    "header actions",
+    "knoppen in header",
+    "tertiary button",
+    "icon button",
+    "top-right slot",
+    "aanmaken",
+    "bewerken",
+    "verwijderen",
+    "delete",
+    "paginaheader"
+  ],
+  "examples": {
+    "ontwerp-functional-header-voorbeeld-met-action-buttons--functional-header-with-action-buttons": {
+      "html": "<vl-functional-header title=\"School- en studietoelagen\">\n    <div class=\"vl-group vl-margin--small vl-margin--no-bottom\" slot=\"top-right\">\n        <vl-button\n            tertiary\n            icon=\"add\"\n            label=\"Aanmaken\"\n            onclick=\"javascript:console.log('actie: Aanmaken')\"\n        >Aanmaken</vl-button>\n        <vl-button\n            tertiary\n            icon=\"edit\"\n            label=\"edit\"\n            onclick=\"javascript:console.log('actie: edit')\"\n        ></vl-button>\n        <vl-button\n            tertiary\n            error\n            icon=\"bin\"\n            label=\"delete\"\n            onclick=\"javascript:console.log('actie: delete')\"\n        ></vl-button>\n    </div>\n</vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "text": "Het stories-bestand registreert enkel VlFunctionalHeaderComponent, terwijl de code drie vl-button-elementen gebruikt en de pagina vl-button bij de componenten opsomt: VlButtonComponent staat niet in registerWebComponents. Wie het voorbeeld overneemt, registreert ook VlButtonComponent uit @domg-wc/components/atom.",
+      "source": "apps/storybook/docs/f_ontwerp/functional-header/4_demo-with-action-buttons/functional-header-with-action-buttons.stories.ts"
+    }
+  ]
+}

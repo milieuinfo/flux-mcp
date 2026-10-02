@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "page": "bijdragen-storybook",
+  "inputHash": "f99943bfa4f4",
+  "analysedFor": "2.11.0",
+  "summary": "Voor wie bijdraagt aan Flux: de conventies om een component in Storybook te documenteren, met drie bestanden per component (stories, stories-arg en stories-doc.mdx), de opbouw van de default export, de templates met de helper story() en de stories, en de structuur van args en argTypes. Let op: een deel van de voorbeelden is verouderd ten opzichte van de stories in 2.11.0.",
+  "keywords": [
+    "storybook",
+    "stories",
+    "story",
+    "args",
+    "argtypes",
+    "mdx",
+    "docs",
+    "documentatie schrijven",
+    "writing stories",
+    "csf",
+    "lit",
+    "story helper",
+    "conventies",
+    "bijdragen",
+    "contributing"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De lijst Bestanden noemt het bestand met de args '[component].stories-args.ts'. In 2.11.0 heten die bestanden '[component].stories-arg.ts', bv. vl-accordion.stories-arg.ts en vl-progress-indicator.stories-arg.ts; er bestaat geen '*.stories-args.ts'. De pagina zelf gebruikt verderop ook 'stories-arg.ts'.",
+      "source": "apps/storybook/docs/b_bijdragen/5_storybook.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld van de default export gebruikt 'storyArgs()' en 'storyArgTypes()' uit '@resources/utils-storybook'. Die bestaan in 2.11.0 niet: resources/utils-storybook/index.ts exporteert o.a. story, defaultArgs, defaultArgTypes, CATEGORIES, TYPES en CONTROLS. vl-accordion.stories.ts, dat de pagina als goed voorbeeld noemt, zet id, tags (autodocs), 'args: accordionArgs' en 'argTypes: accordionArgTypes' rechtstreeks, zonder layout; de stories-arg-bestanden spreiden '...defaultArgs' en '...defaultArgTypes'.",
+      "source": "apps/storybook/docs/b_bijdragen/5_storybook.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld met verschillende templates (vl-proza-message) wijkt af van vl-proza-message.stories.ts in 2.11.0: de mockdata komen uit 'vl-proza-message.stories-msw' en gaan via 'parameters.msw.handlers' in plaats van 'parameters.mockData', de cache leeg je met 'VlProzaMessage.clearCache()' in plaats van 'delete VlProzaMessage.__cache', en de titel is 'Components - Block/proza-message/proza-message'. Het gebruikt ook de onbestaande 'storyArgs' en 'storyArgTypes'.",
+      "source": "apps/storybook/resources/bijdragen/storybook-voorbeeld.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "Het sjabloon voor de docs importeert 'ArgsTable', 'DocsStory' en 'PRIMARY_STORY' uit '@storybook/addon-docs' en gebruikt '<DocsStory id=\"…\" />' en '<ArgsTable story={PRIMARY_STORY} />'. Geen enkele stories-doc.mdx in 2.11.0 (Storybook 9.1.5) gebruikt die nog: ze importeren 'ArgTypes' en 'Canvas' (soms ook 'Source') uit '@storybook/addon-docs/blocks' en tonen een story met '<Canvas of={VlAccordionStories.AccordionDefault} />' en de API met '<ArgTypes of={…} />', bv. vl-accordion.stories-doc.mdx.",
+      "source": "apps/storybook/docs/b_bijdragen/5_storybook.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt de ArgTypes-interface uit '@storybook/web-components' te gebruiken en verwijst naar de documentatie van Storybook 6.1 en 6.5. 2.11.0 gebruikt Storybook 9.1.5 (package.json): de stories-arg-bestanden importeren 'ArgTypes' doorgaans uit '@storybook/web-components-vite' en 'action' uit 'storybook/actions', bv. vl-progress-indicator.stories-arg.ts.",
+      "source": "apps/storybook/docs/b_bijdragen/5_storybook.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De voorbeelden van de args en argTypes heten 'progressBarArgs' en 'progressBarArgTypes', maar bevatten de args van vl-progress-indicator en verwijzen naar 'progressIndicatorArgs'. In 2.11.0 heten ze 'progressIndicatorArgs' en 'progressIndicatorArgTypes' (vl-progress-indicator.stories-arg.ts).",
+      "source": "apps/storybook/docs/b_bijdragen/5_storybook.mdx"
+    }
+  ]
+}

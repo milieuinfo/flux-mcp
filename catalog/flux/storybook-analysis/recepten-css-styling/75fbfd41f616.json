@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "page": "recepten-css-styling",
+  "inputHash": "75fbfd41f616",
+  "analysedFor": "2.7.0",
+  "summary": "Hoe de styling van Flux werkt: de componenten registreren de globale CSS eenmalig op het document, en in je eigen componenten met een shadow DOM moet je die styling zelf opnieuw toevoegen. Ook hoe je per component eigen CSS toevoegt met het attribuut custom-css, en dat je de automatische globale styling kan uitschakelen met autoRegisterStyles.",
+  "keywords": [
+    "styling",
+    "css",
+    "custom css",
+    "custom-css",
+    "globale styling",
+    "global styles",
+    "globalstyles",
+    "shadow dom",
+    "adoptedstylesheets",
+    "autoregisterstyles",
+    "styling uitschakelen",
+    "css overschrijven",
+    "override css",
+    "lit styles"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "Het voorbeeld voor eigen componenten met een shadow DOM importeert vlElementsStyle uit @domg-wc/styles. Dat bestaat in 2.7.0 niet: @domg-wc/styles exporteert o.a. vlResetStyles, vlLegacyStyles, vlGlobalStyles en vlLayoutStyles (libs/styles/src/index.ts). De globale styling die GlobalStyles op het document zet, is [vlResetStyles, ...vlLegacyStyles, ...vlGlobalStyles] (libs/common/src/styles/global-styles.ts). De pagina Afnemen/Migratie v2 - Aanpak noemt vlElementsStyle een legacy import die je moet verwijderen.",
+      "source": "apps/storybook/docs/g_recepten/css-styling.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-accordion-list",
+      "name": "custom-css",
+      "text": "Het voorbeeld van custom-css gebruikt vl-accordion-list. Dat element bestaat in 2.7.0 niet: het staat niet in de web-types en niet in de code; de pagina Afnemen/Migratie v2 - Impact noemt het een deprecated component uit v1, vervangen door Group. vl-accordion bestaat wel en kent custom-css.",
+      "source": "apps/storybook/docs/g_recepten/css-styling.mdx"
+    },
+    {
+      "type": "mismatch",
+      "name": "custom-css",
+      "text": "De pagina zegt dat custom-css werkt voor de componenten onder map, form en components. Dat klopt niet helemaal. De compliance-componenten, zoals vl-header en vl-footer, horen bij @domg-wc/components maar zetten allowCustomCSS op false en loggen 'Custom CSS is niet toegelaten voor dit component.'. vl-table erft niet van BaseLitElement en kent custom-css niet. Componenten zonder shadow DOM (createRenderRoot() geeft this terug), zoals vl-side-navigation met zijn onderdelen, vl-tab, vl-tab-section, vl-search-result-title en vl-search-result-text, erven het attribuut wel, maar loggen enkel 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.'.",
+      "source": "libs/common/src/base/base.lit.element.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina zegt dat alle componenten uit @domg-wc/components de globale CSS eenmalig op het document registreren, via BaseLitElement. Enkel de constructor van BaseLitElement roept GlobalStyles.getInstance().register() op; BaseHTMLElement doet dat niet. Componenten die van BaseHTMLElement erven, zoals vl-accordion, vl-modal, vl-template, vl-pager en vl-info-tile, registreren de globale CSS dus niet; vl-functional-header en vl-http-error-message roepen register() wel zelf op. vl-table erft van LitElement en registreert ook niets. Gebruik je enkel zulke componenten, dan staat de globale styling niet op het document, tenzij je zelf GlobalStyles.getInstance().register() uit @domg-wc/common oproept.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "page": "components-compliance-footer",
+  "inputHash": "97927497a606",
+  "analysedFor": "2.2.0",
+  "summary": "Documentatie van vl-footer, dat de globale footer-widget van Digitaal Vlaanderen (Mijn Burgerprofiel) onderaan in de body injecteert. Je hebt een identifier van Digitaal Vlaanderen nodig; development kiest hun ontwikkel-servers, en de component laadt scripts van prod.widgets.burgerprofiel.vlaanderen.be.",
+  "keywords": [
+    "footer",
+    "vl-footer",
+    "voettekst",
+    "global footer",
+    "globale footer",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "mijn burgerprofiel",
+    "widget",
+    "vlaamse overheid",
+    "page footer",
+    "identifier"
+  ],
+  "examples": {
+    "components-compliance-footer--footer-default": {
+      "html": "<vl-footer development identifier=\"0337f8dc-3266-4e7a-8f4a-95fd65189e5b\"></vl-footer>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFooter } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlFooter]);\n\n// ready volgt op het element zelf zodra de widget de footer in de pagina gezet heeft; het bubbelt niet.\ndocument.querySelector('vl-footer').addEventListener('ready', () => {\n    console.log('ready');\n});"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-testen-test-piramide-ssr-vs-spa",
+  "inputHash": "a5c79d81f16f",
+  "analysedFor": "2.20.0",
+  "summary": "Vergelijkt de test piramide van een server-side rendered toepassing (SSR) met die van een single page application (SPA). Bij SSR volstaan voor de frontend e2e-testen voor het happy en beperkt het unhappy pad; een SPA test je over de volledige piramide, met unit-, component-, component-integratie-, integratie- en e2e-testen, en best een linter of transpiler zoals TypeScript.",
+  "keywords": [
+    "test piramide",
+    "test pyramid",
+    "ssr",
+    "server-side rendering",
+    "spa",
+    "single page application",
+    "testen",
+    "testing",
+    "e2e",
+    "component test",
+    "integratietest",
+    "unit test",
+    "typescript",
+    "linter"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "components-block-description-data-description-data",
+  "inputHash": "75f14f7ef54a",
+  "analysedFor": "2.4.0",
+  "summary": "Pagina van vl-description-data, een lijst van label/waarde-paren (vl-description-data-item, met label en value of de slots label en value) in een grid van kolommen, bv. voor de metadata van een publicatie. De kolombreedte per schermgrootte kies je met items-size, items-medium-size, items-small-size en items-extra-small-size, en bordered zet een rand.",
+  "keywords": [
+    "description data",
+    "vl-description-data",
+    "vl-description-data-item",
+    "beschrijvingslijst",
+    "description list",
+    "label waarde",
+    "key value",
+    "metadata",
+    "eigenschappen",
+    "kenmerken",
+    "kolombreedte",
+    "grid",
+    "bordered"
+  ],
+  "examples": {
+    "components-block-description-data-description-data--description-data-default": {
+      "html": "<vl-description-data items-size=\"2\" items-medium-size=\"3\" items-small-size=\"6\" items-extra-small-size=\"12\">\n    <vl-description-data-item label=\"Uitgever\" value=\"Kind en Gezin\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatiedatum\" value=\"Augustus 2018\"></vl-description-data-item>\n    <vl-description-data-item label=\"Publicatietype\" value=\"Brochure\"></vl-description-data-item>\n    <vl-description-data-item label=\"Categorie\" value=\"Kinderen en jongeren\"></vl-description-data-item>\n</vl-description-data>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlDescriptionData, VlDescriptionDataItem } from '@domg-wc/components/block';\n\nregisterWebComponents([VlDescriptionData, VlDescriptionDataItem]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-description-data",
+      "name": "items-size",
+      "text": "De argTypes en de web-types geven als default van items-size '12 / number of data items'. De code rekent dat letterlijk uit over alle kinderen (this.size = this.size || 12 / this.children.length), zonder afronding: met bv. 5 of 8 kinderen en zonder items-size krijgt elk item een class als vl-column--2.4 of vl-column--1.5, terwijl de grid-stijlen enkel vl-column--1 tot en met vl-column--12 kennen. De code bewaart de berekende waarde bovendien in de property achter items-size, dus ze wordt niet herrekend als er later items bijkomen of wegvallen. Zet items-size dan zelf.",
+      "source": "libs/components/src/block/description-data/vl-description-data.component.ts"
+    }
+  ]
+}

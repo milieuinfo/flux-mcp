@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "page": "components-block-wizard-wizard",
+  "inputHash": "0aeb7b104a38",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-wizard, dat een gebruiker stap voor stap door een lang proces of formulier leidt: elke stap is een vl-wizard-pane, een voortgangsindicator toont de stappen en active-step bepaalt welke pane zichtbaar is. De wizard wisselt niet zelf van stap: zet active-step (of de property activeStep) vanuit je eigen knoppen en bij het event vl-click-step.",
+  "keywords": [
+    "wizard",
+    "vl-wizard",
+    "vl-wizard-pane",
+    "stappen",
+    "stappenplan",
+    "meerstapsproces",
+    "formulier in stappen",
+    "multi-step form",
+    "step wizard",
+    "stepper",
+    "voortgangsindicator",
+    "progress indicator",
+    "active step"
+  ],
+  "examples": {
+    "components-block-wizard-wizard--wizard-default": {
+      "html": "<vl-wizard active-step=\"1\">\n    <vl-title slot=\"title\" type=\"h2\">Wizard title</vl-title>\n    <p slot=\"header\">You're a wizard Harry</p>\n    <vl-wizard-pane name=\"Stap 1\">\n        <vl-title type=\"h3\">Stap 1</vl-title>\n        <div class=\"vl-grid vl-stacked-small\">\n            <div class=\"vl-column vl-column--12\">\n                <div class=\"vl-grid vl-stacked-small\">\n                    <div class=\"vl-column vl-column--12\">\n                        <vl-form-label for=\"naam\" block>Naam</vl-form-label>\n                        <vl-input-field id=\"naam\" block></vl-input-field>\n                    </div>\n                </div>\n            </div>\n            <div class=\"vl-column\">\n                <vl-button>Volgende</vl-button>\n            </div>\n        </div>\n    </vl-wizard-pane>\n    <vl-wizard-pane name=\"Stap 2\">\n        <vl-title type=\"h3\">Stap 2</vl-title>\n        <div class=\"vl-grid vl-stacked-small\">\n            <div class=\"vl-column vl-column--12\">\n                <div class=\"vl-grid vl-stacked-small\">\n                    <div class=\"vl-column vl-column--12\">\n                        <vl-form-label for=\"years\" block>Aantal jaren dienst</vl-form-label>\n                        <vl-input-field id=\"years\" block></vl-input-field>\n                    </div>\n                </div>\n            </div>\n            <div class=\"vl-column vl-column--12\">\n                <vl-link button-as-link icon=\"arrow-left-fat\" icon-placement=\"before\">Vorige</vl-link>\n            </div>\n        </div>\n    </vl-wizard-pane>\n</vl-wizard>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent, VlLinkComponent, VlTitleComponent } from '@domg-wc/components/atom';\nimport { VlWizard } from '@domg-wc/components/block';\nimport { VlFormLabelComponent, VlInputFieldComponent } from '@domg-wc/components/form';\n\nregisterWebComponents([\n    VlWizard,\n    VlTitleComponent,\n    VlButtonComponent,\n    VlLinkComponent,\n    VlFormLabelComponent,\n    VlInputFieldComponent,\n]);\n\nconst wizard = document.querySelector('vl-wizard');\n\n// vl-wizard wisselt niet zelf van stap. Een klik op een stap in de voortgangsindicator vuurt vl-click-step met\n// { number, step }. Zet de actieve stap dan zelf.\nwizard.addEventListener('vl-click-step', (event) => {\n    wizard.activeStep = event.detail.number;\n});\n\n// Volgende in stap 1 en Vorige in stap 2.\nwizard.querySelector('vl-button').addEventListener('click', () => {\n    wizard.activeStep += 1;\n});\nwizard.querySelector('vl-link').addEventListener('click', () => {\n    wizard.activeStep -= 1;\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-wizard",
+      "name": "activeStep",
+      "text": "De property achter het attribuut active-step (type Number, reflecteert naar het attribuut). Het voorbeeld en de story zetten er de actieve stap mee; de web-types kennen enkel het attribuut. In TypeScript is activeStep private in VlWizard: zet daar het attribuut active-step, of werk zoals de story via een element van type any (getWizard in vl-wizard.stories-util.ts).",
+      "source": "libs/components/src/block/wizard/vl-wizard.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-wizard",
+      "name": "active-step",
+      "text": "De web-types en de argTypes geven 0 als default van active-step, maar de constructor van vl-wizard zet activeStep op 1: zonder active-step is de eerste pane actief. De stappen tellen vanaf 1; enkel de pane op positie active-step toont zijn inhoud. De story zet active-step=\"1\" enkel omdat 1 afwijkt van de gedocumenteerde default 0.",
+      "source": "libs/components/src/block/wizard/vl-wizard.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-wizard",
+      "text": "De web-types beschrijven twee slots zonder naam ('Slot voor de titel.' en 'Slot voor de header.'). In de component heten ze title en header: <slot name=\"title\"> en <slot name=\"header\"> in de kop van de wizard. De vl-wizard-pane-elementen gaan in het default slot. De story vult de slots met slot=\"title\" (een vl-title) en slot=\"header\" (een p).",
+      "source": "libs/components/src/block/wizard/vl-wizard.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-wizard-pane",
+      "name": "[default]",
+      "text": "De web-types geven vl-wizard-pane geen slots. In de code rendert de pane een default slot, enkel als hij actief is: de inhoud van elke stap (in het voorbeeld de titel, het veld en de knop of link) zet je rechtstreeks in vl-wizard-pane.",
+      "source": "libs/components/src/block/wizard/vl-wizard-pane.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-link",
+      "name": "label",
+      "text": "De story zet op de vl-link Vorige het attribuut label=\"vorige\", dat vl-link in 2.4.0 niet kent: het staat niet in de web-types en niet in de properties van de component (libs/components/src/atom/link/vl-link.component.ts). Het voorbeeld laat label weg.",
+      "source": "libs/components/src/block/wizard/stories/vl-wizard.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-link",
+      "name": "type",
+      "text": "De story zet op de vl-link Vorige het attribuut type=\"button\", dat vl-link niet kent: het staat niet in de web-types en niet in de properties van de component. De knopvariant van vl-link zet je met button-as-link; het voorbeeld laat type weg.",
+      "source": "libs/components/src/block/wizard/stories/vl-wizard.stories.ts"
+    }
+  ]
+}

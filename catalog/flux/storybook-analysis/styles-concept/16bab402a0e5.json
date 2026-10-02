@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "styles-concept",
+  "inputHash": "16bab402a0e5",
+  "analysedFor": "2.20.0",
+  "summary": "Uitleg over de opmaak in Flux v2: componenten hebben een shadow DOM en laten zich bijsturen met custom-css, en de layout gebeurt met CSS-classes op native elementen (vl-grid, vl-column, vl-group, vl-section en classes voor witruimte). Beschrijft de aanbevolen volgorde van styling (Flux-classes, dan custom-css, dan eigen classes en CSS-variabelen) en hoe je vlLayoutStyles uit @domg-wc/styles in een eigen web-component gebruikt.",
+  "keywords": [
+    "styling",
+    "opmaak",
+    "styles",
+    "css",
+    "shadow dom",
+    "custom-css",
+    "layout",
+    "layout classes",
+    "vl-grid",
+    "vl-group",
+    "vl-section",
+    "vllayoutstyles",
+    "css-variabelen",
+    "css variables",
+    "adoptedstylesheets"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "components-block-share-buttons-share-buttons",
+  "inputHash": "07b79a3a231b",
+  "analysedFor": "2.20.0",
+  "summary": "Documentatie van vl-share-buttons, een rij deelknoppen met het label Deel: en een vl-share-button per kanaal. De component is deprecated en verdwijnt in v3; de pagina toont onder Ontwerp het alternatief: per kanaal een vl-button met cta-link naar de share-URL, icon en een verplicht label.",
+  "keywords": [
+    "deelknoppen",
+    "share buttons",
+    "vl-share-buttons",
+    "delen",
+    "share",
+    "sociale media",
+    "social media",
+    "facebook",
+    "linkedin",
+    "twitter",
+    "mail",
+    "cta-link",
+    "deprecated"
+  ],
+  "examples": {
+    "components-block-share-buttons-share-buttons--share-buttons-default": {
+      "html": "<vl-share-buttons>\n    <vl-share-button href=\"#\" medium=\"facebook\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"twitter\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"linkedin\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"googleplus\"></vl-share-button>\n    <vl-share-button href=\"#\" medium=\"mail\"></vl-share-button>\n</vl-share-buttons>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlShareButton, VlShareButtonsComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlShareButtonsComponent, VlShareButton]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-share-buttons",
+      "name": "[default]",
+      "text": "De web-types geven vl-share-buttons geen slots. In de code toont hij het label Deel: en daarna zijn inhoud in een default slot, waar de vl-share-button's komen.",
+      "source": "libs/components/src/block/share-buttons/vl-share-buttons.component.ts"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "map-layer-vector-layer-wfs-layer",
+  "inputHash": "f3e707220c44",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-wfs-layer, een vectorlaag in een vl-map die de features van een WFS-laag (url en layers) ophaalt voor het zichtbare deel van de kaart. Met projection-code=\"EPSG:31370\" vraag je Lambert 72-data op voor een kaart in Lambert 2008; een vl-map-layer-style of vl-map-layer-circle-style in de laag bepaalt de stijl.",
+  "keywords": [
+    "wfs",
+    "wfs layer",
+    "vl-map-wfs-layer",
+    "web feature service",
+    "vectorlaag",
+    "vector layer",
+    "features ophalen",
+    "geoserver",
+    "bbox",
+    "projection-code",
+    "lambert 72",
+    "kaartlaag",
+    "map layer",
+    "kaart"
+  ],
+  "examples": {
+    "map-layer-vector-layer-wfs-layer--map-wfs-layer-default": {
+      "html": "<!-- De laag haalt de features van de WFS-laag owl_l op voor het zichtbare deel van de kaart. projection-code=\"EPSG:31370\"\n     vraagt ze op in Lambert 72; de laag zet ze om naar Lambert 2008, de projectie van de kaart. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-wfs-layer\n        layers=\"owl_l\"\n        name=\"Oppervlaktewaterlichamen\"\n        url=\"https://geoserver.vmm.be/geoserver/vmm/wfs\"\n        projection-code=\"EPSG:31370\"\n    ></vl-map-wfs-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-wfs-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-wfs-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

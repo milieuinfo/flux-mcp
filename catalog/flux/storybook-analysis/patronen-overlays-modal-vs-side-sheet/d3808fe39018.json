@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "page": "patronen-overlays-modal-vs-side-sheet",
+  "inputHash": "d3808fe39018",
+  "analysedFor": "2.20.0",
+  "summary": "Keuzekader tussen vl-modal en vl-side-sheet: een modal voor een geïsoleerde taak die de pagina afschermt (altijd bij verwijderen of een andere onomkeerbare bevestiging), een side-sheet wanneer de pagina-context zichtbaar en bruikbaar moet blijven. Behandelt ook de full-screen modal (size=\"full-screen\"), de links of rechts uitgelijnde modal (position=\"left\" of \"right\") en welke overlays je mag stapelen.",
+  "keywords": [
+    "modal",
+    "side-sheet",
+    "side sheet",
+    "overlay",
+    "dialoog",
+    "dialog",
+    "zijpaneel",
+    "side panel",
+    "drawer",
+    "full-screen modal",
+    "bevestiging",
+    "confirmation",
+    "verwijderen",
+    "overlays stapelen",
+    "nested modal"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-side-sheet",
+      "text": "De pagina zegt dat de side-sheet de pagina niet afschermt en bruikbaar laat. Dat klopt enkel op een breed scherm. Tot 767px breed legt een open vl-side-sheet een backdrop over de pagina (wit, 80% dekkend, met blur), en houdt ze met focus guards de focus bij haar eigen inhoud: daar gedraagt ze zich modaal. De pagina van vl-side-sheet vermeldt dat een open side-sheet op een mobiel scherm de focus bij zijn eigen inhoud houdt.",
+      "source": "libs/components/src/block/side-sheet/vl-side-sheet.flux-css.ts"
+    }
+  ]
+}

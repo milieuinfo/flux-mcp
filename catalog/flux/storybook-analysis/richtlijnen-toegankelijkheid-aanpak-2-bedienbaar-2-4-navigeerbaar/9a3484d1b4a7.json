@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-4-navigeerbaar",
+  "inputHash": "9a3484d1b4a7",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 2.4 Navigeerbaar: blokken omzeilen om meteen naar de hoofdinhoud te gaan, een unieke paginatitel, een logische focusvolgorde en linkteksten die hun doel duidelijk maken (brons[basis]); meerdere manieren om inhoud te vinden, duidelijke koppen en labels en een zichtbare toetsenbordfocus (zilver[basis]); en een focus die niet bedekt is (zilver[plus]). Met HTML-voorbeelden uit de WCAG-technieken voor <title>, linkteksten, alt in een link en in een image map, en de volgorde van koppen.",
+  "keywords": [
+    "navigeerbaar",
+    "navigable",
+    "skip link",
+    "bypass blocks",
+    "paginatitel",
+    "page title",
+    "focusvolgorde",
+    "focus order",
+    "linktekst",
+    "link purpose",
+    "koppen en labels",
+    "headings",
+    "focus visible",
+    "focus not obscured",
+    "toetsenbordfocus"
+  ],
+  "examples": {},
+  "notes": []
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "recepten-events",
+  "inputHash": "ffd0b98c14fb",
+  "analysedFor": "2.20.0",
+  "summary": "Hoe je naar events van Flux-componenten luistert: de eigen custom events met de prefix vl-, zoals vl-change en vl-input van vl-checkbox of vl-click van vl-button, hebben de voorkeur boven native events. Door retargeting in de shadow DOM gebruik je event.composedPath() in plaats van event.target; verder events in Lit-templates met @event-naam, en in React met @lit/react tot en met React 18 en native vanaf React 19.",
+  "keywords": [
+    "events",
+    "custom events",
+    "custom event",
+    "vl-change",
+    "vl-input",
+    "vl-click",
+    "native events",
+    "retargeting",
+    "composedpath",
+    "shadow dom",
+    "event listener",
+    "addeventlistener",
+    "lit",
+    "react",
+    "@lit/react"
+  ],
+  "examples": {},
+  "notes": []
+}

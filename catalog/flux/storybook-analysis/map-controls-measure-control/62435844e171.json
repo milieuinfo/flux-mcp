@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "page": "map-controls-measure-control",
+  "inputHash": "62435844e171",
+  "analysedFor": "2.13.0",
+  "summary": "Documentatie van vl-map-measure-control, een toggle-knop met de tekst 'Meten' op een vl-map die de meetactie aan- of uitzet. De control heeft geen action-id nodig: ze zoekt zelf de vl-map-measure-action van de kaart, die je in een vl-map-features-layer zet.",
+  "keywords": [
+    "meten",
+    "afstand meten",
+    "measure",
+    "measure distance",
+    "measure control",
+    "meetactie",
+    "meetknop",
+    "toggle",
+    "toggle button",
+    "control",
+    "vl-map-measure-control",
+    "vl-map-measure-action",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-controls-measure-control--map-measure-control-default": {
+      "html": "<!-- De control zoekt zelf de vl-map-measure-action van de kaart; een id of action-id is niet nodig. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-action-controls>\n        <vl-map-measure-control></vl-map-measure-control>\n    </vl-map-action-controls>\n    <vl-map-features-layer>\n        <vl-map-measure-action></vl-map-measure-action>\n    </vl-map-features-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-measure-control",
+      "name": "custom-css",
+      "text": "De web-types geven vl-map-measure-control het attribuut custom-css, terwijl de pagina zegt dat de component geen configuratie heeft. Het element heeft geen shadow DOM: de mixin VlMapControl laat createRenderRoot het element zelf teruggeven. BaseLitElement.addCustomCSS (libs/common/src/base/base.lit.element.ts) logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe.",
+      "source": "libs/map/src/components/controls/vl-map-control.mixin.ts"
+    }
+  ]
+}

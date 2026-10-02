@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "page": "components-compliance-header",
+  "inputHash": "941031b5f44c",
+  "analysedFor": "2.2.0",
+  "summary": "Documentatie van vl-header, dat de global header-widget van Digitaal Vlaanderen (Mijn Burgerprofiel) bovenaan in de body injecteert. Je hebt een identifier van Digitaal Vlaanderen nodig; login-url, login-redirect-url, logout-url en switch-capacity-url configureren de sessie (simple slaat dat over), de property applicationLinks voegt applicatieve links toe aan het aanmeldmenu, en reject-logout of de property logoutCallback wijzen automatische logouts af.",
+  "keywords": [
+    "header",
+    "vl-header",
+    "hoofding",
+    "global header",
+    "globale header",
+    "digitaal vlaanderen",
+    "burgerprofiel",
+    "mijn burgerprofiel",
+    "widget",
+    "aanmelden",
+    "login",
+    "logout",
+    "applicatieve links",
+    "application links",
+    "sessie"
+  ],
+  "examples": {
+    "components-compliance-header--header-default": {
+      "html": "<vl-header development identifier=\"59188ff6-662b-45b9-b23a-964ad48c2bfb\" simple></vl-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlHeader } from '@domg-wc/components/compliance';\n\nregisterWebComponents([VlHeader]);\n\n// ready volgt op het element zelf zodra de widget de header in de pagina gezet heeft; het bubbelt niet.\ndocument.querySelector('vl-header').addEventListener('ready', () => {\n    console.log('ready');\n});"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-header",
+      "name": "skeleton",
+      "text": "Volgens de argTypes en de web-types toont skeleton een skeleton voordat de header rendert. De code voegt #header__skeleton direct na #header__container in, en de CSS van de component (vl-header.component.flux-css.ts) verbergt het met #header__container ~ #header__skeleton { display: none }: zolang #header__container bestaat, is de skeleton onzichtbaar. Bij het verwijderen van vl-header zoekt disconnectedCallback #header__container__skeleton in plaats van #header__skeleton, dus de skeleton blijft staan; zonder container wordt hij dan zichtbaar als een lege witte balk van 43px bovenaan de body.",
+      "source": "libs/components/src/compliance/header/vl-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header",
+      "text": "De beschrijving van vl-header in de web-types van 2.2.0 zegt dat de header in de vl-body geïnjecteerd wordt als je het vl-body element gebruikt. Een element vl-body bestaat niet in 2.2.0 (niet in de code en niet in de web-types), en de code zet #header__container altijd vooraan in het native body-element (document.querySelector('body')), zoals de pagina zegt.",
+      "source": "libs/components/src/compliance/compliance.web-types.json"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-header",
+      "name": "identifier",
+      "text": "De argTypes en de web-types beschrijven identifier van vl-header als de identifier om bij AIV de footer op te halen. Het gaat om de header: de code laadt er de header-widget van Digitaal Vlaanderen mee (widget-url .../api/v1/widget/<identifier>, gemount in #header).",
+      "source": "libs/components/src/compliance/header/stories/vl-header.stories-arg.ts"
+    }
+  ]
+}

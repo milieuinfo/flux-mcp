@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "styles-layout-afnemers-content-block",
+  "inputHash": "eba3a8af9915",
+  "analysedFor": "2.0.2",
+  "summary": "CSS-klasse vl-content-block om de inhoud van een pagina te groeperen in een blok dat gecentreerd staat, met een begrensde breedte en witruimte (padding) links en rechts. Het is het equivalent van Layout in het Webuniversum van Digitaal Vlaanderen.",
+  "keywords": [
+    "content block",
+    "vl-content-block",
+    "layout",
+    "container",
+    "wrapper",
+    "gecentreerd",
+    "centered",
+    "max-width",
+    "paginabreedte",
+    "page width",
+    "webuniversum"
+  ],
+  "examples": {
+    "styles-layout-afnemers-content-block--content-block-default": {
+      "html": "<div class=\"vl-content-block\">\n    <vl-title type=\"h1\">Title</vl-title>\n    <vl-title type=\"h2\">Sub title</vl-title>\n    <section class=\"vl-section\">\n        lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et\n        dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex\n        ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu\n        fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt\n        mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor\n        incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco\n        laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate\n        velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in\n        culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipisicing\n        elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis\n        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in\n        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur\n    </section>\n    <vl-title type=\"h2\">Sub title</vl-title>\n    <section class=\"vl-section\">\n        lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et\n        dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex\n        ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu\n        fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt\n        mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor\n        incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco\n        laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate\n        velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in\n        culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipisicing\n        elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis\n        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in\n        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur\n    </section>\n</div>"
+    }
+  },
+  "notes": []
+}

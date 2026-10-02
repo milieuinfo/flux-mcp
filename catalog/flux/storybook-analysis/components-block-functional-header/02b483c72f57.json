@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "page": "components-block-functional-header",
+  "inputHash": "02b483c72f57",
+  "analysedFor": "2.12.1",
+  "summary": "Documentatie van vl-functional-header, de header bovenaan een toepassing met de titel (title), een subtitel, de terug-link en acties. De pagina geeft richtlijnen voor de terug-link (back-link, back), sticky en skip-to-content-id, en toont de slots en varianten met tabs (vl-tabs met within-functional-header in het sub-header slot), een breadcrumb in het sub-title slot, full-width en het verbergen of uitschakelen van de terug-link.",
+  "keywords": [
+    "functionele header",
+    "functional header",
+    "vl-functional-header",
+    "application header",
+    "paginaheader",
+    "page header",
+    "paginatitel",
+    "terug-link",
+    "back link",
+    "breadcrumb",
+    "tabs",
+    "sub-header",
+    "sticky header",
+    "skip link",
+    "acties"
+  ],
+  "examples": {
+    "components-block-functional-header--functional-header-default": {
+      "html": "<vl-functional-header\n    sub-title=\"Voor lager, middelbaar en hoger onderwijs\"\n    title=\"School- en studietoelagen\"\n></vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-actions": {
+      "html": "<vl-functional-header\n    sub-title=\"Voor lager, middelbaar en hoger onderwijs\"\n    title=\"School- en studietoelagen\"\n>\n    <div slot=\"actions\">\n        <a href=\"#\">Actie 1</a>\n        <a href=\"#\">Actie 2</a>\n    </div>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-slots": {
+      "html": "<vl-functional-header>\n    <span slot=\"back\">Terug</span>\n    <a slot=\"back-link\" href=\"#\">Terug</a>\n    <span slot=\"sub-header\">Sub header content</span>\n    <span slot=\"sub-title\">Voor lager, middelbaar en hoger onderwijs</span>\n    <span slot=\"title\">School- en studietoelagen</span>\n    <span slot=\"top-left\">Linkerbovenhoek content</span>\n    <span slot=\"top-right\">Rechterbovenhoek content</span>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-tabs": {
+      "html": "<vl-functional-header title=\"School- en studietoelagen\">\n    <vl-tabs slot=\"sub-header\" disable-links within-functional-header active-tab=\"trein\">\n        <vl-tabs-pane id=\"trein\" title=\"Trein\"></vl-tabs-pane>\n        <vl-tabs-pane id=\"metro\" title=\"Metro, tram en bus\"></vl-tabs-pane>\n        <vl-tabs-pane id=\"fiets\" title=\"Fiets\"></vl-tabs-pane>\n    </vl-tabs>\n</vl-functional-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFunctionalHeaderComponent, VlTabsComponent } from '@domg-wc/components/block';\n\n// VlTabsComponent registreert zelf vl-tabs-pane. Met within-functional-header toont vl-tabs enkel de tabs, niet de\n// inhoud van de panes; met disable-links krijgen de tabs geen href, zodat een klik de url niet aanpast.\nregisterWebComponents([VlFunctionalHeaderComponent, VlTabsComponent]);\n\n// change volgt bij een klik op een tab die nog niet actief is, met het id van die tab in detail.activeTab. Het event\n// bubbelt niet: luister op vl-tabs zelf, niet op de functional header.\ndocument.querySelector('vl-tabs').addEventListener('change', (event) => {\n    console.log(event.detail.activeTab);\n});"
+    },
+    "components-block-functional-header--functional-header-breadcrumb": {
+      "html": "<vl-functional-header title=\"School- en studietoelagen\" hide-back-link>\n    <vl-breadcrumb slot=\"sub-title\">\n        <vl-breadcrumb-item href=\"1\">Vlaanderen Intern</vl-breadcrumb-item>\n        <vl-breadcrumb-item href=\"2\">Regelgeving</vl-breadcrumb-item>\n        <vl-breadcrumb-item href=\"3\">Webuniversum</vl-breadcrumb-item>\n        <vl-breadcrumb-item>Componenten</vl-breadcrumb-item>\n    </vl-breadcrumb>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-full-width": {
+      "html": "<vl-functional-header full-width title=\"School- en studietoelagen\">\n    <span slot=\"sub-title\">Full width</span>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-disable-back-link": {
+      "html": "<vl-functional-header disable-back-link title=\"School- en studietoelagen\">\n    <span slot=\"sub-title\">Voor lager, middelbaar en hoger onderwijs</span>\n</vl-functional-header>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlFunctionalHeaderComponent } from '@domg-wc/components/block';\n\nregisterWebComponents([VlFunctionalHeaderComponent]);\n\n// Met disable-back-link is de terug-link een knop zonder href: de component navigeert niet en vuurt enkel\n// vl-click-back. Handel de klik dus zelf af.\ndocument.querySelector('vl-functional-header').addEventListener('vl-click-back', () => {\n    console.log('vl-click-back');\n});"
+    },
+    "components-block-functional-header--functional-header-hide-back-link": {
+      "html": "<vl-functional-header hide-back-link title=\"School- en studietoelagen\">\n    <span slot=\"sub-title\">Voor lager, middelbaar en hoger onderwijs</span>\n</vl-functional-header>"
+    },
+    "components-block-functional-header--functional-header-hide-sub-header": {
+      "html": "<vl-functional-header hide-sub-header title=\"School- en studietoelagen\"></vl-functional-header>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "text": "De story 'slots' vult de slots back, back-link, sub-header en sub-title samen, terwijl de web-types zeggen dat die niet te combineren zijn. In de component staan de slots back-link en sub-title als standaardinhoud in het slot sub-header, en het slot back als standaardinhoud in back-link. Een gevuld slot sub-header vervangt dus de hele subrij: van die vier toont de story enkel 'Sub header content'. Kies in je eigen code ofwel sub-header, ofwel back-link of back met sub-title.",
+      "source": "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "actions",
+      "text": "De web-types noemen actions een slot, maar de shadow DOM van vl-functional-header heeft geen <slot name=\"actions\">. De component kopieert de outerHTML van elk kind van het element met slot=\"actions\" naar een lijst in de shadow DOM, en doet dat opnieuw bij elke wijziging (__processSlotActions, met een MutationObserver). Wat je toont, zijn dus nieuwe elementen: event listeners en properties die je op de originele kinderen zet, gaan niet mee.",
+      "source": "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "skip-to-content-id",
+      "text": "De pagina vraagt om steeds skip-to-content-id in te vullen en de terug-link expliciet een URL te geven met back-link. Geen enkele story zet skip-to-content-id, en de stories met een terug-link zetten geen back-link. Zonder skip-to-content-id rendert de component geen skip-link en geeft hij een waarschuwing in de console; zonder back-link wijst de terug-link naar document.referrer. De story 'breadcrumb' bindt bovendien skipToContentId in plaats van skip-to-content-id. De voorbeelden volgen de stories; voeg beide attributen toe in je eigen code.",
+      "source": "libs/components/src/block/functional-header/stories/vl-functional-header.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-functional-header",
+      "name": "title",
+      "text": "De web-types beschrijven title als 'Tekst van de titel.', maar title is ook het globale HTML-attribuut. De component zet de waarde als tekst in de h1 en laat het attribuut op het element staan, zodat de browser de titel ook als native tooltip toont wanneer je over de header beweegt. De pagina en de web-types vermelden dat niet. Wil je geen tooltip, zet de titel dan in het slot title in plaats van het attribuut.",
+      "source": "libs/components/src/block/functional-header/vl-functional-header.component.ts"
+    }
+  ]
+}

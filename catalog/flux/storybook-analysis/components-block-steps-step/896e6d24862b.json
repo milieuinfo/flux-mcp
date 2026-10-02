@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "page": "components-block-steps-step",
+  "inputHash": "896e6d24862b",
+  "analysedFor": "2.20.0",
+  "summary": "API-pagina van vl-step, één stap binnen vl-steps, met slots voor icoon, sub-icoon, titel, titelannotatie, subtitel en content. Gebruik ze voor de attributen van één stap (type, toggleable, default-open, heading-level, icon-aria-label, timeline-aria-label); de uitleg en de varianten staan op de pagina van vl-steps.",
+  "keywords": [
+    "stap",
+    "step",
+    "vl-step",
+    "vl-steps",
+    "stappenplan",
+    "procedure",
+    "toggleable step",
+    "accordion",
+    "heading-level",
+    "title-annotation",
+    "sub-icon",
+    "timeline"
+  ],
+  "examples": {
+    "components-block-steps-step--step-default": {
+      "html": "<vl-steps>\n    <vl-step>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"title-annotation\">annotation</span>\n        <span slot=\"subtitle\">Dit is de eerste subtitel.</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n</vl-steps>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlStepsComponent } from '@domg-wc/components/block';\n\n// vl-steps registreert zelf vl-step en vl-duration-step; @domg-wc/components/block exporteert enkel VlStepsComponent.\nregisterWebComponents([VlStepsComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-step",
+      "text": "De web-types en de API-tabel van vl-step noemen line, timeline, simple-timeline en last-step-no-line als attributen van vl-step, en de story zet ze op vl-steps én op vl-step. vl-steps overschrijft ze echter bij elke update en bij elke wijziging van zijn kinderen (setStepStyles): elke vl-step krijgt line, timeline en simple-timeline van vl-steps, en last-step-no-line enkel de laatste stap als vl-steps het heeft. Een waarde die je rechtstreeks op een vl-step binnen vl-steps zet, blijft dus niet staan; zet ze op vl-steps.",
+      "source": "libs/components/src/block/steps/vl-steps.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-step",
+      "name": "duration",
+      "text": "Slot voor de vl-duration-step elementen van een stap, bv. <vl-duration-step slot=\"duration\">Lunch: 1 uur</vl-duration-step>. vl-step rendert <slot name=\"duration\"> in een <ul class=\"vl-step__duration-list\"> onder de content, en haalt die lijst weg als het slot leeg is. De web-types van vl-step noemen het slot niet (enkel icon, sub-icon, title, title-annotation, subtitle en content); de pagina van vl-steps gebruikt het in de story vl-steps - timeline.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    }
+  ]
+}

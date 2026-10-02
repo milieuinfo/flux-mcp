@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "page": "components-block-alert",
+  "inputHash": "0cdca8b24285",
+  "analysedFor": "2.11.0",
+  "summary": "Documentatie van vl-alert, een melding over belangrijke informatie, met type info, success, warning of error, een icoon, een titel (attribuut of slot title), een boodschap (default slot of message) en knoppen in het slot actions. Varianten zijn closable (met het event vl-alert-closed), naked en size small.",
+  "keywords": [
+    "alert",
+    "melding",
+    "vl-alert",
+    "waarschuwing",
+    "foutmelding",
+    "succesmelding",
+    "info melding",
+    "notification",
+    "warning",
+    "error message",
+    "naked alert",
+    "closable",
+    "vl-alert-closed"
+  ],
+  "examples": {
+    "components-block-alert--alert-default": {
+      "html": "<vl-alert>\n    <span>Als u vaststelt dat er foute informatie over u in het bestand van de Centrale voor Kredieten aan Particulieren staat, dan kunt u een rechtzetting aanvragen.</span>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert]);"
+    },
+    "components-block-alert--alert-error": {
+      "html": "<vl-alert icon=\"warning\" title=\"Opgelet!\" type=\"error\">\n    <span>U heeft geen rechten om deze actie uit te voeren.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-info": {
+      "html": "<vl-alert icon=\"info-circle\" title=\"Info\" type=\"info\">\n    <span>Als u vaststelt dat er foute informatie over u in het bestand van de Centrale voor Kredieten aan Particulieren staat, dan kunt u een rechtzetting aanvragen.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-success": {
+      "html": "<vl-alert icon=\"check\" title=\"Gelukt!\" type=\"success\">\n    <span>We hebben uw melding goed ontvangen en nemen deze spoedig in behandeling.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-warning": {
+      "html": "<vl-alert icon=\"warning\" title=\"Technische storing\" type=\"warning\">\n    <span>Door een technische storing is dit loket tijdelijk niet beschikbaar.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-with-button": {
+      "html": "<vl-alert>\n    <span>Phasellus congue ipsum ut felis auctor, eget maximus justo dapibus. Nam sit amet pulvinar odio. Maecenas rhoncus quam eget neque porttitor, et faucibus nisl elementum.</span>\n    <vl-button slot=\"actions\">button text</vl-button>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlButtonComponent } from '@domg-wc/components/atom';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert, VlButtonComponent]);"
+    },
+    "components-block-alert--alert-with-title-slot": {
+      "html": "<vl-alert>\n    <span slot=\"title\">Titel</span>\n    <span>Phasellus congue ipsum ut felis auctor, eget maximus justo dapibus. Nam sit amet pulvinar odio. Maecenas rhoncus quam eget neque porttitor, et faucibus nisl elementum.</span>\n</vl-alert>"
+    },
+    "components-block-alert--alert-closeable": {
+      "html": "<vl-alert closable>\n    <span>Phasellus congue ipsum ut felis auctor, eget maximus justo dapibus. Nam sit amet pulvinar odio. Maecenas rhoncus quam eget neque porttitor, et faucibus nisl elementum.</span>\n</vl-alert>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlAlert } from '@domg-wc/components/block';\n\nregisterWebComponents([VlAlert]);\n\n// De sluitknop verwijdert vl-alert uit de DOM en pas daarna volgt vl-alert-closed. Luister daarom op het element\n// zelf: een listener op een parent of op document krijgt het event niet.\ndocument.querySelector('vl-alert[closable]').addEventListener('vl-alert-closed', () => {\n    console.log('melding gesloten');\n});"
+    },
+    "components-block-alert--alert-naked-error": {
+      "html": "<vl-alert naked icon=\"warning\" title=\"Opgelet!\" type=\"error\" message=\"U heeft geen rechten om deze actie uit te voeren.\"></vl-alert>"
+    },
+    "components-block-alert--alert-naked-warning": {
+      "html": "<vl-alert naked icon=\"warning\" title=\"Opgelet!\" type=\"warning\" message=\"U heeft geen rechten om deze actie uit te voeren.\"></vl-alert>"
+    },
+    "components-block-alert--alert-naked-success": {
+      "html": "<vl-alert naked icon=\"check\" title=\"Opgelet!\" type=\"success\" message=\"U heeft geen rechten om deze actie uit te voeren.\"></vl-alert>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "text": "De story vl-alert - naked success toont een succesmelding (type success, icoon check) met de titel 'Opgelet!' en de boodschap 'U heeft geen rechten om deze actie uit te voeren.', dezelfde tekst als naked error. Die tekst past niet bij een succes; de story vl-alert - success gebruikt wel 'Gelukt!'. Het voorbeeld neemt de tekst van de story over; kies in een toepassing een titel en boodschap die bij een succes passen.",
+      "source": "libs/components/src/block/alert/stories/vl-alert.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-alert",
+      "name": "icon",
+      "text": "De web-types geven als type van icon enkel 'warning' | 'check' | 'info-circle', de opties van de story. De beschrijving van hetzelfde attribuut zegt dat je het icoon kiest uit de lijst op https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-icon, en de code zet voor elke waarde de class vl-icon--<icon>. Een ander icoon uit die lijst werkt dus ook.",
+      "source": "libs/components/src/block/alert/vl-alert.component.ts"
+    }
+  ]
+}

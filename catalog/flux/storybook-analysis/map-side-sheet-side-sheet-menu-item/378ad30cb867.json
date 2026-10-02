@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "page": "map-side-sheet-side-sheet-menu-item",
+  "inputHash": "378ad30cb867",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-map-side-sheet-menu en vl-map-side-sheet-menu-item, waarmee je in een vl-map-side-sheet een menu-item toont: bovenaan een grijze balk met een terug-link (title, standaard 'Terug'; href, standaard '#'), daaronder de inhoud van het item. De pagina heeft enkel een voorbeeld en de API, zonder verdere uitleg.",
+  "keywords": [
+    "side sheet menu",
+    "zijpaneel menu",
+    "menu item",
+    "terug",
+    "back link",
+    "terug-link",
+    "submenu",
+    "navigatie in zijpaneel",
+    "side sheet navigation",
+    "vl-map-side-sheet-menu",
+    "vl-map-side-sheet-menu-item",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-side-sheet-side-sheet-menu-item--map-side-sheet-menu-item-default": {
+      "html": "<!-- vl-map-side-sheet-menu staat in een vl-map-side-sheet, met daarin het vl-map-side-sheet-menu-item. Dat toont\n     bovenaan een grijze balk met de link 'Terug' (title) naar href (standaard '#'), en daaronder zijn inhoud. De link is\n     een gewone link: de component stuurt zelf geen event. -->\n<vl-map>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-side-sheet>\n        <vl-map-side-sheet-menu>\n            <vl-map-side-sheet-menu-item>\n                <div>Plaats hier je zijpaneel content.</div>\n            </vl-map-side-sheet-menu-item>\n        </vl-map-side-sheet-menu>\n    </vl-map-side-sheet>\n</vl-map>"
+    }
+  },
+  "notes": []
+}

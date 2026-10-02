@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "page": "components-block-steps-step",
+  "inputHash": "0b16c17869cf",
+  "analysedFor": "2.10.1",
+  "summary": "API-pagina van vl-step, één stap binnen vl-steps, met slots voor icoon, sub-icoon, titel, titelannotatie, subtitel en content. Toont uitklapbare stappen (toggleable, default-open, het event vl-on-toggle en de property contentRenderer voor inhoud die afhangt van open of dicht) en de toestanden highlighted, disabled, success, warning en error.",
+  "keywords": [
+    "stap",
+    "step",
+    "vl-step",
+    "vl-steps",
+    "stappenplan",
+    "procedure",
+    "toggleable step",
+    "accordion",
+    "uitklapbaar",
+    "default-open",
+    "vl-on-toggle",
+    "contentrenderer",
+    "status",
+    "highlighted",
+    "disabled step"
+  ],
+  "examples": {
+    "components-block-steps-step--steps-toggleable": {
+      "html": "<vl-steps>\n    <vl-step toggleable>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"subtitle\">Dit is de eerste subtitel.</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n    <vl-step toggleable>\n        <span slot=\"icon\">2</span>\n        <span slot=\"title\">Stap 2: tweede actie</span>\n        <span slot=\"subtitle\">Dit is de tweede subtitel.</span>\n        <span slot=\"content\">Dit is de tweede stap content.</span>\n    </vl-step>\n    <vl-step toggleable>\n        <span slot=\"icon\">3</span>\n        <span slot=\"title\">Stap 3: derde actie</span>\n        <span slot=\"subtitle\">Dit is de derde subtitel.</span>\n        <span slot=\"content\">Dit is de derde stap content.</span>\n    </vl-step>\n</vl-steps>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlStepsComponent } from '@domg-wc/components/block';\n\n// vl-steps registreert zelf vl-step en vl-duration-step; @domg-wc/components/block exporteert enkel VlStepsComponent.\nregisterWebComponents([VlStepsComponent]);\n\n// vl-on-toggle borrelt niet op: luister op elke vl-step. event.detail.open zegt of de stap nu open is.\ndocument.querySelectorAll('vl-step[toggleable]').forEach((step) => {\n    step.addEventListener('vl-on-toggle', (event) => console.log('vl-on-toggle', event.detail));\n});"
+    },
+    "components-block-steps-step--steps-toggleable-with-content-renderer": {
+      "html": "<vl-steps>\n    <vl-step id=\"step-dynamische-content\" toggleable>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: dynamische content</span>\n        <span slot=\"subtitle\">Content wijzigt op basis van open/closed state.</span>\n    </vl-step>\n    <vl-step id=\"step-complexe-content\" toggleable>\n        <span slot=\"icon\">2</span>\n        <span slot=\"title\">Stap 2: complexe content</span>\n        <span slot=\"subtitle\">Verschillende structuren per state.</span>\n    </vl-step>\n</vl-steps>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlStepsComponent } from '@domg-wc/components/block';\nimport { html } from 'lit';\n\nregisterWebComponents([VlStepsComponent]);\n\n// contentRenderer krijgt de open/closed state en geeft een lit TemplateResult terug; het content slot wordt dan\n// genegeerd. De ids staan niet in de story, die de property rechtstreeks in de template zet.\ndocument.querySelector('#step-dynamische-content').contentRenderer = (open) =>\n    open\n        ? html`<p><strong>Open:</strong> Dit is de uitgebreide content die alleen zichtbaar is wanneer de step geopend is.</p>`\n        : html`<p><em>Gesloten:</em> Klik om meer te zien...</p>`;\n\ndocument.querySelector('#step-complexe-content').contentRenderer = (open) =>\n    open\n        ? html`\n              <div>\n                  <p>De step is nu open!</p>\n                  <ul>\n                      <li>Item 1</li>\n                      <li>Item 2</li>\n                      <li>Item 3</li>\n                  </ul>\n              </div>\n          `\n        : html`<p>Samenvatting...</p>`;"
+    },
+    "components-block-steps-step--steps-states": {
+      "html": "<vl-steps>\n    <vl-step>\n        <span slot=\"icon\">1</span>\n        <span slot=\"title\">Stap 1: eerste actie</span>\n        <span slot=\"subtitle\">Dit is de eerste subtitel.</span>\n        <span slot=\"content\">Dit is de eerste stap content.</span>\n    </vl-step>\n    <vl-step type=\"highlighted\">\n        <span slot=\"icon\">2</span>\n        <span slot=\"title\">Stap 2: tweede actie</span>\n        <span slot=\"subtitle\">Dit is de tweede subtitel.</span>\n        <span slot=\"content\">Dit is de tweede stap content.</span>\n    </vl-step>\n    <vl-step type=\"disabled\">\n        <span slot=\"icon\">3</span>\n        <span slot=\"title\">Stap 3: derde actie</span>\n        <span slot=\"subtitle\">Dit is de derde subtitel.</span>\n        <span slot=\"content\">Deze stap is geannuleerd.</span>\n    </vl-step>\n    <vl-step type=\"success\">\n        <span slot=\"icon\">4</span>\n        <span slot=\"title\">Stap 4: vierde actie</span>\n        <span slot=\"subtitle\">Dit is de vierde subtitel.</span>\n        <span slot=\"content\">Dit is de vierde stap content.</span>\n    </vl-step>\n    <vl-step type=\"warning\">\n        <span slot=\"icon\">5</span>\n        <span slot=\"title\">Stap 5: vijfde actie</span>\n        <span slot=\"subtitle\">Dit is de vijfde subtitel.</span>\n        <span slot=\"content\">Dit is de vijfde stap content.</span>\n    </vl-step>\n    <vl-step type=\"error\">\n        <span slot=\"icon\">6</span>\n        <span slot=\"title\">Stap 6: zesde actie</span>\n        <span slot=\"subtitle\">Dit is de zesde subtitel.</span>\n        <span slot=\"content\">Dit is de zesde stap content.</span>\n    </vl-step>\n</vl-steps>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-step",
+      "name": "contentRenderer",
+      "text": "De web-types en de argTypes zeggen dat contentRenderer enkel werkt in combinatie met toggleable. vl-step.component.ts roept de functie echter altijd aan als ze ingesteld is, ook zonder toggleable, en negeert dan het content slot. Zonder toggleable verandert open nooit, dus krijgt de functie altijd false.",
+      "source": "libs/components/src/block/steps/vl-step.component.ts"
+    }
+  ]
+}

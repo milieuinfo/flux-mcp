@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "page": "planning-aanpak-v2-v3",
+  "inputHash": "0f230266b83b",
+  "analysedFor": "2.20.0",
+  "summary": "Achtergrond bij de overgang naar v2 en later v3: waarom de overgenomen code van Webuniversum v3 (het is-attribuut, eigen JavaScript, scss) problemen gaf, waarom Flux '-next'-componenten invoerde en welke conventies die volgen (een vl-tag, LitElement, css-in-js, geen data-prefix). Ook wat de v2-release deed met de oude en de next-varianten, en dat er voor v3 nog geen datum of inhoud vastligt.",
+  "keywords": [
+    "aanpak v2 v3",
+    "v2",
+    "v3",
+    "next componenten",
+    "next components",
+    "-next suffix",
+    "is attribuut",
+    "customized built-in elements",
+    "data- prefix",
+    "litelement",
+    "css-in-js",
+    "scss",
+    "breaking changes",
+    "backwards compatibility",
+    "roadmap"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link 'dateert' wijst naar historiek-toekomst, een pagina die in 2.20.0 niet bestaat. De pagina 'Planning/Historiek & Toekomst' heeft de id planning-historiek-toekomst.",
+      "source": "apps/storybook/docs/d_planning/2_aanpak-v2-v3.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De link naar 'Migratie v2 - Impact' wijst naar http://localhost:8080 in plaats van naar de gepubliceerde Storybook. De pagina zelf bestaat in 2.20.0 als afnemen-migratie-v2-impact.",
+      "source": "apps/storybook/docs/d_planning/2_aanpak-v2-v3.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Opmerking 2 onder 'v2 Release' zegt dat het doel is om nieuwe next-componenten te beperken tot de map-componenten. In 2.20.0 liggen alle next-componenten buiten de map: vl-header-next en vl-footer-next (libs/components/src/compliance/next), vl-side-navigation-next, vl-side-navigation-section-next en vl-side-navigation-layout-next, en vl-tabs-next met vl-tab-next, vl-tab-link-next en vl-tab-panel-next (libs/components/src/block/next). @domg-wc/map heeft geen next-component.",
+      "source": "apps/storybook/docs/d_planning/2_aanpak-v2-v3.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "Onder 'v2 vs. v3' staat dat er in v2 nog componenten zijn die extenden van BaseElementOfType. Die klasse bestaat in 2.20.0 niet meer: 2.0.0 verving BaseElementOfType(HTMLElement) door BaseHTMLElement (UIG-2811). Componenten zoals vl-modal, vl-pager en vl-map extenden nu van BaseHTMLElement uit @domg-wc/common (libs/common/src/base/base.html.element.ts).",
+      "source": "apps/storybook/docs/d_planning/2_aanpak-v2-v3.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-header-next",
+      "text": "De code registreert vl-header-next (`@webComponent('vl-header-next')`), maar het element staat niet in de web-types van 2.20.0.",
+      "source": "libs/components/src/compliance/next/header/vl-header.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-footer-next",
+      "text": "De code registreert vl-footer-next (`@webComponent('vl-footer-next')`), maar het element staat niet in de web-types van 2.20.0.",
+      "source": "libs/components/src/compliance/next/footer/vl-footer.component.ts"
+    }
+  ]
+}

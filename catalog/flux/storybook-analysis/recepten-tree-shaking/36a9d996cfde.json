@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "page": "recepten-tree-shaking",
+  "inputHash": "36a9d996cfde",
+  "analysedFor": "2.15.0",
+  "summary": "Hoe webpack tree shaking toepast op de @domg-wc packages via het veld sideEffects in hun package.json. De root-barrels staan buiten sideEffects, zodat een named import niet alle andere exports meeneemt; de barrels per component hebben wel side-effects, zodat een import de componenten van die barrel registreert.",
+  "keywords": [
+    "tree shaking",
+    "treeshaking",
+    "sideeffects",
+    "side effects",
+    "webpack",
+    "rollup",
+    "bundler",
+    "barrel file",
+    "root barrel",
+    "named import",
+    "bundelgrootte",
+    "bundle size",
+    "dead code",
+    "registratie",
+    "import"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "text": "Opmerking 2 zegt dat de import van VlButtonComponent uit '@domg-wc/components/atom' ook VlLinkButtonElement registreert. Die klasse bestaat in 2.15.0 niet, en een vl-link-button staat niet in de web-types en niet in de code: de barrel van de button exporteert enkel VlButtonComponent en vlInputAddonStyles. De import registreert dus enkel vl-button.",
+      "source": "libs/components/src/atom/button/index.ts"
+    },
+    {
+      "type": "mismatch",
+      "text": "De pagina spreekt van de root-barrel van de @domg-wc artifacts. @domg-wc/components heeft in 2.15.0 geen root-barrel (libs/components/src heeft geen index.ts); de ingangen zijn de barrels per categorie: atom, block, compliance en form. Bij het publiceren zet libs-pack.sh sideEffects van components op [\"./*/*/**\"]: de barrel per categorie, zoals @domg-wc/components/atom uit het voorbeeld, geldt als zonder neveneffecten, de barrel per component, zoals @domg-wc/components/atom/button, als met. Voor common en styles is dat [\"./*/**\"], voor map [\"./*/**\", \"./vl-map.*\"].",
+      "source": "resources/bash-scripts/libs-pack.sh"
+    }
+  ]
+}

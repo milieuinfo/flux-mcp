@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "page": "patronen-typografie-titel-met-annotatie",
+  "inputHash": "556606474965",
+  "analysedFor": "2.20.0",
+  "summary": "Patroon om een annotatie bij een titel te zetten: een vl-title met no-space-bottom en een vl-text annotation in een vl-group met vl-group--baseline, vl-group--wrap en vl-group--no-row-gap. De annotatie staat rechts van de titel, op dezelfde basislijn, en schuift eronder als de ruimte beperkt is.",
+  "keywords": [
+    "titel",
+    "title",
+    "annotatie",
+    "annotation",
+    "titel met annotatie",
+    "heading",
+    "vl-title",
+    "vl-text",
+    "vl-group",
+    "vl-group--baseline",
+    "vl-group--wrap",
+    "vl-group--no-row-gap",
+    "typografie",
+    "typography"
+  ],
+  "examples": {
+    "patronen-typografie-titel-met-annotatie--titel-met-annotatie": {
+      "html": "<div class=\"vl-group vl-group--baseline vl-group--wrap vl-group--no-row-gap\">\n    <vl-title type=\"h2\" no-space-bottom>Een titel die wat langer is dan normaal</vl-title>\n    <vl-text annotation>Optioneel voeg je een annotatie toe.</vl-text>\n</div>"
+    }
+  },
+  "notes": []
+}

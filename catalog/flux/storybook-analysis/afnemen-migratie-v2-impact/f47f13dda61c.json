@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "page": "afnemen-migratie-v2-impact",
+  "inputHash": "f47f13dda61c",
+  "analysedFor": "2.20.0",
+  "summary": "Naslag per component van wat de migratie naar v2 verandert: welk legacy element of '-next'-component uit v1 door welke v2-component of style-class vervangen wordt, uit welk artifact, en wat geschrapt is. Gebruik ze om v1-markup zoals `<button is=\"vl-button\">` of `<vl-button-next>` om te zetten naar v2.",
+  "keywords": [
+    "migratie impact",
+    "migration",
+    "v1 naar v2",
+    "legacy componenten",
+    "deprecated",
+    "vervanging",
+    "replacement",
+    "next componenten",
+    "is attribuut",
+    "customized built-in elements",
+    "breaking changes",
+    "style classes",
+    "vl-grid",
+    "vl-group",
+    "vl-tooltip"
+  ],
+  "examples": {},
+  "notes": [
+    {
+      "type": "mismatch",
+      "text": "De link naar de cta-link documentatie wijst naar components-atoms-button, een pagina die in 2.20.0 niet bestaat. De pagina van vl-button is components-atom-button; de tabel eronder linkt wel juist.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-button",
+      "name": "type",
+      "text": "Onder 'nieuw in v2' staat de ghost variant als `<vl-button type=\"ghost\">`. In 2.20.0 is ghost een boolean attribuut (`<vl-button ghost>`); `type` is het type van de native button, met default 'button' (libs/components/src/atom/button/vl-button.component.ts).",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De links naar de pill-documentatie wijzen naar components-block-pill-pill, een pagina die in 2.20.0 niet bestaat. De pagina van vl-pill is components-block-pill.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De link bij Image wijst naar styles-base-image, een pagina die in 2.20.0 niet bestaat.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-progress-bar",
+      "text": "De sectie 'Progress Bar / Progress Indicator' geeft de v1 Progress Bar geen v2-opvolger en noemt enkel vl-progress-indicator. Sinds 2.8.0 (FLUX-369) bestaat vl-progress-bar opnieuw in @domg-wc/components/block; in 2.20.0 staat het in de web-types, met een eigen pagina (components-block-progress-bar).",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "mismatch",
+      "text": "De tabellen Margin en Padding geven als v2-gebruik `class=\"vl-margin\"` en `class=\"vl-padding\"`. Die klasses bestaan in 2.20.0 niet: @domg-wc/styles kent enkel de modifiers `vl-margin--small`, `--medium`, `--no`, `--no-bottom` en `--no-top` (libs/styles/src/layout/margin/vl-margin.css.ts), en hetzelfde voor `vl-padding--` (libs/styles/src/layout/padding/vl-padding.css.ts). De pagina's styles-layout-margin en styles-layout-padding gebruiken ook enkel die modifiers.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tooltip",
+      "name": "for",
+      "text": "De pagina gebruikt `for` als attribuut (`<vl-tooltip for=\"trigger-id\">`) en noemt het verplicht. De code declareert het attribuut `for` (libs/components/src/block/tooltip/vl-tooltip.component.ts), maar de web-types van 2.20.0 kennen `for` enkel als js-property.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-tooltip",
+      "name": "open",
+      "text": "De pagina gebruikt `open` als attribuut, als opvolger van `data-vl-static`. De code declareert het attribuut `open` (libs/components/src/block/tooltip/vl-tooltip.component.ts), maar de web-types van 2.20.0 kennen `open` enkel als js-property.",
+      "source": "apps/storybook/docs/a_afnemen/5_migratie-impact.mdx"
+    }
+  ]
+}

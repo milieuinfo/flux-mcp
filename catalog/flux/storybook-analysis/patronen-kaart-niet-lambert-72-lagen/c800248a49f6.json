@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "page": "patronen-kaart-niet-lambert-72-lagen",
+  "inputHash": "c800248a49f6",
+  "analysedFor": "2.20.0",
+  "summary": "Voorbeeld van een kaart met lagen die niet in Lambert 72 staan: een vl-map in Lambert 2008 (lambert2008) met een OpenStreetMap-achtergrondlaag via background-type=\"xyz\" en background-options op vl-map-baselayer-grb-gray, en twee WMS-lagen via vl-map-tiled-wms-layer, waarvan één in WGS 84 / Pseudo-Mercator.",
+  "keywords": [
+    "kaart",
+    "map",
+    "lambert 2008",
+    "lambert 72",
+    "projectie",
+    "projection",
+    "coördinatenstelsel",
+    "epsg:3812",
+    "epsg:3857",
+    "wms",
+    "tiled wms layer",
+    "openstreetmap",
+    "xyz",
+    "achtergrondlaag",
+    "background layer"
+  ],
+  "examples": {
+    "patronen-kaart-niet-lambert-72-lagen--kaart-niet-lambert-72-lagen": {
+      "html": "<vl-map lambert2008>\n    <!--\n        Andere niet-Lambert 72 laag met een volledig zoombare wereldkaart (EPSG:3857):\n        een eigen achtergrondlaag met OpenStreetMap tiles\n    -->\n    <vl-map-baselayer-grb-gray\n        background-layer\n        background-type=\"xyz\"\n        background-options='{\"url\":\"https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png\",\"attributions\":\"Tiles © OpenStreetMap contributors\"}'\n    ></vl-map-baselayer-grb-gray>\n\n    <!--\n        Catalogus: https://www.vlaanderen.be/datavindplaats/catalogus/overstromingsgevoelige-gebieden-vanuit-de-zee\n        Referentiesysteem: WGS 84 / Pseudo-Mercator (EPSG:3857)\n    -->\n    <vl-map-tiled-wms-layer\n        url=\"https://inspirepub.waterinfo.be/arcgis/services/informatieplicht/overstromingsgevoelige_gebieden_vanuit_de_zee/MapServer/WMSServer?\"\n        layers=\"0\"\n        name=\"Overstromingsgevoelige gebieden vanuit de zee\"\n    ></vl-map-tiled-wms-layer>\n\n    <!--\n        Lambert 2008 testdata uit:\n        https://www.vlaanderen.be/datavindplaats/catalogus/testdata-transformatie-lambert-72-naar-lambert-2008-coordinaten\n    -->\n    <vl-map-tiled-wms-layer\n        url=\"https://www.mercator.vlaanderen.be/raadpleegdienstenmercatorpubliek/ows?\"\n        layers=\"rs:rs_testdata_lamb08\"\n        opacity=\"0.3\"\n        name=\"Test Data Lambert 2008\"\n    ></vl-map-tiled-wms-layer>\n</vl-map>"
+    }
+  },
+  "notes": []
+}

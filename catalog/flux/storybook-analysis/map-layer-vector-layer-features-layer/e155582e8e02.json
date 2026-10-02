@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "page": "map-layer-vector-layer-features-layer",
+  "inputHash": "e155582e8e02",
+  "analysedFor": "2.6.0",
+  "summary": "Documentatie van vl-map-features-layer, een vectorlaag in een vl-map met features die je zelf aanlevert: als GeoJSON in het attribuut of de property features, of met de methodes addFeature en addFeatureCollection. Gebruik ze om punten, lijnen en polygonen uit je eigen data te tonen, eventueel geclusterd (cluster) of met automatische zoom (auto-extent); een vl-map-layer-style of vl-map-layer-circle-style in de laag bepaalt de stijl.",
+  "keywords": [
+    "features layer",
+    "vl-map-features-layer",
+    "vectorlaag",
+    "vector layer",
+    "geojson",
+    "features",
+    "kaartlaag",
+    "map layer",
+    "punten",
+    "lijnen",
+    "polygonen",
+    "addfeature",
+    "cluster",
+    "auto-extent",
+    "kaart"
+  ],
+  "examples": {
+    "map-layer-vector-layer-features-layer--map-features-layer-default": {
+      "html": "<!-- Een kaartlaag met eigen features in Lambert 72: projection-code=\"EPSG:31370\" zet ze om naar de kaart in Lambert\n     2008. De kaartlaag krijgt haar features in JavaScript, via de property features; vl-map-layer-style tekent er de\n     lijn en de polygoon, vl-map-layer-circle-style het punt. -->\n<vl-map lambert2008>\n    <vl-map-baselayer-grb-gray></vl-map-baselayer-grb-gray>\n    <vl-map-features-layer projection-code=\"EPSG:31370\">\n        <vl-map-layer-style border-size=\"2\"></vl-map-layer-style>\n        <vl-map-layer-circle-style></vl-map-layer-circle-style>\n    </vl-map-features-layer>\n</vl-map>",
+      "js": "// De import registreert de elementen; zonder VlMapLayerCircleStyle tekent de kaartlaag het punt niet.\nimport {\n    VlMap,\n    VlMapBaseLayerGRBGray,\n    VlMapFeaturesLayer,\n    VlMapLayerCircleStyle,\n    VlMapLayerStyle,\n} from '@domg-wc/map';\n\n// De vl-map-features-layer krijgt haar features als GeoJSON-object, in Lambert 72 (EPSG:31370): een punt, een lijn\n// en een polygoon. De setter zet het object als JSON-string in het attribuut features.\ndocument.querySelector('vl-map-features-layer').features = {\n    type: 'FeatureCollection',\n    features: [\n        {\n            type: 'Feature',\n            id: 1,\n            geometry: { type: 'Point', coordinates: [210000, 190000] },\n        },\n        {\n            type: 'Feature',\n            id: 2,\n            geometry: {\n                type: 'LineString',\n                coordinates: [\n                    [170000, 170000],\n                    [150000, 206000],\n                ],\n            },\n        },\n        {\n            type: 'Feature',\n            id: 3,\n            geometry: {\n                type: 'Polygon',\n                coordinates: [\n                    [\n                        [44000, 171000],\n                        [100000, 171000],\n                        [100000, 205000],\n                        [44000, 205000],\n                        [44000, 171000],\n                    ],\n                ],\n            },\n        },\n    ],\n};"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-features-layer",
+      "name": "features",
+      "text": "De web-types geven de property features het type string, maar de story geeft er een GeoJSON-object (een FeatureCollection) aan. De setter zet de waarde met JSON.stringify in het attribuut features; een string als waarde wordt dus dubbel gecodeerd. Geef de property een object, of zet de GeoJSON als string in het attribuut features. De getter geeft geen GeoJSON terug, maar de OpenLayers-features van de laag.",
+      "source": "libs/map/src/components/layer/vector-layer/vl-map-features-layer/vl-map-features-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-layer-circle-style",
+      "text": "De story zet een vl-map-layer-style en een vl-map-layer-circle-style in de kaartlaag, maar het stories-bestand importeert geen van beide: enkel vl-map, vl-map-baselayer-grb-gray en vl-map-features-layer. vl-map-layer-style raakt toch geregistreerd, want vl-map-layer.ts en vl-map-vector-layer.ts importeren VlMapLayerStyle voor een instanceof-controle. Geen van de modules die het stories-bestand importeert, importeert vl-map-layer-circle-style: heeft geen andere module het element al geregistreerd, dan blijft het een onbekend element en tekent de laag het punt (id 1) niet, want vl-map-layer-style geeft enkel een vulling, een rand en tekst, geen stijl voor punten. Importeer in je eigen code VlMapLayerCircleStyle mee.",
+      "source": "libs/map/src/components/layer/vector-layer/vl-map-features-layer/stories/vl-map-features-layer.stories.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-features-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-features-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}

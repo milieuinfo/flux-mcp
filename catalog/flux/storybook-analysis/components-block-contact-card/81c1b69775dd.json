@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "page": "components-block-contact-card",
+  "inputHash": "81c1b69775dd",
+  "analysedFor": "2.4.0",
+  "summary": "Documentatie van vl-contact-card, een blok met de contactgegevens van een organisatie of dienst: in het slot info een vl-infoblock met de naam, in het slot properties een vl-properties met paren van <label> en <data>, bv. adres, telefoon, e-mail en website. Op grote schermen staan ze naast elkaar (4 en 8 van 12 kolommen), op middelgrote en kleinere schermen onder elkaar.",
+  "keywords": [
+    "contactkaart",
+    "contact card",
+    "vl-contact-card",
+    "contactgegevens",
+    "contact information",
+    "contact details",
+    "adres",
+    "address",
+    "telefoon",
+    "phone",
+    "e-mail",
+    "infoblock",
+    "properties",
+    "organisatie"
+  ],
+  "examples": {
+    "components-block-contact-card--contact-card-default": {
+      "html": "<vl-contact-card>\n    <vl-infoblock slot=\"info\" title=\"Departement Onderwijs en Vorming\" type=\"contact\"></vl-infoblock>\n    <vl-properties slot=\"properties\">\n        <label>Adres</label>\n        <data>\n            <div>Hendrik Consciencegebouw</div>\n            <div>Koning Albert II-laan 15</div>\n            <div>1210 Brussel</div>\n            <vl-link href=\"#\">Routeplanner</vl-link>\n        </data>\n        <label>Telefoon</label>\n        <data>\n            <p>\n                <vl-link href=\"#\" icon-placement=\"after\" icon=\"phone\">02 553 72 02</vl-link>\n                (Onthaal Consciencegebouw)\n            </p>\n            <p>\n                <vl-link href=\"#\" icon-placement=\"after\" icon=\"phone\">1700</vl-link>\n                (Infolijn Onderwijs)\n            </p>\n        </data>\n        <label>E-mail</label>\n        <data>\n            <vl-link href=\"#\" icon-placement=\"after\" icon=\"mail\">onderwijs.vlaanderen@vlaanderen.be</vl-link>\n        </data>\n        <label>Website</label>\n        <data>\n            <vl-link href=\"#\" external>http://onderwijs.vlaanderen.be</vl-link>\n        </data>\n    </vl-properties>\n</vl-contact-card>",
+      "js": "import { registerWebComponents } from '@domg-wc/common';\nimport { VlLinkComponent } from '@domg-wc/components/atom';\nimport { VlContactCardComponent, VlInfoblockComponent, VlPropertiesComponent } from '@domg-wc/components/block';\n\n// vl-contact-card registreert vl-infoblock, vl-properties en vl-link niet zelf. vl-properties toont elk <label> met\n// de <data> die erop volgt als een paar in een lijst (<dt> en <dd>), en kloont hun inhoud naar zijn shadow DOM.\n// De story gebruikt href=\"#\"; vul in een toepassing de echte adressen in, bv. tel:, mailto: en de url van de website.\nregisterWebComponents([VlContactCardComponent, VlInfoblockComponent, VlPropertiesComponent, VlLinkComponent]);"
+    }
+  },
+  "notes": [
+    {
+      "type": "not-in-web-types",
+      "element": "vl-contact-card",
+      "name": "info",
+      "text": "Het slot info is de linkerkolom van de kaart (4 van 12 kolommen, op middelgrote en kleinere schermen de volle breedte); de story zet er een vl-infoblock met type=\"contact\" in. Het staat in de code (<slot name=\"info\">), maar de web-types van 2.4.0 geven voor vl-contact-card geen beschrijving, geen attributen en geen slots.",
+      "source": "libs/components/src/block/contact-card/vl-contact-card.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-contact-card",
+      "name": "properties",
+      "text": "Het slot properties is de rechterkolom van de kaart (8 van 12 kolommen, op middelgrote en kleinere schermen de volle breedte); de story zet er een vl-properties met de contactgegevens in. Het staat in de code (<slot name=\"properties\">), maar de web-types van 2.4.0 geven voor vl-contact-card geen slots.",
+      "source": "libs/components/src/block/contact-card/vl-contact-card.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-infoblock",
+      "name": "type",
+      "text": "type=\"contact\" geeft het vl-infoblock in het slot info het vaste contacticoon: de component zet er de class vl-infoblock--contact mee op het blok. vl-infoblock observeert title, icon en type, maar de web-types van 2.4.0 geven voor vl-infoblock enkel custom-css.",
+      "source": "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+    },
+    {
+      "type": "not-in-web-types",
+      "element": "vl-infoblock",
+      "name": "title",
+      "text": "title=\"Departement Onderwijs en Vorming\" zet de titel van het vl-infoblock in het slot info: de component zet de waarde als tekst in een h2 in de header, na het icoon. Omdat title ook het globale HTML-attribuut is en op het element blijft staan, toont de browser die tekst ook als tooltip. Het attribuut staat in de code (_observedAttributes), maar de web-types van 2.4.0 geven voor vl-infoblock enkel custom-css.",
+      "source": "libs/components/src/block/infoblock/vl-infoblock.component.ts"
+    }
+  ]
+}

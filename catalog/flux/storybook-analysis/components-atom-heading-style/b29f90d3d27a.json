@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "components-atom-heading-style",
+  "inputHash": "b29f90d3d27a",
+  "analysedFor": "2.20.0",
+  "summary": "Interne pagina over vlHeading1 tot vlHeading6, CSS-constanten met de opmaak van de zes titelniveaus, die componenten zoals vl-title en vl-doormat in hun eigen CSS opnemen. Een bouwblok, niet bedoeld voor rechtstreeks gebruik; de constanten worden wel geëxporteerd uit @domg-wc/components/atom.",
+  "keywords": [
+    "heading style",
+    "headings",
+    "koppen",
+    "titels",
+    "titelniveaus",
+    "vlheading1",
+    "vlheading6",
+    "h1 tot h6",
+    "typografie",
+    "typography",
+    "intern"
+  ],
+  "examples": {
+    "components-atom-heading-style--heading-style-default": {
+      "js": "import { BaseLitElement, webComponent } from '@domg-wc/common';\nimport { vlHeading1, vlHeading2, vlHeading3, vlHeading4, vlHeading5, vlHeading6 } from '@domg-wc/components/atom';\nimport { css, CSSResult, html, TemplateResult } from 'lit';\n\n// Elke constante is de CSS van één titelniveau: zet ze in een regel van de CSS van je eigen component.\n@webComponent('my-component-with-headings')\nexport class MyComponentWithHeadings extends BaseLitElement {\n    static get styles(): CSSResult[] {\n        return [\n            css`\n                .my-heading-1 {\n                    ${vlHeading1}\n                }\n\n                .my-heading-2 {\n                    ${vlHeading2}\n                }\n\n                .my-heading-3 {\n                    ${vlHeading3}\n                }\n\n                .my-heading-4 {\n                    ${vlHeading4}\n                }\n\n                .my-heading-5 {\n                    ${vlHeading5}\n                }\n\n                .my-heading-6 {\n                    ${vlHeading6}\n                }\n            `,\n        ];\n    }\n\n    render(): TemplateResult {\n        return html`\n            <div class=\"my-heading-1\">Heading van grootte 1</div>\n            <div class=\"my-heading-2\">Heading van grootte 2</div>\n            <div class=\"my-heading-3\">Heading van grootte 3</div>\n            <div class=\"my-heading-4\">Heading van grootte 4</div>\n            <div class=\"my-heading-5\">Heading van grootte 5</div>\n            <div class=\"my-heading-6\">Heading van grootte 6</div>\n        `;\n    }\n}"
+    }
+  },
+  "notes": []
+}

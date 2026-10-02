@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-toegankelijkheid-aanpak-2-bedienbaar-2-2-genoeg-tijd",
+  "inputHash": "d721c0f64ffa",
+  "analysedFor": "2.20.0",
+  "summary": "WCAG-richtlijn 2.2 Genoeg tijd, met twee succescriteria van brons[plus]: 2.2.1 Timing aanpasbaar (gebruikers passen aan hoe lang tijdelijke inhoud beschikbaar is, bv. een formulier met een tijdslimiet) en 2.2.2 Pauzeren, stoppen, verbergen (voor inhoud die langer dan vijf seconden automatisch beweegt, zoals animaties, video's, knipperende tekst of een fotocarrousel).",
+  "keywords": [
+    "genoeg tijd",
+    "enough time",
+    "tijdslimiet",
+    "time limit",
+    "timing aanpasbaar",
+    "timing adjustable",
+    "session timeout",
+    "pauzeren",
+    "pause stop hide",
+    "carrousel",
+    "carousel",
+    "animation",
+    "autoplay",
+    "wcag 2.2.1",
+    "wcag 2.2.2"
+  ],
+  "examples": {},
+  "notes": []
+}

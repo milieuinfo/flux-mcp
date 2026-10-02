@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "page": "richtlijnen-csp-content-security-policy",
+  "inputHash": "8cb0ec80389a",
+  "analysedFor": "2.3.0",
+  "summary": "Werkpagina (WIP) over Content Security Policy bij Flux: de historiek van de aanpak van januari 2023 tot april 2024, hoe CSP beschermt tegen XSS (stored, reflected, DOM-based en via CSS), en wat een toepassing moet aanpassen voor ze CSP activeert: geen inline javascript, geen inline styling, en een evaluatie van externe componenten zoals TinyMCE en de global header en footer van Digitaal Vlaanderen.",
+  "keywords": [
+    "content security policy",
+    "csp",
+    "csp compliant",
+    "xss",
+    "cross site scripting",
+    "beveiliging",
+    "security",
+    "inline javascript",
+    "inline styling",
+    "inline style",
+    "tinymce",
+    "global header",
+    "spa",
+    "historiek"
+  ],
+  "examples": {},
+  "notes": []
+}

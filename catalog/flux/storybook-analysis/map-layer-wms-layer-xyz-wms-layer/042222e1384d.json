@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "page": "map-layer-wms-layer-xyz-wms-layer",
+  "inputHash": "042222e1384d",
+  "analysedFor": "2.10.1",
+  "summary": "Documentatie van vl-map-xyz-wms-layer, een kaartlaag in een vl-map die tegels ophaalt via een XYZ-url met {z}, {x} en {y}, zoals die van OpenStreetMap. Ondanks de naam maakt de component een XYZ-source van OpenLayers en geen WMS-bevraging, en gebruikt ze het attribuut layers niet; voor een WMS-service gebruik je vl-map-tiled-wms-layer of vl-map-image-wms-layer.",
+  "keywords": [
+    "xyz",
+    "xyz layer",
+    "vl-map-xyz-wms-layer",
+    "xyz-laag",
+    "tegels",
+    "tiles",
+    "tile url",
+    "openstreetmap",
+    "osm",
+    "kaartlaag",
+    "map layer",
+    "wms",
+    "kaart",
+    "map"
+  ],
+  "examples": {
+    "map-layer-wms-layer-xyz-wms-layer--map-xyz-wms-layer-default": {
+      "html": "<!-- De laag toont de tegels van OpenStreetMap: de url is een tegel-sjabloon met {z}, {x} en {y}. De story heeft\n     geen basiskaartlaag. -->\n<vl-map lambert2008>\n    <vl-map-xyz-wms-layer\n        name=\"Openstreetmap\"\n        url=\"https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png\"\n    ></vl-map-xyz-wms-layer>\n</vl-map>"
+    }
+  },
+  "notes": [
+    {
+      "type": "mismatch",
+      "element": "vl-map-xyz-wms-layer",
+      "text": "De documentatie en de web-types noemen vl-map-xyz-wms-layer een component om een WMS-kaartlaag af te beelden, en de klasse erft van VlMapWmsLayer. De component maakt echter een XYZ-source van OpenLayers (ol/source/XYZ), geen TileWMS- of ImageWMS-source: de url is een tegel-sjabloon met {z}, {x} en {y}, zoals in de story (OpenStreetMap) en in de componenttest (http://dummy/{z}/{x}/{y}).",
+      "source": "libs/map/src/components/layer/wms-layer/vl-map-xyz-wms-layer/vl-map-xyz-wms-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-xyz-wms-layer",
+      "name": "layers",
+      "text": "De web-types geven vl-map-xyz-wms-layer het attribuut layers, en de argTypes van de story (mapWmsLayerArgTypes) markeren het als verplicht. VlMapXYZWmsLayer overschrijft de getter _layers en geeft altijd undefined terug, zonder het attribuut te lezen: layers heeft geen effect. De story zet het ook niet.",
+      "source": "libs/map/src/components/layer/wms-layer/vl-map-xyz-wms-layer/vl-map-xyz-wms-layer.ts"
+    },
+    {
+      "type": "mismatch",
+      "element": "vl-map-xyz-wms-layer",
+      "name": "custom-css",
+      "text": "De web-types en de API-tabel geven vl-map-xyz-wms-layer het attribuut custom-css. Het element heeft geen shadow DOM: VlMapLayer roept de constructor van BaseHTMLElement zonder HTML aan. BaseHTMLElement.addCustomCSS logt dan enkel de waarschuwing 'Dit component heeft geen shadow DOM om custom CSS aan toe te voegen.' en past de CSS niet toe. De story geeft custom-css ook niet door aan het element.",
+      "source": "libs/common/src/base/base.html.element.ts"
+    }
+  ]
+}
