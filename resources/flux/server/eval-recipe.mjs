@@ -8,9 +8,14 @@
 // met welke argumenten, en wat er na de run moet kloppen. Het script:
 //   1. kopieert de toepassing naar een tijdelijke map, met git, en installeert ze; de e2e-testen moeten er groen zijn;
 //   2. start het recept als slash-commando (/mcp__flux__<recept>), zoals een ontwikkelaar het doet. Het recept stopt
-//      bij zijn checkpoint; het script hervat dan de sessie met "akkoord";
+//      bij zijn checkpoint; het script hervat dan de sessie met "akkoord". Een recept zonder checkpoint, zoals
+//      valideren, heeft "confirm": false en loopt in één run;
 //   3. controleert zelf: de versies in package.json, de build en de e2e-testen, flux_check_markup op de HTML, de
-//      gekende verschillen, en het rapport in .flux/rapporten/.
+//      gekende verschillen, het rapport in .flux/rapporten/, en voor valideren de afwijkingen in dat rapport en dat
+//      de code ongewijzigd bleef ('unchanged': true, of een lijst van bestanden die niet mogen wijzigen). Voor review
+//      komt er een pull request bij ('pr'), staat het rapport in het antwoord ('answer'), en moet elke afwijking in
+//      de diff staan ('deviations.diffOnly'). Een recept dat van een ticket vertrekt, krijgt een nagemaakte Jira
+//      ('jira', jira-stub.mjs).
 //
 // Het vraagt netwerk: de registry van Flux, npm en een browser voor Playwright. pnpm draait met een lege
 // gebruikersconfiguratie (NPM_CONFIG_USERCONFIG), zodat een token in ~/.npmrc de installatie niet beïnvloedt: de
@@ -25,7 +30,16 @@ import { fileURLToPath } from 'node:url';
 import { createDocs } from '../../../server/src/docs.mjs';
 import { checkMarkup } from '../../../server/src/markup.mjs';
 import { requireClaude, runClaude } from '../claude-run.mjs';
-import { fileProblems, leftoverProblems, packageProblems, reportProblems } from './recipe-check.mjs';
+import {
+    answerReportOf,
+    changedLinesOf,
+    deviationProblems,
+    fileProblems,
+    leftoverProblems,
+    modifiedProblems,
+    packageProblems,
+    reportProblems,
+} from './recipe-check.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const FIXTURES = path.join(REPO_ROOT, 'server', 'test', 'fixtures');
@@ -67,6 +81,12 @@ const app = path.join(dir, 'app');
 const env = { NPM_CONFIG_USERCONFIG: path.join(dir, 'npmrc') };
 fs.writeFileSync(env.NPM_CONFIG_USERCONFIG, '');
 fs.cpSync(path.join(FIXTURES, config.app), app, { recursive: true });
+// Bestanden die het recept als invoer krijgt, bv. een afwijkingenrapport voor verbeteren: { doel in de toepassing:
+// bron in server/test/fixtures/ }. Ze gaan mee in de eerste commit.
+for (const [target, source] of Object.entries(config.add ?? {})) {
+    fs.mkdirSync(path.dirname(path.join(app, target)), { recursive: true });
+    fs.copyFileSync(path.join(FIXTURES, source), path.join(app, target));
+}
 
 // Een stap in de toepassing; faalt met de uitvoer als 'required'.
 function run(label, command, commandArgs, { required = true } = {}) {
@@ -78,27 +98,40 @@ function run(label, command, commandArgs, { required = true } = {}) {
     return result.status === 0;
 }
 
+// Een commit in de toepassing, met een vaste auteur.
+const AUTHOR = ['-c', 'user.name=flux-mcp', '-c', 'user.email=flux-mcp@example.invalid'];
+const commit = (message) => run('git', 'git', [...AUTHOR, 'commit', '--quiet', '-m', message]);
+
+// Een pull request voor review: { branch, patch, message }, de patch in server/test/fixtures/. Ze komt als commit op
+// een branch boven op main.
+const patch = config.pr ? fs.readFileSync(path.join(FIXTURES, config.pr.patch), 'utf-8') : null;
+
 let problems = [];
 try {
-    run('git', 'git', ['init', '--quiet']);
+    run('git', 'git', ['init', '--quiet', '--initial-branch', 'main']);
     run('git', 'git', ['add', '-A']);
-    run('git', 'git', [
-        '-c',
-        'user.name=flux-mcp',
-        '-c',
-        'user.email=flux-mcp@example.invalid',
-        'commit',
-        '--quiet',
-        '-m',
-        'De toepassing voor de migratie',
-    ]);
+    commit('De toepassing voor het recept');
+    if (config.pr) {
+        run('git', 'git', ['checkout', '--quiet', '-b', config.pr.branch]);
+        run('git', 'git', ['apply', path.join(FIXTURES, config.pr.patch)]);
+        run('git', 'git', ['add', '-A']);
+        commit(config.pr.message);
+    }
     run('installeren', 'pnpm', ['install', '--frozen-lockfile']);
     run('browser', 'pnpm', ['exec', 'playwright', 'install', 'chromium']);
     run('e2e vooraf', 'pnpm', ['run', 'test:e2e']);
 
     const mcp = path.join(dir, 'mcp.json');
     const server = path.join(REPO_ROOT, 'server', 'bin', 'flux-mcp.mjs');
-    fs.writeFileSync(mcp, JSON.stringify({ mcpServers: { flux: { command: 'node', args: [server] } } }));
+    const servers = { flux: { command: 'node', args: [server] } };
+    // Een recept dat van een ticket vertrekt, zoals uitbreiden, krijgt een nagemaakte Jira met de tickets uit
+    // server/test/fixtures/; de commentaren komen in jira.log.
+    const jiraLog = path.join(dir, 'jira.log');
+    if (config.jira) {
+        const stub = path.join(REPO_ROOT, 'resources', 'flux', 'server', 'jira-stub.mjs');
+        servers.jira = { command: 'node', args: [stub, path.join(FIXTURES, config.jira), jiraLog] };
+    }
+    fs.writeFileSync(mcp, JSON.stringify({ mcpServers: servers }));
     const claude = {
         cwd: app,
         model: options.model,
@@ -106,6 +139,7 @@ try {
         env,
         allowed: [
             'mcp__flux__*',
+            ...(config.jira ? ['mcp__jira__*'] : []),
             'Read',
             'Grep',
             'Glob',
@@ -121,20 +155,25 @@ try {
         extra: ['--mcp-config', mcp, '--strict-mcp-config'],
     };
     const command = `/mcp__flux__${config.recipe} ${config.arguments.join(' ')}`.trim();
+    const checkpoint = config.confirm !== false;
     const first = await runClaude({
         ...claude,
-        label: `${config.recipe}: tot het checkpoint`,
+        label: checkpoint ? `${config.recipe}: tot het checkpoint` : config.recipe,
         prompt: command,
-        persist: true,
+        persist: checkpoint,
     });
     console.log(`\n${first.result}\n`);
-    const second = await runClaude({
-        ...claude,
-        label: `${config.recipe}: na het checkpoint`,
-        prompt: CONFIRM,
-        resume: first.session_id,
-    });
-    console.log(`\n${second.result}\n`);
+    let answer = first.result;
+    if (checkpoint) {
+        const second = await runClaude({
+            ...claude,
+            label: `${config.recipe}: na het checkpoint`,
+            prompt: CONFIRM,
+            resume: first.session_id,
+        });
+        console.log(`\n${second.result}\n`);
+        answer = second.result;
+    }
 
     console.log('== controle');
     const manifest = JSON.parse(fs.readFileSync(path.join(app, 'package.json'), 'utf-8'));
@@ -142,8 +181,10 @@ try {
     if (!run('installeren', 'pnpm', ['install'], { required: false })) problems.push('pnpm install faalt.');
     if (!run('build', 'pnpm', ['run', 'build'], { required: false })) problems.push('De build faalt.');
     if (!run('e2e', 'pnpm', ['run', 'test:e2e'], { required: false })) problems.push('De e2e-testen zijn niet groen.');
+    // Een recept dat code wijzigt, laat geen error van flux_check_markup achter. Een recept dat niets wijzigt, zoals
+    // valideren en review, meldt ze net: de errors in de toepassing zijn dan zijn invoer.
     const version = config.packages?.['@domg-wc/components'];
-    if (version) {
+    if (version && config.unchanged !== true) {
         const context = createDocs().markupContextOf(version);
         for (const file of fs.readdirSync(app).filter((name) => name.endsWith('.html'))) {
             const html = fs.readFileSync(path.join(app, file), 'utf-8');
@@ -158,18 +199,45 @@ try {
         encoding: 'utf-8',
     });
     problems.push(...leftoverProblems(status.stdout));
+    if (config.unchanged) {
+        const paths = Array.isArray(config.unchanged) ? config.unchanged : null;
+        problems.push(...modifiedProblems(status.stdout, paths));
+    }
+    // Het rapport: een bestand in .flux/rapporten/, of met 'answer' het laatste blok ~~~markdown in het antwoord,
+    // zoals bij review, dat geen bestand mag schrijven.
     const reports = path.join(app, '.flux', 'rapporten');
-    const found = fs.existsSync(reports)
-        ? fs.readdirSync(reports).filter((file) => file.endsWith(`-${config.recipe}.md`))
-        : [];
-    if (found.length !== 1) {
-        problems.push(`Verwacht één rapport .flux/rapporten/<datum>-${config.recipe}.md, gevonden: ${found.length}.`);
+    const found = fs.existsSync(reports) ? fs.readdirSync(reports).filter((file) => file.endsWith('.md')) : [];
+    let report = null;
+    if (config.answer) {
+        if (found.length > 0) problems.push(`Het recept schreef ${found.join(', ')}, maar mag geen bestand schrijven.`);
+        report = answerReportOf(answer);
+        if (!report) problems.push('Het antwoord heeft geen rapport tussen ~~~markdown en ~~~.');
     } else {
+        const own = found.filter((file) => file.endsWith(`-${config.recipe}.md`));
+        if (own.length !== 1) {
+            const expected = `.flux/rapporten/<datum>-${config.recipe}.md`;
+            problems.push(`Verwacht één rapport ${expected}, gevonden: ${own.length}.`);
+        } else {
+            report = fs.readFileSync(path.join(reports, own[0]), 'utf-8');
+        }
+    }
+    if (report) {
         const template = fs.readFileSync(path.join(REPO_ROOT, 'server', 'templates', `${config.recipe}.md`), 'utf-8');
-        const report = fs.readFileSync(path.join(reports, found[0]), 'utf-8');
         problems.push(
             ...reportProblems(report, { template, ...config.report }).map((problem) => `rapport: ${problem}`),
         );
+        if (config.deviations) {
+            const changed = config.deviations.diffOnly ? changedLinesOf(patch) : null;
+            problems.push(
+                ...deviationProblems(report, { ...config.deviations, changed }).map(
+                    (problem) => `afwijkingen: ${problem}`,
+                ),
+            );
+        }
+    }
+    if (config.jira && fs.existsSync(jiraLog)) {
+        const comments = fs.readFileSync(jiraLog, 'utf-8').trim().split('\n').map((line) => JSON.parse(line));
+        console.log(`\nCommentaar in Jira: ${comments.map(({ key }) => key).join(', ')}`);
     }
     const diff = spawnSync('git', ['diff', '--stat', 'HEAD'], { cwd: app, encoding: 'utf-8' }).stdout.trim();
     console.log(`\nGewijzigd tegenover de toepassing:\n${diff}`);

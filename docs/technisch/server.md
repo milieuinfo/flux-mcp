@@ -4,7 +4,8 @@
 de catalogus in `catalog/flux/`. Wat de server aanbiedt en waarom, staat in
 [ADR-004](../beslissingen/ADR-004-functionaliteit-mcp-server.md); deze pagina beschrijft hoe hij werkt, hoe je hem
 start, koppelt en test. Hij kent increment 1 tot en met 3 van de ADR: de tools en resources op wat de catalogus heeft,
-`flux_check_markup`, en de recepten `migreren` en `design-naar-code` als prompts.
+`flux_check_markup`, en de recepten `migreren` en `design-naar-code` als prompts. Van increment 4 zijn er de recepten
+`valideren`, `verbeteren`, `review` en `uitbreiden`.
 
 ## Starten en koppelen
 
@@ -25,14 +26,22 @@ Een client start hem zelf. Voor Claude Code in een project, in `.mcp.json`:
 }
 ```
 
-Uit het pakket, eens het gepubliceerd is (de naam is open beslissing 8 van ADR-004):
+Uit het pakket `@domg/flux-mcp`, eens het gepubliceerd is, op de registry van Flux (open beslissing 8 van ADR-004):
 
 ```json
 {
     "mcpServers": {
-        "flux": { "command": "npx", "args": ["-y", "<pakket>@<versie>"] }
+        "flux": { "command": "npx", "args": ["-y", "@domg/flux-mcp@0.4.0"] }
     }
 }
+```
+
+npx vindt het pakket via de scope `@domg`. Een project dat Flux gebruikt, heeft die al in zijn `.npmrc`, want
+`@domg/govflanders-style` is een dependency van `@domg-wc/components`:
+
+```ini
+@domg-wc:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/
+@domg:registry=https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/
 ```
 
 Een project pint zo de versie van flux-mcp, en dus de catalogus: dezelfde vraag geeft dan altijd hetzelfde antwoord.
@@ -65,6 +74,10 @@ Node 22 of hoger; de server heeft geen dependencies.
 |--------------------|--------------------------------------------------------------------------------------|
 | `migreren`         | de toepassing naar een nieuwere versie van Flux brengen, met een migratierapport      |
 | `design-naar-code` | een scherm bouwen uit een ontwerp in Figma, met de Figma MCP in dezelfde client      |
+| `valideren`        | de toepassing naast de norm leggen, zonder code te wijzigen, met een afwijkingenrapport |
+| `verbeteren`       | de afwijkingen met uitkomst `volgt-norm` uit een afwijkingenrapport wegwerken           |
+| `review`           | wat een branch toevoegt of wijzigt naast de norm leggen, als commentaar voor de PR       |
+| `uitbreiden`       | de toepassing uitbreiden met wat een Jira-ticket of een ontwerp in Figma vraagt          |
 
 `completion/complete` vult `{version}`, `{page}` en `{component}` aan, en het argument `doelversie` van een recept.
 
@@ -133,7 +146,21 @@ server `flux` heet. Het recept staat als Markdown met frontmatter in `server/pro
   tekst als bericht van de gebruiker, en het sjabloon als embedded resource.
 - **Het stramien** (ADR-004, 6.3): voorwaarden, kennis ophalen, een checkpoint voor er code wijzigt, uitvoeren,
   verifiëren met `flux_check_markup`, de build en de e2e-testen, en een rapport in `.flux/rapporten/` van het project.
-  Een voorwaarde is dat de toepassing standalone start en de e2e-testen draaien zonder echte backend.
+  Bestaat de naam van het rapport al, dan krijgt het `-2`, `-3`, …. Een voorwaarde is dat de toepassing standalone
+  start en de e2e-testen draaien zonder echte backend.
+- **`valideren`** wijzigt geen code en heeft daarom geen checkpoint: de beslissing per afwijking valt in de pull
+  request van het rapport. Het toetst de API tegen de gepinde versie, de richtlijnen en patronen tegen `latest`, en
+  schrijft de afwijkingen in het formaat van ADR-004 (6.4).
+- **`verbeteren`** leest dat rapport na de merge, en werkt enkel de afwijkingen met `uitkomst: volgt-norm` weg die de
+  gepinde versie toelaat. Het wijzigt het afwijkingenrapport niet, en stelt per normkandidaat een ticket voor in het
+  Jira-project `FLUX`, met het label `normkandidaat` (ADR-004, 6.6).
+- **`review`** beoordeelt enkel wat de diff tegenover `basis` toevoegt of wijzigt, ook een bestaande afwijking op een
+  gewijzigde regel. Het schrijft geen bestand, want dat zou de PR wijzigen die het beoordeelt: het geeft het rapport
+  als laatste deel van zijn antwoord, tussen `~~~markdown` en `~~~`, met een `oordeel` (`goedkeuren`, `aanpassen` of
+  `bespreken`), en stelt voor het als commentaar op de PR te plaatsen.
+- **`uitbreiden`** leest het ticket met de koppeling met Jira van de client, of vraagt de ontwikkelaar de tekst als die
+  er niet is, en een ontwerp met de Figma MCP. Wat het bouwt, volgt de norm; bestaande afwijkingen buiten de
+  uitbreiding laat het staan.
 - Elke wijziging aan een recept krijgt een entry in `server/CHANGELOG.md`.
 
 ## De code
@@ -226,9 +253,11 @@ code niet weet of ze uit de repo of uit het pakket draait. Het manifest komt uit
 per inhoud: `file` in de `index.json` van elke versie wijst naar `catalog/flux/storybook-pages/<id>/<hash>.md`. Zo
 worden 5500 pagina's 772 bestanden, en is het pakket 4,2 MB gecomprimeerd.
 
-Publiceren is de eerste release, na de keuze van een naam: `pnpm publish dist/flux-mcp`. Na elke release van Flux
-volgen `catalog:update`, een nieuwe versie in `server/package.json` met een entry in `server/CHANGELOG.md`, en een
-release van flux-mcp.
+Publiceren is een release van `@domg/flux-mcp`: `pnpm publish dist/flux-mcp`, naar de registry uit `publishConfig`.
+Na elke release van Flux volgen `catalog:update`, een nieuwe versie in `server/package.json` met een entry in
+`server/CHANGELOG.md`, en een release van flux-mcp. Kijk daarbij de omvang na met `npm pack --dry-run` in
+`dist/flux-mcp`: wordt het gecomprimeerde pakket groter dan 15 MB, herbekijk dan beslissing 4 van ADR-004 (de
+catalogus in het pakket). Bij 26 versies is het 4,3 MB; een release van Flux voegt er ongeveer 0,2 MB aan toe.
 
 ## Testen
 
@@ -237,13 +266,15 @@ server op de echte catalogus met golden tests. Na een increment volgt een smoke 
 
 ```bash
 pnpm run flux:server:pack
-npx @modelcontextprotocol/inspector --cli node dist/flux-mcp/server/bin/flux-mcp.mjs --method tools/list
+npx @modelcontextprotocol/inspector@latest --cli node dist/flux-mcp/server/bin/flux-mcp.mjs --method tools/list
 claude -p "Welke status heeft vl-alert in Flux 2.20.0?" --mcp-config <config> --strict-mcp-config \
     --allowedTools "mcp__flux__*" --output-format stream-json --verbose
 ```
 
-Draai de Inspector buiten deze repo: `devEngines` weigert npx hier. Met `--output-format stream-json` zie je in het
-transcript wat het model van een tool kreeg.
+Draai de Inspector buiten deze repo: `devEngines` weigert npx hier. Vraag `@latest`: zonder versie neemt npx soms een
+oude Inspector uit zijn cache, zoals de verouderde v1. Met `--method prompts/list` en `--method prompts/get
+--prompt-name <recept> --prompt-args <argument>=<waarde>` zie je de recepten zoals een client ze krijgt. Met
+`--output-format stream-json` zie je in het transcript van Claude Code wat het model van een tool kreeg.
 
 ### De kennisvragen
 
@@ -274,9 +305,20 @@ de toepassing staat in `server/test/fixtures/app/` (zie haar README). Het script
    met "akkoord";
 3. controleert de versies in package.json, de build en de e2e-testen, `flux_check_markup` op de HTML, de gekende
    verschillen, het rapport, en dat het recept geen ander nieuw bestand achterliet
-   (`resources/flux/server/recipe-check.mjs`).
+   (`resources/flux/server/recipe-check.mjs`). Met `unchanged` mag het recept ook geen bestand wijzigen, en met
+   `deviations` controleert het de afwijkingen in het rapport: het formaat uit ADR-004 (sectie 6.4), elke verwachte
+   afwijking met haar regel op een van haar locaties en met haar `norm` en `vereist`, en geen verboden afwijking.
+   Andere afwijkingen mogen: het model kan er meer vinden dan verwacht.
 
-Voor `migreren` is dat de containeraanvraag op `@domg-wc` 2.12.1, naar 2.20.0. Het script vraagt netwerk (de registry
-van Flux, npm, en chromium voor Playwright) en draait pnpm met een lege gebruikersconfiguratie: de packages van Flux
-zijn publiek, en een verlopen token in `~/.npmrc` laat een installatie anders falen. Een run duurt lang en loopt op het
-abonnement van Claude Code; ze hoort niet bij `pnpm test`.
+Voor `migreren` is dat de containeraanvraag op `@domg-wc` 2.12.1, naar 2.20.0. Voor `valideren` is het dezelfde
+toepassing, met de afwijkingen die haar README beschrijft. `verbeteren` krijgt er met `add` een afwijkingenrapport bij,
+`server/test/fixtures/verbeteren/`: het rapport van een run van `valideren`, met de uitkomsten die het team zette.
+`review` krijgt een pull request: met `pr` past de evaluatie de patch `server/test/fixtures/review/type-container.patch`
+toe als commit op een branch boven op `main`. Met `answer` leest ze het rapport uit het antwoord, en met
+`deviations.diffOnly` moet elke afwijking op een regel van die patch staan. `uitbreiden` krijgt met `jira` een
+nagemaakte Jira naast flux-mcp (`resources/flux/server/jira-stub.mjs`), met het ticket CONT-12 uit
+`server/test/fixtures/uitbreiden/tickets.json`; een commentaar op het ticket komt in `jira.log` van de run.
+
+Het script vraagt netwerk (de registry van Flux, npm, en chromium voor Playwright) en draait pnpm met een lege
+gebruikersconfiguratie: de packages van Flux zijn publiek, en een verlopen token in `~/.npmrc` laat een installatie
+anders falen. Een run duurt lang en loopt op het abonnement van Claude Code; ze hoort niet bij `pnpm test`.

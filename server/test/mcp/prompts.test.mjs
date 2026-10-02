@@ -16,8 +16,11 @@ const tools = new Set(
 );
 
 describe('de recepten in server/prompts', () => {
-    test('migreren en design-naar-code', () => {
-        assert.deepEqual([...recipes.keys()], ['design-naar-code', 'migreren']);
+    test('migreren, design-naar-code, valideren, verbeteren, review en uitbreiden', () => {
+        assert.deepEqual(
+            [...recipes.keys()],
+            ['design-naar-code', 'migreren', 'review', 'uitbreiden', 'valideren', 'verbeteren'],
+        );
     });
 
     for (const recipe of recipes.values()) {
@@ -34,7 +37,14 @@ describe('de recepten in server/prompts', () => {
             for (const step of ['Voorwaarden', 'Checkpoint', 'Verificatie', 'Rapport', 'Proces']) {
                 assert.match(recipe.body, new RegExp(`^## \\d+\\. ${step}$`, 'm'), `${recipe.name} mist ${step}`);
             }
-            assert.match(recipe.body, new RegExp(`\\.flux/rapporten/<datum>-${recipe.name}\\.md`));
+            // review schrijft geen bestand in de branch die het beoordeelt, maar geeft het rapport in zijn antwoord
+            // (ADR-004, 6.4); de andere recepten schrijven het naar .flux/rapporten/.
+            if (recipe.name === 'review') {
+                assert.match(recipe.body, /`~~~markdown`/);
+                assert.doesNotMatch(recipe.body, /\.flux\/rapporten\//);
+            } else {
+                assert.match(recipe.body, new RegExp(`\\.flux/rapporten/<datum>-${recipe.name}\\.md`));
+            }
             assert.match(recipe.description, /Aanbevolen: /, 'een aanbevolen model en effort');
         });
     }

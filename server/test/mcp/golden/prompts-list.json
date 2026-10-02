@@ -28,6 +28,64 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "name": "review",
+            "title": "Review de wijzigingen van een branch tegen de norm van de Flux web-componenten",
+            "description": "Beoordeelt wat deze branch toevoegt of wijzigt tegenover een basisbranch, tegen de norm van de Flux web-componenten (@domg-wc/*): de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus. Een voorbereiding op de menselijke review: het recept wijzigt geen code en schrijft geen bestand, en geeft het reviewrapport als commentaar voor de pull request. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": [
+                {
+                    "name": "basis",
+                    "description": "De branch waartegen je de wijzigingen vergelijkt, bv. main of develop.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "uitbreiden",
+            "title": "Breid deze toepassing uit vanuit een ticket of een ontwerp, met de Flux web-componenten",
+            "description": "Breidt een bestaande toepassing uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, de analyse van het ticket, de componenten en patronen ophalen, een plan, een checkpoint, uitvoering, verificatie en een rapport. Bestaande afwijkingen buiten de uitbreiding laat het staan. Vraagt een koppeling met Jira of de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en Opus 5.5, effort high, daarna.",
+            "arguments": [
+                {
+                    "name": "ticket",
+                    "description": "De key van het Jira-ticket, bv. CONT-12.",
+                    "required": false
+                },
+                {
+                    "name": "figma",
+                    "description": "De link naar het ontwerp in Figma, of de node-id van het frame.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "valideren",
+            "title": "Valideer deze toepassing tegen de norm van de Flux web-componenten",
+            "description": "Legt deze toepassing naast de norm van de Flux web-componenten (@domg-wc/*) en schrijft een afwijkingenrapport, zonder code te wijzigen: de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus. Per afwijking de regel, de plek en een voorstel; wat beter is dan de norm, wordt een normkandidaat. Het team beslist in de pull request van het rapport, en het recept verbeteren werkt de afwijkingen daarna weg. Aanbevolen: een sterk analysemodel, bv. Fable 5.1, of Opus 5.5 met effort high.",
+            "arguments": [
+                {
+                    "name": "scope",
+                    "description": "Wat je valideert, als pad of glob, bv. src/aanvraag/** of index.html.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "verbeteren",
+            "title": "Werk de afwijkingen van de norm weg uit een afwijkingenrapport",
+            "description": "Werkt in deze toepassing de afwijkingen van de norm van de Flux web-componenten (@domg-wc/*) weg die het team in een afwijkingenrapport van valideren op volgt-norm zette: voorwaarden, het rapport lezen, een plan, een checkpoint, uitvoering per afwijking, verificatie en een rapport. Laat liggen wat te beslissen is of een migratie vraagt, en stelt voor de normkandidaten als ticket in te dienen. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": [
+                {
+                    "name": "rapport",
+                    "description": "Het pad naar het afwijkingenrapport van valideren, bv. .flux/rapporten/2026-10-02-valideren.md.",
+                    "required": true
+                },
+                {
+                    "name": "afwijkingen",
+                    "description": "Enkel deze afwijkingen, bv. A-002, A-008. Standaard alle met uitkomst volgt-norm.",
+                    "required": false
+                }
+            ]
         }
     ]
 }

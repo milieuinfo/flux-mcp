@@ -30,7 +30,8 @@ Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat e
 - `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries;
 - de MCP-server van increment 1 tot en met 3 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zeven tools, waaronder
   `flux_check_markup` (`server/src/markup.mjs`), de resources op die queries, en de recepten `migreren` en
-  `design-naar-code` als prompts, over stdio. Zie `docs/technisch/server.md`.
+  `design-naar-code` als prompts, over stdio; van increment 4 de recepten `valideren`, `verbeteren`, `review` en
+  `uitbreiden`. Zie `docs/technisch/server.md`.
 
 ## Structuur
 
@@ -164,5 +165,5 @@ Een lokale clone van de bronrepo gebruik je met `FLUX_REPO=~/pad/naar/flux-web-c
   melden een onderbroken keten van versies.
 - **De keuzes rond de changelog** (impact, analyse, opsplitsing per ticket) staan in
   `docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md`, die rond de documentatie uit Storybook in
-  `docs/beslissingen/ADR-003-storybook-per-versie.md`. Wat de MCP-server ermee aanbiedt, staat als voorstel in
+  `docs/beslissingen/ADR-003-storybook-per-versie.md`. Wat de MCP-server ermee aanbiedt, staat in
   `docs/beslissingen/ADR-004-functionaliteit-mcp-server.md`.
