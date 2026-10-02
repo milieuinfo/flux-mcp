@@ -390,6 +390,8 @@ Voorlopige mapping naar MCP, uit te werken bij de bouw van de server:
 - tools `flux_changelog`, `flux_upgrade`, `flux_component_history` en `flux_find_change`;
 - een prompt `flux-upgrade` in `prompts/`.
 
+ADR-004 (voorstel) werkt dit uit; eens aanvaard, vervangt ze deze mapping.
+
 ### 9. Ontbrekende versies melden
 
 Welke versies de catalogus bevat, beslist ADR-002: alle releases op de hoofdlijn van `develop-v2`, vanaf 2.0.0.
@@ -506,3 +508,4 @@ een onderbroken keten, zolang de web-types en de packages van beide kanten er zi
 
 - ADR-002: De historische catalogus van v2 opbouwen.
 - ADR-003: De documentatie uit Storybook per versie aanbieden.
+- ADR-004: De functionaliteit van de MCP-server (voorstel).

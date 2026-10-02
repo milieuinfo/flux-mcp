@@ -1,7 +1,8 @@
 # De server
 
 De MCP-koppeling bestaat nog niet. Wat er is, zijn de queries op de catalogus, als gewone functies met tests. De
-MCP-server hangt ze later aan tools en resources.
+MCP-server hangt ze later aan tools en resources; welke, staat als voorstel in
+[ADR-004](../beslissingen/ADR-004-functionaliteit-mcp-server.md).
 
 Een fout in de vraag, zoals een onbekende versie, geeft een `CatalogError`.
 

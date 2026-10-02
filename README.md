@@ -55,4 +55,5 @@ De beslissingen en het waarom staan in de ADR's onder [`docs/beslissingen/`](doc
 
 - [ADR-001](docs/beslissingen/ADR-001-changelog-voor-de-mcp-server.md): de changelog per versie;
 - [ADR-002](docs/beslissingen/ADR-002-historische-catalogus-v2.md): de historische catalogus van v2;
-- [ADR-003](docs/beslissingen/ADR-003-storybook-per-versie.md): de documentatie uit Storybook per versie.
+- [ADR-003](docs/beslissingen/ADR-003-storybook-per-versie.md): de documentatie uit Storybook per versie;
+- [ADR-004](docs/beslissingen/ADR-004-functionaliteit-mcp-server.md): de functionaliteit van de MCP-server (voorstel).

@@ -475,6 +475,8 @@ Voorlopige mapping naar MCP:
 - zonder versie geldt de nieuwste in de catalogus, en het antwoord zegt welke. De instructies van de server vragen
   een agent de versie van `@domg-wc/components` uit de `package.json` van het project te nemen.
 
+ADR-004 (voorstel) werkt dit uit; eens aanvaard, vervangt ze deze mapping.
+
 Van design naar code: de Figma-description en de documentation link van een component noemen de Storybook-id
 (`components-atom-button`), de Code Connect-snippet noemt het element. Met elk van beide vindt een agent die met de
 Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
@@ -485,11 +487,11 @@ Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
    versies in de catalogus. Klaar.
 2. **De queries**, met hun tests. Zonder analyse is de catalogus al bruikbaar: tekst, API, status en links. Klaar.
 3. **De analyse:** `prompts/storybook-analyse.md`, `prompts/storybook-review.md`, `storybook:analyse` en
-   `storybook:check`. Klaar voor 2.14.0 tot en met 2.20.0: eerst 2.20.0 volledig, daarna per versie de pagina's met
-   een nieuwe hash. De oudere versies volgen. Controleer na elke reeks een steekproef van de voorbeelden in
-   Storybook; die toetst de werkwijze, niet elke analyse, want die leest een mens niet na.
-4. **`catalog:update`** en de documentatie. Klaar. `catalog:backfill` volgt.
-5. **De MCP-koppeling**, samen met die van ADR-001.
+   `storybook:check`. Klaar voor alle versies, van 2.0.0 tot en met 2.20.0: eerst 2.20.0 volledig, daarna per
+   versie, van nieuw naar oud, de pagina's met een nieuwe hash. Controleer na elke reeks een steekproef van de
+   voorbeelden in Storybook; die toetst de werkwijze, niet elke analyse, want die leest een mens niet na.
+4. **`catalog:update`**, de documentatie en `CLAUDE.md`. Klaar. `catalog:backfill` volgt.
+5. **De MCP-koppeling**, samen met die van ADR-001, zoals ADR-004 (voorstel) ze uitwerkt.
 
 ## Alternatieven overwogen
 
@@ -553,3 +555,4 @@ Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
 
 - ADR-001: De changelog per versie klaarzetten voor de MCP-server.
 - ADR-002: De historische catalogus van v2 opbouwen.
+- ADR-004: De functionaliteit van de MCP-server (voorstel).
