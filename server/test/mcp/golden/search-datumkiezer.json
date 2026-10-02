@@ -1,0 +1,39 @@
+{
+    "structuredContent": {
+        "version": "2.20.0",
+        "catalog": "0.0.0-test",
+        "warnings": [],
+        "query": "datumkiezer",
+        "results": [
+            {
+                "id": "components-form-datepicker",
+                "title": "Components - Form/datepicker",
+                "kind": "component",
+                "status": "stable",
+                "elements": [
+                    {
+                        "name": "vl-datepicker",
+                        "status": "stable"
+                    }
+                ],
+                "summary": "Documentatie van vl-datepicker, een invoerveld met een kalender (Flatpickr) om een datum, een periode (type range), een tijd of een datum met tijd te kiezen. De pagina legt de ISO-waarde per type uit, het formaat, de grenzen min-date/max-date en min-time/max-time met de validatie rangeUnderflow en rangeOverflow, de mask validatie, en hoe je de kalender positioneert met position, static of inline-positioning.",
+                "passage": null,
+                "score": 4,
+                "url": "https://flux.omgeving.vlaanderen.be/release-v2/2.20.0/storybook/?path=/docs/components-form-datepicker--documentatie"
+            }
+        ],
+        "total": 1,
+        "hiddenFluxTeam": 0,
+        "sources": [
+            {
+                "kind": "storybook",
+                "path": "2.20.0/storybook/index.json"
+            },
+            {
+                "kind": "storybook-analysis",
+                "path": "storybook-analysis/"
+            }
+        ]
+    },
+    "otherContent": []
+}

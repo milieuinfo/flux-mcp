@@ -1,0 +1,58 @@
+{
+    "recipe": "migreren",
+    "arguments": ["2.20.0"],
+    "app": "app",
+    "packages": { "@domg-wc/common": "2.20.0", "@domg-wc/components": "2.20.0" },
+    "report": {
+        "frontmatter": {
+            "workflow": "migreren",
+            "bronversie": "2.12.1",
+            "doelversie": "2.20.0",
+            "resultaat": "geslaagd",
+            "e2e": "groen"
+        },
+        "tickets": ["FLUX-620", "FLUX-589", "FLUX-219", "FLUX-270"]
+    },
+    "files": [
+        {
+            "file": "index.html",
+            "present": "<vl-functional-header[^>]*title-label=\"Containeraanvraag\"",
+            "reason": "FLUX-620: title op vl-functional-header wordt title-label"
+        },
+        {
+            "file": "index.html",
+            "absent": "disable-mobile-native-input",
+            "reason": "FLUX-638: disable-mobile-native-input verdwijnt"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-form-message[^>]*state=\"rangeUnderflow\"",
+            "reason": "FLUX-589: een vl-form-message voor een datum vóór min-date"
+        },
+        {
+            "file": "index.html",
+            "absent": "<div class=\"items\">",
+            "reason": "FLUX-219: de items van vl-description-data als directe kinderen"
+        },
+        {
+            "file": "index.html",
+            "absent": "<vl-search",
+            "reason": "FLUX-270: vl-search is deprecated, met het zoekpatroon als alternatief"
+        },
+        {
+            "file": "index.html",
+            "present": "<button id=\"annuleer\" class=\"knop\"",
+            "reason": "geen wijziging buiten de migratie: de eigen knop is een afwijking voor valideren"
+        },
+        {
+            "file": "index.html",
+            "absent": "id=\"email\"[^>]*\\slabel=|for=\"email\"",
+            "reason": "geen wijziging buiten de migratie: het e-mailveld zonder label is een afwijking voor valideren"
+        },
+        {
+            "file": "src/main.js",
+            "present": "window\\.confirm\\(",
+            "reason": "geen wijziging buiten de migratie: de bevestiging met confirm is een afwijking voor valideren"
+        }
+    ]
+}

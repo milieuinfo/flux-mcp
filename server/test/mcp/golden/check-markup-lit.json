@@ -1,0 +1,104 @@
+{
+    "structuredContent": {
+        "version": "2.20.0",
+        "catalog": "0.0.0-test",
+        "warnings": [],
+        "targetVersion": null,
+        "syntax": "lit",
+        "elements": 5,
+        "counts": {
+            "error": 1,
+            "warning": 5,
+            "info": 0
+        },
+        "findings": [
+            {
+                "attribute": "type",
+                "suggestion": "Kies uit 'info', 'success', 'warning', 'error'.",
+                "source": "web-types",
+                "code": "invalid-attribute-value",
+                "severity": "warning",
+                "message": "'oops' is geen waarde van 'type' op <vl-alert> volgens de web-types. Die kunnen onvolledig zijn: de beschrijving van het attribuut laat soms meer toe.",
+                "element": "vl-alert",
+                "line": 6,
+                "column": 23,
+                "entry": null
+            },
+            {
+                "attribute": "closable",
+                "suggestion": "Laat het attribuut weg, of gebruik ?closable=${…}.",
+                "source": "web-types",
+                "code": "boolean-attribute-false",
+                "severity": "warning",
+                "message": "closable=\"false\" zet 'closable' op <vl-alert> net aan: een boolean attribuut geldt zodra het er staat.",
+                "element": "vl-alert",
+                "line": 6,
+                "column": 35,
+                "entry": null
+            },
+            {
+                "attribute": "slot",
+                "suggestion": null,
+                "source": "web-types",
+                "code": "unknown-slot",
+                "severity": "warning",
+                "message": "vl-alert heeft geen slot 'ondertitel' in de web-types; de slots zijn title, actions. De web-types kunnen onvolledig zijn; kijk de documentatie van de component na.",
+                "element": "vl-alert",
+                "line": 8,
+                "column": 23,
+                "entry": null
+            },
+            {
+                "attribute": "ellipsis",
+                "suggestion": null,
+                "source": "storybook-analysis",
+                "code": "unknown-attribute",
+                "severity": "warning",
+                "message": "<vl-breadcrumb> heeft geen attribuut 'ellipsis' in de web-types. Een analyse van Storybook noteert het als niet in de web-types.",
+                "element": "vl-breadcrumb",
+                "line": 10,
+                "column": 28,
+                "entry": null
+            },
+            {
+                "attribute": null,
+                "suggestion": null,
+                "source": "web-types",
+                "code": "deprecated-element",
+                "severity": "warning",
+                "message": "<vl-share-buttons> is deprecated. Deprecated en wordt verwijderd in v3. Gebruik een vl-button met cta-link, icon en label.",
+                "element": "vl-share-buttons",
+                "line": 15,
+                "column": 13,
+                "entry": null
+            },
+            {
+                "attribute": null,
+                "suggestion": "vl-button",
+                "source": "web-types",
+                "code": "unknown-element",
+                "severity": "error",
+                "message": "<vl-buton> staat niet in de web-types van deze versie.",
+                "element": "vl-buton",
+                "line": 16,
+                "column": 13,
+                "entry": null
+            }
+        ],
+        "sources": [
+            {
+                "kind": "web-types",
+                "path": "2.20.0/web-types/"
+            },
+            {
+                "kind": "storybook",
+                "path": "2.20.0/storybook/index.json"
+            },
+            {
+                "kind": "storybook-analysis",
+                "path": "storybook-analysis/"
+            }
+        ]
+    },
+    "otherContent": []
+}

@@ -1,0 +1,84 @@
+diff --git a/e2e/aanvraag.spec.js b/e2e/aanvraag.spec.js
+index 66dc7f2..b9b53ca 100644
+--- a/e2e/aanvraag.spec.js
++++ b/e2e/aanvraag.spec.js
+@@ -52,3 +52,12 @@ test('zoeken op een onbekend aanvraagnummer meldt dat er geen aanvraag is', asyn
+     await page.getByRole('searchbox', { name: 'Aanvraagnummer' }).press('Enter');
+     await expect(page.getByText('Geen aanvraag gevonden voor A-123.')).toBeVisible();
+ });
++
++test('de samenvatting toont het type container', async ({ page }) => {
++    await page.goto('/');
++    await page.getByRole('textbox', { name: 'Naam' }).fill('An Peeters');
++    await page.getByRole('textbox', { name: 'Leverdatum' }).fill('31.12.2030');
++    await page.getByRole('combobox', { name: 'Type container' }).selectOption('Middelgroot');
++    await page.getByRole('button', { name: 'Vraag aan' }).click();
++    await expect(page.locator('#samenvatting')).toContainText('Middelgroot');
++});
+diff --git a/index.html b/index.html
+index 999d489..fca611f 100644
+--- a/index.html
++++ b/index.html
+@@ -38,6 +38,12 @@
+             <form id="aanvraag">
+                 <vl-input-field id="naam" name="naam" label="Naam" required></vl-input-field>
+                 <vl-input-field id="email" name="email" type="email" placeholder="E-mailadres"></vl-input-field>
++                <label for="type">Type container</label>
++                <select id="type" name="type">
++                    <option>Klein</option>
++                    <option>Middelgroot</option>
++                    <option>Groot</option>
++                </select>
+                 <vl-datepicker
+                     id="datum"
+                     name="datum"
+@@ -48,16 +54,21 @@
+                 ></vl-datepicker>
+                 <vl-datepicker id="ophaaldatum" name="ophaaldatum" label="Ophaaldatum"></vl-datepicker>
+                 <p id="ophaaldatum-fout" class="foutmelding" hidden>Fout.</p>
++                <vl-textarea id="opmerking" name="opmerking" placeholder="Opmerking" maxlength="500"></vl-textarea>
++                <vl-checkbox id="herinnering" name="herinnering">
++                    <span>Stuur me een herinnering de dag voor de levering</span>
++                </vl-checkbox>
+                 <vl-button type="submit">Vraag aan</vl-button>
+                 <button id="annuleer" class="knop" type="button">Annuleren</button>
+             </form>
+-            <vl-alert id="bevestiging" type="success" title="Aanvraag ontvangen" closable="false" hidden>
++            <vl-alert id="bevestiging" type="success" icon="check" title="Aanvraag ontvangen" closable="false" hidden>
+                 <span>We leveren de container op de gevraagde dag.</span>
+             </vl-alert>
+             <vl-description-data id="samenvatting" hidden>
+                 <div class="items">
+                     <vl-description-data-item id="samenvatting-naam" label="Naam"></vl-description-data-item>
+                     <vl-description-data-item id="samenvatting-datum" label="Leverdatum"></vl-description-data-item>
++                    <vl-description-data-item id="samenvatting-type" label="Type container"></vl-description-data-item>
+                 </div>
+             </vl-description-data>
+         </main>
+diff --git a/src/aanvraag.js b/src/aanvraag.js
+index 642dbdc..d942af5 100644
+--- a/src/aanvraag.js
++++ b/src/aanvraag.js
+@@ -2,6 +2,7 @@
+ export function bevestig(data) {
+     document.querySelector('#samenvatting-naam').setAttribute('value', data.get('naam') ?? '');
+     document.querySelector('#samenvatting-datum').setAttribute('value', data.get('datum') ?? '');
++    document.querySelector('#samenvatting-type').setAttribute('value', data.get('type') ?? '');
+     document.querySelector('#bevestiging').hidden = false;
+     document.querySelector('#samenvatting').hidden = false;
+ }
+diff --git a/src/main.js b/src/main.js
+index 2e16a02..1221528 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -3,8 +3,10 @@ import '@domg-wc/components/block/alert';
+ import '@domg-wc/components/block/description-data';
+ import '@domg-wc/components/block/functional-header';
+ import '@domg-wc/components/block/search';
++import '@domg-wc/components/form/checkbox';
+ import '@domg-wc/components/form/datepicker';
+ import '@domg-wc/components/form/input-field';
++import '@domg-wc/components/form/textarea';
+ import { bevestig, ophaaldatumKlopt, zoek } from './aanvraag.js';
+ 
+ const formulier = document.querySelector('#aanvraag');

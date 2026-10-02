@@ -1,0 +1,79 @@
+{
+    "recipe": "uitbreiden",
+    "arguments": ["CONT-12"],
+    "app": "app",
+    "jira": "uitbreiden/tickets.json",
+    "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
+    "report": {
+        "frontmatter": {
+            "workflow": "uitbreiden",
+            "fluxversie": "2.12.1",
+            "ticket": "CONT-12",
+            "resultaat": "geslaagd",
+            "e2e": "groen"
+        },
+        "tickets": ["CONT-12", "patronen-formulier-validatie"]
+    },
+    "files": [
+        {
+            "file": "index.html",
+            "present": "<vl-input-field(?=[^>]*type=\"tel\")(?=[^>]*\\srequired)",
+            "reason": "CONT-12: een verplicht veld Telefoonnummer, een vl-input-field met type tel"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-input-field(?=[^>]*type=\"tel\")(?=[^>]*\\slabel=)|<vl-form-label",
+            "reason": "het telefoonnummer heeft een label (richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip)"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-input-field(?=[^>]*type=\"tel\")(?=[^>]*autocomplete=\"tel\")",
+            "reason": "het telefoonnummer heeft autocomplete tel (richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip)"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-form-message[^>]*state=\"valueMissing\"",
+            "reason": "CONT-12: een foutmelding als het veld leeg is (patronen-formulier-validatie)"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-form-message[^>]*state=\"patternMismatch\"",
+            "reason": "CONT-12: een foutmelding als het formaat niet klopt (patronen-formulier-validatie)"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-description-data-item[^>]*[Tt]elefoon",
+            "reason": "CONT-12: de samenvatting toont het telefoonnummer"
+        },
+        {
+            "file": "e2e/aanvraag.spec.js",
+            "present": "[Tt]elefoon",
+            "reason": "CONT-12: een e2e-test voor het telefoonnummer"
+        },
+        {
+            "file": "index.html",
+            "present": "<button id=\"annuleer\" class=\"knop\"",
+            "reason": "geen wijziging buiten de uitbreiding: de eigen knop is een afwijking voor valideren"
+        },
+        {
+            "file": "src/main.js",
+            "present": "window\\.confirm\\(",
+            "reason": "geen wijziging buiten de uitbreiding: de bevestiging met confirm is een afwijking voor valideren"
+        },
+        {
+            "file": "index.html",
+            "absent": "id=\"email\"[^>]*\\slabel=|for=\"email\"",
+            "reason": "geen wijziging buiten de uitbreiding: het e-mailveld zonder label is een afwijking voor valideren"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-search",
+            "reason": "geen wijziging buiten de uitbreiding: vl-search is een afwijking voor valideren"
+        },
+        {
+            "file": "index.html",
+            "present": "closable=\"false\"",
+            "reason": "geen wijziging buiten de uitbreiding: closable=\"false\" is een afwijking voor valideren"
+        }
+    ]
+}

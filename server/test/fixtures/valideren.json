@@ -1,0 +1,102 @@
+{
+    "recipe": "valideren",
+    "arguments": [],
+    "app": "app",
+    "confirm": false,
+    "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
+    "unchanged": true,
+    "report": {
+        "frontmatter": {
+            "workflow": "valideren",
+            "fluxversie": "2.12.1",
+            "normversie": "2.20.0",
+            "resultaat": "geslaagd",
+            "e2e": "groen"
+        }
+    },
+    "deviations": {
+        "expected": [
+            {
+                "id": "E1",
+                "regel": "patronen-pagina-opbouw",
+                "locaties": ["index.html:22-65"],
+                "norm": "gewijzigd sinds 2.12.1",
+                "vereist": "—"
+            },
+            {
+                "id": "E2",
+                "regel": "patronen-formulier-validatie",
+                "locaties": ["index.html:38-53"],
+                "norm": "gewijzigd sinds 2.12.1",
+                "vereist": "—"
+            },
+            {
+                "id": "E3",
+                "regel": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip",
+                "locaties": ["index.html:39"],
+                "norm": "—",
+                "vereist": "—"
+            },
+            {
+                "id": "N1",
+                "regel": "patronen-navigatie-functionele-header-met-search",
+                "locaties": ["index.html:23-35", "src/main.js:27-30"],
+                "norm": "gewijzigd sinds 2.12.1",
+                "vereist": "—"
+            },
+            {
+                "id": "N2",
+                "regel": "patronen-formulier-demo",
+                "locaties": ["index.html:52"],
+                "norm": "gewijzigd sinds 2.12.1",
+                "vereist": "—"
+            },
+            {
+                "id": "N3",
+                "regel": "patronen-overlays-modal-vs-side-sheet",
+                "locaties": ["index.html:52", "src/main.js:22-25"],
+                "norm": "nieuw sinds 2.12.1",
+                "vereist": "—"
+            },
+            {
+                "id": "N4",
+                "regel": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip",
+                "locaties": ["index.html:40"],
+                "norm": "—",
+                "vereist": "—"
+            },
+            {
+                "id": "N5",
+                "regel": "patronen-formulier-cross-validatie",
+                "locaties": ["index.html:49-50", "src/main.js:12-20", "src/aanvraag.js:9-13"],
+                "norm": "nieuw sinds 2.12.1",
+                "vereist": "2.19.0"
+            },
+            {
+                "id": "N6",
+                "regel": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip",
+                "locaties": ["index.html:50"],
+                "norm": "—",
+                "vereist": "—"
+            },
+            {
+                "id": "N7",
+                "regel": "boolean-attribute-false",
+                "locaties": ["index.html:54"],
+                "norm": "—",
+                "vereist": "—"
+            }
+        ],
+        "forbidden": [
+            {
+                "reason": "het attribuut label op een form control laat de richtlijn over toegankelijkheid toe",
+                "title": "\\blabel\\b|vl-form-label",
+                "locaties": ["index.html:39", "index.html:41-49"]
+            },
+            {
+                "reason": "title-label op vl-functional-header is een migratie (FLUX-620), geen afwijking in 2.12.1",
+                "title": "title-label|FLUX-620"
+            }
+        ]
+    }
+}

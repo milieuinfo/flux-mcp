@@ -1,0 +1,21 @@
+{
+    "name": "@domg/flux-mcp",
+    "version": "0.4.0",
+    "description": "MCP-server met kennis over de Flux web-componenten (@domg-wc/*), per versie.",
+    "private": true,
+    "publishConfig": {
+        "registry": "https://repo.omgeving.vlaanderen.be/artifactory/api/npm/local-npm/"
+    },
+    "type": "module",
+    "bin": {
+        "flux-mcp": "server/bin/flux-mcp.mjs"
+    },
+    "engines": {
+        "node": ">=22"
+    },
+    "files": [
+        "server/",
+        "catalog/",
+        "CHANGELOG.md"
+    ]
+}

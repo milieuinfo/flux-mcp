@@ -1,0 +1,8 @@
+{
+    "CONT-12": {
+        "summary": "Telefoonnummer bij een containeraanvraag",
+        "issuetype": "Story",
+        "status": "Klaar voor ontwikkeling",
+        "description": "Als aanvrager wil ik een telefoonnummer opgeven, zodat de chauffeur me kan bellen bij de levering.\n\nAcceptatiecriteria:\n\n- Het formulier heeft een verplicht veld Telefoonnummer, na het e-mailadres.\n- Een telefoonnummer bestaat uit cijfers en spaties, eventueel met een + vooraan, en heeft minstens 9 cijfers.\n- Is het veld leeg, of klopt het formaat niet, dan zegt een foutmelding wat de aanvrager moet doen, en vertrekt de aanvraag niet.\n- De samenvatting na de aanvraag toont het telefoonnummer."
+    }
+}

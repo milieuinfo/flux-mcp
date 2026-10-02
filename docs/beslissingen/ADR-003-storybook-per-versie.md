@@ -475,11 +475,12 @@ Voorlopige mapping naar MCP:
 - zonder versie geldt de nieuwste in de catalogus, en het antwoord zegt welke. De instructies van de server vragen
   een agent de versie van `@domg-wc/components` uit de `package.json` van het project te nemen.
 
-ADR-004 (voorstel) werkt dit uit; eens aanvaard, vervangt ze deze mapping.
+Vervangen door ADR-004, aanvaard op 2026-10-02: de tools, resources en prompts staan daar in sectie 4 tot 6. De
+versie is er verplicht, met `latest` als expliciete waarde.
 
 Van design naar code: de Figma-description en de documentation link van een component noemen de Storybook-id
 (`components-atom-button`), de Code Connect-snippet noemt het element. Met elk van beide vindt een agent die met de
-Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
+Figma MCP werkt, via `flux_get_component` (ADR-004) de pagina van de juiste versie.
 
 ### 9. Stappenplan
 
@@ -491,7 +492,7 @@ Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
    versie, van nieuw naar oud, de pagina's met een nieuwe hash. Controleer na elke reeks een steekproef van de
    voorbeelden in Storybook; die toetst de werkwijze, niet elke analyse, want die leest een mens niet na.
 4. **`catalog:update`**, de documentatie en `CLAUDE.md`. Klaar. `catalog:backfill` volgt.
-5. **De MCP-koppeling**, samen met die van ADR-001, zoals ADR-004 (voorstel) ze uitwerkt.
+5. **De MCP-koppeling**, samen met die van ADR-001, zoals ADR-004 ze uitwerkt.
 
 ## Alternatieven overwogen
 
@@ -555,4 +556,4 @@ Figma MCP werkt, via `flux_component` de pagina van de juiste versie.
 
 - ADR-001: De changelog per versie klaarzetten voor de MCP-server.
 - ADR-002: De historische catalogus van v2 opbouwen.
-- ADR-004: De functionaliteit van de MCP-server (voorstel).
+- ADR-004: De functionaliteit van de MCP-server.

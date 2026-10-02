@@ -3,6 +3,8 @@
 //   - 'claude --version' slaagt;
 //   - een analyse schrijft een geldige analyse, in de map die een Write-regel in --allowedTools toelaat;
 //   - een review (met --json-schema) geeft een structured_output in het afgesproken formaat;
+//   - een run met --mcp-config, zoals flux:server:eval, roept een tool van flux-mcp aan: flux_find_changes voor een
+//     vraag met een ticket, flux_check_markup voor een vraag met markup, en anders flux_list_versions;
 //   - de uitvoer is stream-json: een init met apiKeySource, en een result.
 // Elke run komt als één JSON-regel in FLUX_TEST_CLAUDE_LOG: de argumenten, de eerste regels van de prompt, de map, en
 // of er een API-sleutel in de omgeving stond. FLUX_TEST_CLAUDE kiest een foutgeval:
@@ -44,6 +46,15 @@ if (mode === 'api-key') {
     setTimeout(() => process.exit(0), 5000);
 } else if (mode === 'no-result') {
     process.exit(1);
+} else if (args.includes('--mcp-config')) {
+    const tool = /FLUX-\d+/.test(prompt)
+        ? 'flux_find_changes'
+        : /<vl-/.test(prompt)
+          ? 'flux_check_markup'
+          : 'flux_list_versions';
+    emit({ type: 'assistant', message: { content: [{ type: 'tool_use', name: `mcp__flux__${tool}`, input: {} }] } });
+    const result = 'Nagemaakt antwoord.';
+    emit({ type: 'result', subtype: 'success', is_error: false, num_turns: 2, result, modelUsage: {} });
 } else {
     const written = review ? [] : analyse();
     for (const file of written) {
