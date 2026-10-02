@@ -77,9 +77,10 @@ je code schrijft.
 ## 7. Rapport
 
 Vul het sjabloon volledig in, en schrijf het naar `.flux/rapporten/<datum>-design-naar-code.md` in het project, met
-de datum als JJJJ-MM-DD. `resultaat` is `geslaagd` als de verificatie groen is, `gedeeltelijk` als iets niet opgelost
-is, en `gestopt` als een voorwaarde ontbrak of de verificatie rood bleef. Een afwijking van het ontwerp, omdat Flux
-het anders doet, hoort in "Niet automatisch opgelost".
+de datum als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-design-naar-code-2.md`, `-3`, …: overschrijf nooit
+een rapport. `resultaat` is `geslaagd` als de verificatie groen is, `gedeeltelijk` als iets niet opgelost is, en
+`gestopt` als een voorwaarde ontbrak of de verificatie rood bleef. Een afwijking van het ontwerp, omdat Flux het
+anders doet, hoort in "Niet automatisch opgelost".
 
 ## 8. Proces
 

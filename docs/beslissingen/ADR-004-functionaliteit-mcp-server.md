@@ -1,7 +1,7 @@
 # ADR-004: De functionaliteit van de MCP-server
 
 ## Status
-Voorstel
+Aanvaard
 
 ## Datum
 2026-09-29
@@ -32,7 +32,7 @@ neemt het op: wat ervan overeind blijft, staat hieronder, en het afzonderlijke d
 
 | Onderwerp | Ontwerpvoorstel | In deze repo |
 |---|---|---|
-| Het *hoe* | `.llm.md` per versie; Storybook bewust niet (planning 11.2) | er is nog geen `.llm.md` in flux-web-components; de documentatie uit Storybook staat per versie in de catalogus (ADR-003) |
+| Het *hoe* | `.llm.md` per versie; Storybook bewust niet (planning 11.2) | de `.llm.md` is een concept, geen bestand: alle kennis die niet uit de web-types of de release notes komt. De documentatie uit Storybook per versie, met haar analyse, is er het eerste deel van (ADR-003) |
 | Migratie | een `migration.json` per versie, met `kind` en `codemod` | per ticket de feiten en de analyse: impact, uitleg, actie en voorbeeld (ADR-001); de diffs van de web-types en de dependencies; geen codemods |
 | Opslag | `knowledge/<versie>/` | `catalog/flux/<versie>/` en `catalog/flux/storybook-analysis/` |
 | Model | `ComponentKnowledge`, met CSS custom properties, CSS parts en een status | de web-types: attributen, slots, properties, events en `deprecated`; geen CSS custom properties of parts; de status staat in de metadata van Storybook |
@@ -76,8 +76,9 @@ Samengevat:
 
 - de server levert kennis per versie via zeven tools en een handvol resources, en workflowrecepten via prompts; de
   AI-client van het project voert de workflows uit;
-- de kennis is de catalogus zoals ADR-001 tot ADR-003 hem opbouwen; de documentatie uit Storybook vervult de rol van
-  de `.llm.md` tot die er is, en de changelog per ticket die van het migratiebestand;
+- de kennis is de catalogus zoals ADR-001 tot ADR-003 hem opbouwen. De `.llm.md` is een concept: alle kennis die niet
+  uit de web-types of de release notes komt; de documentatie uit Storybook en haar analyse zijn er het eerste deel
+  van. De changelog per ticket vervult de rol van het migratiebestand;
 - elke tool vraagt een expliciete versie, geeft de effectieve versie en de bronnen terug, en blijft standaard onder
   de 10.000 tokens;
 - de server is eigen code zonder dependencies, over stdio, en wordt verdeeld als npm-pakket met de catalogus erin;
@@ -118,32 +119,55 @@ Samengevat:
 | Kennislaag (planning, sectie 3) | In de catalogus | In de server |
 |---|---|---|
 | web-types: het *wat* | `<versie>/web-types/` | de API in `flux_get_component`, `flux_check_markup` en de diffs |
-| `.llm.md`: het *hoe* | nog niet; tot dan de gidsen, richtlijnen, patronen en recepten uit Storybook (ADR-003) | `flux_get_guidance`, `flux_search_docs` |
+| `.llm.md`: het *hoe*, alle kennis die niet uit de web-types of de release notes komt | het eerste deel: de documentatie uit Storybook en haar analyse (ADR-003); volgende delen later | `flux_get_guidance`, `flux_search_docs`, de voorbeelden en `notes` in `flux_get_component` |
 | release notes en migratiebestand | `changelog/` en `changelog-analysis/` per ticket (ADR-001) | `flux_get_upgrade`, `flux_find_changes` |
 | Figma | niet | de Figma MCP, bij de client |
 
-- **Storybook als voorlopige bron voor het *hoe*.** De planning houdt Storybook bewust buiten de kennislaag (11.2): de
-  norm hoort in Figma en de `.llm.md`. Zolang er geen `.llm.md` is, is Storybook de enige geversioneerde bron van Flux
-  zelf over het gebruik van de componenten. De server zegt bij elk antwoord uit welke bron het komt
-  (`sources[].kind`), zodat een recept en een rapport zien dat het om documentatie gaat, niet om een vastgelegde norm
-  met regel-id's.
+- **De `.llm.md` is een concept, geen bestand** (bijgesteld op 2026-10-02, door Team Flux): alle kennis over Flux die
+  niet via de web-types of de release notes komt. De documentatie uit Storybook en haar analyse zijn er het eerste
+  deel van: de gidsen, richtlijnen, patronen en recepten, de voorbeelden per story, en wat de analyse noteert, zoals
+  attributen die niet in de web-types staan. De planning hield Storybook nog buiten de kennislaag (11.2); dat moet mee
+  (open beslissing 9). De server zegt bij elk antwoord uit welke bron het komt (`sources[].kind`), zodat een recept en
+  een rapport zien dat het om documentatie gaat, en niet om een regel met een id en een ernst.
 - **Geen apart `migration.json`.** Het machineleesbare migratiebestand uit de planning is de changelog per ticket met
   zijn analyse: per wijziging de componenten, de impact, wat een afnemer moet doen (`action`) en een voorbeeld. Een
   migratiestap heeft als id de id van de entry (de korte sha) en het ticket (`FLUX-810`). Een tweede bestand per
   versie, door een LLM geschreven, zou dezelfde tekst twee keer in git zetten.
 - **Codemods nog niet.** Het voorbeeld in de analyse toont vaak oud en nieuw. Een gestructureerd `codemod`-veld in de
-  analyse is een uitbreiding voor later, als migraties veel mechanische wijzigingen blijken te vragen. Het is dan
-  structureel, geen reguliere expressie, bv.
+  analyse is een uitbreiding voor later. Het is dan structureel, geen reguliere expressie, bv.
   `{ "type": "map-attribute-value", "selector": "vl-voorbeeld", "attribute": "size", "map": { "small": "s" } }`.
-  Een gedragswijziging krijgt geen codemod, enkel de actie en wat je moet nakijken.
-- **De `.llm.md` later.** Staat ze in flux-web-components, dan zet een script `llm-copy` ze per versie in
-  `catalog/flux/<versie>/llm/`, en splitst het ze deterministisch in secties (zie hieronder). Een `llm-check`
-  controleert de id's, de verplichte secties, de ernst van de regels, en de voorbeelden met `flux_check_markup` tegen
-  de web-types van dezelfde versie. `flux_get_guidance` toont die secties naast de pagina's uit Storybook, met
-  `kind: "llm"` als bron; voor de norm gaan ze voor. Een resource `flux://{version}/llm.md` geeft dan het hele bestand.
+  Een gedragswijziging krijgt geen codemod, enkel de actie en wat je moet nakijken (verfijnd op 2026-10-02):
+  - **Het LLM bouwt hem mee.** Alles vertrekt van de changelog van Flux zoals hij is; scripts en een LLM bouwen er de
+    rest uit op. Een codemod is interpretatie, dus hij hoort in `changelog-analysis/`, naast `action` en `example`:
+    de prompt van de analyse vraagt hem enkel bij een mechanische wijziging (een attribuut of element hernoemd of
+    weggehaald, een waarde vertaald), uit de commit, de diff en de diff van de web-types.
+  - **Gecontroleerd tegen de web-types.** `changelog:build --check` gaat elke codemod na: het oude attribuut of
+    element bestaat in de vorige versie, het nieuwe in deze, op dat element. De review-run controleert hem zoals de
+    rest van de analyse.
+  - **De server past hem niet toe**, want hij wijzigt geen code. `flux_get_upgrade` geeft hem door per entry, en
+    `flux_check_markup` kan bij `breaks-in-target` een concrete vervanging geven, met regel en kolom; het model van de
+    client voert ze uit.
+  - **Weinig waarde in v2.** Van 2.0.0 tot en met 2.20.0 verdwenen er 4 attributen en 2 elementen uit de web-types,
+    en enkel `anchor-positioning` → `inline-positioning` op `vl-datepicker` (2.17.0) en `data-vl-size` → `size` op
+    `vl-info-tile` (2.5.0) lijken op een hernoeming. FLUX-620 (`title` → `title-label`) staat er niet bij: `title`
+    bleef, als deprecated. Het model van `migreren` werkt de `action` en het `example` goed af, en een backfill van de
+    71 entries met `action` levert bijna niets op.
+  - **Waarde bij v3.** De overstap van v2 naar v3 brengt waarschijnlijk veel mechanische wijzigingen, bv. het
+    achtervoegsel `-next` dat wegvalt en hernoemingen tussen de majors, verspreid over een hele toepassing.
+- **Volgende delen van de `.llm.md` later.** Komt er kennis bij die niet in Storybook staat, bv. regels met een id en
+  een ernst, of conventies voor een project, dan zet een script ze per versie in de catalogus, naast de pagina's uit
+  Storybook. Een controle gaat de id's, de verplichte velden en de voorbeelden na, met `flux_check_markup` tegen de
+  API van dezelfde versie, zoals `storybook:check` dat voor het eerste deel doet. `flux_get_guidance` toont ze naast
+  de pagina's uit Storybook, met een eigen `kind` als bron; voor de norm gaan regels met een id voor. Welke vorm zo'n
+  deel heeft, beslist Team Flux; hieronder staat wat de server ervan nodig heeft.
 - **CEM later, zonder adapterlaag vooraf.** `web-types.mjs` is de enige module die het formaat kent; de rest werkt met
-  wat `loadWebTypes` teruggeeft. Stapt Flux over op een Custom Elements Manifest (planning 11.6), dan geeft een nieuwe
-  lader hetzelfde terug. Een generieke `KnowledgeSourceAdapter` voor één formaat bouwen we niet.
+  wat `loadWebTypes` teruggeeft. Flux vervangt de web-types door een Custom Elements Manifest (planning 11.6), eerst
+  als technische omzetting: dezelfde informatie in een ander formaat (bevestigd op 2026-10-02, door Team Flux). Dan
+  volstaat een lader die hetzelfde teruggeeft, en een script dat de CEM per versie in de catalogus zet. Een versie van
+  vóór de overstap houdt haar web-types; de diff tussen een versie met web-types en een met CEM vergelijkt wat beide
+  laders teruggeven, zodat `flux_get_upgrade` en `breaks-in-target` over de overstap heen werken. Een generieke
+  `KnowledgeSourceAdapter` voor één formaat bouwen we niet. Brengt de CEM later meer dan de web-types, zoals CSS
+  custom properties en parts, dan is dat een uitbreiding van wat de lader teruggeeft.
 - **De status van een component** leiden we deterministisch af:
   - `deprecated`: `deprecated` in de web-types;
   - `next`: generatie `v3-next` in de metadata van Storybook (`status.condition.generation`), bv. `vl-tabs-next`;
@@ -159,10 +183,11 @@ Samengevat:
   de v1-componenten die verdwijnen, en het een component zonder alternatief laten vermijden. De beschrijving van
   `flux_get_component` zegt daarom dat generatie `legacy` de technische basis is, geen uitfasering.
 
-#### Wat de server van de `.llm.md` verwacht
+#### Wat de server van een volgend deel van de `.llm.md` verwacht
 
-De `.llm.md` schrijft het Flux-team in flux-web-components; dat is apart werk. Wil de server er delen van tonen, en
-niet enkel het hele bestand, dan heeft het een voorspelbare structuur nodig, met een stabiele id per sectie:
+Een volgend deel schrijft het Flux-team in flux-web-components; dat is apart werk. Wil de server er stukken van tonen,
+dan heeft het een voorspelbare structuur nodig, met een stabiele id per sectie. Als het een Markdown-bestand wordt,
+bijvoorbeeld:
 
 ~~~markdown
 ---
@@ -357,9 +382,9 @@ Voor alle tools geldt:
 - **Met `id`:** de pagina als Markdown, zoals `getPage` ze samenvoegt, met haar links en `sources`.
 - Het werk van het Flux-team (Bijdragen, Beheren) komt enkel met `kind: "flux-team"`, zoals bij `flux_search_docs`.
   Een componentpagina geeft `flux_get_component`.
-- **De id is de referentie.** Tot er een `.llm.md` is, verwijst een rapport naar de id van een pagina, bv.
-  `patronen-formulier-validatie`, of naar een code van `flux_check_markup`. Met de `.llm.md` komen daar de regel-id's
-  bij (`rule.form.001`).
+- **De id is de referentie.** Een rapport verwijst naar de id van een pagina, bv. `patronen-formulier-validatie`, of
+  naar een code van `flux_check_markup`. Met een volgend deel van de `.llm.md` met regels komen daar de regel-id's bij
+  (`rule.form.001`).
 
 #### 4.5 `flux_get_upgrade`
 
@@ -506,9 +531,9 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
 |---|---|---|---|---|---|
 | `migreren` | `doelversie` (standaard `latest`) | 5.2 | de migratie en een migratierapport | `flux_get_upgrade` met `components`, `flux_get_component` in de doelversie, `flux_check_markup` met `targetVersion` | 3 |
 | `design-naar-code` | `figma` (url of node-id, verplicht), `doel` (pad of scherm) | 5.1 | een basisimplementatie en een rapport | de Figma MCP (bij de client), `flux_search_docs`, `flux_get_component`, `flux_get_guidance` (patronen), `flux_check_markup` | 3 |
-| `valideren` | `scope` (pad of glob; standaard de hele toepassing) | 5.3 | een afwijkingenrapport, geen codewijzigingen | `flux_get_guidance` (richtlijnen, patronen), `flux_check_markup` | 4 |
-| `verbeteren` | `rapport` (pad naar een afwijkingenrapport), `afwijkingen` (id's, optioneel) | 5.3 | codewijzigingen en een rapport | `flux_get_guidance` met de id uit het rapport, `flux_get_component`, `flux_check_markup` | 4 |
-| `review` | `basis` (branch; standaard de hoofdbranch) | 5.4 | een reviewrapport op de diff | `flux_check_markup` op de diff, `flux_get_guidance` | 4 |
+| `valideren` | `scope` (pad of glob; standaard de hele toepassing) | 5.3 | een afwijkingenrapport, geen codewijzigingen | `flux_get_guidance` (richtlijnen, patronen), `flux_check_markup`, `docs` van `flux_get_upgrade` naar `latest` | 4 |
+| `verbeteren` | `rapport` (pad naar een afwijkingenrapport), `afwijkingen` (id's, optioneel) | 5.3 | codewijzigingen, een rapport, en de normkandidaten als ticket | `flux_get_guidance` met de id uit het rapport, `flux_get_component`, `flux_check_markup` | 4 |
+| `review` | `basis` (branch; standaard de hoofdbranch) | 5.4 | een reviewrapport op de diff, als commentaar op de PR | `flux_check_markup` op de diff, `flux_get_guidance` | 4 |
 | `uitbreiden` | `ticket` (Jira-key) of `figma`, minstens één | 5.1 | een uitbreiding en een rapport | zoals `design-naar-code`, plus `flux_check_markup` op de gewijzigde bestanden | 4 |
 | `nieuwe-toepassing` | `naam`, `figma` (optioneel) | 5.1 | een nieuw project uit de template-repo en een rapport | `flux_get_guidance` (conventies, patronen), plus alles van `design-naar-code`; het technisch fundament (7.A) komt uit de template-repo | 5 |
 
@@ -518,8 +543,11 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
   (`flux_check_markup`, build, lint en e2e) is deterministisch. De prompt `flux-upgrade` uit ADR-001 is deze.
 - **`design-naar-code` erbij** in hetzelfde increment: het steunt op de documentatie, de voorbeelden en de API, en de
   Figma-descriptions en Code Connect noemen al de Storybook-id en het element.
-- **`valideren`, `verbeteren` en `review` daarna.** Ze hebben een norm nodig. Tot er een `.llm.md` is, zijn dat de
-  richtlijnen en patronen uit Storybook: zonder regel-id's en zonder ernst per regel.
+- **`valideren`, `verbeteren` en `review` daarna.** Ze hebben een norm nodig: de richtlijnen en patronen uit
+  Storybook, het eerste deel van de `.llm.md`, zonder regel-id's en zonder ernst per regel.
+- **`review` beoordeelt enkel de diff** (beslist op 2026-10-02): wat de branch toevoegt of wijzigt, ook een bestaande
+  afwijking op een gewijzigde regel. Een afwijking op een regel die de diff niet raakt, is werk voor `valideren`. Een
+  review van de hele gewijzigde bestanden gaf in de fixture 19 meldingen voor een pull request van een paar velden.
 - **`nieuwe-toepassing` laatst**, zoals de planning (fase 4): ze heeft een norm nodig die de terugkoppellus al een paar
   keer bijstelde.
 - `completion/complete` vult `doelversie` aan met de versies.
@@ -539,7 +567,9 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
    ontbrekende e2e-suite: zonder testen is het giswerk (planning 5.2).
 3. **Kennis ophalen** met de tools, in een vaste volgorde.
 4. **Checkpoint.** Het recept toont de analyse of het plan, en wacht op bevestiging voor het code wijzigt: korte
-   cycli met een mens ertussen, geen lange autonome run.
+   cycli met een mens ertussen, geen lange autonome run. Een recept dat geen code wijzigt, zoals `valideren` en
+   `review`, heeft geen checkpoint (beslist op 2026-10-02): de beslissing van mensen valt in de pull request, en stap 7
+   vraagt bevestiging voor die er komt. De sectie Checkpoint zegt dat, zodat het stramien gelijk blijft.
 5. **Uitvoeren** in kleine stappen: per component, per afwijking of per scherm.
 6. **Verifiëren:**
    - `flux_check_markup` op elk gewijzigd bestand;
@@ -552,9 +582,22 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
 
 #### 6.4 Rapporten
 
-Elk rapport is Markdown met YAML-frontmatter. Het recept schrijft het naar `.flux/rapporten/<datum>-<workflow>.md` in
-het project, en het gaat mee in de PR van de workflow (open beslissing 6). Het sjabloon komt uit
-`flux://templates/{workflow}`. Een migratierapport:
+Elk rapport is Markdown met YAML-frontmatter. Het sjabloon komt uit `flux://templates/{workflow}`. Waar het rapport
+terechtkomt (open beslissing 6):
+
+- **In `.flux/rapporten/<datum>-<workflow>.md`** in het project, en in git. Bestaat die naam al, dan wordt het
+  `<datum>-<workflow>-2.md`, `-3`, …: een rapport overschrijft nooit een ander.
+- **Een recept dat code wijzigt** (`migreren`, `design-naar-code`, `uitbreiden`, `verbeteren`) zet het rapport in de
+  PR van die wijziging.
+- **`valideren`** wijzigt geen code: het rapport krijgt een eigen PR. Daarin beslissen team en ontwerper per afwijking,
+  met commentaar per regel, en zetten ze `uitkomst`; na de merge leest `verbeteren` het rapport. Dat is de menselijke
+  beslissing tussen beide uit de planning (5.3 en 7.B).
+- **`review`** schrijft geen bestand: een bestand in de branch die het beoordeelt, zou die PR wijzigen. Het rapport
+  komt als commentaar op de PR, na bevestiging, of anders als tekst. Het recept geeft het als laatste deel van zijn
+  antwoord, tussen `~~~markdown` en `~~~`, in het formaat van de afwijkingen, met een `oordeel`: `goedkeuren`,
+  `aanpassen` of `bespreken`.
+
+Een migratierapport:
 
 ```markdown
 ---
@@ -573,16 +616,34 @@ e2e: groen | rood | ontbreekt
 ## Verificatie
 ```
 
-Het afwijkingenrapport van `valideren` heeft per afwijking:
+Het afwijkingenrapport van `valideren` heeft per afwijking een kop `### A-007: <in één zin>`, dan de vaste velden
+als lijst `- veld: waarde`, en daaronder de beschrijving: wat de toepassing doet, wat de norm vraagt en het voorstel,
+met een codefragment. De velden:
 
-- `id`, bv. `A-007`;
 - `regel`: de id van een pagina (`patronen-formulier-validatie`), een code van `flux_check_markup`, of later een
-  regel-id uit de `.llm.md`;
-- `locatie`, `beschrijving` en `ernst`;
-- `uitkomst`: `volgt-norm`, `normkandidaat` of `te-beslissen`.
+  regel-id uit de `.llm.md`. Eén regel per afwijking: raakt één plek twee regels, dan zijn het twee afwijkingen, zodat
+  `verbeteren` per regel beslist en een normkandidaat één ticket wordt;
+- `locatie`: `pad:regel`, met het pad relatief aan de root van het project en de regel waar het element of de code
+  begint;
+- `ernst`: `error`, `warning` of `info`, zoals bij `flux_check_markup`;
+- `uitkomst`: `volgt-norm`, `normkandidaat` of `te-beslissen`;
+- `norm`: "gewijzigd sinds X" of "nieuw sinds X" als de pagina van de regel sinds de gepinde versie X wijzigde of
+  erbij kwam, anders `—` (open beslissing 2);
+- `vereist`: "migratie naar X of hoger" als het voorstel een element of API vraagt die pas vanaf X bestaat, anders
+  `—`. Voor een element zegt `flux_check_markup` op de gepinde versie "bestaat vanaf X"; voor een attribuut of een
+  API in JavaScript, zoals `CrossValidationMixin` (2.19.0, FLUX-610), zegt de changelog het (`flux_find_changes`).
 
-Het eindigt met de sectie **Normkandidaten** (6.6). `verbeteren` neemt het rapport als invoer en werkt enkel de
-afwijkingen met `uitkomst: volgt-norm` weg.
+Een normkandidaat motiveert in de beschrijving waarom de toepassing beter is dan de norm, of welk gat ze vult. Het
+rapport eindigt met de sectie **Normkandidaten** (6.6): per afwijking met `uitkomst: normkandidaat` haar id en één
+zin. `uitkomst` beslist: zet het team in de review een andere uitkomst, dan past het die ene regel aan, en
+`verbeteren` volgt `uitkomst`, niet de sectie. `verbeteren` neemt het rapport als invoer en werkt enkel de
+afwijkingen met `uitkomst: volgt-norm` en zonder `vereist` weg; een afwijking die een migratie vraagt, laat het
+liggen met een verwijzing naar `migreren`.
+
+Dit formaat is leesbaar in een PR, met plaats voor uitleg en code, en een beslissing over `uitkomst` is een
+commentaar en een diff op één regel. Een tabel heeft geen plaats voor een codefragment, en breekt op een `|` in de
+tekst; YAML vraagt een eigen parser voor geneste lijsten, zonder dependencies; een JSON-bestand naast het rapport zet
+dezelfde inhoud twee keer in git.
 
 #### 6.5 Voorbeeld: `server/prompts/migreren.md`
 
@@ -647,8 +708,11 @@ Zonder een vast kanaal terug naar Team Flux draait de terugkoppellus uit de plan
   `normkandidaat`. Het motiveert dat, met een codefragment en de locatie.
 - Het rapport bundelt de kandidaten in de sectie **Normkandidaten**, in een vast formaat dat Team Flux later kan
   verzamelen.
-- Het recept eindigt met een voorstel om de kandidaten in te dienen via het afgesproken kanaal (open beslissing 1): als
-  ticket, na bevestiging, als de client een koppeling met Jira heeft, en anders als tekst om te plakken.
+- Het projectteam beslist in de PR van `valideren` welke afwijkingen een normkandidaat blijven (6.4). Indienen komt
+  daarna: `verbeteren` leest het gemergde rapport, en eindigt met een voorstel om de kandidaten met
+  `uitkomst: normkandidaat` in te dienen (open beslissing 1). Dat is een ticket per kandidaat in het Jira-project
+  `FLUX` van Team Flux, met het label `normkandidaat` en de frontmatter van het rapport. Het recept maakt het ticket
+  na bevestiging, als de client een koppeling met Jira heeft, en geeft anders de tekst om te plakken.
 - Of de toepassing de norm volgt of de norm de toepassing, blijft een beslissing van mensen (planning, sectie 6).
 
 #### 6.7 Hergebruik en versionering
@@ -719,14 +783,15 @@ Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die 
     (`base`), en `flux_get_upgrade` vraagt `getDocsChanges` vanaf die basis (sectie 3);
   - de meldingen die naar een functie verwijzen ("Zoek met searchDocs of listPages", in `docs.mjs`), worden neutraal;
     de tool voegt de naam van de juiste tool toe.
-- **Verdelen als npm-pakket, met de catalogus erin** (open beslissing 4). Na elke release van Flux volgt
+- **Verdelen als npm-pakket, met de catalogus erin** (open beslissing 4, herbekeken na increment 4, met de grenzen
+  voor een volgende herziening). Na elke release van Flux volgt
   `catalog:update` en een release van flux-mcp. Het pakket komt op de registry van Flux. Een project pint de versie
   van flux-mcp, zodat het dezelfde antwoorden krijgt, bv. in `.mcp.json` voor Claude Code:
 
   ```json
   {
       "mcpServers": {
-          "flux": { "command": "npx", "args": ["-y", "<pakket>@<versie>"] }
+          "flux": { "command": "npx", "args": ["-y", "@domg/flux-mcp@<versie>"] }
       }
   }
   ```
@@ -736,8 +801,9 @@ Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die 
   - **Dezelfde relatieve paden:** `server/src/`, `server/bin/`, `server/prompts/`, `server/templates/` en
     `catalog/flux/`. `CATALOG_DIR` blijft zo `server/src/../../catalog/flux`, en de code weet niet of ze uit de repo of
     uit het pakket draait.
-  - **Het manifest** komt uit `server/package.json`: de naam (open beslissing 8), de versie van flux-mcp, die elk
-    antwoord in `catalog` noemt, `bin` en `engines` (Node 22 of hoger). De root-`package.json` blijft voor de repo.
+  - **Het manifest** komt uit `server/package.json`: de naam `@domg/flux-mcp` (open beslissing 8), de versie van
+    flux-mcp, die elk antwoord in `catalog` noemt, `bin`, `engines` (Node 22 of hoger) en `publishConfig`. De
+    root-`package.json` blijft voor de repo.
   - **Uit de catalogus** enkel wat de server leest: per versie `web-types/`, `packages/`, de gebouwde bestanden van
     `changelog/` die `readRelease` leest, `changelog-analysis/` en `storybook/index.json`, en `storybook-analysis/`.
   - **Elke pagina van Storybook één keer**, per inhoud, zoals `storybook-analysis/` al werkt: 5500 pagina's worden
@@ -759,7 +825,7 @@ productie-eis" (planning, sectie 9) af te dwingen is. Ze vallen grotendeels same
 | Controle | Hier |
 |---|---|
 | 1. web-types en migratiebestand zijn geldig | `changelog:build --check` controleert de gebouwde bestanden en de analyse; `storybook:check` de pagina's en hun analyse |
-| 2. de structuur van de `.llm.md` | `llm-check`, wanneer de `.llm.md` er is |
+| 2. de structuur van de `.llm.md` | voor het eerste deel `storybook:check`: de pagina's en hun analyse; voor een volgend deel een eigen controle |
 | 3. voorbeelden slagen voor `check_markup` | `storybook:check` controleert de voorbeelden van de analyse met `markup.mjs`, en faalt op elke error |
 | 4. elke verwijderde of hernoemde naam heeft een migratie-entry | `inChangelog` in de diff van de web-types; wat zonder entry is, toont `flux_get_upgrade` als `unexplained`, en de review van de analyse vermeldt het in de samenvatting (ADR-001, sectie 5). Geen harde fout: de changelog van Flux schrijven wij niet |
 | 5. recepten noemen bestaande tools en sjablonen | een nieuwe test, `server/test/prompts.test.mjs` |
@@ -790,7 +856,20 @@ Daarnaast:
     en moet eindigen met groene e2e-testen en een volledig ingevuld rapport (increment 3); `valideren` moet de
     afwijkingen vinden die er bewust in zitten (increment 4). Bij increment 3 slaagde `migreren` met Opus 5.5,
     effort high: het vond de vier gekende verschillen, paste de e2e-test aan die FLUX-620 brak, en schreef een
-    volledig rapport.
+    volledig rapport. Bij increment 4, op 2026-10-02, vond `valideren` met Opus 5.5, effort high, de tien afwijkingen
+    uit de fixture, met de juiste `norm` en `vereist`, zonder de twee verboden meldingen, en negen andere, bv. een
+    ontbrekende skip-link; het wijzigde geen code. `migreren` slaagde opnieuw op de uitgebreide toepassing, met
+    FLUX-270 erbij, en liet de afwijkingen voor `valideren` staan. `verbeteren` kreeg het rapport van die run, met de
+    uitkomsten van het team: het werkte de 13 afwijkingen met `volgt-norm` weg, liet de 6 andere liggen, paste enkel
+    de e2e-test van annuleren bewust aan, en schreef het ticket voor de normkandidaat. De eerste run gaf
+    `resultaat: gedeeltelijk`, omdat het recept niet zei dat een afwijking die het bewust liet liggen, niet meetelt;
+    met die regel erbij slaagde het. `review` kreeg een pull request op de fixture, met vier afwijkingen in de diff:
+    het vond ze alle vier, meldde niets buiten de diff, en gaf `oordeel: aanpassen`. De eerste run meldde terecht een
+    checkbox zonder zichtbare tekst die als correct bedoeld was: `label` op `vl-checkbox` vult in 2.12.1 enkel het
+    `aria-label`. `uitbreiden` las het ticket CONT-12 uit een nagemaakte Jira naast flux-mcp, bouwde het verplichte
+    telefoonnummer met `pattern` en een `vl-form-message` per toestand volgens `patronen-formulier-validatie`, paste de
+    bestaande e2e-testen bewust aan, en liet de bestaande afwijkingen staan. Een Figma MCP-server is er in de
+    evaluatie niet: de weg van het ontwerp, ook die van `design-naar-code`, is niet getoetst.
 
 ### 10. Incrementen
 
@@ -899,14 +978,18 @@ rapport.
 
 #### Increment 4: de norm
 
-Eerst open beslissingen 1 (het kanaal voor normkandidaten), 2 (de norm voor een oudere versie), 5 (regels als tekst)
-en 6 (rapporten in het project).
+Open beslissingen 1 (het kanaal voor normkandidaten), 2 (de norm voor een oudere versie), 5 (regels als tekst) en 6
+(rapporten in het project) zijn bij de start bevestigd (sectie 11).
 
 - **De prompts** `valideren`, `verbeteren`, `review` en `uitbreiden` (sectie 6.2), elk volgens 6.3, met hun sjabloon.
-  `valideren` maakt het afwijkingenrapport met de normkandidaten (6.4 en 6.6), en meldt een pagina die sinds de
-  gepinde versie wijzigde als "gewijzigd sinds X" (open beslissing 2).
-- **De norm** is Storybook: de richtlijnen en patronen via `flux_get_guidance`, met de id van een pagina als
-  referentie (4.4), en de codes van `flux_check_markup`.
+  `valideren` maakt het afwijkingenrapport met de normkandidaten (6.4 en 6.6), met `norm` en `vereist` per afwijking
+  (open beslissing 2). `verbeteren` laat een afwijking met `vereist` liggen, en stelt na het wegwerken voor de
+  normkandidaten in te dienen als ticket in `FLUX` met het label `normkandidaat` (open beslissing 1).
+- **De rapporten** volgen 6.4 (open beslissing 6): een eigen PR voor `valideren`, commentaar op de PR voor `review`, en
+  `-2`, `-3`, … bij een bestaande naam, ook in `migreren` en `design-naar-code`.
+- **De norm** is Storybook: de richtlijnen en patronen van de nieuwste versie via `flux_get_guidance`, met de id van
+  een pagina als referentie (4.4), en de codes van `flux_check_markup` op de gepinde versie. Er komen geen nieuwe codes
+  bij (open beslissing 5).
 - **De evaluatie van `valideren`** op de toepassing in de fixture.
 
 Af als: `valideren` de afwijkingen vindt die bewust in de toepassing in de fixture zitten, en `verbeteren` ze met
@@ -918,10 +1001,10 @@ Geen geheel, maar losse onderdelen, elk wanneer zijn aanleiding er is:
 
 | Onderdeel | Aanleiding | Wat | Sectie |
 |---|---|---|---|
-| `.llm.md` | ze staat in flux-web-components | `llm-copy`, `llm-check`, haar secties met `kind: "llm"` in `flux_get_guidance`, de regel-id's in de rapporten, en `flux://{version}/llm.md` | 2 |
-| CEM | Flux stapt erop over (planning 11.6) | een lader die hetzelfde teruggeeft als `loadWebTypes` | 2 |
+| een volgend deel van de `.llm.md` | kennis die niet in Storybook staat, bv. regels met een id, staat in flux-web-components | een script dat ze per versie in de catalogus zet, een controle, een eigen `kind` in `flux_get_guidance`, en de regel-id's in de rapporten | 2 |
+| CEM | Flux levert een CEM in plaats van web-types (planning 11.6), eerst als technische omzetting | een lader die hetzelfde teruggeeft als `loadWebTypes`, en een script dat de CEM per versie kopieert; de diffs werken over de overstap heen | 2 |
 | `nieuwe-toepassing` | er is een template-repo, en de norm is een paar keer bijgesteld | de prompt en haar sjabloon | 6.2 |
-| codemods | migraties vragen veel mechanische wijzigingen | een veld `codemod` in de analyse van de changelog | 2 |
+| codemods | de overstap naar v3, of migraties die veel mechanische wijzigingen vragen | een veld `codemod` dat de analyse van de changelog meebouwt, een controle tegen de web-types in `changelog:build --check`, de review, en een vervanging bij `breaks-in-target` | 2 |
 | v3 | `develop-v3` heeft releases | de catalogus voor v3 (ADR-002), en de tussenstap per major in `flux_get_upgrade` | 4.5 |
 | Streamable HTTP | een gedeelde service is gewenst | dezelfde kern, met `node:http` | 8 |
 
@@ -929,32 +1012,83 @@ Geen geheel, maar losse onderdelen, elk wanneer zijn aanleiding er is:
 
 Deze keuzes zijn niet aan wie de server bouwt. De ADR gaat telkens uit van het voorstel hieronder, zodat de rest
 consistent is; bij het aanvaarden worden ze bevestigd of bijgestuurd. 3, 4 en 7 zijn op 2026-10-01 bevestigd:
-increment 1 hangt ervan af. 8 is nodig vóór de eerste release.
+increment 1 hangt ervan af. 1, 2, 5 en 6 zijn op 2026-10-02 bevestigd, bij de start van increment 4, en 8 na
+increment 4.
 
-1. **Het kanaal voor normkandidaten.** Waar komen ze terecht bij Team Flux? Voorstel: een eigen issuetype
-   "Normkandidaat" in het Jira-project van Team Flux, met de frontmatter van het rapport (6.4). Wie triageert, en hoe
-   vaak? Nodig vanaf increment 4.
-2. **Tegen welke norm valideer je een toepassing op een oudere versie?** Voorstel: de API tegen de gepinde versie, de
-   richtlijnen en patronen tegen de nieuwste. Een pagina die sinds de gepinde versie wijzigde, meldt het rapport als
-   "gewijzigd sinds X" (`getDocsChanges`). Met de `.llm.md` komt daar `Sinds` per regel bij: een regel die een nieuwere
-   versie vraagt, meldt het rapport als "vereist een migratie naar X of hoger".
+1. **Het kanaal voor normkandidaten.** Waar komen ze terecht bij Team Flux? Bevestigd op 2026-10-02: een ticket per
+   kandidaat in het Jira-project `FLUX`, met een bestaand issuetype, het label `normkandidaat` en de frontmatter van
+   het rapport (6.4 en 6.6). Zo werkt het recept zonder dat een Jira-beheerder eerst een eigen issuetype aanmaakt;
+   komen er veel kandidaten, dan kan het label later een eigen type met een eigen bord worden. `verbeteren` stelt het
+   indienen voor, na de merge van de PR van `valideren`, waarin het projectteam besliste. Een issue op GitHub valt af:
+   flux-web-components is publiek, en een kandidaat toont code en locaties van een interne toepassing. Wie triageert,
+   en hoe vaak, spreekt Team Flux af: de planning vraagt er "1 plek" voor, met ontwerper en bibliotheekbeheer
+   (sectie 9). De recepten hangen er niet van af.
+2. **Tegen welke norm valideer je een toepassing op een oudere versie?** Bevestigd op 2026-10-02: de API tegen de
+   gepinde versie, de richtlijnen en patronen tegen de nieuwste. Tegen de norm van de gepinde versie zou een toepassing
+   op 2.12.1 met `vl-search` in de functionele header de norm volgen, terwijl het patroon sinds 2.16.0 een
+   `vl-input-field` en een `vl-button` gebruikt en `vl-search` deprecated is; normkandidaten zouden dan ook gaan over
+   wat de norm intussen al oploste. Twee verfijningen, zonder nieuwe tool of parameter:
+   - **"gewijzigd sinds X" of "nieuw sinds X"**, met X de gepinde versie, komt uit `docs` van `flux_get_upgrade` van
+     de gepinde versie naar `latest`. Van 2.12.1 naar 2.20.0 zijn dat 6 nieuwe normpagina's, 12 met andere tekst en 8
+     waar enkel de code van de stories wijzigde. Vóór 2.11.0 hadden 14 patronen een andere id (`ontwerp-*`); daar
+     staan ze als nieuw, wat ze voor die versie ook zijn;
+   - **"vereist een migratie naar X of hoger"** al nu, niet pas met `Sinds` uit regels in de `.llm.md`: het recept
+     toetst een voorstel met `flux_check_markup` op de gepinde versie, en een `unknown-element` dat in een latere versie
+     bestaat, zegt "bestaat vanaf X". De nieuwste norm vraagt zo'n element op geen enkele pagina vanaf 2.13.0, op één
+     voor 2.11.0 tot 2.12.1 (`vl-tabs-next`) en op vier vóór 2.9.0. Vraagt de norm een attribuut of een API in
+     JavaScript, dan zegt de changelog vanaf welke versie: het patroon *formulier – cross-validatie* gebruikt
+     `CrossValidationMixin`, die er pas is sinds 2.19.0 (FLUX-610).
 3. **`version` verplicht, of standaard `latest`?** Bevestigd: verplicht, met `latest` als expliciete waarde
    (sectie 3).
 4. **De distributie van de kennis.** Optie 1: de catalogus in het npm-pakket, dus een release van flux-mcp per
    release van Flux. Optie 2: per versie ophalen, bv. bij de publicatie van Storybook
    (`…/release-v2/<versie>/…`), en daarna cachen; dat vraagt dat de release van Flux de catalogus mee publiceert.
    Bevestigd: optie 1, als gebouwde pakketmap (sectie 8); herbekijken na increment 3 of wanneer v3 erbij komt.
+   Herbekeken op 2026-10-02, na increment 4: optie 1 blijft. Het pakket is 31,3 MB uitgepakt en 4,3 MB
+   gecomprimeerd voor 26 versies, en een release van Flux voegt er 1 à 2 MB uitgepakt aan toe: een map per versie
+   van ongeveer 1 MB, en 2 tot 88 nieuwe inhouden uit Storybook met hun analyse. Flux maakte 26 releases tussen
+   2025-06-06 en 2026-09-18, ongeveer één per 2,5 week; de release van flux-mcp die erop volgt, valt samen met
+   `catalog:update`, dat na elke release toch draait. Optie 2 kan niet zoals beschreven: de analyse ontstaat na de
+   release van Flux, in deze repo, dus de release van Flux kan de catalogus niet mee publiceren; het zou een eigen
+   publicatie per versie vragen, met hosting, en het determinisme per versie van flux-mcp hangt dan af van die
+   publicatie. Herzien wanneer:
+   - het gecomprimeerde pakket groter wordt dan 15 MB;
+   - v3 erbij komt, en de vraag rijst of één pakket beide majors draagt;
+   - een gedeelde service over HTTP gewenst is (sectie 8).
 5. **Deterministische regelchecks.** Blijven regels tekst die het model toepast, of krijgen sommige een machinaal
-   toetsbare vorm in `flux_check_markup`? Voorstel: eerst tekst. Voorlopig zijn de codes van `flux_check_markup` de
-   enige machinaal toetsbare regels; een regel die in validaties vaak terugkomt, kan er later bij.
-6. **Rapporten in het project.** Is `.flux/rapporten/` de juiste plek, en gaan rapporten altijd mee in git? Voorstel:
-   ja, in de PR van de workflow, zodat de review en `verbeteren` erop kunnen steunen.
+   toetsbare vorm in `flux_check_markup`? Bevestigd op 2026-10-02: eerst tekst. De codes van `flux_check_markup`
+   blijven de enige machinaal toetsbare regels. In de 51 normpagina's van 2.20.0 schrijven 18 zinnen op 10 pagina's
+   iets voor over markup; in de markup te toetsen zijn enkel de regels voor `vl-form-message` (*formulier –
+   validatie*) en het verplichte `label` van `vl-input-field` (*zoeken – loading state*). De rest gaat over CSP, de
+   principes van WCAG of gedrag na het renderen. Een regel krijgt een code als:
+   - de norm hem voorschrijft, met de id van de pagina als bron;
+   - hij te toetsen is op één stuk markup, zonder kennis van andere bestanden. `for` van `vl-form-message` valt
+     daarom af: in lit is de `id` vaak `${…}` of staat het control in een andere template;
+   - hij terugkomt in de rapporten van `valideren`, of de evaluatie toont dat het model hem mist.
+
+   De eerste kandidaat is `state` van `vl-form-message`: de naam van een eigenschap van `ValidityState`, waarvoor de
+   web-types geen lijst van waarden geven. Een regelbestand dat flux-mcp zelf naast Storybook bijhoudt, zou het werk
+   doen van een volgend deel van de `.llm.md`, en dat schrijft Team Flux.
+6. **Rapporten in het project.** Is `.flux/rapporten/` de juiste plek, en gaan rapporten altijd mee in git? Bevestigd
+   op 2026-10-02: ja, in de PR van de workflow, zodat de review en `verbeteren` erop kunnen steunen, met twee
+   uitzonderingen (sectie 6.4). `valideren` wijzigt geen code en krijgt een PR met enkel het rapport, waarin het team
+   per afwijking beslist. `review` schrijft geen bestand in de branch die het beoordeelt, maar commentaar op de PR. Een
+   bestaande naam krijgt `-2`, `-3`, …, zodat twee runs op een dag elkaar niet overschrijven. Niet in git is
+   vluchtig, en `verbeteren` moet dan op dezelfde machine draaien; in Jira werkt het niet zonder koppeling.
 7. **Geen dependencies, of de officiële SDK met TypeScript en Zod,** zoals het ontwerpvoorstel vroeg, voor
    consistentie met flux-agents. Bevestigd: geen dependencies, zoals `CLAUDE.md` vraagt (sectie 8 en de
    alternatieven).
-8. **De naam van het pakket** en in welke scope het op de registry van Flux komt.
+8. **De naam van het pakket** en in welke scope het op de registry van Flux komt. Bevestigd op 2026-10-02:
+   `@domg/flux-mcp`, met `publishConfig` naar de registry van Flux (`local-npm`). Een project dat Flux gebruikt, stuurt
+   de scope `@domg` al naar die registry, want `@domg/govflanders-style` is een dependency van `@domg-wc/components`.
+   `@domg-wc/mcp` valt af: de `@domg-wc`-packages hebben samen de versie van Flux, en `migreren` zet "alle
+   `@domg-wc`-packages" op de doelversie; flux-mcp heeft een eigen versie. Zonder scope zou `npx` op de publieke npm
+   zoeken. `@domg/govflanders-style` zelf staat in een andere repository (`acd-npm`); of Team Flux in `@domg` mag
+   publiceren, gaat het na voor de eerste release. Kan het niet, dan wordt het een eigen scope.
 9. **De planning in flux-web-components.** Sectie 4 en 11.1 (de Flux-MCP ook voor afnemers, met prompts) en 11.2
-   (Storybook voorlopig als bron) moeten mee; dat beslist het Flux-team.
+   moeten mee; dat beslist het Flux-team. Sinds 2026-10-02 is de `.llm.md` een concept: alle kennis die niet uit de
+   web-types of de release notes komt, met de documentatie uit Storybook en haar analyse als eerste deel. 11.2 houdt
+   Storybook nog buiten de kennislaag.
 
 ## Alternatieven overwogen
 
@@ -973,8 +1107,9 @@ increment 1 hangt ervan af. 8 is nodig vóór de eerste release.
   voor MDX tonen dat eigen code zonder dependencies hier werkt. Consistentie met flux-agents weegt niet door: die
   praat met de server over MCP, niet via zijn code. Wordt het protocol meer dan we willen onderhouden, bv.
   authenticatie voor HTTP, dan herbekijken we dit.
-- **Storybook buiten de server tot de `.llm.md` er is** (planning 11.2). Dan hebben `design-naar-code` en
-  `valideren` geen enkele bron voor het *hoe*. ADR-003 besliste al anders; de server maakt de bron zichtbaar.
+- **Storybook buiten de kennislaag en buiten de server** (planning 11.2). Dan hebben `design-naar-code` en
+  `valideren` geen enkele bron voor het *hoe*. ADR-003 besliste al anders, en sinds 2026-10-02 is de documentatie uit
+  Storybook met haar analyse het eerste deel van de `.llm.md`.
 - **Een LLM in de server** die het migratiedocument schrijft (planning 11.4). Dat is niet deterministisch, en de
   server heeft dan zelf toegang tot een model nodig. Het recept laat het model van de client dat document schrijven,
   uit een reproduceerbaar antwoord.
@@ -1016,8 +1151,8 @@ increment 1 hangt ervan af. 8 is nodig vóór de eerste release.
   warnings. Een attribuut dat in de web-types ontbreekt, geeft een valse fout tot een analyse het noteert. Die
   gevallen zijn voor het Flux-team om recht te zetten, zoals ADR-003 dat al zegt voor verkeerde doc-urls.
 - **Wat een LLM schreef, blijft herkenbaar** in elk antwoord, via `sources[].kind`, `impactSource` en `analysis`.
-- **ADR-001 en ADR-003.** Hun voorlopige mapping naar MCP (sectie 8) vervalt; bij het aanvaarden van deze ADR krijgen
-  ze een verwijzing hierheen.
+- **ADR-001 en ADR-003.** Hun voorlopige mapping naar MCP (sectie 8) vervalt; ze verwijzen hierheen sinds deze ADR
+  aanvaard is (2026-10-02).
 - **`docs/technisch/server.md` en `CLAUDE.md`** beschrijven in increment 1 de server: hoe je hem start, koppelt en
   test. De README en `CLAUDE.md` noemen `server/prompts/` bij de structuur, want daar komen de recepten.
 - **Het ontwerpvoorstel** is opgenomen in deze ADR, en het afzonderlijke document is verwijderd.

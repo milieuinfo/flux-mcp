@@ -1,0 +1,67 @@
+{
+    "recipe": "review",
+    "arguments": ["main"],
+    "app": "app",
+    "pr": {
+        "branch": "feature/type-container",
+        "patch": "review/type-container.patch",
+        "message": "Het type container en een opmerking bij een aanvraag"
+    },
+    "confirm": false,
+    "answer": true,
+    "unchanged": true,
+    "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
+    "report": {
+        "frontmatter": {
+            "workflow": "review",
+            "fluxversie": "2.12.1",
+            "normversie": "2.20.0",
+            "basis": "main",
+            "resultaat": "geslaagd",
+            "oordeel": "aanpassen"
+        }
+    },
+    "deviations": {
+        "diffOnly": true,
+        "expected": [
+            {
+                "id": "R1",
+                "regel": "patronen-formulier-demo",
+                "locaties": ["index.html:41-46"],
+                "norm": "gewijzigd sinds 2.12.1",
+                "vereist": "—"
+            },
+            {
+                "id": "R2",
+                "regel": "richtlijnen-toegankelijkheid-praktijk-richtlijnen-wip",
+                "locaties": ["index.html:57"],
+                "norm": "—",
+                "vereist": "—"
+            },
+            {
+                "id": "R3",
+                "regel": "unknown-attribute",
+                "locaties": ["index.html:57"],
+                "norm": "—",
+                "vereist": "—"
+            },
+            {
+                "id": "R4",
+                "regel": "boolean-attribute-false",
+                "locaties": ["index.html:64"],
+                "norm": "—",
+                "vereist": "—"
+            }
+        ],
+        "forbidden": [
+            {
+                "reason": "C1: de vl-checkbox voor een herinnering volgt de norm, met de tekst in het default slot",
+                "locaties": ["index.html:58-60"]
+            },
+            {
+                "reason": "C2: het item in vl-description-data volgt de norm; de <div> errond is een migratie (FLUX-219)",
+                "locaties": ["index.html:71"]
+            }
+        ]
+    }
+}

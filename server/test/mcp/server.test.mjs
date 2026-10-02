@@ -301,8 +301,16 @@ describe('resources', () => {
                 'flux://versions',
                 'flux://prompts/design-naar-code',
                 'flux://prompts/migreren',
+                'flux://prompts/review',
+                'flux://prompts/uitbreiden',
+                'flux://prompts/valideren',
+                'flux://prompts/verbeteren',
                 'flux://templates/design-naar-code',
                 'flux://templates/migreren',
+                'flux://templates/review',
+                'flux://templates/uitbreiden',
+                'flux://templates/valideren',
+                'flux://templates/verbeteren',
             ],
         );
         const { result: templates } = await request('resources/templates/list', {});
@@ -359,7 +367,7 @@ describe('prompts', () => {
         golden('prompts-list.json', json(result));
         assert.deepEqual(
             result.prompts.map((prompt) => prompt.name),
-            ['design-naar-code', 'migreren'],
+            ['design-naar-code', 'migreren', 'review', 'uitbreiden', 'valideren', 'verbeteren'],
         );
     });
 

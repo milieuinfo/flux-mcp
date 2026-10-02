@@ -71,8 +71,9 @@ Toon de analyse en het plan, en wacht op bevestiging voor je code wijzigt. Wijzi
 ## 6. Rapport
 
 Vul het sjabloon volledig in, en schrijf het naar `.flux/rapporten/<datum>-migreren.md` in het project, met de datum
-als JJJJ-MM-DD. `resultaat` is `geslaagd` als de verificatie groen is, `gedeeltelijk` als iets niet opgelost is, en
-`gestopt` als een voorwaarde ontbrak of de verificatie rood bleef.
+als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-migreren-2.md`, `-3`, …: overschrijf nooit een rapport.
+`resultaat` is `geslaagd` als de verificatie groen is, `gedeeltelijk` als iets niet opgelost is, en `gestopt` als een
+voorwaarde ontbrak of de verificatie rood bleef.
 
 ## 7. Proces
 

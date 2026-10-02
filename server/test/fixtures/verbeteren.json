@@ -1,0 +1,122 @@
+{
+    "recipe": "verbeteren",
+    "arguments": [".flux/rapporten/2026-10-02-valideren.md"],
+    "app": "app",
+    "add": { ".flux/rapporten/2026-10-02-valideren.md": "verbeteren/2026-10-02-valideren.md" },
+    "unchanged": [".flux/rapporten/2026-10-02-valideren.md"],
+    "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
+    "report": {
+        "frontmatter": {
+            "workflow": "verbeteren",
+            "fluxversie": "2.12.1",
+            "resultaat": "geslaagd",
+            "e2e": "groen"
+        },
+        "tickets": [
+            "A-001", "A-002", "A-003", "A-004", "A-005", "A-006", "A-007", "A-008", "A-009", "A-010",
+            "A-011", "A-012", "A-013", "A-014", "A-015", "A-016", "A-017", "A-018", "A-019"
+        ]
+    },
+    "files": [
+        {
+            "file": "index.html",
+            "present": "skip-to-content-id=",
+            "reason": "A-001: een skip-link naar de hoofdinhoud"
+        },
+        {
+            "file": "index.html",
+            "absent": "<vl-search",
+            "reason": "A-002 (N1): een zoekformulier met input group in plaats van vl-search"
+        },
+        {
+            "file": "index.html",
+            "present": "role=\"search\"",
+            "reason": "A-002 (N1): het zoekformulier van het patroon"
+        },
+        {
+            "file": "index.html",
+            "present": "role=\"status\"",
+            "reason": "A-004: het zoekresultaat in een live-regio"
+        },
+        {
+            "file": "index.html",
+            "present": "<form(?=[^>]*id=\"aanvraag\")(?=[^>]*class=\"[^\"]*vl-form)",
+            "reason": "A-005: de class vl-form op het formulier"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-form-message(?=[^>]*for=\"naam\")(?=[^>]*state=\"valueMissing\")",
+            "reason": "A-006 (E2): een foutmelding voor een lege naam"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-input-field(?=[^>]*id=\"naam\")(?=[^>]*autocomplete=)",
+            "reason": "A-007 (E3): autocomplete op de naam"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-input-field(?=[^>]*id=\"email\")(?=[^>]*\\slabel=)|<vl-form-label[^>]*for=\"email\"",
+            "reason": "A-008 (N4): een label voor het e-mailveld"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-input-field(?=[^>]*id=\"email\")(?=[^>]*autocomplete=)",
+            "reason": "A-009: autocomplete op het e-mailveld"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-form-message(?=[^>]*for=\"datum\")(?=[^>]*state=\"valueMissing\")",
+            "reason": "A-010 (E2): een foutmelding voor een lege leverdatum"
+        },
+        {
+            "file": "index.html",
+            "absent": ">\\s*Fout\\.\\s*<",
+            "reason": "A-015 (N6): een foutmelding die zegt wat de gebruiker moet doen"
+        },
+        {
+            "file": "index.html",
+            "absent": "<button[\\s>]",
+            "reason": "A-016 (N2): vl-button in plaats van een eigen knop"
+        },
+        {
+            "file": "index.html",
+            "absent": "closable=\"false\"",
+            "reason": "A-017 (N7): closable=\"false\" zette de sluitknop net aan"
+        },
+        {
+            "file": "src/main.js",
+            "absent": "window\\.confirm",
+            "reason": "A-019 (N3): een modal in plaats van window.confirm"
+        },
+        {
+            "file": "index.html",
+            "present": "<vl-modal",
+            "reason": "A-019 (N3): de bevestiging bij annuleren in een vl-modal"
+        },
+        {
+            "file": "index.html",
+            "absent": "<vl-template",
+            "reason": "A-003 (E1) is te-beslissen en blijft liggen"
+        },
+        {
+            "file": "index.html",
+            "absent": "vl-text annotation|placeholder=\"dd\\.mm\\.jjjj\"",
+            "reason": "A-011 en A-013 zijn te-beslissen en blijven liggen"
+        },
+        {
+            "file": "index.html",
+            "absent": "<vl-datepicker[^>]*autocomplete=\"off\"",
+            "reason": "A-012 is een normkandidaat en A-014 te-beslissen: ze blijven liggen"
+        },
+        {
+            "file": "src/aanvraag.js",
+            "present": "export function ophaaldatumKlopt",
+            "reason": "A-018 (N5) vereist een migratie naar 2.19.0 en blijft liggen"
+        },
+        {
+            "file": "src/main.js",
+            "absent": "CrossValidationMixin",
+            "reason": "A-018 (N5) vereist een migratie naar 2.19.0 en blijft liggen"
+        }
+    ]
+}

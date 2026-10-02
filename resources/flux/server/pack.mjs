@@ -15,7 +15,8 @@
 //     inputHash kan hier niet dienen: die negeert witruimte, dus twee versies met dezelfde inputHash kunnen een andere
 //     Markdown hebben.
 //
-// Publiceren doet het script niet; dat is de eerste release, na de keuze van een naam (open beslissing 8 van ADR-004):
+// Publiceren doet het script niet: dat is een release van @domg/flux-mcp, naar de registry van Flux uit publishConfig
+// (open beslissing 8 van ADR-004):
 //   pnpm publish dist/flux-mcp
 
 import { createHash } from 'node:crypto';

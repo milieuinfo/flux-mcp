@@ -11,7 +11,7 @@
             "resultaat": "geslaagd",
             "e2e": "groen"
         },
-        "tickets": ["FLUX-620", "FLUX-589", "FLUX-219"]
+        "tickets": ["FLUX-620", "FLUX-589", "FLUX-219", "FLUX-270"]
     },
     "files": [
         {
@@ -33,6 +33,26 @@
             "file": "index.html",
             "absent": "<div class=\"items\">",
             "reason": "FLUX-219: de items van vl-description-data als directe kinderen"
+        },
+        {
+            "file": "index.html",
+            "absent": "<vl-search",
+            "reason": "FLUX-270: vl-search is deprecated, met het zoekpatroon als alternatief"
+        },
+        {
+            "file": "index.html",
+            "present": "<button id=\"annuleer\" class=\"knop\"",
+            "reason": "geen wijziging buiten de migratie: de eigen knop is een afwijking voor valideren"
+        },
+        {
+            "file": "index.html",
+            "absent": "id=\"email\"[^>]*\\slabel=|for=\"email\"",
+            "reason": "geen wijziging buiten de migratie: het e-mailveld zonder label is een afwijking voor valideren"
+        },
+        {
+            "file": "src/main.js",
+            "present": "window\\.confirm\\(",
+            "reason": "geen wijziging buiten de migratie: de bevestiging met confirm is een afwijking voor valideren"
         }
     ]
 }
