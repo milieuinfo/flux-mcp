@@ -46,13 +46,13 @@ abonnement (zie [De server](server.md#de-kennisvragen)). De run in `test/runs/se
 nagemaakte `claude`.
 
 `server/test/mcp/prompts.test.mjs` is controle 5 uit ADR-004: elk recept in `server/prompts/` noemt enkel tools die er
-zijn en zijn eigen sjabloon, en volgt het stramien. `server.test.mjs` heeft golden antwoorden voor `prompts/list` en
-een gerenderd recept. `test/recipe-check.test.mjs` test wat `flux:server:eval-recipe` na een run controleert, ook het
+zijn en zijn eigen sjabloon, en volgt het stramien. `server.test.mjs` heeft golden antwoorden voor `prompts/list` en een
+gerenderd recept. `test/recipe-check.test.mjs` test wat `flux:server:eval-recipe` na een run controleert, ook het
 formaat van de afwijkingen in een afwijkingenrapport. Het toetst de verwachtingen in
-`server/test/fixtures/valideren.json` aan de echte catalogus en de toepassing: elke locatie bestaat, `norm` is wat
-`getDocsChanges` zegt, en een code komt op die plek uit `flux_check_markup`. Het afwijkingenrapport voor
-`verbeteren` moet in dat formaat staan, met elke uitkomst erin. Voor `server/test/fixtures/review.json` past de test
-de patch van de pull request toe op een kopie van de toepassing, en gaat na dat elke verwachte afwijking in de diff
-ligt. `test/jira-stub.test.mjs` test de nagemaakte Jira die de evaluatie van `uitbreiden` naast flux-mcp start. De run
-zelf hoort niet bij `pnpm test`
-(zie [De server](server.md#de-evaluatie-van-een-recept)).
+`server/test/fixtures/frontend-valideren.json` aan de echte catalogus en de toepassing: elke locatie bestaat, `norm` is
+wat `getDocsChanges` zegt, en een code komt op die plek uit `flux_check_markup`. Het afwijkingenrapport voor
+`frontend-verbeteren` moet in dat formaat staan, met elke uitkomst erin. Voor
+`server/test/fixtures/frontend-wijzigingen-reviewen.json` past de test de patch van de pull request toe op een kopie van
+de toepassing, en gaat na dat elke verwachte afwijking in de diff ligt. `test/jira-stub.test.mjs` test de nagemaakte
+Jira die de evaluatie van `frontend-uitbreiden` naast flux-mcp start. De run zelf hoort niet bij `pnpm test` (zie [De
+server](server.md#de-evaluatie-van-een-recept)).

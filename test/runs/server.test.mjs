@@ -62,7 +62,12 @@ const MESSAGES = [
         params: { name: 'flux_get_upgrade', arguments: { from: '1.0.0', to: 'latest', components: ['vl-knop'] } },
     },
     { jsonrpc: '2.0', id: 5, method: 'resources/read', params: { uri: 'flux://1.0.0/docs/afnemen-aan-de-slag' } },
-    { jsonrpc: '2.0', id: 6, method: 'prompts/get', params: { name: 'migreren', arguments: { doelversie: '1.1.0' } } },
+    {
+        jsonrpc: '2.0',
+        id: 6,
+        method: 'prompts/get',
+        params: { name: 'frontend-upgraden', arguments: { doelversie: '1.1.0' } },
+    },
 ];
 
 describe('flux:server:pack', () => {

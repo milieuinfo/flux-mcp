@@ -1,14 +1,14 @@
 ---
-workflow: verbeteren
+workflow: frontend-verbeteren
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
 rapport: <het pad naar het afwijkingenrapport>
 datum: <JJJJ-MM-DD>
 resultaat: <geslaagd | gedeeltelijk | gestopt>
 e2e: <groen | rood | ontbreekt>
 ---
 
-# Verbeteringen aan <naam van de toepassing>
+# Verbeteringen aan <naam van de frontend>
 
 ## Plan
 
@@ -23,7 +23,7 @@ vereist, of niet meer aanwezig.>
 ## Niet weggewerkt
 
 <Per afwijking die bleef liggen: de id, de uitkomst en wat er nodig is, bv. "vereist een migratie naar 2.19.0: het
-recept migreren". Of "Niets.">
+recept frontend-upgraden". Of "Niets.">
 
 ## Normkandidaten
 

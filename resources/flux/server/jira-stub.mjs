@@ -1,6 +1,6 @@
 // Een nagemaakte Jira, als MCP-server over stdio, voor de evaluatie van een recept dat van een ticket vertrekt, zoals
-// uitbreiden (flux:server:eval-recipe). Een project koppelt zijn eigen Jira aan zijn client; het recept noemt die tool
-// niet bij naam, en het model vindt ze hier zoals het ze daar zou vinden.
+// frontend-uitbreiden (flux:server:eval-recipe). Een project koppelt zijn eigen Jira aan zijn client; het recept
+// noemt die tool niet bij naam, en het model vindt ze hier zoals het ze daar zou vinden.
 //
 //   node resources/flux/server/jira-stub.mjs <tickets.json> <commentaar.log>
 //

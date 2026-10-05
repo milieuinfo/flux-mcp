@@ -1,10 +1,10 @@
 {
-    "recipe": "review",
+    "recipe": "frontend-wijzigingen-reviewen",
     "arguments": ["main"],
     "app": "app",
     "pr": {
         "branch": "feature/type-container",
-        "patch": "review/type-container.patch",
+        "patch": "frontend-wijzigingen-reviewen/type-container.patch",
         "message": "Het type container en een opmerking bij een aanvraag"
     },
     "confirm": false,
@@ -13,7 +13,7 @@
     "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
     "report": {
         "frontmatter": {
-            "workflow": "review",
+            "workflow": "frontend-wijzigingen-reviewen",
             "fluxversie": "2.12.1",
             "normversie": "2.20.0",
             "basis": "main",

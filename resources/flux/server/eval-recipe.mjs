@@ -1,21 +1,21 @@
 // Evalueert een recept van begin tot einde op een echte toepassing (ADR-004, sectie 9): Claude Code voert het recept
 // uit met flux-mcp, en het script controleert daarna zelf het resultaat.
 //
-//   pnpm run flux:server:eval-recipe migreren
-//   pnpm run flux:server:eval-recipe migreren --model claude-opus-5-5 --effort high --keep
+//   pnpm run flux:server:eval-recipe frontend-upgraden
+//   pnpm run flux:server:eval-recipe frontend-upgraden --model claude-opus-5-5 --effort high --keep
 //
 // Per recept staat in server/test/fixtures/<recept>.json welke toepassing het krijgt (server/test/fixtures/<app>/),
 // met welke argumenten, en wat er na de run moet kloppen. Het script:
 //   1. kopieert de toepassing naar een tijdelijke map, met git, en installeert ze; de e2e-testen moeten er groen zijn;
 //   2. start het recept als slash-commando (/mcp__flux__<recept>), zoals een ontwikkelaar het doet. Het recept stopt
 //      bij zijn checkpoint; het script hervat dan de sessie met "akkoord". Een recept zonder checkpoint, zoals
-//      valideren, heeft "confirm": false en loopt in één run;
+//      frontend-valideren, heeft "confirm": false en loopt in één run;
 //   3. controleert zelf: de versies in package.json, de build en de e2e-testen, flux_check_markup op de HTML, de
-//      gekende verschillen, het rapport in .flux/rapporten/, en voor valideren de afwijkingen in dat rapport en dat
-//      de code ongewijzigd bleef ('unchanged': true, of een lijst van bestanden die niet mogen wijzigen). Voor review
-//      komt er een pull request bij ('pr'), staat het rapport in het antwoord ('answer'), en moet elke afwijking in
-//      de diff staan ('deviations.diffOnly'). Een recept dat van een ticket vertrekt, krijgt een nagemaakte Jira
-//      ('jira', jira-stub.mjs).
+//      gekende verschillen, het rapport in .flux/rapporten/, en voor frontend-valideren de afwijkingen in dat rapport
+//      en dat de code ongewijzigd bleef ('unchanged': true, of een lijst van bestanden die niet mogen wijzigen). Voor
+//      frontend-wijzigingen-reviewen komt er een pull request bij ('pr'), staat het rapport in het antwoord ('answer'),
+//      en moet elke afwijking in de diff staan ('deviations.diffOnly'). Een recept dat van een ticket vertrekt, krijgt
+//      een nagemaakte Jira ('jira', jira-stub.mjs).
 //
 // Het vraagt netwerk: de registry van Flux, npm en een browser voor Playwright. pnpm draait met een lege
 // gebruikersconfiguratie (NPM_CONFIG_USERCONFIG), zodat een token in ~/.npmrc de installatie niet beïnvloedt: de
@@ -81,8 +81,8 @@ const app = path.join(dir, 'app');
 const env = { NPM_CONFIG_USERCONFIG: path.join(dir, 'npmrc') };
 fs.writeFileSync(env.NPM_CONFIG_USERCONFIG, '');
 fs.cpSync(path.join(FIXTURES, config.app), app, { recursive: true });
-// Bestanden die het recept als invoer krijgt, bv. een afwijkingenrapport voor verbeteren: { doel in de toepassing:
-// bron in server/test/fixtures/ }. Ze gaan mee in de eerste commit.
+// Bestanden die het recept als invoer krijgt, bv. een afwijkingenrapport voor frontend-verbeteren: { doel in de
+// toepassing: bron in server/test/fixtures/ }. Ze gaan mee in de eerste commit.
 for (const [target, source] of Object.entries(config.add ?? {})) {
     fs.mkdirSync(path.dirname(path.join(app, target)), { recursive: true });
     fs.copyFileSync(path.join(FIXTURES, source), path.join(app, target));
@@ -102,8 +102,8 @@ function run(label, command, commandArgs, { required = true } = {}) {
 const AUTHOR = ['-c', 'user.name=flux-mcp', '-c', 'user.email=flux-mcp@example.invalid'];
 const commit = (message) => run('git', 'git', [...AUTHOR, 'commit', '--quiet', '-m', message]);
 
-// Een pull request voor review: { branch, patch, message }, de patch in server/test/fixtures/. Ze komt als commit op
-// een branch boven op main.
+// Een pull request voor frontend-wijzigingen-reviewen: { branch, patch, message }, de patch in server/test/fixtures/.
+// Ze komt als commit op een branch boven op main.
 const patch = config.pr ? fs.readFileSync(path.join(FIXTURES, config.pr.patch), 'utf-8') : null;
 
 let problems = [];
@@ -124,8 +124,8 @@ try {
     const mcp = path.join(dir, 'mcp.json');
     const server = path.join(REPO_ROOT, 'server', 'bin', 'flux-mcp.mjs');
     const servers = { flux: { command: 'node', args: [server] } };
-    // Een recept dat van een ticket vertrekt, zoals uitbreiden, krijgt een nagemaakte Jira met de tickets uit
-    // server/test/fixtures/; de commentaren komen in jira.log.
+    // Een recept dat van een ticket vertrekt, zoals frontend-uitbreiden, krijgt een nagemaakte Jira met de tickets
+    // uit server/test/fixtures/; de commentaren komen in jira.log.
     const jiraLog = path.join(dir, 'jira.log');
     if (config.jira) {
         const stub = path.join(REPO_ROOT, 'resources', 'flux', 'server', 'jira-stub.mjs');
@@ -182,7 +182,8 @@ try {
     if (!run('build', 'pnpm', ['run', 'build'], { required: false })) problems.push('De build faalt.');
     if (!run('e2e', 'pnpm', ['run', 'test:e2e'], { required: false })) problems.push('De e2e-testen zijn niet groen.');
     // Een recept dat code wijzigt, laat geen error van flux_check_markup achter. Een recept dat niets wijzigt, zoals
-    // valideren en review, meldt ze net: de errors in de toepassing zijn dan zijn invoer.
+    // frontend-valideren en frontend-wijzigingen-reviewen, meldt ze net: de errors in de toepassing zijn dan zijn
+    // invoer.
     const version = config.packages?.['@domg-wc/components'];
     if (version && config.unchanged !== true) {
         const context = createDocs().markupContextOf(version);
@@ -204,7 +205,7 @@ try {
         problems.push(...modifiedProblems(status.stdout, paths));
     }
     // Het rapport: een bestand in .flux/rapporten/, of met 'answer' het laatste blok ~~~markdown in het antwoord,
-    // zoals bij review, dat geen bestand mag schrijven.
+    // zoals bij frontend-wijzigingen-reviewen, dat geen bestand mag schrijven.
     const reports = path.join(app, '.flux', 'rapporten');
     const found = fs.existsSync(reports) ? fs.readdirSync(reports).filter((file) => file.endsWith('.md')) : [];
     let report = null;

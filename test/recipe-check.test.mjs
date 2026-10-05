@@ -21,7 +21,7 @@ import {
 
 const template = [
     '---',
-    'workflow: migreren',
+    'workflow: frontend-upgraden',
     'bronversie: <x.y.z>',
     'resultaat: <geslaagd | gedeeltelijk | gestopt>',
     '---',
@@ -40,7 +40,7 @@ const template = [
 
 const report = (overrides = {}) => {
     const {
-        frontmatter = 'workflow: migreren\nbronversie: 2.12.1\nresultaat: geslaagd',
+        frontmatter = 'workflow: frontend-upgraden\nbronversie: 2.12.1\nresultaat: geslaagd',
         analyse,
         verificatie,
     } = overrides;
@@ -49,7 +49,7 @@ const report = (overrides = {}) => {
         frontmatter,
         '---',
         '',
-        '# Migratie naar Flux 2.20.0',
+        '# Upgrade naar Flux 2.20.0',
         '',
         '## Analyse',
         '',
@@ -70,7 +70,7 @@ describe('reportProblems', () => {
 
     test('een plaatshouder, een lege sectie, een andere waarde en een ontbrekend ticket', () => {
         const text = report({
-            frontmatter: 'workflow: migreren\nbronversie: <x.y.z>\nresultaat: gedeeltelijk',
+            frontmatter: 'workflow: frontend-upgraden\nbronversie: <x.y.z>\nresultaat: gedeeltelijk',
             analyse: '<Per wijziging de versie, de id en het ticket.>',
             verificatie: '',
         });
@@ -114,7 +114,8 @@ describe('fileProblems en packageProblems', () => {
 
 describe('leftoverProblems', () => {
     test('een nieuw bestand naast het rapport', () => {
-        const status = ' M index.html\n?? .flux/rapporten/2026-10-01-migreren.md\n?? e2e/tijdelijk.spec.js\n';
+        const status =
+            ' M index.html\n?? .flux/rapporten/2026-10-01-frontend-upgraden.md\n?? e2e/tijdelijk.spec.js\n';
         assert.deepEqual(leftoverProblems(status), [
             'Het recept liet een nieuw bestand achter: e2e/tijdelijk.spec.js.',
         ]);
@@ -123,7 +124,8 @@ describe('leftoverProblems', () => {
 
 describe('modifiedProblems', () => {
     test('een gewijzigd, verwijderd of hernoemd bestand, niet het nieuwe rapport', () => {
-        const status = ' M index.html\nD  src/oud.js\nR  a.js -> b.js\n?? .flux/rapporten/2026-10-02-valideren.md\n';
+        const status =
+            ' M index.html\nD  src/oud.js\nR  a.js -> b.js\n?? .flux/rapporten/2026-10-02-frontend-valideren.md\n';
         assert.deepEqual(modifiedProblems(status), [
             'Het recept wijzigde index.html, maar mag geen code wijzigen.',
             'Het recept wijzigde src/oud.js, maar mag geen code wijzigen.',
@@ -131,8 +133,8 @@ describe('modifiedProblems', () => {
         ]);
     });
 
-    test('met paden enkel die bestanden, zoals het afwijkingenrapport dat verbeteren leest', () => {
-        const report = '.flux/rapporten/2026-10-02-valideren.md';
+    test('met paden enkel die bestanden, zoals het afwijkingenrapport dat frontend-verbeteren leest', () => {
+        const report = '.flux/rapporten/2026-10-02-frontend-valideren.md';
         assert.deepEqual(modifiedProblems(` M index.html\n M ${report}\n`, [report]), [
             `Het recept wijzigde ${report}, maar mag dat bestand niet wijzigen.`,
         ]);
@@ -158,7 +160,7 @@ const deviation = (id, title, fields = {}) => {
 };
 const deviationReport = (deviations, candidates = 'Geen.') =>
     [
-        ...['---', 'workflow: valideren', '---', '', '## Afwijkingen', '', ...deviations.flat(), ''],
+        ...['---', 'workflow: frontend-valideren', '---', '', '## Afwijkingen', '', ...deviations.flat(), ''],
         ...['## Normkandidaten', '', candidates, '', '## Verificatie', '', 'git status: ongewijzigd.', ''],
     ].join('\n');
 
@@ -171,8 +173,11 @@ describe('deviationsOf', () => {
         assert.equal(found.fields.locatie, 'index.html:40');
     });
 
-    test('het sjabloon van valideren heeft één voorbeeld met alle velden', () => {
-        const template = fs.readFileSync(new URL('../server/templates/valideren.md', import.meta.url), 'utf-8');
+    test('het sjabloon van frontend-valideren heeft één voorbeeld met alle velden', () => {
+        const template = fs.readFileSync(
+            new URL('../server/templates/frontend-valideren.md', import.meta.url),
+            'utf-8',
+        );
         const [example, ...rest] = deviationsOf(template);
         assert.equal(rest.length, 0);
         assert.equal(example.id, 'A-001');
@@ -182,7 +187,7 @@ describe('deviationsOf', () => {
 
 describe('answerReportOf en changedLinesOf', () => {
     test('het laatste blok ~~~markdown in een antwoord, met codeblokken erin', () => {
-        const report = '---\nworkflow: review\n---\n\n```html\n<vl-button></vl-button>\n```';
+        const report = '---\nworkflow: frontend-wijzigingen-reviewen\n---\n\n```html\n<vl-button></vl-button>\n```';
         const answer = [
             ...['Een voorlopig blok:', '', '~~~markdown', 'oud', '~~~', ''],
             ...['Het rapport:', '', '~~~markdown', report, '~~~', '', 'Klaar.'],
@@ -292,10 +297,11 @@ describe('deviationProblems', () => {
     });
 });
 
-// De verwachtingen voor de evaluatie van valideren, getoetst aan de echte catalogus en aan de toepassing in de fixture:
-// zo verouderen ze niet stil als de fixture of de catalogus wijzigt.
-// Voor review komt de pull request erbij: de patch op een kopie van de toepassing, zoals de evaluatie het doet.
-for (const name of ['valideren.json', 'review.json']) describe(`server/test/fixtures/${name}`, () => {
+// De verwachtingen voor de evaluatie van frontend-valideren, getoetst aan de echte catalogus en aan de toepassing in de
+// fixture: zo verouderen ze niet stil als de fixture of de catalogus wijzigt. Voor frontend-wijzigingen-reviewen komt
+// de pull request erbij: de patch op een kopie van de toepassing, zoals de evaluatie het doet.
+const DEVIATION_FIXTURES = ['frontend-valideren.json', 'frontend-wijzigingen-reviewen.json'];
+for (const name of DEVIATION_FIXTURES) describe(`server/test/fixtures/${name}`, () => {
     const fixtures = new URL('../server/test/fixtures/', import.meta.url);
     const config = JSON.parse(fs.readFileSync(new URL(name, fixtures), 'utf-8'));
     let app = new URL(`${config.app}/`, fixtures);
@@ -367,17 +373,18 @@ for (const name of ['valideren.json', 'review.json']) describe(`server/test/fixt
     }
 });
 
-// Het afwijkingenrapport dat verbeteren als invoer krijgt: het rapport van een run van valideren, met de uitkomsten
-// die het team in de review zette. Het formaat moet kloppen, en wat de evaluatie laat liggen, moet erin staan.
-describe('server/test/fixtures/verbeteren.json', () => {
+// Het afwijkingenrapport dat frontend-verbeteren als invoer krijgt: het rapport van een run van
+// frontend-valideren, met de uitkomsten die het team in de review zette. Het formaat moet kloppen, en wat de
+// evaluatie laat liggen, moet erin staan.
+describe('server/test/fixtures/frontend-verbeteren.json', () => {
     const fixtures = new URL('../server/test/fixtures/', import.meta.url);
-    const config = JSON.parse(fs.readFileSync(new URL('verbeteren.json', fixtures), 'utf-8'));
+    const config = JSON.parse(fs.readFileSync(new URL('frontend-verbeteren.json', fixtures), 'utf-8'));
     const [[target, source]] = Object.entries(config.add);
     const text = fs.readFileSync(new URL(source, fixtures), 'utf-8');
 
-    test('het rapport is een afwijkingenrapport in het formaat van ADR-004, en verbeteren leest het', () => {
+    test('het rapport is een afwijkingenrapport in het formaat van ADR-004, en frontend-verbeteren leest het', () => {
         assert.deepEqual(deviationProblems(text, {}), []);
-        assert.match(text, /^---\nworkflow: valideren\n/);
+        assert.match(text, /^---\nworkflow: frontend-valideren\n/);
         assert.deepEqual(config.arguments, [target]);
         assert.deepEqual(config.unchanged, [target]);
     });
@@ -393,11 +400,11 @@ describe('server/test/fixtures/verbeteren.json', () => {
     });
 });
 
-// De evaluatie van uitbreiden vraagt een ticket aan de nagemaakte Jira: dat ticket moet in de fixture staan.
-describe('server/test/fixtures/uitbreiden.json', () => {
+// De evaluatie van frontend-uitbreiden vraagt een ticket aan de nagemaakte Jira: dat ticket moet in de fixture staan.
+describe('server/test/fixtures/frontend-uitbreiden.json', () => {
     test('het ticket uit de argumenten staat in de tickets van de nagemaakte Jira', () => {
         const fixtures = new URL('../server/test/fixtures/', import.meta.url);
-        const config = JSON.parse(fs.readFileSync(new URL('uitbreiden.json', fixtures), 'utf-8'));
+        const config = JSON.parse(fs.readFileSync(new URL('frontend-uitbreiden.json', fixtures), 'utf-8'));
         const tickets = JSON.parse(fs.readFileSync(new URL(config.jira, fixtures), 'utf-8'));
         assert.ok(tickets[config.arguments[0]], config.arguments[0]);
         assert.equal(config.report.frontmatter.ticket, config.arguments[0]);

@@ -1,11 +1,11 @@
 {
-    "recipe": "migreren",
+    "recipe": "frontend-upgraden",
     "arguments": ["2.20.0"],
     "app": "app",
     "packages": { "@domg-wc/common": "2.20.0", "@domg-wc/components": "2.20.0" },
     "report": {
         "frontmatter": {
-            "workflow": "migreren",
+            "workflow": "frontend-upgraden",
             "bronversie": "2.12.1",
             "doelversie": "2.20.0",
             "resultaat": "geslaagd",
@@ -42,17 +42,17 @@
         {
             "file": "index.html",
             "present": "<button id=\"annuleer\" class=\"knop\"",
-            "reason": "geen wijziging buiten de migratie: de eigen knop is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de migratie: de eigen knop is een afwijking voor frontend-valideren"
         },
         {
             "file": "index.html",
             "absent": "id=\"email\"[^>]*\\slabel=|for=\"email\"",
-            "reason": "geen wijziging buiten de migratie: het e-mailveld zonder label is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de migratie: het e-mailveld zonder label is een afwijking van de norm"
         },
         {
             "file": "src/main.js",
             "present": "window\\.confirm\\(",
-            "reason": "geen wijziging buiten de migratie: de bevestiging met confirm is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de migratie: de bevestiging met confirm is een afwijking van de norm"
         }
     ]
 }

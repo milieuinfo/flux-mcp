@@ -1,5 +1,5 @@
 ---
-workflow: valideren
+workflow: frontend-valideren
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
 fluxversie: <x.y.z: de gepinde versie, waartegen de API getoetst is>
 normversie: <x.y.z: de nieuwste versie in de catalogus, waarvan de richtlijnen en patronen de norm zijn>
@@ -9,7 +9,7 @@ resultaat: <geslaagd | gestopt>
 e2e: <groen | rood | ontbreekt>
 ---
 
-# Validatie van <naam van de toepassing>
+# Validatie van <naam van de frontend>
 
 ## Analyse
 
@@ -31,8 +31,8 @@ flux_check_markup op de gepinde versie.>
 - norm: <gewijzigd sinds x.y.z | nieuw sinds x.y.z | —>
 - vereist: <migratie naar x.y.z of hoger | —>
 
-<Wat de toepassing doet, wat de norm vraagt, en het voorstel om het op te lossen, met een codefragment. Bij een
-normkandidaat ook waarom de toepassing beter is dan de norm, of welk gat in de norm ze vult.>
+<Wat de frontend doet, wat de norm vraagt, en het voorstel om het op te lossen, met een codefragment. Bij een
+normkandidaat ook waarom de frontend beter is dan de norm, of welk gat in de norm hij vult.>
 
 ## Normkandidaten
 
@@ -41,4 +41,4 @@ normkandidaat ook waarom de toepassing beter is dan de norm, of welk gat in de n
 ## Verificatie
 
 <flux_check_markup op de gepinde versie: per bestand de errors en warnings, en bij welke afwijking ze horen. Voor elke
-afwijking met vereist: waar de versie vandaan komt. Dat de toepassing ongewijzigd is: git status.>
+afwijking met vereist: waar de versie vandaan komt. Dat de frontend ongewijzigd is: git status.>

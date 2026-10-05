@@ -1,5 +1,5 @@
 ---
-workflow: migreren
+workflow: frontend-upgraden
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
 bronversie: <x.y.z>
 doelversie: <x.y.z>
@@ -8,11 +8,11 @@ resultaat: <geslaagd | gedeeltelijk | gestopt>
 e2e: <groen | rood | ontbreekt>
 ---
 
-# Migratie naar Flux <doelversie>
+# Upgrade naar Flux <doelversie>
 
 ## Analyse
 
-<De vl-elementen die de toepassing gebruikt, met hun bestanden. Per wijziging die de toepassing raakt: de versie, de
+<De vl-elementen die de frontend gebruikt, met hun bestanden. Per wijziging die de frontend raakt: de versie, de
 id, het ticket en wat ze betekent. Ook wat general, unexplained en dependencies zeggen, en de bevindingen
 breaks-in-target van flux_check_markup.>
 

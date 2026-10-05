@@ -1,5 +1,5 @@
 ---
-workflow: review
+workflow: frontend-wijzigingen-reviewen
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
 fluxversie: <x.y.z: de gepinde versie in deze branch, waartegen de API getoetst is>
 normversie: <x.y.z: de nieuwste versie in de catalogus, waarvan de richtlijnen en patronen de norm zijn>
@@ -9,7 +9,7 @@ resultaat: <geslaagd | gestopt>
 oordeel: <goedkeuren | aanpassen | bespreken>
 ---
 
-# Review van <de branch of de pull request>
+# Review van de wijzigingen op <de branch>
 
 ## Diff
 

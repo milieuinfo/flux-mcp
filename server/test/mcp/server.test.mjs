@@ -15,6 +15,11 @@ import { createServer, INSTRUCTIONS, PROTOCOL_VERSIONS } from '../../src/mcp/ser
 const GOLDEN = path.join(import.meta.dirname, 'golden');
 const UPDATE = process.env.FLUX_UPDATE_GOLDEN === '1';
 const VERSION = '0.0.0-test';
+// De recepten in server/prompts, gesorteerd op naam; elk heeft een sjabloon met dezelfde naam.
+const RECIPES = [
+    'frontend-aanmaken', 'frontend-analyseren', 'frontend-structuur-bouwen', 'frontend-uitbreiden', 'frontend-upgraden',
+    'frontend-valideren', 'frontend-verbeteren', 'frontend-wijzigingen-reviewen', 'scherm-analyseren', 'scherm-bouwen',
+];
 
 let server;
 let tools;
@@ -299,18 +304,8 @@ describe('resources', () => {
             list.resources.map((resource) => resource.uri),
             [
                 'flux://versions',
-                'flux://prompts/design-naar-code',
-                'flux://prompts/migreren',
-                'flux://prompts/review',
-                'flux://prompts/uitbreiden',
-                'flux://prompts/valideren',
-                'flux://prompts/verbeteren',
-                'flux://templates/design-naar-code',
-                'flux://templates/migreren',
-                'flux://templates/review',
-                'flux://templates/uitbreiden',
-                'flux://templates/valideren',
-                'flux://templates/verbeteren',
+                ...RECIPES.map((name) => `flux://prompts/${name}`),
+                ...RECIPES.map((name) => `flux://templates/${name}`),
             ],
         );
         const { result: templates } = await request('resources/templates/list', {});
@@ -365,51 +360,48 @@ describe('prompts', () => {
     test('de lijst: naam, titel, beschrijving en argumenten', async () => {
         const { result } = await request('prompts/list', {});
         golden('prompts-list.json', json(result));
-        assert.deepEqual(
-            result.prompts.map((prompt) => prompt.name),
-            ['design-naar-code', 'migreren', 'review', 'uitbreiden', 'valideren', 'verbeteren'],
-        );
+        assert.deepEqual(result.prompts.map((prompt) => prompt.name), RECIPES);
     });
 
     test('een gerenderd recept, met het sjabloon als embedded resource', async () => {
-        const { result } = await request('prompts/get', { name: 'migreren', arguments: { doelversie: '2.20.0' } });
-        golden('prompt-migreren.json', json(result));
+        const { result } = await request('prompts/get', {
+            name: 'frontend-upgraden',
+            arguments: { doelversie: '2.20.0' },
+        });
+        golden('prompt-frontend-upgraden.json', json(result));
         const [text, template] = result.messages;
         assert.match(
             text.content.text,
-            /^Je migreert deze toepassing naar versie 2\.20\.0 van de Flux web-componenten/,
+            /^Je migreert deze frontend naar versie 2\.20\.0 van de Flux web-componenten/,
         );
         assert.doesNotMatch(text.content.text, /\{\{/);
         assert.equal(template.content.type, 'resource');
-        assert.equal(template.content.resource.uri, 'flux://templates/migreren');
-        const latest = await request('prompts/get', { name: 'migreren' });
+        assert.equal(template.content.resource.uri, 'flux://templates/frontend-upgraden');
+        const latest = await request('prompts/get', { name: 'frontend-upgraden' });
         assert.match(latest.result.messages[0].content.text, /naar versie latest van/, 'de standaardwaarde');
     });
 
     test('een onbekend recept, een ontbrekend en een onbekend argument zijn een fout', async () => {
         const unknown = await request('prompts/get', { name: 'onbekend' });
         assert.equal(unknown.error.code, ERRORS.INVALID_PARAMS);
-        assert.match(unknown.error.message, /Onbekend recept: onbekend\. Gekend: design-naar-code, migreren/);
-        const missing = await request('prompts/get', { name: 'design-naar-code', arguments: {} });
-        assert.match(missing.error.message, /vraagt figma/);
-        const extra = await request('prompts/get', { name: 'migreren', arguments: { opdracht: 'x' } });
+        assert.match(unknown.error.message, /Onbekend recept: onbekend\. Gekend: frontend-aanmaken, frontend-/);
+        const missing = await request('prompts/get', { name: 'scherm-bouwen', arguments: {} });
+        assert.match(missing.error.message, /vraagt scherm/);
+        const extra = await request('prompts/get', { name: 'frontend-upgraden', arguments: { opdracht: 'x' } });
         assert.match(extra.error.message, /kent opdracht niet/);
     });
 
     test('de doelversie aanvullen, en de recepten en sjablonen als resource', async () => {
         const { result } = await request('completion/complete', {
-            ref: { type: 'ref/prompt', name: 'migreren' },
+            ref: { type: 'ref/prompt', name: 'frontend-upgraden' },
             argument: { name: 'doelversie', value: 'la' },
         });
         assert.deepEqual(result.completion.values, ['latest']);
-        const recipe = (await request('resources/read', { uri: 'flux://prompts/design-naar-code' })).result.contents[0];
-        assert.match(recipe.text, /^# Recept: Bouw een scherm/);
-        assert.match(
-            recipe.text,
-            /Je bouwt het ontwerp \{\{figma\}\} uit Figma/,
-            'een verplicht argument blijft staan',
-        );
-        const template = (await request('resources/read', { uri: 'flux://templates/migreren' })).result.contents[0];
-        assert.match(template.text, /^---\nworkflow: migreren\n/);
+        const recipe = (await request('resources/read', { uri: 'flux://prompts/scherm-bouwen' })).result.contents[0];
+        assert.match(recipe.text, /^# Workflow: Bouw één scherm/);
+        assert.match(recipe.text, /Je bouwt het scherm `\{\{scherm\}\}`/, 'een verplicht argument blijft staan');
+        const uri = 'flux://templates/frontend-upgraden';
+        const template = (await request('resources/read', { uri })).result.contents[0];
+        assert.match(template.text, /^---\nworkflow: frontend-upgraden\n/);
     });
 });

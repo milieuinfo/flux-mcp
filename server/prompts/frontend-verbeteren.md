@@ -1,40 +1,40 @@
 ---
-name: verbeteren
-title: Werk de afwijkingen van de norm weg uit een afwijkingenrapport
+name: frontend-verbeteren
+title: Verbeter deze frontend door de afwijkingen uit een afwijkingenrapport weg te werken
 description: >
-  Werkt in deze toepassing de afwijkingen van de norm van de Flux web-componenten (@domg-wc/*) weg die het team in een
-  afwijkingenrapport van valideren op volgt-norm zette: voorwaarden, het rapport lezen, een plan, een checkpoint,
-  uitvoering per afwijking, verificatie en een rapport. Laat liggen wat te beslissen is of een migratie vraagt, en
-  stelt voor de normkandidaten als ticket in te dienen. Aanbevolen: Opus 5.5, effort high.
+  Werkt in deze frontend de afwijkingen van de norm van de Flux web-componenten (@domg-wc/*) weg die het team in een
+  afwijkingenrapport van frontend-valideren op volgt-norm zette: voorwaarden, het rapport lezen, een plan, een
+  checkpoint, uitvoering per afwijking, verificatie en een rapport. Laat liggen wat te beslissen is of een migratie
+  vraagt, en stelt voor de normkandidaten als ticket in te dienen. Aanbevolen: Opus 5.5, effort high.
 arguments:
   - name: rapport
-    description: Het pad naar het afwijkingenrapport van valideren, bv. .flux/rapporten/2026-10-02-valideren.md.
+    description: Het rapport van frontend-valideren, bv. .flux/rapporten/2026-10-02-frontend-valideren.md.
     required: true
   - name: afwijkingen
     description: Enkel deze afwijkingen, bv. A-002, A-008. Standaard alle met uitkomst volgt-norm.
     required: false
     default: alle afwijkingen met uitkomst volgt-norm
-template: verbeteren
+template: frontend-verbeteren
 ---
 
-Je werkt in deze toepassing de afwijkingen van de norm van de Flux web-componenten (`@domg-wc/*`) weg uit het
+Je werkt in deze frontend de afwijkingen van de norm van de Flux web-componenten (`@domg-wc/*`) weg uit het
 afwijkingenrapport {{rapport}}. Welke afwijkingen: {{afwijkingen}}. Het team besliste in de review van dat rapport
 per afwijking de `uitkomst`; je volgt die, en je wijzigt niets anders aan de functionaliteit of de vormgeving.
 
-De norm is dezelfde als bij `valideren`: de API van de gepinde versie van deze toepassing, en de richtlijnen en
-patronen van de nieuwste versie in de catalogus, `latest`. De kennis over Flux haal je met de tools van flux-mcp: ga
-niet uit van wat je denkt te weten over Flux. Het rapportsjabloon zit bij deze prompt (`flux://templates/verbeteren`);
-vul het aan terwijl je werkt.
+De norm is dezelfde als bij `frontend-valideren`: de API van de gepinde versie van deze frontend, en de richtlijnen
+en patronen van de nieuwste versie in de catalogus, `latest`. De kennis over Flux haal je met de tools van flux-mcp: ga
+niet uit van wat je denkt te weten over Flux. Het rapportsjabloon zit bij deze prompt
+(`flux://templates/frontend-verbeteren`); vul het aan terwijl je werkt.
 
 ## 1. Voorwaarden
 
 Controleer deze voorwaarden. Klopt er een niet, stop dan, en meld wat ontbreekt en wat het project moet doen.
 
-- Het afwijkingenrapport bestaat, met `workflow: valideren` in de frontmatter en een sectie Afwijkingen.
+- Het afwijkingenrapport bestaat, met `workflow: frontend-valideren` in de frontmatter en een sectie Afwijkingen.
 - De versie van `@domg-wc/components` in package.json is exact gepind, bv. `2.12.0` en niet `^2.12.0`: dat is de
   gepinde versie. Is ze anders dan `fluxversie` van het rapport, meld dat dan: de locaties kunnen verschoven zijn, en
   `vereist` toets je tegen de gepinde versie van nu.
-- De toepassing start standalone, en de e2e-testen draaien zonder echte backend.
+- De frontend start standalone, en de e2e-testen draaien zonder echte backend.
 - Er is een e2e-suite, en die is groen: draai ze. Zonder groene e2e-testen is een verbetering niet te verifiëren.
 
 ## 2. Het rapport lezen
@@ -44,8 +44,8 @@ Controleer deze voorwaarden. Klopt er een niet, stop dan, en meld wat ontbreekt 
 2. Kies welke je wegwerkt: de afwijkingen met `uitkomst: volgt-norm` en `vereist: —`, of met een `vereist` die de
    gepinde versie al haalt. Noemt het argument afwijkingen id's, neem dan enkel die. De rest laat je liggen:
    - `te-beslissen`: het team besliste nog niet;
-   - `normkandidaat`: misschien volgt de norm de toepassing; stap 8 stelt een ticket voor;
-   - een `vereist` die de gepinde versie niet haalt: daarvoor is eerst het recept `migreren` nodig.
+   - `normkandidaat`: misschien volgt de norm de frontend; stap 8 stelt een ticket voor;
+   - een `vereist` die de gepinde versie niet haalt: daarvoor is eerst het recept `frontend-upgraden` nodig.
 3. Zoek elke afwijking die je wegwerkt op in de code. De locatie wijst naar waar ze stond toen het rapport geschreven
    werd; staat ze daar niet meer, zoek ze dan op haar inhoud. Is ze weg, noteer ze dan als niet meer aanwezig.
 
@@ -84,10 +84,10 @@ de reden. Wacht op bevestiging voor je code wijzigt. Wijzig tot dan niets.
 
 ## 7. Rapport
 
-Vul het sjabloon volledig in, en schrijf het naar `.flux/rapporten/<datum>-verbeteren.md` in het project, met de datum
-als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-verbeteren-2.md`, `-3`, …: overschrijf nooit een rapport.
-Noem in het plan elke afwijking uit het afwijkingenrapport, met haar id. `resultaat` zegt hoe het ging met de
-afwijkingen die je in stap 2 koos:
+Vul het sjabloon volledig in, en schrijf het naar `.flux/rapporten/<datum>-frontend-verbeteren.md` in het project, met
+de datum als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-frontend-verbeteren-2.md`, `-3`, …: overschrijf
+nooit een rapport. Noem in het plan elke afwijking uit het afwijkingenrapport, met haar id. `resultaat` zegt hoe het
+ging met de afwijkingen die je in stap 2 koos:
 
 - `geslaagd`: elke gekozen afwijking is weggewerkt, of niet meer aanwezig, en de verificatie is groen. Wat je in stap
   2 liet liggen, telt niet mee: dat vroeg de uitkomst of `vereist`, en het staat in "Niet weggewerkt";
@@ -98,8 +98,8 @@ Schrijf in de sectie Normkandidaten per afwijking met `uitkomst: normkandidaat` 
 
 ## 8. Proces
 
-- Heeft deze omgeving een koppeling met Git, stel dan voor een branch en een pull request te maken, met de wijzigingen
-  en dit rapport, en het rapport als beschrijving.
+- Heeft deze omgeving een koppeling met Git, stel dan voor een branch en een pull request of merge request te maken, met
+  de wijzigingen en dit rapport, en het rapport als beschrijving.
 - Stel voor elke normkandidaat een ticket voor in het Jira-project `FLUX` van Team Flux, met het label
   `normkandidaat` en de tekst uit de sectie Normkandidaten. Heeft deze omgeving geen koppeling met Jira, geef dan die
   tekst om te plakken.

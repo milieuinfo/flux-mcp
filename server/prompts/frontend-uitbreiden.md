@@ -1,8 +1,8 @@
 ---
-name: uitbreiden
-title: Breid deze toepassing uit vanuit een ticket of een ontwerp, met de Flux web-componenten
+name: frontend-uitbreiden
+title: Breid deze frontend uit vanuit een ticket of een ontwerp, met de Flux web-componenten
 description: >
-  Breidt een bestaande toepassing uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux
+  Breidt een bestaande frontend uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux
   web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, de analyse van het ticket, de
   componenten en patronen ophalen, een plan, een checkpoint, uitvoering, verificatie en een rapport. Bestaande
   afwijkingen buiten de uitbreiding laat het staan. Vraagt een koppeling met Jira of de Figma MCP-server in deze
@@ -16,17 +16,18 @@ arguments:
     description: De link naar het ontwerp in Figma, of de node-id van het frame.
     required: false
     default: geen
-template: uitbreiden
+template: frontend-uitbreiden
 ---
 
-Je breidt deze toepassing uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux web-componenten
+Je breidt deze frontend uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux web-componenten
 (`@domg-wc/*`). Het ticket: {{ticket}}. Het ontwerp: {{figma}}. Je bouwt enkel wat het ticket of het ontwerp vraagt, en
-wat je bouwt, volgt de norm: de API van de gepinde versie van deze toepassing, en de richtlijnen en patronen van de
-nieuwste versie in de catalogus, `latest`. Zo groeit de toepassing bij elke uitbreiding naar de norm toe. Bestaande
-afwijkingen buiten de uitbreiding laat je staan: die zijn voor de recepten `valideren` en `verbeteren`.
+wat je bouwt, volgt de norm: de API van de gepinde versie van deze frontend, en de richtlijnen en patronen van de
+nieuwste versie in de catalogus, `latest`. Zo groeit de frontend bij elke uitbreiding naar de norm toe. Bestaande
+afwijkingen buiten de uitbreiding laat je staan: die zijn voor de recepten `frontend-valideren` en
+`frontend-verbeteren`.
 
-De kennis over Flux haal je met de tools van flux-mcp, voor de versie van deze toepassing: ga niet uit van wat je
-denkt te weten over een component. Het rapportsjabloon zit bij deze prompt (`flux://templates/uitbreiden`); vul het
+De kennis over Flux haal je met de tools van flux-mcp, voor de versie van deze frontend: ga niet uit van wat je denkt
+te weten over een component. Het rapportsjabloon zit bij deze prompt (`flux://templates/frontend-uitbreiden`); vul het
 aan terwijl je werkt.
 
 ## 1. Voorwaarden
@@ -39,7 +40,7 @@ Controleer deze voorwaarden. Klopt er een niet, stop dan, en meld wat ontbreekt 
   Figma MCP-server; zonder kan je het ontwerp niet lezen.
 - De versie van `@domg-wc/components` in package.json is exact gepind, bv. `2.12.0` en niet `^2.12.0`: dat is de
   gepinde versie.
-- De toepassing start standalone, en de e2e-testen draaien zonder echte backend.
+- De frontend start standalone, en de e2e-testen draaien zonder echte backend.
 - Er is een e2e-suite, en die is groen: draai ze.
 
 ## 2. Analyse
@@ -47,7 +48,7 @@ Controleer deze voorwaarden. Klopt er een niet, stop dan, en meld wat ontbreekt 
 1. Lees het ticket: wat het vraagt, de acceptatiecriteria, welke schermen en componenten het raakt, en welke vragen
    openstaan. Lees het ontwerp met de Figma MCP-server: de structuur, en per component de Code Connect-snippet uit de
    FLUX-library, met het `vl-*`-element en zijn attributen.
-2. Lees in de toepassing de plek waar de uitbreiding komt, de conventies van het project en de e2e-testen die ze raakt.
+2. Lees in de frontend de plek waar de uitbreiding komt, de conventies van het project en de e2e-testen die ze raakt.
 3. Zoek met `flux_search_docs` welke Flux-component past bij wat het ticket vraagt, en haal met `flux_get_component` op
    de gepinde versie de API en de voorbeelden op. Neem de API over, niet wat je over de component denkt te weten.
 4. Haal met `flux_get_guidance` op `latest` de patronen (`kind` = `pattern`) en richtlijnen (`kind` = `guideline`)
@@ -88,13 +89,14 @@ pas na bevestiging.
 
 ## 6. Rapport
 
-Vul het sjabloon volledig in, en schrijf het naar `.flux/rapporten/<datum>-uitbreiden.md` in het project, met de datum
-als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-uitbreiden-2.md`, `-3`, …: overschrijf nooit een rapport.
-`resultaat` is `geslaagd` als elk acceptatiecriterium gebouwd is en de verificatie groen is, `gedeeltelijk` als een
-acceptatiecriterium niet gebouwd is, en `gestopt` als een voorwaarde ontbrak of de verificatie rood bleef.
+Vul het sjabloon volledig in, en schrijf het naar `.flux/rapporten/<datum>-frontend-uitbreiden.md` in het project, met
+de datum als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-frontend-uitbreiden-2.md`, `-3`, …: overschrijf
+nooit een rapport. `resultaat` is `geslaagd` als elk acceptatiecriterium gebouwd is en de verificatie groen is,
+`gedeeltelijk` als een acceptatiecriterium niet gebouwd is, en `gestopt` als een voorwaarde ontbrak of de verificatie
+rood bleef.
 
 ## 7. Proces
 
-Heeft deze omgeving een koppeling met Git, stel dan voor een branch en een pull request te maken, met de wijzigingen
-en het rapport, en het rapport als beschrijving. Heeft ze een koppeling met Jira, stel dan voor de pull request aan het
-ticket te koppelen. Doe dat pas na bevestiging.
+Heeft deze omgeving een koppeling met Git, stel dan voor een branch en een pull request of merge request te maken, met
+de wijzigingen en het rapport, en het rapport als beschrijving. Heeft ze een koppeling met Jira, stel dan voor de pull
+request aan het ticket te koppelen. Doe dat pas na bevestiging.

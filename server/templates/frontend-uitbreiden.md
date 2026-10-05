@@ -1,7 +1,7 @@
 ---
-workflow: uitbreiden
+workflow: frontend-uitbreiden
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
 ticket: <de key van het Jira-ticket, of —>
 figma: <de link of de node-id van het ontwerp, of —>
 datum: <JJJJ-MM-DD>

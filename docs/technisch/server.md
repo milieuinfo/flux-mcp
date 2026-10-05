@@ -1,11 +1,12 @@
 # De server
 
-`flux-mcp` is een MCP-server over stdio: hij geeft een LLM-agent kennis over de Flux web-componenten, per versie, uit
-de catalogus in `catalog/flux/`. Wat de server aanbiedt en waarom, staat in
+`flux-mcp` is een MCP-server over stdio: hij geeft een LLM-agent kennis over de Flux web-componenten, per versie, uit de
+catalogus in `catalog/flux/`. Wat de server aanbiedt en waarom, staat in
 [ADR-004](../beslissingen/ADR-004-functionaliteit-mcp-server.md); deze pagina beschrijft hoe hij werkt, hoe je hem
 start, koppelt en test. Hij kent increment 1 tot en met 3 van de ADR: de tools en resources op wat de catalogus heeft,
-`flux_check_markup`, en de recepten `migreren` en `design-naar-code` als prompts. Van increment 4 zijn er de recepten
-`valideren`, `verbeteren`, `review` en `uitbreiden`.
+`flux_check_markup`, en het recept `frontend-upgraden` als prompt. Van increment 4 zijn er de recepten
+`frontend-valideren`, `frontend-verbeteren`, `frontend-wijzigingen-reviewen` en `frontend-uitbreiden`, en van increment
+5 de vijf recepten van ontwerp naar frontend, van `frontend-aanmaken` tot `scherm-bouwen`.
 
 ## Starten en koppelen
 
@@ -31,7 +32,7 @@ Uit het pakket `@domg/flux-mcp`, eens het gepubliceerd is, op de registry van Fl
 ```json
 {
     "mcpServers": {
-        "flux": { "command": "npx", "args": ["-y", "@domg/flux-mcp@0.4.0"] }
+        "flux": { "command": "npx", "args": ["-y", "@domg/flux-mcp@0.5.0"] }
     }
 }
 ```
@@ -68,16 +69,20 @@ Node 22 of hoger; de server heeft geen dependencies.
 | `flux://{version}/components/{component}` | één component, zoals `flux_get_component` met alle secties |
 
 | `flux://prompts/{name}`                   | een recept als tekst, voor een client zonder prompts    |
-| `flux://templates/{workflow}`             | het rapportsjabloon van een workflow                    |
+| `flux://templates/{workflow}`             | het rapportsjabloon van een workflow, of het formaat van een analyse |
 
-| Prompt             | Workflow                                                                             |
-|--------------------|--------------------------------------------------------------------------------------|
-| `migreren`         | de toepassing naar een nieuwere versie van Flux brengen, met een migratierapport      |
-| `design-naar-code` | een scherm bouwen uit een ontwerp in Figma, met de Figma MCP in dezelfde client      |
-| `valideren`        | de toepassing naast de norm leggen, zonder code te wijzigen, met een afwijkingenrapport |
-| `verbeteren`       | de afwijkingen met uitkomst `volgt-norm` uit een afwijkingenrapport wegwerken           |
-| `review`           | wat een branch toevoegt of wijzigt naast de norm leggen, als commentaar voor de PR       |
-| `uitbreiden`       | de toepassing uitbreiden met wat een Jira-ticket of een ontwerp in Figma vraagt          |
+| Prompt                          | Workflow                                                                         |
+|---------------------------------|----------------------------------------------------------------------------------|
+| `frontend-aanmaken`             | een nieuw project uit de flux-starter-app, met een gepinde versie van Flux en flux-mcp |
+| `frontend-analyseren`           | de analyse van de frontend uit zijn ontwerp in Figma: schermen, menu, navigatie en opbouw |
+| `frontend-structuur-bouwen`     | de opbouw van de pagina, het menu en een leeg scherm per scherm, uit die analyse |
+| `scherm-analyseren`             | de analyse van één scherm uit zijn frame in Figma                                |
+| `scherm-bouwen`                 | één scherm bouwen volgens zijn analyse                                           |
+| `frontend-upgraden`             | de frontend naar een nieuwere versie van Flux brengen, met een migratierapport   |
+| `frontend-valideren`            | de frontend naast de norm leggen, zonder code te wijzigen, met een afwijkingenrapport |
+| `frontend-verbeteren`           | de afwijkingen met uitkomst `volgt-norm` uit een afwijkingenrapport wegwerken    |
+| `frontend-uitbreiden`           | de frontend uitbreiden met wat een Jira-ticket of een ontwerp in Figma vraagt    |
+| `frontend-wijzigingen-reviewen` | enkel wat een branch toevoegt of wijzigt naast de norm leggen, als commentaar voor de PR of MR |
 
 `completion/complete` vult `{version}`, `{page}` en `{component}` aan, en het argument `doelversie` van een recept.
 
@@ -134,9 +139,9 @@ dezelfde module voor de voorbeelden van de analyses (zie [Storybook](storybook.m
 
 ### De recepten
 
-Een recept is een workflow die de ontwikkelaar zelf start; in Claude Code met `/mcp__flux__migreren 2.20.0` als de
-server `flux` heet. Het recept staat als Markdown met frontmatter in `server/prompts/<naam>.md`, het rapportsjabloon in
-`server/templates/<workflow>.md` (ADR-004, sectie 6):
+Een recept is een workflow die de ontwikkelaar zelf start; in Claude Code met `/mcp__flux__frontend-upgraden 2.20.0`
+als de server `flux` heet. Het recept staat als Markdown met frontmatter in `server/prompts/<naam>.md`, het
+rapportsjabloon in `server/templates/<workflow>.md` (ADR-004, sectie 6):
 
 - **De frontmatter:** `name`, `title`, `description` (met een aanbevolen model en effort), `arguments` (per argument
   `name`, `description`, `required` en `default`) en `template`. `prompts.mjs` leest een klein deel van YAML; een
@@ -146,21 +151,40 @@ server `flux` heet. Het recept staat als Markdown met frontmatter in `server/pro
   tekst als bericht van de gebruiker, en het sjabloon als embedded resource.
 - **Het stramien** (ADR-004, 6.3): voorwaarden, kennis ophalen, een checkpoint voor er code wijzigt, uitvoeren,
   verifiëren met `flux_check_markup`, de build en de e2e-testen, en een rapport in `.flux/rapporten/` van het project.
-  Bestaat de naam van het rapport al, dan krijgt het `-2`, `-3`, …. Een voorwaarde is dat de toepassing standalone
+  Bestaat de naam van het rapport al, dan krijgt het `-2`, `-3`, …. Een voorwaarde is dat de frontend standalone
   start en de e2e-testen draaien zonder echte backend.
-- **`valideren`** wijzigt geen code en heeft daarom geen checkpoint: de beslissing per afwijking valt in de pull
-  request van het rapport. Het toetst de API tegen de gepinde versie, de richtlijnen en patronen tegen `latest`, en
+- **`frontend-valideren`** wijzigt geen code en heeft daarom geen checkpoint: de beslissing per afwijking valt in de
+  pull request van het rapport. Het toetst de API tegen de gepinde versie, de richtlijnen en patronen tegen `latest`, en
   schrijft de afwijkingen in het formaat van ADR-004 (6.4).
-- **`verbeteren`** leest dat rapport na de merge, en werkt enkel de afwijkingen met `uitkomst: volgt-norm` weg die de
-  gepinde versie toelaat. Het wijzigt het afwijkingenrapport niet, en stelt per normkandidaat een ticket voor in het
-  Jira-project `FLUX`, met het label `normkandidaat` (ADR-004, 6.6).
-- **`review`** beoordeelt enkel wat de diff tegenover `basis` toevoegt of wijzigt, ook een bestaande afwijking op een
-  gewijzigde regel. Het schrijft geen bestand, want dat zou de PR wijzigen die het beoordeelt: het geeft het rapport
-  als laatste deel van zijn antwoord, tussen `~~~markdown` en `~~~`, met een `oordeel` (`goedkeuren`, `aanpassen` of
-  `bespreken`), en stelt voor het als commentaar op de PR te plaatsen.
-- **`uitbreiden`** leest het ticket met de koppeling met Jira van de client, of vraagt de ontwikkelaar de tekst als die
-  er niet is, en een ontwerp met de Figma MCP. Wat het bouwt, volgt de norm; bestaande afwijkingen buiten de
-  uitbreiding laat het staan.
+- **`frontend-verbeteren`** leest dat rapport na de merge, en werkt enkel de afwijkingen met `uitkomst: volgt-norm`
+  weg die de gepinde versie toelaat. Het wijzigt het afwijkingenrapport niet, en stelt per normkandidaat een ticket voor
+  in het Jira-project `FLUX`, met het label `normkandidaat` (ADR-004, 6.6).
+- **`frontend-wijzigingen-reviewen`** beoordeelt enkel wat de diff tegenover `basis` toevoegt of wijzigt, ook een
+  bestaande afwijking op een gewijzigde regel. Het schrijft geen bestand, want dat zou de PR wijzigen die het
+  beoordeelt: het geeft het rapport als laatste deel van zijn antwoord, tussen `~~~markdown` en `~~~`, met een `oordeel`
+  (`goedkeuren`, `aanpassen` of `bespreken`), en stelt voor het als commentaar op de PR te plaatsen.
+- **`frontend-uitbreiden`** leest het ticket met de koppeling met Jira van de client, of vraagt de ontwikkelaar de
+  tekst als die er niet is, en een ontwerp met de Figma MCP. Wat het bouwt, volgt de norm; bestaande afwijkingen buiten
+  de uitbreiding laat het staan.
+- **Van ontwerp naar frontend** gaat in vijf recepten, elk met een resultaat dat een mens nakijkt voor de volgende
+  stap (ADR-004, 6.2):
+  1. `frontend-aanmaken` draait in de map waarin het project komt. Het kloont de flux-starter-app, hernoemt de
+     remote `origin` naar `starter`, pint de `@domg-wc`-packages op de versie van de starter, en zet flux-mcp in de
+     `.mcp.json`. Daarna start de ontwikkelaar de client in het nieuwe project;
+  2. `frontend-analyseren` schrijft uit het ontwerp `.flux/analyse/frontend.md`: de schermen met hun id, het menu
+     en de navigatie, de opbouw van de pagina en de gedeelde componenten;
+  3. `frontend-structuur-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm;
+  4. `scherm-analyseren` schrijft uit het frame van één scherm `.flux/analyse/schermen/<scherm>.md`: per deel het
+     element, het gedrag, de data en de acceptatiecriteria;
+  5. `scherm-bouwen` vult het lege scherm volgens die analyse, en wijzigt het menu, de routes en andere schermen niet.
+
+  Een analyse wijzigt geen code en heeft geen checkpoint. Ze is geen rapport maar een levend document: een nieuwe run
+  werkt het bij, en behoudt wat een mens erin besliste. Het sjabloon is het formaat van het document. Een bestaande
+  frontend die een scherm uit een ontwerp krijgt, gebruikt `frontend-uitbreiden`.
+- **Voor het model heten de recepten workflows**: in de instructies, en in de titel van hun resource,
+  `Workflow: <titel>`. Storybook heeft een eigen categorie *Recepten*, die `flux_get_guidance` teruggeeft met `kind` =
+  `recipe`; zo verwart het model ze niet. Een sjabloon heet `Sjabloon: <workflow>`: het is het formaat van een rapport
+  of van een analyse.
 - Elke wijziging aan een recept krijgt een entry in `server/CHANGELOG.md`.
 
 ## De code
@@ -292,8 +316,8 @@ beschrijving van een tool of de instructies, draai het dan opnieuw.
 ### De evaluatie van een recept
 
 ```bash
-pnpm run flux:server:eval-recipe migreren          # Opus 5.5, effort high
-pnpm run flux:server:eval-recipe migreren --keep   # laat de toepassing na de run staan
+pnpm run flux:server:eval-recipe frontend-upgraden          # Opus 5.5, effort high
+pnpm run flux:server:eval-recipe frontend-upgraden --keep   # laat de toepassing na de run staan
 ```
 
 voert een recept van begin tot einde uit op een echte toepassing, en controleert daarna zelf het resultaat.
@@ -310,14 +334,15 @@ de toepassing staat in `server/test/fixtures/app/` (zie haar README). Het script
    afwijking met haar regel op een van haar locaties en met haar `norm` en `vereist`, en geen verboden afwijking.
    Andere afwijkingen mogen: het model kan er meer vinden dan verwacht.
 
-Voor `migreren` is dat de containeraanvraag op `@domg-wc` 2.12.1, naar 2.20.0. Voor `valideren` is het dezelfde
-toepassing, met de afwijkingen die haar README beschrijft. `verbeteren` krijgt er met `add` een afwijkingenrapport bij,
-`server/test/fixtures/verbeteren/`: het rapport van een run van `valideren`, met de uitkomsten die het team zette.
-`review` krijgt een pull request: met `pr` past de evaluatie de patch `server/test/fixtures/review/type-container.patch`
-toe als commit op een branch boven op `main`. Met `answer` leest ze het rapport uit het antwoord, en met
-`deviations.diffOnly` moet elke afwijking op een regel van die patch staan. `uitbreiden` krijgt met `jira` een
-nagemaakte Jira naast flux-mcp (`resources/flux/server/jira-stub.mjs`), met het ticket CONT-12 uit
-`server/test/fixtures/uitbreiden/tickets.json`; een commentaar op het ticket komt in `jira.log` van de run.
+Voor `frontend-upgraden` is dat de containeraanvraag op `@domg-wc` 2.12.1, naar 2.20.0. Voor `frontend-valideren` is het
+dezelfde toepassing, met de afwijkingen die haar README beschrijft. `frontend-verbeteren` krijgt er met `add` een
+afwijkingenrapport bij, `server/test/fixtures/frontend-verbeteren/`: het rapport van een run van `frontend-valideren`,
+met de uitkomsten die het team zette. `frontend-wijzigingen-reviewen` krijgt een pull request: met `pr` past de
+evaluatie de patch `server/test/fixtures/frontend-wijzigingen-reviewen/type-container.patch` toe als commit op een
+branch boven op `main`. Met `answer` leest ze het rapport uit het antwoord, en met `deviations.diffOnly` moet elke
+afwijking op een regel van die patch staan. `frontend-uitbreiden` krijgt met `jira` een nagemaakte Jira naast flux-mcp
+(`resources/flux/server/jira-stub.mjs`), met het ticket CONT-12 uit
+`server/test/fixtures/frontend-uitbreiden/tickets.json`; een commentaar op het ticket komt in `jira.log` van de run.
 
 Het script vraagt netwerk (de registry van Flux, npm, en chromium voor Playwright) en draait pnpm met een lege
 gebruikersconfiguratie: de packages van Flux zijn publiek, en een verlopen token in `~/.npmrc` laat een installatie
