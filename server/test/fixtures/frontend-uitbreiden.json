@@ -1,12 +1,12 @@
 {
-    "recipe": "uitbreiden",
+    "recipe": "frontend-uitbreiden",
     "arguments": ["CONT-12"],
     "app": "app",
-    "jira": "uitbreiden/tickets.json",
+    "jira": "frontend-uitbreiden/tickets.json",
     "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
     "report": {
         "frontmatter": {
-            "workflow": "uitbreiden",
+            "workflow": "frontend-uitbreiden",
             "fluxversie": "2.12.1",
             "ticket": "CONT-12",
             "resultaat": "geslaagd",
@@ -53,27 +53,27 @@
         {
             "file": "index.html",
             "present": "<button id=\"annuleer\" class=\"knop\"",
-            "reason": "geen wijziging buiten de uitbreiding: de eigen knop is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de uitbreiding: de eigen knop is een afwijking voor frontend-valideren"
         },
         {
             "file": "src/main.js",
             "present": "window\\.confirm\\(",
-            "reason": "geen wijziging buiten de uitbreiding: de bevestiging met confirm is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de uitbreiding: de bevestiging met confirm is een afwijking van de norm"
         },
         {
             "file": "index.html",
             "absent": "id=\"email\"[^>]*\\slabel=|for=\"email\"",
-            "reason": "geen wijziging buiten de uitbreiding: het e-mailveld zonder label is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de uitbreiding: het e-mailveld zonder label is een afwijking van de norm"
         },
         {
             "file": "index.html",
             "present": "<vl-search",
-            "reason": "geen wijziging buiten de uitbreiding: vl-search is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de uitbreiding: vl-search is een afwijking voor frontend-valideren"
         },
         {
             "file": "index.html",
             "present": "closable=\"false\"",
-            "reason": "geen wijziging buiten de uitbreiding: closable=\"false\" is een afwijking voor valideren"
+            "reason": "geen wijziging buiten de uitbreiding: closable=\"false\" is een afwijking van de norm"
         }
     ]
 }

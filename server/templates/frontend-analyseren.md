@@ -1,17 +1,17 @@
 ---
-workflow: toepassing-analyseren
+workflow: frontend-analyseren
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
 normversie: <x.y.z: de nieuwste versie in de catalogus, waarvan de richtlijnen en patronen de norm zijn>
 figma: <de link naar het ontwerp>
 datum: <JJJJ-MM-DD: de laatste keer dat de analyse bijgewerkt werd>
 ---
 
-# <Naam van de toepassing>
+# <Naam van de frontend>
 
 ## Doel
 
-<In een paar zinnen: wat de toepassing doet en voor wie, zoals het ontwerp het toont.>
+<In een paar zinnen: wat de frontend doet en voor wie, zoals het ontwerp het toont.>
 
 ## Schermen
 

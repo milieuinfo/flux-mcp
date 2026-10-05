@@ -1,34 +1,34 @@
 ---
-name: toepassing-aanmaken
-title: Maak een nieuwe toepassing uit de flux-starter-app
+name: frontend-aanmaken
+title: Maak een nieuwe frontend uit de flux-starter-app
 description: >
-  Maakt een nieuw project voor een toepassing met de Flux web-componenten (@domg-wc/*), uit de flux-starter-app:
+  Maakt een nieuw project voor een frontend met de Flux web-componenten (@domg-wc/*), uit de flux-starter-app:
   voorwaarden, de starter lezen, een checkpoint, de naam, de gepinde versie van Flux en flux-mcp in .mcp.json,
-  verificatie en een rapport. Stap 1 van ontwerp naar toepassing, voor toepassing-analyseren. Draait in de map waarin
+  verificatie en een rapport. Stap 1 van ontwerp naar frontend, voor frontend-analyseren. Draait in de map waarin
   het project komt. Aanbevolen: Sonnet 5.5, effort medium.
 arguments:
   - name: naam
-    description: De naam van de toepassing en van haar map, in kebab-case, bv. containeraanvraag.
+    description: De naam van de frontend en van zijn map, in kebab-case, bv. containeraanvraag.
     required: true
-template: toepassing-aanmaken
+template: frontend-aanmaken
 ---
 
-Je maakt een nieuw project voor de toepassing {{naam}}, uit de flux-starter-app van Team Flux
+Je maakt een nieuw project voor de frontend {{naam}}, uit de flux-starter-app van Team Flux
 (`https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app`), in de map `{{naam}}` onder de huidige map. Je bouwt
-geen schermen. Na dit recept heeft de toepassing het technisch fundament van de starter, een gepinde versie van Flux,
+geen schermen. Na dit recept heeft de frontend het technisch fundament van de starter, een gepinde versie van Flux,
 flux-mcp in de `.mcp.json`, en groene e2e-testen.
 
-Dit is de eerste van vijf recepten van ontwerp naar toepassing. Elk is een eigen stap, met een resultaat dat een mens
+Dit is de eerste van vijf recepten van ontwerp naar frontend. Elk is een eigen stap, met een resultaat dat een mens
 nakijkt voor de volgende start:
 
-1. `toepassing-aanmaken`: dit recept, het project uit de starter;
-2. `toepassing-analyseren`: de analyse van de toepassing uit het ontwerp in Figma, in `.flux/analyse/toepassing.md`;
-3. `toepassing-skelet-bouwen`: de opbouw van de pagina, het menu, en per scherm een route met een leeg scherm;
+1. `frontend-aanmaken`: dit recept, het project uit de starter;
+2. `frontend-analyseren`: de analyse van de frontend uit het ontwerp in Figma, in `.flux/analyse/frontend.md`;
+3. `frontend-structuur-bouwen`: de opbouw van de pagina, het menu, en per scherm een route met een leeg scherm;
 4. `scherm-analyseren`: de analyse van één scherm, in `.flux/analyse/schermen/<scherm>.md`;
 5. `scherm-bouwen`: één scherm, volgens zijn analyse.
 
 De kennis over Flux haal je met de tools van flux-mcp: ga niet uit van wat je denkt te weten over Flux of de starter.
-Het rapportsjabloon zit bij deze prompt (`flux://templates/toepassing-aanmaken`); vul het aan terwijl je werkt.
+Het rapportsjabloon zit bij deze prompt (`flux://templates/frontend-aanmaken`); vul het aan terwijl je werkt.
 
 ## 1. Voorwaarden
 
@@ -54,7 +54,7 @@ Controleer deze voorwaarden. Klopt er een niet, stop dan, en meld wat ontbreekt 
      configuratie van de build en de e2e-testen.
 5. Bepaal de versie van Flux: de versie van `@domg-wc/components` in package.json, of de versie in de lockfile als er
    een bereik staat. Alle `@domg-wc`-packages krijgen die versie, exact. Is ze ouder dan `latest`, noteer dat dan:
-   de volgende stap is dan het recept `migreren`.
+   de volgende stap is dan het recept `frontend-upgraden`.
 6. Vul de sectie Opzet van het rapport in.
 
 ## 3. Checkpoint
@@ -95,8 +95,8 @@ de `.mcp.json`. Wacht op bevestiging voor je de clone wijzigt.
 
 ## 6. Rapport
 
-Vul het sjabloon volledig in, en schrijf het naar `{{naam}}/.flux/rapporten/<datum>-toepassing-aanmaken.md`, met de
-datum als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-toepassing-aanmaken-2.md`, `-3`, …: overschrijf nooit
+Vul het sjabloon volledig in, en schrijf het naar `{{naam}}/.flux/rapporten/<datum>-frontend-aanmaken.md`, met de
+datum als JJJJ-MM-DD. Bestaat die naam al, gebruik dan `<datum>-frontend-aanmaken-2.md`, `-3`, …: overschrijf nooit
 een rapport. `resultaat` is `geslaagd` als de build en de testen groen zijn, `gedeeltelijk` als iets van de starter
 rood bleef, en `gestopt` als een voorwaarde ontbrak.
 
@@ -106,5 +106,5 @@ Stel voor de wijzigingen en het rapport te committen in de clone, en zeg wat het
 repository maken en die als `origin` toevoegen. Doe dat pas na bevestiging.
 
 Sluit af met de volgende stap: start de client in de map `{{naam}}`, zodat de `.mcp.json` er geldt, met de Figma
-MCP-server erbij, en draai daar het recept `toepassing-analyseren` met de link naar het ontwerp. Is de versie van Flux
-ouder dan `latest`, draai dan eerst het recept `migreren`.
+MCP-server erbij, en draai daar het recept `frontend-analyseren` met de link naar het ontwerp. Is de versie van Flux
+ouder dan `latest`, draai dan eerst het recept `frontend-upgraden`.

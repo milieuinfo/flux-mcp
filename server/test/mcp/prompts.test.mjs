@@ -15,20 +15,21 @@ const tools = new Set(
     ),
 );
 
-// De analyses van de weg van ontwerp naar toepassing zijn levende documenten in .flux/analyse/, geen rapporten met een
+// De analyses van de weg van ontwerp naar frontend zijn levende documenten in .flux/analyse/, geen rapporten met een
 // datum (ADR-004, 6.4).
 const ANALYSES = {
-    'toepassing-analyseren': '.flux/analyse/toepassing.md',
+    'frontend-analyseren': '.flux/analyse/frontend.md',
     'scherm-analyseren': '.flux/analyse/schermen/{{scherm}}.md',
 };
 
 describe('de recepten in server/prompts', () => {
-    test('de vijf van ontwerp naar toepassing, en migreren, valideren, verbeteren, review en uitbreiden', () => {
+    test('de tien recepten, gesorteerd op naam', () => {
         assert.deepEqual(
             [...recipes.keys()],
             [
-                'migreren', 'review', 'scherm-analyseren', 'scherm-bouwen', 'toepassing-aanmaken',
-                'toepassing-analyseren', 'toepassing-skelet-bouwen', 'uitbreiden', 'valideren', 'verbeteren',
+                'frontend-aanmaken', 'frontend-analyseren', 'frontend-structuur-bouwen', 'frontend-uitbreiden',
+                'frontend-upgraden', 'frontend-valideren', 'frontend-verbeteren', 'frontend-wijzigingen-reviewen',
+                'scherm-analyseren', 'scherm-bouwen',
             ],
         );
     });
@@ -47,10 +48,10 @@ describe('de recepten in server/prompts', () => {
             for (const step of ['Voorwaarden', 'Checkpoint', 'Verificatie', 'Rapport', 'Proces']) {
                 assert.match(recipe.body, new RegExp(`^## \\d+\\. ${step}$`, 'm'), `${recipe.name} mist ${step}`);
             }
-            // review schrijft geen bestand in de branch die het beoordeelt, maar geeft het rapport in zijn antwoord
-            // (ADR-004, 6.4); een analyse schrijft naar .flux/analyse/; de andere recepten schrijven het rapport naar
-            // .flux/rapporten/.
-            if (recipe.name === 'review') {
+            // frontend-wijzigingen-reviewen schrijft geen bestand in de branch die het beoordeelt, maar geeft het
+            // rapport in zijn antwoord (ADR-004, 6.4); een analyse schrijft naar .flux/analyse/; de andere recepten
+            // schrijven het rapport naar .flux/rapporten/.
+            if (recipe.name === 'frontend-wijzigingen-reviewen') {
                 assert.match(recipe.body, /`~~~markdown`/);
                 assert.doesNotMatch(recipe.body, /\.flux\/rapporten\//);
             } else if (ANALYSES[recipe.name]) {

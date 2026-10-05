@@ -1,5 +1,5 @@
 {
-    "recipe": "valideren",
+    "recipe": "frontend-valideren",
     "arguments": [],
     "app": "app",
     "confirm": false,
@@ -7,7 +7,7 @@
     "unchanged": true,
     "report": {
         "frontmatter": {
-            "workflow": "valideren",
+            "workflow": "frontend-valideren",
             "fluxversie": "2.12.1",
             "normversie": "2.20.0",
             "resultaat": "geslaagd",

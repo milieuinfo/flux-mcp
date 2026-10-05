@@ -165,7 +165,7 @@ function fieldMatches(actual, expected) {
 // locaties, met die norm en dat vereiste. Een verboden afwijking is { reason, title?, locaties? }: geen afwijking
 // waarvan de titel op de reguliere expressie past, op die locaties. Andere afwijkingen mogen: het model kan er meer
 // vinden dan verwacht. Met 'changed' (changedLinesOf) moet elke afwijking op een regel van de diff staan, zoals bij
-// review.
+// frontend-wijzigingen-reviewen.
 export function deviationProblems(text, { expected = [], forbidden = [], changed = null }) {
     const deviations = deviationsOf(text);
     const problems = formatProblems(deviations, text);
@@ -204,8 +204,9 @@ export function deviationProblems(text, { expected = [], forbidden = [], changed
     return problems;
 }
 
-// Het rapport dat een recept zonder bestand, zoals review, in zijn antwoord geeft: het laatste blok tussen een regel
-// '~~~markdown' en een regel '~~~'. Het rapport zelf mag codeblokken met ``` bevatten. null als het ontbreekt.
+// Het rapport dat een recept zonder bestand, zoals frontend-wijzigingen-reviewen, in zijn antwoord geeft: het laatste
+// blok tussen een regel '~~~markdown' en een regel '~~~'. Het rapport zelf mag codeblokken met
+// ``` bevatten. null als het ontbreekt.
 export function answerReportOf(answer) {
     const blocks = [...(answer ?? '').matchAll(/^~~~markdown\n([\s\S]*?)\n~~~$/gm)];
     return blocks.length ? `${blocks.at(-1)[1]}\n` : null;
@@ -269,8 +270,8 @@ export function leftoverProblems(status) {
 }
 
 // De bestanden die 'git status --porcelain' als gewijzigd, verwijderd of hernoemd toont. Een recept dat geen code
-// wijzigt, zoals valideren, laat ze ongemoeid; met 'paths' gaat het enkel om die bestanden, zoals het
-// afwijkingenrapport dat verbeteren leest.
+// wijzigt, zoals frontend-valideren, laat ze ongemoeid; met 'paths' gaat het enkel om die bestanden, zoals het
+// afwijkingenrapport dat frontend-verbeteren leest.
 export function modifiedProblems(status, paths = null) {
     return status
         .split('\n')

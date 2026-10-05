@@ -29,10 +29,11 @@ Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat e
 - de scripts die hem vullen;
 - `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries;
 - de MCP-server van increment 1 tot en met 3 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zeven tools, waaronder
-  `flux_check_markup` (`server/src/markup.mjs`), de resources op die queries, en het recept `migreren` als prompt,
-  over stdio; van increment 4 de recepten `valideren`, `verbeteren`, `review` en `uitbreiden`; van increment 5 de vijf
-  recepten van ontwerp naar toepassing: `toepassing-aanmaken`, `toepassing-analyseren`, `toepassing-skelet-bouwen`,
-  `scherm-analyseren` en `scherm-bouwen`. Zie `docs/technisch/server.md`.
+  `flux_check_markup` (`server/src/markup.mjs`), de resources op die queries, en het recept `frontend-upgraden` als
+  prompt, over stdio; van increment 4 de recepten `frontend-valideren`, `frontend-verbeteren`,
+  `frontend-wijzigingen-reviewen` en `frontend-uitbreiden`; van increment 5 de vijf recepten van ontwerp naar frontend:
+  `frontend-aanmaken`, `frontend-analyseren`, `frontend-structuur-bouwen`, `scherm-analyseren` en `scherm-bouwen`.
+  Zie `docs/technisch/server.md`.
 
 ## Structuur
 
@@ -69,7 +70,8 @@ FLUX_UPDATE_GOLDEN=1 pnpm test              # maakt de golden antwoorden van de 
 node server/bin/flux-mcp.mjs                # over stdio; een client start hem zelf (docs/technisch/server.md)
 pnpm run flux:server:pack                   # bouwt het npm-pakket in dist/flux-mcp, met de catalogus
 pnpm run flux:server:eval                   # Claude Code: kiest een model met de kennisvragen de juiste tool?
-pnpm run flux:server:eval-recipe migreren   # Claude Code en netwerk: een recept van begin tot einde op een toepassing
+# Claude Code en netwerk: een recept van begin tot einde op een toepassing:
+pnpm run flux:server:eval-recipe frontend-upgraden
 
 # Na een Flux-release, voor versie X.Y.Z; catalog:update doet alles, ook de analyse en de review door Claude Code:
 pnpm run flux:catalog:update X.Y.Z

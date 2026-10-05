@@ -1,74 +1,21 @@
 {
     "prompts": [
         {
-            "name": "migreren",
-            "title": "Migreer naar een nieuwere versie van de Flux web-componenten",
-            "description": "Brengt deze toepassing van de gepinde versie van de Flux web-componenten (@domg-wc/*) naar een doelversie: voorwaarden, analyse, plan, een checkpoint, uitvoering, verificatie en een migratierapport. Geen functionele of visuele wijzigingen buiten wat de migratie vraagt. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en een uitvoeringsmodel (Opus 5.5, effort high) daarna.",
-            "arguments": [
-                {
-                    "name": "doelversie",
-                    "description": "De doelversie, bv. 2.20.0, of latest voor de nieuwste versie in de catalogus van flux-mcp.",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "review",
-            "title": "Review de wijzigingen van een branch tegen de norm van de Flux web-componenten",
-            "description": "Beoordeelt wat deze branch toevoegt of wijzigt tegenover een basisbranch, tegen de norm van de Flux web-componenten (@domg-wc/*): de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus. Een voorbereiding op de menselijke review: het recept wijzigt geen code en schrijft geen bestand, en geeft het reviewrapport als commentaar voor de pull request. Aanbevolen: Opus 5.5, effort high.",
-            "arguments": [
-                {
-                    "name": "basis",
-                    "description": "De branch waartegen je de wijzigingen vergelijkt, bv. main of develop.",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "scherm-analyseren",
-            "title": "Analyseer één scherm uit zijn ontwerp in Figma",
-            "description": "Analyseert één scherm uit zijn frame in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de opbouw met per deel het element, het gedrag, de data, de patronen en de acceptatiecriteria, in .flux/analyse/schermen/<scherm>.md. Wijzigt geen code. Stap 4 van ontwerp naar toepassing, na toepassing-skelet-bouwen en voor scherm-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1).",
-            "arguments": [
-                {
-                    "name": "scherm",
-                    "description": "De id van het scherm, zoals in .flux/analyse/toepassing.md, bv. aanvraag-overzicht.",
-                    "required": true
-                },
-                {
-                    "name": "figma",
-                    "description": "De link naar het frame in Figma, of de node-id, als het een ander frame is dan in de analyse.",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "scherm-bouwen",
-            "title": "Bouw één scherm uit zijn analyse, met de Flux web-componenten",
-            "description": "Bouwt één scherm van deze toepassing uit zijn analyse in .flux/analyse/schermen/<scherm>.md, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, een plan, een checkpoint, uitvoering met een e2e-test per acceptatiecriterium, verificatie en een rapport. Het menu, de routes en andere schermen wijzigt het niet. Stap 5 van ontwerp naar toepassing, na scherm-analyseren. Aanbevolen: Opus 5.5, effort high.",
-            "arguments": [
-                {
-                    "name": "scherm",
-                    "description": "De id van het scherm, zoals in .flux/analyse/toepassing.md, bv. aanvraag-overzicht.",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "name": "toepassing-aanmaken",
-            "title": "Maak een nieuwe toepassing uit de flux-starter-app",
-            "description": "Maakt een nieuw project voor een toepassing met de Flux web-componenten (@domg-wc/*), uit de flux-starter-app: voorwaarden, de starter lezen, een checkpoint, de naam, de gepinde versie van Flux en flux-mcp in .mcp.json, verificatie en een rapport. Stap 1 van ontwerp naar toepassing, voor toepassing-analyseren. Draait in de map waarin het project komt. Aanbevolen: Sonnet 5.5, effort medium.",
+            "name": "frontend-aanmaken",
+            "title": "Maak een nieuwe frontend uit de flux-starter-app",
+            "description": "Maakt een nieuw project voor een frontend met de Flux web-componenten (@domg-wc/*), uit de flux-starter-app: voorwaarden, de starter lezen, een checkpoint, de naam, de gepinde versie van Flux en flux-mcp in .mcp.json, verificatie en een rapport. Stap 1 van ontwerp naar frontend, voor frontend-analyseren. Draait in de map waarin het project komt. Aanbevolen: Sonnet 5.5, effort medium.",
             "arguments": [
                 {
                     "name": "naam",
-                    "description": "De naam van de toepassing en van haar map, in kebab-case, bv. containeraanvraag.",
+                    "description": "De naam van de frontend en van zijn map, in kebab-case, bv. containeraanvraag.",
                     "required": true
                 }
             ]
         },
         {
-            "name": "toepassing-analyseren",
-            "title": "Analyseer een nieuwe toepassing uit haar ontwerp in Figma",
-            "description": "Analyseert de toepassing als geheel uit haar ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de schermen, het menu en de navigatie, de opbouw van de pagina en de gedeelde componenten, in .flux/analyse/toepassing.md. Wijzigt geen code. Stap 2 van ontwerp naar toepassing, na toepassing-aanmaken en voor toepassing-skelet-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1).",
+            "name": "frontend-analyseren",
+            "title": "Analyseer een nieuwe frontend uit zijn ontwerp in Figma",
+            "description": "Analyseert de frontend als geheel uit zijn ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de schermen, het menu en de navigatie, de opbouw van de pagina en de gedeelde componenten, in .flux/analyse/frontend.md. Wijzigt geen code. Stap 2 van ontwerp naar frontend, na frontend-aanmaken en voor frontend-structuur-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1).",
             "arguments": [
                 {
                     "name": "figma",
@@ -78,15 +25,15 @@
             ]
         },
         {
-            "name": "toepassing-skelet-bouwen",
-            "title": "Bouw het skelet van een nieuwe toepassing uit haar analyse",
-            "description": "Bouwt het skelet van de toepassing uit .flux/analyse/toepassing.md, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de opbouw van de pagina, het menu, en per scherm een route met een leeg scherm, met een e2e-test die elk scherm opent. Voorwaarden, een plan, een checkpoint, uitvoering, verificatie en een rapport. Stap 3 van ontwerp naar toepassing, na toepassing-analyseren en voor scherm-analyseren. Aanbevolen: Opus 5.5, effort high.",
+            "name": "frontend-structuur-bouwen",
+            "title": "Bouw de structuur van een nieuwe frontend uit zijn analyse",
+            "description": "Bouwt de structuur van de frontend uit .flux/analyse/frontend.md, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de opbouw van de pagina, het menu, en per scherm een route met een leeg scherm, met een e2e-test die elk scherm opent. Voorwaarden, een plan, een checkpoint, uitvoering, verificatie en een rapport. Stap 3 van ontwerp naar frontend, na frontend-analyseren en voor scherm-analyseren. Aanbevolen: Opus 5.5, effort high.",
             "arguments": []
         },
         {
-            "name": "uitbreiden",
-            "title": "Breid deze toepassing uit vanuit een ticket of een ontwerp, met de Flux web-componenten",
-            "description": "Breidt een bestaande toepassing uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, de analyse van het ticket, de componenten en patronen ophalen, een plan, een checkpoint, uitvoering, verificatie en een rapport. Bestaande afwijkingen buiten de uitbreiding laat het staan. Vraagt een koppeling met Jira of de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en Opus 5.5, effort high, daarna.",
+            "name": "frontend-uitbreiden",
+            "title": "Breid deze frontend uit vanuit een ticket of een ontwerp, met de Flux web-componenten",
+            "description": "Breidt een bestaande frontend uit met wat een Jira-ticket of een ontwerp in Figma vraagt, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, de analyse van het ticket, de componenten en patronen ophalen, een plan, een checkpoint, uitvoering, verificatie en een rapport. Bestaande afwijkingen buiten de uitbreiding laat het staan. Vraagt een koppeling met Jira of de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en Opus 5.5, effort high, daarna.",
             "arguments": [
                 {
                     "name": "ticket",
@@ -101,9 +48,21 @@
             ]
         },
         {
-            "name": "valideren",
-            "title": "Valideer deze toepassing tegen de norm van de Flux web-componenten",
-            "description": "Legt deze toepassing naast de norm van de Flux web-componenten (@domg-wc/*) en schrijft een afwijkingenrapport, zonder code te wijzigen: de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus. Per afwijking de regel, de plek en een voorstel; wat beter is dan de norm, wordt een normkandidaat. Het team beslist in de pull request van het rapport, en het recept verbeteren werkt de afwijkingen daarna weg. Aanbevolen: een sterk analysemodel, bv. Fable 5.1, of Opus 5.5 met effort high.",
+            "name": "frontend-upgraden",
+            "title": "Upgrade deze frontend naar een nieuwere versie van de Flux web-componenten",
+            "description": "Brengt deze frontend van de gepinde versie van de Flux web-componenten (@domg-wc/*) naar een doelversie: voorwaarden, analyse, plan, een checkpoint, uitvoering, verificatie en een migratierapport. Geen functionele of visuele wijzigingen buiten wat de migratie vraagt. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en een uitvoeringsmodel (Opus 5.5, effort high) daarna.",
+            "arguments": [
+                {
+                    "name": "doelversie",
+                    "description": "De doelversie, bv. 2.20.0, of latest voor de nieuwste versie in de catalogus van flux-mcp.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "frontend-valideren",
+            "title": "Valideer deze frontend tegen de norm van de Flux web-componenten",
+            "description": "Legt deze frontend naast de norm van de Flux web-componenten (@domg-wc/*) en schrijft een afwijkingenrapport, zonder code te wijzigen: de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus. Per afwijking de regel, de plek en een voorstel; wat beter is dan de norm, wordt een normkandidaat. Het team beslist in de pull request van het rapport, en het recept frontend-verbeteren werkt de afwijkingen daarna weg. Aanbevolen: een sterk analysemodel, bv. Fable 5.1, of Opus 5.5 met effort high.",
             "arguments": [
                 {
                     "name": "scope",
@@ -113,19 +72,60 @@
             ]
         },
         {
-            "name": "verbeteren",
-            "title": "Werk de afwijkingen van de norm weg uit een afwijkingenrapport",
-            "description": "Werkt in deze toepassing de afwijkingen van de norm van de Flux web-componenten (@domg-wc/*) weg die het team in een afwijkingenrapport van valideren op volgt-norm zette: voorwaarden, het rapport lezen, een plan, een checkpoint, uitvoering per afwijking, verificatie en een rapport. Laat liggen wat te beslissen is of een migratie vraagt, en stelt voor de normkandidaten als ticket in te dienen. Aanbevolen: Opus 5.5, effort high.",
+            "name": "frontend-verbeteren",
+            "title": "Verbeter deze frontend door de afwijkingen uit een afwijkingenrapport weg te werken",
+            "description": "Werkt in deze frontend de afwijkingen van de norm van de Flux web-componenten (@domg-wc/*) weg die het team in een afwijkingenrapport van frontend-valideren op volgt-norm zette: voorwaarden, het rapport lezen, een plan, een checkpoint, uitvoering per afwijking, verificatie en een rapport. Laat liggen wat te beslissen is of een migratie vraagt, en stelt voor de normkandidaten als ticket in te dienen. Aanbevolen: Opus 5.5, effort high.",
             "arguments": [
                 {
                     "name": "rapport",
-                    "description": "Het pad naar het afwijkingenrapport van valideren, bv. .flux/rapporten/2026-10-02-valideren.md.",
+                    "description": "Het rapport van frontend-valideren, bv. .flux/rapporten/2026-10-02-frontend-valideren.md.",
                     "required": true
                 },
                 {
                     "name": "afwijkingen",
                     "description": "Enkel deze afwijkingen, bv. A-002, A-008. Standaard alle met uitkomst volgt-norm.",
                     "required": false
+                }
+            ]
+        },
+        {
+            "name": "frontend-wijzigingen-reviewen",
+            "title": "Review de wijzigingen van een branch tegen de norm van de Flux web-componenten",
+            "description": "Beoordeelt wat deze branch toevoegt of wijzigt tegenover een basisbranch, tegen de norm van de Flux web-componenten (@domg-wc/*): de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus. Een voorbereiding op de menselijke review: het recept wijzigt geen code en schrijft geen bestand, en geeft het reviewrapport als commentaar voor de pull request of merge request. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": [
+                {
+                    "name": "basis",
+                    "description": "De branch waartegen je de wijzigingen vergelijkt, bv. main of develop.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "scherm-analyseren",
+            "title": "Analyseer één scherm uit zijn ontwerp in Figma",
+            "description": "Analyseert één scherm uit zijn frame in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de opbouw met per deel het element, het gedrag, de data, de patronen en de acceptatiecriteria, in .flux/analyse/schermen/<scherm>.md. Wijzigt geen code. Stap 4 van ontwerp naar frontend, na frontend-structuur-bouwen en voor scherm-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1).",
+            "arguments": [
+                {
+                    "name": "scherm",
+                    "description": "De id van het scherm, zoals in .flux/analyse/frontend.md, bv. aanvraag-overzicht.",
+                    "required": true
+                },
+                {
+                    "name": "figma",
+                    "description": "De link naar het frame in Figma, of de node-id, als het een ander frame is dan in de analyse.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "scherm-bouwen",
+            "title": "Bouw één scherm uit zijn analyse, met de Flux web-componenten",
+            "description": "Bouwt één scherm van deze frontend uit zijn analyse in .flux/analyse/schermen/<scherm>.md, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, een plan, een checkpoint, uitvoering met een e2e-test per acceptatiecriterium, verificatie en een rapport. Het menu, de routes en andere schermen wijzigt het niet. Stap 5 van ontwerp naar frontend, na scherm-analyseren. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": [
+                {
+                    "name": "scherm",
+                    "description": "De id van het scherm, zoals in .flux/analyse/frontend.md, bv. aanvraag-overzicht.",
+                    "required": true
                 }
             ]
         }

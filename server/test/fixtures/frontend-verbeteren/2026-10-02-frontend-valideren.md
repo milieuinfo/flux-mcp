@@ -1,5 +1,5 @@
 ---
-workflow: valideren
+workflow: frontend-valideren
 flux-mcp: 0.4.0
 fluxversie: 2.12.1
 normversie: 2.20.0
@@ -13,11 +13,11 @@ e2e: groen
 
 ## Analyse
 
-**Voorwaarden.** `@domg-wc/components` en `@domg-wc/common` staan exact gepind op `2.12.1` in package.json (de
-lockfile bevestigt `@domg-wc/components@2.12.1`). De e2e-suite (Playwright, `pnpm run test:e2e`) is groen: 7 van de 7
-testen geslaagd. Het recept `verbeteren` kan er dus op steunen. Let op: de test `annuleren maakt het formulier leeg na
-bevestiging` hangt aan `window.confirm` (zie A-019), en de test `de header is te vinden op zijn titel` aan het
-attribuut `title` van `vl-functional-header`.
+**Voorwaarden.** `@domg-wc/components` en `@domg-wc/common` staan exact gepind op `2.12.1` in package.json (de lockfile
+bevestigt `@domg-wc/components@2.12.1`). De e2e-suite (Playwright, `pnpm run test:e2e`) is groen: 7 van de 7 testen
+geslaagd. Het recept `frontend-verbeteren` kan er dus op steunen. Let op: de test
+`annuleren maakt het formulier leeg na bevestiging` hangt aan `window.confirm` (zie A-019), en de test
+`de header is te vinden op zijn titel` aan het attribuut `title` van `vl-functional-header`.
 
 **Scope.** De bestanden met markup of met code die Flux-elementen aanstuurt:
 
@@ -68,8 +68,8 @@ A-013).
 
 De rest van het antwoord van `flux_get_upgrade` (FLUX-620 `title-label`, FLUX-589 `min-date="today"`, FLUX-638
 `disable-mobile-native-input`, FLUX-270 `vl-search` deprecated, FLUX-219 de `<div>` rond de items van
-`vl-description-data`, FLUX-742 de positionering van de datepicker) is migratie, voor het recept `migreren`, en geen
-afwijking. In het bijzonder: de `<div class="items">` in `vl-description-data` (`index.html:58`) wijkt af van de
+`vl-description-data`, FLUX-742 de positionering van de datepicker) is migratie, voor het recept `frontend-upgraden`,
+en geen afwijking. In het bijzonder: de `<div class="items">` in `vl-description-data` (`index.html:58`) wijkt af van de
 voorbeelden, maar 2.12.1 heeft er geen regel over; het is FLUX-219 in 2.19.0.
 
 **API (fluxversie 2.12.1).** `flux_get_component` op 2.12.1 voor `vl-functional-header`, `vl-search`,

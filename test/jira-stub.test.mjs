@@ -1,5 +1,5 @@
-// De nagemaakte Jira voor de evaluatie van uitbreiden (resources/flux/server/jira-stub.mjs): de methodes, en het
-// script over stdio, met het ticket uit server/test/fixtures/uitbreiden/.
+// De nagemaakte Jira voor de evaluatie van frontend-uitbreiden (resources/flux/server/jira-stub.mjs): de methodes,
+// en het script over stdio, met het ticket uit server/test/fixtures/frontend-uitbreiden/.
 
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
@@ -12,7 +12,7 @@ import { createJira } from '../resources/flux/server/jira-stub.mjs';
 import { dispatch } from '../server/src/mcp/protocol.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const TICKETS = path.join(ROOT, 'server', 'test', 'fixtures', 'uitbreiden', 'tickets.json');
+const TICKETS = path.join(ROOT, 'server', 'test', 'fixtures', 'frontend-uitbreiden', 'tickets.json');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'flux-jira-'));
 after(() => fs.rmSync(dir, { recursive: true, force: true }));
 

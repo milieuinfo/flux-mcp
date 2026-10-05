@@ -391,7 +391,7 @@ Voorlopige mapping naar MCP, uit te werken bij de bouw van de server:
 - een prompt `flux-upgrade` in `prompts/`.
 
 Vervangen door ADR-004, aanvaard op 2026-10-02: de tools, resources en prompts staan daar in sectie 4 tot 6. De
-prompt `flux-upgrade` is het recept `migreren` geworden.
+prompt `flux-upgrade` is het recept `frontend-upgraden` geworden.
 
 ### 9. Ontbrekende versies melden
 

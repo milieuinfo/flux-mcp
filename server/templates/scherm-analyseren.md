@@ -1,7 +1,7 @@
 ---
 workflow: scherm-analyseren
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
 normversie: <x.y.z: de nieuwste versie in de catalogus, waarvan de richtlijnen en patronen de norm zijn>
 scherm: <de id van het scherm>
 figma: <de link of de node-id van het frame>

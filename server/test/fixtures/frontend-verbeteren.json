@@ -1,13 +1,15 @@
 {
-    "recipe": "verbeteren",
-    "arguments": [".flux/rapporten/2026-10-02-valideren.md"],
+    "recipe": "frontend-verbeteren",
+    "arguments": [".flux/rapporten/2026-10-02-frontend-valideren.md"],
     "app": "app",
-    "add": { ".flux/rapporten/2026-10-02-valideren.md": "verbeteren/2026-10-02-valideren.md" },
-    "unchanged": [".flux/rapporten/2026-10-02-valideren.md"],
+    "add": {
+        ".flux/rapporten/2026-10-02-frontend-valideren.md": "frontend-verbeteren/2026-10-02-frontend-valideren.md"
+    },
+    "unchanged": [".flux/rapporten/2026-10-02-frontend-valideren.md"],
     "packages": { "@domg-wc/common": "2.12.1", "@domg-wc/components": "2.12.1" },
     "report": {
         "frontmatter": {
-            "workflow": "verbeteren",
+            "workflow": "frontend-verbeteren",
             "fluxversie": "2.12.1",
             "resultaat": "geslaagd",
             "e2e": "groen"

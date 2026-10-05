@@ -197,20 +197,21 @@ export function createPrompts({ catalog, promptsDir, templatesDir } = {}) {
         };
     }
 
-    // De recepten en de sjablonen als resource, voor een client zonder prompts.
+    // De recepten en de sjablonen als resource, voor een client zonder prompts. Voor het model heten de recepten
+    // workflows: Storybook heeft een eigen categorie Recepten, die flux_get_guidance teruggeeft (ADR-004, 6.1).
     const resources = () => [
         ...[...recipes.values()].map((recipe) => ({
             uri: promptUri(recipe.name),
             name: `prompt-${recipe.name}`,
-            title: `Recept: ${recipe.title}`,
+            title: `Workflow: ${recipe.title}`,
             description: recipe.description,
             mimeType: 'text/markdown',
         })),
         ...[...new Set([...recipes.values()].map((recipe) => recipe.template))].map((workflow) => ({
             uri: templateUri(workflow),
             name: `template-${workflow}`,
-            title: `Rapportsjabloon: ${workflow}`,
-            description: `Het sjabloon van het rapport van de workflow ${workflow}.`,
+            title: `Sjabloon: ${workflow}`,
+            description: `Het sjabloon van het rapport of de analyse van de workflow ${workflow}.`,
             mimeType: 'text/markdown',
         })),
     ];
@@ -226,12 +227,12 @@ export function createPrompts({ catalog, promptsDir, templatesDir } = {}) {
                     (argument.default ? ` Standaard: ${argument.default}.` : ''),
             );
             const header = [
-                `# Recept: ${recipe.title}`,
+                `# Workflow: ${recipe.title}`,
                 '',
                 recipe.description,
                 '',
                 ...(args.length > 0 ? ['Argumenten; vul ze in waar {{naam}} staat:', '', ...args, ''] : []),
-                `Het rapportsjabloon: ${templateUri(recipe.template)}.`,
+                `Het sjabloon: ${templateUri(recipe.template)}.`,
                 '',
                 '---',
                 '',

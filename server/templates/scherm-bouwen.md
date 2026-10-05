@@ -1,7 +1,7 @@
 ---
 workflow: scherm-bouwen
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
 scherm: <de id van het scherm>
 figma: <de link of de node-id van het frame, uit de analyse van het scherm>
 datum: <JJJJ-MM-DD>

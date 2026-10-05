@@ -7,22 +7,35 @@ Per versie van flux-mcp: wat er aan de server veranderde. Welke versies van Flux
 
 Increment 5 van ADR-004, voor zover de bron er is: de flux-starter-app als template-repo.
 
-- Van ontwerp naar toepassing gaat in vijf recepten, elk met een resultaat dat een mens nakijkt voor de volgende stap:
-  - `toepassing-aanmaken` (`/mcp__flux__toepassing-aanmaken`) maakt een nieuw project uit de flux-starter-app, met
+- Van ontwerp naar frontend gaat in vijf recepten, elk met een resultaat dat een mens nakijkt voor de volgende stap:
+  - `frontend-aanmaken` (`/mcp__flux__frontend-aanmaken`) maakt een nieuw project uit de flux-starter-app, met
     een gepinde versie van Flux en flux-mcp in de `.mcp.json`;
-  - `toepassing-analyseren` beschrijft uit het ontwerp in Figma de schermen, het menu, de navigatie, de opbouw van de
-    pagina en de gedeelde componenten, in `.flux/analyse/toepassing.md`, zonder code te wijzigen;
-  - `toepassing-skelet-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm;
+  - `frontend-analyseren` beschrijft uit het ontwerp in Figma de schermen, het menu, de navigatie, de opbouw van de
+    pagina en de gedeelde componenten, in `.flux/analyse/frontend.md`, zonder code te wijzigen;
+  - `frontend-structuur-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm;
   - `scherm-analyseren` beschrijft één scherm uit zijn frame in Figma, in `.flux/analyse/schermen/<scherm>.md`,
     zonder code te wijzigen;
   - `scherm-bouwen` bouwt één scherm volgens die analyse.
 - Een analyse is een levend document in `.flux/analyse/`: een nieuwe run werkt het bij, en behoudt wat een mens erin
   besliste.
-- Het recept `design-naar-code` verdwijnt: `scherm-analyseren` en `scherm-bouwen` nemen het over, in een toepassing
-  die met `toepassing-skelet-bouwen` opgezet is. Een bestaande toepassing die een scherm uit een ontwerp krijgt,
-  gebruikt `uitbreiden`.
+- Het recept `design-naar-code` verdwijnt: `scherm-analyseren` en `scherm-bouwen` nemen het over, in een frontend die
+  met `frontend-structuur-bouwen` opgezet is. Een bestaande frontend die een scherm uit een ontwerp krijgt, gebruikt
+  `frontend-uitbreiden`.
 - De weg van het ontwerp heeft nog geen evaluatie met `flux:server:eval-recipe`: daar is geen Figma MCP-server, en de
   flux-starter-app vraagt een login.
+- De andere recepten hebben een naam die zegt waarop ze werken en wat ze doen: `migreren` heet `frontend-upgraden`,
+  `valideren` heet `frontend-valideren`, `verbeteren` heet `frontend-verbeteren`, `uitbreiden` heet
+  `frontend-uitbreiden`, en `review` heet `frontend-wijzigingen-reviewen`, want het beoordeelt enkel de wijzigingen van
+  een branch. Ook hun sjabloon, het veld `workflow` en de naam van hun rapport veranderen mee, bv.
+  `.flux/rapporten/<datum>-frontend-valideren.md`; `frontend-verbeteren` leest een rapport met
+  `workflow: frontend-valideren`. De titels volgen de namen, bv. "Upgrade deze frontend naar een nieuwere versie van de
+  Flux web-componenten".
+- De recepten en de sjablonen spreken van de frontend, niet van de toepassing: een toepassing heeft ook een backend,
+  en de recepten werken enkel op de frontend.
+- De instructies en de resources noemen de recepten workflows, bv. `Workflow: <titel>`: de recepten die
+  `flux_get_guidance` teruggeeft, zijn de Storybook-pagina's onder *Recepten*. Een sjabloon heet `Sjabloon: <workflow>`,
+  want een analyse is geen rapport.
+- De recepten stellen een pull request of merge request voor: afnemers werken met merge requests.
 
 ## 0.4.0 (nog niet gepubliceerd)
 

@@ -147,11 +147,11 @@ Samengevat:
   - **De server past hem niet toe**, want hij wijzigt geen code. `flux_get_upgrade` geeft hem door per entry, en
     `flux_check_markup` kan bij `breaks-in-target` een concrete vervanging geven, met regel en kolom; het model van de
     client voert ze uit.
-  - **Weinig waarde in v2.** Van 2.0.0 tot en met 2.20.0 verdwenen er 4 attributen en 2 elementen uit de web-types,
-    en enkel `anchor-positioning` → `inline-positioning` op `vl-datepicker` (2.17.0) en `data-vl-size` → `size` op
+  - **Weinig waarde in v2.** Van 2.0.0 tot en met 2.20.0 verdwenen er 4 attributen en 2 elementen uit de web-types, en
+    enkel `anchor-positioning` → `inline-positioning` op `vl-datepicker` (2.17.0) en `data-vl-size` → `size` op
     `vl-info-tile` (2.5.0) lijken op een hernoeming. FLUX-620 (`title` → `title-label`) staat er niet bij: `title`
-    bleef, als deprecated. Het model van `migreren` werkt de `action` en het `example` goed af, en een backfill van de
-    71 entries met `action` levert bijna niets op.
+    bleef, als deprecated. Het model van `frontend-upgraden` werkt de `action` en het `example` goed af, en een
+    backfill van de 71 entries met `action` levert bijna niets op.
   - **Waarde bij v3.** De overstap van v2 naar v3 brengt waarschijnlijk veel mechanische wijzigingen, bv. het
     achtervoegsel `-next` dat wegvalt en hernoemingen tussen de majors, verspreid over een hele toepassing.
 - **Volgende delen van de `.llm.md` later.** Komt er kennis bij die niet in Storybook staat, bv. regels met een id en
@@ -225,8 +225,8 @@ Ernst: error · Geldt voor: pattern.form.validation · Sinds: 2.18.0
 
 - **Id's:** `conventions.*`, `pattern.*`, `component.<tag>` en `rule.*`. Een id is uniek binnen een versie en blijft
   over versies heen dezelfde.
-- **Regels** zijn de basis voor `valideren` en `review`: een rapport en een ticket verwijzen naar het regel-id. `Sinds`
-  zegt vanaf welke versie een regel geldt.
+- **Regels** zijn de basis voor `frontend-valideren` en `frontend-wijzigingen-reviewen`: een rapport en een ticket
+  verwijzen naar het regel-id. `Sinds` zegt vanaf welke versie een regel geldt.
 - **Trefwoorden** maken zoeken op functie mogelijk, in het Nederlands ("datumkiezer", "melding"). Tot dan komen ze uit
   de analyse van Storybook (`keywords`, ADR-003).
 - **De patronen uit Storybook** (formulier, navigatie, pagina-opbouw, zoeken) zijn bruikbaar als startmateriaal voor
@@ -422,8 +422,8 @@ Voor alle tools geldt:
 - **Over een major heen.** De catalogus bevat enkel v2: van v1 naar v2 geeft `complete: false`. Komt v3 erbij, dan
   geeft de tool bij `crossesMajor: true` de laatste versie van elke major als mogelijke tussenstap (planning 11.4).
 - **De migratie zelf** schrijft het model van de client, uit dit antwoord: de planning (11.4) laat een sterk model één
-  migratiedocument schrijven voor een concrete toepassing, over alle tussenliggende versies. Het recept `migreren`
-  doet dat.
+  migratiedocument schrijven voor een concrete toepassing, over alle tussenliggende versies. Het recept
+  `frontend-upgraden` doet dat.
 
 #### 4.6 `flux_find_changes`
 
@@ -513,8 +513,25 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
   afhangt, zoals het rapportsjabloon, gaat als embedded resource mee.
 - **Beperkte argumenten.** Ze zijn gestructureerd, zonder vrij veld "opdracht" waarmee de workflow zelf te
   herdefiniëren is.
-- **Nederlandse namen**, want ze verschijnen als slash-commando, bv. `/mcp__flux__migreren` in Claude Code met `flux`
-  als naam van de server. De namen van de tools blijven Engels.
+- **Nederlandse namen**, want ze verschijnen als slash-commando, bv. `/mcp__flux__frontend-upgraden` in Claude Code
+  met `flux` als naam van de server. De namen van de tools blijven Engels.
+- **Een naam zegt waarop een recept werkt en wat het doet** (beslist op 2026-10-05), met een voorvoegsel per niveau:
+  `frontend-` voor de frontend, ook `frontend-wijzigingen-` voor wat een branch eraan wijzigt, en `scherm-` voor één
+  scherm. Zo staan ze bij elkaar in de lijst van slash-commando's. Een naam mag niet te lezen zijn als iets anders:
+  - `toepassing-` viel af: een toepassing heeft een backend en een frontend, en de recepten werken enkel op de
+    frontend. Ook de tekst van de recepten en de sjablonen spreekt daarom van de frontend;
+  - `toepassing-starten` viel af, want dat klinkt als de toepassing starten;
+  - `pr-reviewen` viel af, want afnemers werken op `git.omgeving.vlaanderen.be` met merge requests, en
+    `frontend-wijzigingen-reviewen` werkt ook voor er een is.
+
+  Tot dan heetten `frontend-upgraden`, `frontend-valideren`, `frontend-verbeteren`, `frontend-uitbreiden` en
+  `frontend-wijzigingen-reviewen` `migreren`, `valideren`, `verbeteren`, `uitbreiden` en `review`; de evaluaties in
+  sectie 9 liepen onder die namen. De `title` volgt de naam, want een client als VS Code toont de titel en niet de naam.
+- **Voor het model heten de recepten workflows** (beslist op 2026-10-05): in de instructies (sectie 7) en in de titel
+  van hun resource, `Workflow: <titel>`. Storybook heeft een eigen categorie *Recepten*, 15 pagina's in 2.20.0, die
+  `flux_get_guidance` teruggeeft met `kind` = `recipe`. In de repo en de documentatie blijft "recept" de term.
+- **Pull request of merge request.** De recepten noemen beide waar het rapport of de wijziging naartoe gaat: afnemers
+  werken op `git.omgeving.vlaanderen.be` met merge requests.
 - **Een aanbevolen model en effort** in de beschrijving van elk recept, als advies: de client beslist. De planning
   (11.4) laat een sterk analysemodel (Fable) de analyse doen en een uitvoeringsmodel (Opus) het bouwen. flux-agents
   past dat intern wel toe.
@@ -529,41 +546,44 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
 
 | Prompt | Argumenten | Workflow (planning, sectie 5) | Resultaat | Tools | Increment |
 |---|---|---|---|---|---|
-| `migreren` | `doelversie` (standaard `latest`) | 5.2 | de migratie en een migratierapport | `flux_get_upgrade` met `components`, `flux_get_component` in de doelversie, `flux_check_markup` met `targetVersion` | 3 |
-| `toepassing-aanmaken` | `naam` (verplicht) | 5.1 | een nieuw project uit de flux-starter-app, en een rapport | `flux_get_guidance` (de starter-app), `flux_list_versions`, `flux_check_markup` | 5 |
-| `toepassing-analyseren` | `figma` (url van het ontwerp, verplicht) | 5.1 | de analyse van de toepassing in `.flux/analyse/toepassing.md`, geen codewijzigingen | de Figma MCP (bij de client), `flux_get_guidance` (patronen, richtlijnen), `flux_search_docs`, `flux_get_component`, `flux_check_markup` | 5 |
-| `toepassing-skelet-bouwen` | geen | 5.1 | de opbouw van de pagina, het menu en een leeg scherm per scherm, en een rapport | `flux_get_guidance` (patronen), `flux_get_component`, `flux_check_markup` | 5 |
+| `frontend-upgraden` | `doelversie` (standaard `latest`) | 5.2 | de migratie en een migratierapport | `flux_get_upgrade` met `components`, `flux_get_component` in de doelversie, `flux_check_markup` met `targetVersion` | 3 |
+| `frontend-aanmaken` | `naam` (verplicht) | 5.1 | een nieuw project uit de flux-starter-app, en een rapport | `flux_get_guidance` (de starter-app), `flux_list_versions`, `flux_check_markup` | 5 |
+| `frontend-analyseren` | `figma` (url van het ontwerp, verplicht) | 5.1 | de analyse van de frontend in `.flux/analyse/frontend.md`, geen codewijzigingen | de Figma MCP (bij de client), `flux_get_guidance` (patronen, richtlijnen), `flux_search_docs`, `flux_get_component`, `flux_check_markup` | 5 |
+| `frontend-structuur-bouwen` | geen | 5.1 | de opbouw van de pagina, het menu en een leeg scherm per scherm, en een rapport | `flux_get_guidance` (patronen), `flux_get_component`, `flux_check_markup` | 5 |
 | `scherm-analyseren` | `scherm` (id, verplicht), `figma` (frame, optioneel) | 5.1 | de analyse van een scherm in `.flux/analyse/schermen/<scherm>.md`, geen codewijzigingen | de Figma MCP (bij de client), `flux_get_component`, `flux_search_docs`, `flux_get_guidance`, `flux_check_markup`, `flux_find_changes` | 5 |
 | `scherm-bouwen` | `scherm` (id, verplicht) | 5.1 | een scherm volgens zijn analyse, en een rapport | `flux_get_component`, `flux_get_guidance`, `flux_check_markup` | 5 |
-| `valideren` | `scope` (pad of glob; standaard de hele toepassing) | 5.3 | een afwijkingenrapport, geen codewijzigingen | `flux_get_guidance` (richtlijnen, patronen), `flux_check_markup`, `docs` van `flux_get_upgrade` naar `latest` | 4 |
-| `verbeteren` | `rapport` (pad naar een afwijkingenrapport), `afwijkingen` (id's, optioneel) | 5.3 | codewijzigingen, een rapport, en de normkandidaten als ticket | `flux_get_guidance` met de id uit het rapport, `flux_get_component`, `flux_check_markup` | 4 |
-| `review` | `basis` (branch; standaard de hoofdbranch) | 5.4 | een reviewrapport op de diff, als commentaar op de PR | `flux_check_markup` op de diff, `flux_get_guidance` | 4 |
-| `uitbreiden` | `ticket` (Jira-key) of `figma`, minstens één | 5.1 | een uitbreiding en een rapport | zoals `scherm-analyseren` en `scherm-bouwen` samen, plus `flux_check_markup` op de gewijzigde bestanden | 4 |
+| `frontend-valideren` | `scope` (pad of glob; standaard de hele toepassing) | 5.3 | een afwijkingenrapport, geen codewijzigingen | `flux_get_guidance` (richtlijnen, patronen), `flux_check_markup`, `docs` van `flux_get_upgrade` naar `latest` | 4 |
+| `frontend-verbeteren` | `rapport` (pad naar een afwijkingenrapport), `afwijkingen` (id's, optioneel) | 5.3 | codewijzigingen, een rapport, en de normkandidaten als ticket | `flux_get_guidance` met de id uit het rapport, `flux_get_component`, `flux_check_markup` | 4 |
+| `frontend-wijzigingen-reviewen` | `basis` (branch; standaard de hoofdbranch) | 5.4 | een reviewrapport op de diff, als commentaar op de PR | `flux_check_markup` op de diff, `flux_get_guidance` | 4 |
+| `frontend-uitbreiden` | `ticket` (Jira-key) of `figma`, minstens één | 5.1 | een uitbreiding en een rapport | zoals `scherm-analyseren` en `scherm-bouwen` samen, plus `flux_check_markup` op de gewijzigde bestanden | 4 |
 
-- **Het Jira-ticket** (planning 5.4) is geen aparte prompt: `uitbreiden` begint met de analyse van het ticket, met
-  `flux_search_docs` en `flux_get_component`. Elke prompt die code wijzigt, eindigt met de processtap (6.3, stap 7).
-- **`migreren` eerst.** De kennis ervoor is volledig: elke versie heeft een analyse, en de verificatie
+- **Het Jira-ticket** (planning 5.4) is geen aparte prompt: `frontend-uitbreiden` begint met de analyse van het
+  ticket, met `flux_search_docs` en `flux_get_component`. Elke prompt die code wijzigt, eindigt met de processtap (6.3,
+  stap 7).
+- **`frontend-upgraden` eerst.** De kennis ervoor is volledig: elke versie heeft een analyse, en de verificatie
   (`flux_check_markup`, build, lint en e2e) is deterministisch. De prompt `flux-upgrade` uit ADR-001 is deze.
 - **`design-naar-code` erbij** in hetzelfde increment: het steunt op de documentatie, de voorbeelden en de API, en de
   Figma-descriptions en Code Connect noemen al de Storybook-id en het element. Sinds 2026-10-05 vervangen door de vijf
-  recepten van ontwerp naar toepassing (hieronder).
-- **`valideren`, `verbeteren` en `review` daarna.** Ze hebben een norm nodig: de richtlijnen en patronen uit
-  Storybook, het eerste deel van de `.llm.md`, zonder regel-id's en zonder ernst per regel.
-- **`review` beoordeelt enkel de diff** (beslist op 2026-10-02): wat de branch toevoegt of wijzigt, ook een bestaande
-  afwijking op een gewijzigde regel. Een afwijking op een regel die de diff niet raakt, is werk voor `valideren`. Een
-  review van de hele gewijzigde bestanden gaf in de fixture 19 meldingen voor een pull request van een paar velden.
-- **Van ontwerp naar toepassing in vijf recepten** (beslist op 2026-10-05), in de plaats van `design-naar-code` en
+  recepten van ontwerp naar frontend (hieronder).
+- **`frontend-valideren`, `frontend-verbeteren` en `frontend-wijzigingen-reviewen` daarna.** Ze hebben een norm nodig:
+  de richtlijnen en patronen uit Storybook, het eerste deel van de `.llm.md`, zonder regel-id's en zonder ernst per
+  regel.
+- **`frontend-wijzigingen-reviewen` beoordeelt enkel de diff** (beslist op 2026-10-02): wat de branch toevoegt of
+  wijzigt, ook een bestaande afwijking op een gewijzigde regel. Een afwijking op een regel die de diff niet raakt, is
+  werk voor `frontend-valideren`. Een review van de hele gewijzigde bestanden gaf in de fixture 19 meldingen voor een
+  pull request van een paar velden.
+- **Van ontwerp naar frontend in vijf recepten** (beslist op 2026-10-05), in de plaats van `design-naar-code` en
   `nieuwe-toepassing`. We bouwen typisch toepassingen met meerdere schermen, en één recept dat een ontwerp in één
-  keer naar code brengt, is daarvoor te veel: er is geen analyse van de toepassing als geheel, geen gedeelde opzet van
+  keer naar code brengt, is daarvoor te veel: er is geen analyse van de frontend als geheel, geen gedeelde opzet van
   menu en navigatie, en geen analyse per scherm die een mens nakijkt voor er gebouwd wordt. De vijf stappen:
-  1. `toepassing-aanmaken` kloont de flux-starter-app (`https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app`;
+  1. `frontend-aanmaken` kloont de flux-starter-app (`https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app`;
      de Storybook-pagina `afnemen-starter-app`). De remote `origin` wordt `starter`, zodat het team later wijzigingen
      van de starter kan mergen, zoals bij een fork. Het recept pint de `@domg-wc`-packages op de versie van de starter,
      en zet flux-mcp in de `.mcp.json`. Het draait in de map waarin het project komt; de volgende stappen draaien in het
      project;
-  2. `toepassing-analyseren` beschrijft uit het ontwerp de schermen, met een id per scherm, het menu en de navigatie,
+  2. `frontend-analyseren` beschrijft uit het ontwerp de schermen, met een id per scherm, het menu en de navigatie,
      de opbouw van de pagina en de gedeelde componenten;
-  3. `toepassing-skelet-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm, met
+  3. `frontend-structuur-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm, met
      enkel de titel;
   4. `scherm-analyseren` beschrijft één scherm zo dat het te bouwen is zonder het ontwerp opnieuw te interpreteren:
      per deel het element, de attributen en de teksten, het gedrag, de data en de acceptatiecriteria;
@@ -571,16 +591,14 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
 
   Een analyse wijzigt geen code; het team en de ontwerper reviewen ze in een pull request voor de volgende stap. Zo kan
   elke stap opnieuw draaien als het ontwerp wijzigt, en krijgt elke stap het model dat erbij past: een sterk
-  analysemodel voor de analyses, een uitvoeringsmodel voor het bouwen. Een bestaande toepassing die een scherm uit een
-  ontwerp krijgt, gebruikt `uitbreiden`. De namen zeggen wat een recept oplevert, met een voorvoegsel per niveau, zodat
-  ze bij elkaar staan in de lijst van slash-commando's; `toepassing-starten` viel af, omdat het klinkt als het starten
-  van de toepassing.
+  analysemodel voor de analyses, een uitvoeringsmodel voor het bouwen. Een bestaande frontend die een scherm uit een
+  ontwerp krijgt, gebruikt `frontend-uitbreiden`. De namen volgen 6.1.
 - `completion/complete` vult `doelversie` aan met de versies.
 
 #### 6.3 Vast stramien per recept
 
-1. **Doel en grenzen.** Wat de workflow wel en niet doet. `migreren` doet bv. geen functionele of visuele wijzigingen
-   buiten wat de migratie vraagt.
+1. **Doel en grenzen.** Wat de workflow wel en niet doet. `frontend-upgraden` doet bv. geen functionele of visuele
+   wijzigingen buiten wat de migratie vraagt.
 2. **Voorwaarden** (eis 7.A van de planning):
    - de versie van Flux is exact gepind in de `package.json`;
    - de toepassing start standalone, en de e2e-testen draaien zonder echte backend. Dat neemt de vierde eis van 7.A,
@@ -588,14 +606,14 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
      gemockt is (beslist op 2026-10-01);
    - er is een e2e-suite, en die is groen.
 
-   Ontbreekt er een, dan stopt het recept en meldt het wat ontbreekt. Voor `migreren` en `verbeteren` blokkeert een
-   ontbrekende e2e-suite: zonder testen is het giswerk (planning 5.2).
+   Ontbreekt er een, dan stopt het recept en meldt het wat ontbreekt. Voor `frontend-upgraden` en
+   `frontend-verbeteren` blokkeert een ontbrekende e2e-suite: zonder testen is het giswerk (planning 5.2).
 3. **Kennis ophalen** met de tools, in een vaste volgorde.
-4. **Checkpoint.** Het recept toont de analyse of het plan, en wacht op bevestiging voor het code wijzigt: korte
-   cycli met een mens ertussen, geen lange autonome run. Een recept dat geen code wijzigt, zoals `valideren`, `review`
-   en de analyses `toepassing-analyseren` en `scherm-analyseren`, heeft geen checkpoint (beslist op 2026-10-02): de
-   beslissing van mensen valt in de pull request, en stap 7 vraagt bevestiging voor die er komt. De sectie Checkpoint
-   zegt dat, zodat het stramien gelijk blijft.
+4. **Checkpoint.** Het recept toont de analyse of het plan, en wacht op bevestiging voor het code wijzigt: korte cycli
+   met een mens ertussen, geen lange autonome run. Een recept dat geen code wijzigt, zoals `frontend-valideren`,
+   `frontend-wijzigingen-reviewen` en de analyses `frontend-analyseren` en `scherm-analyseren`, heeft geen checkpoint
+   (beslist op 2026-10-02): de beslissing van mensen valt in de pull request, en stap 7 vraagt bevestiging voor die er
+   komt. De sectie Checkpoint zegt dat, zodat het stramien gelijk blijft.
 5. **Uitvoeren** in kleine stappen: per component, per afwijking of per scherm.
 6. **Verifiëren:**
    - `flux_check_markup` op elk gewijzigd bestand;
@@ -613,28 +631,28 @@ terechtkomt (open beslissing 6):
 
 - **In `.flux/rapporten/<datum>-<workflow>.md`** in het project, en in git. Bestaat die naam al, dan wordt het
   `<datum>-<workflow>-2.md`, `-3`, …: een rapport overschrijft nooit een ander.
-- **Een recept dat code wijzigt** (`migreren`, `toepassing-aanmaken`, `toepassing-skelet-bouwen`, `scherm-bouwen`,
-  `uitbreiden`, `verbeteren`) zet het rapport in de PR van die wijziging. `toepassing-aanmaken` heeft nog geen PR: het
-  rapport komt in de eerste commit van het project.
-- **De analyses** van `toepassing-analyseren` en `scherm-analyseren` (beslist op 2026-10-05) zijn geen rapport maar een
-  levend document waarop de volgende stappen steunen: `.flux/analyse/toepassing.md` en
+- **Een recept dat code wijzigt** (`frontend-upgraden`, `frontend-aanmaken`, `frontend-structuur-bouwen`,
+  `scherm-bouwen`, `frontend-uitbreiden`, `frontend-verbeteren`) zet het rapport in de PR van die wijziging.
+  `frontend-aanmaken` heeft nog geen PR: het rapport komt in de eerste commit van het project.
+- **De analyses** van `frontend-analyseren` en `scherm-analyseren` (beslist op 2026-10-05) zijn geen rapport maar een
+  levend document waarop de volgende stappen steunen: `.flux/analyse/frontend.md` en
   `.flux/analyse/schermen/<scherm>.md`, in git, zonder datum in de naam. Een nieuwe run werkt het document bij, en
   behoudt wat een mens erin besliste, zoals een antwoord op een open vraag; git houdt de vorige versies bij. De
   analyse krijgt een eigen PR, waarin het team en de ontwerper ze reviewen. Het sjabloon in `flux://templates/` is
   het formaat van het document.
-- **`valideren`** wijzigt geen code: het rapport krijgt een eigen PR. Daarin beslissen team en ontwerper per afwijking,
-  met commentaar per regel, en zetten ze `uitkomst`; na de merge leest `verbeteren` het rapport. Dat is de menselijke
-  beslissing tussen beide uit de planning (5.3 en 7.B).
-- **`review`** schrijft geen bestand: een bestand in de branch die het beoordeelt, zou die PR wijzigen. Het rapport
-  komt als commentaar op de PR, na bevestiging, of anders als tekst. Het recept geeft het als laatste deel van zijn
-  antwoord, tussen `~~~markdown` en `~~~`, in het formaat van de afwijkingen, met een `oordeel`: `goedkeuren`,
-  `aanpassen` of `bespreken`.
+- **`frontend-valideren`** wijzigt geen code: het rapport krijgt een eigen PR. Daarin beslissen team en ontwerper per
+  afwijking, met commentaar per regel, en zetten ze `uitkomst`; na de merge leest `frontend-verbeteren` het rapport.
+  Dat is de menselijke beslissing tussen beide uit de planning (5.3 en 7.B).
+- **`frontend-wijzigingen-reviewen`** schrijft geen bestand: een bestand in de branch die het beoordeelt, zou die PR
+  wijzigen. Het rapport komt als commentaar op de PR, na bevestiging, of anders als tekst. Het recept geeft het als
+  laatste deel van zijn antwoord, tussen `~~~markdown` en `~~~`, in het formaat van de afwijkingen, met een `oordeel`:
+  `goedkeuren`, `aanpassen` of `bespreken`.
 
 Een migratierapport:
 
 ```markdown
 ---
-workflow: migreren
+workflow: frontend-upgraden
 flux-mcp: 1.4.0
 bronversie: 2.12.0
 doelversie: 2.20.0
@@ -649,13 +667,13 @@ e2e: groen | rood | ontbreekt
 ## Verificatie
 ```
 
-Het afwijkingenrapport van `valideren` heeft per afwijking een kop `### A-007: <in één zin>`, dan de vaste velden
-als lijst `- veld: waarde`, en daaronder de beschrijving: wat de toepassing doet, wat de norm vraagt en het voorstel,
-met een codefragment. De velden:
+Het afwijkingenrapport van `frontend-valideren` heeft per afwijking een kop `### A-007: <in één zin>`, dan de vaste
+velden als lijst `- veld: waarde`, en daaronder de beschrijving: wat de toepassing doet, wat de norm vraagt en het
+voorstel, met een codefragment. De velden:
 
 - `regel`: de id van een pagina (`patronen-formulier-validatie`), een code van `flux_check_markup`, of later een
   regel-id uit de `.llm.md`. Eén regel per afwijking: raakt één plek twee regels, dan zijn het twee afwijkingen, zodat
-  `verbeteren` per regel beslist en een normkandidaat één ticket wordt;
+  `frontend-verbeteren` per regel beslist en een normkandidaat één ticket wordt;
 - `locatie`: `pad:regel`, met het pad relatief aan de root van het project en de regel waar het element of de code
   begint;
 - `ernst`: `error`, `warning` of `info`, zoals bij `flux_check_markup`;
@@ -667,23 +685,23 @@ met een codefragment. De velden:
   API in JavaScript, zoals `CrossValidationMixin` (2.19.0, FLUX-610), zegt de changelog het (`flux_find_changes`).
 
 Een normkandidaat motiveert in de beschrijving waarom de toepassing beter is dan de norm, of welk gat ze vult. Het
-rapport eindigt met de sectie **Normkandidaten** (6.6): per afwijking met `uitkomst: normkandidaat` haar id en één
-zin. `uitkomst` beslist: zet het team in de review een andere uitkomst, dan past het die ene regel aan, en
-`verbeteren` volgt `uitkomst`, niet de sectie. `verbeteren` neemt het rapport als invoer en werkt enkel de
-afwijkingen met `uitkomst: volgt-norm` en zonder `vereist` weg; een afwijking die een migratie vraagt, laat het
-liggen met een verwijzing naar `migreren`.
+rapport eindigt met de sectie **Normkandidaten** (6.6): per afwijking met `uitkomst: normkandidaat` haar id en één zin.
+`uitkomst` beslist: zet het team in de review een andere uitkomst, dan past het die ene regel aan, en
+`frontend-verbeteren` volgt `uitkomst`, niet de sectie. `frontend-verbeteren` neemt het rapport als invoer en werkt
+enkel de afwijkingen met `uitkomst: volgt-norm` en zonder `vereist` weg; een afwijking die een migratie vraagt, laat het
+liggen met een verwijzing naar `frontend-upgraden`.
 
 Dit formaat is leesbaar in een PR, met plaats voor uitleg en code, en een beslissing over `uitkomst` is een
 commentaar en een diff op één regel. Een tabel heeft geen plaats voor een codefragment, en breekt op een `|` in de
 tekst; YAML vraagt een eigen parser voor geneste lijsten, zonder dependencies; een JSON-bestand naast het rapport zet
 dezelfde inhoud twee keer in git.
 
-#### 6.5 Voorbeeld: `server/prompts/migreren.md`
+#### 6.5 Voorbeeld: `server/prompts/frontend-upgraden.md`
 
 ~~~markdown
 ---
-name: migreren
-title: Migreer naar een nieuwere versie van de Flux web-componenten
+name: frontend-upgraden
+title: Upgrade deze toepassing naar een nieuwere versie van de Flux web-componenten
 description: >
   Brengt deze toepassing van de gepinde versie naar een doelversie: analyse, plan, uitvoering en verificatie.
   Geen functionele wijzigingen. Aanbevolen: een sterk analysemodel voor stap 2, een uitvoeringsmodel voor stap 4.
@@ -691,7 +709,7 @@ arguments:
   - name: doelversie
     description: Doelversie (bv. 2.20.0) of "latest"
     required: false
-template: migreren
+template: frontend-upgraden
 ---
 
 Je migreert deze toepassing naar versie {{doelversie}} van de Flux web-componenten. Je wijzigt niets aan de
@@ -723,29 +741,29 @@ functionaliteit of de vormgeving, behalve wat de migratie vraagt.
 - Draai build, lint en e2e. Blijft iets rood na 3 pogingen? Stop en rapporteer.
 
 ## 6. Rapport
-- Vul het sjabloon volledig in en schrijf het naar .flux/rapporten/<datum>-migreren.md.
+- Vul het sjabloon volledig in en schrijf het naar .flux/rapporten/<datum>-frontend-upgraden.md.
 
 ## 7. Proces (optioneel)
 - Heeft deze omgeving een koppeling met Jira en Git? Stel dan een branch en een PR voor, met het rapport als
   beschrijving. Voer dat pas uit na bevestiging.
 ~~~
 
-De server vervangt de argumenten en voegt het sjabloon toe als embedded resource. `server/prompts/migreren.md` werkt
-dit voorbeeld uit, met de voorwaarden van 6.3.
+De server vervangt de argumenten en voegt het sjabloon toe als embedded resource.
+`server/prompts/frontend-upgraden.md` werkt dit voorbeeld uit, met de voorwaarden van 6.3.
 
 #### 6.6 Terugkanaal: normkandidaten
 
 Zonder een vast kanaal terug naar Team Flux draait de terugkoppellus uit de planning (sectie 6) niet.
 
-- `valideren` markeert een afwijking die mogelijk beter is dan de norm, of een gat in de norm vult, als
+- `frontend-valideren` markeert een afwijking die mogelijk beter is dan de norm, of een gat in de norm vult, als
   `normkandidaat`. Het motiveert dat, met een codefragment en de locatie.
 - Het rapport bundelt de kandidaten in de sectie **Normkandidaten**, in een vast formaat dat Team Flux later kan
   verzamelen.
-- Het projectteam beslist in de PR van `valideren` welke afwijkingen een normkandidaat blijven (6.4). Indienen komt
-  daarna: `verbeteren` leest het gemergde rapport, en eindigt met een voorstel om de kandidaten met
-  `uitkomst: normkandidaat` in te dienen (open beslissing 1). Dat is een ticket per kandidaat in het Jira-project
-  `FLUX` van Team Flux, met het label `normkandidaat` en de frontmatter van het rapport. Het recept maakt het ticket
-  na bevestiging, als de client een koppeling met Jira heeft, en geeft anders de tekst om te plakken.
+- Het projectteam beslist in de PR van `frontend-valideren` welke afwijkingen een normkandidaat blijven (6.4).
+  Indienen komt daarna: `frontend-verbeteren` leest het gemergde rapport, en eindigt met een voorstel om de kandidaten
+  met `uitkomst: normkandidaat` in te dienen (open beslissing 1). Dat is een ticket per kandidaat in het Jira-project
+  `FLUX` van Team Flux, met het label `normkandidaat` en de frontmatter van het rapport. Het recept maakt het ticket na
+  bevestiging, als de client een koppeling met Jira heeft, en geeft anders de tekst om te plakken.
 - Of de toepassing de norm volgt of de norm de toepassing, blijft een beslissing van mensen (planning, sectie 6).
 
 #### 6.7 Hergebruik en versionering
@@ -759,16 +777,19 @@ Zonder een vast kanaal terug naar Team Flux draait de terugkoppellus uit de plan
 
 ### 7. De instructies van de server
 
-> Flux-MCP levert kennis over de Flux web-componenten (`@domg-wc/*`) per versie, en recepten voor de Flux-workflows
-> als prompts. Neem de versie van `@domg-wc/components` uit de package.json van het project en geef ze mee aan elke
-> tool; `latest` is de nieuwste versie in deze catalogus. Zoek met `flux_search_docs`, haal een component op met
+> Flux-MCP levert kennis over de Flux web-componenten (`@domg-wc/*`) per versie, en de Flux-workflows als prompts.
+> Neem de versie van `@domg-wc/components` uit de package.json van het project en geef ze mee aan elke tool; `latest`
+> is de nieuwste versie in deze catalogus. Zoek met `flux_search_docs`, haal een component op met
 > `flux_get_component`, en gidsen, richtlijnen, patronen en recepten met `flux_get_guidance`. Voor een upgrade:
-> `flux_get_upgrade`, met de componenten die het project gebruikt. Controleer gegenereerde of gewijzigde markup met
-> `flux_check_markup`. De API komt uit de web-types; tekst uit een bron `*-analysis` schreef een LLM. Volg bij een
-> Flux-prompt de stappen, de checkpoints en het rapportformaat. De server leest of wijzigt geen code; dat doe jij in
-> het project.
+> `flux_get_upgrade`, met de componenten die het project gebruikt; in welke versie een ticket zit:
+> `flux_find_changes`. Controleer gegenereerde of gewijzigde markup met `flux_check_markup`. De API komt uit de
+> web-types; tekst uit een bron `*-analysis` schreef een LLM. Volg bij een Flux-workflow de stappen, de checkpoints en
+> het rapportformaat. De server leest of wijzigt geen code; dat doe jij in het project.
 
-Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die er al zijn (sectie 10).
+Zo luiden ze vanaf increment 3. Tot dan noemen ze enkel de tools en prompts die er al zijn (sectie 10). Onze recepten
+heten er workflows (beslist op 2026-10-05, sectie 6.1). De recepten die de instructies wel noemen, zijn de
+Storybook-pagina's onder *Recepten*, zoals `recepten-debounce`, die `flux_get_guidance` teruggeeft. Zo verwart het
+model ze niet.
 
 ### 8. Techniek
 
@@ -884,27 +905,28 @@ Daarnaast:
     kozen 20 van de 20 vragen de juiste tool (Sonnet 5.5, effort medium);
   - de recepten van begin tot einde op een kleine toepassing op niveau 7.A, in `server/test/fixtures/app/`:
     `pnpm run flux:server:eval-recipe <recept>`. De toepassing gebruikt echte versies van Flux uit de registry en de
-    echte catalogus, niet twee verzonnen versies (beslist op 2026-10-01): dat toetst ook de catalogus en de packages,
-    en de gekende verschillen staan in de changelog, bv. FLUX-620 en FLUX-219. `migreren` gaat van 2.12.1 naar 2.20.0
-    en moet eindigen met groene e2e-testen en een volledig ingevuld rapport (increment 3); `valideren` moet de
-    afwijkingen vinden die er bewust in zitten (increment 4). Bij increment 3 slaagde `migreren` met Opus 5.5,
-    effort high: het vond de vier gekende verschillen, paste de e2e-test aan die FLUX-620 brak, en schreef een
-    volledig rapport. Bij increment 4, op 2026-10-02, vond `valideren` met Opus 5.5, effort high, de tien afwijkingen
-    uit de fixture, met de juiste `norm` en `vereist`, zonder de twee verboden meldingen, en negen andere, bv. een
-    ontbrekende skip-link; het wijzigde geen code. `migreren` slaagde opnieuw op de uitgebreide toepassing, met
-    FLUX-270 erbij, en liet de afwijkingen voor `valideren` staan. `verbeteren` kreeg het rapport van die run, met de
-    uitkomsten van het team: het werkte de 13 afwijkingen met `volgt-norm` weg, liet de 6 andere liggen, paste enkel
-    de e2e-test van annuleren bewust aan, en schreef het ticket voor de normkandidaat. De eerste run gaf
-    `resultaat: gedeeltelijk`, omdat het recept niet zei dat een afwijking die het bewust liet liggen, niet meetelt;
-    met die regel erbij slaagde het. `review` kreeg een pull request op de fixture, met vier afwijkingen in de diff:
-    het vond ze alle vier, meldde niets buiten de diff, en gaf `oordeel: aanpassen`. De eerste run meldde terecht een
-    checkbox zonder zichtbare tekst die als correct bedoeld was: `label` op `vl-checkbox` vult in 2.12.1 enkel het
-    `aria-label`. `uitbreiden` las het ticket CONT-12 uit een nagemaakte Jira naast flux-mcp, bouwde het verplichte
-    telefoonnummer met `pattern` en een `vl-form-message` per toestand volgens `patronen-formulier-validatie`, paste de
-    bestaande e2e-testen bewust aan, en liet de bestaande afwijkingen staan. Een Figma MCP-server is er in de
-    evaluatie niet: de weg van het ontwerp, met de vijf recepten van `toepassing-aanmaken` tot `scherm-bouwen`, is niet
-    getoetst. De flux-starter-app vraagt bovendien een login. `toepassing-skelet-bouwen` en `scherm-bouwen` lezen enkel
-    Markdown: een fixture met een analyse en een nagemaakte starter kan ze later zonder Figma toetsen.
+    echte catalogus, niet twee verzonnen versies (beslist op 2026-10-01): dat toetst ook de catalogus en de packages, en
+    de gekende verschillen staan in de changelog, bv. FLUX-620 en FLUX-219. `frontend-upgraden` gaat van 2.12.1 naar
+    2.20.0 en moet eindigen met groene e2e-testen en een volledig ingevuld rapport (increment 3); `frontend-valideren`
+    moet de afwijkingen vinden die er bewust in zitten (increment 4). Bij increment 3 slaagde `frontend-upgraden` met
+    Opus 5.5, effort high: het vond de vier gekende verschillen, paste de e2e-test aan die FLUX-620 brak, en schreef een
+    volledig rapport. Bij increment 4, op 2026-10-02, vond `frontend-valideren` met Opus 5.5, effort high, de tien
+    afwijkingen uit de fixture, met de juiste `norm` en `vereist`, zonder de twee verboden meldingen, en negen andere,
+    bv. een ontbrekende skip-link; het wijzigde geen code. `frontend-upgraden` slaagde opnieuw op de uitgebreide
+    toepassing, met FLUX-270 erbij, en liet de afwijkingen voor `frontend-valideren` staan. `frontend-verbeteren` kreeg
+    het rapport van die run, met de uitkomsten van het team: het werkte de 13 afwijkingen met `volgt-norm` weg, liet de
+    6 andere liggen, paste enkel de e2e-test van annuleren bewust aan, en schreef het ticket voor de normkandidaat. De
+    eerste run gaf `resultaat: gedeeltelijk`, omdat het recept niet zei dat een afwijking die het bewust liet liggen,
+    niet meetelt; met die regel erbij slaagde het. `frontend-wijzigingen-reviewen` kreeg een pull request op de fixture,
+    met vier afwijkingen in de diff: het vond ze alle vier, meldde niets buiten de diff, en gaf `oordeel: aanpassen`. De
+    eerste run meldde terecht een checkbox zonder zichtbare tekst die als correct bedoeld was: `label` op `vl-checkbox`
+    vult in 2.12.1 enkel het `aria-label`. `frontend-uitbreiden` las het ticket CONT-12 uit een nagemaakte Jira naast
+    flux-mcp, bouwde het verplichte telefoonnummer met `pattern` en een `vl-form-message` per toestand volgens
+    `patronen-formulier-validatie`, paste de bestaande e2e-testen bewust aan, en liet de bestaande afwijkingen staan.
+    Een Figma MCP-server is er in de evaluatie niet: de weg van het ontwerp, met de vijf recepten van
+    `frontend-aanmaken` tot `scherm-bouwen`, is niet getoetst. De flux-starter-app vraagt bovendien een login.
+    `frontend-structuur-bouwen` en `scherm-bouwen` lezen enkel Markdown: een fixture met een analyse en een nagemaakte
+    starter kan ze later zonder Figma toetsen.
 
 ### 10. Incrementen
 
@@ -998,37 +1020,39 @@ Af als:
   - het renderen: `{{argument}}` vervangen, en het sjabloon als embedded resource;
   - het aanvullen van argumenten, zoals `doelversie`;
   - de resources `flux://prompts/{name}` en `flux://templates/{workflow}`, ook in `resources/list`.
-- **De prompts `migreren` (sectie 6.5) en `design-naar-code` (6.2)**, elk volgens het stramien van 6.3, met hun
-  rapportsjabloon (6.4) en een aanbevolen model en effort.
+- **De prompts `frontend-upgraden` (sectie 6.5) en `design-naar-code` (6.2)**, elk volgens het stramien van 6.3, met
+  hun rapportsjabloon (6.4) en een aanbevolen model en effort.
 - **De voorwaarden** volgen eis 7.A van de planning; "backend uitgemockt" zit in de voorwaarde dat de toepassing
   standalone start en de e2e-testen zonder echte backend draaien (6.3).
 - **Controle 5** (`server/test/prompts.test.mjs`), en de golden tests van `prompts/list` en een gerenderd recept.
-- **De evaluatie van `migreren`** (sectie 9): van begin tot einde op de toepassing in `server/test/fixtures/app/`, met
-  `@domg-wc` 2.12.1 uit de registry van Flux naar 2.20.0, en de echte catalogus. Ze draait apart, niet in `pnpm test`:
-  `flux:server:eval-recipe`. Niet 2.12.0: dat package importeert `.raw.css`-bestanden die er niet in zitten (FLUX-604
-  in 2.12.1).
+- **De evaluatie van `frontend-upgraden`** (sectie 9): van begin tot einde op de toepassing in
+  `server/test/fixtures/app/`, met `@domg-wc` 2.12.1 uit de registry van Flux naar 2.20.0, en de echte catalogus. Ze
+  draait apart, niet in `pnpm test`: `flux:server:eval-recipe`. Niet 2.12.0: dat package importeert `.raw.css`-bestanden
+  die er niet in zitten (FLUX-604 in 2.12.1).
 
-Af als: `migreren` de toepassing in de fixture naar 2.20.0 brengt, met groene e2e-testen en een volledig ingevuld
-rapport.
+Af als: `frontend-upgraden` de toepassing in de fixture naar 2.20.0 brengt, met groene e2e-testen en een volledig
+ingevuld rapport.
 
 #### Increment 4: de norm
 
 Open beslissingen 1 (het kanaal voor normkandidaten), 2 (de norm voor een oudere versie), 5 (regels als tekst) en 6
 (rapporten in het project) zijn bij de start bevestigd (sectie 11).
 
-- **De prompts** `valideren`, `verbeteren`, `review` en `uitbreiden` (sectie 6.2), elk volgens 6.3, met hun sjabloon.
-  `valideren` maakt het afwijkingenrapport met de normkandidaten (6.4 en 6.6), met `norm` en `vereist` per afwijking
-  (open beslissing 2). `verbeteren` laat een afwijking met `vereist` liggen, en stelt na het wegwerken voor de
-  normkandidaten in te dienen als ticket in `FLUX` met het label `normkandidaat` (open beslissing 1).
-- **De rapporten** volgen 6.4 (open beslissing 6): een eigen PR voor `valideren`, commentaar op de PR voor `review`, en
-  `-2`, `-3`, … bij een bestaande naam, ook in `migreren` en `design-naar-code`.
+- **De prompts** `frontend-valideren`, `frontend-verbeteren`, `frontend-wijzigingen-reviewen` en `frontend-uitbreiden`
+  (sectie 6.2), elk volgens 6.3, met hun sjabloon. `frontend-valideren` maakt het afwijkingenrapport met de
+  normkandidaten (6.4 en 6.6), met `norm` en `vereist` per afwijking (open beslissing 2). `frontend-verbeteren` laat
+  een afwijking met `vereist` liggen, en stelt na het wegwerken voor de normkandidaten in te dienen als ticket in `FLUX`
+  met het label `normkandidaat` (open beslissing 1).
+- **De rapporten** volgen 6.4 (open beslissing 6): een eigen PR voor `frontend-valideren`, commentaar op de PR voor
+  `frontend-wijzigingen-reviewen`, en `-2`, `-3`, … bij een bestaande naam, ook in `frontend-upgraden` en
+  `design-naar-code`.
 - **De norm** is Storybook: de richtlijnen en patronen van de nieuwste versie via `flux_get_guidance`, met de id van
   een pagina als referentie (4.4), en de codes van `flux_check_markup` op de gepinde versie. Er komen geen nieuwe codes
   bij (open beslissing 5).
-- **De evaluatie van `valideren`** op de toepassing in de fixture.
+- **De evaluatie van `frontend-valideren`** op de toepassing in de fixture.
 
-Af als: `valideren` de afwijkingen vindt die bewust in de toepassing in de fixture zitten, en `verbeteren` ze met
-`uitkomst: volgt-norm` wegwerkt.
+Af als: `frontend-valideren` de afwijkingen vindt die bewust in de toepassing in de fixture zitten, en
+`frontend-verbeteren` ze met `uitkomst: volgt-norm` wegwerkt.
 
 #### Increment 5: wanneer de bron er is
 
@@ -1038,7 +1062,7 @@ Geen geheel, maar losse onderdelen, elk wanneer zijn aanleiding er is:
 |---|---|---|---|
 | een volgend deel van de `.llm.md` | kennis die niet in Storybook staat, bv. regels met een id, staat in flux-web-components | een script dat ze per versie in de catalogus zet, een controle, een eigen `kind` in `flux_get_guidance`, en de regel-id's in de rapporten | 2 |
 | CEM | Flux levert een CEM in plaats van web-types (planning 11.6), eerst als technische omzetting | een lader die hetzelfde teruggeeft als `loadWebTypes`, en een script dat de CEM per versie kopieert; de diffs werken over de overstap heen | 2 |
-| de vijf recepten van ontwerp naar toepassing | er is een template-repo: de flux-starter-app (gebouwd op 2026-10-05, zonder evaluatie) | `toepassing-aanmaken`, `toepassing-analyseren`, `toepassing-skelet-bouwen`, `scherm-analyseren` en `scherm-bouwen`, met hun sjabloon, in de plaats van `design-naar-code` en `nieuwe-toepassing` | 6.2 |
+| de vijf recepten van ontwerp naar frontend | er is een template-repo: de flux-starter-app (gebouwd op 2026-10-05, zonder evaluatie) | `frontend-aanmaken`, `frontend-analyseren`, `frontend-structuur-bouwen`, `scherm-analyseren` en `scherm-bouwen`, met hun sjabloon, in de plaats van `design-naar-code` en `nieuwe-toepassing` | 6.2 |
 | codemods | de overstap naar v3, of migraties die veel mechanische wijzigingen vragen | een veld `codemod` dat de analyse van de changelog meebouwt, een controle tegen de web-types in `changelog:build --check`, de review, en een vervanging bij `breaks-in-target` | 2 |
 | v3 | `develop-v3` heeft releases | de catalogus voor v3 (ADR-002), en de tussenstap per major in `flux_get_upgrade` | 4.5 |
 | Streamable HTTP | een gedeelde service is gewenst | dezelfde kern, met `node:http` | 8 |
@@ -1051,12 +1075,12 @@ increment 1 hangt ervan af. 1, 2, 5 en 6 zijn op 2026-10-02 bevestigd, bij de st
 increment 4.
 
 1. **Het kanaal voor normkandidaten.** Waar komen ze terecht bij Team Flux? Bevestigd op 2026-10-02: een ticket per
-   kandidaat in het Jira-project `FLUX`, met een bestaand issuetype, het label `normkandidaat` en de frontmatter van
-   het rapport (6.4 en 6.6). Zo werkt het recept zonder dat een Jira-beheerder eerst een eigen issuetype aanmaakt;
-   komen er veel kandidaten, dan kan het label later een eigen type met een eigen bord worden. `verbeteren` stelt het
-   indienen voor, na de merge van de PR van `valideren`, waarin het projectteam besliste. Een issue op GitHub valt af:
-   flux-web-components is publiek, en een kandidaat toont code en locaties van een interne toepassing. Wie triageert,
-   en hoe vaak, spreekt Team Flux af: de planning vraagt er "1 plek" voor, met ontwerper en bibliotheekbeheer
+   kandidaat in het Jira-project `FLUX`, met een bestaand issuetype, het label `normkandidaat` en de frontmatter van het
+   rapport (6.4 en 6.6). Zo werkt het recept zonder dat een Jira-beheerder eerst een eigen issuetype aanmaakt; komen er
+   veel kandidaten, dan kan het label later een eigen type met een eigen bord worden. `frontend-verbeteren` stelt het
+   indienen voor, na de merge van de PR van `frontend-valideren`, waarin het projectteam besliste. Een issue op GitHub
+   valt af: flux-web-components is publiek, en een kandidaat toont code en locaties van een interne toepassing. Wie
+   triageert, en hoe vaak, spreekt Team Flux af: de planning vraagt er "1 plek" voor, met ontwerper en bibliotheekbeheer
    (sectie 9). De recepten hangen er niet van af.
 2. **Tegen welke norm valideer je een toepassing op een oudere versie?** Bevestigd op 2026-10-02: de API tegen de
    gepinde versie, de richtlijnen en patronen tegen de nieuwste. Tegen de norm van de gepinde versie zou een toepassing
@@ -1099,24 +1123,25 @@ increment 4.
    - de norm hem voorschrijft, met de id van de pagina als bron;
    - hij te toetsen is op één stuk markup, zonder kennis van andere bestanden. `for` van `vl-form-message` valt
      daarom af: in lit is de `id` vaak `${…}` of staat het control in een andere template;
-   - hij terugkomt in de rapporten van `valideren`, of de evaluatie toont dat het model hem mist.
+   - hij terugkomt in de rapporten van `frontend-valideren`, of de evaluatie toont dat het model hem mist.
 
    De eerste kandidaat is `state` van `vl-form-message`: de naam van een eigenschap van `ValidityState`, waarvoor de
    web-types geen lijst van waarden geven. Een regelbestand dat flux-mcp zelf naast Storybook bijhoudt, zou het werk
    doen van een volgend deel van de `.llm.md`, en dat schrijft Team Flux.
-6. **Rapporten in het project.** Is `.flux/rapporten/` de juiste plek, en gaan rapporten altijd mee in git? Bevestigd
-   op 2026-10-02: ja, in de PR van de workflow, zodat de review en `verbeteren` erop kunnen steunen, met twee
-   uitzonderingen (sectie 6.4). `valideren` wijzigt geen code en krijgt een PR met enkel het rapport, waarin het team
-   per afwijking beslist. `review` schrijft geen bestand in de branch die het beoordeelt, maar commentaar op de PR. Een
-   bestaande naam krijgt `-2`, `-3`, …, zodat twee runs op een dag elkaar niet overschrijven. Niet in git is
-   vluchtig, en `verbeteren` moet dan op dezelfde machine draaien; in Jira werkt het niet zonder koppeling.
+6. **Rapporten in het project.** Is `.flux/rapporten/` de juiste plek, en gaan rapporten altijd mee in git? Bevestigd op
+   2026-10-02: ja, in de PR van de workflow, zodat de review en `frontend-verbeteren` erop kunnen steunen, met twee
+   uitzonderingen (sectie 6.4). `frontend-valideren` wijzigt geen code en krijgt een PR met enkel het rapport, waarin
+   het team per afwijking beslist. `frontend-wijzigingen-reviewen` schrijft geen bestand in de branch die het
+   beoordeelt, maar commentaar op de PR. Een bestaande naam krijgt `-2`, `-3`, …, zodat twee runs op een dag elkaar niet
+   overschrijven. Niet in git is vluchtig, en `frontend-verbeteren` moet dan op dezelfde machine draaien; in Jira werkt
+   het niet zonder koppeling.
 7. **Geen dependencies, of de officiële SDK met TypeScript en Zod,** zoals het ontwerpvoorstel vroeg, voor
    consistentie met flux-agents. Bevestigd: geen dependencies, zoals `CLAUDE.md` vraagt (sectie 8 en de
    alternatieven).
 8. **De naam van het pakket** en in welke scope het op de registry van Flux komt. Bevestigd op 2026-10-02:
    `@domg/flux-mcp`, met `publishConfig` naar de registry van Flux (`local-npm`). Een project dat Flux gebruikt, stuurt
    de scope `@domg` al naar die registry, want `@domg/govflanders-style` is een dependency van `@domg-wc/components`.
-   `@domg-wc/mcp` valt af: de `@domg-wc`-packages hebben samen de versie van Flux, en `migreren` zet "alle
+   `@domg-wc/mcp` valt af: de `@domg-wc`-packages hebben samen de versie van Flux, en `frontend-upgraden` zet "alle
    `@domg-wc`-packages" op de doelversie; flux-mcp heeft een eigen versie. Zonder scope zou `npx` op de publieke npm
    zoeken. `@domg/govflanders-style` zelf staat in een andere repository (`acd-npm`); of Team Flux in `@domg` mag
    publiceren, gaat het na voor de eerste release. Kan het niet, dan wordt het een eigen scope.
@@ -1143,8 +1168,8 @@ increment 4.
   praat met de server over MCP, niet via zijn code. Wordt het protocol meer dan we willen onderhouden, bv.
   authenticatie voor HTTP, dan herbekijken we dit.
 - **Storybook buiten de kennislaag en buiten de server** (planning 11.2). Dan hebben de recepten van het ontwerp en
-  `valideren` geen enkele bron voor het *hoe*. ADR-003 besliste al anders, en sinds 2026-10-02 is de documentatie uit
-  Storybook met haar analyse het eerste deel van de `.llm.md`.
+  `frontend-valideren` geen enkele bron voor het *hoe*. ADR-003 besliste al anders, en sinds 2026-10-02 is de
+  documentatie uit Storybook met haar analyse het eerste deel van de `.llm.md`.
 - **Een LLM in de server** die het migratiedocument schrijft (planning 11.4). Dat is niet deterministisch, en de
   server heeft dan zelf toegang tot een model nodig. Het recept laat het model van de client dat document schrijven,
   uit een reproduceerbaar antwoord.

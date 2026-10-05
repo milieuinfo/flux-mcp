@@ -1,18 +1,18 @@
 ---
-workflow: toepassing-skelet-bouwen
+workflow: frontend-structuur-bouwen
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
 datum: <JJJJ-MM-DD>
 resultaat: <geslaagd | gedeeltelijk | gestopt>
 e2e: <groen | rood | ontbreekt>
 ---
 
-# Skelet van <naam van de toepassing>
+# Structuur van <naam van de frontend>
 
 ## Analyse
 
-<De schermen uit .flux/analyse/toepassing.md, de navigatie en de opbouw van de pagina, met de id van hun patroon. Hoe
-de toepassing van pagina wisselt, en haar conventies. De open vragen.>
+<De schermen uit .flux/analyse/frontend.md, de navigatie en de opbouw van de pagina, met de id van hun patroon. Hoe
+de frontend van pagina wisselt, en zijn conventies. De open vragen.>
 
 ## Plan
 

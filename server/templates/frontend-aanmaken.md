@@ -1,15 +1,15 @@
 ---
-workflow: toepassing-aanmaken
+workflow: frontend-aanmaken
 flux-mcp: <de versie van flux-mcp: het veld catalog in een antwoord van een tool>
-fluxversie: <x.y.z: de gepinde versie van de toepassing>
-naam: <de naam van de toepassing>
+fluxversie: <x.y.z: de gepinde versie van de frontend>
+naam: <de naam van de frontend>
 starter: <de commit van de flux-starter-app waarvan het project vertrekt>
 datum: <JJJJ-MM-DD>
 resultaat: <geslaagd | gedeeltelijk | gestopt>
 e2e: <groen | rood | ontbreekt>
 ---
 
-# <Naam van de toepassing>
+# <Naam van de frontend>
 
 ## Opzet
 
@@ -32,5 +32,5 @@ versie: de errors en warnings in de starter. git status.>
 
 ## Volgende stap
 
-<Het recept dat nu volgt: migreren als de versie ouder is dan latest, anders toepassing-analyseren, met de link naar
-het ontwerp en de Figma MCP-server in de client.>
+<Het recept dat nu volgt: frontend-upgraden als de versie ouder is dan latest, anders frontend-analyseren, met
+de link naar het ontwerp en de Figma MCP-server in de client.>

@@ -1,30 +1,30 @@
 ---
-name: toepassing-analyseren
-title: Analyseer een nieuwe toepassing uit haar ontwerp in Figma
+name: frontend-analyseren
+title: Analyseer een nieuwe frontend uit zijn ontwerp in Figma
 description: >
-  Analyseert de toepassing als geheel uit haar ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de
+  Analyseert de frontend als geheel uit zijn ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de
   gepinde versie en volgens de norm: de schermen, het menu en de navigatie, de opbouw van de pagina en de gedeelde
-  componenten, in .flux/analyse/toepassing.md. Wijzigt geen code. Stap 2 van ontwerp naar toepassing, na
-  toepassing-aanmaken en voor toepassing-skelet-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een
+  componenten, in .flux/analyse/frontend.md. Wijzigt geen code. Stap 2 van ontwerp naar frontend, na
+  frontend-aanmaken en voor frontend-structuur-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een
   sterk analysemodel (Fable 5.1).
 arguments:
   - name: figma
     description: De link naar het ontwerp in Figma, het bestand of de pagina met alle schermen.
     required: true
-template: toepassing-analyseren
+template: frontend-analyseren
 ---
 
-Je analyseert deze toepassing als geheel, uit haar ontwerp in Figma: {{figma}}. Je schrijft geen code. Het resultaat
-is een analyse in `.flux/analyse/toepassing.md`, die het team en de ontwerper reviewen. De volgende recepten steunen
-erop: `toepassing-skelet-bouwen` bouwt er het menu, de routes en de lege schermen mee, en `scherm-analyseren` en
+Je analyseert deze frontend als geheel, uit zijn ontwerp in Figma: {{figma}}. Je schrijft geen code. Het resultaat
+is een analyse in `.flux/analyse/frontend.md`, die het team en de ontwerper reviewen. De volgende recepten steunen
+erop: `frontend-structuur-bouwen` bouwt er het menu, de routes en de lege schermen mee, en `scherm-analyseren` en
 `scherm-bouwen` werken er elk scherm mee uit. Hou de analyse beknopt: de details van een scherm horen in de analyse
 van dat scherm.
 
-De norm heeft twee delen: de API van de gepinde versie van deze toepassing, en de richtlijnen en patronen van de
-nieuwste versie in de catalogus, `latest`. Zo vertrekt de toepassing van de norm.
+De norm heeft twee delen: de API van de gepinde versie van deze frontend, en de richtlijnen en patronen van de
+nieuwste versie in de catalogus, `latest`. Zo vertrekt de frontend van de norm.
 
 De kennis over Flux haal je met de tools van flux-mcp: ga niet uit van wat je denkt te weten over een component. Het
-sjabloon van de analyse zit bij deze prompt (`flux://templates/toepassing-analyseren`); vul het aan terwijl je werkt.
+sjabloon van de analyse zit bij deze prompt (`flux://templates/frontend-analyseren`); vul het aan terwijl je werkt.
 
 ## 1. Voorwaarden
 
@@ -33,7 +33,7 @@ Controleer deze voorwaarden. Klopt er een niet, stop dan, en meld wat ontbreekt 
 - Deze client heeft de Figma MCP-server. Zonder kan je het ontwerp niet lezen.
 - De versie van `@domg-wc/components` in package.json is exact gepind, bv. `2.20.0` en niet `^2.20.0`: dat is de
   gepinde versie.
-- Bestaat `.flux/analyse/toepassing.md` al, lees het dan. Je werkt het bij naar het ontwerp, en behoudt wat een mens
+- Bestaat `.flux/analyse/frontend.md` al, lees het dan. Je werkt het bij naar het ontwerp, en behoudt wat een mens
   erin besliste, zoals een antwoord op een open vraag. De id van een scherm die de code of een analyse van een scherm
   al gebruikt, wijzig je niet.
 
@@ -91,16 +91,16 @@ De velden, de teksten en het gedrag van een scherm horen niet in deze analyse: d
 - Elke id van een pagina komt uit `flux_get_guidance`, en `flux_check_markup` geeft op de voorgestelde markup geen
   error. Een warning over een waarde of een slot kan een gat in de web-types zijn: kijk dan de documentatie na met
   `flux_get_component`.
-- `git status` toont enkel `.flux/analyse/toepassing.md` als nieuw of gewijzigd bestand.
+- `git status` toont enkel `.flux/analyse/frontend.md` als nieuw of gewijzigd bestand.
 
 ## 6. Rapport
 
-De analyse is het rapport van dit recept. Schrijf ze naar `.flux/analyse/toepassing.md` in het project, met `datum`
+De analyse is het rapport van dit recept. Schrijf ze naar `.flux/analyse/frontend.md` in het project, met `datum`
 als JJJJ-MM-DD. Het is een levend document: bestaat het al, werk het dan bij zoals stap 1 zegt. Git houdt de vorige
 versies bij.
 
 ## 7. Proces
 
-Heeft deze omgeving een koppeling met Git, stel dan voor een branch en een pull request te maken met enkel de analyse.
-Daarin reviewen het team en de ontwerper de schermen en de navigatie, en beantwoorden ze de open vragen. Doe dat pas na
-bevestiging. Na de merge volgt het recept `toepassing-skelet-bouwen`.
+Heeft deze omgeving een koppeling met Git, stel dan voor een branch en een pull request of merge request te maken met
+enkel de analyse. Daarin reviewen het team en de ontwerper de schermen en de navigatie, en beantwoorden ze de open
+vragen. Doe dat pas na bevestiging. Na de merge volgt het recept `frontend-structuur-bouwen`.

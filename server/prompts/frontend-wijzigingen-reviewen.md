@@ -1,23 +1,23 @@
 ---
-name: review
+name: frontend-wijzigingen-reviewen
 title: Review de wijzigingen van een branch tegen de norm van de Flux web-componenten
 description: >
   Beoordeelt wat deze branch toevoegt of wijzigt tegenover een basisbranch, tegen de norm van de Flux web-componenten
   (@domg-wc/*): de API tegen de gepinde versie, de richtlijnen en patronen tegen de nieuwste versie in de catalogus.
   Een voorbereiding op de menselijke review: het recept wijzigt geen code en schrijft geen bestand, en geeft het
-  reviewrapport als commentaar voor de pull request. Aanbevolen: Opus 5.5, effort high.
+  reviewrapport als commentaar voor de pull request of merge request. Aanbevolen: Opus 5.5, effort high.
 arguments:
   - name: basis
     description: De branch waartegen je de wijzigingen vergelijkt, bv. main of develop.
     required: false
     default: de hoofdbranch van het project
-template: review
+template: frontend-wijzigingen-reviewen
 ---
 
 Je reviewt wat de huidige branch toevoegt of wijzigt tegenover {{basis}}, tegen de norm van de Flux web-componenten
 (`@domg-wc/*`), als voorbereiding op de menselijke review. Je beoordeelt enkel de diff: een afwijking op een regel die
-de diff niet raakt, is werk voor het recept `valideren`. Je wijzigt geen code en schrijft geen bestand: een bestand in
-deze branch zou de pull request wijzigen die je reviewt.
+de diff niet raakt, is werk voor het recept `frontend-valideren`. Je wijzigt geen code en schrijft geen bestand: een
+bestand in deze branch zou de pull request of merge request wijzigen die je reviewt.
 
 De norm heeft twee delen:
 
@@ -27,7 +27,7 @@ De norm heeft twee delen:
   geen regel-id's: de id van een pagina is de referentie.
 
 De kennis over Flux haal je met de tools van flux-mcp: ga niet uit van wat je denkt te weten over Flux. Het
-rapportsjabloon zit bij deze prompt (`flux://templates/review`); vul het aan terwijl je werkt.
+rapportsjabloon zit bij deze prompt (`flux://templates/frontend-wijzigingen-reviewen`); vul het aan terwijl je werkt.
 
 ## 1. Voorwaarden
 
@@ -92,7 +92,7 @@ sjabloon, genummerd vanaf `A-001`:
 Wat geen afwijking is:
 
 - een afwijking op een regel die de diff niet raakt;
-- een verschil met een nieuwere versie van de API: dat is een migratie, voor het recept `migreren`;
+- een verschil met een nieuwere versie van de API: dat is een migratie, voor het recept `frontend-upgraden`;
 - wat de norm uitdrukkelijk toelaat, ook als een voorbeeld het anders doet;
 - een attribuut, waarde of slot dat niet in de web-types staat maar wel in de documentatie van de component.
 
@@ -114,5 +114,6 @@ afwijking is met `uitkomst: volgt-norm`, `bespreken` als er enkel normkandidaten
 
 ## 7. Proces
 
-Kan je in deze omgeving een commentaar op de pull request plaatsen, bv. met de CLI van GitHub of GitLab, stel dan
-voor het rapport als commentaar te plaatsen. Doe dat pas na bevestiging. Maak geen commit en geen tickets.
+Kan je in deze omgeving een commentaar op de pull request of merge request plaatsen, bv. met de CLI van GitHub of
+GitLab, stel dan voor het rapport als commentaar te plaatsen. Doe dat pas na bevestiging. Maak geen commit en geen
+tickets.
