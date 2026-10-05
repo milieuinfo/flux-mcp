@@ -1,23 +1,6 @@
 {
     "prompts": [
         {
-            "name": "design-naar-code",
-            "title": "Bouw een scherm uit een ontwerp in Figma met de Flux web-componenten",
-            "description": "Bouwt een basisimplementatie van een scherm uit een ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie van deze toepassing: voorwaarden, het ontwerp lezen met de Figma MCP, de componenten en patronen ophalen, een plan, een checkpoint, uitvoering, verificatie en een rapport. Vraagt de Figma MCP-server in deze client. Aanbevolen: Opus 5.5, effort high.",
-            "arguments": [
-                {
-                    "name": "figma",
-                    "description": "De link naar het ontwerp in Figma, of de node-id van het frame.",
-                    "required": true
-                },
-                {
-                    "name": "doel",
-                    "description": "Waar de code komt, als pad of als naam van een scherm.",
-                    "required": false
-                }
-            ]
-        },
-        {
             "name": "migreren",
             "title": "Migreer naar een nieuwere versie van de Flux web-componenten",
             "description": "Brengt deze toepassing van de gepinde versie van de Flux web-componenten (@domg-wc/*) naar een doelversie: voorwaarden, analyse, plan, een checkpoint, uitvoering, verificatie en een migratierapport. Geen functionele of visuele wijzigingen buiten wat de migratie vraagt. Aanbevolen: een sterk analysemodel (Fable 5.1) tot het checkpoint, en een uitvoeringsmodel (Opus 5.5, effort high) daarna.",
@@ -40,6 +23,65 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "name": "scherm-analyseren",
+            "title": "Analyseer één scherm uit zijn ontwerp in Figma",
+            "description": "Analyseert één scherm uit zijn frame in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de opbouw met per deel het element, het gedrag, de data, de patronen en de acceptatiecriteria, in .flux/analyse/schermen/<scherm>.md. Wijzigt geen code. Stap 4 van ontwerp naar toepassing, na toepassing-skelet-bouwen en voor scherm-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1).",
+            "arguments": [
+                {
+                    "name": "scherm",
+                    "description": "De id van het scherm, zoals in .flux/analyse/toepassing.md, bv. aanvraag-overzicht.",
+                    "required": true
+                },
+                {
+                    "name": "figma",
+                    "description": "De link naar het frame in Figma, of de node-id, als het een ander frame is dan in de analyse.",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "scherm-bouwen",
+            "title": "Bouw één scherm uit zijn analyse, met de Flux web-componenten",
+            "description": "Bouwt één scherm van deze toepassing uit zijn analyse in .flux/analyse/schermen/<scherm>.md, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: voorwaarden, een plan, een checkpoint, uitvoering met een e2e-test per acceptatiecriterium, verificatie en een rapport. Het menu, de routes en andere schermen wijzigt het niet. Stap 5 van ontwerp naar toepassing, na scherm-analyseren. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": [
+                {
+                    "name": "scherm",
+                    "description": "De id van het scherm, zoals in .flux/analyse/toepassing.md, bv. aanvraag-overzicht.",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "toepassing-aanmaken",
+            "title": "Maak een nieuwe toepassing uit de flux-starter-app",
+            "description": "Maakt een nieuw project voor een toepassing met de Flux web-componenten (@domg-wc/*), uit de flux-starter-app: voorwaarden, de starter lezen, een checkpoint, de naam, de gepinde versie van Flux en flux-mcp in .mcp.json, verificatie en een rapport. Stap 1 van ontwerp naar toepassing, voor toepassing-analyseren. Draait in de map waarin het project komt. Aanbevolen: Sonnet 5.5, effort medium.",
+            "arguments": [
+                {
+                    "name": "naam",
+                    "description": "De naam van de toepassing en van haar map, in kebab-case, bv. containeraanvraag.",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "toepassing-analyseren",
+            "title": "Analyseer een nieuwe toepassing uit haar ontwerp in Figma",
+            "description": "Analyseert de toepassing als geheel uit haar ontwerp in Figma, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de schermen, het menu en de navigatie, de opbouw van de pagina en de gedeelde componenten, in .flux/analyse/toepassing.md. Wijzigt geen code. Stap 2 van ontwerp naar toepassing, na toepassing-aanmaken en voor toepassing-skelet-bouwen. Vraagt de Figma MCP-server in deze client. Aanbevolen: een sterk analysemodel (Fable 5.1).",
+            "arguments": [
+                {
+                    "name": "figma",
+                    "description": "De link naar het ontwerp in Figma, het bestand of de pagina met alle schermen.",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "toepassing-skelet-bouwen",
+            "title": "Bouw het skelet van een nieuwe toepassing uit haar analyse",
+            "description": "Bouwt het skelet van de toepassing uit .flux/analyse/toepassing.md, met de Flux web-componenten (@domg-wc/*) in de gepinde versie en volgens de norm: de opbouw van de pagina, het menu, en per scherm een route met een leeg scherm, met een e2e-test die elk scherm opent. Voorwaarden, een plan, een checkpoint, uitvoering, verificatie en een rapport. Stap 3 van ontwerp naar toepassing, na toepassing-analyseren en voor scherm-analyseren. Aanbevolen: Opus 5.5, effort high.",
+            "arguments": []
         },
         {
             "name": "uitbreiden",

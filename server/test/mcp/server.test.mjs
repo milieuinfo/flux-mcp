@@ -15,6 +15,11 @@ import { createServer, INSTRUCTIONS, PROTOCOL_VERSIONS } from '../../src/mcp/ser
 const GOLDEN = path.join(import.meta.dirname, 'golden');
 const UPDATE = process.env.FLUX_UPDATE_GOLDEN === '1';
 const VERSION = '0.0.0-test';
+// De recepten in server/prompts, gesorteerd op naam; elk heeft een sjabloon met dezelfde naam.
+const RECIPES = [
+    'migreren', 'review', 'scherm-analyseren', 'scherm-bouwen', 'toepassing-aanmaken',
+    'toepassing-analyseren', 'toepassing-skelet-bouwen', 'uitbreiden', 'valideren', 'verbeteren',
+];
 
 let server;
 let tools;
@@ -299,18 +304,8 @@ describe('resources', () => {
             list.resources.map((resource) => resource.uri),
             [
                 'flux://versions',
-                'flux://prompts/design-naar-code',
-                'flux://prompts/migreren',
-                'flux://prompts/review',
-                'flux://prompts/uitbreiden',
-                'flux://prompts/valideren',
-                'flux://prompts/verbeteren',
-                'flux://templates/design-naar-code',
-                'flux://templates/migreren',
-                'flux://templates/review',
-                'flux://templates/uitbreiden',
-                'flux://templates/valideren',
-                'flux://templates/verbeteren',
+                ...RECIPES.map((name) => `flux://prompts/${name}`),
+                ...RECIPES.map((name) => `flux://templates/${name}`),
             ],
         );
         const { result: templates } = await request('resources/templates/list', {});
@@ -365,10 +360,7 @@ describe('prompts', () => {
     test('de lijst: naam, titel, beschrijving en argumenten', async () => {
         const { result } = await request('prompts/list', {});
         golden('prompts-list.json', json(result));
-        assert.deepEqual(
-            result.prompts.map((prompt) => prompt.name),
-            ['design-naar-code', 'migreren', 'review', 'uitbreiden', 'valideren', 'verbeteren'],
-        );
+        assert.deepEqual(result.prompts.map((prompt) => prompt.name), RECIPES);
     });
 
     test('een gerenderd recept, met het sjabloon als embedded resource', async () => {
@@ -389,9 +381,9 @@ describe('prompts', () => {
     test('een onbekend recept, een ontbrekend en een onbekend argument zijn een fout', async () => {
         const unknown = await request('prompts/get', { name: 'onbekend' });
         assert.equal(unknown.error.code, ERRORS.INVALID_PARAMS);
-        assert.match(unknown.error.message, /Onbekend recept: onbekend\. Gekend: design-naar-code, migreren/);
-        const missing = await request('prompts/get', { name: 'design-naar-code', arguments: {} });
-        assert.match(missing.error.message, /vraagt figma/);
+        assert.match(unknown.error.message, /Onbekend recept: onbekend\. Gekend: migreren, review, scherm-analyseren/);
+        const missing = await request('prompts/get', { name: 'scherm-bouwen', arguments: {} });
+        assert.match(missing.error.message, /vraagt scherm/);
         const extra = await request('prompts/get', { name: 'migreren', arguments: { opdracht: 'x' } });
         assert.match(extra.error.message, /kent opdracht niet/);
     });
@@ -402,13 +394,9 @@ describe('prompts', () => {
             argument: { name: 'doelversie', value: 'la' },
         });
         assert.deepEqual(result.completion.values, ['latest']);
-        const recipe = (await request('resources/read', { uri: 'flux://prompts/design-naar-code' })).result.contents[0];
-        assert.match(recipe.text, /^# Recept: Bouw een scherm/);
-        assert.match(
-            recipe.text,
-            /Je bouwt het ontwerp \{\{figma\}\} uit Figma/,
-            'een verplicht argument blijft staan',
-        );
+        const recipe = (await request('resources/read', { uri: 'flux://prompts/scherm-bouwen' })).result.contents[0];
+        assert.match(recipe.text, /^# Recept: Bouw één scherm/);
+        assert.match(recipe.text, /Je bouwt het scherm `\{\{scherm\}\}`/, 'een verplicht argument blijft staan');
         const template = (await request('resources/read', { uri: 'flux://templates/migreren' })).result.contents[0];
         assert.match(template.text, /^---\nworkflow: migreren\n/);
     });

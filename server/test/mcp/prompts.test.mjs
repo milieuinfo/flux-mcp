@@ -15,11 +15,21 @@ const tools = new Set(
     ),
 );
 
+// De analyses van de weg van ontwerp naar toepassing zijn levende documenten in .flux/analyse/, geen rapporten met een
+// datum (ADR-004, 6.4).
+const ANALYSES = {
+    'toepassing-analyseren': '.flux/analyse/toepassing.md',
+    'scherm-analyseren': '.flux/analyse/schermen/{{scherm}}.md',
+};
+
 describe('de recepten in server/prompts', () => {
-    test('migreren, design-naar-code, valideren, verbeteren, review en uitbreiden', () => {
+    test('de vijf van ontwerp naar toepassing, en migreren, valideren, verbeteren, review en uitbreiden', () => {
         assert.deepEqual(
             [...recipes.keys()],
-            ['design-naar-code', 'migreren', 'review', 'uitbreiden', 'valideren', 'verbeteren'],
+            [
+                'migreren', 'review', 'scherm-analyseren', 'scherm-bouwen', 'toepassing-aanmaken',
+                'toepassing-analyseren', 'toepassing-skelet-bouwen', 'uitbreiden', 'valideren', 'verbeteren',
+            ],
         );
     });
 
@@ -38,14 +48,26 @@ describe('de recepten in server/prompts', () => {
                 assert.match(recipe.body, new RegExp(`^## \\d+\\. ${step}$`, 'm'), `${recipe.name} mist ${step}`);
             }
             // review schrijft geen bestand in de branch die het beoordeelt, maar geeft het rapport in zijn antwoord
-            // (ADR-004, 6.4); de andere recepten schrijven het naar .flux/rapporten/.
+            // (ADR-004, 6.4); een analyse schrijft naar .flux/analyse/; de andere recepten schrijven het rapport naar
+            // .flux/rapporten/.
             if (recipe.name === 'review') {
                 assert.match(recipe.body, /`~~~markdown`/);
+                assert.doesNotMatch(recipe.body, /\.flux\/rapporten\//);
+            } else if (ANALYSES[recipe.name]) {
+                assert.ok(recipe.body.includes(`\`${ANALYSES[recipe.name]}\``), `${recipe.name} schrijft de analyse`);
                 assert.doesNotMatch(recipe.body, /\.flux\/rapporten\//);
             } else {
                 assert.match(recipe.body, new RegExp(`\\.flux/rapporten/<datum>-${recipe.name}\\.md`));
             }
             assert.match(recipe.description, /Aanbevolen: /, 'een aanbevolen model en effort');
+        });
+
+        test(`${recipe.name}: verwijst enkel naar recepten die er zijn`, () => {
+            // Een recept noemt de volgende stap of een ander recept als "het recept `naam`"; zo valt een verwijzing
+            // naar een hernoemd of verdwenen recept op.
+            for (const [, name] of recipe.body.matchAll(/het recept `([a-z-]+)`/g)) {
+                assert.ok(recipes.has(name), `${recipe.name} verwijst naar het recept ${name}`);
+            }
         });
     }
 });

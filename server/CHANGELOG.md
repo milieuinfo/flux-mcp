@@ -3,6 +3,27 @@
 Per versie van flux-mcp: wat er aan de server veranderde. Welke versies van Flux de catalogus bevat, zegt de tool
 `flux_list_versions`.
 
+## 0.5.0 (nog niet gepubliceerd)
+
+Increment 5 van ADR-004, voor zover de bron er is: de flux-starter-app als template-repo.
+
+- Van ontwerp naar toepassing gaat in vijf recepten, elk met een resultaat dat een mens nakijkt voor de volgende stap:
+  - `toepassing-aanmaken` (`/mcp__flux__toepassing-aanmaken`) maakt een nieuw project uit de flux-starter-app, met
+    een gepinde versie van Flux en flux-mcp in de `.mcp.json`;
+  - `toepassing-analyseren` beschrijft uit het ontwerp in Figma de schermen, het menu, de navigatie, de opbouw van de
+    pagina en de gedeelde componenten, in `.flux/analyse/toepassing.md`, zonder code te wijzigen;
+  - `toepassing-skelet-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm;
+  - `scherm-analyseren` beschrijft één scherm uit zijn frame in Figma, in `.flux/analyse/schermen/<scherm>.md`,
+    zonder code te wijzigen;
+  - `scherm-bouwen` bouwt één scherm volgens die analyse.
+- Een analyse is een levend document in `.flux/analyse/`: een nieuwe run werkt het bij, en behoudt wat een mens erin
+  besliste.
+- Het recept `design-naar-code` verdwijnt: `scherm-analyseren` en `scherm-bouwen` nemen het over, in een toepassing
+  die met `toepassing-skelet-bouwen` opgezet is. Een bestaande toepassing die een scherm uit een ontwerp krijgt,
+  gebruikt `uitbreiden`.
+- De weg van het ontwerp heeft nog geen evaluatie met `flux:server:eval-recipe`: daar is geen Figma MCP-server, en de
+  flux-starter-app vraagt een login.
+
 ## 0.4.0 (nog niet gepubliceerd)
 
 Increment 4 van ADR-004: de norm.

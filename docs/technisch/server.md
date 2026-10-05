@@ -4,8 +4,9 @@
 de catalogus in `catalog/flux/`. Wat de server aanbiedt en waarom, staat in
 [ADR-004](../beslissingen/ADR-004-functionaliteit-mcp-server.md); deze pagina beschrijft hoe hij werkt, hoe je hem
 start, koppelt en test. Hij kent increment 1 tot en met 3 van de ADR: de tools en resources op wat de catalogus heeft,
-`flux_check_markup`, en de recepten `migreren` en `design-naar-code` als prompts. Van increment 4 zijn er de recepten
-`valideren`, `verbeteren`, `review` en `uitbreiden`.
+`flux_check_markup`, en het recept `migreren` als prompt. Van increment 4 zijn er de recepten `valideren`,
+`verbeteren`, `review` en `uitbreiden`, en van increment 5 de vijf recepten van ontwerp naar toepassing, van
+`toepassing-aanmaken` tot `scherm-bouwen`.
 
 ## Starten en koppelen
 
@@ -31,7 +32,7 @@ Uit het pakket `@domg/flux-mcp`, eens het gepubliceerd is, op de registry van Fl
 ```json
 {
     "mcpServers": {
-        "flux": { "command": "npx", "args": ["-y", "@domg/flux-mcp@0.4.0"] }
+        "flux": { "command": "npx", "args": ["-y", "@domg/flux-mcp@0.5.0"] }
     }
 }
 ```
@@ -68,16 +69,20 @@ Node 22 of hoger; de server heeft geen dependencies.
 | `flux://{version}/components/{component}` | één component, zoals `flux_get_component` met alle secties |
 
 | `flux://prompts/{name}`                   | een recept als tekst, voor een client zonder prompts    |
-| `flux://templates/{workflow}`             | het rapportsjabloon van een workflow                    |
+| `flux://templates/{workflow}`             | het rapportsjabloon van een workflow, of het formaat van een analyse |
 
-| Prompt             | Workflow                                                                             |
-|--------------------|--------------------------------------------------------------------------------------|
-| `migreren`         | de toepassing naar een nieuwere versie van Flux brengen, met een migratierapport      |
-| `design-naar-code` | een scherm bouwen uit een ontwerp in Figma, met de Figma MCP in dezelfde client      |
-| `valideren`        | de toepassing naast de norm leggen, zonder code te wijzigen, met een afwijkingenrapport |
-| `verbeteren`       | de afwijkingen met uitkomst `volgt-norm` uit een afwijkingenrapport wegwerken           |
-| `review`           | wat een branch toevoegt of wijzigt naast de norm leggen, als commentaar voor de PR       |
-| `uitbreiden`       | de toepassing uitbreiden met wat een Jira-ticket of een ontwerp in Figma vraagt          |
+| Prompt                     | Workflow                                                                        |
+|----------------------------|---------------------------------------------------------------------------------|
+| `toepassing-aanmaken`      | een nieuw project uit de flux-starter-app, met een gepinde versie van Flux en flux-mcp |
+| `toepassing-analyseren`    | de analyse van de toepassing uit haar ontwerp in Figma: schermen, menu, navigatie en opbouw |
+| `toepassing-skelet-bouwen` | de opbouw van de pagina, het menu en een leeg scherm per scherm, uit die analyse |
+| `scherm-analyseren`        | de analyse van één scherm uit zijn frame in Figma                               |
+| `scherm-bouwen`            | één scherm bouwen volgens zijn analyse                                          |
+| `migreren`                 | de toepassing naar een nieuwere versie van Flux brengen, met een migratierapport |
+| `valideren`                | de toepassing naast de norm leggen, zonder code te wijzigen, met een afwijkingenrapport |
+| `verbeteren`               | de afwijkingen met uitkomst `volgt-norm` uit een afwijkingenrapport wegwerken    |
+| `review`                   | wat een branch toevoegt of wijzigt naast de norm leggen, als commentaar voor de PR |
+| `uitbreiden`               | de toepassing uitbreiden met wat een Jira-ticket of een ontwerp in Figma vraagt  |
 
 `completion/complete` vult `{version}`, `{page}` en `{component}` aan, en het argument `doelversie` van een recept.
 
@@ -161,6 +166,21 @@ server `flux` heet. Het recept staat als Markdown met frontmatter in `server/pro
 - **`uitbreiden`** leest het ticket met de koppeling met Jira van de client, of vraagt de ontwikkelaar de tekst als die
   er niet is, en een ontwerp met de Figma MCP. Wat het bouwt, volgt de norm; bestaande afwijkingen buiten de
   uitbreiding laat het staan.
+- **Van ontwerp naar toepassing** gaat in vijf recepten, elk met een resultaat dat een mens nakijkt voor de volgende
+  stap (ADR-004, 6.2):
+  1. `toepassing-aanmaken` draait in de map waarin het project komt. Het kloont de flux-starter-app, hernoemt de
+     remote `origin` naar `starter`, pint de `@domg-wc`-packages op de versie van de starter, en zet flux-mcp in de
+     `.mcp.json`. Daarna start de ontwikkelaar de client in het nieuwe project;
+  2. `toepassing-analyseren` schrijft uit het ontwerp `.flux/analyse/toepassing.md`: de schermen met hun id, het menu
+     en de navigatie, de opbouw van de pagina en de gedeelde componenten;
+  3. `toepassing-skelet-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm;
+  4. `scherm-analyseren` schrijft uit het frame van één scherm `.flux/analyse/schermen/<scherm>.md`: per deel het
+     element, het gedrag, de data en de acceptatiecriteria;
+  5. `scherm-bouwen` vult het lege scherm volgens die analyse, en wijzigt het menu, de routes en andere schermen niet.
+
+  Een analyse wijzigt geen code en heeft geen checkpoint. Ze is geen rapport maar een levend document: een nieuwe run
+  werkt het bij, en behoudt wat een mens erin besliste. Het sjabloon is het formaat van het document. Een bestaande
+  toepassing die een scherm uit een ontwerp krijgt, gebruikt `uitbreiden`.
 - Elke wijziging aan een recept krijgt een entry in `server/CHANGELOG.md`.
 
 ## De code

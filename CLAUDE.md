@@ -29,9 +29,10 @@ Wat de server aanbiedt, staat in ADR-004, in vijf incrementen (sectie 10). Wat e
 - de scripts die hem vullen;
 - `server/src/catalog.mjs` (de changelog) en `server/src/docs.mjs` (de documentatie), met de queries;
 - de MCP-server van increment 1 tot en met 3 (`server/src/mcp/`, `server/bin/flux-mcp.mjs`): zeven tools, waaronder
-  `flux_check_markup` (`server/src/markup.mjs`), de resources op die queries, en de recepten `migreren` en
-  `design-naar-code` als prompts, over stdio; van increment 4 de recepten `valideren`, `verbeteren`, `review` en
-  `uitbreiden`. Zie `docs/technisch/server.md`.
+  `flux_check_markup` (`server/src/markup.mjs`), de resources op die queries, en het recept `migreren` als prompt,
+  over stdio; van increment 4 de recepten `valideren`, `verbeteren`, `review` en `uitbreiden`; van increment 5 de vijf
+  recepten van ontwerp naar toepassing: `toepassing-aanmaken`, `toepassing-analyseren`, `toepassing-skelet-bouwen`,
+  `scherm-analyseren` en `scherm-bouwen`. Zie `docs/technisch/server.md`.
 
 ## Structuur
 

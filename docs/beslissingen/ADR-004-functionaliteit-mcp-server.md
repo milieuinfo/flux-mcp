@@ -530,26 +530,51 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
 | Prompt | Argumenten | Workflow (planning, sectie 5) | Resultaat | Tools | Increment |
 |---|---|---|---|---|---|
 | `migreren` | `doelversie` (standaard `latest`) | 5.2 | de migratie en een migratierapport | `flux_get_upgrade` met `components`, `flux_get_component` in de doelversie, `flux_check_markup` met `targetVersion` | 3 |
-| `design-naar-code` | `figma` (url of node-id, verplicht), `doel` (pad of scherm) | 5.1 | een basisimplementatie en een rapport | de Figma MCP (bij de client), `flux_search_docs`, `flux_get_component`, `flux_get_guidance` (patronen), `flux_check_markup` | 3 |
+| `toepassing-aanmaken` | `naam` (verplicht) | 5.1 | een nieuw project uit de flux-starter-app, en een rapport | `flux_get_guidance` (de starter-app), `flux_list_versions`, `flux_check_markup` | 5 |
+| `toepassing-analyseren` | `figma` (url van het ontwerp, verplicht) | 5.1 | de analyse van de toepassing in `.flux/analyse/toepassing.md`, geen codewijzigingen | de Figma MCP (bij de client), `flux_get_guidance` (patronen, richtlijnen), `flux_search_docs`, `flux_get_component`, `flux_check_markup` | 5 |
+| `toepassing-skelet-bouwen` | geen | 5.1 | de opbouw van de pagina, het menu en een leeg scherm per scherm, en een rapport | `flux_get_guidance` (patronen), `flux_get_component`, `flux_check_markup` | 5 |
+| `scherm-analyseren` | `scherm` (id, verplicht), `figma` (frame, optioneel) | 5.1 | de analyse van een scherm in `.flux/analyse/schermen/<scherm>.md`, geen codewijzigingen | de Figma MCP (bij de client), `flux_get_component`, `flux_search_docs`, `flux_get_guidance`, `flux_check_markup`, `flux_find_changes` | 5 |
+| `scherm-bouwen` | `scherm` (id, verplicht) | 5.1 | een scherm volgens zijn analyse, en een rapport | `flux_get_component`, `flux_get_guidance`, `flux_check_markup` | 5 |
 | `valideren` | `scope` (pad of glob; standaard de hele toepassing) | 5.3 | een afwijkingenrapport, geen codewijzigingen | `flux_get_guidance` (richtlijnen, patronen), `flux_check_markup`, `docs` van `flux_get_upgrade` naar `latest` | 4 |
 | `verbeteren` | `rapport` (pad naar een afwijkingenrapport), `afwijkingen` (id's, optioneel) | 5.3 | codewijzigingen, een rapport, en de normkandidaten als ticket | `flux_get_guidance` met de id uit het rapport, `flux_get_component`, `flux_check_markup` | 4 |
 | `review` | `basis` (branch; standaard de hoofdbranch) | 5.4 | een reviewrapport op de diff, als commentaar op de PR | `flux_check_markup` op de diff, `flux_get_guidance` | 4 |
-| `uitbreiden` | `ticket` (Jira-key) of `figma`, minstens één | 5.1 | een uitbreiding en een rapport | zoals `design-naar-code`, plus `flux_check_markup` op de gewijzigde bestanden | 4 |
-| `nieuwe-toepassing` | `naam`, `figma` (optioneel) | 5.1 | een nieuw project uit de template-repo en een rapport | `flux_get_guidance` (conventies, patronen), plus alles van `design-naar-code`; het technisch fundament (7.A) komt uit de template-repo | 5 |
+| `uitbreiden` | `ticket` (Jira-key) of `figma`, minstens één | 5.1 | een uitbreiding en een rapport | zoals `scherm-analyseren` en `scherm-bouwen` samen, plus `flux_check_markup` op de gewijzigde bestanden | 4 |
 
 - **Het Jira-ticket** (planning 5.4) is geen aparte prompt: `uitbreiden` begint met de analyse van het ticket, met
   `flux_search_docs` en `flux_get_component`. Elke prompt die code wijzigt, eindigt met de processtap (6.3, stap 7).
 - **`migreren` eerst.** De kennis ervoor is volledig: elke versie heeft een analyse, en de verificatie
   (`flux_check_markup`, build, lint en e2e) is deterministisch. De prompt `flux-upgrade` uit ADR-001 is deze.
 - **`design-naar-code` erbij** in hetzelfde increment: het steunt op de documentatie, de voorbeelden en de API, en de
-  Figma-descriptions en Code Connect noemen al de Storybook-id en het element.
+  Figma-descriptions en Code Connect noemen al de Storybook-id en het element. Sinds 2026-10-05 vervangen door de vijf
+  recepten van ontwerp naar toepassing (hieronder).
 - **`valideren`, `verbeteren` en `review` daarna.** Ze hebben een norm nodig: de richtlijnen en patronen uit
   Storybook, het eerste deel van de `.llm.md`, zonder regel-id's en zonder ernst per regel.
 - **`review` beoordeelt enkel de diff** (beslist op 2026-10-02): wat de branch toevoegt of wijzigt, ook een bestaande
   afwijking op een gewijzigde regel. Een afwijking op een regel die de diff niet raakt, is werk voor `valideren`. Een
   review van de hele gewijzigde bestanden gaf in de fixture 19 meldingen voor een pull request van een paar velden.
-- **`nieuwe-toepassing` laatst**, zoals de planning (fase 4): ze heeft een norm nodig die de terugkoppellus al een paar
-  keer bijstelde.
+- **Van ontwerp naar toepassing in vijf recepten** (beslist op 2026-10-05), in de plaats van `design-naar-code` en
+  `nieuwe-toepassing`. We bouwen typisch toepassingen met meerdere schermen, en één recept dat een ontwerp in één
+  keer naar code brengt, is daarvoor te veel: er is geen analyse van de toepassing als geheel, geen gedeelde opzet van
+  menu en navigatie, en geen analyse per scherm die een mens nakijkt voor er gebouwd wordt. De vijf stappen:
+  1. `toepassing-aanmaken` kloont de flux-starter-app (`https://git.omgeving.vlaanderen.be/git/flux/flux-starter-app`;
+     de Storybook-pagina `afnemen-starter-app`). De remote `origin` wordt `starter`, zodat het team later wijzigingen
+     van de starter kan mergen, zoals bij een fork. Het recept pint de `@domg-wc`-packages op de versie van de starter,
+     en zet flux-mcp in de `.mcp.json`. Het draait in de map waarin het project komt; de volgende stappen draaien in het
+     project;
+  2. `toepassing-analyseren` beschrijft uit het ontwerp de schermen, met een id per scherm, het menu en de navigatie,
+     de opbouw van de pagina en de gedeelde componenten;
+  3. `toepassing-skelet-bouwen` bouwt daarmee de opbouw, het menu, en per scherm een route met een leeg scherm, met
+     enkel de titel;
+  4. `scherm-analyseren` beschrijft één scherm zo dat het te bouwen is zonder het ontwerp opnieuw te interpreteren:
+     per deel het element, de attributen en de teksten, het gedrag, de data en de acceptatiecriteria;
+  5. `scherm-bouwen` vult het lege scherm volgens die analyse, en wijzigt het menu, de routes en andere schermen niet.
+
+  Een analyse wijzigt geen code; het team en de ontwerper reviewen ze in een pull request voor de volgende stap. Zo kan
+  elke stap opnieuw draaien als het ontwerp wijzigt, en krijgt elke stap het model dat erbij past: een sterk
+  analysemodel voor de analyses, een uitvoeringsmodel voor het bouwen. Een bestaande toepassing die een scherm uit een
+  ontwerp krijgt, gebruikt `uitbreiden`. De namen zeggen wat een recept oplevert, met een voorvoegsel per niveau, zodat
+  ze bij elkaar staan in de lijst van slash-commando's; `toepassing-starten` viel af, omdat het klinkt als het starten
+  van de toepassing.
 - `completion/complete` vult `doelversie` aan met de versies.
 
 #### 6.3 Vast stramien per recept
@@ -567,9 +592,10 @@ gebruiker, bv. met `@` in Claude Code, en voor clients zonder ondersteuning voor
    ontbrekende e2e-suite: zonder testen is het giswerk (planning 5.2).
 3. **Kennis ophalen** met de tools, in een vaste volgorde.
 4. **Checkpoint.** Het recept toont de analyse of het plan, en wacht op bevestiging voor het code wijzigt: korte
-   cycli met een mens ertussen, geen lange autonome run. Een recept dat geen code wijzigt, zoals `valideren` en
-   `review`, heeft geen checkpoint (beslist op 2026-10-02): de beslissing van mensen valt in de pull request, en stap 7
-   vraagt bevestiging voor die er komt. De sectie Checkpoint zegt dat, zodat het stramien gelijk blijft.
+   cycli met een mens ertussen, geen lange autonome run. Een recept dat geen code wijzigt, zoals `valideren`, `review`
+   en de analyses `toepassing-analyseren` en `scherm-analyseren`, heeft geen checkpoint (beslist op 2026-10-02): de
+   beslissing van mensen valt in de pull request, en stap 7 vraagt bevestiging voor die er komt. De sectie Checkpoint
+   zegt dat, zodat het stramien gelijk blijft.
 5. **Uitvoeren** in kleine stappen: per component, per afwijking of per scherm.
 6. **Verifiëren:**
    - `flux_check_markup` op elk gewijzigd bestand;
@@ -587,8 +613,15 @@ terechtkomt (open beslissing 6):
 
 - **In `.flux/rapporten/<datum>-<workflow>.md`** in het project, en in git. Bestaat die naam al, dan wordt het
   `<datum>-<workflow>-2.md`, `-3`, …: een rapport overschrijft nooit een ander.
-- **Een recept dat code wijzigt** (`migreren`, `design-naar-code`, `uitbreiden`, `verbeteren`) zet het rapport in de
-  PR van die wijziging.
+- **Een recept dat code wijzigt** (`migreren`, `toepassing-aanmaken`, `toepassing-skelet-bouwen`, `scherm-bouwen`,
+  `uitbreiden`, `verbeteren`) zet het rapport in de PR van die wijziging. `toepassing-aanmaken` heeft nog geen PR: het
+  rapport komt in de eerste commit van het project.
+- **De analyses** van `toepassing-analyseren` en `scherm-analyseren` (beslist op 2026-10-05) zijn geen rapport maar een
+  levend document waarop de volgende stappen steunen: `.flux/analyse/toepassing.md` en
+  `.flux/analyse/schermen/<scherm>.md`, in git, zonder datum in de naam. Een nieuwe run werkt het document bij, en
+  behoudt wat een mens erin besliste, zoals een antwoord op een open vraag; git houdt de vorige versies bij. De
+  analyse krijgt een eigen PR, waarin het team en de ontwerper ze reviewen. Het sjabloon in `flux://templates/` is
+  het formaat van het document.
 - **`valideren`** wijzigt geen code: het rapport krijgt een eigen PR. Daarin beslissen team en ontwerper per afwijking,
   met commentaar per regel, en zetten ze `uitkomst`; na de merge leest `verbeteren` het rapport. Dat is de menselijke
   beslissing tussen beide uit de planning (5.3 en 7.B).
@@ -869,7 +902,9 @@ Daarnaast:
     `aria-label`. `uitbreiden` las het ticket CONT-12 uit een nagemaakte Jira naast flux-mcp, bouwde het verplichte
     telefoonnummer met `pattern` en een `vl-form-message` per toestand volgens `patronen-formulier-validatie`, paste de
     bestaande e2e-testen bewust aan, en liet de bestaande afwijkingen staan. Een Figma MCP-server is er in de
-    evaluatie niet: de weg van het ontwerp, ook die van `design-naar-code`, is niet getoetst.
+    evaluatie niet: de weg van het ontwerp, met de vijf recepten van `toepassing-aanmaken` tot `scherm-bouwen`, is niet
+    getoetst. De flux-starter-app vraagt bovendien een login. `toepassing-skelet-bouwen` en `scherm-bouwen` lezen enkel
+    Markdown: een fixture met een analyse en een nagemaakte starter kan ze later zonder Figma toetsen.
 
 ### 10. Incrementen
 
@@ -1003,7 +1038,7 @@ Geen geheel, maar losse onderdelen, elk wanneer zijn aanleiding er is:
 |---|---|---|---|
 | een volgend deel van de `.llm.md` | kennis die niet in Storybook staat, bv. regels met een id, staat in flux-web-components | een script dat ze per versie in de catalogus zet, een controle, een eigen `kind` in `flux_get_guidance`, en de regel-id's in de rapporten | 2 |
 | CEM | Flux levert een CEM in plaats van web-types (planning 11.6), eerst als technische omzetting | een lader die hetzelfde teruggeeft als `loadWebTypes`, en een script dat de CEM per versie kopieert; de diffs werken over de overstap heen | 2 |
-| `nieuwe-toepassing` | er is een template-repo, en de norm is een paar keer bijgesteld | de prompt en haar sjabloon | 6.2 |
+| de vijf recepten van ontwerp naar toepassing | er is een template-repo: de flux-starter-app (gebouwd op 2026-10-05, zonder evaluatie) | `toepassing-aanmaken`, `toepassing-analyseren`, `toepassing-skelet-bouwen`, `scherm-analyseren` en `scherm-bouwen`, met hun sjabloon, in de plaats van `design-naar-code` en `nieuwe-toepassing` | 6.2 |
 | codemods | de overstap naar v3, of migraties die veel mechanische wijzigingen vragen | een veld `codemod` dat de analyse van de changelog meebouwt, een controle tegen de web-types in `changelog:build --check`, de review, en een vervanging bij `breaks-in-target` | 2 |
 | v3 | `develop-v3` heeft releases | de catalogus voor v3 (ADR-002), en de tussenstap per major in `flux_get_upgrade` | 4.5 |
 | Streamable HTTP | een gedeelde service is gewenst | dezelfde kern, met `node:http` | 8 |
@@ -1107,7 +1142,7 @@ increment 4.
   voor MDX tonen dat eigen code zonder dependencies hier werkt. Consistentie met flux-agents weegt niet door: die
   praat met de server over MCP, niet via zijn code. Wordt het protocol meer dan we willen onderhouden, bv.
   authenticatie voor HTTP, dan herbekijken we dit.
-- **Storybook buiten de kennislaag en buiten de server** (planning 11.2). Dan hebben `design-naar-code` en
+- **Storybook buiten de kennislaag en buiten de server** (planning 11.2). Dan hebben de recepten van het ontwerp en
   `valideren` geen enkele bron voor het *hoe*. ADR-003 besliste al anders, en sinds 2026-10-02 is de documentatie uit
   Storybook met haar analyse het eerste deel van de `.llm.md`.
 - **Een LLM in de server** die het migratiedocument schrijft (planning 11.4). Dat is niet deterministisch, en de
